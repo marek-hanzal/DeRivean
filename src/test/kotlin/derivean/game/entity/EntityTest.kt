@@ -21,7 +21,7 @@ class EntityTest {
 	}
 
 	@Test
-	fun `Entity with attack`() {
+	fun `Entity with an Attack`() {
 		with(Entity.build {
 			health = 10.0
 			attack {
@@ -33,6 +33,23 @@ class EntityTest {
 			with(attack) {
 				assertEquals(12.5, physical, "Physical attack mismatch")
 				assertEquals(5.0, magical, "Magical attack mismatch")
+			}
+		}
+	}
+
+	@Test
+	fun `Entity with Defense`() {
+		with(Entity.build {
+			health = 10.0
+			defense {
+				physical = 8.0
+				magical = 4.1
+			}
+		}) {
+			assertEquals(10.0, health, "Health mismatch")
+			with(defense) {
+				assertEquals(8.0, physical, "Physical defense mismatch")
+				assertEquals(4.1, magical, "Magical defense mismatch")
 			}
 		}
 	}
