@@ -1,5 +1,9 @@
 package derivean.game.entity
 
+/**
+ * An Entity is a general attribute holder; it could be an Hero or a Weapon, Item, whatever.
+ * Or it could also be a result of some Effect.
+ */
 data class Entity(
 	val health: Double,
 	val attack: Attack,
@@ -8,6 +12,11 @@ data class Entity(
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
+
+	/**
+	 * Shorthand for attack versus defense.
+	 */
+	fun damage(entity: Entity) = attack.damage(entity.defense)
 
 	class Builder {
 		var health: Double = 0.0
