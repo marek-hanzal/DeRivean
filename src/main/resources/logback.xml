@@ -1,0 +1,27 @@
+<!--
+    https://logback.qos.ch/manual/configuration.html
+    https://logback.qos.ch/manual/appenders.html
+-->
+<configuration scan="true" scanPeriod="1 minutes">
+	<contextName>DeRivean</contextName>
+	<shutdownHook/>
+	<jmxConfigurator/>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{YYYY-mm-dd HH:mm:ss.SSS} [%thread] %-5level %logger: %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="io.netty" level="info"/>
+	<logger name="com.zaxxer" level="info"/>
+	<logger name="ktor" level="info"/>
+	<logger name="Exposed" level="info"/>
+	<logger name="derivean.lib" level="info"/>
+
+	<root level="trace">
+		<appender-ref ref="console"/>
+	</root>
+
+	<include optional="true" file="logback.xml"/>
+</configuration>
