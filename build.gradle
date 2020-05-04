@@ -1,20 +1,36 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
-    id 'application'
+	id "org.jetbrains.kotlin.jvm" version "1.3.72"
+	id "application"
 }
 
+group "derivean"
+
 repositories {
-    jcenter()
+	mavenCentral()
+	jcenter()
 }
 
 dependencies {
-    implementation platform('org.jetbrains.kotlin:kotlin-bom')
+	implementation platform("org.jetbrains.kotlin:kotlin-bom")
 
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+	implementation "org.jetbrains.exposed:exposed:$exposed"
+	implementation "ch.qos.logback:logback-classic:$logback"
+	implementation "com.zaxxer:HikariCP:$hikaricp"
+	implementation "io.github.config4k:config4k:$config4k"
+	implementation "org.postgresql:postgresql:$postgresql"
+	implementation "io.github.microutils:kotlin-logging:$kotlin_logging"
+	implementation "com.beust:klaxon:$klaxon"
+	implementation "org.jsoup:jsoup:$jsoup"
+	implementation "io.ktor:ktor-server-core:$ktor"
+	implementation "io.ktor:ktor-server-netty:$ktor"
+	implementation "io.ktor:ktor-gson:$ktor"
+	implementation "com.h2database:h2:$h2"
+
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	testImplementation "org.jetbrains.kotlin:kotlin-test"
+	testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
 }
 
 application {
-    mainClassName = 'derivean.EngineKt'
+	mainClassName = "derivean.server.EngineKt"
 }
