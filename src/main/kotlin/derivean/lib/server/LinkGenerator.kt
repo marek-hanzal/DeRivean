@@ -1,7 +1,6 @@
 package derivean.lib.server
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.server.ILinkGenerator
+import derivean.lib.container.IContainer
 import io.ktor.http.Parameters
 import io.ktor.http.Url
 

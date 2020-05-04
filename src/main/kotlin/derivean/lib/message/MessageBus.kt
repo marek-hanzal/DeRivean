@@ -1,10 +1,6 @@
 package derivean.lib.message
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.message.IMessage
-import derivean.lib.api.message.IMessageBus
-import derivean.lib.api.message.IMessageService
-import derivean.lib.api.message.MessageException
+import derivean.lib.container.IContainer
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 

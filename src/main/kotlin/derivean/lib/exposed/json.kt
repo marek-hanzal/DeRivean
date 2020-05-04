@@ -4,8 +4,8 @@ package derivean.lib.exposed
 
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Klaxon
-import derivean.lib.api.CoreException
-import derivean.lib.api.message.IMessage
+import derivean.lib.CoreException
+import derivean.lib.message.IMessage
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.ColumnType
 import org.jetbrains.exposed.sql.Table

@@ -2,9 +2,8 @@ package derivean.lib.pool
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.pool.IPool
 import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.IContainer
 import javax.sql.DataSource
 
 class Pool(container: IContainer) : AbstractConfigurable<IPool>(), IPool {

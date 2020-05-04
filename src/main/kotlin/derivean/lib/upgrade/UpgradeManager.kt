@@ -1,10 +1,7 @@
 package derivean.lib.upgrade
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.upgrade.IUpgrade
-import derivean.lib.api.upgrade.IUpgradeManager
-import derivean.lib.api.upgrade.IVersionService
 import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.IContainer
 import derivean.lib.container.LazyProxy
 import mu.KotlinLogging
 import kotlin.reflect.KClass

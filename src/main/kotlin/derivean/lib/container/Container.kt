@@ -2,12 +2,8 @@
 
 package derivean.lib.container
 
-import derivean.lib.api.config.Configurator
-import derivean.lib.api.config.IConfigurable
-import derivean.lib.api.container.ContainerException
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.container.IFactory
-import derivean.lib.api.container.LazyDelegate
+import derivean.lib.config.Configurator
+import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass
 
 class Container : IContainer {

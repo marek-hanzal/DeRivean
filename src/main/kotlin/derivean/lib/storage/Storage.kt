@@ -1,9 +1,8 @@
 package derivean.lib.storage
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.pool.IPool
-import derivean.lib.api.storage.IStorage
 import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.IContainer
+import derivean.lib.pool.IPool
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 

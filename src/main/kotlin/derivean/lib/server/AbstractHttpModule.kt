@@ -2,8 +2,7 @@
 
 package derivean.lib.server
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.server.IHttpModule
+import derivean.lib.container.IContainer
 import mu.KotlinLogging
 
 abstract class AbstractHttpModule(protected val container: IContainer) : IHttpModule {

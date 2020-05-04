@@ -1,7 +1,6 @@
 package derivean.lib.scraper
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.scraper.IScraper
+import derivean.lib.container.IContainer
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
