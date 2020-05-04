@@ -13,11 +13,6 @@ data class Entity(
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
 
-	/**
-	 * Shorthand for attack versus defense.
-	 */
-	fun damage(entity: Entity) = attack.damage(entity.defense)
-
 	class Builder {
 		var health: Double = 0.0
 		private var attack: Attack = Attack.build { }
