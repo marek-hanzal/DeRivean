@@ -5,11 +5,35 @@ import kotlin.test.assertEquals
 
 class EntityTest {
 	@Test
-	fun `entity builder test`() {
-		Entity.build {
+	fun `Empty Entity builder`() {
+		with(Entity.build {}) {
+			assertEquals(0.0, health, "Health mismatch")
+		}
+	}
+
+	@Test
+	fun `Entity with health`() {
+		with(Entity.build {
 			health = 10.0
-		}.let {
-			assertEquals(10.0, it.health, "Health mismatch")
+		}) {
+			assertEquals(10.0, health, "Health mismatch")
+		}
+	}
+
+	@Test
+	fun `Entity with attack`() {
+		with(Entity.build {
+			health = 10.0
+			attack {
+				physical = 12.5
+				magical = 5.0
+			}
+		}) {
+			assertEquals(10.0, health, "Health mismatch")
+			with(attack) {
+				assertEquals(12.5, physical, "Physical attack mismatch")
+				assertEquals(5.0, magical, "Magical attack mismatch")
+			}
 		}
 	}
 }
