@@ -2,9 +2,6 @@
 
 package derivean.lib.config
 
-import derivean.lib.api.config.Configurator
-import derivean.lib.api.config.IConfigurable
-
 abstract class AbstractConfigurable<T> : IConfigurable<T> {
 	private var configurator: Configurator<T> = {}
 	private var state = 0

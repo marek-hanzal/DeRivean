@@ -3,11 +3,8 @@
 package derivean.lib.rest
 
 import com.google.gson.JsonSyntaxException
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.rest.IEndpoint
-import derivean.lib.api.rest.InvalidRequestException
-import derivean.lib.api.rest.UnauthorizedException
-import derivean.lib.api.rest.discovery.IDiscoveryService
+import derivean.lib.container.IContainer
+import derivean.lib.rest.discovery.IDiscoveryService
 import derivean.lib.rest.discovery.Parameter
 import io.ktor.application.ApplicationCall
 import mu.KotlinLogging

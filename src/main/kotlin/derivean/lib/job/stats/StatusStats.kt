@@ -1,6 +1,6 @@
 package derivean.lib.job.stats
 
-import derivean.lib.api.job.IStatusStats
+import derivean.lib.job.IStatusStats
 
 data class StatusStats(
 	override val created: Int,

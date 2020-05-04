@@ -2,9 +2,8 @@
 
 package derivean.lib.upgrade
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.storage.IStorage
-import derivean.lib.api.upgrade.IUpgrade
+import derivean.lib.container.IContainer
+import derivean.lib.storage.IStorage
 import kotlin.reflect.KClass
 
 abstract class AbstractUpgrade(container: IContainer) : IUpgrade {

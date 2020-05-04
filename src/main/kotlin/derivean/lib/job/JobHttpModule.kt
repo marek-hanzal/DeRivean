@@ -1,6 +1,6 @@
 package derivean.lib.job
 
-import derivean.lib.api.container.IContainer
+import derivean.lib.container.IContainer
 import derivean.lib.server.AbstractHttpModule
 import io.ktor.routing.Routing
 

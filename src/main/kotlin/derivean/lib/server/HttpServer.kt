@@ -1,9 +1,7 @@
 package derivean.lib.server
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.server.IHttpModule
-import derivean.lib.api.server.IHttpServer
 import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.IContainer
 import io.ktor.application.install
 import io.ktor.features.*
 import io.ktor.gson.gson

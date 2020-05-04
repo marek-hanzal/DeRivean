@@ -1,10 +1,8 @@
 package derivean.lib.upgrade
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.storage.IStorage
-import derivean.lib.api.upgrade.IUpgrade
-import derivean.lib.api.upgrade.IVersionService
 import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.IContainer
+import derivean.lib.storage.IStorage
 import derivean.lib.utils.asStamp
 import org.jetbrains.exposed.sql.SchemaUtils
 

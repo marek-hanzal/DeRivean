@@ -2,7 +2,6 @@
 
 package derivean.lib.message
 
-import derivean.lib.api.message.*
 import derivean.lib.config.AbstractConfigurable
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.functions

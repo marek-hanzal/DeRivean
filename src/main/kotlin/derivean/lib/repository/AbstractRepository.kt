@@ -1,8 +1,7 @@
 package derivean.lib.repository
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.repository.IRepository
-import derivean.lib.api.storage.IStorage
+import derivean.lib.container.IContainer
+import derivean.lib.storage.IStorage
 import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
 

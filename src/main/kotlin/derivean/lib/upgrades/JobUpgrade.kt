@@ -1,6 +1,6 @@
 package derivean.lib.upgrades
 
-import derivean.lib.api.container.IContainer
+import derivean.lib.container.IContainer
 import derivean.lib.job.entity.JobTable
 import derivean.lib.upgrade.AbstractUpgrade
 import org.jetbrains.exposed.sql.SchemaUtils

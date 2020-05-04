@@ -1,9 +1,9 @@
 package derivean.lib.job.stats
 
-import derivean.lib.api.container.IContainer
-import derivean.lib.api.job.IJobStats
-import derivean.lib.api.job.JobException
-import derivean.lib.api.storage.IStorage
+import derivean.lib.container.IContainer
+import derivean.lib.job.IJobStats
+import derivean.lib.job.JobException
+import derivean.lib.storage.IStorage
 
 class JobStats(container: IContainer) : IJobStats {
 	private val storage: IStorage by container.lazy()
