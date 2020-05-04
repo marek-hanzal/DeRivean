@@ -10,6 +10,19 @@ repositories {
 	jcenter()
 }
 
+sourceSets {
+	main {
+		resources {
+			output.dir(output.resourcesDir, builtBy: tasks.create('application-properties', WriteProperties) {
+				properties = [
+					'derivean.version': version
+				]
+				outputFile = file("${output.resourcesDir}/application.properties")
+			})
+		}
+	}
+}
+
 dependencies {
 	implementation platform("org.jetbrains.kotlin:kotlin-bom")
 
