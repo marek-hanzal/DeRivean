@@ -1,4 +1,4 @@
-package derivean
+package derivean.server
 
 class Engine {
 	val greeting: String
