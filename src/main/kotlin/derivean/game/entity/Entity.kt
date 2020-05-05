@@ -6,6 +6,7 @@ package derivean.game.entity
  */
 data class Entity(
 	val health: Double,
+	val initiative: Double,
 	val attack: Attack,
 	val defense: Defense
 ) {
@@ -15,6 +16,7 @@ data class Entity(
 
 	class Builder {
 		var health: Double = 0.0
+		var initiative: Double = 0.0
 		private var attack: Attack = Attack.build { }
 		private var defense: Defense = Defense.build { }
 
@@ -28,6 +30,7 @@ data class Entity(
 
 		fun build() = Entity(
 			health,
+			initiative,
 			attack,
 			defense
 		)
