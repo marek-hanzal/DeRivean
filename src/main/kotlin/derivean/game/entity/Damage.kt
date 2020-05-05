@@ -10,16 +10,16 @@ data class Damage(
 	val physical: Double,
 	val magical: Double
 ) {
-	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
-	}
-
 	/**
 	 * Creates a result Entity of a Damage. This could be used for affecting
 	 * another Entity - for example health loss.
 	 */
 	fun entity() = Entity.build {
 		health = -(max(0.0, physical) + max(0.0, magical))
+	}
+
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
 
 	class Builder {

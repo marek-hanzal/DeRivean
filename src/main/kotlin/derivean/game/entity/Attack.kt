@@ -7,10 +7,6 @@ data class Attack(
 	val physical: Double,
 	val magical: Double
 ) {
-	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
-	}
-
 	/**
 	 * Run an attack against the given defense and return Damage with resulted values (like
 	 * affected health, ...).
@@ -24,6 +20,10 @@ data class Attack(
 	 * Do a damage on innocent target without any defense.
 	 */
 	fun damage() = damage(Defense.build {})
+
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+	}
 
 	class Builder {
 		var physical: Double = 0.0
