@@ -13,7 +13,7 @@ abstract class Environment : IEnvironment {
 
 	override fun prepare() {
 		spiritQueue.reset()
-		spirits.spirits().forEach { spirit ->
+		spirits.list().forEach { spirit ->
 			spirit.behaviour(behaviorOf(spirit))
 		}
 	}

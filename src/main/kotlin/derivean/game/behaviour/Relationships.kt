@@ -51,7 +51,7 @@ class Relationships(val spirits: Spirits = Spirits()) {
 	}
 
 	private fun relationsOf(spirit: Spirit, relationshipType: RelationshipType): Spirits = with(Spirits()) {
-		spirits.spirits().forEach {
+		spirits.list().forEach {
 			relationships[Pair(spirit, it)]?.let { type ->
 				if (type == relationshipType) {
 					add(it)

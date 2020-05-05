@@ -11,7 +11,7 @@ class RelationshipsTest {
 	fun `List of known Spirits`() {
 		with(Relationships(Spirits())) {
 			enemies(Spirit(Entity.build {}), Spirit(Entity.build {}))
-			assertEquals(2, spirits.spirits().count(), "There are more spirits, than expected!")
+			assertEquals(2, spirits.list().count(), "There are more spirits, than expected!")
 		}
 	}
 
@@ -37,11 +37,11 @@ class RelationshipsTest {
 			friends(frodo, aragorn)
 			friends(gandalf, aragorn)
 
-			assertEquals(listOf(gandalf, aragorn), friendsOf(frodo))
-			assertEquals(listOf(saruman), enemiesOf(frodo))
-			assertEquals(listOf(gandalf), friendsOf(saruman))
-			assertEquals(listOf(aragorn, frodo), enemiesOf(saruman))
-			assertEquals(listOf(aragorn, frodo), friendsOf(gandalf))
+			assertEquals(listOf(gandalf, aragorn), friendsOf(frodo).list())
+			assertEquals(listOf(saruman), enemiesOf(frodo).list())
+			assertEquals(listOf(gandalf), friendsOf(saruman).list())
+			assertEquals(listOf(aragorn, frodo), enemiesOf(saruman).list())
+			assertEquals(listOf(aragorn, frodo), friendsOf(gandalf).list())
 		}
 	}
 }
