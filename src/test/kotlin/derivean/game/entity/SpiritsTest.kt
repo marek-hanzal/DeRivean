@@ -10,8 +10,8 @@ class SpiritsTest {
 			val spirit = Spirit.build(Entity.build {}) {}
 			add(spirit)
 			add(spirit)
-			assertEquals(1, spirits().count())
-			assertEquals(listOf(spirit), spirits())
+			assertEquals(1, list().count())
+			assertEquals(listOf(spirit), list())
 		}
 	}
 
@@ -21,10 +21,10 @@ class SpiritsTest {
 			val spirit = Spirit.build(Entity.build {}) {}
 			add(spirit)
 			add(spirit)
-			assertEquals(1, spirits().count())
+			assertEquals(1, list().count())
 			remove(spirit)
-			assertEquals(0, spirits().count())
-			assertEquals(listOf(), spirits())
+			assertEquals(0, list().count())
+			assertEquals(listOf(), list())
 		}
 	}
 }

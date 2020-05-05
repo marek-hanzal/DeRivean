@@ -17,14 +17,14 @@ open class Spirits(vararg spirits: Spirit) {
 		spirits.remove(spirit)
 	}
 
-	fun copy(): Spirits = Spirits(*spirits().toTypedArray())
+	fun copy(): Spirits = Spirits(*list().toTypedArray())
 
 	fun isEmpty() = spirits.isEmpty()
 
 	fun count() = spirits.count()
 
 	/**
-	 * Return list of all known spirits
+	 * Return list of all known spirits.
 	 */
-	fun spirits() = spirits.values.toList()
+	fun list() = spirits.values.toList()
 }
