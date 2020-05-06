@@ -52,6 +52,15 @@ class AttackAbilityTest {
 				}
 				assertEquals(21.0, aragorn.entity.health)
 			}
+			with(use(aragorn, relationships)) {
+				assertEquals(1, count())
+				with(first()) {
+					apply()
+					assertEquals(getEffect(), Entity.build { health = -8.0 })
+					assertEquals("Saruman", getSpirit().name)
+				}
+				assertEquals(24.0, saruman.entity.health)
+			}
 		}
 	}
 }
