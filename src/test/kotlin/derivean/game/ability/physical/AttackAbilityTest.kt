@@ -32,8 +32,13 @@ class AttackAbilityTest {
 				}
 			}) {
 			}
+			val badGuy = Spirit.build("Bad Guy", Entity.build {
+				health = 41.0
+			}) {
+			}
 			val relationships = Relationships()
 			relationships.enemies(aragorn, saruman)
+			relationships.enemies(aragorn, badGuy)
 			with(use(aragorn, relationships)) {
 				assertEquals(1, count())
 				with(first()) {
@@ -43,6 +48,10 @@ class AttackAbilityTest {
 				}
 				assertEquals(32.0, saruman.entity.health)
 			}
+			/**
+			 * heal saruman a bit to force Aragorn to attack on Bad Guy
+			 */
+			saruman.entity.health += 10.0
 			with(use(saruman, relationships)) {
 				assertEquals(1, count())
 				with(first()) {
@@ -56,10 +65,10 @@ class AttackAbilityTest {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
-					assertEquals(getEffect(), Entity.build { health = -8.0 })
-					assertEquals("Saruman", getSpirit().name)
+					assertEquals(getEffect(), Entity.build { health = -12.5 })
+					assertEquals("Bad Guy", getSpirit().name)
 				}
-				assertEquals(24.0, saruman.entity.health)
+				assertEquals(28.5, badGuy.entity.health)
 			}
 		}
 	}
