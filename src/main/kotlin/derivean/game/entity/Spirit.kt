@@ -2,11 +2,9 @@ package derivean.game.entity
 
 import derivean.game.behaviour.IBehaviour
 import derivean.game.environment.IEnvironment
-import derivean.game.target.ITarget
 
 data class Spirit(val name: String, val entity: Entity) {
 	private var behaviour: IBehaviour? = null
-	private var target: ITarget? = null
 
 	/**
 	 * Sets a desired behaviour of this Spirit.
@@ -17,24 +15,14 @@ data class Spirit(val name: String, val entity: Entity) {
 	}
 
 	/**
-	 * Sets a targeting rules of this Spirits; this is used
-	 * for selecting target of a behavior.
-	 */
-	fun target(target: ITarget?): Spirit {
-		this@Spirit.target = target
-		return this
-	}
-
-	/**
-	 * Get a target Spirit from the given Environment.
-	 */
-	fun targetFrom(environment: IEnvironment) = target?.get(this, environment)
-
-	/**
 	 * Executes action in the given Environment; this represents one unit of time.
 	 */
 	fun act(environment: IEnvironment) {
 		behaviour?.act(this, environment)
+	}
+
+	override fun toString(): String {
+		return "Spirit(name='$name')"
 	}
 
 	companion object {
@@ -43,8 +31,7 @@ data class Spirit(val name: String, val entity: Entity) {
 
 	class Builder(val name: String, val entity: Entity) {
 		var behaviour: IBehaviour? = null
-		var target: ITarget? = null
 
-		fun build() = Spirit(name, entity).behaviour(behaviour).target(target)
+		fun build() = Spirit(name, entity).behaviour(behaviour)
 	}
 }

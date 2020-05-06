@@ -1,7 +1,7 @@
 package derivean.game.environment
 
 import derivean.game.behaviour.IBehaviour
-import derivean.game.behaviour.Relationships
+import derivean.game.entity.Relationships
 import derivean.game.entity.Spirit
 
 interface IEnvironment {

@@ -1,8 +1,5 @@
-package derivean.game.behaviour
+package derivean.game.entity
 
-import derivean.game.entity.Entity
-import derivean.game.entity.Spirit
-import derivean.game.entity.Spirits
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -12,6 +9,21 @@ class RelationshipsTest {
 		with(Relationships(Spirits())) {
 			enemies(Spirit("Gandalf", Entity.build {}), Spirit("Saruman", Entity.build {}))
 			assertEquals(2, spirits.list().count(), "There are more spirits, than expected!")
+		}
+	}
+
+	@Test
+	fun `Simple enemy relation`() {
+		val gandalf = Spirit("Gandalf", Entity.build {})
+		val saruman = Spirit("Saruman", Entity.build {})
+		with(Relationships()) {
+			enemies(gandalf, saruman)
+			assertEquals(listOf(gandalf, saruman), spirits.list())
+			assertEquals(listOf(saruman), enemiesOf(gandalf).list())
+			assertEquals(listOf(gandalf), enemiesOf(saruman).list())
+			gandalf.entity += Entity.build { health += 5.0 }
+			assertEquals(listOf(saruman), enemiesOf(gandalf).list())
+			assertEquals(listOf(gandalf), enemiesOf(saruman).list())
 		}
 	}
 

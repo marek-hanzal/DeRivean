@@ -3,6 +3,8 @@ package derivean.game.entity
 open class Spirits(vararg spirits: Spirit) {
 	private val spirits: MutableMap<Spirit, Spirit> = mutableMapOf()
 
+	constructor(spirits: List<Spirit>) : this(*spirits.toTypedArray())
+
 	init {
 		add(*spirits)
 	}
@@ -17,14 +19,14 @@ open class Spirits(vararg spirits: Spirit) {
 		spirits.remove(spirit)
 	}
 
-	fun copy(): Spirits = Spirits(*list().toTypedArray())
+	fun copy() = Spirits(list())
 
 	fun isEmpty() = spirits.isEmpty()
 
 	fun count() = spirits.count()
 
 	/**
-	 * Return list of all known spirits.
+	 * Return list of all known spirits
 	 */
 	fun list() = spirits.values.toList()
 }
