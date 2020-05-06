@@ -1,6 +1,6 @@
 package derivean.game.environment
 
-import derivean.game.behaviour.Relationships
+import derivean.game.entity.Relationships
 import derivean.game.entity.SpiritQueue
 import derivean.game.entity.Spirits
 

@@ -5,11 +5,18 @@ package derivean.game.entity
  * Or it could also be a result of some Effect.
  */
 data class Entity(
-	val health: Double,
-	val initiative: Double,
-	val attack: Attack,
-	val defense: Defense
+	var health: Double,
+	var initiative: Double,
+	var attack: Attack,
+	var defense: Defense
 ) {
+	operator fun plusAssign(effect: Entity) {
+		health += effect.health
+		initiative += effect.initiative
+		attack += effect.attack
+		defense += effect.defense
+	}
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}

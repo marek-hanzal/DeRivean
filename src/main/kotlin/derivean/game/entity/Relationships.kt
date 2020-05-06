@@ -1,13 +1,10 @@
-package derivean.game.behaviour
-
-import derivean.game.entity.Spirit
-import derivean.game.entity.Spirits
+package derivean.game.entity
 
 /**
  * General class knowing relationships between Spirits.
  */
 class Relationships(val spirits: Spirits = Spirits()) {
-	private val relationships: MutableMap<Pair<Spirit, Spirit>, RelationshipType> = mutableMapOf()
+	private val relationships: MutableMap<String, RelationshipType> = mutableMapOf()
 
 	/**
 	 * Makes uni-directional enemy. "enemy" is spirit's enemy
@@ -47,12 +44,12 @@ class Relationships(val spirits: Spirits = Spirits()) {
 
 	private fun relation(first: Spirit, second: Spirit, relationshipType: RelationshipType) {
 		spirits.add(first, second)
-		relationships[Pair(first, second)] = relationshipType
+		relationships["$first/$second"] = relationshipType
 	}
 
 	private fun relationsOf(spirit: Spirit, relationshipType: RelationshipType): Spirits = with(Spirits()) {
 		spirits.list().forEach {
-			relationships[Pair(spirit, it)]?.let { type ->
+			relationships["$spirit/$it"]?.let { type ->
 				if (type == relationshipType) {
 					add(it)
 				}

@@ -4,22 +4,13 @@ package derivean.game.entity
  * Attach is an input strength used against a defense to compute Damage.
  */
 data class Attack(
-	val physical: Double,
-	val magical: Double
+	var physical: Double,
+	var magical: Double
 ) {
-	/**
-	 * Run an attack against the given defense and return Damage with resulted values (like
-	 * affected health, ...).
-	 */
-	fun damage(defense: Defense) = Damage.build {
-		physical = this@Attack.physical - defense.physical
-		magical = this@Attack.magical - defense.magical
+	operator fun plusAssign(attack: Attack) {
+		physical += attack.physical
+		magical += attack.magical
 	}
-
-	/**
-	 * Do a damage on innocent target without any defense.
-	 */
-	fun damage() = damage(Defense.build {})
 
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()

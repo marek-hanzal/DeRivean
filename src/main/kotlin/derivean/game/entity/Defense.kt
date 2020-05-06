@@ -1,9 +1,14 @@
 package derivean.game.entity
 
 data class Defense(
-	val physical: Double,
-	val magical: Double
+	var physical: Double,
+	var magical: Double
 ) {
+	operator fun plusAssign(defense: Defense) {
+		physical += defense.physical
+		magical += defense.magical
+	}
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
