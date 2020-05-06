@@ -7,7 +7,7 @@ class SpiritsTest {
 	@Test
 	fun `Add Spirit`() {
 		with(Spirits()) {
-			val spirit = Spirit.build(Entity.build {}) {}
+			val spirit = Spirit.build("The Spirit", Entity.build {}) {}
 			add(spirit)
 			add(spirit)
 			assertEquals(1, list().count())
@@ -18,7 +18,7 @@ class SpiritsTest {
 	@Test
 	fun `Remove Spirit`() {
 		with(Spirits()) {
-			val spirit = Spirit.build(Entity.build {}) {}
+			val spirit = Spirit.build("The Spirit", Entity.build {}) {}
 			add(spirit)
 			add(spirit)
 			assertEquals(1, list().count())

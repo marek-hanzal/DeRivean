@@ -1,5 +1,5 @@
 package derivean.game.environment
 
-import derivean.lib.CoreException
+import derivean.game.GameException
 
-open class EnvironmentException(message: String, cause: Throwable? = null) : CoreException(message, cause)
+open class EnvironmentException(message: String, cause: Throwable? = null) : GameException(message, cause)

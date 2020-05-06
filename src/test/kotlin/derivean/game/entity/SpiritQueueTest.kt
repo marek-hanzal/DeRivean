@@ -8,13 +8,13 @@ class SpiritQueueTest {
 	@Test
 	fun `Initiative Spirit Queue`() {
 		val spirits = Spirits(
-			Spirit.build(Entity.build {
+			Spirit.build("Saruman", Entity.build {
 				initiative = 12.1
 			}) {},
-			Spirit.build(Entity.build {
+			Spirit.build("Frodo", Entity.build {
 				initiative = 8.35
 			}) {},
-			Spirit.build(Entity.build {
+			Spirit.build("Gandalf", Entity.build {
 				initiative = 10.3
 			}) {}
 		)
