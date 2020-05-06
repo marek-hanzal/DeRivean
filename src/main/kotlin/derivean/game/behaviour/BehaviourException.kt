@@ -1,5 +1,5 @@
 package derivean.game.behaviour
 
-import derivean.lib.CoreException
+import derivean.game.GameException
 
-open class BehaviourException(message: String, cause: Throwable? = null) : CoreException(message, cause)
+open class BehaviourException(message: String, cause: Throwable? = null) : GameException(message, cause)
