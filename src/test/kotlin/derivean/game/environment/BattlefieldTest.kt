@@ -16,7 +16,7 @@ class BattlefieldTest {
 		}
 
 		with(Battlefield.build {}) {
-			enemies(gandalf, saruman)
+			relationships().enemies(gandalf, saruman)
 			assertEquals(listOf(saruman), relationships().enemiesOf(gandalf).list())
 			assertEquals(listOf(gandalf), relationships().enemiesOf(saruman).list())
 			prepare()

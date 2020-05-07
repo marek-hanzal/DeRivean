@@ -4,21 +4,16 @@ import derivean.game.entity.Relationships
 import derivean.game.entity.SpiritQueue
 import derivean.game.entity.Spirits
 
-abstract class Environment : IEnvironment {
-	private val spirits: Spirits = Spirits()
-	private val relationships: Relationships = Relationships(spirits)
-	private val spiritQueue: SpiritQueue = SpiritQueue(spirits)
-
+abstract class Environment(
+	protected val spirits: Spirits,
+	protected val relationships: Relationships,
+	protected val spiritQueue: SpiritQueue
+) : IEnvironment {
 	override fun relationships(): Relationships = relationships
 
 	override fun prepare() {
-		spiritQueue.reset()
-		spirits.list().forEach { spirit ->
-			spirit.behaviour(behaviorOf(spirit))
-		}
 	}
 
 	override fun tick() {
-		spiritQueue.getSpirit().act(this)
 	}
 }

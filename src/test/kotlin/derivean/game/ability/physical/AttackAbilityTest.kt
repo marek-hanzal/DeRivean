@@ -3,13 +3,14 @@ package derivean.game.ability.physical
 import derivean.game.entity.Entity
 import derivean.game.entity.Relationships
 import derivean.game.entity.Spirit
+import derivean.game.selector.LowestHealthSelector
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class AttackAbilityTest {
 	@Test
 	fun `A Spirit use attack ability on another Spirit`() {
-		with(AttackAbility("attack", "Do a physical attack.")) {
+		with(AttackAbility()) {
 			val aragorn = Spirit.build("Aragorn", Entity.build {
 				health = 25.0
 				attack {
@@ -36,10 +37,11 @@ class AttackAbilityTest {
 				health = 41.0
 			}) {
 			}
+			val selector = LowestHealthSelector()
 			val relationships = Relationships()
 			relationships.enemies(aragorn, saruman)
 			relationships.enemies(aragorn, badGuy)
-			with(use(aragorn, relationships)) {
+			with(use(aragorn, selector.select(aragorn, relationships.enemiesOf(aragorn)))) {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
@@ -52,7 +54,7 @@ class AttackAbilityTest {
 			 * heal saruman a bit to force Aragorn to attack on Bad Guy
 			 */
 			saruman.entity.health += 10.0
-			with(use(saruman, relationships)) {
+			with(use(saruman, selector.select(saruman, relationships.enemiesOf(saruman)))) {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
@@ -61,7 +63,7 @@ class AttackAbilityTest {
 				}
 				assertEquals(21.0, aragorn.entity.health)
 			}
-			with(use(aragorn, relationships)) {
+			with(use(aragorn, selector.select(aragorn, relationships.enemiesOf(aragorn)))) {
 				assertEquals(1, count())
 				with(first()) {
 					apply()

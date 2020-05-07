@@ -1,7 +1,7 @@
 package derivean.game.entity
 
 open class Spirits(vararg spirits: Spirit) {
-	private val spirits: MutableMap<Spirit, Spirit> = mutableMapOf()
+	private val spirits: MutableMap<String, Spirit> = mutableMapOf()
 
 	constructor(spirits: List<Spirit>) : this(*spirits.toTypedArray())
 
@@ -9,14 +9,16 @@ open class Spirits(vararg spirits: Spirit) {
 		add(*spirits)
 	}
 
+	fun get(name: String): Spirit = spirits[name] ?: throw UnknownSpiritException("Requested unknown Spirit [$name].")
+
 	fun add(vararg spirit: Spirit) {
 		spirit.forEach {
-			spirits[it] = it
+			spirits[it.name] = it
 		}
 	}
 
 	fun remove(spirit: Spirit) {
-		spirits.remove(spirit)
+		spirits.remove(spirit.name)
 	}
 
 	fun copy() = Spirits(list())
