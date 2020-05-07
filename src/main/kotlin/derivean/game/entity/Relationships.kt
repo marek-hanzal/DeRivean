@@ -42,14 +42,19 @@ class Relationships(val spirits: Spirits = Spirits()) {
 	 */
 	fun friendsOf(spirit: Spirit) = relationsOf(spirit, RelationshipType.IS_FRIEND)
 
+	/**
+	 * Return a Spirit by it's name
+	 */
+	fun spiritBy(name: String): Spirit = spirits.get(name)
+
 	private fun relation(first: Spirit, second: Spirit, relationshipType: RelationshipType) {
 		spirits.add(first, second)
-		relationships["$first/$second"] = relationshipType
+		relationships["$first-$second"] = relationshipType
 	}
 
 	private fun relationsOf(spirit: Spirit, relationshipType: RelationshipType): Spirits = with(Spirits()) {
 		spirits.list().forEach {
-			relationships["$spirit/$it"]?.let { type ->
+			relationships["$spirit-$it"]?.let { type ->
 				if (type == relationshipType) {
 					add(it)
 				}

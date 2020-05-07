@@ -2,6 +2,7 @@ package derivean.game.entity
 
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class SpiritsTest {
 	@Test
@@ -12,6 +13,7 @@ class SpiritsTest {
 			add(spirit)
 			assertEquals(1, list().count())
 			assertEquals(listOf(spirit), list())
+			assertEquals(spirit, get("The Spirit"))
 		}
 	}
 
@@ -25,6 +27,20 @@ class SpiritsTest {
 			remove(spirit)
 			assertEquals(0, list().count())
 			assertEquals(listOf(), list())
+			with(Spirits()) {
+				assertEquals("Requested unknown Spirit [The Spirit].", assertFailsWith<UnknownSpiritException> {
+					get("The Spirit")
+				}.message)
+			}
+		}
+	}
+
+	@Test
+	fun `Request unknown Spirit`() {
+		with(Spirits()) {
+			assertEquals("Requested unknown Spirit [dunno].", assertFailsWith<UnknownSpiritException> {
+				get("dunno")
+			}.message)
 		}
 	}
 }

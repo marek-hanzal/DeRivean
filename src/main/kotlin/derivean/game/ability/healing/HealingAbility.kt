@@ -1,10 +1,10 @@
-package derivean.game.ability.magical.fire
+package derivean.game.ability.healing
 
 import derivean.game.ability.AbstractAbility
 import derivean.game.ability.IEffect
 import derivean.game.entity.Spirit
 import derivean.game.entity.Spirits
 
-class FireballAbility(id: String, description: String) : AbstractAbility() {
+class HealingAbility : AbstractAbility() {
 	override fun use(spirit: Spirit, spirits: Spirits): List<IEffect> = listOf()
 }
