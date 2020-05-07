@@ -1,3 +1,5 @@
 package derivean.game.role
 
-abstract class AbstractRole : IRole
+import derivean.game.selector.Selectors
+
+abstract class AbstractRole(protected val selectors: Selectors) : IRole
