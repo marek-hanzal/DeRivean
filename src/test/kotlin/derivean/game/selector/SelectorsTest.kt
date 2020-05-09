@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 internal class SelectorsTest {
 	@Test
 	fun add() {
-		with(Selectors(selectors)) {
+		with(Selectors()) {
 			LowestHealthSelector().let {
 				add("lowest-health", it)
 				assertEquals(it, selector("lowest-health"))

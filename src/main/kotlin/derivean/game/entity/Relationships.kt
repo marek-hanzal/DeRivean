@@ -24,6 +24,8 @@ class Relationships(val spirits: Spirits = Spirits()) {
 		enemyOf(enemy, spirit)
 	}
 
+	fun enemies(spirit: String, enemy: String) = enemies(spiritBy(spirit), spiritBy(enemy))
+
 	/**
 	 * Mark spirits as friends to each other.
 	 */
@@ -31,6 +33,8 @@ class Relationships(val spirits: Spirits = Spirits()) {
 		friendOf(spirit, friend)
 		friendOf(friend, spirit)
 	}
+
+	fun friends(spirit: String, friend: String) = friends(spiritBy(spirit), spiritBy(friend))
 
 	/**
 	 * Return list of enemies of the given Spirit

@@ -1,6 +1,6 @@
 package derivean.game.selector
 
-class Selectors(private val selectors: MutableMap<String, ISelector>) {
+class Selectors(private val selectors: MutableMap<String, ISelector> = mutableMapOf()) {
 	fun add(name: String, selector: ISelector) {
 		selectors[name] = selector
 	}
