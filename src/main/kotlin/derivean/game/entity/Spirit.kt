@@ -1,8 +1,14 @@
 package derivean.game.entity
 
-data class Spirit(val name: String, val entity: Entity) {
+import derivean.game.role.IRole
+
+data class Spirit(val name: String, val role: IRole, val entity: Entity) {
 	override fun toString(): String {
 		return "Spirit(name='$name')"
+	}
+
+	operator fun plusAssign(effect: Entity) {
+		entity += effect
 	}
 
 	companion object {
@@ -10,6 +16,8 @@ data class Spirit(val name: String, val entity: Entity) {
 	}
 
 	class Builder(val name: String, val entity: Entity) {
-		fun build() = Spirit(name, entity)
+		lateinit var role: IRole
+
+		fun build() = Spirit(name, role, entity)
 	}
 }

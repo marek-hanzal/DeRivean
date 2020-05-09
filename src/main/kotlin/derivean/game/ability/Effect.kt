@@ -5,7 +5,7 @@ import derivean.game.entity.Spirit
 
 data class Effect(private val spirit: Spirit, private val effect: Entity) : IEffect {
 	override fun apply() {
-		spirit.entity += effect
+		spirit += effect
 	}
 
 	override fun getSpirit(): Spirit = spirit

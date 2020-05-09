@@ -1,5 +1,8 @@
 package derivean.game.entity
 
+import derivean.game.role.MageRole
+import derivean.game.role.WarriorRole
+import derivean.game.selector.Selectors
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -7,15 +10,15 @@ class RelationshipsTest {
 	@Test
 	fun `List of known Spirits`() {
 		with(Relationships(Spirits())) {
-			enemies(Spirit("Gandalf", Entity.build {}), Spirit("Saruman", Entity.build {}))
+			enemies(Spirit("Gandalf", MageRole(Selectors()), Entity.build {}), Spirit("Saruman", MageRole(Selectors()), Entity.build {}))
 			assertEquals(2, spirits.list().count(), "There are more spirits, than expected!")
 		}
 	}
 
 	@Test
 	fun `Simple enemy relation`() {
-		val gandalf = Spirit("Gandalf", Entity.build {})
-		val saruman = Spirit("Saruman", Entity.build {})
+		val gandalf = Spirit("Gandalf", MageRole(Selectors()), Entity.build {})
+		val saruman = Spirit("Saruman", MageRole(Selectors()), Entity.build {})
 		with(Relationships()) {
 			enemies(gandalf, saruman)
 			assertEquals(listOf(gandalf, saruman), spirits.list())
@@ -30,10 +33,10 @@ class RelationshipsTest {
 	@Test
 	fun `Query for a Relations`() {
 		with(Relationships()) {
-			val gandalf = Spirit("Gandalf", Entity.build {})
-			val saruman = Spirit("Saruman", Entity.build {})
-			val frodo = Spirit("Frodo", Entity.build {})
-			val aragorn = Spirit("Aragorn", Entity.build {})
+			val gandalf = Spirit("Gandalf", MageRole(Selectors()), Entity.build {})
+			val saruman = Spirit("Saruman", MageRole(Selectors()), Entity.build {})
+			val frodo = Spirit("Frodo", WarriorRole(Selectors()), Entity.build {})
+			val aragorn = Spirit("Aragorn", WarriorRole(Selectors()), Entity.build {})
 
 			enemyOf(gandalf, saruman)
 			enemies(aragorn, saruman)
