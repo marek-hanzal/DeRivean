@@ -19,27 +19,19 @@ internal class AttackStrategyTest {
 		}
 		val environment = Battlefield.build {
 			spirit(Spirit.build("Aragorn", Entity.build {
-				health = 40.0
-				attack {
-					physical = 4.0
-				}
-				defense {
-					physical = 2.0
-					magical = 1.0
-				}
+				attribute("health", 40)
+				attribute("attack.physical", 4.0)
+				attribute("defense.physical", 2.0)
+				attribute("defense.magical", 1.0)
 			}) {
 				role = WarriorRole(selectors)
 			})
 			spirit(Spirit.build("Saruman", Entity.build {
-				health = 60.0
-				attack {
-					physical = 5.0
-					magical = 6.0
-				}
-				defense {
-					physical = 3.0
-					magical = 2.5
-				}
+				attribute("health", 60)
+				attribute("attack.physical", 5.0)
+				attribute("attack.physical", 6.0)
+				attribute("defense.physical", 3.0)
+				attribute("defense.magical", 2.5)
 			}) {
 				role = MageRole(selectors)
 			})

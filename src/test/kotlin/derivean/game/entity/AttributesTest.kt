@@ -33,4 +33,15 @@ internal class AttributesTest {
 			"mana" to 5.5
 		)), attributes)
 	}
+
+	@Test
+	fun `Attribute Inc & Dec`() {
+		val attributes = Attributes(mapOf("value" to 10.0))
+		attributes.inc("health", 20)
+		attributes.dec("value", 5)
+		assertEquals(Attributes(mapOf(
+			"health" to 20.0,
+			"value" to 5.0
+		)), attributes)
+	}
 }

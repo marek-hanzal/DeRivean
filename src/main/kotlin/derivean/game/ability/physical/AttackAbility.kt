@@ -11,7 +11,6 @@ class AttackAbility : AbstractAbility() {
 	override fun use(spirit: Spirit, spirits: Spirits): List<IEffect> = with(mutableListOf<IEffect>()) {
 		spirits.list().forEach { target ->
 			add(Effect(target, Entity.build {
-				health -= spirit.entity.attack.physical - target.entity.defense.physical
 			}))
 		}
 		return this
