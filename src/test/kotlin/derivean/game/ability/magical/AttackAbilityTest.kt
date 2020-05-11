@@ -12,19 +12,13 @@ class AttackAbilityTest {
 	fun `A Spirit use attack ability on another Spirit`() {
 		with(AttackAbility()) {
 			val aragorn = Spirit.build("Aragorn", Entity.build {
-				health = 25.0
-				defense {
-					magical = 1.5
-				}
-			}) {
-			}
+				attribute("health", 25)
+				attribute("defense/magical", 1.5)
+			}) { }
 			val saruman = Spirit.build("Saruman", Entity.build {
-				health = 40.0
-				attack {
-					magical = 4.5
-				}
-			}) {
-			}
+				attribute("health", 40)
+				attribute("attack/magical", 4.5)
+			}) { }
 			val selector = LowestHealthSelector()
 			val relationships = Relationships()
 			relationships.enemies(aragorn, saruman)
@@ -32,10 +26,10 @@ class AttackAbilityTest {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
-					assertEquals(getEffect(), Entity.build { health = -3.0 })
+					assertEquals(getEffect(), Entity.build { attribute("health", -3) })
 					assertEquals("Aragorn", getSpirit().name)
 				}
-				assertEquals(22.0, aragorn.entity.health)
+				assertEquals(22.0, aragorn.entity.attributes.get("health"))
 			}
 			with(use(aragorn, selector.select(aragorn, relationships.enemiesOf(aragorn)))) {
 				assertEquals(1, count())
@@ -44,7 +38,7 @@ class AttackAbilityTest {
 					assertEquals(getEffect(), Entity.build { })
 					assertEquals("Saruman", getSpirit().name)
 				}
-				assertEquals(40.0, saruman.entity.health)
+				assertEquals(40.0, saruman.entity.attributes.get("health"))
 			}
 		}
 	}

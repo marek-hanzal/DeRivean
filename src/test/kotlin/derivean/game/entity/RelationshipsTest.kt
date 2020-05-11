@@ -24,7 +24,7 @@ class RelationshipsTest {
 			assertEquals(listOf(gandalf, saruman), spirits.list())
 			assertEquals(listOf(saruman), enemiesOf(gandalf).list())
 			assertEquals(listOf(gandalf), enemiesOf(saruman).list())
-			gandalf.entity += Entity.build { health += 5.0 }
+			gandalf.entity += Entity.build { attributes.inc("health", 5) }
 			assertEquals(listOf(saruman), enemiesOf(gandalf).list())
 			assertEquals(listOf(gandalf), enemiesOf(saruman).list())
 		}

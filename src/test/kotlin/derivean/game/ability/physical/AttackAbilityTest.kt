@@ -12,29 +12,19 @@ class AttackAbilityTest {
 	fun `A Spirit use attack ability on another Spirit`() {
 		with(AttackAbility()) {
 			val aragorn = Spirit.build("Aragorn", Entity.build {
-				health = 25.0
-				attack {
-					physical = 12.5
-					magical = 10.0
-				}
-				defense {
-					physical = 6.0
-				}
-			}) {
-			}
+				attribute("health", 25)
+				attribute("attack/physical", 12.5)
+				attribute("attack/magical", 10)
+				attribute("defense/physical", 6)
+			}) { }
 			val saruman = Spirit.build("Saruman", Entity.build {
-				health = 40.0
-				attack {
-					physical = 10.0
-					magical = 10.0
-				}
-				defense {
-					physical = 4.5
-				}
-			}) {
-			}
+				attribute("health", 40)
+				attribute("attack/physical", 10)
+				attribute("attack/magical", 10)
+				attribute("defense/physical", 4.5)
+			}) { }
 			val badGuy = Spirit.build("Bad Guy", Entity.build {
-				health = 41.0
+				attribute("health", 41)
 			}) {
 			}
 			val selector = LowestHealthSelector()
@@ -45,32 +35,32 @@ class AttackAbilityTest {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
-					assertEquals(getEffect(), Entity.build { health = -8.0 })
+					assertEquals(getEffect(), Entity.build { attribute("health", -8) })
 					assertEquals("Saruman", getSpirit().name)
 				}
-				assertEquals(32.0, saruman.entity.health)
+				assertEquals(32.0, saruman.entity.attributes.get("health"))
 			}
 			/**
 			 * heal saruman a bit to force Aragorn to attack on Bad Guy
 			 */
-			saruman.entity.health += 10.0
+			saruman.entity.attributes.inc(" health", 10.0)
 			with(use(saruman, selector.select(saruman, relationships.enemiesOf(saruman)))) {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
-					assertEquals(getEffect(), Entity.build { health = -4.0 })
+					assertEquals(getEffect(), Entity.build { attribute("health", -4) })
 					assertEquals("Aragorn", getSpirit().name)
 				}
-				assertEquals(21.0, aragorn.entity.health)
+				assertEquals(21.0, aragorn.entity.attributes.get("health"))
 			}
 			with(use(aragorn, selector.select(aragorn, relationships.enemiesOf(aragorn)))) {
 				assertEquals(1, count())
 				with(first()) {
 					apply()
-					assertEquals(getEffect(), Entity.build { health = -12.5 })
+					assertEquals(getEffect(), Entity.build { attribute("health", -12.5) })
 					assertEquals("Bad Guy", getSpirit().name)
 				}
-				assertEquals(28.5, badGuy.entity.health)
+				assertEquals(28.5, badGuy.entity.attributes.get("health"))
 			}
 		}
 	}

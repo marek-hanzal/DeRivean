@@ -20,6 +20,20 @@ class Attributes(mapOf: Map<String, Double> = mapOf()) {
 
 	private fun forEach(action: (Map.Entry<String, Double>) -> Unit) = map.forEach(action)
 
+	fun set(key: String, value: Double) = map.set(key, value)
+
+	fun get(name: String) = map.getOrDefault(name, 0.0)
+
+	fun inc(name: String, value: Double) {
+		map[name] = get(name) + value
+	}
+
+	fun inc(name: String, value: Int) = inc(name, value.toDouble())
+
+	fun dec(name: String, value: Double) = inc(name, -value)
+
+	fun dec(name: String, value: Int) = dec(name, value.toDouble())
+
 	override fun equals(other: Any?): Boolean {
 		if (this === other) {
 			return true

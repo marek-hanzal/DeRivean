@@ -16,13 +16,13 @@ internal class LowestHealthSelectorTest {
 				role = WarriorRole(Selectors())
 			}, Spirits(
 				Spirit("Healthy Spirit", MageRole(Selectors()), Entity.build {
-					health = 90.0
+					attribute("health", 90)
 				}),
 				Spirit("Less Healthy Spirit", MageRole(Selectors()), Entity.build {
-					health = 75.2
+					attribute("health", 75.2)
 				}),
 				Spirit("Almost dead Spirit", MageRole(Selectors()), Entity.build {
-					health = 0.5
+					attribute("health", 0.5)
 				})
 			)).let {
 				assertEquals(1, it.count())

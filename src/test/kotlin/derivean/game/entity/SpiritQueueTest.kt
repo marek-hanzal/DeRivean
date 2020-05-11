@@ -9,24 +9,24 @@ class SpiritQueueTest {
 	fun `Initiative Spirit Queue`() {
 		val spirits = Spirits(
 			Spirit.build("Saruman", Entity.build {
-				initiative = 12.1
+				attribute("initiative", 12.1)
 			}) {},
 			Spirit.build("Frodo", Entity.build {
-				initiative = 8.35
+				attribute("initiative", 8.35)
 			}) {},
 			Spirit.build("Gandalf", Entity.build {
-				initiative = 10.3
+				attribute("initiative", 10.3)
 			}) {}
 		)
 
 		with(SpiritQueue(spirits)) {
 			reset()
 			assertEquals(3, count())
-			assertEquals(12.1, getSpirit().entity.initiative)
+			assertEquals(12.1, getSpirit().entity.attributes.get("initiative"))
 			assertEquals(2, count())
-			assertEquals(10.3, getSpirit().entity.initiative)
+			assertEquals(10.3, getSpirit().entity.attributes.get("initiative"))
 			assertEquals(1, count())
-			assertEquals(8.35, getSpirit().entity.initiative)
+			assertEquals(8.35, getSpirit().entity.attributes.get("initiative"))
 			assertEquals(true, isEmpty())
 			assertEquals("Spirit Queue is empty; cannot get a Spirit!", assertFailsWith<EntityException> {
 				getSpirit()
