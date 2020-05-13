@@ -3,7 +3,7 @@ package derivean.game.entity
 /**
  * This is low-level class holding any kind of attributes an Entity could have.
  */
-class Attributes(mapOf: Map<String, Double> = mapOf()) {
+class Attributes(mapOf: AttributeType = mapOf()) {
 	private var map = mutableMapOf<String, Double>()
 
 	init {
