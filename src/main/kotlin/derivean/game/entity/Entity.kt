@@ -9,6 +9,10 @@ data class Entity(val attributes: Attributes) {
 		attributes += plus.attributes
 	}
 
+	operator fun plusAssign(plus: Attributes) {
+		attributes += plus
+	}
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
