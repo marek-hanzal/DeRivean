@@ -11,7 +11,7 @@ class SpiritQueue(private val spirits: Spirits) {
 		if (current.isEmpty()) {
 			throw EntityException("Spirit Queue is empty; cannot get a Spirit!")
 		}
-		return current.list().maxBy { it.entity.attributes.get("initiative") }!!.also {
+		return current.list().maxByOrNull { it.entity.attributes.get("initiative") }!!.also {
 			current.remove(it)
 		}
 	}

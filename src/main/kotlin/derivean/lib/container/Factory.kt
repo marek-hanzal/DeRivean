@@ -48,8 +48,7 @@ open class SingletonFactory<T : Any>(private val impl: KClass<out T>, var instan
 	}
 }
 
-class InterfaceFactory<T : Any, U : T>(private val iface: KClass<T>, impl: KClass<out U>, instance: U? = null) :
-	SingletonFactory<U>(impl, instance) {
+class InterfaceFactory<T : Any, U : T>(private val iface: KClass<T>, impl: KClass<out U>, instance: U? = null) : SingletonFactory<U>(impl, instance) {
 	override fun getName(): String {
 		return iface.qualifiedName as String
 	}
