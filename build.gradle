@@ -1,5 +1,6 @@
 plugins {
 	id "org.jetbrains.kotlin.jvm" version "1.4.10"
+	id "org.jetbrains.kotlin.plugin.serialization" version "1.4.10"
 	id "application"
 }
 
@@ -38,6 +39,7 @@ dependencies {
 	implementation "io.ktor:ktor-server-netty:$ktor"
 	implementation "io.ktor:ktor-gson:$ktor"
 	implementation "com.h2database:h2:$h2"
+	implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinx_serialization"
 
 	testImplementation "org.jetbrains.kotlin:kotlin-test"
 	testImplementation "org.jetbrains.kotlin:kotlin-test-junit"

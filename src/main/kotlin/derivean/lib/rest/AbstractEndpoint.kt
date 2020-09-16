@@ -6,7 +6,7 @@ import com.google.gson.JsonSyntaxException
 import derivean.lib.container.IContainer
 import derivean.lib.rest.discovery.IDiscoveryService
 import derivean.lib.rest.discovery.Parameter
-import io.ktor.application.ApplicationCall
+import io.ktor.application.*
 import mu.KotlinLogging
 
 abstract class AbstractEndpoint(container: IContainer) : IEndpoint {

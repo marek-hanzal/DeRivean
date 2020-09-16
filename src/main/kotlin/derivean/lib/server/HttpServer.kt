@@ -2,14 +2,13 @@ package derivean.lib.server
 
 import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
-import io.ktor.application.install
+import io.ktor.application.*
 import io.ktor.features.*
-import io.ktor.gson.gson
-import io.ktor.http.HttpHeaders
-import io.ktor.http.HttpMethod
-import io.ktor.routing.routing
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.gson.*
+import io.ktor.http.*
+import io.ktor.routing.*
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
@@ -33,6 +32,9 @@ class HttpServer(private val container: IContainer) : AbstractConfigurable<IHttp
 			install(AutoHeadResponse)
 			install(ConditionalHeaders)
 			install(PartialContent)
+			install(Compression) {
+				gzip()
+			}
 			install(DefaultHeaders) {
 				header(HttpHeaders.Server, name)
 			}
