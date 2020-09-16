@@ -1,6 +1,6 @@
 plugins {
-	id "org.jetbrains.kotlin.jvm" version "1.4.10"
-	id "org.jetbrains.kotlin.plugin.serialization" version "1.4.10"
+	id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
+	id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
 	id "application"
 }
 
@@ -25,21 +25,19 @@ sourceSets {
 }
 
 dependencies {
-	implementation platform("org.jetbrains.kotlin:kotlin-bom")
-
-	implementation "org.jetbrains.exposed:exposed:$exposed"
-	implementation "ch.qos.logback:logback-classic:$logback"
-	implementation "com.zaxxer:HikariCP:$hikaricp"
-	implementation "io.github.config4k:config4k:$config4k"
-	implementation "org.postgresql:postgresql:$postgresql"
-	implementation "io.github.microutils:kotlin-logging:$kotlin_logging"
-	implementation "com.beust:klaxon:$klaxon"
-	implementation "org.jsoup:jsoup:$jsoup"
-	implementation "io.ktor:ktor-server-core:$ktor"
-	implementation "io.ktor:ktor-server-netty:$ktor"
-	implementation "io.ktor:ktor-gson:$ktor"
-	implementation "com.h2database:h2:$h2"
-	implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinx_serialization"
+	implementation "org.jetbrains.exposed:exposed:$exposed_version"
+	implementation "ch.qos.logback:logback-classic:$logback_version"
+	implementation "com.zaxxer:HikariCP:$hikaricp_version"
+	implementation "io.github.config4k:config4k:$config4k_version"
+	implementation "org.postgresql:postgresql:$postgresql_version"
+	implementation "io.github.microutils:kotlin-logging:$kotlin_logging_version"
+	implementation "com.beust:klaxon:$klaxon_version"
+	implementation "org.jsoup:jsoup:$jsoup_version"
+	implementation "io.ktor:ktor-server-core:$ktor_version"
+	implementation "io.ktor:ktor-server-netty:$ktor_version"
+	implementation "io.ktor:ktor-gson:$ktor_version"
+	implementation "com.h2database:h2:$h2_version"
+	implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinx_serialization_version"
 
 	testImplementation "org.jetbrains.kotlin:kotlin-test"
 	testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
