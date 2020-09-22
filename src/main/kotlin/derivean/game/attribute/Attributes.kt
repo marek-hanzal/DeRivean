@@ -1,9 +1,9 @@
-package derivean.game.entity
+package derivean.game.attribute
 
 /**
  * This is low-level class holding any kind of attributes an Entity could have.
  */
-class Attributes(mapOf: AttributeType = mapOf()) {
+class Attributes(mapOf: Map<String, Double> = mapOf()) {
 	private var map = mutableMapOf<String, Double>()
 
 	init {
@@ -18,11 +18,13 @@ class Attributes(mapOf: AttributeType = mapOf()) {
 		}
 	}
 
+	operator fun plusAssign(it: Pair<String, Double>) = set(it.first, it.second)
+
 	private fun forEach(action: (Map.Entry<String, Double>) -> Unit) = map.forEach(action)
 
 	fun set(key: String, value: Double) = map.set(key, value)
 
-	fun get(name: String) = map.getOrDefault(name, 0.0)
+	operator fun get(name: String) = map.getOrDefault(name, 0.0)
 
 	fun inc(name: String, value: Double) {
 		map[name] = get(name) + value

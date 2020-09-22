@@ -1,8 +1,9 @@
 package derivean.game.entity
 
+import derivean.game.attribute.Attributes
+
 /**
- * An Entity is a general attribute holder; it could be an Hero or a Weapon, Item, whatever.
- * Or it could also be a result of some Effect.
+ * An Entity is responsible for holding Attributes and equipping items.
  */
 data class Entity(val attributes: Attributes) {
 	operator fun plusAssign(plus: Entity) {
@@ -18,7 +19,7 @@ data class Entity(val attributes: Attributes) {
 	}
 
 	class Builder {
-		val attributes = Attributes()
+		private val attributes = Attributes()
 
 		fun attribute(name: String, value: Double) = attributes.set(name, value)
 
