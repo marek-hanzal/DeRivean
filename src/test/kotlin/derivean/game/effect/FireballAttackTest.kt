@@ -77,4 +77,32 @@ class FireballAttackTest {
 		assertEquals(9.75, CommonAttributes.mana(duel.source), "Mana was not adjusted :(.")
 		assertEquals(15.0, CommonAttributes.health(duel.target), "Target should not be affected.")
 	}
+
+	@Test
+	fun `Fireball attack against foe weak to fire`() {
+		val effect = FireballAttack()
+		val duel = Duel.build {
+			source(
+				CommonAttributes.mana(10),
+				FireballAttack.cost(0.25),
+				FireballAttack.attack(12),
+				FireAttributes.attack(6),
+				FireAttributes.element(0),
+			)
+			target(
+				CommonAttributes.health(15),
+				FireAttributes.defense(5),
+				FireAttributes.element(-1),
+			)
+		}
+		with(effect.applyTo(duel)) {
+			assertEquals(0.25, FireballAttack.cost(source), "Nope, there is no cost of fire magic. That's strange.")
+			assertEquals(-0.25, CommonAttributes.mana(source), "There is no loss of mana. Ooops.")
+			assertEquals(-36.0, CommonAttributes.health(target), "Target did loss unexpected amount of health!")
+			assertEquals(36.0, CommonAttributes.damage(source), "Unexpected damage given.")
+			assertEquals(36.0, FireAttributes.damage(source), "Unexpected damage given.")
+		}
+		assertEquals(9.75, CommonAttributes.mana(duel.source), "Mana was not adjusted :(.")
+		assertEquals(-21.0, CommonAttributes.health(duel.target), "Target should be dead.")
+	}
 }
