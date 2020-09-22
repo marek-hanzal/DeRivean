@@ -10,9 +10,9 @@ class FireballAttack : AbstractEffect() {
 	override fun evaluate(duel: Duel): Duel = Duel.build {
 		val cost = cost(duel.source)
 		val attack = (attack(duel.source) + FireAttributes.attack(duel.source)) * (1 + FireAttributes.element(duel.source))
-		val resistance = FireAttributes.element(duel.target)
-		val defense = if (resistance <= -1) -attack else FireAttributes.defense(duel.target) * (1 + resistance)
-		val damage = if (resistance >= 1) 0.0 else max(attack - defense, 0.0)
+		val element = FireAttributes.element(duel.target)
+		val defense = if (element <= -1) -attack else FireAttributes.defense(duel.target) * (1 + element)
+		val damage = if (element >= 1) 0.0 else max(attack - defense, 0.0)
 		source(
 			cost(cost),
 			CommonAttributes.mana(-cost),

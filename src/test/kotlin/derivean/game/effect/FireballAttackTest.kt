@@ -12,7 +12,10 @@ class FireballAttackTest {
 		assertions(sourceElement = 0.5, targetElement = 0.0, sourceDamage = 22.0, targetHealth = -7.0)
 		assertions(sourceElement = 0.5, targetElement = 0.5, sourceDamage = 19.5, targetHealth = -4.5)
 		assertions(sourceElement = 0.0, targetElement = 1.0, sourceDamage = 0.0, targetHealth = 15.0)
+		assertions(sourceElement = 0.0, targetElement = 2.0, sourceDamage = 0.0, targetHealth = 15.0)
 		assertions(sourceElement = 0.0, targetElement = -1.0, sourceDamage = 36.0, targetHealth = -21.0)
+		assertions(sourceElement = 0.0, targetElement = -0.95, sourceDamage = 17.75, targetHealth = -2.75)
+		assertions(sourceElement = 0.0, targetElement = -2.0, sourceDamage = 36.0, targetHealth = -21.0)
 	}
 
 	private fun assertions(sourceElement: Double, targetElement: Double, sourceDamage: Double, targetHealth: Double) {
