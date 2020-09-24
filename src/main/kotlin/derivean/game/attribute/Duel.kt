@@ -5,9 +5,9 @@ package derivean.game.attribute
  * for example target entity could have counter attack ability.
  */
 data class Duel(val source: Attributes, val target: Attributes) {
-	operator fun plusAssign(it: Duel) {
-		source += it.source
-		target += it.target
+	operator fun plusAssign(plus: Duel) {
+		source += plus.source
+		target += plus.target
 	}
 
 	companion object {
@@ -18,13 +18,13 @@ data class Duel(val source: Attributes, val target: Attributes) {
 		private var source = Attributes()
 		private var target = Attributes()
 
-		fun source(vararg pairs: Pair<String, Double>) = pairs.forEach { source += it }
+		fun source(vararg values: Value) = values.forEach { source += it }
 
 		fun source(attributes: Attributes) {
 			source = attributes
 		}
 
-		fun target(vararg pairs: Pair<String, Double>) = pairs.forEach { target += it }
+		fun target(vararg values: Value) = values.forEach { target += it }
 
 		fun target(attributes: Attributes) {
 			target = attributes

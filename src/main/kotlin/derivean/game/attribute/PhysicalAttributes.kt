@@ -5,13 +5,11 @@ class PhysicalAttributes {
 		private const val ATTRIBUTE_DAMAGE = "physical/damage"
 		private const val ATTRIBUTE_DEFENSE = "physical/defense"
 
-		fun damage(value: Double): Pair<String, Double> = ATTRIBUTE_DAMAGE to value
-		fun damage(value: Int): Pair<String, Double> = damage(value.toDouble())
-		fun damage(attributes: Attributes): Double = attributes[ATTRIBUTE_DAMAGE]
+		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
+		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
 
-		fun defense(value: Double): Pair<String, Double> = ATTRIBUTE_DEFENSE to value
-		fun defense(value: Int): Pair<String, Double> = defense(value.toDouble())
-		fun defense(attributes: Attributes): Double = attributes[ATTRIBUTE_DEFENSE]
+		fun defense(value: Double) = ATTRIBUTE_DEFENSE to value
+		fun defense(attributes: Attributes) = attributes[ATTRIBUTE_DEFENSE]
 	}
 }
 

@@ -1,6 +1,7 @@
 package derivean.game.entity
 
 import derivean.game.attribute.Attributes
+import derivean.game.attribute.Value
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.
@@ -13,7 +14,7 @@ data class Entity(val attributes: Attributes) {
 	class Builder {
 		private val attributes = Attributes()
 
-		fun attribute(vararg pairs: Pair<String, Double>) = pairs.forEach { attributes += it }
+		fun attribute(vararg values: Value) = values.forEach { attributes += it }
 
 		fun attribute(name: String, value: Int) = attribute(name to value.toDouble())
 

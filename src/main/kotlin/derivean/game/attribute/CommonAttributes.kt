@@ -9,23 +9,23 @@ class CommonAttributes {
 		private const val ATTRIBUTE_STRENGTH = "strength"
 		private const val ATTRIBUTE_DAMAGE = "damage"
 
-		fun level(value: Double): Pair<String, Double> = ATTRIBUTE_LEVEL to value
-		fun level(attributes: Attributes): Double = attributes[ATTRIBUTE_LEVEL]
+		fun level(value: Double) = ATTRIBUTE_LEVEL to value
+		fun level(attributes: Attributes) = attributes[ATTRIBUTE_LEVEL]
 
-		fun xp(value: Double): Pair<String, Double> = ATTRIBUTE_XP to value
-		fun xp(attributes: Attributes): Double = attributes[ATTRIBUTE_XP]
+		fun xp(value: Double) = ATTRIBUTE_XP to value
+		fun xp(attributes: Attributes) = attributes[ATTRIBUTE_XP]
 
-		fun health(value: Double): Pair<String, Double> = ATTRIBUTE_HEALTH to value
-		fun health(attributes: Attributes): Double = attributes[ATTRIBUTE_HEALTH]
+		fun health(value: Double) = ATTRIBUTE_HEALTH to value
+		fun health(attributes: Attributes) = attributes[ATTRIBUTE_HEALTH]
 
-		fun mana(value: Double): Pair<String, Double> = ATTRIBUTE_MANA to value
-		fun mana(attributes: Attributes): Double = attributes[ATTRIBUTE_MANA]
+		fun mana(value: Double) = ATTRIBUTE_MANA to value
+		fun mana(attributes: Attributes) = attributes[ATTRIBUTE_MANA]
 
-		fun strength(value: Double): Pair<String, Double> = ATTRIBUTE_STRENGTH to value
-		fun strength(attributes: Attributes): Double = attributes[ATTRIBUTE_STRENGTH]
+		fun strength(value: Double) = ATTRIBUTE_STRENGTH to value
+		fun strength(attributes: Attributes) = attributes[ATTRIBUTE_STRENGTH]
 
-		fun damage(value: Double): Pair<String, Double> = ATTRIBUTE_DAMAGE to value
-		fun damage(attributes: Attributes): Double = attributes[ATTRIBUTE_DAMAGE]
+		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
+		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
 	}
 }
 

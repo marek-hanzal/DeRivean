@@ -1,13 +1,13 @@
 package derivean.game.attribute
 
 /**
- * This is low-level class holding any kind of attributes an Entity could have.
+ * Low-level class holding all attributes used in computing across the game.
  */
-class Attributes(mapOf: Map<String, Double> = mapOf()) {
+class Attributes(vararg values: Value) {
 	private var map = mutableMapOf<String, Double>()
 
 	init {
-		map.putAll(mapOf)
+		map.putAll(values)
 	}
 
 	operator fun plusAssign(attributes: Attributes) {
@@ -18,7 +18,7 @@ class Attributes(mapOf: Map<String, Double> = mapOf()) {
 		}
 	}
 
-	operator fun plusAssign(it: Pair<String, Double>) = set(it.first, it.second)
+	operator fun plusAssign(value: Value) = set(value.first, value.second)
 
 	private fun forEach(action: (Map.Entry<String, Double>) -> Unit) = map.forEach(action)
 
