@@ -6,7 +6,7 @@ import derivean.game.attribute.Duel
 import derivean.game.attribute.FireAttributes
 import kotlin.math.max
 
-class FireballAttack : AbstractEffect() {
+class Fireball : AbstractEffect() {
 	override fun evaluate(duel: Duel): Duel = Duel.build {
 		val cost = cost(duel.source)
 		val attack = (attack(duel.source) + FireAttributes.attack(duel.source)) * (1 + FireAttributes.element(duel.source))
@@ -37,3 +37,9 @@ class FireballAttack : AbstractEffect() {
 		fun attack(attributes: Attributes): Double = attributes[ATTRIBUTE_ATTACK]
 	}
 }
+
+fun Attributes.fireballCost() = Fireball.cost(this)
+
+fun Double.fireballCost() = Fireball.cost(this)
+
+fun Double.fireballAttack() = Fireball.attack(this)

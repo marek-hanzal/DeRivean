@@ -14,3 +14,9 @@ class PhysicalAttributes {
 		fun defense(attributes: Attributes): Double = attributes[ATTRIBUTE_DEFENSE]
 	}
 }
+
+fun Double.physicalDamage() = PhysicalAttributes.damage(this)
+fun Attributes.physicalDamage() = PhysicalAttributes.damage(this)
+
+fun Double.physicalDefense() = PhysicalAttributes.defense(this)
+fun Attributes.physicalDefense() = PhysicalAttributes.defense(this)

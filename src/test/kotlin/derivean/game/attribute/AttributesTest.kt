@@ -1,6 +1,5 @@
-package derivean.game.entity
+package derivean.game.attribute
 
-import derivean.game.attribute.Attributes
 import org.junit.Test
 import kotlin.test.assertEquals
 
