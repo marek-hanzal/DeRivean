@@ -1,6 +1,7 @@
 package derivean.game.effect
 
 import derivean.game.attribute.Duel
+import derivean.game.attribute.Result
 
 /**
  * General effect - for example PhysicalAttack or Healing or whatever.
@@ -21,13 +22,5 @@ interface IEffect {
 	 * This is main method for game rules implementation (for example fireball thrown on fire element could give him boost,
 	 * but common folk could be burn to the ground).
 	 */
-	fun evaluate(duel: Duel): Duel
-
-	/**
-	 * This is just shortcut for evaluation and application of the result on the given attributes.
-	 *
-	 * Output of this method is delta applied to the attributes (to see, what happened, like damage or healing or
-	 * whatever).
-	 */
-	fun applyTo(duel: Duel): Duel
+	fun evaluate(duel: Duel): Result
 }

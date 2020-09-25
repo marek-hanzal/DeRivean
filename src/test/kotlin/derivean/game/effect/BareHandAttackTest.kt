@@ -18,14 +18,14 @@ class BareHandAttackTest {
 			)
 		}
 
-		with(effect.applyTo(duel)) {
+		with(effect.evaluate(duel).resolve()) {
 			assertEquals(5.0, source.physicalDamage(), "Source does not given expected damage.")
 			assertEquals(-5.0, target.health(), "Bare hand attack was not successful.")
 		}
 		assertEquals(5.0, duel.source.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, duel.target.health(), "Target does not have expected amount of health.")
 
-		with(effect.applyTo(duel)) {
+		with(effect.evaluate(duel).resolve()) {
 			assertEquals(5.0, source.physicalDamage(), "Source does not given expected damage.")
 			assertEquals(-5.0, target.health(), "Bare hand attack was not successful.")
 		}
@@ -45,7 +45,7 @@ class BareHandAttackTest {
 				15.0.physicalDefense(),
 			)
 		}
-		with(effect.applyTo(duel)) {
+		with(effect.evaluate(duel).resolve()) {
 			assertEquals(0.0, source.physicalDamage(), "Source does unexpected damage.")
 			assertEquals(-0.0, target.health(), "Something strange happened with target's health.")
 		}

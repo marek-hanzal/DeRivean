@@ -1,23 +1,26 @@
 package derivean.game.effect
 
 import derivean.game.attribute.*
+import derivean.game.operator.dec
+import derivean.game.operator.inc
+import derivean.game.operator.set
 import kotlin.math.max
 
 class Fireball : AbstractEffect() {
-	override fun evaluate(duel: Duel): Duel = Duel.build {
+	override fun evaluate(duel: Duel) = Result.build(duel) {
 		val cost = duel.source.fireballCost()
 		val attack = (duel.source.fireAttack() + duel.source.fireballAttack()) * (1 + duel.source.fireElement())
 		val element = duel.target.fireElement()
 		val defense = if (element <= -1) -attack else duel.target.fireDefense() * (1 + element)
 		val damage = if (element >= 1) 0.0 else max(attack - defense, 0.0)
 		source(
-			cost.fireballCost(),
-			(-1.0 * cost).mana(),
-			damage.damage(),
-			damage.fireDamage(),
+			cost.fireballCost().inc(),
+			cost.mana().dec(),
+			damage.damage().set(),
+			damage.fireDamage().set(),
 		)
 		target(
-			(-1.0 * damage).health(),
+			damage.health().dec(),
 		)
 	}
 
