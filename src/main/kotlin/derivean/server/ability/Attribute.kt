@@ -1,4 +1,4 @@
-package derivean.server.attribute
+package derivean.server.ability
 
 import derivean.server.entity.Entity
 import derivean.server.entity.EntityTable
@@ -9,16 +9,16 @@ import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 import java.util.*
 
-object AttributeTable : UUIDTable("attribute") {
+object AbilityTable : UUIDTable("ability") {
 	val entity = reference("entity", EntityTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 	val name = varchar("name", 64)
-	val value = double("value")
+	val ability = varchar("ability", 128)
 }
 
-class Attribute(id: EntityID<UUID>) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<Attribute>(AttributeTable)
+class Ability(id: EntityID<UUID>) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<Ability>(AbilityTable)
 
-	var entity by Entity referencedOn AttributeTable.entity
-	var name by AttributeTable.name
-	var value by AttributeTable.value
+	var entity by Entity referencedOn AbilityTable.entity
+	var name by AbilityTable.name
+	var ability by AbilityTable.ability
 }
