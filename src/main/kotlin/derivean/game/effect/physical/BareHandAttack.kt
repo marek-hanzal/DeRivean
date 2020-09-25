@@ -7,7 +7,7 @@ import derivean.game.attribute.common.physicalDamage
 import derivean.game.attribute.common.physicalDefense
 import derivean.game.attribute.common.strength
 import derivean.game.effect.AbstractEffect
-import derivean.game.operator.operators.negate
+import derivean.game.operator.operators.decOrZero
 import kotlin.math.max
 
 class BareHandAttack : AbstractEffect() {
@@ -17,7 +17,7 @@ class BareHandAttack : AbstractEffect() {
 			damage.physicalDamage(),
 		)
 		target(
-			damage.health().negate(),
+			damage.health().decOrZero(),
 		)
 	}
 }

@@ -13,4 +13,3 @@ class DecreaseOperator(attribute: Attribute) : AbstractOperator(attribute) {
 
 fun Attribute.dec() = DecreaseOperator(this)
 fun Value.dec() = Attribute(this.first, this.second).dec()
-

@@ -11,7 +11,7 @@ import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
 import derivean.game.effect.AbstractEffect
-import derivean.game.operator.operators.dec
+import derivean.game.operator.operators.decOrZero
 import derivean.game.operator.operators.set
 import kotlin.math.max
 
@@ -45,7 +45,7 @@ class Fireball : AbstractEffect() {
 			/**
 			 * Take cost of casting fireball and mark it as mana loss (decrease).
 			 */
-			cost.mana().dec(),
+			cost.mana().decOrZero(),
 			/**
 			 * Set (general) damage done in this duel.
 			 */
@@ -59,7 +59,7 @@ class Fireball : AbstractEffect() {
 			/**
 			 * Take damage as health and decrease it (health loss done by fireball).
 			 */
-			damage.health().dec(),
+			damage.health().decOrZero(),
 		)
 	}
 
