@@ -1,6 +1,7 @@
 package derivean.game.mutator
 
 import derivean.game.attribute.Attributes
+import derivean.game.entity.Entity
 import derivean.game.operator.Operators
 
 /**
@@ -15,5 +16,15 @@ interface IMutator {
 	 * Take attributes on input and compute mutation delta on output; input attributes
 	 * should **not** be affected!
 	 */
-	fun mutate(attributes: Attributes): Operators
+	fun evaluate(attributes: Attributes): Operators
+
+	/**
+	 * Shortcut to mutate an Entity.
+	 */
+	fun evaluate(entity: Entity): Operators
+
+	/**
+	 * Actually modify input entity with this mutator.
+	 */
+	fun mutate(entity: Entity)
 }

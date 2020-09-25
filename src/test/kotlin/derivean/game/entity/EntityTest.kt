@@ -1,9 +1,9 @@
 package derivean.game.entity
 
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.level
-import derivean.game.attribute.common.xp
+import derivean.game.attribute.common.*
+import derivean.game.mutator.WarriorClassMutator
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class EntityTest {
 	@Test
@@ -13,8 +13,12 @@ class EntityTest {
 				1.0.level(),
 				0.0.xp(),
 				100.0.health(),
+				100.0.maxHealth(),
 			)
 		}
+		WarriorClassMutator().mutate(entity)
+		assertEquals(1.0, entity.classWarrior(), "Entity is not Warrior!")
+		assertEquals(-1.0, entity.classMage(), "Entity is Mage!")
 
 		// equipment
 		// modifiers

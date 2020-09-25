@@ -11,7 +11,7 @@ import derivean.game.operator.operators.set
  * Adjust attributes for a Water Element - for example weakness or strength.
  */
 class WaterElementMutator : AbstractMutator() {
-	override fun mutate(attributes: Attributes) = Operators(
+	override fun evaluate(attributes: Attributes) = Operators(
 		/**
 		 * Water Element has full power of... water :)
 		 */
