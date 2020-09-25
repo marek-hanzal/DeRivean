@@ -1,11 +1,13 @@
-package derivean.game.attribute
+package derivean.game.attribute.element
+
+import derivean.game.attribute.Attributes
 
 class WaterAttributes {
 	companion object {
-		private const val ATTRIBUTE_ATTACK = "attack/water"
-		private const val ATTRIBUTE_DEFENSE = "defense/water"
-		private const val ATTRIBUTE_ELEMENT = "element/water"
-		private const val ATTRIBUTE_DAMAGE = "water/damage"
+		private const val ATTRIBUTE_ATTACK = "water.attack"
+		private const val ATTRIBUTE_DEFENSE = "water.defense"
+		private const val ATTRIBUTE_ELEMENT = "water.element"
+		private const val ATTRIBUTE_DAMAGE = "water.damage"
 
 		fun attack(value: Double) = ATTRIBUTE_ATTACK to value
 		fun attack(attributes: Attributes) = attributes[ATTRIBUTE_ATTACK]

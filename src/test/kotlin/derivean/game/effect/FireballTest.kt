@@ -1,6 +1,13 @@
 package derivean.game.effect
 
-import derivean.game.attribute.*
+import derivean.game.attribute.Duel
+import derivean.game.attribute.damage
+import derivean.game.attribute.element.fireAttack
+import derivean.game.attribute.element.fireDamage
+import derivean.game.attribute.element.fireDefense
+import derivean.game.attribute.element.fireElement
+import derivean.game.attribute.health
+import derivean.game.attribute.mana
 import org.junit.Test
 import kotlin.test.assertEquals
 

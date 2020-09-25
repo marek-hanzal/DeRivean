@@ -2,8 +2,8 @@ package derivean.game.attribute
 
 class PhysicalAttributes {
 	companion object {
-		private const val ATTRIBUTE_DAMAGE = "physical/damage"
-		private const val ATTRIBUTE_DEFENSE = "physical/defense"
+		private const val ATTRIBUTE_DAMAGE = "physical.damage"
+		private const val ATTRIBUTE_DEFENSE = "physical.defense"
 
 		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
 		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]

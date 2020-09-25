@@ -1,6 +1,10 @@
 package derivean.game.effect
 
 import derivean.game.attribute.*
+import derivean.game.attribute.element.fireAttack
+import derivean.game.attribute.element.fireDamage
+import derivean.game.attribute.element.fireDefense
+import derivean.game.attribute.element.fireElement
 import derivean.game.operator.dec
 import derivean.game.operator.inc
 import derivean.game.operator.set
@@ -25,8 +29,8 @@ class Fireball : AbstractEffect() {
 	}
 
 	companion object {
-		private const val ATTRIBUTE_COST = "effect/fireball/cost"
-		private const val ATTRIBUTE_ATTACK = "effect/fireball/attack"
+		private const val ATTRIBUTE_COST = "effect.fireball.cost"
+		private const val ATTRIBUTE_ATTACK = "effect.fireball.attack"
 
 		fun cost(value: Double) = ATTRIBUTE_COST to value
 		fun cost(attributes: Attributes) = attributes[ATTRIBUTE_COST]

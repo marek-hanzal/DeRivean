@@ -1,11 +1,13 @@
-package derivean.game.attribute
+package derivean.game.attribute.element
+
+import derivean.game.attribute.Attributes
 
 class FireAttributes {
 	companion object {
-		private const val ATTRIBUTE_ATTACK = "attack/fire"
-		private const val ATTRIBUTE_DEFENSE = "defense/fire"
-		private const val ATTRIBUTE_ELEMENT = "element/fire"
-		private const val ATTRIBUTE_DAMAGE = "fire/damage"
+		private const val ATTRIBUTE_ATTACK = "fire.attack"
+		private const val ATTRIBUTE_DEFENSE = "fire.defense"
+		private const val ATTRIBUTE_ELEMENT = "fire.element"
+		private const val ATTRIBUTE_DAMAGE = "fire.damage"
 
 		fun attack(value: Double) = ATTRIBUTE_ATTACK to value
 		fun attack(attributes: Attributes) = attributes[ATTRIBUTE_ATTACK]
