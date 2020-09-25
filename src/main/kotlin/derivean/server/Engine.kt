@@ -10,6 +10,7 @@ import derivean.lib.upgrade.IUpgradeManager
 import derivean.lib.upgrade.IVersionService
 import derivean.lib.utils.asStamp
 import derivean.server.config.EngineConfig
+import derivean.server.upgrade.u2020_09_25
 import io.github.config4k.extract
 import mu.KotlinLogging
 import kotlin.system.measureTimeMillis
@@ -52,6 +53,7 @@ fun main() {
 		configurator(IHttpServer::class) {
 		}
 		configurator(IUpgradeManager::class) {
+			register(u2020_09_25::class)
 		}
 		create(Engine::class).run()
 	}

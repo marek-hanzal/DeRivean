@@ -28,6 +28,12 @@ class Attributes(vararg values: Value) {
 
 	fun set(key: String, value: Double) = map.set(key, value)
 
+	fun set(vararg values: Value) {
+		for (value in values) {
+			set(value.first, value.second)
+		}
+	}
+
 	operator fun get(name: String) = map.getOrDefault(name, 0.0)
 
 	fun inc(name: String, value: Double) {

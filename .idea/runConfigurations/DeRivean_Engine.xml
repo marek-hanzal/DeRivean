@@ -8,6 +8,11 @@
     <option name="PASS_PARENT_ENVS" value="true" />
     <option name="MAIN_CLASS_NAME" value="derivean.server.EngineKt" />
     <option name="WORKING_DIRECTORY" value="" />
+    <envs>
+      <env name="DATABASE_URL" value="jdbc:postgresql://localhost:5432/derivean" />
+      <env name="DATABASE_USER" value="postgres" />
+      <env name="DATABASE_PASSWORD" value="1234" />
+    </envs>
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
