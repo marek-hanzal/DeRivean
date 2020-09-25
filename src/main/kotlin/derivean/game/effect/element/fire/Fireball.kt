@@ -1,13 +1,19 @@
-package derivean.game.effect
+package derivean.game.effect.element.fire
 
-import derivean.game.attribute.*
+import derivean.game.attribute.Attributes
+import derivean.game.attribute.Duel
+import derivean.game.attribute.Result
+import derivean.game.attribute.common.damage
+import derivean.game.attribute.common.health
+import derivean.game.attribute.common.mana
 import derivean.game.attribute.element.fireAttack
 import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
+import derivean.game.effect.AbstractEffect
 import derivean.game.operator.dec
-import derivean.game.operator.inc
-import derivean.game.operator.set
+import derivean.game.operator.operators.inc
+import derivean.game.operator.operators.set
 import kotlin.math.max
 
 class Fireball : AbstractEffect() {
@@ -42,6 +48,5 @@ class Fireball : AbstractEffect() {
 
 fun Double.fireballCost() = Fireball.cost(this)
 fun Attributes.fireballCost() = Fireball.cost(this)
-
 fun Double.fireballAttack() = Fireball.attack(this)
 fun Attributes.fireballAttack() = Fireball.attack(this)

@@ -1,4 +1,6 @@
-package derivean.game.attribute
+package derivean.game.attribute.common
+
+import derivean.game.attribute.Attributes
 
 class CommonAttributes {
 	companion object {
@@ -31,18 +33,13 @@ class CommonAttributes {
 
 fun Double.level() = CommonAttributes.level(this)
 fun Attributes.level() = CommonAttributes.level(this)
-
 fun Double.xp() = CommonAttributes.xp(this)
 fun Attributes.xp() = CommonAttributes.xp(this)
-
 fun Double.health() = CommonAttributes.health(this)
 fun Attributes.health() = CommonAttributes.health(this)
-
 fun Double.mana() = CommonAttributes.mana(this)
 fun Attributes.mana() = CommonAttributes.mana(this)
-
 fun Double.strength() = CommonAttributes.strength(this)
 fun Attributes.strength() = CommonAttributes.strength(this)
-
 fun Double.damage() = CommonAttributes.damage(this)
 fun Attributes.damage() = CommonAttributes.damage(this)

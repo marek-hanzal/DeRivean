@@ -1,8 +1,8 @@
 package derivean.game.entity
 
-import derivean.game.attribute.health
-import derivean.game.attribute.level
-import derivean.game.attribute.xp
+import derivean.game.attribute.common.health
+import derivean.game.attribute.common.level
+import derivean.game.attribute.common.xp
 import org.junit.Test
 
 class EntityTest {

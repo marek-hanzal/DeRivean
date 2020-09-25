@@ -1,8 +1,9 @@
-package derivean.game.operator
+package derivean.game.operator.operators
 
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.Value
+import derivean.game.operator.AbstractOperator
 
 class DecreaseOperator(attribute: Attribute) : AbstractOperator(attribute) {
 	override fun operator(attributes: Attributes) {
@@ -12,3 +13,4 @@ class DecreaseOperator(attribute: Attribute) : AbstractOperator(attribute) {
 
 fun Attribute.dec() = DecreaseOperator(this)
 fun Value.dec() = Attribute(this.first, this.second).dec()
+

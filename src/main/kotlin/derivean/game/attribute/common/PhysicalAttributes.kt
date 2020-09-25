@@ -1,4 +1,6 @@
-package derivean.game.attribute
+package derivean.game.attribute.common
+
+import derivean.game.attribute.Attributes
 
 class PhysicalAttributes {
 	companion object {
