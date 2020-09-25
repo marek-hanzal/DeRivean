@@ -8,13 +8,14 @@ import derivean.game.attribute.common.physicalDefense
 import derivean.game.attribute.common.strength
 import derivean.game.effect.AbstractEffect
 import derivean.game.operator.operators.decOrZero
+import derivean.game.operator.operators.set
 import kotlin.math.max
 
 class BareHandAttack : AbstractEffect() {
 	override fun evaluate(duel: Duel) = Result.build(duel) {
 		val damage = max(duel.source.strength() - duel.target.physicalDefense(), 0.0)
 		source(
-			damage.physicalDamage(),
+			damage.physicalDamage().set(),
 		)
 		target(
 			damage.health().decOrZero(),

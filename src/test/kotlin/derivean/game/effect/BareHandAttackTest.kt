@@ -28,7 +28,7 @@ class BareHandAttackTest {
 		assertEquals(10.0, duel.target.health(), "Target does not have expected amount of health.")
 
 		effect.evaluate(duel).resolve()
-		assertEquals(10.0, duel.source.physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, duel.source.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, duel.target.health(), "Target does not have expected amount of health.")
 	}
 
