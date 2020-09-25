@@ -1,6 +1,7 @@
 package derivean.game.attribute.element
 
 import derivean.game.attribute.Attributes
+import derivean.game.entity.Entity
 
 /**
  * Common Fire attributes.
@@ -28,9 +29,16 @@ class FireAttributes {
 
 fun Double.fireAttack() = FireAttributes.attack(this)
 fun Attributes.fireAttack() = FireAttributes.attack(this)
+fun Entity.fireAttack() = this.attributes.fireAttack()
+
 fun Double.fireDefense() = FireAttributes.defense(this)
 fun Attributes.fireDefense() = FireAttributes.defense(this)
+fun Entity.fireDefense() = this.attributes.fireDefense()
+
 fun Double.fireElement() = FireAttributes.element(this)
 fun Attributes.fireElement() = FireAttributes.element(this)
+fun Entity.fireElement() = this.attributes.fireElement()
+
 fun Double.fireDamage() = FireAttributes.damage(this)
 fun Attributes.fireDamage() = FireAttributes.damage(this)
+fun Entity.fireDamage() = this.attributes.fireDamage()
