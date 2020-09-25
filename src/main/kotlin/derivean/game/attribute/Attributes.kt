@@ -1,5 +1,7 @@
 package derivean.game.attribute
 
+import derivean.game.operator.Operators
+
 /**
  * Low-level class holding all attributes used in computing across the game.
  */
@@ -17,6 +19,8 @@ class Attributes(vararg values: Value) {
 			})
 		}
 	}
+
+	operator fun plusAssign(source: Operators) = source.applyTo(this)
 
 	operator fun plusAssign(value: Value) = set(value.first, value.second)
 

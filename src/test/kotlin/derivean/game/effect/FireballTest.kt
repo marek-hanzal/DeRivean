@@ -57,14 +57,10 @@ class FireballTest {
 				targetElement.fireElement(),
 			)
 		}
-		with(effect.evaluate(duel).resolve()) {
-			assertEquals(0.25, source.fireballCost(), "Nope, there is no cost of fire magic. That's strange.")
-			assertEquals(-0.25, source.mana(), "There is no loss of mana. Ooops.")
-			assertEquals(-sourceDamage, target.health(), "Target did not loss expected amount of health!")
-			assertEquals(sourceDamage, source.damage(), "Unexpected damage given.")
-			assertEquals(sourceDamage, source.fireDamage(), "Unexpected damage given.")
-		}
+		effect.evaluate(duel).resolve()
 		assertEquals(9.75, duel.source.mana(), "Mana was not adjusted :(.")
+		assertEquals(sourceDamage, duel.source.damage(), "Unexpected damage.")
+		assertEquals(sourceDamage, duel.source.fireDamage(), "Unexpected fire damage.")
 		assertEquals(targetHealth, duel.target.health(), "Target does not have expected health.")
 	}
 }

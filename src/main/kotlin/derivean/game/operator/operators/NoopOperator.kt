@@ -11,4 +11,4 @@ class NoopOperator(attribute: Attribute) : AbstractOperator(attribute) {
 }
 
 fun Attribute.noop() = NoopOperator(this)
-fun Value.noop() = Attribute(this.first, this.second).set()
+fun Value.noop() = Attribute(this.first, this.second).noop()

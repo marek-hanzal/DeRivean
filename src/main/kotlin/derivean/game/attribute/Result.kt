@@ -4,8 +4,9 @@ import derivean.game.operator.IOperator
 import derivean.game.operator.Operators
 
 data class Result(val duel: Duel, val source: Operators, val target: Operators) {
-	fun resolve(): Resolution {
-		TODO("boom")
+	fun resolve() {
+		duel.source += source
+		duel.target += target
 	}
 
 	companion object {

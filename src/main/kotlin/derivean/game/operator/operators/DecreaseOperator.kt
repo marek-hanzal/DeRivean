@@ -7,7 +7,7 @@ import derivean.game.operator.AbstractOperator
 
 class DecreaseOperator(attribute: Attribute) : AbstractOperator(attribute) {
 	override fun operator(attributes: Attributes) {
-		attributes.set(attribute.name, attributes[attribute.name] + attribute.value)
+		attributes.set(attribute.name, attributes[attribute.name] - attribute.value)
 	}
 }
 
