@@ -1,12 +1,12 @@
 package derivean.game.effect.physical
 
+import derivean.game.ability.Ability
 import derivean.game.attribute.Duel
 import derivean.game.attribute.Result
 import derivean.game.attribute.common.health
 import derivean.game.attribute.common.physicalDamage
 import derivean.game.attribute.common.physicalDefense
 import derivean.game.attribute.common.strength
-import derivean.game.effect.Ability
 import derivean.game.effect.AbstractEffect
 import derivean.game.operator.operators.decOrZero
 import derivean.game.operator.operators.set
@@ -24,4 +24,4 @@ class BareHandAttack : AbstractEffect() {
 	}
 }
 
-fun BareHandAttack.ability(name: String) = Ability(name, this)
+fun BareHandAttack.ability(name: String) = Pair(name, Ability(name, this))
