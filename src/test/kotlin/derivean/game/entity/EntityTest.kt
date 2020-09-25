@@ -9,12 +9,13 @@ class EntityTest {
 	@Test
 	fun `Common Entity`() {
 		val entity = Entity.build {
-			attribute(
+			attributes(
 				1.0.level(),
 				0.0.xp(),
 				100.0.health(),
 			)
 		}
+
 		// equipment
 		// modifiers
 	}

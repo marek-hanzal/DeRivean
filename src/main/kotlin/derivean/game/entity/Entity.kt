@@ -14,9 +14,7 @@ data class Entity(val attributes: Attributes) {
 	class Builder {
 		private val attributes = Attributes()
 
-		fun attribute(vararg values: Value) = values.forEach { attributes += it }
-
-		fun attribute(name: String, value: Int) = attribute(name to value.toDouble())
+		fun attributes(vararg values: Value) = values.forEach { attributes += it }
 
 		fun build() = Entity(
 			attributes
