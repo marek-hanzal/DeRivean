@@ -2,6 +2,9 @@ package derivean.game.attribute.element
 
 import derivean.game.attribute.Attributes
 
+/**
+ * Common Fire attributes.
+ */
 class FireAttributes {
 	companion object {
 		private const val ATTRIBUTE_ATTACK = "fire.attack"

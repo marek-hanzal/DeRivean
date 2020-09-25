@@ -11,25 +11,54 @@ import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
 import derivean.game.effect.AbstractEffect
-import derivean.game.operator.dec
-import derivean.game.operator.operators.inc
+import derivean.game.operator.operators.dec
 import derivean.game.operator.operators.set
 import kotlin.math.max
 
 class Fireball : AbstractEffect() {
 	override fun evaluate(duel: Duel) = Result.build(duel) {
+		/**
+		 * Every entity could have different cost of casting fireball; this is just for better readability.
+		 */
 		val cost = duel.source.fireballCost()
+
+		/**
+		 * Compute base attack of source entity.
+		 */
 		val attack = (duel.source.fireAttack() + duel.source.fireballAttack()) * (1 + duel.source.fireElement())
+
+		/**
+		 * Take elemental value of target entity.
+		 */
 		val element = duel.target.fireElement()
+
+		/**
+		 * Base target entity defense.
+		 */
 		val defense = if (element <= -1) -attack else duel.target.fireDefense() * (1 + element)
+
+		/**
+		 * Compute final damage (if any).
+		 */
 		val damage = if (element >= 1) 0.0 else max(attack - defense, 0.0)
 		source(
-			cost.fireballCost().inc(),
+			/**
+			 * Take cost of casting fireball and mark it as mana loss (decrease).
+			 */
 			cost.mana().dec(),
+			/**
+			 * Set (general) damage done in this duel.
+			 */
 			damage.damage().set(),
+			/**
+			 * Set fire damage done in this duel.
+			 */
 			damage.fireDamage().set(),
 		)
 		target(
+			/**
+			 * Take damage as health and decrease it (health loss done by fireball).
+			 */
 			damage.health().dec(),
 		)
 	}

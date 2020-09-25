@@ -2,6 +2,9 @@ package derivean.game.attribute.element
 
 import derivean.game.attribute.Attributes
 
+/**
+ * Common Water attributes.
+ */
 class WaterAttributes {
 	companion object {
 		private const val ATTRIBUTE_ATTACK = "water.attack"
