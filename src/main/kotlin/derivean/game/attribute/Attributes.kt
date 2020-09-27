@@ -5,7 +5,7 @@ import derivean.game.operator.Operators
 /**
  * Low-level class holding all attributes used in computing across the game.
  */
-class Attributes(vararg values: Value) {
+class Attributes(vararg values: Attribute) {
 	private var map = mutableMapOf<String, Double>()
 
 	init {
@@ -22,14 +22,14 @@ class Attributes(vararg values: Value) {
 
 	operator fun plusAssign(source: Operators) = source.applyTo(this)
 
-	operator fun plusAssign(value: Value) = set(value.first, value.second)
+	operator fun plusAssign(attribute: Attribute) = set(attribute.first, attribute.second)
 
 	private fun forEach(action: (Map.Entry<String, Double>) -> Unit) = map.forEach(action)
 
 	fun set(key: String, value: Double) = map.set(key, value)
 
-	fun set(vararg values: Value) {
-		for (value in values) {
+	fun set(vararg attributes: Attribute) {
+		for (value in attributes) {
 			set(value.first, value.second)
 		}
 	}
@@ -64,4 +64,18 @@ class Attributes(vararg values: Value) {
 	}
 
 	override fun hashCode() = map.hashCode()
+
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+	}
+
+	class Builder {
+		private var attributes = mutableListOf<Attribute>()
+
+		fun set(attribute: Attribute) {
+			attributes.add(attribute)
+		}
+
+		fun build() = Attributes(*attributes.toTypedArray())
+	}
 }

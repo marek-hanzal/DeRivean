@@ -13,10 +13,10 @@ data class Duel(val source: Attributes, val target: Attributes) {
 		private var source = Attributes()
 		private var target = Attributes()
 
-		fun source(vararg values: Value) = values.forEach { value -> source += value }
+		fun source(vararg values: Attribute) = values.forEach { value -> source += value }
 		fun source(block: Attributes.() -> Unit) = block(source)
 
-		fun target(vararg values: Value) = values.forEach { value -> target += value }
+		fun target(vararg values: Attribute) = values.forEach { value -> target += value }
 		fun target(block: Attributes.() -> Unit) = block(target)
 
 		fun build() = Duel(source, target)

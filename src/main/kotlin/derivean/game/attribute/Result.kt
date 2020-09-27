@@ -21,7 +21,7 @@ data class Result(val duel: Duel, val source: Operators, val target: Operators) 
 			source = Operators(*operators)
 		}
 
-		fun source(vararg values: Value) {
+		fun source(vararg values: Attribute) {
 			source += values
 		}
 
@@ -29,7 +29,7 @@ data class Result(val duel: Duel, val source: Operators, val target: Operators) 
 			target = Operators(*operators)
 		}
 
-		fun target(vararg values: Value) {
+		fun target(vararg values: Attribute) {
 			target += values
 		}
 

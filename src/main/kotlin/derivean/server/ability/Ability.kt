@@ -11,8 +11,7 @@ import java.util.*
 
 object AbilityTable : UUIDTable("ability") {
 	val entity = reference("entity", EntityTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
-	val name = varchar("name", 64)
-	val ability = varchar("ability", 128)
+	val name = varchar("name", 128)
 }
 
 class Ability(id: EntityID<UUID>) : UUIDEntity(id) {
@@ -20,5 +19,4 @@ class Ability(id: EntityID<UUID>) : UUIDEntity(id) {
 
 	var entity by Entity referencedOn AbilityTable.entity
 	var name by AbilityTable.name
-	var ability by AbilityTable.ability
 }

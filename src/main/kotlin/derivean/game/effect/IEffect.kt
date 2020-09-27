@@ -13,6 +13,8 @@ import derivean.game.attribute.Result
  * ignore physical defense and so.
  */
 interface IEffect {
+	val effect: String
+
 	/**
 	 * Just evaluate effect result which could be applied to the given attributes.
 	 *

@@ -1,3 +1,5 @@
 package derivean.game.mutator
 
-abstract class AbstractMutator : IMutator
+import derivean.game.effect.Effects
+
+abstract class AbstractMutator(protected val effects: Effects) : IMutator

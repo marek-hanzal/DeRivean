@@ -15,7 +15,7 @@ import derivean.game.operator.operators.decOrZero
 import derivean.game.operator.operators.set
 import kotlin.math.max
 
-class Fireball : AbstractEffect() {
+class Fireball : AbstractEffect("spell.fireball") {
 	override fun evaluate(duel: Duel) = Result.build(duel) {
 		/**
 		 * Every entity could have different cost of casting fireball; this is just for better readability.
@@ -64,8 +64,8 @@ class Fireball : AbstractEffect() {
 	}
 
 	companion object {
-		private const val ATTRIBUTE_COST = "effect.fireball.cost"
-		private const val ATTRIBUTE_ATTACK = "effect.fireball.attack"
+		private const val ATTRIBUTE_COST = "spell.fireball.cost"
+		private const val ATTRIBUTE_ATTACK = "spell.fireball.attack"
 
 		fun cost(value: Double) = ATTRIBUTE_COST to value
 		fun cost(attributes: Attributes) = attributes[ATTRIBUTE_COST]
