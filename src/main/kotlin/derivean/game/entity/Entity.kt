@@ -1,5 +1,6 @@
 package derivean.game.entity
 
+import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.effect.IEffect
 
@@ -15,11 +16,14 @@ data class Entity(val attributes: Attributes) {
 		private var attributes = Attributes()
 //		private var abilities = Abilities()
 
-		fun attributes(block: Attributes.Builder.() -> Unit) {
-			attributes = Attributes.build(block)
+		fun attributes(vararg values: Attribute) {
+			attributes = Attributes(*values)
 		}
 
 		fun abilities(vararg abilities: IEffect) {
+		}
+
+		fun spells(vararg spells: IEffect) {
 		}
 
 		fun build() = Entity(

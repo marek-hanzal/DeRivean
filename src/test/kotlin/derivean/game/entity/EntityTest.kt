@@ -11,11 +11,13 @@ class EntityTest {
 			BareHandAttack(),
 		)
 		val entity = Entity.build {
-			attributes {
-				set("health" to 100.0)
-			}
+			attributes(
+				"health" to 100.0,
+			)
 			abilities(
 				effects[BareHandAttack.effect],
+			)
+			spells(
 			)
 		}
 
