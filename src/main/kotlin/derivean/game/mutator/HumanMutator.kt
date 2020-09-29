@@ -17,5 +17,8 @@ class HumanMutator : AbstractMutator() {
 			5.0.strength(),
 			5.0.physicalDefense(),
 		)
+//		entity.equip(
+//
+//		)
 	}
 }
