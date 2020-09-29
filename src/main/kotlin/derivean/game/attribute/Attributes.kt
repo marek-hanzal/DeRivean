@@ -64,18 +64,4 @@ class Attributes(vararg values: Attribute) {
 	}
 
 	override fun hashCode() = map.hashCode()
-
-	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
-	}
-
-	class Builder {
-		private var attributes = mutableListOf<Attribute>()
-
-		fun set(attribute: Attribute) {
-			attributes.add(attribute)
-		}
-
-		fun build() = Attributes(*attributes.toTypedArray())
-	}
 }

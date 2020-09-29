@@ -11,7 +11,8 @@ class WarriorClassMutator : AbstractMutator() {
 			1.0.classWarrior(),
 		)
 		entity.slot(
-			"hands".slotSword(),
+			"hands".slotSword {
+			},
 		)
 	}
 }

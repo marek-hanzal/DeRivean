@@ -20,7 +20,8 @@ class HumanMutator : AbstractMutator() {
 			5.0.physicalDefense(),
 		)
 		entity.slot(
-			"hands".slotHands(),
+			"hands".slotHands {
+			},
 		)
 	}
 }
