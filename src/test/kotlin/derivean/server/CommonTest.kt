@@ -12,17 +12,17 @@ import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 class CommonTest {
-	private fun createContainer() = ContainerFactory.container().apply {
+	private fun setup() = ContainerFactory.container().apply {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
 		register(PoolConfig::class) { create(EngineConfig::class).pool }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 		}
+		create(IUpgradeManager::class).upgrade()
 	}
 
 	@Test
 	fun `Entity from database`() {
-		val container = createContainer()
-		container.create(IUpgradeManager::class).upgrade()
+		val container = setup()
 	}
 }
