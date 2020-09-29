@@ -9,6 +9,8 @@ import derivean.game.attribute.Attributes
 data class Entity(val name: String, val attributes: Attributes) {
 	override fun toString() = name
 
+	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
+
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
 		fun build(name: String) = Builder(name).build()
