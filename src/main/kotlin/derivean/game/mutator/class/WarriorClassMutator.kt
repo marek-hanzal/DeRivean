@@ -7,7 +7,7 @@ import derivean.game.mutator.AbstractMutator
 
 class WarriorClassMutator : AbstractMutator() {
 	override fun mutate(entity: Entity, vararg targets: Entity) {
-		entity.attributes.set(
+		entity.attributes(
 			1.0.classWarrior(),
 			(-1.0).classMage(),
 		)
