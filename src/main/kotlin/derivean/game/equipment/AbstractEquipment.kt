@@ -1,3 +1,5 @@
 package derivean.game.equipment
 
-abstract class AbstractEquipment : IEquipment
+import derivean.game.attribute.Attributes
+
+abstract class AbstractEquipment(override val attributes: Attributes) : IEquipment
