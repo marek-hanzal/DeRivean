@@ -11,6 +11,7 @@ data class Entity(val name: String, val attributes: Attributes) {
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
+		fun build(name: String) = Builder(name).build()
 	}
 
 	class Builder(val name: String) {
