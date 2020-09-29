@@ -3,13 +3,13 @@ package derivean.game.equipment
 /**
  * Named set of individual Equipment.
  */
-class Inventory(val map: MutableMap<String, IEquipment> = mutableMapOf()) {
-	/**
-	 * Equip and return item from the original slot (if any).
-	 */
-	fun slot(slot: String, equipment: IEquipment): IEquipment? = map[slot].also {
-		map[slot] = equipment
-	}
+class Inventory(private val inventory: MutableList<IEquipment> = mutableListOf()) {
+	constructor(vararg inventory: IEquipment) : this(mutableListOf(*inventory))
 
-	fun slot(slot: Slot) = slot(slot.first, slot.second)
+	/**
+	 * Add an item to the Inventory.
+	 */
+	fun slot(equipment: IEquipment) = inventory.add(equipment)
+
+	fun size() = inventory.size
 }
