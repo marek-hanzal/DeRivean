@@ -37,31 +37,31 @@ class CommonAttributes {
 
 fun Double.level() = CommonAttributes.level(this)
 fun Attributes.level() = CommonAttributes.level(this)
-fun Entity.level() = this.attributes.level()
+fun Entity.level() = this.attributes().level()
 
 fun Double.xp() = CommonAttributes.xp(this)
 fun Attributes.xp() = CommonAttributes.xp(this)
-fun Entity.xp() = this.attributes.xp()
+fun Entity.xp() = this.attributes().xp()
 
 fun Double.health() = CommonAttributes.health(this)
 fun Attributes.health() = CommonAttributes.health(this)
-fun Entity.health() = this.attributes.health()
-fun Entity.health(value: Double) = this.attributes.set(CommonAttributes.health(value))
+fun Entity.health() = this.attributes().health()
+fun Entity.health(value: Double) = this.attributes(CommonAttributes.health(value))
 
 fun Double.maxHealth() = CommonAttributes.maxHealth(this)
 fun Attributes.maxHealth() = CommonAttributes.maxHealth(this)
-fun Entity.maxHealth() = this.attributes.maxHealth()
+fun Entity.maxHealth() = this.attributes().maxHealth()
 
 fun Double.mana() = CommonAttributes.mana(this)
 fun Attributes.mana() = CommonAttributes.mana(this)
-fun Entity.mana() = this.attributes.mana()
-fun Entity.mana(value: Double) = this.attributes.set(CommonAttributes.mana(value))
+fun Entity.mana() = this.attributes().mana()
+fun Entity.mana(value: Double) = this.attributes(CommonAttributes.mana(value))
 
 fun Double.strength() = CommonAttributes.strength(this)
 fun Attributes.strength() = CommonAttributes.strength(this)
-fun Entity.strength() = this.attributes.strength()
+fun Entity.strength() = this.attributes().strength()
 
 fun Double.damage() = CommonAttributes.damage(this)
 fun Attributes.damage() = CommonAttributes.damage(this)
-fun Entity.damage() = this.attributes.damage()
-fun Entity.damage(value: Double) = this.attributes.set(CommonAttributes.damage(value))
+fun Entity.damage() = this.attributes().damage()
+fun Entity.damage(value: Double) = this.attributes(CommonAttributes.damage(value))

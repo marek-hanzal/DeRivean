@@ -62,8 +62,8 @@ class Fireball : AbstractMutator() {
 
 fun Double.fireballCost() = Fireball.cost(this)
 fun Attributes.fireballCost() = Fireball.cost(this)
-fun Entity.fireballCost() = this.attributes.fireballCost()
+fun Entity.fireballCost() = this.attributes().fireballCost()
 
 fun Double.fireballAttack() = Fireball.attack(this)
 fun Attributes.fireballAttack() = Fireball.attack(this)
-fun Entity.fireballAttack() = this.attributes.fireballAttack()
+fun Entity.fireballAttack() = this.attributes().fireballAttack()
