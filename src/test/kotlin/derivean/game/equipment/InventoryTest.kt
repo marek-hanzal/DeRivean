@@ -6,15 +6,15 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-class EquipmentsTest {
+class InventoryTest {
 	@Test
 	fun `Equip something`() {
-		val equipments = Equipments()
+		val equipments = Inventory()
 		val hands = Hands()
 		val sword = Sword()
 
-		assertNull(equipments.equip("hands", hands))
-		assertEquals(hands, equipments.equip("hands", sword))
-		assertEquals(sword, equipments.equip("hands", hands))
+		assertNull(equipments.slot("hands", hands))
+		assertEquals(hands, equipments.slot("hands", sword))
+		assertEquals(sword, equipments.slot("hands", hands))
 	}
 }
