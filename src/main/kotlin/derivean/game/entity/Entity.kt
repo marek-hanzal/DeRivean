@@ -17,8 +17,8 @@ class Entity(
 
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
 
-	fun attributes(): Attributes {
-		TODO("Kaboom")
+	fun attributes() = Attributes().also {
+		it.set(attributes)
 	}
 
 	/**
