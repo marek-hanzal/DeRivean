@@ -1,11 +1,12 @@
 package derivean.game.mutator.being
 
+import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.health
 import derivean.game.attribute.common.mana
 import derivean.game.attribute.common.physicalDefense
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entity
-import derivean.game.equipment.equipments.slotHands
+import derivean.game.equipment.equipments.Hands
 import derivean.game.mutator.AbstractMutator
 
 /**
@@ -19,9 +20,9 @@ class HumanMutator : AbstractMutator() {
 			5.0.physicalDefense(),
 		)
 		entity.slot(
-			"hands".slotHands(
+			Hands(Attributes(
 				5.0.strength(),
-			),
+			)),
 		)
 	}
 }
