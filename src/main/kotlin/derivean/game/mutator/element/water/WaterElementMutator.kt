@@ -2,15 +2,14 @@ package derivean.game.mutator.element.water
 
 import derivean.game.attribute.element.fireElement
 import derivean.game.attribute.element.waterElement
-import derivean.game.effect.Effects
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 
 /**
  * Adjust attributes for a Water Element - for example weakness or strength.
  */
-class WaterElementMutator(effects: Effects) : AbstractMutator(effects) {
-	override fun mutate(entity: Entity) {
+class WaterElementMutator : AbstractMutator() {
+	override fun mutate(entity: Entity, vararg targets: Entity) {
 		entity.attributes.set(
 			/**
 			 * Water Element has full power of... water :)

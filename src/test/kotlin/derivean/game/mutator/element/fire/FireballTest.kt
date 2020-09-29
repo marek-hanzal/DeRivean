@@ -1,6 +1,5 @@
-package derivean.game.effect
+package derivean.game.mutator.element.fire
 
-import derivean.game.attribute.Duel
 import derivean.game.attribute.common.damage
 import derivean.game.attribute.common.health
 import derivean.game.attribute.common.mana
@@ -8,9 +7,7 @@ import derivean.game.attribute.element.fireAttack
 import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
-import derivean.game.effect.element.fire.Fireball
-import derivean.game.effect.element.fire.fireballAttack
-import derivean.game.effect.element.fire.fireballCost
+import derivean.game.entity.Entity
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -63,8 +60,8 @@ class FireballTest {
 
 	private fun assertions(sourceElement: Double, targetElement: Double, sourceDamage: Double, targetHealth: Double) {
 		val effect = Fireball()
-		val duel = Duel.build {
-			source(
+		val entity = Entity.build {
+			attributes(
 				/**
 				 * the amount of mana of this entity
 				 */
@@ -86,18 +83,20 @@ class FireballTest {
 				 */
 				sourceElement.fireElement(),
 			)
-			target(
+		}
+		val target = Entity.build {
+			attributes(
 				15.0.health(),
 				5.0.fireDefense(),
 				targetElement.fireElement(),
 			)
 		}
-		effect.evaluate(duel).resolve()
+		effect.mutate(entity, target)
 
-		assertEquals(9.75, duel.source.mana(), "Mana was not adjusted :(.")
-		assertEquals(sourceDamage, duel.source.damage(), "Unexpected damage.")
-		assertEquals(sourceDamage, duel.source.fireDamage(), "Unexpected fire damage.")
+		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
+		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")
+		assertEquals(sourceDamage, entity.fireDamage(), "Unexpected fire damage.")
 
-		assertEquals(targetHealth, duel.target.health(), "Target does not have expected health.")
+		assertEquals(targetHealth, target.health(), "Target does not have expected health.")
 	}
 }

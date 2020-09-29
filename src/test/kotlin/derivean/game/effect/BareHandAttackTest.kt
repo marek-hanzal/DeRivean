@@ -1,11 +1,8 @@
 package derivean.game.effect
 
-import derivean.game.attribute.Duel
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.physicalDamage
-import derivean.game.attribute.common.physicalDefense
-import derivean.game.attribute.common.strength
-import derivean.game.effect.physical.BareHandAttack
+import derivean.game.attribute.common.*
+import derivean.game.entity.Entity
+import derivean.game.mutator.physical.BareHandAttack
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -13,38 +10,44 @@ class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack`() {
 		val effect = BareHandAttack()
-		val duel = Duel.build {
-			source(
+		val entity = Entity.build {
+			attributes(
 				10.0.strength(),
 			)
-			target(
+		}
+		val target = Entity.build {
+			attributes(
 				15.0.health(),
 				5.0.physicalDefense(),
 			)
 		}
 
-		effect.evaluate(duel).resolve()
-		assertEquals(5.0, duel.source.physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(10.0, duel.target.health(), "Target does not have expected amount of health.")
+		effect.mutate(entity, target)
+		assertEquals(5.0, entity.damage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, target.health(), "Target does not have expected amount of health.")
 
-		effect.evaluate(duel).resolve()
-		assertEquals(5.0, duel.source.physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(5.0, duel.target.health(), "Target does not have expected amount of health.")
+		effect.mutate(entity, target)
+		assertEquals(10.0, entity.damage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, target.health(), "Target does not have expected amount of health.")
 	}
 
 	@Test
 	fun `Bare hand attack without damage`() {
 		val effect = BareHandAttack()
-		val duel = Duel.build {
-			source(
+		val entity = Entity.build {
+			attributes(
 				10.0.strength(),
 			)
-			target(
+		}
+		val target = Entity.build {
+			attributes(
 				15.0.health(),
 				15.0.physicalDefense(),
 			)
 		}
-		effect.evaluate(duel).resolve()
-		assertEquals(15.0, duel.target.health(), "Target's health is different.")
+		effect.mutate(entity, target)
+		assertEquals(15.0, target.health(), "Target's health is different.")
 	}
 }
