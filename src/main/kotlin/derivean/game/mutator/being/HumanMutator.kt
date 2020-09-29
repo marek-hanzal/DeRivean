@@ -16,12 +16,12 @@ class HumanMutator : AbstractMutator() {
 		entity.attributes(
 			100.0.health(),
 			50.0.mana(),
-			5.0.strength(),
 			5.0.physicalDefense(),
 		)
 		entity.slot(
-			"hands".slotHands {
-			},
+			"hands".slotHands(
+				5.0.strength(),
+			),
 		)
 	}
 }
