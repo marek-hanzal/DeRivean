@@ -11,7 +11,11 @@ import derivean.game.entity.Entity
  */
 interface IMutator {
 	/**
-	 * Actually modify input entity with this mutator.
+	 * General method how to mutate one Entity or how to use source Entity to
+	 * mutate target entities.
+	 *
+	 * This method could be used for example as HumanMutator (mutate input Entity to Human) or
+	 * as Mutator implementing attack (for example entity attacks targets).
 	 */
-	fun mutate(entity: Entity)
+	fun mutate(entity: Entity, vararg targets: Entity)
 }

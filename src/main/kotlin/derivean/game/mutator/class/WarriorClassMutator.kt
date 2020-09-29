@@ -1,12 +1,12 @@
-package derivean.game.mutator
+package derivean.game.mutator.`class`
 
 import derivean.game.attribute.common.classMage
 import derivean.game.attribute.common.classWarrior
-import derivean.game.effect.Effects
 import derivean.game.entity.Entity
+import derivean.game.mutator.AbstractMutator
 
-class WarriorClassMutator(effects: Effects) : AbstractMutator(effects) {
-	override fun mutate(entity: Entity) {
+class WarriorClassMutator : AbstractMutator() {
+	override fun mutate(entity: Entity, vararg targets: Entity) {
 		entity.attributes.set(
 			1.0.classWarrior(),
 			(-1.0).classMage(),
