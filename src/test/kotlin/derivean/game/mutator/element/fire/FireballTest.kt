@@ -60,7 +60,7 @@ class FireballTest {
 
 	private fun assertions(sourceElement: Double, targetElement: Double, sourceDamage: Double, targetHealth: Double) {
 		val effect = Fireball()
-		val entity = Entity.build {
+		val entity = Entity.build("Alfa") {
 			attributes(
 				/**
 				 * the amount of mana of this entity
@@ -84,7 +84,7 @@ class FireballTest {
 				sourceElement.fireElement(),
 			)
 		}
-		val target = Entity.build {
+		val target = Entity.build("Beta") {
 			attributes(
 				15.0.health(),
 				5.0.fireDefense(),

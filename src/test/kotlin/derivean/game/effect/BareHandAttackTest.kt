@@ -10,12 +10,12 @@ class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack`() {
 		val effect = BareHandAttack()
-		val entity = Entity.build {
+		val entity = Entity.build("Alfa") {
 			attributes(
 				10.0.strength(),
 			)
 		}
-		val target = Entity.build {
+		val target = Entity.build("Beta") {
 			attributes(
 				15.0.health(),
 				5.0.physicalDefense(),
@@ -36,12 +36,12 @@ class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack without damage`() {
 		val effect = BareHandAttack()
-		val entity = Entity.build {
+		val entity = Entity.build("Alfa") {
 			attributes(
 				10.0.strength(),
 			)
 		}
-		val target = Entity.build {
+		val target = Entity.build("Beta") {
 			attributes(
 				15.0.health(),
 				15.0.physicalDefense(),

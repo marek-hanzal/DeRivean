@@ -6,12 +6,14 @@ import derivean.game.attribute.Attributes
 /**
  * An Entity is responsible for holding Attributes and equipping items.
  */
-data class Entity(val attributes: Attributes) {
+data class Entity(val name: String, val attributes: Attributes) {
+	override fun toString() = name
+
 	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
 	}
 
-	class Builder {
+	class Builder(val name: String) {
 		private var attributes = Attributes()
 
 		fun attributes(vararg values: Attribute) {
@@ -19,6 +21,7 @@ data class Entity(val attributes: Attributes) {
 		}
 
 		fun build() = Entity(
+			name,
 			attributes,
 		)
 	}
