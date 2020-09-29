@@ -8,14 +8,18 @@ import derivean.game.equipment.Slot
 /**
  * An Entity is responsible for holding Attributes and equipping items.
  */
-data class Entity(
+class Entity(
 	val name: String,
-	val attributes: Attributes,
-	val inventory: Inventory,
+	private val attributes: Attributes,
+	private val inventory: Inventory,
 ) {
 	override fun toString() = name
 
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
+
+	fun attributes(): Attributes {
+		TODO("Kaboom")
+	}
 
 	/**
 	 * Add an Equipment to a slot in Inventory (not being Equipped).

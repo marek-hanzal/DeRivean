@@ -10,7 +10,7 @@ import derivean.game.mutator.AbstractMutator
  */
 class WaterElementMutator : AbstractMutator() {
 	override fun mutate(entity: Entity, vararg targets: Entity) {
-		entity.attributes.set(
+		entity.attributes(
 			/**
 			 * Water Element has full power of... water :)
 			 */
