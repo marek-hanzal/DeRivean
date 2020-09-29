@@ -8,9 +8,11 @@ class EntitiesTest {
 	@Test
 	fun `Builder for Entities`() {
 		val entities = Entities.build {
-			entity("The Candle Holder") {}
-			entity("Wind River") {}
-			entity("Orc, the Spellcaster") {}
+			entities(
+				Entity.build("The Candle Holder"),
+				Entity.build("Wind River"),
+				Entity.build("Orc, the Spellcaster"),
+			)
 		}
 		assertEquals(3, entities.entities.size)
 	}
