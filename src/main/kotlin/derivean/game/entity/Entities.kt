@@ -16,10 +16,6 @@ class Entities(val entities: Map<String, Entity>) {
 			}
 		}
 
-		fun entity(name: String, entity: Entity.Builder.() -> Unit) {
-			entities[name] = Entity.build(name, entity)
-		}
-
 		fun build() = Entities(entities)
 	}
 }
