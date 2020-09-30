@@ -7,5 +7,13 @@ import derivean.game.attribute.Attributes
  * Humans or "Armor"... or whatever.
  */
 interface IEquipment {
+	/**
+	 * Name of this Equipment (should be unique in general, like "Frost Sword of Kind Death".
+	 */
+	val equipment: String
+
+	/**
+	 * Attributes of this Equipment - those will be added to Entity on evaluation.
+	 */
 	val attributes: Attributes
 }
