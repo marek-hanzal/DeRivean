@@ -11,6 +11,9 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 class CommonTest {
 	private fun setup() = EngineContainer.create {
+		register(Fixtures::class) {
+			Fixtures(this)
+		}
 		configurator(IUpgradeManager::class) {
 			register(Fixtures::class)
 		}

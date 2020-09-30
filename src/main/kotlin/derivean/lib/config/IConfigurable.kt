@@ -1,7 +1,5 @@
 package derivean.lib.config
 
-typealias Configurator = Any?.() -> Unit
-
 interface IConfigurable {
 	/**
 	 * register a lambda configurator
