@@ -41,6 +41,7 @@ class Engine(container: IContainer) {
 @ExperimentalTime
 fun main() {
 	EngineContainer.create {
+		register(Engine::class) { Engine(this) }
 		create(Engine::class).run()
 	}
 }

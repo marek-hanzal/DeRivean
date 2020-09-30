@@ -1,14 +1,12 @@
-@file:Suppress("UNCHECKED_CAST")
-
 package derivean.lib.config
 
 abstract class AbstractConfigurable : IConfigurable {
-	private var configurators: MutableList<Configurator> = mutableListOf()
+	private var configurators: MutableList<Any.() -> Unit> = mutableListOf()
 	private var state = 0
 
-	override fun configurator(configurators: List<Configurator>) {
+	override fun configurator(configurator: Any.() -> Unit) {
 		this.state = 0
-		this.configurators.addAll(configurators)
+		this.configurators.add(configurator)
 	}
 
 	override fun configure() {

@@ -5,7 +5,6 @@ import derivean.lib.container.ContainerFactory
 import derivean.lib.container.IContainer
 import derivean.lib.pool.PoolConfig
 import derivean.lib.server.HttpServerConfig
-import derivean.lib.server.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.config.EngineConfig
 import derivean.server.player.PlayerService
@@ -19,8 +18,8 @@ object EngineContainer {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
 		register(PoolConfig::class) { create(EngineConfig::class).pool }
 		register(HttpServerConfig::class) { create(EngineConfig::class).httpServer }
-		register(PlayerService::class)
-		configurator(IHttpServer::class) {
+		service(PlayerService::class) {
+			PlayerService(this)
 		}
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
