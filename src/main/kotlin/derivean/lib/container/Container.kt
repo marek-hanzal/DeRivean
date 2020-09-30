@@ -8,6 +8,14 @@ class Container : IContainer {
 	private var factories: HashMap<String, IFactory<*>> = hashMapOf()
 	private var configurators: HashMap<String, MutableList<Configurator>> = hashMapOf()
 
+	override fun <T : Any> register(impl: KClass<T>) = register(SingletonFactory(impl))
+
+	override fun <T : Any, U : T> register(iface: KClass<T>, callback: IContainer.() -> U) = register(ContainerCallbackFactory(iface, callback, iface))
+
+	override fun <T> register(factory: IFactory<T>) {
+		factories[factory.getName()] = factory
+	}
+
 	override fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator) {
 		iface.qualifiedName.toString().also { name ->
 			if (!configurators.containsKey(name)) {
@@ -27,16 +35,6 @@ class Container : IContainer {
 			}
 		}
 	}
-
-	override fun <T> register(factory: IFactory<T>) {
-		factories[factory.getName()] = factory
-	}
-
-	override fun <T : Any, U : T> register(iface: KClass<T>, impl: KClass<U>) = register(InterfaceFactory(iface, impl))
-
-	override fun <T : Any, U : T> register(iface: KClass<T>, callback: IContainer.() -> U) = register(ContainerCallbackFactory(iface, callback, iface))
-
-	override fun <T : Any> register(impl: KClass<T>) = register(SingletonFactory(impl))
 
 	override fun <T : Any> create(iface: String, params: Array<*>?): T {
 		if (!factories.containsKey(iface)) {

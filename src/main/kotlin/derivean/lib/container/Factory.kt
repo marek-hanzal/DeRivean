@@ -48,12 +48,6 @@ open class SingletonFactory<T : Any>(private val impl: KClass<out T>, var instan
 	}
 }
 
-class InterfaceFactory<T : Any, U : T>(private val iface: KClass<T>, impl: KClass<out U>, instance: U? = null) : SingletonFactory<U>(impl, instance) {
-	override fun getName(): String {
-		return iface.qualifiedName as String
-	}
-}
-
 class ContainerCallbackFactory<T : Any, U : T>(
 	private val iface: KClass<T>,
 	private val callback: IContainer.() -> U,
@@ -67,24 +61,6 @@ class ContainerCallbackFactory<T : Any, U : T>(
 	override fun create(container: IContainer, params: Array<*>?): U {
 		if (instance == null) {
 			instance = callback.invoke(container)
-		}
-		return instance as U
-	}
-}
-
-class CallbackFactory<T : Any, U : T>(
-	private val iface: KClass<T>,
-	private val callback: () -> U,
-	impl: KClass<out U>,
-	instance: U? = null
-) : SingletonFactory<U>(impl, instance) {
-	override fun getName(): String {
-		return iface.qualifiedName as String
-	}
-
-	override fun create(container: IContainer, params: Array<*>?): U {
-		if (instance == null) {
-			instance = callback()
 		}
 		return instance as U
 	}
