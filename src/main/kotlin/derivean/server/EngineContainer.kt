@@ -7,8 +7,8 @@ import derivean.lib.pool.PoolConfig
 import derivean.lib.server.HttpServerConfig
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.config.EngineConfig
-import derivean.server.entity.EntityService
-import derivean.server.player.PlayerService
+import derivean.server.entity.EntityRepository
+import derivean.server.player.PlayerRepository
 import derivean.server.upgrade.u2020_09_25
 import io.github.config4k.extract
 import kotlin.time.ExperimentalTime
@@ -22,8 +22,8 @@ object EngineContainer {
 		register(u2020_09_25::class) {
 			u2020_09_25(this)
 		}
-		service(PlayerService::class) { PlayerService(this) }
-		service(EntityService::class) { EntityService(this) }
+		service(PlayerRepository::class) { PlayerRepository(this) }
+		service(EntityRepository::class) { EntityRepository(this) }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 		}
