@@ -2,8 +2,8 @@ package derivean.game.entity
 
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
+import derivean.game.equipment.Equipments
 import derivean.game.equipment.IEquipment
-import derivean.game.equipment.Inventory
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.
@@ -11,7 +11,7 @@ import derivean.game.equipment.Inventory
 class Entity(
 	val name: String,
 	private val attributes: Attributes,
-	private val inventory: Inventory,
+	private val equipments: Equipments,
 ) {
 	override fun toString() = name
 
@@ -22,9 +22,9 @@ class Entity(
 	}
 
 	/**
-	 * Add an Equipment to a slot in Inventory (not being Equipped).
+	 * Add an Equipment to a slot.
 	 */
-	fun slot(equipment: IEquipment) = inventory.slot(equipment)
+	fun equip(slot: Pair<IEquipment, String>) = equipments.equip(slot)
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
@@ -33,18 +33,18 @@ class Entity(
 
 	class Builder(val name: String) {
 		private var attributes = Attributes()
-		private var inventory = Inventory()
+		private var equipments = Equipments()
 
 		fun attributes(vararg values: Attribute) {
 			attributes = Attributes(*values)
 		}
 
-		fun slot(equipment: IEquipment) = inventory.slot(equipment)
+		fun equip(slot: Pair<IEquipment, String>) = equipments.equip(slot)
 
 		fun build() = Entity(
 			name,
 			attributes,
-			inventory,
+			equipments,
 		)
 	}
 }

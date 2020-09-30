@@ -4,7 +4,7 @@ import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.classWarrior
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entity
-import derivean.game.equipment.equipments.weapons.Sword
+import derivean.game.equipment.Equipment
 import derivean.game.mutator.AbstractMutator
 
 class WarriorClassMutator : AbstractMutator() {
@@ -12,10 +12,10 @@ class WarriorClassMutator : AbstractMutator() {
 		entity.attributes(
 			1.0.classWarrior(),
 		)
-		entity.slot(
-			Sword(Attributes(
+		entity.equip(
+			Equipment("Quite Old Rusty Sword", Attributes(
 				15.0.strength(),
-			)),
+			)) to "hands"
 		)
 	}
 }
