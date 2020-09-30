@@ -3,8 +3,8 @@ package derivean.server
 import derivean.lib.container.IContainer
 import derivean.lib.upgrade.AbstractUpgrade
 import derivean.lib.upgrade.IUpgradeManager
-import derivean.server.entity.Entity
-import derivean.server.player.Player
+import derivean.server.entity.EntityService
+import derivean.server.player.PlayerService
 import org.junit.Test
 import kotlin.time.ExperimentalTime
 
@@ -27,14 +27,16 @@ class CommonTest {
 }
 
 class Fixtures(container: IContainer) : AbstractUpgrade(container) {
+	private val playerService: PlayerService by container.lazy()
+	private val entityService: EntityService by container.lazy()
+
 	override fun upgrade() {
 		storage.transaction {
-			val player = Player.new {
+			val player = playerService.create {
 				name = "Tester"
 			}
-			Entity.new {
+			entityService.create(player) {
 				name = "Wind River"
-				this.player = player
 			}
 		}
 	}
