@@ -2,6 +2,7 @@
 
 package derivean.lib.container
 
+import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass
 
 class Container : IContainer {
@@ -40,7 +41,7 @@ class Container : IContainer {
 				for (configurator in configurators[name] ?: listOf()) {
 					configurator(it)
 				}
-				(it as AbstractService).setup()
+				(it as IConfigurable).setup()
 			}
 		}
 		if (register.containsKey(name)) {

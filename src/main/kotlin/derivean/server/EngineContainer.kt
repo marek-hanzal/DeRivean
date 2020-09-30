@@ -18,6 +18,9 @@ object EngineContainer {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
 		register(PoolConfig::class) { create(EngineConfig::class).pool }
 		register(HttpServerConfig::class) { create(EngineConfig::class).httpServer }
+		register(u2020_09_25::class) {
+			u2020_09_25(this)
+		}
 		service(PlayerService::class) {
 			PlayerService(this)
 		}

@@ -9,7 +9,11 @@ import org.jetbrains.exposed.sql.SchemaUtils
 class VersionService(container: IContainer) : AbstractService(container), IVersionService {
 	private val storage: IStorage by container.lazy()
 
-	override fun getVersion(): String? = getCollection().first().version
+	override fun getVersion(): String? = try {
+		getCollection().first().version
+	} catch (e: NoSuchElementException) {
+		null
+	}
 
 	override fun upgrade(upgrade: IUpgrade) = storage.write {
 		UpgradeEntity.new {

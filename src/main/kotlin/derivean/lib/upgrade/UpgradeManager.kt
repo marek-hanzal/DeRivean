@@ -1,13 +1,13 @@
 package derivean.lib.upgrade
 
-import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.container.LazyProxy
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 import kotlin.system.measureTimeMillis
 
-class UpgradeManager(val container: IContainer) : AbstractConfigurable(), IUpgradeManager {
+class UpgradeManager(container: IContainer) : AbstractService(container), IUpgradeManager {
 	private val versionService: IVersionService by container.lazy()
 	private var upgrades: MutableList<LazyProxy<out IUpgrade>> = mutableListOf()
 	private val logger = KotlinLogging.logger { }
