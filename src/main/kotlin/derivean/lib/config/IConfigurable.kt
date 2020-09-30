@@ -1,12 +1,12 @@
 package derivean.lib.config
 
-typealias Configurator<T> = T.() -> Unit
+typealias Configurator = Any?.() -> Unit
 
-interface IConfigurable<T> {
+interface IConfigurable {
 	/**
 	 * register a lambda configurator
 	 */
-	fun configurator(configurator: Configurator<T>)
+	fun configurator(configurators: List<Configurator>)
 
 	/**
 	 * makes object ready to setup (executes configurators)

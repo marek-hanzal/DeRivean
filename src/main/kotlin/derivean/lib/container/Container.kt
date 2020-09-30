@@ -1,5 +1,3 @@
-@file:Suppress("UNCHECKED_CAST")
-
 package derivean.lib.container
 
 import derivean.lib.config.Configurator
@@ -8,16 +6,24 @@ import kotlin.reflect.KClass
 
 class Container : IContainer {
 	private var factories: HashMap<String, IFactory<*>> = hashMapOf()
-	private var configurators: HashMap<String, Configurator<*>> = hashMapOf()
+	private var configurators: HashMap<String, MutableList<Configurator>> = hashMapOf()
 
-	override fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator<T>) {
-		configurators[iface.qualifiedName as String] = configurator
+	override fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator) {
+		iface.qualifiedName.toString().also { name ->
+			if (!configurators.containsKey(name)) {
+				configurators[name] = mutableListOf()
+			}
+			configurators[name]?.add(configurator)
+		}
 	}
 
 	override fun <T : Any> configure(instance: T, configurator: String?) {
 		(configurator ?: instance::class.qualifiedName).also {
-			if (instance is IConfigurable<*> && configurators.containsKey(it)) {
-				(instance as IConfigurable<*>).apply { configurator(configurators[it] as Any?.() -> Unit); configure() }
+			if (instance is IConfigurable && configurators.containsKey(it)) {
+				(instance as IConfigurable).apply {
+					configurator(configurators[it]?.toList()!!)
+					configure()
+				}
 			}
 		}
 	}
@@ -38,8 +44,4 @@ class Container : IContainer {
 		}
 		return (factories[iface] as IFactory<T>).create(this, params).also { configure(it, iface) }
 	}
-
-	override fun <T : Any> create(iface: KClass<T>, params: Array<*>?): T = create(iface.qualifiedName ?: throw ContainerException("Cannot create an instance of unknown class (without qualified name)."))
-
-	override fun <T : Any> lazy(): LazyDelegate<T> = LazyDelegate(this)
 }

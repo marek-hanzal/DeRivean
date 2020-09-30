@@ -2,7 +2,7 @@ package derivean.lib.upgrade
 
 import derivean.lib.config.IConfigurable
 
-interface IVersionService : IConfigurable<IVersionService> {
+interface IVersionService : IConfigurable {
 	/**
 	 * return current version or null if an application is in zero state
 	 */
