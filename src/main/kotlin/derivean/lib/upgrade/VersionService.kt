@@ -1,12 +1,12 @@
 package derivean.lib.upgrade
 
-import derivean.lib.config.AbstractConfigurable
+import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.storage.IStorage
 import derivean.lib.utils.asStamp
 import org.jetbrains.exposed.sql.SchemaUtils
 
-class VersionService(container: IContainer) : AbstractConfigurable(), IVersionService {
+class VersionService(container: IContainer) : AbstractService(container), IVersionService {
 	private val storage: IStorage by container.lazy()
 
 	override fun getVersion(): String? = getCollection().first().version

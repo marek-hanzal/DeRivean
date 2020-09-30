@@ -1,45 +1,53 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package derivean.lib.container
 
-import derivean.lib.config.Configurator
-import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass
 
 class Container : IContainer {
-	private var factories: HashMap<String, IFactory<*>> = hashMapOf()
-	private var configurators: HashMap<String, MutableList<Configurator>> = hashMapOf()
+	private var register: HashMap<String, (container: IContainer) -> Any> = hashMapOf()
+	private var services: HashMap<String, (container: IContainer) -> Any> = hashMapOf()
+	private var instances: HashMap<String, Any> = hashMapOf()
+	private var configurators: HashMap<String, MutableList<Any.() -> Unit>> = hashMapOf()
 
-	override fun <T : Any> register(impl: KClass<T>) = register(SingletonFactory(impl))
-
-	override fun <T : Any, U : T> register(iface: KClass<T>, callback: IContainer.() -> U) = register(ContainerCallbackFactory(iface, callback, iface))
-
-	override fun <T> register(factory: IFactory<T>) {
-		factories[factory.getName()] = factory
+	override fun <T : Any> register(name: KClass<T>, callback: IContainer.() -> T) {
+		register[name.qualifiedName.toString()] = callback
 	}
 
-	override fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator) {
-		iface.qualifiedName.toString().also { name ->
-			if (!configurators.containsKey(name)) {
-				configurators[name] = mutableListOf()
+	override fun <T : Any, U : T> service(name: KClass<T>, callback: IContainer.() -> U) {
+		services[name.qualifiedName.toString()] = callback
+	}
+
+	override fun <T : Any> configurator(name: KClass<T>, configurator: T.() -> Unit) {
+		name.qualifiedName.toString().also { fqn ->
+			if (!services.containsKey(fqn)) {
+				throw ContainerException("Cannot register configurator for an unknown service [${fqn}].")
 			}
-			configurators[name]?.add(configurator)
+			if (!configurators.containsKey(fqn)) {
+				configurators[fqn] = mutableListOf()
+			}
+			configurators[fqn]?.add(configurator as Any.() -> Unit)
 		}
 	}
 
-	override fun <T : Any> configure(instance: T, configurator: String?) {
-		(configurator ?: instance::class.qualifiedName).also {
-			if (instance is IConfigurable && configurators.containsKey(it)) {
-				(instance as IConfigurable).apply {
-					configurator(configurators[it]?.toList()!!)
-					configure()
+	override fun <T : Any> create(name: String): T {
+		if (instances.containsKey(name)) {
+			return instances[name] as T
+		}
+		if (services.containsKey(name)) {
+			return (services[name]?.invoke(this) as T).also {
+				instances[name] = it
+				for (configurator in configurators[name] ?: listOf()) {
+					configurator(it)
 				}
+				(it as AbstractService).setup()
 			}
 		}
-	}
-
-	override fun <T : Any> create(iface: String, params: Array<*>?): T {
-		if (!factories.containsKey(iface)) {
-			register(Class.forName(iface).kotlin)
+		if (register.containsKey(name)) {
+			return (register[name]?.invoke(this) as T).also {
+				instances[name] = it
+			}
 		}
-		return (factories[iface] as IFactory<T>).create(this, params).also { configure(it, iface) }
+		throw ContainerException("Cannot create unknown service [${name}].")
 	}
 }

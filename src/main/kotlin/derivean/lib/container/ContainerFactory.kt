@@ -25,20 +25,20 @@ object ContainerFactory {
 	}
 
 	private fun IContainer.registerSystemServices() {
-		register(IContainer::class) { this }
-		register(IUpgradeManager::class) { UpgradeManager(this) }
-		register(IVersionService::class) { VersionService(this) }
+		service(IContainer::class) { this }
+		service(IUpgradeManager::class) { UpgradeManager(this) }
+		service(IVersionService::class) { VersionService(this) }
 	}
 
 	private fun IContainer.registerStorageServices() {
-		register(IStorage::class) { Storage(this) }
-		register(IPool::class) { Pool(this) }
+		service(IStorage::class) { Storage(this) }
+		service(IPool::class) { Pool(this) }
 	}
 
 	private fun IContainer.registerHttpServices() {
-		register(IHttpServer::class) { HttpServer(this) }
-		register(ILinkGenerator::class) { LinkGenerator(this) }
-		register(IPageService::class) { PageService(this) }
-		register(IDiscoveryService::class) { DiscoveryService(this) }
+		service(IHttpServer::class) { HttpServer(this) }
+		service(ILinkGenerator::class) { LinkGenerator(this) }
+		service(IPageService::class) { PageService(this) }
+		service(IDiscoveryService::class) { DiscoveryService(this) }
 	}
 }

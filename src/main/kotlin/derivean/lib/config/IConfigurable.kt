@@ -6,7 +6,7 @@ interface IConfigurable {
 	/**
 	 * register a lambda configurator
 	 */
-	fun configurator(configurators: List<Configurator>)
+	fun configurator(configurator: Any.() -> Unit)
 
 	/**
 	 * makes object ready to setup (executes configurators)

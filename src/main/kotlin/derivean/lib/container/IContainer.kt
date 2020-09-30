@@ -1,41 +1,30 @@
 package derivean.lib.container
 
-import derivean.lib.config.Configurator
 import kotlin.reflect.KClass
 
 interface IContainer {
-	/**
-	 * register a factory to the container
-	 */
-	fun <T> register(factory: IFactory<T>)
+	fun <T : Any> register(name: KClass<T>, callback: IContainer.() -> T)
 
 	/**
-	 * register a singleton class (service)
+	 * Register a service to Container.
 	 */
-	fun <T : Any> register(impl: KClass<T>)
-
-	fun <T : Any, U : T> register(iface: KClass<T>, callback: IContainer.() -> U)
+	fun <T : Any, U : T> service(name: KClass<T>, callback: IContainer.() -> U)
 
 	/**
 	 * register config callback
 	 */
-	fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator)
-
-	/**
-	 * configure the given instance if there is any configurator for it
-	 */
-	fun <T : Any> configure(instance: T, configurator: String? = null)
+	fun <T : Any> configurator(name: KClass<T>, configurator: T.() -> Unit)
 
 	/**
 	 * actually creates (returns) an instance; instance type
 	 * is based on rules defined in instance's factory
 	 */
-	fun <T : Any> create(iface: String, params: Array<*>? = null): T
+	fun <T : Any> create(name: String): T
 
 	/**
 	 * creates an instance by class name
 	 */
-	fun <T : Any> create(iface: KClass<T>, params: Array<*>? = null): T = create(iface.qualifiedName ?: throw ContainerException("Cannot create an instance of unknown class (without qualified name)."))
+	fun <T : Any> create(name: KClass<T>): T = create(name.qualifiedName ?: throw ContainerException("Cannot create an instance of unknown class (without qualified name)."))
 
 	fun <T : Any> lazy(): LazyDelegate<T> = LazyDelegate(this)
 }

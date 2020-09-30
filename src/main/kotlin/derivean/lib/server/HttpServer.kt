@@ -45,7 +45,10 @@ class HttpServer(private val container: IContainer) : AbstractConfigurable(), IH
 			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
-				this.routing { container.create(it).install(this) }
+				this.routing {
+					TODO("This piece of not done yet")
+//					container.create(it).install(this)
+				}
 			}
 			if (modules.isEmpty()) {
 				logger.warn { "Setup: There are no registered modules!" }
