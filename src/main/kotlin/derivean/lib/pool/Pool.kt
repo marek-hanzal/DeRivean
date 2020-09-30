@@ -6,7 +6,7 @@ import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
 import javax.sql.DataSource
 
-class Pool(container: IContainer) : AbstractConfigurable<IPool>(), IPool {
+class Pool(container: IContainer) : AbstractConfigurable(), IPool {
 	private val poolConfig: PoolConfig by container.lazy()
 	private lateinit var dataSource: DataSource
 

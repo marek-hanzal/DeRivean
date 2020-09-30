@@ -12,7 +12,7 @@ import io.ktor.server.netty.*
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
-class HttpServer(private val container: IContainer) : AbstractConfigurable<IHttpServer>(), IHttpServer {
+class HttpServer(private val container: IContainer) : AbstractConfigurable(), IHttpServer {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
 	private var modules = arrayOf<KClass<out IHttpModule>>()
 	private val logger = KotlinLogging.logger { }
