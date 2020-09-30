@@ -1,3 +1,6 @@
 package derivean.server.player
 
-class PlayerService
+import derivean.lib.container.AbstractService
+import derivean.lib.container.IContainer
+
+class PlayerService(container: IContainer) : AbstractService(container)
