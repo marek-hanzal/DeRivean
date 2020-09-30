@@ -3,7 +3,7 @@ package derivean.lib.upgrade
 import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass
 
-interface IUpgradeManager : IConfigurable<IUpgradeManager> {
+interface IUpgradeManager : IConfigurable {
 	/**
 	 * register an upgrade (order of upgrades is important)
 	 */

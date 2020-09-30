@@ -7,7 +7,7 @@ import mu.KotlinLogging
 import kotlin.reflect.KClass
 import kotlin.system.measureTimeMillis
 
-class UpgradeManager(val container: IContainer) : AbstractConfigurable<IUpgradeManager>(), IUpgradeManager {
+class UpgradeManager(val container: IContainer) : AbstractConfigurable(), IUpgradeManager {
 	private val versionService: IVersionService by container.lazy()
 	private var upgrades: MutableList<LazyProxy<out IUpgrade>> = mutableListOf()
 	private val logger = KotlinLogging.logger { }

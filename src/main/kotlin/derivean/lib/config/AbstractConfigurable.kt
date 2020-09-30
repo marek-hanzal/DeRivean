@@ -2,18 +2,20 @@
 
 package derivean.lib.config
 
-abstract class AbstractConfigurable<T> : IConfigurable<T> {
-	private var configurator: Configurator<T> = {}
+abstract class AbstractConfigurable : IConfigurable {
+	private var configurators: MutableList<Configurator> = mutableListOf()
 	private var state = 0
 
-	override fun configurator(configurator: Configurator<T>) {
+	override fun configurator(configurators: List<Configurator>) {
 		this.state = 0
-		this.configurator = configurator
+		this.configurators.addAll(configurators)
 	}
 
 	override fun configure() {
 		if (state == 0) {
-			configurator(this as T)
+			for (configurator in configurators) {
+				configurator(this)
+			}
 			state++
 		}
 	}

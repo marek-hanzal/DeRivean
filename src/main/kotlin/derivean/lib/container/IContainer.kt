@@ -7,7 +7,7 @@ interface IContainer {
 	/**
 	 * register config callback
 	 */
-	fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator<T>)
+	fun <T : Any> configurator(iface: KClass<T>, configurator: Configurator)
 
 	/**
 	 * configure the given instance if there is any configurator for it
@@ -40,7 +40,7 @@ interface IContainer {
 	/**
 	 * creates an instance by class name
 	 */
-	fun <T : Any> create(iface: KClass<T>, params: Array<*>? = null): T
+	fun <T : Any> create(iface: KClass<T>, params: Array<*>? = null): T = create(iface.qualifiedName ?: throw ContainerException("Cannot create an instance of unknown class (without qualified name)."))
 
-	fun <T : Any> lazy(): LazyDelegate<T>
+	fun <T : Any> lazy(): LazyDelegate<T> = LazyDelegate(this)
 }

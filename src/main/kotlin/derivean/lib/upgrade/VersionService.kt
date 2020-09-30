@@ -6,14 +6,10 @@ import derivean.lib.storage.IStorage
 import derivean.lib.utils.asStamp
 import org.jetbrains.exposed.sql.SchemaUtils
 
-class VersionService(container: IContainer) : AbstractConfigurable<IVersionService>(), IVersionService {
+class VersionService(container: IContainer) : AbstractConfigurable(), IVersionService {
 	private val storage: IStorage by container.lazy()
 
-	override fun getVersion(): String? = try {
-		getCollection().first().version
-	} catch (e: Throwable) {
-		null
-	}
+	override fun getVersion(): String? = getCollection().first().version
 
 	override fun upgrade(upgrade: IUpgrade) = storage.write {
 		UpgradeEntity.new {
@@ -21,9 +17,17 @@ class VersionService(container: IContainer) : AbstractConfigurable<IVersionServi
 		}
 	}
 
-	override fun getCollection() = storage.read { UpgradeEntity.all().sortedByDescending { it.stamp }.iterator().asSequence().asIterable() }
+	override fun getCollection() = storage.read {
+		UpgradeEntity.all().sortedByDescending { it.stamp }.iterator().asSequence().asIterable()
+	}
 
-	override fun print() = storage.read { getCollection().forEach { println("\t[${it.stamp.asStamp()}]: ${it.version}") } }
+	override fun print() = storage.read {
+		for (version in getCollection()) {
+			println("\t[${version.stamp.asStamp()}]: ${version.version}")
+		}
+	}
 
-	override fun onSetup() = storage.transaction { SchemaUtils.create(UpgradeTable) }
+	override fun onSetup() = storage.transaction {
+		SchemaUtils.create(UpgradeTable)
+	}
 }

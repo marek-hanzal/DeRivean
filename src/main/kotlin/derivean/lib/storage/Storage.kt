@@ -6,7 +6,7 @@ import derivean.lib.pool.IPool
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Transaction
 
-class Storage(container: IContainer) : AbstractConfigurable<IStorage>(), IStorage {
+class Storage(container: IContainer) : AbstractConfigurable(), IStorage {
 	private val pool: IPool by container.lazy()
 	private lateinit var database: Database
 
