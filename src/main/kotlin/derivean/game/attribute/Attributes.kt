@@ -66,4 +66,12 @@ class Attributes(vararg values: Attribute) {
 	}
 
 	override fun hashCode() = map.hashCode()
+
+	companion object {
+		fun from(vararg attributes: Attributes) = Attributes().also {
+			for (attr in attributes) {
+				it += attr
+			}
+		}
+	}
 }
