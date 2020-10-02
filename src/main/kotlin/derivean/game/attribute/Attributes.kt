@@ -1,6 +1,7 @@
 package derivean.game.attribute
 
 import derivean.game.operator.Operators
+import kotlin.math.max
 
 /**
  * Low-level class holding all attributes used in computing across the game.
@@ -38,15 +39,13 @@ class Attributes(vararg values: Attribute) {
 
 	operator fun get(name: String) = map.getOrDefault(name, 0.0)
 
-	fun inc(name: String, value: Double) {
-		map[name] = get(name) + value
+	fun inc(attribute: Attribute) {
+		map[attribute.first] = get(attribute.first) + attribute.second
 	}
 
-	fun inc(name: String, value: Int) = inc(name, value.toDouble())
+	fun dec(attribute: Attribute) = inc(Attribute(attribute.first, -attribute.second))
 
-	fun dec(name: String, value: Double) = inc(name, -value)
-
-	fun dec(name: String, value: Int) = dec(name, value.toDouble())
+	fun decOrZero(attribute: Attribute) = set(attribute.first, max(0.0, get(attribute.first) - attribute.second))
 
 	override fun equals(other: Any?): Boolean {
 		if (this === other) {

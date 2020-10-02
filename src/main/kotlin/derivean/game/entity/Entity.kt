@@ -30,6 +30,10 @@ class Entity(
 
 	fun ability(name: String, target: Entity) = ability(name, listOf(target))
 
+	fun inc(attribute: Attribute) = attributes.inc(attribute)
+
+	fun decOrZero(attribute: Attribute) = attributes.decOrZero(attribute)
+
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
 		fun build(name: String) = Builder(name).build()
