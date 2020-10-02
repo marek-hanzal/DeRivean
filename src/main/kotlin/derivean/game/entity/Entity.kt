@@ -2,6 +2,7 @@ package derivean.game.entity
 
 import derivean.game.ability.Abilities
 import derivean.game.ability.Ability
+import derivean.game.ability.IAbility
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.mutator.IMutator
@@ -27,6 +28,8 @@ class Entity(
 	 */
 	fun ability(name: String, targets: List<Entity> = listOf()) = abilities[name].use(this, targets)
 
+	fun ability(name: String, target: Entity) = ability(name, listOf(target))
+
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
 		fun build(name: String) = Builder(name).build()
@@ -42,6 +45,10 @@ class Entity(
 
 		fun ability(name: String, mutator: IMutator, attributes: Attributes = Attributes()) {
 			this.abilities.ability(Ability(name, mutator, attributes))
+		}
+
+		fun ability(ability: IAbility) {
+			abilities.ability(ability)
 		}
 
 		fun build() = Entity(
