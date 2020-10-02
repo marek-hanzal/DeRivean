@@ -11,9 +11,7 @@ import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
 import derivean.server.upgrade.u2020_09_25
 import io.github.config4k.extract
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 object EngineContainer {
 	fun create(block: IContainer.() -> Unit) = ContainerFactory.container().apply {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
