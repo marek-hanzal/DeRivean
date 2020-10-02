@@ -10,13 +10,15 @@ import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
 	override fun mutate(mutator: Mutator, targets: List<Entity>) {
+		val attributes = mutator.attributes()
+
 		for (target in targets) {
-			val damage = max(mutator.strength() - target.physicalDefense(), 0.0)
+			val damage = max(attributes.strength() - target.physicalDefense(), 0.0)
 			/**
 			 * Accumulate overall entity's damage and physical damage done.
 			 */
 			mutator.entity.damage(mutator.entity.damage() + damage)
-			mutator.entity.physicalDamage(mutator.physicalDamage() + damage)
+			mutator.entity.physicalDamage(mutator.entity.physicalDamage() + damage)
 			/**
 			 * Convert damage to heal loss of target entity; health cannot go under zer0.
 			 */
