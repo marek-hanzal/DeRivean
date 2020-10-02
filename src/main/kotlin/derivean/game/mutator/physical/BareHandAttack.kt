@@ -2,10 +2,10 @@ package derivean.game.mutator.physical
 
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
-import derivean.game.mutator.Mutant
+import derivean.game.mutator.Mutator
 
 class BareHandAttack : AbstractMutator() {
-	override fun mutate(mutant: Mutant, targets: List<Entity>) {
+	override fun mutate(mutator: Mutator, targets: List<Entity>) {
 		for (target in targets) {
 //			val damage = max(entity.strength() - target.physicalDefense(), 0.0)
 //			/**
