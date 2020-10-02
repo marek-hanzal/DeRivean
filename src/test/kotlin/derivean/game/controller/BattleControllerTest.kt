@@ -1,10 +1,12 @@
 package derivean.game.controller
 
+import derivean.game.attribute.common.health
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.`class`.WarriorClassMutator
 import derivean.game.mutator.being.HumanMutator
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class BattleControllerTest {
 	@Test
@@ -13,6 +15,9 @@ class BattleControllerTest {
 
 		val alfa = createAlfaTeam()
 		val beta = createBetaTeam()
+
+		assertEquals(150.0, alfa["The Candle Holder"].health())
+		assertEquals(150.0, beta["Wind River"].health())
 
 		controller.round(alfa, beta)
 	}
