@@ -1,5 +1,7 @@
 package derivean.game.mutator.element.water
 
+import derivean.game.attribute.element.fireElement
+import derivean.game.attribute.element.waterElement
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutator
@@ -9,15 +11,15 @@ import derivean.game.mutator.Mutator
  */
 class WaterElementMutator : AbstractMutator() {
 	override fun mutate(mutator: Mutator, targets: List<Entity>) {
-//		entity.attributes(
-//			/**
-//			 * Water Element has full power of... water :)
-//			 */
-//			1.0.waterElement(),
-//			/**
-//			 * Water Element is absolutely weak to fire. Ooouch.
-//			 */
-//			(-1.0).fireElement(),
-//		)
+		mutator.attributes(
+			/**
+			 * Water Element has full power of... water :)
+			 */
+			1.0.waterElement(),
+			/**
+			 * Water Element is absolutely weak to fire. Ooouch.
+			 */
+			(-1.0).fireElement(),
+		)
 	}
 }
