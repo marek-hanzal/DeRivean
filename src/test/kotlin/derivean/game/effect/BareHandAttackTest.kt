@@ -1,5 +1,6 @@
 package derivean.game.effect
 
+import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.mutator.physical.BareHandAttack
@@ -9,11 +10,11 @@ import kotlin.test.assertEquals
 class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack`() {
-		val effect = BareHandAttack()
 		val entity = Entity.build("Alfa") {
 			attributes(
 				10.0.strength(),
 			)
+			ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 		val target = Entity.build("Beta") {
 			attributes(
@@ -22,12 +23,12 @@ class BareHandAttackTest {
 			)
 		}
 
-		effect.mutate(entity, target)
+		entity.ability("attack.bare-hands", target)
 		assertEquals(5.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, target.health(), "Target does not have expected amount of health.")
 
-		effect.mutate(entity, target)
+		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, target.health(), "Target does not have expected amount of health.")
@@ -35,11 +36,11 @@ class BareHandAttackTest {
 
 	@Test
 	fun `Bare hand attack without damage`() {
-		val effect = BareHandAttack()
 		val entity = Entity.build("Alfa") {
 			attributes(
 				10.0.strength(),
 			)
+			ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 		val target = Entity.build("Beta") {
 			attributes(
@@ -47,7 +48,27 @@ class BareHandAttackTest {
 				15.0.physicalDefense(),
 			)
 		}
-		effect.mutate(entity, target)
+		entity.ability("attack.bare-hands", target)
 		assertEquals(15.0, target.health(), "Target's health is different.")
+	}
+
+	@Test
+	fun `Bare hand attack with Attributes`() {
+		val entity = Entity.build("Alfa") {
+			attributes(
+				10.0.strength(),
+			)
+			ability(BareHandAttack.ability("attack.bare-hands", Attributes(
+				10.0.strength(),
+			)))
+		}
+		val target = Entity.build("Beta") {
+			attributes(
+				15.0.health(),
+				15.0.physicalDefense(),
+			)
+		}
+		entity.ability("attack.bare-hands", target)
+		assertEquals(10.0, target.health(), "Target's health is different.")
 	}
 }

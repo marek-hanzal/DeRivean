@@ -2,6 +2,7 @@ package derivean.game.attribute.common
 
 import derivean.game.attribute.Attributes
 import derivean.game.entity.Entity
+import derivean.game.mutator.Mutator
 
 class CommonAttributes {
 	companion object {
@@ -60,6 +61,7 @@ fun Entity.mana(value: Double) = this.attributes(CommonAttributes.mana(value))
 fun Double.strength() = CommonAttributes.strength(this)
 fun Attributes.strength() = CommonAttributes.strength(this)
 fun Entity.strength() = this.attributes.strength()
+fun Mutator.strength() = this.entity.strength() + this.attributes.strength()
 
 fun Double.damage() = CommonAttributes.damage(this)
 fun Attributes.damage() = CommonAttributes.damage(this)
