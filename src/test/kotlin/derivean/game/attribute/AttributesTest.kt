@@ -44,4 +44,13 @@ internal class AttributesTest {
 			"value" to 5.0
 		), attributes)
 	}
+
+	@Test
+	fun `Reset same Attribute`() {
+		val attributes = Attributes("value" to 10.0)
+		attributes.set("value", 12.0)
+		assertEquals(12.0, attributes["value"])
+		attributes.set(Attributes("value" to 14.0))
+		assertEquals(14.0, attributes["value"])
+	}
 }
