@@ -1,6 +1,7 @@
 package derivean.game.controller
 
 import derivean.game.attribute.common.health
+import derivean.game.attribute.common.strength
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.being.HumanMutator
@@ -17,7 +18,9 @@ class BattleControllerTest {
 		val beta = createBetaTeam()
 
 		assertEquals(150.0, alfa["The Candle Holder"].health())
+		assertEquals(6.0, alfa["The Candle Holder"].strength())
 		assertEquals(150.0, beta["Wind River"].health())
+		assertEquals(6.0, beta["Wind River"].strength())
 
 		controller.round(alfa, beta)
 	}
