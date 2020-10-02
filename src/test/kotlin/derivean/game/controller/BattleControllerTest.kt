@@ -3,8 +3,8 @@ package derivean.game.controller
 import derivean.game.attribute.common.health
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.`class`.WarriorClassMutator
 import derivean.game.mutator.being.HumanMutator
+import derivean.game.mutator.role.WarriorClassMutator
 import org.junit.Test
 import kotlin.test.assertEquals
 

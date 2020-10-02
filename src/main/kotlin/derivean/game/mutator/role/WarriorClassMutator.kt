@@ -1,4 +1,4 @@
-package derivean.game.mutator.`class`
+package derivean.game.mutator.role
 
 import derivean.game.attribute.common.classWarrior
 import derivean.game.attribute.common.health
