@@ -1,6 +1,8 @@
 package derivean.game.ability
 
-import derivean.game.entity.Entity
+import derivean.game.attribute.Attributes
 import derivean.game.mutator.IMutator
 
-abstract class AbstractAbility(val name: String, val entity: Entity, val mutator: IMutator) : IAbility
+abstract class AbstractAbility(val name: String, val mutator: IMutator, val attributes: Attributes) : IAbility {
+//	override fun use(targets: List<Entity>) = mutator.mutate(entity, targets)
+}
