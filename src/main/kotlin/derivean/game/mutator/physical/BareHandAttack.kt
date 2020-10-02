@@ -1,5 +1,7 @@
 package derivean.game.mutator.physical
 
+import derivean.game.ability.Ability
+import derivean.game.attribute.Attributes
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutator
@@ -18,5 +20,9 @@ class BareHandAttack : AbstractMutator() {
 //			 */
 //			target.health(max(target.health() - damage, 0.0))
 		}
+	}
+
+	companion object {
+		fun ability(name: String, attributes: Attributes = Attributes()) = Ability(name, BareHandAttack(), attributes)
 	}
 }
