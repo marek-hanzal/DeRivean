@@ -3,10 +3,10 @@ package derivean.game.mutator.element.fire
 import derivean.game.attribute.Attributes
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
-import derivean.game.mutator.Mutant
+import derivean.game.mutator.Mutator
 
 class Fireball : AbstractMutator() {
-	override fun mutate(mutant: Mutant, targets: List<Entity>) {
+	override fun mutate(mutator: Mutator, targets: List<Entity>) {
 //		/**
 //		 * Compute base attack of source entity.
 //		 */

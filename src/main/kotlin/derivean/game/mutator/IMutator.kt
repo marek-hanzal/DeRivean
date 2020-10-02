@@ -4,7 +4,7 @@ import derivean.game.attribute.Attributes
 import derivean.game.entity.Entity
 import derivean.game.entity.mutateWith
 
-typealias Mutant = Pair<Entity, Attributes>
+typealias Mutator = Pair<Entity, Attributes>
 
 /**
  * Mutator takes attributes as an input and do some magic around them and return output attributes
@@ -21,7 +21,7 @@ interface IMutator {
 	 * This method could be used for example as HumanMutator (mutate input Entity to Human) or
 	 * as Mutator implementing attack (for example entity attacks targets).
 	 */
-	fun mutate(mutant: Mutant, targets: List<Entity> = listOf())
+	fun mutate(mutator: Mutator, targets: List<Entity> = listOf())
 
 	fun mutate(entity: Entity, targets: List<Entity> = listOf()) = mutate(entity.mutateWith(Attributes()), targets)
 
