@@ -17,12 +17,12 @@ class BareHandAttack : AbstractMutator() {
 			/**
 			 * Accumulate overall entity's damage and physical damage done.
 			 */
-			mutator.entity.damage(mutator.entity.damage() + damage)
-			mutator.entity.physicalDamage(mutator.entity.physicalDamage() + damage)
+			mutator.entity.inc(damage.damage())
+			mutator.entity.inc(damage.physicalDamage())
 			/**
 			 * Convert damage to heal loss of target entity; health cannot go under zer0.
 			 */
-			target.health(max(target.health() - damage, 0.0))
+			target.decOrZero(damage.health())
 		}
 	}
 

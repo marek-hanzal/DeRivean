@@ -25,7 +25,7 @@ class Fireball : AbstractMutator() {
 		/**
 		 * Take cost of casting fireball and mark it as mana loss (decrease).
 		 */
-		mutator.entity.mana(attributes.mana() - attributes.fireballCost())
+		mutator.entity.decOrZero(attributes.fireballCost().mana())
 
 		for (target in targets) {
 			/**
@@ -40,15 +40,15 @@ class Fireball : AbstractMutator() {
 			/**
 			 * Set (general) damage done in this duel.
 			 */
-			mutator.entity.damage(mutator.entity.damage() + damage)
+			mutator.entity.inc(damage.damage())
 			/**
 			 * Set fire damage done in this duel.
 			 */
-			mutator.entity.fireDamage(mutator.entity.fireDamage() + damage)
+			mutator.entity.inc(damage.fireDamage())
 			/**
 			 * Take damage as health and decrease it (health loss done by fireball).
 			 */
-			target.health(max(target.health() - damage, 0.0))
+			target.decOrZero(damage.health())
 		}
 	}
 

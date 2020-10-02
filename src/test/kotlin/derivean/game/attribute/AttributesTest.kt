@@ -36,12 +36,14 @@ internal class AttributesTest {
 
 	@Test
 	fun `Attribute Inc & Dec`() {
-		val attributes = Attributes("value" to 10.0)
-		attributes.inc("health", 20)
-		attributes.dec("value", 5)
+		val attributes = Attributes("value" to 10.0, "zero" to 1.0)
+		attributes.inc("health" to 20.0)
+		attributes.dec("value" to 5.0)
+		attributes.decOrZero("zero" to 5.0)
 		assertEquals(Attributes(
 			"health" to 20.0,
-			"value" to 5.0
+			"value" to 5.0,
+			"zero" to 0.0
 		), attributes)
 	}
 
