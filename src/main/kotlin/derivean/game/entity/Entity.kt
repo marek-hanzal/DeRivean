@@ -16,7 +16,15 @@ class Entity(
 ) {
 	override fun toString() = name
 
+	/**
+	 * Set desired attributes to the Entity.
+	 */
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
+
+	/**
+	 * Use specified ability of this entity on target Entities.
+	 */
+	fun ability(name: String, targets: List<Entity> = listOf()) = abilities[name].use(this, targets)
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()

@@ -1,5 +1,7 @@
 package derivean.game.ability
 
+import derivean.game.entity.Entity
+
 interface IAbility {
-//	fun use(targets: List<Entity> = listOf())
+	fun use(entity: Entity, targets: List<Entity> = listOf())
 }
