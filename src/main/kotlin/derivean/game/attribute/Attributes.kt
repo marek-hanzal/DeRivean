@@ -1,6 +1,5 @@
 package derivean.game.attribute
 
-import derivean.game.operator.Operators
 import kotlin.math.max
 
 /**
@@ -20,8 +19,6 @@ class Attributes(vararg values: Attribute) {
 			})
 		}
 	}
-
-	operator fun plusAssign(source: Operators) = source.applyTo(this)
 
 	operator fun plusAssign(attribute: Attribute) = set(attribute.first, attribute.second)
 
