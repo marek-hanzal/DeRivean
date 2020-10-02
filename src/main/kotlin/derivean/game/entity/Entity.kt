@@ -5,6 +5,7 @@ import derivean.game.ability.Ability
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.mutator.IMutator
+import derivean.game.mutator.Mutator
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.
@@ -51,4 +52,4 @@ class Entity(
 	}
 }
 
-fun Entity.mutateWith(attributes: Attributes) = Pair(this, attributes)
+fun Entity.mutateWith(attributes: Attributes) = Mutator(this, attributes)
