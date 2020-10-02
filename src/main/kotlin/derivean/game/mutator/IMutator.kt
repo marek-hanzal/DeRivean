@@ -4,8 +4,6 @@ import derivean.game.attribute.Attributes
 import derivean.game.entity.Entity
 import derivean.game.entity.mutateWith
 
-typealias Mutator = Pair<Entity, Attributes>
-
 /**
  * Mutator takes attributes as an input and do some magic around them and return output attributes
  * delta (or apply them).
