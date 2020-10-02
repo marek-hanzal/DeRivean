@@ -12,15 +12,11 @@ import derivean.game.mutator.IMutator
 class Entity(
 	val name: String,
 	val attributes: Attributes,
-	val abilities: Abilities = Abilities(),
+	val abilities: Abilities,
 ) {
 	override fun toString() = name
 
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
-
-	fun ability(ability: Pair<String, IMutator>) {
-		abilities.ability(Ability(ability.first, this, ability.second))
-	}
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
@@ -29,19 +25,22 @@ class Entity(
 
 	class Builder(val name: String) {
 		private var attributes = Attributes()
-		private var abilities: MutableMap<String, IMutator> = mutableMapOf()
+		private var abilities = Abilities()
 
 		fun attributes(vararg values: Attribute) {
 			attributes = Attributes(*values)
 		}
 
-		fun abilities(vararg abilities: Pair<String, IMutator>) {
-			this.abilities.putAll(abilities)
+		fun ability(name: String, mutator: IMutator, attributes: Attributes = Attributes()) {
+			this.abilities.ability(Ability(name, mutator, attributes))
 		}
 
 		fun build() = Entity(
 			name,
 			attributes,
+			abilities,
 		)
 	}
 }
+
+fun Entity.mutateWith(attributes: Attributes) = Pair(this, attributes)
