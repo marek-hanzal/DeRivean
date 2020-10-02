@@ -55,7 +55,7 @@ class ClassAttributes {
 
 fun Double.classWarrior() = ClassAttributes.classWarrior(this)
 fun Attributes.classWarrior() = ClassAttributes.classWarrior(this)
-fun Entity.classWarrior() = this.attributes().classWarrior()
+fun Entity.classWarrior() = this.attributes.classWarrior()
 
 fun Double.classTank() = ClassAttributes.classTank(this)
 fun Attributes.classTank() = ClassAttributes.classTank(this)
@@ -65,7 +65,7 @@ fun Attributes.classPaladin() = ClassAttributes.classPaladin(this)
 
 fun Double.classMage() = ClassAttributes.classMage(this)
 fun Attributes.classMage() = ClassAttributes.classMage(this)
-fun Entity.classMage() = this.attributes().classMage()
+fun Entity.classMage() = this.attributes.classMage()
 
 fun Double.classBattleMage() = ClassAttributes.classBattleMage(this)
 fun Attributes.classBattleMage() = ClassAttributes.classBattleMage(this)

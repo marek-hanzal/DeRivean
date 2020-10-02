@@ -17,5 +17,7 @@ interface IMutator {
 	 * This method could be used for example as HumanMutator (mutate input Entity to Human) or
 	 * as Mutator implementing attack (for example entity attacks targets).
 	 */
-	fun mutate(entity: Entity, vararg targets: Entity)
+	fun mutate(entity: Entity, targets: List<Entity> = listOf())
+
+	fun mutate(entity: Entity, target: Entity) = mutate(entity, listOf(target))
 }

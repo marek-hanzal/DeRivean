@@ -6,9 +6,7 @@ import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
 import org.junit.Test
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 class CommonTest {
 	private fun setup() = EngineContainer.create {
 		register(Fixtures::class) {

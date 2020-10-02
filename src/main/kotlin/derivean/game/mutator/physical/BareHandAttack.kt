@@ -6,7 +6,7 @@ import derivean.game.mutator.AbstractMutator
 import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
-	override fun mutate(entity: Entity, vararg targets: Entity) {
+	override fun mutate(entity: Entity, targets: List<Entity>) {
 		for (target in targets) {
 			val damage = max(entity.strength() - target.physicalDefense(), 0.0)
 			/**
