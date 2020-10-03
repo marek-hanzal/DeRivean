@@ -12,7 +12,6 @@ import kotlin.math.max
 class BareHandAttack : AbstractMutator() {
 	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		val attributes = mutator.attributes()
-//		rank =
 		mutation {
 			for (target in targets) {
 				val damage = max(attributes.strength() - target.physicalDefense(), 0.0)
