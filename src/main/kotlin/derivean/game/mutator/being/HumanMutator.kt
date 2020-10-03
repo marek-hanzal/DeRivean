@@ -1,9 +1,6 @@
 package derivean.game.mutator.being
 
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.mana
-import derivean.game.attribute.common.physicalDefense
-import derivean.game.attribute.common.strength
+import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutator
@@ -16,6 +13,7 @@ class HumanMutator : AbstractMutator() {
 	override fun mutate(mutator: Mutator, targets: List<Entity>) {
 		mutator.attributes(
 			100.0.health(),
+			50.0.maxMana(),
 			50.0.mana(),
 			5.0.strength(),
 			5.0.physicalDefense(),

@@ -25,6 +25,10 @@ class CommonAttributes {
 		fun mana(value: Double) = ATTRIBUTE_MANA to value
 		fun mana(attributes: Attributes) = attributes[ATTRIBUTE_MANA]
 
+		private const val ATTRIBUTE_MAX_MANA = "mana.max"
+		fun maxMana(value: Double) = ATTRIBUTE_MAX_MANA to value
+		fun maxMana(attributes: Attributes) = attributes[ATTRIBUTE_MAX_MANA]
+
 		private const val ATTRIBUTE_STRENGTH = "strength"
 		fun strength(value: Double) = ATTRIBUTE_STRENGTH to value
 		fun strength(attributes: Attributes) = attributes[ATTRIBUTE_STRENGTH]
@@ -32,6 +36,10 @@ class CommonAttributes {
 		private const val ATTRIBUTE_DAMAGE = "damage"
 		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
 		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
+
+		private const val ATTRIBUTE_INITIATIVE = "damage"
+		fun initiative(value: Double) = ATTRIBUTE_INITIATIVE to value
+		fun initiative(attributes: Attributes) = attributes[ATTRIBUTE_INITIATIVE]
 	}
 }
 
@@ -57,6 +65,10 @@ fun Attributes.mana() = CommonAttributes.mana(this)
 fun Entity.mana() = this.attributes.mana()
 fun Entity.mana(value: Double) = this.attributes(CommonAttributes.mana(value))
 
+fun Double.maxMana() = CommonAttributes.maxMana(this)
+fun Attributes.maxMana() = CommonAttributes.maxMana(this)
+fun Entity.maxMana() = this.attributes.maxMana()
+
 fun Double.strength() = CommonAttributes.strength(this)
 fun Attributes.strength() = CommonAttributes.strength(this)
 fun Entity.strength() = this.attributes.strength()
@@ -65,3 +77,7 @@ fun Double.damage() = CommonAttributes.damage(this)
 fun Attributes.damage() = CommonAttributes.damage(this)
 fun Entity.damage() = this.attributes.damage()
 fun Entity.damage(value: Double) = this.attributes(CommonAttributes.damage(value))
+
+fun Double.initiative() = CommonAttributes.initiative(this)
+fun Attributes.initiative() = CommonAttributes.initiative(this)
+fun Entity.initiative() = this.attributes.initiative()
