@@ -11,6 +11,8 @@ class Entities(val entities: MutableMap<String, Entity> = mutableMapOf()) : Iter
 
 	override fun iterator() = entities.values.iterator()
 
+	fun isMember(entity: Entity) = entities.containsKey(entity.toString())
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
