@@ -84,4 +84,34 @@ class BareHandAttackTest {
 		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, target.health(), "Target's health is different.")
 	}
+
+	@Test
+	fun `Correct targets with dead Entity`() {
+		val entity = Entity.build("Alfa") {
+			attributes(
+				10.0.strength(),
+			)
+			ability(BareHandAttack.ability("attack.bare-hands"))
+		}
+		val entities = Entities.build {
+			entities(
+				Entity.build("This one is alive") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("This one is not alive") {
+					attributes(
+						0.0.health(),
+					)
+				},
+			)
+		}
+
+		with(entity.targets("attack.bare-hands", entities)) {
+			assertEquals(5.0, rank)
+			assertEquals(1, targets.size, "There are more targets!")
+		}
+	}
 }
