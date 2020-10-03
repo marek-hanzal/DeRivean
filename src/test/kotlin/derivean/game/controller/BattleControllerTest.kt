@@ -25,7 +25,7 @@ class BattleControllerTest {
 		assertEquals(150.0, beta["Wind River"].health())
 		assertEquals(6.0, beta["Wind River"].strength())
 
-		controller.round(initiative, listOf(alfa, beta))
+		controller.loop(initiative, listOf(alfa, beta))
 	}
 
 	private fun createAlfaTeam() = Entities.build {
@@ -33,8 +33,8 @@ class BattleControllerTest {
 		val warriorClassMutator = WarriorClassMutator()
 
 		with(Entity.build("The Candle Holder")) {
-			humanMutator.mutate(this)
-			warriorClassMutator.mutate(this)
+			humanMutator.evaluate(this)
+			warriorClassMutator.evaluate(this)
 			entities(this)
 			/**
 			 * Lower the initiative - so second team member (beta) should
@@ -49,8 +49,8 @@ class BattleControllerTest {
 		val warriorClassMutator = WarriorClassMutator()
 
 		with(Entity.build("Wind River")) {
-			humanMutator.mutate(this)
-			warriorClassMutator.mutate(this)
+			humanMutator.evaluate(this)
+			warriorClassMutator.evaluate(this)
 			entities(this)
 		}
 	}

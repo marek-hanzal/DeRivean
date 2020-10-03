@@ -6,5 +6,5 @@ import derivean.game.mutator.IMutator
 import derivean.game.mutator.Mutator
 
 abstract class AbstractAbility(override val ability: String, override val mutator: IMutator, val attributes: Attributes) : IAbility {
-	override fun use(entity: Entity, targets: List<Entity>) = mutator.mutate(Mutator(entity, attributes), targets)
+	override fun use(entity: Entity, targets: List<Entity>) = mutator.evaluate(Mutator(entity, attributes), targets)
 }

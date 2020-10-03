@@ -10,7 +10,7 @@ import derivean.game.initiative.IInitiative
  * Use case of this controller is when a player is just looking on (live) battle.
  */
 class BattleController : AbstractController() {
-	override fun round(initiative: IInitiative, entities: List<Entities>) {
+	override fun loop(initiative: IInitiative, entities: List<Entities>) {
 		val entity = initiative.resolve(entities)
 		TODO("Not yet implemented")
 	}
