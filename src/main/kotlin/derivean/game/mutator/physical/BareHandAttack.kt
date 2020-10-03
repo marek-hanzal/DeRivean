@@ -7,12 +7,13 @@ import derivean.game.entity.Entities
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
+import derivean.game.mutator.Targets
 import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
 	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
-		val attributes = mutator.attributes()
 		mutation {
+			val attributes = mutator.attributes()
 			for (target in targets) {
 				val damage = max(attributes.strength() - target.physicalDefense(), 0.0)
 				/**
@@ -26,6 +27,10 @@ class BareHandAttack : AbstractMutator() {
 				target.decOrZero(damage.health())
 			}
 		}
+	}
+
+	override fun targets(mutator: Mutator, entities: Entities) = Targets.build {
+
 	}
 
 	companion object {

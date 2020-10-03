@@ -14,6 +14,9 @@ class BattleController : AbstractController() {
 		val entity = initiative.resolve(entitiesMap)
 
 		for (ability in entity.abilities) {
+			for (entities in entitiesMap) {
+				ability.targets(entity, entities)
+			}
 		}
 
 		TODO("Not yet implemented")
