@@ -23,6 +23,8 @@ class BareHandAttackTest {
 			)
 		}
 
+		assertEquals(5.0, entity.target("attack.bare-hands", target).rank)
+
 		entity.ability("attack.bare-hands", target)
 		assertEquals(5.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
@@ -48,6 +50,9 @@ class BareHandAttackTest {
 				15.0.physicalDefense(),
 			)
 		}
+
+		assertEquals(0.0, entity.target("attack.bare-hands", target).rank)
+
 		entity.ability("attack.bare-hands", target)
 		assertEquals(15.0, target.health(), "Target's health is different.")
 	}
@@ -68,6 +73,9 @@ class BareHandAttackTest {
 				15.0.physicalDefense(),
 			)
 		}
+
+		assertEquals(5.0, entity.target("attack.bare-hands", target).rank)
+
 		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, target.health(), "Target's health is different.")
 	}

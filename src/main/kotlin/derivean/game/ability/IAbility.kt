@@ -3,6 +3,7 @@ package derivean.game.ability
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.IMutator
+import derivean.game.mutator.Target
 import derivean.game.mutator.Targets
 
 interface IAbility {
@@ -13,6 +14,8 @@ interface IAbility {
 	val mutator: IMutator
 
 	fun use(entity: Entity, targets: Entities = Entities())
+
+	fun target(entity: Entity, target: Entity): Target
 
 	fun targets(entity: Entity, entities: Entities): Targets
 }
