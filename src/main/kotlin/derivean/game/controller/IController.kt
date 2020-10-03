@@ -1,6 +1,6 @@
 package derivean.game.controller
 
-import derivean.game.entity.Entities
+import derivean.game.entity.ListOfEntities
 import derivean.game.initiative.IInitiative
 
 interface IController {
@@ -9,5 +9,5 @@ interface IController {
 	 * standalone team, thus if there is battle controller, they will be attacking
 	 * each other.
 	 */
-	fun loop(initiative: IInitiative, entities: List<Entities>)
+	fun loop(initiative: IInitiative, listOfEntities: ListOfEntities)
 }

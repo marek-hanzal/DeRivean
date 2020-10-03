@@ -3,6 +3,7 @@ package derivean.game.initiative
 import derivean.game.attribute.common.initiative
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
+import derivean.game.entity.ListOfEntities
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -29,7 +30,8 @@ class InitiativeTest {
 	@Test
 	fun `Entity Selection`() {
 		val initiative = Initiative()
-		val alfa = Entities.build {
+		val listOfEntities = ListOfEntities()
+		listOfEntities["alfa"] = Entities.build {
 			entities(
 				Entity.build("Foo") {
 					attributes(
@@ -43,7 +45,7 @@ class InitiativeTest {
 				},
 			)
 		}
-		val beta = Entities.build {
+		listOfEntities["beta"] = Entities.build {
 			entities(
 				Entity.build("Boo") {
 					attributes(
@@ -57,8 +59,8 @@ class InitiativeTest {
 				},
 			)
 		}
-		assertEquals(alfa["Foo"], initiative.resolve(alfa))
-		assertEquals(beta["Far"], initiative.resolve(beta))
-		assertEquals(beta["Far"], initiative.resolve(listOf(alfa, beta)))
+		assertEquals(listOfEntities["alfa"]["Foo"], initiative.resolve(listOfEntities["alfa"]))
+		assertEquals(listOfEntities["beta"]["Far"], initiative.resolve(listOfEntities["beta"]))
+		assertEquals(listOfEntities["beta"]["Far"], initiative.resolve(listOfEntities))
 	}
 }
