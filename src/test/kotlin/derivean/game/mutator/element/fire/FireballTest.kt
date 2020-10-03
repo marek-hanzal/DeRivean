@@ -91,7 +91,7 @@ class FireballTest {
 				targetElement.fireElement(),
 			)
 		}
-		effect.evaluate(entity, target)
+		effect.mutate(entity, target)
 
 		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
 		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")

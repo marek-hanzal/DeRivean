@@ -26,9 +26,9 @@ class Entity(
 	/**
 	 * Use specified ability of this entity on target Entities.
 	 */
-	fun ability(name: String, targets: List<Entity> = listOf()) = abilities[name].use(this, targets)
+	fun ability(name: String, targets: Entities = Entities()) = abilities[name].use(this, targets)
 
-	fun ability(name: String, target: Entity) = ability(name, listOf(target))
+	fun ability(name: String, target: Entity) = ability(name, Entities(target))
 
 	fun inc(attribute: Attribute) = attributes.inc(attribute)
 
@@ -63,4 +63,4 @@ class Entity(
 	}
 }
 
-fun Entity.mutateWith(attributes: Attributes) = Mutator(this, attributes)
+fun Entity.mutateWith(attributes: Attributes = Attributes()) = Mutator(this, attributes)

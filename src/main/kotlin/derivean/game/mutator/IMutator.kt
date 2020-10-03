@@ -1,6 +1,6 @@
 package derivean.game.mutator
 
-import derivean.game.attribute.Attributes
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.entity.mutateWith
 
@@ -19,13 +19,15 @@ interface IMutator {
 	 * This method could be used for example as HumanMutator (mutate input Entity to Human) or
 	 * as Mutator implementing attack (for example entity attacks targets).
 	 */
-	fun evaluate(mutator: Mutator, targets: List<Entity> = listOf())
+	fun mutation(mutator: Mutator, targets: Entities = Entities()): Mutation
 
-	fun evaluate(entity: Entity, targets: List<Entity> = listOf()) = evaluate(entity.mutateWith(Attributes()), targets)
+	fun mutation(entity: Entity, targets: Entities = Entities()) = mutation(entity.mutateWith(), targets)
 
-	fun evaluate(entity: Entity, target: Entity) = evaluate(entity, listOf(target))
+	fun mutation(entity: Entity, target: Entity) = mutation(entity, Entities(target))
 
-	fun target(entity: Entity, target: Entity): Target
+	fun mutate(mutator: Mutator, targets: Entities = Entities()) = mutation(mutator, targets).evaluate()
 
-//	fun targets(entity: Entity, targets: Entities): Targets
+	fun mutate(entity: Entity, targets: Entities = Entities()) = mutate(entity.mutateWith(), targets)
+
+	fun mutate(entity: Entity, target: Entity) = mutate(entity.mutateWith(), Entities(target))
 }

@@ -39,7 +39,7 @@ class EntitiesTest {
 	@Test
 	fun `Access an unknown Entity`() {
 		assertEquals("Requested unknown Entity [Kaboom!].", assertFailsWith<UnknownEntityException> {
-			Entities(mapOf())["Kaboom!"]
+			Entities()["Kaboom!"]
 		}.message)
 	}
 }

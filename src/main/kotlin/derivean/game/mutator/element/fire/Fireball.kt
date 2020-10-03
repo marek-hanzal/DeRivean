@@ -8,47 +8,51 @@ import derivean.game.attribute.element.fireAttack
 import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
+import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
 import kotlin.math.max
 
 class Fireball : AbstractMutator() {
-	override fun evaluate(mutator: Mutator, targets: List<Entity>) {
-		val attributes = mutator.attributes()
-
-		/**
-		 * Compute base attack of source entity.
-		 */
-		val attack = (attributes.fireAttack() + attributes.fireballAttack()) * (1 + attributes.fireElement())
-
-		/**
-		 * Take cost of casting fireball and mark it as mana loss (decrease).
-		 */
-		mutator.entity.decOrZero(attributes.fireballCost().mana())
-
-		for (target in targets) {
-			/**
-			 * Base target entity defense.
-			 */
-			val defense = if (target.fireElement() <= -1) -attack else target.fireDefense() * (1 + target.fireElement())
+	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+		mutation {
+			val attributes = mutator.attributes()
 
 			/**
-			 * Compute final damage (if any).
+			 * Compute base attack of source entity.
 			 */
-			val damage = if (target.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
+			val attack = (attributes.fireAttack() + attributes.fireballAttack()) * (1 + attributes.fireElement())
+
 			/**
-			 * Set (general) damage done in this duel.
+			 * Take cost of casting fireball and mark it as mana loss (decrease).
 			 */
-			mutator.entity.inc(damage.damage())
-			/**
-			 * Set fire damage done in this duel.
-			 */
-			mutator.entity.inc(damage.fireDamage())
-			/**
-			 * Take damage as health and decrease it (health loss done by fireball).
-			 */
-			target.decOrZero(damage.health())
+			mutator.entity.decOrZero(attributes.fireballCost().mana())
+
+			for (target in targets) {
+				/**
+				 * Base target entity defense.
+				 */
+				val defense = if (target.fireElement() <= -1) -attack else target.fireDefense() * (1 + target.fireElement())
+
+				/**
+				 * Compute final damage (if any).
+				 */
+				val damage = if (target.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
+				/**
+				 * Set (general) damage done in this duel.
+				 */
+				mutator.entity.inc(damage.damage())
+				/**
+				 * Set fire damage done in this duel.
+				 */
+				mutator.entity.inc(damage.fireDamage())
+				/**
+				 * Take damage as health and decrease it (health loss done by fireball).
+				 */
+				target.decOrZero(damage.health())
+			}
 		}
 	}
 
