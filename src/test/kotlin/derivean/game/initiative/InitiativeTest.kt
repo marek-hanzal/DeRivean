@@ -2,8 +2,8 @@ package derivean.game.initiative
 
 import derivean.game.attribute.common.initiative
 import derivean.game.entity.Entities
+import derivean.game.entity.EntitiesMap
 import derivean.game.entity.Entity
-import derivean.game.entity.ListOfEntities
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -30,8 +30,8 @@ class InitiativeTest {
 	@Test
 	fun `Entity Selection`() {
 		val initiative = Initiative()
-		val listOfEntities = ListOfEntities()
-		listOfEntities["alfa"] = Entities.build {
+		val entitiesMap = EntitiesMap()
+		entitiesMap["alfa"] = Entities.build {
 			entities(
 				Entity.build("Foo") {
 					attributes(
@@ -45,7 +45,7 @@ class InitiativeTest {
 				},
 			)
 		}
-		listOfEntities["beta"] = Entities.build {
+		entitiesMap["beta"] = Entities.build {
 			entities(
 				Entity.build("Boo") {
 					attributes(
@@ -59,8 +59,8 @@ class InitiativeTest {
 				},
 			)
 		}
-		assertEquals(listOfEntities["alfa"]["Foo"], initiative.resolve(listOfEntities["alfa"]))
-		assertEquals(listOfEntities["beta"]["Far"], initiative.resolve(listOfEntities["beta"]))
-		assertEquals(listOfEntities["beta"]["Far"], initiative.resolve(listOfEntities))
+		assertEquals(entitiesMap["alfa"]["Foo"], initiative.resolve(entitiesMap["alfa"]))
+		assertEquals(entitiesMap["beta"]["Far"], initiative.resolve(entitiesMap["beta"]))
+		assertEquals(entitiesMap["beta"]["Far"], initiative.resolve(entitiesMap))
 	}
 }

@@ -2,11 +2,11 @@ package derivean.game.initiative
 
 import derivean.game.attribute.common.initiative
 import derivean.game.entity.Entities
-import derivean.game.entity.ListOfEntities
+import derivean.game.entity.EntitiesMap
 
 class Initiative : AbstractInitiative() {
-	override fun resolve(listOfEntities: ListOfEntities) = Entities.build {
-		for (value in listOfEntities.filter { it.entities.isNotEmpty() }) {
+	override fun resolve(entitiesMap: EntitiesMap) = Entities.build {
+		for (value in entitiesMap.filter { it.entities.isNotEmpty() }) {
 			entities(resolve(value))
 		}
 	}.let {
