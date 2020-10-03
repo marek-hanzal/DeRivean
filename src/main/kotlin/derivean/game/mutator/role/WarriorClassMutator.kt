@@ -8,7 +8,7 @@ import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutator
 
 class WarriorClassMutator : AbstractMutator() {
-	override fun mutate(mutator: Mutator, targets: List<Entity>) {
+	override fun evaluate(mutator: Mutator, targets: List<Entity>) {
 		val attributes = mutator.attributes()
 
 		mutator.attributes(

@@ -9,5 +9,5 @@ interface IController {
 	 * standalone team, thus if there is battle controller, they will be attacking
 	 * each other.
 	 */
-	fun round(initiative: IInitiative, entities: List<Entities>)
+	fun loop(initiative: IInitiative, entities: List<Entities>)
 }

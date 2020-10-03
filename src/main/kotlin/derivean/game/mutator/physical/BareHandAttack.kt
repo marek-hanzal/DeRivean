@@ -6,10 +6,11 @@ import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutator
+import derivean.game.mutator.Target
 import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
-	override fun mutate(mutator: Mutator, targets: List<Entity>) {
+	override fun evaluate(mutator: Mutator, targets: List<Entity>) {
 		val attributes = mutator.attributes()
 
 		for (target in targets) {
@@ -20,10 +21,13 @@ class BareHandAttack : AbstractMutator() {
 			mutator.entity.inc(damage.damage())
 			mutator.entity.inc(damage.physicalDamage())
 			/**
-			 * Convert damage to heal loss of target entity; health cannot go under zer0.
+			 * Convert damage to heal loss of target entity; health cannot go under zero.
 			 */
 			target.decOrZero(damage.health())
 		}
+	}
+
+	override fun target(entity: Entity, target: Entity) = Target.build(entity, target) {
 	}
 
 	companion object {

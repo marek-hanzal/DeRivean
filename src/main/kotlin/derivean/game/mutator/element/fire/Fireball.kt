@@ -14,7 +14,7 @@ import derivean.game.mutator.Mutator
 import kotlin.math.max
 
 class Fireball : AbstractMutator() {
-	override fun mutate(mutator: Mutator, targets: List<Entity>) {
+	override fun evaluate(mutator: Mutator, targets: List<Entity>) {
 		val attributes = mutator.attributes()
 
 		/**
