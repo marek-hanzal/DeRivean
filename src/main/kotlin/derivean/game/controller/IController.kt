@@ -1,12 +1,13 @@
 package derivean.game.controller
 
 import derivean.game.entity.Entities
+import derivean.game.initiative.IInitiative
 
 interface IController {
 	/**
-	 * Compute one round of "something" (usually battle) between two teams of Entities.
-	 *
-	 * In general alfa and beta are enemies.
+	 * Compute one round of actions. Each group of Entities is considered as
+	 * standalone team, thus if there is battle controller, they will be attacking
+	 * each other.
 	 */
-	fun round(alfa: Entities, beta: Entities)
+	fun round(initiative: IInitiative, entities: List<Entities>)
 }
