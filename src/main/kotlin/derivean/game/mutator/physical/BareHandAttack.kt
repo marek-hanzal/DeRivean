@@ -40,7 +40,7 @@ class BareHandAttack : AbstractMutator() {
 		}
 	}
 
-	private fun damage(mutator: Mutator, target: Entity, block: Double.() -> Unit) = block(max(mutator.attributes().strength() - target.physicalDefense(), 0.0))
+	private fun damage(mutator: Mutator, target: Entity, block: Double.() -> Unit) = block(max(mutator.current.strength() - target.physicalDefense(), 0.0))
 
 	companion object {
 		fun ability(name: String, attributes: Attributes = Attributes()) = Ability(name, BareHandAttack(), attributes)

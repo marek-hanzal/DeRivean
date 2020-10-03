@@ -13,22 +13,21 @@ import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
+import derivean.game.mutator.Target
 import kotlin.math.max
 
 class Fireball : AbstractMutator() {
 	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
-			val attributes = mutator.attributes()
-
 			/**
 			 * Compute base attack of source entity.
 			 */
-			val attack = (attributes.fireAttack() + attributes.fireballAttack()) * (1 + attributes.fireElement())
+			val attack = (mutator.current.fireAttack() + mutator.current.fireballAttack()) * (1 + mutator.current.fireElement())
 
 			/**
 			 * Take cost of casting fireball and mark it as mana loss (decrease).
 			 */
-			mutator.entity.decOrZero(attributes.fireballCost().mana())
+			mutator.entity.decOrZero(mutator.current.fireballCost().mana())
 
 			for (target in targets) {
 				/**
@@ -54,6 +53,10 @@ class Fireball : AbstractMutator() {
 				target.decOrZero(damage.health())
 			}
 		}
+	}
+
+	override fun target(mutator: Mutator, entity: Entity): Target {
+		TODO("Implement rank in Fireball Mutator!")
 	}
 
 	companion object {
