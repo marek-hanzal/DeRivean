@@ -22,7 +22,7 @@ class BattleControllerTest {
 		assertEquals(150.0, beta["Wind River"].health())
 		assertEquals(6.0, beta["Wind River"].strength())
 
-		controller.round(alfa, beta)
+//		controller.round(alfa, beta)
 	}
 
 	private fun createAlfaTeam() = Entities.build {
