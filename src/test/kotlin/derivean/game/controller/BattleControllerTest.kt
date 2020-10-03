@@ -1,9 +1,11 @@
 package derivean.game.controller
 
 import derivean.game.attribute.common.health
+import derivean.game.attribute.common.initiative
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
+import derivean.game.initiative.Initiative
 import derivean.game.mutator.being.HumanMutator
 import derivean.game.mutator.role.WarriorClassMutator
 import org.junit.Test
@@ -13,6 +15,7 @@ class BattleControllerTest {
 	@Test
 	fun `Do some simple battle, dude!`() {
 		val controller = BattleController()
+		val initiative = Initiative()
 
 		val alfa = createAlfaTeam()
 		val beta = createBetaTeam()
@@ -22,7 +25,7 @@ class BattleControllerTest {
 		assertEquals(150.0, beta["Wind River"].health())
 		assertEquals(6.0, beta["Wind River"].strength())
 
-//		controller.round(alfa, beta)
+		controller.round(initiative, listOf(alfa, beta))
 	}
 
 	private fun createAlfaTeam() = Entities.build {
@@ -33,6 +36,11 @@ class BattleControllerTest {
 			humanMutator.mutate(this)
 			warriorClassMutator.mutate(this)
 			entities(this)
+			/**
+			 * Lower the initiative - so second team member (beta) should
+			 * take the initial round.
+			 */
+			this.attributes(5.0.initiative())
 		}
 	}
 
