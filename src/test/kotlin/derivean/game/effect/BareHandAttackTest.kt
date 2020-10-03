@@ -2,6 +2,7 @@ package derivean.game.effect
 
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.physical.BareHandAttack
 import org.junit.Test
@@ -51,6 +52,10 @@ class BareHandAttackTest {
 			)
 		}
 
+		with(entity.targets("attack.bare-hands", Entities(target))) {
+			assertEquals(0.0, rank)
+			assertEquals(0, targets.size)
+		}
 		assertEquals(0.0, entity.target("attack.bare-hands", target).rank)
 
 		entity.ability("attack.bare-hands", target)
