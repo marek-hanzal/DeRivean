@@ -32,6 +32,8 @@ class Entity(
 
 	fun target(ability: String, target: Entity) = abilities[ability].target(this, target)
 
+	fun targets(ability: String, targets: Entities) = abilities[ability].targets(this, targets)
+
 	fun inc(attribute: Attribute) = attributes.inc(attribute)
 
 	fun decOrZero(attribute: Attribute) = attributes.decOrZero(attribute)

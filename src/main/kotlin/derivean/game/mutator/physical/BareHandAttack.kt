@@ -5,7 +5,9 @@ import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.*
+import derivean.game.mutator.AbstractMutator
+import derivean.game.mutator.Mutation
+import derivean.game.mutator.Mutator
 import derivean.game.mutator.Target
 import kotlin.math.max
 
@@ -31,12 +33,6 @@ class BareHandAttack : AbstractMutator() {
 	override fun target(mutator: Mutator, entity: Entity) = Target.build {
 		damage(mutator, entity) {
 			rank = this
-		}
-	}
-
-	override fun targets(mutator: Mutator, entities: Entities) = Targets.build {
-		for (entity in entities) {
-			target(mutator, entity)
 		}
 	}
 
