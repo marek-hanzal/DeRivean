@@ -11,6 +11,7 @@ import derivean.game.initiative.IInitiative
  */
 class BattleController : AbstractController() {
 	override fun round(initiative: IInitiative, entities: List<Entities>) {
+		val entity = initiative.resolve(entities)
 		TODO("Not yet implemented")
 	}
 }
