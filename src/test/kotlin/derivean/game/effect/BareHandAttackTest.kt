@@ -114,4 +114,34 @@ class BareHandAttackTest {
 			assertEquals(1, targets.size, "There are more targets!")
 		}
 	}
+
+	@Test
+	fun `No Friendly-fire`() {
+		val entities = Entities.build {
+			entities(
+				Entity.build("Alfa") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.ability("attack.bare-hands"))
+				},
+				Entity.build("This one is alive") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("This one is not alive") {
+					attributes(
+						0.0.health(),
+					)
+				},
+			)
+		}
+
+		with(entities["Alfa"].targets("attack.bare-hands", entities)) {
+			assertEquals(0.0, rank, "Rank should be zero!")
+			assertEquals(0, targets.size, "There are more targets!")
+		}
+	}
 }
