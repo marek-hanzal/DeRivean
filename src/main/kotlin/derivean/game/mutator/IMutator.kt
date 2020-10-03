@@ -30,4 +30,6 @@ interface IMutator {
 	fun mutate(entity: Entity, targets: Entities = Entities()) = mutate(entity.mutateWith(), targets)
 
 	fun mutate(entity: Entity, target: Entity) = mutate(entity.mutateWith(), Entities(target))
+
+	fun targets(mutator: Mutator, entities: Entities) = Targets.build { }
 }
