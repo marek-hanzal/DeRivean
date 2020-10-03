@@ -5,6 +5,7 @@ import derivean.game.attribute.common.initiative
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
+import derivean.game.entity.ListOfEntities
 import derivean.game.initiative.Initiative
 import derivean.game.mutator.being.HumanMutator
 import derivean.game.mutator.role.WarriorClassMutator
@@ -16,16 +17,17 @@ class BattleControllerTest {
 	fun `Do some simple battle, dude!`() {
 		val controller = BattleController()
 		val initiative = Initiative()
+		val listOfEntities = ListOfEntities()
 
-		val alfa = createAlfaTeam()
-		val beta = createBetaTeam()
+		listOfEntities["alfa"] = createAlfaTeam()
+		listOfEntities["beta"] = createBetaTeam()
 
-		assertEquals(150.0, alfa["The Candle Holder"].health())
-		assertEquals(6.0, alfa["The Candle Holder"].strength())
-		assertEquals(150.0, beta["Wind River"].health())
-		assertEquals(6.0, beta["Wind River"].strength())
+		assertEquals(150.0, listOfEntities["alfa"]["The Candle Holder"].health())
+		assertEquals(6.0, listOfEntities["alfa"]["The Candle Holder"].strength())
+		assertEquals(150.0, listOfEntities["beta"]["Wind River"].health())
+		assertEquals(6.0, listOfEntities["beta"]["Wind River"].strength())
 
-		controller.loop(initiative, listOf(alfa, beta))
+		controller.loop(initiative, listOfEntities)
 	}
 
 	private fun createAlfaTeam() = Entities.build {

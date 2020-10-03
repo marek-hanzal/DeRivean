@@ -1,6 +1,6 @@
 package derivean.game.controller
 
-import derivean.game.entity.Entities
+import derivean.game.entity.ListOfEntities
 import derivean.game.initiative.IInitiative
 
 /**
@@ -10,8 +10,12 @@ import derivean.game.initiative.IInitiative
  * Use case of this controller is when a player is just looking on (live) battle.
  */
 class BattleController : AbstractController() {
-	override fun loop(initiative: IInitiative, entities: List<Entities>) {
-		val entity = initiative.resolve(entities)
+	override fun loop(initiative: IInitiative, listOfEntities: ListOfEntities) {
+		val entity = initiative.resolve(listOfEntities)
+
+		for (ability in entity.abilities) {
+		}
+
 		TODO("Not yet implemented")
 	}
 }
