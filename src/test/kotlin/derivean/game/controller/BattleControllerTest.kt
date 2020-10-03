@@ -33,8 +33,8 @@ class BattleControllerTest {
 		val warriorClassMutator = WarriorClassMutator()
 
 		with(Entity.build("The Candle Holder")) {
-			humanMutator.evaluate(this)
-			warriorClassMutator.evaluate(this)
+			humanMutator.mutate(this)
+			warriorClassMutator.mutate(this)
 			entities(this)
 			/**
 			 * Lower the initiative - so second team member (beta) should
@@ -49,8 +49,8 @@ class BattleControllerTest {
 		val warriorClassMutator = WarriorClassMutator()
 
 		with(Entity.build("Wind River")) {
-			humanMutator.evaluate(this)
-			warriorClassMutator.evaluate(this)
+			humanMutator.mutate(this)
+			warriorClassMutator.mutate(this)
 			entities(this)
 		}
 	}

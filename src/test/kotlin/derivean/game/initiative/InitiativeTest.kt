@@ -11,7 +11,7 @@ class InitiativeTest {
 	@Test
 	fun `Empty Entities`() {
 		assertEquals("Entities are empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
-			Initiative().resolve(Entities(mapOf()))
+			Initiative().resolve(Entities())
 		}.message)
 	}
 

@@ -1,5 +1,6 @@
 package derivean.game.ability
 
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.IMutator
 
@@ -10,5 +11,5 @@ interface IAbility {
 	val ability: String
 	val mutator: IMutator
 
-	fun use(entity: Entity, targets: List<Entity> = listOf())
+	fun use(entity: Entity, targets: Entities = Entities())
 }
