@@ -5,8 +5,27 @@ import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class InitiativeTest {
+	@Test
+	fun `Empty Entities`() {
+		assertEquals("Entities are empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
+			Initiative().resolve(Entities(mapOf()))
+		}.message)
+	}
+
+	@Test
+	fun `Entities Without Attribute`() {
+		val entities = Entities.build {
+			entities(
+				Entity.build("foo"),
+				Entity.build("bar"),
+			)
+		}
+		assertEquals(entities["foo"], Initiative().resolve(entities))
+	}
+
 	@Test
 	fun `Entity Selection`() {
 		val initiative = Initiative()
