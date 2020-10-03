@@ -1,6 +1,6 @@
 package derivean.game.entity
 
-class ListOfEntities(private val map: MutableMap<String, Entities> = mutableMapOf()) : Iterable<Entities> {
+class EntitiesMap(private val map: MutableMap<String, Entities> = mutableMapOf()) : Iterable<Entities> {
 	operator fun set(name: String, entities: Entities) {
 		map[name] = entities
 	}
