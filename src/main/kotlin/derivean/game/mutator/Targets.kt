@@ -1,22 +1,23 @@
 package derivean.game.mutator
 
-class Targets(val rank: Double, val targets: List<Target>) {
+class Targets(val targets: List<Target>, val rank: Double) {
 	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+		inline fun build(limit: Double, block: Builder.() -> Unit) = Builder(limit.toInt()).apply(block).build()
+		inline fun build(block: Builder.() -> Unit) = build(1.0, block)
 	}
 
-	class Builder {
-		private var rank: Double = 0.0
+	class Builder(private val limit: Int) {
 		private val targets: MutableList<Target> = mutableListOf()
 
 		fun target(target: Target) {
-			rank += target.rank
 			targets.add(target)
 		}
 
-		fun build() = Targets(
-			rank,
-			targets,
-		)
+		fun build() = with(targets.sortedByDescending { it.rank }.subList(0, limit)) {
+			Targets(
+				this,
+				this.sumByDouble { it.rank },
+			)
+		}
 	}
 }

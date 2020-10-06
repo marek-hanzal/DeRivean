@@ -4,7 +4,7 @@ import derivean.game.attribute.common.isAlive
 import derivean.game.entity.Entities
 
 abstract class AbstractMutator : IMutator {
-	override fun targets(mutator: Mutator, entities: Entities) = Targets.build {
+	override fun targets(mutator: Mutator, entities: Entities) = Targets.build(targets(mutator)) {
 		for (entity in entities) {
 			target(mutator, entity).apply {
 				/**
