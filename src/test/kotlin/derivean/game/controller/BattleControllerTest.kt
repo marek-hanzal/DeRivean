@@ -15,28 +15,27 @@ import kotlin.test.assertEquals
 class BattleControllerTest {
 	@Test
 	fun `Do some simple battle, dude!`() {
-		val controller = BattleController()
-		val initiative = Initiative()
-		val entitiesMap = EntitiesMap.build {
-			addEntities("alfa", createAlfaTeam())
-			addEntities("beta", createBetaTeam())
+		BattleController().let { controller ->
+			Initiative().let { initiative ->
+				EntitiesMap.build {
+					addEntities("alfa", createAlfaTeam())
+					addEntities("beta", createBetaTeam())
+				}.let { entitiesMap ->
+					assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())
+					assertEquals(6.0, entitiesMap["alfa"]["The Candle Holder"].strength())
+					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
+					assertEquals(6.0, entitiesMap["beta"]["Wind River"].strength())
+
+					controller.loop(initiative, entitiesMap)
+				}
+			}
 		}
-
-		assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())
-		assertEquals(6.0, entitiesMap["alfa"]["The Candle Holder"].strength())
-		assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
-		assertEquals(6.0, entitiesMap["beta"]["Wind River"].strength())
-
-		controller.loop(initiative, entitiesMap)
 	}
 
 	private fun createAlfaTeam() = Entities.build {
-		val humanMutator = HumanMutator()
-		val warriorClassMutator = WarriorClassMutator()
-
 		with(Entity.build("The Candle Holder")) {
-			humanMutator.mutate(this)
-			warriorClassMutator.mutate(this)
+			HumanMutator().mutate(this)
+			WarriorClassMutator().mutate(this)
 			entity(this)
 			/**
 			 * Lower the initiative - so second team member (beta) should
@@ -47,12 +46,9 @@ class BattleControllerTest {
 	}
 
 	private fun createBetaTeam() = Entities.build {
-		val humanMutator = HumanMutator()
-		val warriorClassMutator = WarriorClassMutator()
-
 		with(Entity.build("Wind River")) {
-			humanMutator.mutate(this)
-			warriorClassMutator.mutate(this)
+			HumanMutator().mutate(this)
+			WarriorClassMutator().mutate(this)
 			entity(this)
 		}
 	}
