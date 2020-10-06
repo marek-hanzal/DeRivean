@@ -13,7 +13,7 @@ class Targets(val targets: List<Target>, val rank: Double) {
 			targets.add(target)
 		}
 
-		fun build() = with(targets.sortedByDescending { it.rank }.subList(0, limit)) {
+		fun build() = with(targets.sortedByDescending { it.rank }.take(limit)) {
 			Targets(
 				this,
 				this.sumByDouble { it.rank },

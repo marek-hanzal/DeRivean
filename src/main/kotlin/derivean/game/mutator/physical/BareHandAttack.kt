@@ -46,9 +46,9 @@ class BareHandAttack : AbstractMutator() {
 
 		private const val ATTRIBUTE_TARGETS = "physical.bare-hand.targets"
 		fun targets(value: Double) = ATTRIBUTE_TARGETS to ceil(value)
-		fun targets(attributes: Attributes) = attributes[ATTRIBUTE_TARGETS]
+		fun targets(attributes: Attributes, default: Double) = attributes[ATTRIBUTE_TARGETS, default]
 	}
 }
 
 fun Double.bareHandTargets() = BareHandAttack.targets(this)
-fun Attributes.bareHandTargets() = BareHandAttack.targets(this)
+fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
