@@ -37,7 +37,7 @@ class CommonAttributes {
 		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
 		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
 
-		private const val ATTRIBUTE_INITIATIVE = "damage"
+		private const val ATTRIBUTE_INITIATIVE = "initiative"
 		fun initiative(value: Double) = ATTRIBUTE_INITIATIVE to value
 		fun initiative(attributes: Attributes) = attributes[ATTRIBUTE_INITIATIVE]
 	}

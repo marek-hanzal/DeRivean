@@ -18,8 +18,8 @@ class InitiativeTest {
 	@Test
 	fun `Entities Without Attribute`() {
 		val entities = Entities.build {
-			entity("foo") {}
-			entity("bar") {}
+			addEntity("foo") {}
+			addEntity("bar") {}
 		}
 		assertEquals("Cannot resolve Initiative, all entities are without Initiative.", assertFailsWith<NoInitiativeException> {
 			Initiative().resolve(entities)
@@ -31,24 +31,24 @@ class InitiativeTest {
 		val initiative = Initiative()
 		val entitiesMap = EntitiesMap.build {
 			addEntities("alfa") {
-				entity("Foo") {
+				addEntity("Foo") {
 					attributes(
 						12.0.initiative(),
 					)
 				}
-				entity("Bar") {
+				addEntity("Bar") {
 					attributes(
 						10.0.initiative(),
 					)
 				}
 			}
 			addEntities("beta") {
-				entity("Boo") {
+				addEntity("Boo") {
 					attributes(
 						8.0.initiative(),
 					)
 				}
-				entity("Far") {
+				addEntity("Far") {
 					attributes(
 						13.0.initiative(),
 					)

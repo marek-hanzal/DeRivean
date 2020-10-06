@@ -20,17 +20,11 @@ class Entities(val entities: MutableMap<String, Entity> = mutableMapOf()) : Iter
 	class Builder {
 		private var map = mutableMapOf<String, Entity>()
 
-//		fun entities(vararg entities: Entity) {
-//			for (entity in entities) {
-//				this.entities[entity.toString()] = entity
-//			}
-//		}
-
-		fun entity(entity: Entity) {
+		fun addEntity(entity: Entity) {
 			map[entity.toString()] = entity
 		}
 
-		fun entity(name: String, block: Entity.Builder.() -> Unit) {
+		fun addEntity(name: String, block: Entity.Builder.() -> Unit) {
 			Entity.build(name, block).also {
 				map[it.toString()] = it
 			}
@@ -39,3 +33,5 @@ class Entities(val entities: MutableMap<String, Entity> = mutableMapOf()) : Iter
 		fun build() = Entities(map)
 	}
 }
+
+fun List<Entity>.toEntities() = Entities(*this.toTypedArray())

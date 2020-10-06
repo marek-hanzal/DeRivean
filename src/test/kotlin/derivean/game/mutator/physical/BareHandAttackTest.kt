@@ -94,13 +94,13 @@ class BareHandAttackTest {
 			ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 		val entities = Entities.build {
-			entity("This one is alive") {
+			addEntity("This one is alive") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("This one is not alive") {
+			addEntity("This one is not alive") {
 				attributes(
 					0.0.health(),
 				)
@@ -116,19 +116,19 @@ class BareHandAttackTest {
 	@Test
 	fun `No Friendly-fire`() {
 		val entities = Entities.build {
-			entity("Alfa") {
+			addEntity("Alfa") {
 				attributes(
 					10.0.strength(),
 				)
 				ability(BareHandAttack.ability("attack.bare-hands"))
 			}
-			entity("This one is alive") {
+			addEntity("This one is alive") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("This one is not alive") {
+			addEntity("This one is not alive") {
 				attributes(
 					0.0.health(),
 				)
@@ -152,19 +152,19 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entity("1") {
+			addEntity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("2") {
+			addEntity("2") {
 				attributes(
 					12.0.health(),
 					2.0.physicalDefense(),
 				)
 			}
-			entity("3") {
+			addEntity("3") {
 				attributes(
 					20.0.health(),
 				)
@@ -190,19 +190,19 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entity("1") {
+			addEntity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("2") {
+			addEntity("2") {
 				attributes(
 					12.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("3") {
+			addEntity("3") {
 				attributes(
 					20.0.health(),
 				)
@@ -228,25 +228,25 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entity("0") {
+			addEntity("0") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("1") {
+			addEntity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("2") {
+			addEntity("2") {
 				attributes(
 					12.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			entity("3") {
+			addEntity("3") {
 				attributes(
 					20.0.health(),
 				)

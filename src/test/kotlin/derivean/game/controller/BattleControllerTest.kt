@@ -22,11 +22,21 @@ class BattleControllerTest {
 					addEntities("beta", createBetaTeam())
 				}.let { entitiesMap ->
 					assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())
-					assertEquals(6.0, entitiesMap["alfa"]["The Candle Holder"].strength())
+					assertEquals(12.0, entitiesMap["alfa"]["The Candle Holder"].strength())
 					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
-					assertEquals(6.0, entitiesMap["beta"]["Wind River"].strength())
+					assertEquals(12.0, entitiesMap["beta"]["Wind River"].strength())
 
 					controller.loop(initiative, entitiesMap)
+
+					assertEquals(0.0, entitiesMap["beta"]["Wind River"].initiative())
+					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
+					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
+
+					controller.loop(initiative, entitiesMap)
+
+					assertEquals(0.0, entitiesMap["alfa"]["The Candle Holder"].initiative())
+					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
+					assertEquals(143.0, entitiesMap["beta"]["Wind River"].health())
 				}
 			}
 		}
@@ -36,7 +46,7 @@ class BattleControllerTest {
 		Entity.build("The Candle Holder").let { entity ->
 			HumanMutator().mutate(entity)
 			WarriorClassMutator().mutate(entity)
-			entity(entity)
+			addEntity(entity)
 			/**
 			 * Lower the initiative - so second team member (beta) should
 			 * take the initial round.
@@ -49,7 +59,7 @@ class BattleControllerTest {
 		Entity.build("Wind River").let { entity ->
 			HumanMutator().mutate(entity)
 			WarriorClassMutator().mutate(entity)
-			entity(entity)
+			addEntity(entity)
 		}
 	}
 }

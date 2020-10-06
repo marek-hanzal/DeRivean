@@ -6,8 +6,8 @@ import derivean.game.entity.EntitiesMap
 
 class Initiative : AbstractInitiative() {
 	override fun resolve(entitiesMap: EntitiesMap) = Entities.build {
-		for (value in entitiesMap.filter { it.entities.isNotEmpty() }) {
-			entity(resolve(value))
+		for (entities in entitiesMap.filter { it.entities.isNotEmpty() }) {
+			addEntity(resolve(entities))
 		}
 	}.let {
 		resolve(it)

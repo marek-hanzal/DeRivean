@@ -18,7 +18,7 @@ class HumanMutator : AbstractMutator() {
 				50.0.maxMana(),
 				50.0.mana(),
 				10.0.initiative(),
-				5.0.strength(),
+				10.0.strength(),
 				5.0.physicalDefense(),
 			)
 			mutator.ability(BareHandAttack.ability("attack.bare-hands"))
