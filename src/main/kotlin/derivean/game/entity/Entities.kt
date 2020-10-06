@@ -5,7 +5,7 @@ import derivean.game.attribute.common.currentInitiative
 open class Entities(val map: Map<String, Entity>) : Iterable<Entity> {
 	override fun iterator() = map.values.iterator()
 
-	fun initiative() = map.values.sumByDouble { it.currentInitiative() }
+	fun initiative() = map.values.maxOf { it.currentInitiative() }
 
 	fun isMember(entity: Entity) = map.containsKey(entity.toString())
 
