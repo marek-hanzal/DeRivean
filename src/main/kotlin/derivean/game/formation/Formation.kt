@@ -28,7 +28,9 @@ class Formation(val formation: String, map: Map<String, Entity>) : Entities(map)
 		/**
 		 * Use, when it's needed to create an Entity in place.
 		 */
-		fun entity(name: String, block: Entity.Builder.() -> Unit) = Entity.build(name, block)
+		fun entity(name: String, block: Entity.Builder.() -> Unit) = Entity.build(name, block).apply {
+			map[name] = this
+		}
 
 		fun build() = Formation(
 			formation,
