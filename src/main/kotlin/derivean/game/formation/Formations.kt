@@ -6,6 +6,8 @@ package derivean.game.formation
 class Formations(val map: Map<String, Formation>) : Iterable<Map.Entry<String, Formation>> {
 	override fun iterator() = map.iterator()
 
+	operator fun get(name: String) = map.getOrElse(name) { throw UnknownFormationException("Requested unknown formation [${name}].") }
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}
@@ -15,7 +17,7 @@ class Formations(val map: Map<String, Formation>) : Iterable<Map.Entry<String, F
 
 		fun formation(vararg formation: Pair<String, Formation>) = map.putAll(formation)
 
-		fun formation(formation: Formation.Builder.() -> Unit) = Formation.build(formation)
+		fun formation(name: String, formation: Formation.Builder.() -> Unit) = formation(name to Formation.build(name, formation))
 
 		fun build() = Formations(
 			map,

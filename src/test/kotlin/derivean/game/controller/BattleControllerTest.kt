@@ -1,27 +1,50 @@
 package derivean.game.controller
 
 import derivean.game.attribute.common.currentInitiative
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.strength
-import derivean.game.entity.Entities
-import derivean.game.entity.EntitiesMap
-import derivean.game.entity.Entity
+import derivean.game.formation.Formations
 import derivean.game.initiative.Initiative
+import derivean.game.mutator.Mutators
 import derivean.game.mutator.being.HumanMutator
+import derivean.game.mutator.being.humanMutator
 import derivean.game.mutator.role.WarriorClassMutator
+import derivean.game.mutator.role.warriorMutator
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class BattleControllerTest {
 	@Test
 	fun `Do some simple battle, dude!`() {
+		val mutators = Mutators.build {
+			mutator(
+				HumanMutator.mutator(),
+				WarriorClassMutator.mutator(),
+			)
+		}
+
 		BattleController().let { controller ->
 			Initiative.build {}.let { initiative ->
-				EntitiesMap.build {
-					addEntities("alfa", createAlfaTeam())
-					addEntities("beta", createBetaTeam())
-				}.let { entitiesMap ->
-					assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())
+				Formations.build {
+					formation("alfa") {
+						entity("The Candle Holder") {
+							/**
+							 * Lower the initiative - so second team member (beta) should
+							 * take the initial round.
+							 */
+							attributes(5.0.currentInitiative())
+						}.let { entity ->
+							mutators.humanMutator().mutate(entity)
+							mutators.warriorMutator().mutate(entity)
+						}
+					}
+					formation("beta") {
+						entity("Wind River") {
+						}.let { entity ->
+							mutators.humanMutator().mutate(entity)
+							mutators.warriorMutator().mutate(entity)
+						}
+					}
+				}.let { formations ->
+					assertEquals(150.0, formations["alfa"]["The Candle Holder"].health())
 					assertEquals(12.0, entitiesMap["alfa"]["The Candle Holder"].strength())
 					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
 					assertEquals(12.0, entitiesMap["beta"]["Wind River"].strength())
@@ -39,27 +62,6 @@ class BattleControllerTest {
 					assertEquals(143.0, entitiesMap["beta"]["Wind River"].health())
 				}
 			}
-		}
-	}
-
-	private fun createAlfaTeam() = Entities.build {
-		Entity.build("The Candle Holder").let { entity ->
-			HumanMutator().mutate(entity)
-			WarriorClassMutator().mutate(entity)
-			addEntity(entity)
-			/**
-			 * Lower the initiative - so second team member (beta) should
-			 * take the initial round.
-			 */
-			entity.attributes(5.0.currentInitiative())
-		}
-	}
-
-	private fun createBetaTeam() = Entities.build {
-		Entity.build("Wind River").let { entity ->
-			HumanMutator().mutate(entity)
-			WarriorClassMutator().mutate(entity)
-			addEntity(entity)
 		}
 	}
 }

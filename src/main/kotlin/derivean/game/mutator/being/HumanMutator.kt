@@ -5,6 +5,7 @@ import derivean.game.entity.Entities
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
+import derivean.game.mutator.Mutators
 import derivean.game.mutator.physical.BareHandAttack
 
 /**
@@ -24,4 +25,10 @@ class HumanMutator : AbstractMutator() {
 			mutator.ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 	}
+
+	companion object {
+		fun mutator() = Pair("being.human", HumanMutator())
+	}
 }
+
+fun Mutators.humanMutator() = this["being.human"]
