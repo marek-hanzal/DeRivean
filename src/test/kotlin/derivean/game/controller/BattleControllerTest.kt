@@ -1,6 +1,8 @@
 package derivean.game.controller
 
 import derivean.game.attribute.common.currentInitiative
+import derivean.game.attribute.common.health
+import derivean.game.attribute.common.strength
 import derivean.game.formation.Formations
 import derivean.game.initiative.Initiative
 import derivean.game.mutator.Mutators
@@ -45,21 +47,21 @@ class BattleControllerTest {
 					}
 				}.let { formations ->
 					assertEquals(150.0, formations["alfa"]["The Candle Holder"].health())
-					assertEquals(12.0, entitiesMap["alfa"]["The Candle Holder"].strength())
-					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
-					assertEquals(12.0, entitiesMap["beta"]["Wind River"].strength())
+					assertEquals(12.0, formations["alfa"]["The Candle Holder"].strength())
+					assertEquals(150.0, formations["beta"]["Wind River"].health())
+					assertEquals(12.0, formations["beta"]["Wind River"].strength())
 
-					controller.loop(initiative, entitiesMap)
+					controller.loop(initiative, formations)
 
-					assertEquals(0.0, entitiesMap["beta"]["Wind River"].currentInitiative())
-					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
-					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
+					assertEquals(0.0, formations["beta"]["Wind River"].currentInitiative())
+					assertEquals(143.0, formations["alfa"]["The Candle Holder"].health())
+					assertEquals(150.0, formations["beta"]["Wind River"].health())
 
-					controller.loop(initiative, entitiesMap)
+					controller.loop(initiative, formations)
 
-					assertEquals(0.0, entitiesMap["alfa"]["The Candle Holder"].currentInitiative())
-					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
-					assertEquals(143.0, entitiesMap["beta"]["Wind River"].health())
+					assertEquals(0.0, formations["alfa"]["The Candle Holder"].currentInitiative())
+					assertEquals(143.0, formations["alfa"]["The Candle Holder"].health())
+					assertEquals(143.0, formations["beta"]["Wind River"].health())
 				}
 			}
 		}

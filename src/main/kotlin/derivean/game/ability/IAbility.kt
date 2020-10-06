@@ -1,7 +1,7 @@
 package derivean.game.ability
 
-import derivean.game.entity.Entities
 import derivean.game.entity.Entity
+import derivean.game.formation.Formation
 import derivean.game.mutator.IMutator
 import derivean.game.mutator.Target
 import derivean.game.mutator.Targets
@@ -17,5 +17,5 @@ interface IAbility {
 
 	fun target(entity: Entity, target: Entity): Target
 
-	fun targets(entity: Entity, entities: Entities): Targets
+	fun targets(entity: Entity, formation: Formation): Targets
 }
