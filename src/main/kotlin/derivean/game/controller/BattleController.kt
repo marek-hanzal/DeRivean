@@ -2,6 +2,7 @@ package derivean.game.controller
 
 import derivean.game.entity.EntitiesMap
 import derivean.game.initiative.IInitiative
+import derivean.game.mutator.Targets
 
 /**
  * Battle controller is responsible for evaluating all the stuff related to
@@ -13,10 +14,15 @@ class BattleController : AbstractController() {
 	override fun loop(initiative: IInitiative, entitiesMap: EntitiesMap) {
 		val entity = initiative.resolve(entitiesMap)
 
+		val targetList = mutableListOf<Targets>()
+
 		for (ability in entity.abilities) {
 			for (entities in entitiesMap) {
-				ability.targets(entity, entities)
+				targetList.add(ability.targets(entity, entities))
 			}
+		}
+
+		targetList.maxByOrNull { it.rank }?.let {
 		}
 
 		TODO("Not yet implemented")

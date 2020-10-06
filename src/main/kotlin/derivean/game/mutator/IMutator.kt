@@ -33,7 +33,7 @@ interface IMutator {
 
 	fun target(mutator: Mutator, entity: Entity) = Target.build(entity) {}
 
-	fun targets(mutator: Mutator, entities: Entities) = Targets.build(targets(mutator)) { }
+	fun targets(mutator: Mutator, entities: Entities) = Targets.build(mutator, this, targets(mutator)) { }
 
 	fun targets(mutator: Mutator) = 1.0
 }

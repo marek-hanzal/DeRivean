@@ -1,12 +1,11 @@
 package derivean.game.mutator
 
-class Targets(val targets: List<Target>, val rank: Double) {
+class Targets(val entity: Mutator, val mutator: IMutator, val rank: Double, val targets: List<Target>) {
 	companion object {
-		inline fun build(limit: Double, block: Builder.() -> Unit) = Builder(limit.toInt()).apply(block).build()
-		inline fun build(block: Builder.() -> Unit) = build(1.0, block)
+		inline fun build(entity: Mutator, mutator: IMutator, limit: Double, block: Builder.() -> Unit) = Builder(entity, mutator, limit.toInt()).apply(block).build()
 	}
 
-	class Builder(private val limit: Int) {
+	class Builder(private val entity: Mutator, private val mutator: IMutator, private val limit: Int) {
 		private val targets: MutableList<Target> = mutableListOf()
 
 		fun target(target: Target) {
@@ -15,8 +14,10 @@ class Targets(val targets: List<Target>, val rank: Double) {
 
 		fun build() = with(targets.sortedByDescending { it.rank }.take(limit)) {
 			Targets(
-				this,
+				entity,
+				mutator,
 				this.sumByDouble { it.rank },
+				this,
 			)
 		}
 	}
