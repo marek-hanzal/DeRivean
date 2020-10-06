@@ -8,11 +8,11 @@ class EntitiesTest {
 	@Test
 	fun `Builder for Entities`() {
 		val entities = Entities.build {
-			addEntity("The Candle Holder") {}
-			addEntity("Wind River") {}
-			addEntity("Orc, the Spellcaster") {}
+			entity("The Candle Holder") {}
+			entity("Wind River") {}
+			entity("Orc, the Spellcaster") {}
 		}
-		assertEquals(3, entities.entities.size)
+		assertEquals(3, entities.map.size)
 	}
 
 	@Test
@@ -22,11 +22,11 @@ class EntitiesTest {
 		val entity3 = Entity.build("Orc, the Spellcaster")
 
 		val entities = Entities.build {
-			addEntity(entity1)
-			addEntity(entity2)
-			addEntity(entity3)
+			entity(entity1)
+			entity(entity2)
+			entity(entity3)
 		}
-		assertEquals(3, entities.entities.size)
+		assertEquals(3, entities.map.size)
 		assertEquals(entity1, entities["The Candle Holder"])
 		assertEquals(entity2, entities["Wind River"])
 		assertEquals(entity3, entities["Orc, the Spellcaster"])
@@ -35,7 +35,7 @@ class EntitiesTest {
 	@Test
 	fun `Access an unknown Entity`() {
 		assertEquals("Requested unknown Entity [Kaboom!].", assertFailsWith<UnknownEntityException> {
-			Entities()["Kaboom!"]
+			Entities.build { }["Kaboom!"]
 		}.message)
 	}
 }

@@ -11,7 +11,7 @@ import derivean.game.initiative.IInitiative
  */
 class BattleController : AbstractController() {
 	override fun loop(initiative: IInitiative, formations: Formations) {
-		initiative.resolveMember(formations).let { entity ->
+		initiative.resolveEntity(formations).let { entity ->
 			//
 		}
 

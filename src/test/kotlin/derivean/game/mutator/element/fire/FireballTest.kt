@@ -7,6 +7,7 @@ import derivean.game.attribute.element.fireAttack
 import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -59,7 +60,7 @@ class FireballTest {
 	}
 
 	private fun assertions(sourceElement: Double, targetElement: Double, sourceDamage: Double, targetHealth: Double) {
-		val effect = Fireball()
+		val mutator = Fireball()
 		val entity = Entity.build("Alfa") {
 			attributes(
 				/**
@@ -91,7 +92,8 @@ class FireballTest {
 				targetElement.fireElement(),
 			)
 		}
-		effect.mutate(entity, target)
+
+		mutator.mutation(entity, Entities.build { entity(target) })
 
 		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
 		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")

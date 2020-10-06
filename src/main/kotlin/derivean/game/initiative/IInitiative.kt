@@ -1,5 +1,6 @@
 package derivean.game.initiative
 
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.formation.Formation
 import derivean.game.formation.Formations
@@ -21,10 +22,10 @@ interface IInitiative {
 	 * **should** update Entity's initiative (usually set to zero) or
 	 * it's possible it will take action next round again.
 	 */
-	fun resolve(formation: Formation): Entity
+	fun resolve(entities: Entities): Entity
 
 	/**
 	 * Shortcut method for resolving member from Formations.
 	 */
-	fun resolveMember(formations: Formations) = resolve(resolve(formations))
+	fun resolveEntity(formations: Formations) = resolve(resolve(formations))
 }

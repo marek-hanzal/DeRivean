@@ -1,8 +1,6 @@
 package derivean.game.mutator
 
 class Targets(val entity: Mutator, val mutator: IMutator, val rank: Double, val targets: List<Target>) {
-	fun evaluate() = mutator.mutate(entity, targets.map { it.entity })
-
 	companion object {
 		inline fun build(entity: Mutator, mutator: IMutator, limit: Double, block: Builder.() -> Unit) = Builder(entity, mutator, limit.toInt()).apply(block).build()
 	}

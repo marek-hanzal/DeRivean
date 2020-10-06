@@ -23,18 +23,9 @@ class Entity(
 	 */
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
 
-	/**
-	 * Use specified ability of this entity on target Entities.
-	 */
-	fun ability(name: String, targets: Entities = Entities()) = abilities[name].use(this, targets)
-
-	fun ability(name: String, target: Entity) = ability(name, Entities(target))
-
 	fun target(ability: String, target: Entity) = abilities[ability].target(this, target)
 
 	fun targets(ability: String, targets: Entities) = abilities[ability].targets(this, targets)
-
-	fun targets(ability: String, target: Entity) = targets(ability, Entities(target))
 
 	fun inc(attribute: Attribute) = attributes.inc(attribute)
 

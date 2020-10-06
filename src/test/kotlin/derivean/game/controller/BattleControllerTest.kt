@@ -34,15 +34,15 @@ class BattleControllerTest {
 							 */
 							attributes(5.0.currentInitiative())
 						}.let { entity ->
-							mutators.humanMutator().mutate(entity)
-							mutators.warriorMutator().mutate(entity)
+							mutators.humanMutator().mutation(entity)
+							mutators.warriorMutator().mutation(entity)
 						}
 					}
 					formation("beta") {
 						entity("Wind River") {
 						}.let { entity ->
-							mutators.humanMutator().mutate(entity)
-							mutators.warriorMutator().mutate(entity)
+							mutators.humanMutator().mutation(entity)
+							mutators.warriorMutator().mutation(entity)
 						}
 					}
 				}.let { formations ->

@@ -1,17 +1,13 @@
 package derivean.game.formation
 
-import derivean.game.attribute.common.currentInitiative
+import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 
 /**
  * Formation of a team of friendly Entities.
  */
-class Formation(val formation: String, val map: Map<String, Entity>) : Iterable<Map.Entry<String, Entity>> {
-	fun initiative() = map.values.sumByDouble { it.currentInitiative() }
-
-	override fun iterator() = map.iterator()
-
-	operator fun get(name: String) = map.getOrElse(name) { throw UnknownMemberException("Requested unknown member [${name}] in formation [${formation}].") }
+class Formation(val formation: String, map: Map<String, Entity>) : Entities(map) {
+	override operator fun get(name: String) = map.getOrElse(name) { throw UnknownMemberException("Requested unknown member [${name}] in formation [${formation}].") }
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()

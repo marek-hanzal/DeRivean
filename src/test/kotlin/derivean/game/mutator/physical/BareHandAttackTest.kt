@@ -26,12 +26,12 @@ class BareHandAttackTest {
 
 		assertEquals(5.0, entity.target("attack.bare-hands", target).rank)
 
-		entity.ability("attack.bare-hands", target)
+//		entity.ability("attack.bare-hands", target)
 		assertEquals(5.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, target.health(), "Target does not have expected amount of health.")
 
-		entity.ability("attack.bare-hands", target)
+//		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, target.health(), "Target does not have expected amount of health.")
@@ -52,13 +52,13 @@ class BareHandAttackTest {
 			)
 		}
 
-		with(entity.targets("attack.bare-hands", target)) {
+		with(entity.targets("attack.bare-hands", Entities.build { entity(target) })) {
 			assertEquals(0.0, rank)
 			assertEquals(0, targets.size)
 		}
 		assertEquals(0.0, entity.target("attack.bare-hands", target).rank)
 
-		entity.ability("attack.bare-hands", target)
+//		entity.ability("attack.bare-hands", target)
 		assertEquals(15.0, target.health(), "Target's health is different.")
 	}
 
@@ -81,7 +81,7 @@ class BareHandAttackTest {
 
 		assertEquals(5.0, entity.target("attack.bare-hands", target).rank)
 
-		entity.ability("attack.bare-hands", target)
+//		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, target.health(), "Target's health is different.")
 	}
 
@@ -94,13 +94,13 @@ class BareHandAttackTest {
 			ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 		val entities = Entities.build {
-			addEntity("This one is alive") {
+			entity("This one is alive") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("This one is not alive") {
+			entity("This one is not alive") {
 				attributes(
 					0.0.health(),
 				)
@@ -116,19 +116,19 @@ class BareHandAttackTest {
 	@Test
 	fun `No Friendly-fire`() {
 		val entities = Entities.build {
-			addEntity("Alfa") {
+			entity("Alfa") {
 				attributes(
 					10.0.strength(),
 				)
 				ability(BareHandAttack.ability("attack.bare-hands"))
 			}
-			addEntity("This one is alive") {
+			entity("This one is alive") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("This one is not alive") {
+			entity("This one is not alive") {
 				attributes(
 					0.0.health(),
 				)
@@ -152,19 +152,19 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			addEntity("1") {
+			entity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("2") {
+			entity("2") {
 				attributes(
 					12.0.health(),
 					2.0.physicalDefense(),
 				)
 			}
-			addEntity("3") {
+			entity("3") {
 				attributes(
 					20.0.health(),
 				)
@@ -190,19 +190,19 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			addEntity("1") {
+			entity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("2") {
+			entity("2") {
 				attributes(
 					12.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("3") {
+			entity("3") {
 				attributes(
 					20.0.health(),
 				)
@@ -228,25 +228,25 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			addEntity("0") {
+			entity("0") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("1") {
+			entity("1") {
 				attributes(
 					15.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("2") {
+			entity("2") {
 				attributes(
 					12.0.health(),
 					5.0.physicalDefense(),
 				)
 			}
-			addEntity("3") {
+			entity("3") {
 				attributes(
 					20.0.health(),
 				)

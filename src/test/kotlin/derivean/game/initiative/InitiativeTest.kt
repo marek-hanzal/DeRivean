@@ -12,7 +12,7 @@ class InitiativeTest {
 	@Test
 	fun `Empty Entities`() {
 		assertEquals("Entities are Empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
-			Initiative.build { }.resolve(Formation())
+			Initiative.build { }.resolve(Entities.build { })
 		}.message)
 	}
 
@@ -30,7 +30,7 @@ class InitiativeTest {
 	@Test
 	fun `Entity Selection`() {
 		val initiative = Initiative.build {}
-		val entitiesMap = Formations.build {
+		val formations = Formations.build {
 			formation("alfa") {
 				entity("Foo") {
 					attributes(
@@ -57,8 +57,8 @@ class InitiativeTest {
 			}
 		}
 
-		assertEquals(entitiesMap["alfa"]["Foo"], initiative.resolve(entitiesMap["alfa"]))
-		assertEquals(entitiesMap["beta"]["Far"], initiative.resolve(entitiesMap["beta"]))
-		assertEquals(entitiesMap["beta"]["Far"], initiative.resolve(entitiesMap))
+		assertEquals(formations["alfa"]["Foo"], initiative.resolve(formations["alfa"]))
+		assertEquals(formations["beta"]["Far"], initiative.resolve(formations["beta"]))
+		assertEquals(formations["beta"]["Far"], initiative.resolveEntity(formations))
 	}
 }
