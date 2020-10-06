@@ -10,7 +10,7 @@ import kotlin.test.assertFailsWith
 class InitiativeTest {
 	@Test
 	fun `Empty Entities`() {
-		assertEquals("Entities are empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
+		assertEquals("Entities are Empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
 			Initiative().resolve(Entities())
 		}.message)
 	}
@@ -21,7 +21,9 @@ class InitiativeTest {
 			entity("foo") {}
 			entity("bar") {}
 		}
-		assertEquals(entities["foo"], Initiative().resolve(entities))
+		assertEquals("Cannot resolve Initiative, all entities are without Initiative.", assertFailsWith<NoInitiativeException> {
+			Initiative().resolve(entities)
+		}.message)
 	}
 
 	@Test

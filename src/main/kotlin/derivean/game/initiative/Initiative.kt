@@ -15,5 +15,11 @@ class Initiative : AbstractInitiative() {
 
 	override fun resolve(entities: Entities) = entities.entities.filter { it.value.initiative() > 0 }.maxByOrNull {
 		it.value.initiative()
-	}?.value ?: throw NoInitiativeException("Entities are empty, cannot resolve initiative.")
+	}?.value ?: throw NoInitiativeException(
+		if (entities.entities.isEmpty()) {
+			"Entities are Empty, cannot resolve initiative."
+		} else {
+			"Cannot resolve Initiative, all entities are without Initiative."
+		}
+	)
 }
