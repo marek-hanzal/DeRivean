@@ -30,7 +30,9 @@ open class Entities(val map: Map<String, Entity>) : Iterable<Entity> {
 		/**
 		 * Use, when it's needed to create an Entity in place.
 		 */
-		fun entity(name: String, block: Entity.Builder.() -> Unit) = Entity.build(name, block)
+		fun entity(name: String, block: Entity.Builder.() -> Unit) {
+			map[name] = Entity.build(name, block)
+		}
 
 		fun build() = Entities(
 			map,
