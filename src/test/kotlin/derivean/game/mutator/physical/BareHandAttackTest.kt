@@ -1,10 +1,10 @@
-package derivean.game.effect
+package derivean.game.mutator.physical
 
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.physical.BareHandAttack
+import derivean.game.mutator.Target
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -142,6 +142,132 @@ class BareHandAttackTest {
 		with(entities["Alfa"].targets("attack.bare-hands", entities)) {
 			assertEquals(0.0, rank, "Rank should be zero!")
 			assertEquals(0, targets.size, "There are more targets!")
+		}
+	}
+
+	@Test
+	fun `Number of targets from an Attribute`() {
+		val entity = Entity.build("Alfa") {
+			attributes(
+				10.0.strength(),
+			)
+			ability(BareHandAttack.ability("attack.bare-hands", Attributes(
+				1.2.bareHandTargets(),
+			)))
+		}
+		val entities = Entities.build {
+			entities(
+				Entity.build("1") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("2") {
+					attributes(
+						12.0.health(),
+						2.0.physicalDefense(),
+					)
+				},
+				Entity.build("3") {
+					attributes(
+						20.0.health(),
+					)
+				},
+			)
+		}
+
+		with(entity.targets("attack.bare-hands", entities)) {
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(18.0, rank)
+			assertEquals(listOf(entities["3"], entities["2"]), targets.map { it.entity })
+			assertEquals(listOf(Target(10.0, entities["3"]), Target(8.0, entities["2"])), targets)
+		}
+	}
+
+	@Test
+	fun `Number of targets from an Attribute with same Rank`() {
+		val entity = Entity.build("Alfa") {
+			attributes(
+				10.0.strength(),
+			)
+			ability(BareHandAttack.ability("attack.bare-hands", Attributes(
+				1.2.bareHandTargets(),
+			)))
+		}
+		val entities = Entities.build {
+			entities(
+				Entity.build("1") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("2") {
+					attributes(
+						12.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("3") {
+					attributes(
+						20.0.health(),
+					)
+				},
+			)
+		}
+
+		with(entity.targets("attack.bare-hands", entities)) {
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(15.0, rank)
+			assertEquals(listOf(entities["3"], entities["1"]), targets.map { it.entity })
+			assertEquals(listOf(Target(10.0, entities["3"]), Target(5.0, entities["1"])), targets)
+		}
+	}
+
+	@Test
+	fun `Number of targets from an Attribute with same Rank another attempt`() {
+		val entity = Entity.build("Alfa") {
+			attributes(
+				10.0.strength(),
+			)
+			ability(BareHandAttack.ability("attack.bare-hands", Attributes(
+				1.2.bareHandTargets(),
+			)))
+		}
+		val entities = Entities.build {
+			entities(
+				Entity.build("0") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("1") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("2") {
+					attributes(
+						12.0.health(),
+						5.0.physicalDefense(),
+					)
+				},
+				Entity.build("3") {
+					attributes(
+						20.0.health(),
+					)
+				},
+			)
+		}
+
+		with(entity.targets("attack.bare-hands", entities)) {
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(15.0, rank)
+			assertEquals(listOf(entities["3"], entities["1"]), targets.map { it.entity })
+			assertEquals(listOf(Target(10.0, entities["3"]), Target(5.0, entities["0"])), targets)
 		}
 	}
 }

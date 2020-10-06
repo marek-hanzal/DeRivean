@@ -1,15 +1,32 @@
 package derivean.game.mutator
 
-class Target(val rank: Double) {
-	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+import derivean.game.entity.Entity
+
+class Target(val rank: Double, val entity: Entity) {
+	override fun hashCode() = rank.hashCode() + entity.hashCode()
+
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (javaClass != other?.javaClass) return false
+
+		other as Target
+
+		if (rank != other.rank) return false
+		if (entity != other.entity) return false
+
+		return true
 	}
 
-	class Builder {
+	companion object {
+		inline fun build(target: Entity, block: Builder.() -> Unit) = Builder(target).apply(block).build()
+	}
+
+	class Builder(var target: Entity) {
 		var rank: Double = 0.0
 
 		fun build() = Target(
 			rank,
+			target,
 		)
 	}
 }

@@ -9,6 +9,7 @@ import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
 import derivean.game.mutator.Target
+import kotlin.math.ceil
 import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
@@ -30,15 +31,24 @@ class BareHandAttack : AbstractMutator() {
 		}
 	}
 
-	override fun target(mutator: Mutator, entity: Entity) = Target.build {
+	override fun target(mutator: Mutator, entity: Entity) = Target.build(entity) {
 		damage(mutator, entity) {
 			rank = this
 		}
 	}
 
+	override fun targets(mutator: Mutator) = mutator.current.bareHandTargets()
+
 	private fun damage(mutator: Mutator, target: Entity, block: Double.() -> Unit) = block(max(mutator.current.strength() - target.physicalDefense(), 0.0))
 
 	companion object {
 		fun ability(name: String, attributes: Attributes = Attributes()) = Ability(name, BareHandAttack(), attributes)
+
+		private const val ATTRIBUTE_TARGETS = "physical.bare-hand.targets"
+		fun targets(value: Double) = ATTRIBUTE_TARGETS to ceil(value)
+		fun targets(attributes: Attributes) = attributes[ATTRIBUTE_TARGETS]
 	}
 }
+
+fun Double.bareHandTargets() = BareHandAttack.targets(this)
+fun Attributes.bareHandTargets() = BareHandAttack.targets(this)
