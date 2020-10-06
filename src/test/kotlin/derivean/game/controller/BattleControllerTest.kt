@@ -33,23 +33,23 @@ class BattleControllerTest {
 	}
 
 	private fun createAlfaTeam() = Entities.build {
-		with(Entity.build("The Candle Holder")) {
-			HumanMutator().mutate(this)
-			WarriorClassMutator().mutate(this)
-			entity(this)
+		Entity.build("The Candle Holder").let { entity ->
+			HumanMutator().mutate(entity)
+			WarriorClassMutator().mutate(entity)
+			entity(entity)
 			/**
 			 * Lower the initiative - so second team member (beta) should
 			 * take the initial round.
 			 */
-			this.attributes(5.0.initiative())
+			entity.attributes(5.0.initiative())
 		}
 	}
 
 	private fun createBetaTeam() = Entities.build {
-		with(Entity.build("Wind River")) {
-			HumanMutator().mutate(this)
-			WarriorClassMutator().mutate(this)
-			entity(this)
+		Entity.build("Wind River").let { entity ->
+			HumanMutator().mutate(entity)
+			WarriorClassMutator().mutate(entity)
+			entity(entity)
 		}
 	}
 }
