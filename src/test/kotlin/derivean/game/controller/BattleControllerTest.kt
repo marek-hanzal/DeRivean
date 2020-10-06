@@ -1,7 +1,7 @@
 package derivean.game.controller
 
+import derivean.game.attribute.common.currentInitiative
 import derivean.game.attribute.common.health
-import derivean.game.attribute.common.initiative
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entities
 import derivean.game.entity.EntitiesMap
@@ -16,7 +16,7 @@ class BattleControllerTest {
 	@Test
 	fun `Do some simple battle, dude!`() {
 		BattleController().let { controller ->
-			Initiative().let { initiative ->
+			Initiative.build {}.let { initiative ->
 				EntitiesMap.build {
 					addEntities("alfa", createAlfaTeam())
 					addEntities("beta", createBetaTeam())
@@ -28,13 +28,13 @@ class BattleControllerTest {
 
 					controller.loop(initiative, entitiesMap)
 
-					assertEquals(0.0, entitiesMap["beta"]["Wind River"].initiative())
+					assertEquals(0.0, entitiesMap["beta"]["Wind River"].currentInitiative())
 					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
 					assertEquals(150.0, entitiesMap["beta"]["Wind River"].health())
 
 					controller.loop(initiative, entitiesMap)
 
-					assertEquals(0.0, entitiesMap["alfa"]["The Candle Holder"].initiative())
+					assertEquals(0.0, entitiesMap["alfa"]["The Candle Holder"].currentInitiative())
 					assertEquals(143.0, entitiesMap["alfa"]["The Candle Holder"].health())
 					assertEquals(143.0, entitiesMap["beta"]["Wind River"].health())
 				}
@@ -51,7 +51,7 @@ class BattleControllerTest {
 			 * Lower the initiative - so second team member (beta) should
 			 * take the initial round.
 			 */
-			entity.attributes(5.0.initiative())
+			entity.attributes(5.0.currentInitiative())
 		}
 	}
 

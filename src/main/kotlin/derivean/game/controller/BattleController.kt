@@ -1,6 +1,6 @@
 package derivean.game.controller
 
-import derivean.game.attribute.common.initiative
+import derivean.game.attribute.common.currentInitiative
 import derivean.game.entity.EntitiesMap
 import derivean.game.initiative.IInitiative
 import derivean.game.mutator.TargetsList
@@ -21,7 +21,7 @@ class BattleController : AbstractController() {
 		 * After all entities are without an Initiative, new round should start (and initiative should
 		 * be recomputed).
 		 */
-		entity.attributes.set(0.0.initiative())
+		entity.attributes.set(0.0.currentInitiative())
 
 		TargetsList.build {
 			for (ability in entity.abilities) {
