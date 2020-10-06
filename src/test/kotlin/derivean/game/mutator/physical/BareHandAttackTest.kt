@@ -266,7 +266,7 @@ class BareHandAttackTest {
 		with(entity.targets("attack.bare-hands", entities)) {
 			assertEquals(2, targets.size, "There are more targets!")
 			assertEquals(15.0, rank)
-			assertEquals(listOf(entities["3"], entities["1"]), targets.map { it.entity })
+			assertEquals(listOf(entities["3"], entities["0"]), targets.map { it.entity })
 			assertEquals(listOf(Target(10.0, entities["3"]), Target(5.0, entities["0"])), targets)
 		}
 	}
