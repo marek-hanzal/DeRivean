@@ -52,7 +52,7 @@ class BareHandAttackTest {
 			)
 		}
 
-		with(entity.targets("attack.bare-hands", Entities(target))) {
+		with(entity.targets("attack.bare-hands", target)) {
 			assertEquals(0.0, rank)
 			assertEquals(0, targets.size)
 		}
@@ -110,8 +110,8 @@ class BareHandAttackTest {
 		}
 
 		with(entity.targets("attack.bare-hands", entities)) {
-			assertEquals(5.0, rank)
 			assertEquals(1, targets.size, "There are more targets!")
+			assertEquals(5.0, rank)
 		}
 	}
 

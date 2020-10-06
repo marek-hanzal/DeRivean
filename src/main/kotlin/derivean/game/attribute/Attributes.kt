@@ -34,7 +34,7 @@ class Attributes(vararg values: Attribute) {
 
 	fun set(attributes: Attributes) = map.putAll(attributes.map)
 
-	operator fun get(name: String) = map.getOrDefault(name, 0.0)
+	operator fun get(name: String, default: Double = 0.0) = map.getOrDefault(name, default)
 
 	fun inc(attribute: Attribute) {
 		map[attribute.first] = get(attribute.first) + attribute.second
