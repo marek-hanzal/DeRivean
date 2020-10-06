@@ -17,10 +17,10 @@ class BattleControllerTest {
 	fun `Do some simple battle, dude!`() {
 		val controller = BattleController()
 		val initiative = Initiative()
-		val entitiesMap = EntitiesMap()
-
-		entitiesMap["alfa"] = createAlfaTeam()
-		entitiesMap["beta"] = createBetaTeam()
+		val entitiesMap = EntitiesMap.build {
+			entities("alfa", createAlfaTeam())
+			entities("beta", createBetaTeam())
+		}
 
 		assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())
 		assertEquals(6.0, entitiesMap["alfa"]["The Candle Holder"].strength())
@@ -37,7 +37,7 @@ class BattleControllerTest {
 		with(Entity.build("The Candle Holder")) {
 			humanMutator.mutate(this)
 			warriorClassMutator.mutate(this)
-			entities(this)
+			entity(this)
 			/**
 			 * Lower the initiative - so second team member (beta) should
 			 * take the initial round.
@@ -53,7 +53,7 @@ class BattleControllerTest {
 		with(Entity.build("Wind River")) {
 			humanMutator.mutate(this)
 			warriorClassMutator.mutate(this)
-			entities(this)
+			entity(this)
 		}
 	}
 }

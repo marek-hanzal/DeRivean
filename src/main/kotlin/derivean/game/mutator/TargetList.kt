@@ -1,6 +1,6 @@
 package derivean.game.mutator
 
-class TargetList(val targets: MutableList<Targets> = mutableListOf()) {
+class TargetList(val targets: List<Targets>) {
 	fun targets() = targets.maxByOrNull { it.rank }
 
 	companion object {

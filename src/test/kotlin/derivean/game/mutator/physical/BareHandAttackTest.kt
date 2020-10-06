@@ -94,19 +94,17 @@ class BareHandAttackTest {
 			ability(BareHandAttack.ability("attack.bare-hands"))
 		}
 		val entities = Entities.build {
-			entities(
-				Entity.build("This one is alive") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("This one is not alive") {
-					attributes(
-						0.0.health(),
-					)
-				},
-			)
+			entity("This one is alive") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("This one is not alive") {
+				attributes(
+					0.0.health(),
+				)
+			}
 		}
 
 		with(entity.targets("attack.bare-hands", entities)) {
@@ -118,25 +116,23 @@ class BareHandAttackTest {
 	@Test
 	fun `No Friendly-fire`() {
 		val entities = Entities.build {
-			entities(
-				Entity.build("Alfa") {
-					attributes(
-						10.0.strength(),
-					)
-					ability(BareHandAttack.ability("attack.bare-hands"))
-				},
-				Entity.build("This one is alive") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("This one is not alive") {
-					attributes(
-						0.0.health(),
-					)
-				},
-			)
+			entity("Alfa") {
+				attributes(
+					10.0.strength(),
+				)
+				ability(BareHandAttack.ability("attack.bare-hands"))
+			}
+			entity("This one is alive") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("This one is not alive") {
+				attributes(
+					0.0.health(),
+				)
+			}
 		}
 
 		with(entities["Alfa"].targets("attack.bare-hands", entities)) {
@@ -156,25 +152,23 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entities(
-				Entity.build("1") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("2") {
-					attributes(
-						12.0.health(),
-						2.0.physicalDefense(),
-					)
-				},
-				Entity.build("3") {
-					attributes(
-						20.0.health(),
-					)
-				},
-			)
+			entity("1") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("2") {
+				attributes(
+					12.0.health(),
+					2.0.physicalDefense(),
+				)
+			}
+			entity("3") {
+				attributes(
+					20.0.health(),
+				)
+			}
 		}
 
 		with(entity.targets("attack.bare-hands", entities)) {
@@ -196,25 +190,23 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entities(
-				Entity.build("1") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("2") {
-					attributes(
-						12.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("3") {
-					attributes(
-						20.0.health(),
-					)
-				},
-			)
+			entity("1") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("2") {
+				attributes(
+					12.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("3") {
+				attributes(
+					20.0.health(),
+				)
+			}
 		}
 
 		with(entity.targets("attack.bare-hands", entities)) {
@@ -236,31 +228,29 @@ class BareHandAttackTest {
 			)))
 		}
 		val entities = Entities.build {
-			entities(
-				Entity.build("0") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("1") {
-					attributes(
-						15.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("2") {
-					attributes(
-						12.0.health(),
-						5.0.physicalDefense(),
-					)
-				},
-				Entity.build("3") {
-					attributes(
-						20.0.health(),
-					)
-				},
-			)
+			entity("0") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("1") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("2") {
+				attributes(
+					12.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
+			entity("3") {
+				attributes(
+					20.0.health(),
+				)
+			}
 		}
 
 		with(entity.targets("attack.bare-hands", entities)) {
