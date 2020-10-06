@@ -2,7 +2,6 @@ package derivean.game.initiative
 
 import derivean.game.attribute.common.currentInitiative
 import derivean.game.entity.Entities
-import derivean.game.formation.Formation
 import derivean.game.formation.Formations
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -11,14 +10,14 @@ import kotlin.test.assertFailsWith
 class InitiativeTest {
 	@Test
 	fun `Empty Entities`() {
-		assertEquals("Entities are Empty, cannot resolve initiative.", assertFailsWith<NoInitiativeException> {
+		assertEquals("Cannot resolve initiative from empty Entities.", assertFailsWith<NoInitiativeException> {
 			Initiative.build { }.resolve(Entities.build { })
 		}.message)
 	}
 
 	@Test
 	fun `Entities Without Attribute`() {
-		val entities = Formation.build("alfa") {
+		val entities = Entities.build {
 			entity("foo") {}
 			entity("bar") {}
 		}
