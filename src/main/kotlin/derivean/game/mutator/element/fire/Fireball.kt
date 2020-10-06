@@ -55,7 +55,7 @@ class Fireball : AbstractMutator() {
 		}
 	}
 
-	override fun target(mutator: Mutator, entity: Entity): Target {
+	override fun resolveTarget(mutator: Mutator, entity: Entity): Target {
 		TODO("Implement rank in Fireball Mutator!")
 	}
 

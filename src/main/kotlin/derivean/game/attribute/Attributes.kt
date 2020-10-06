@@ -13,7 +13,7 @@ class Attributes(vararg values: Attribute) {
 	}
 
 	operator fun plusAssign(attributes: Attributes) {
-		attributes.forEach { (k, v) ->
+		attributes.map.forEach { (k, v) ->
 			map.merge(k, v, fun(t, u): Double? {
 				return t + u
 			})
@@ -21,8 +21,6 @@ class Attributes(vararg values: Attribute) {
 	}
 
 	operator fun plusAssign(attribute: Attribute) = set(attribute.first, attribute.second)
-
-	private fun forEach(action: (Map.Entry<String, Double>) -> Unit) = map.forEach(action)
 
 	fun set(key: String, value: Double) = map.set(key, value)
 

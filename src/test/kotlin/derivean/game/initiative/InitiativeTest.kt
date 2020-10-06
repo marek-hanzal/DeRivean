@@ -30,7 +30,7 @@ class InitiativeTest {
 	fun `Entity Selection`() {
 		val initiative = Initiative()
 		val entitiesMap = EntitiesMap.build {
-			entities("alfa") {
+			addEntities("alfa") {
 				entity("Foo") {
 					attributes(
 						12.0.initiative(),
@@ -42,7 +42,7 @@ class InitiativeTest {
 					)
 				}
 			}
-			entities("beta") {
+			addEntities("beta") {
 				entity("Boo") {
 					attributes(
 						8.0.initiative(),

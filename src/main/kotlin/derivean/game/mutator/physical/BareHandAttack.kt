@@ -31,13 +31,13 @@ class BareHandAttack : AbstractMutator() {
 		}
 	}
 
-	override fun target(mutator: Mutator, entity: Entity) = Target.build(entity) {
+	override fun resolveTarget(mutator: Mutator, entity: Entity) = Target.build(entity) {
 		damage(mutator, entity) {
 			rank = this
 		}
 	}
 
-	override fun targets(mutator: Mutator) = mutator.current.bareHandTargets()
+	override fun resolveTargets(mutator: Mutator) = mutator.current.bareHandTargets()
 
 	private fun damage(mutator: Mutator, target: Entity, block: Double.() -> Unit) = block(max(mutator.current.strength() - target.physicalDefense(), 0.0))
 

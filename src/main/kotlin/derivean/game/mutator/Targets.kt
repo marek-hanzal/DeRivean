@@ -8,7 +8,7 @@ class Targets(val entity: Mutator, val mutator: IMutator, val rank: Double, val 
 	class Builder(private val entity: Mutator, private val mutator: IMutator, private val limit: Int) {
 		private val targets: MutableList<Target> = mutableListOf()
 
-		fun target(target: Target) {
+		fun addTarget(target: Target) {
 			targets.add(target)
 		}
 

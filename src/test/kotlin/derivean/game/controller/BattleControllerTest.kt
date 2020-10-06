@@ -18,8 +18,8 @@ class BattleControllerTest {
 		val controller = BattleController()
 		val initiative = Initiative()
 		val entitiesMap = EntitiesMap.build {
-			entities("alfa", createAlfaTeam())
-			entities("beta", createBetaTeam())
+			addEntities("alfa", createAlfaTeam())
+			addEntities("beta", createBetaTeam())
 		}
 
 		assertEquals(150.0, entitiesMap["alfa"]["The Candle Holder"].health())

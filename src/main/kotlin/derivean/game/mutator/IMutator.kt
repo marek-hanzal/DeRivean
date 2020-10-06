@@ -31,9 +31,9 @@ interface IMutator {
 
 	fun mutate(entity: Entity, target: Entity) = mutate(entity.mutateWith(), Entities(target))
 
-	fun target(mutator: Mutator, entity: Entity) = Target.build(entity) {}
+	fun resolveTarget(mutator: Mutator, entity: Entity) = Target.build(entity) {}
 
-	fun targets(mutator: Mutator, entities: Entities) = Targets.build(mutator, this, targets(mutator)) { }
+	fun resolveTargets(mutator: Mutator, entities: Entities) = Targets.build(mutator, this, resolveTargets(mutator)) { }
 
-	fun targets(mutator: Mutator) = 1.0
+	fun resolveTargets(mutator: Mutator) = 1.0
 }

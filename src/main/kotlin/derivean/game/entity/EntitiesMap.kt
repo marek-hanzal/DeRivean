@@ -12,11 +12,11 @@ class EntitiesMap(private val map: Map<String, Entities>) : Iterable<Entities> {
 	class Builder {
 		private val map = mutableMapOf<String, Entities>()
 
-		fun entities(name: String, entities: Entities) {
+		fun addEntities(name: String, entities: Entities) {
 			map[name] = entities
 		}
 
-		fun entities(name: String, block: Entities.Builder.() -> Unit) {
+		fun addEntities(name: String, block: Entities.Builder.() -> Unit) {
 			map[name] = Entities.build(block)
 		}
 

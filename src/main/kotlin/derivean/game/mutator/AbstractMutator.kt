@@ -4,9 +4,9 @@ import derivean.game.attribute.common.isAlive
 import derivean.game.entity.Entities
 
 abstract class AbstractMutator : IMutator {
-	override fun targets(mutator: Mutator, entities: Entities) = Targets.build(mutator, this, targets(mutator)) {
+	override fun resolveTargets(mutator: Mutator, entities: Entities) = Targets.build(mutator, this, resolveTargets(mutator)) {
 		for (entity in entities) {
-			target(mutator, entity).apply {
+			resolveTarget(mutator, entity).apply {
 				/**
 				 * Basic common rules:
 				 * - Entity must be alive to be a target
@@ -14,7 +14,7 @@ abstract class AbstractMutator : IMutator {
 				 * - No friendly fire; in support Mutators this behavior should be overridden
 				 */
 				if (entity.isAlive() && rank > 0 && !entities.isMember(mutator.entity)) {
-					target(this)
+					addTarget(this)
 				}
 			}
 		}
