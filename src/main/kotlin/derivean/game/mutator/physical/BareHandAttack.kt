@@ -23,7 +23,6 @@ class BareHandAttack : AbstractMutator() {
 				 * Convert damage to heal loss of target entity; health cannot go under zero.
 				 */
 				target.decOrZero(health())
-				}
 			}
 		}
 	}
