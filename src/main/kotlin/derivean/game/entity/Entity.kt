@@ -20,7 +20,7 @@ class Entity(
 	 */
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
 
-	fun rank(ability: String, target: Entity) = abilities[ability].rank(this, target)
+	fun rank(ability: String, target: Entity, relation: Double = 1.0) = abilities[ability].rank(this, target, relation)
 
 	fun ability(ability: String, target: Entity) = abilities[ability].use(this, target)
 

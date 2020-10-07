@@ -24,11 +24,11 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		}
 	}
 
-	override fun rank(entity: Entity, target: Entity): Double {
+	override fun rank(entity: Entity, target: Entity, relation: Double): Double {
 		if (!target.isAlive()) {
 			return 0.0
 		}
-		return damage(entity, target)
+		return damage(entity, target) * relation
 	}
 
 	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)

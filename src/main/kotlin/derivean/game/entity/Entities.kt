@@ -9,6 +9,8 @@ open class Entities(val map: Map<String, Entity>) : Iterable<Entity> {
 
 	fun isMember(entity: Entity) = map.containsKey(entity.toString())
 
+	fun relation(entity: Entity) = if (isMember(entity)) 0.0 else 1.0
+
 	open operator fun get(name: String) = map.getOrElse(name) { throw UnknownEntityException("Requested unknown Entity [${name}].") }
 
 	companion object {

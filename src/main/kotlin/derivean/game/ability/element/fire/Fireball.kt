@@ -50,7 +50,7 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		}
 	}
 
-	override fun rank(entity: Entity, target: Entity): Double {
+	override fun rank(entity: Entity, target: Entity, relation: Double): Double {
 		TODO("Not yet implemented")
 	}
 

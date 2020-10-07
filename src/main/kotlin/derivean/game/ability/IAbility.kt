@@ -15,5 +15,5 @@ interface IAbility {
 	/**
 	 * Compute rank of this ability (for selectors).
 	 */
-	fun rank(entity: Entity, target: Entity): Double
+	fun rank(entity: Entity, target: Entity, relation: Double): Double
 }
