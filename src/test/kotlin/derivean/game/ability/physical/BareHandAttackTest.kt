@@ -1,7 +1,6 @@
 package derivean.game.ability.physical
 
 import derivean.game.attribute.common.*
-import derivean.game.formation.Formation
 import derivean.game.formation.Formations
 import derivean.game.selector.RankSelector
 import org.junit.Test
@@ -20,7 +19,7 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("2") {
+				entity("1") {
 					attributes(
 						15.0.health(),
 						5.0.physicalDefense(),
@@ -34,65 +33,72 @@ class BareHandAttackTest {
 			assertEquals(5.0, it.first().rank)
 		}
 
-		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
-		assertEquals(5.0, alfa["Alfa"].damage(), "Source does not contain expected amount of damage.")
-		assertEquals(5.0, alfa["Alfa"].physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(10.0, beta["Beta"].health(), "Target does not have expected amount of health.")
+		formations["alfa"]["1"].ability(BareHandAttack.ABILITY, formations["alfa"]["1"])
+		assertEquals(5.0, formations["alfa"]["1"].damage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, formations["alfa"]["1"].physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, formations["beta"]["1"].health(), "Target does not have expected amount of health.")
 
-		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
-		assertEquals(10.0, alfa["Alfa"].damage(), "Source does not contain expected amount of damage.")
-		assertEquals(10.0, alfa["Alfa"].physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(5.0, beta["Beta"].health(), "Target does not have expected amount of health.")
+		formations["alfa"]["1"].ability(BareHandAttack.ABILITY, formations["alfa"]["1"])
+		assertEquals(10.0, formations["alfa"]["1"].damage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, formations["alfa"]["1"].physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, formations["beta"]["1"].health(), "Target does not have expected amount of health.")
 	}
 
 	@Test
 	fun `Bare hand attack without damage`() {
-		val alfa = Formation.build("alfa") {
-			entity("Alfa") {
-				attributes(
-					10.0.strength(),
-				)
-				ability(BareHandAttack.build {})
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("1") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {})
+				}
+			}
+			formation("beta") {
+				entity("1") {
+					attributes(
+						15.0.health(),
+						15.0.physicalDefense(),
+					)
+				}
 			}
 		}
-		val beta = Formation.build("beta") {
-			entity("Beta") {
-				attributes(
-					15.0.health(),
-					15.0.physicalDefense(),
-				)
-			}
+		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(0, it.size)
 		}
-		assertEquals(0.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, beta["Beta"]))
-		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
-		assertEquals(15.0, beta["Beta"].health(), "Target's health is different.")
+		assertEquals(15.0, formations["beta"]["1"].health(), "Target's health is different.")
 	}
 
 	@Test
 	fun `Bare hand attack with Attributes`() {
-		val alfa = Formation.build("alfa") {
-			entity("Alfa") {
-				attributes(
-					10.0.strength(),
-				)
-				ability(BareHandAttack.build {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("Alfa") {
 					attributes(
 						10.0.strength(),
 					)
-				})
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+						)
+					})
+				}
+			}
+			formation("beta") {
+				entity("Beta") {
+					attributes(
+						15.0.health(),
+						15.0.physicalDefense(),
+					)
+				}
 			}
 		}
-		val beta = Formation.build("beta") {
-			entity("Beta") {
-				attributes(
-					15.0.health(),
-					15.0.physicalDefense(),
-				)
-			}
+		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(1, it.size)
+			assertEquals(5.0, it.first().rank)
 		}
-		assertEquals(5.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, beta["Beta"]))
-		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
-		assertEquals(10.0, beta["Beta"].health(), "Target's health is different.")
+		assertEquals(10.0, formations["beta"]["1"].health(), "Target's health is different.")
 	}
 
 	@Test

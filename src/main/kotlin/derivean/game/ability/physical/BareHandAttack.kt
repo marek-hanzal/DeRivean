@@ -27,7 +27,23 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	}
 
 	override fun targets(entity: Entity, formations: Formations) = mutableListOf<Target>().apply {
-
+		for (formation in formations.formations()) {
+			for (target in formation) {
+				add(Target.build {
+					rank = when {
+						target.isNotAlive() -> {
+							0.0
+						}
+						formation.hasMember(entity) -> {
+							0.0
+						}
+						else -> {
+							damage(entity, target)
+						}
+					}
+				})
+			}
+		}
 	}
 
 	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)

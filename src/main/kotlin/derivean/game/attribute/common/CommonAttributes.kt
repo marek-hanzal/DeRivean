@@ -60,6 +60,7 @@ fun Attributes.health() = CommonAttributes.health(this)
 fun Entity.health() = this.attributes.health()
 fun Entity.health(value: Double) = this.attributes(CommonAttributes.health(value))
 fun Entity.isAlive() = this.health() > 0
+fun Entity.isNotAlive() = this.health() <= 0
 
 fun Double.maxHealth() = CommonAttributes.maxHealth(this)
 fun Attributes.maxHealth() = CommonAttributes.maxHealth(this)

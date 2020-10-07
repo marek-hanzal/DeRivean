@@ -6,7 +6,10 @@ class Target(val rank: Double) {
 	}
 
 	class Builder {
+		var rank = 0.0
+
 		fun build() = Target(
+			rank,
 		)
 	}
 }

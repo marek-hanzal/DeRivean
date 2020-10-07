@@ -7,7 +7,7 @@ open class Entities(val map: Map<String, Entity>) : Iterable<Entity> {
 
 	fun initiative() = map.values.maxOf { it.currentInitiative() }
 
-	fun isMember(entity: Entity) = map.containsKey(entity.toString())
+	fun hasMember(entity: Entity) = map.containsKey(entity.toString())
 
 	open operator fun get(name: String) = map.getOrElse(name) { throw UnknownEntityException("Requested unknown Entity [${name}].") }
 

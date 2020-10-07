@@ -7,7 +7,7 @@ import derivean.game.entity.Entity
  * Formation of a team of friendly Entities.
  */
 class Formation(val formation: String, map: Map<String, Entity>) : Entities(map) {
-	fun isMember(member: Member) = isMember(member.entity)
+	fun hasMember(member: Member) = hasMember(member.entity)
 
 	override operator fun get(name: String) = map.getOrElse(name) { throw UnknownMemberException("Requested unknown member [${name}] in formation [${formation}].") }
 
