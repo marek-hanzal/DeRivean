@@ -219,47 +219,54 @@ class BareHandAttackTest {
 		}
 	}
 
-//	@Test
-//	fun `Number of targets from an Attribute with same Rank`() {
-//		val entity = Entity.build("Alfa") {
-//			attributes(
-//				10.0.strength(),
-//			)
-//			ability(
-//				BareHandAttack.ability(
-//					"attack.bare-hands", Attributes(
-//						1.2.bareHandTargets(),
-//					)
-//				)
-//			)
-//		}
-//		val entities = Entities.build {
-//			entity("1") {
-//				attributes(
-//					15.0.health(),
-//					5.0.physicalDefense(),
-//				)
-//			}
-//			entity("2") {
-//				attributes(
-//					12.0.health(),
-//					5.0.physicalDefense(),
-//				)
-//			}
-//			entity("3") {
-//				attributes(
-//					20.0.health(),
-//				)
-//			}
-//		}
-//
-//		with(entity.targets("attack.bare-hands", entities)) {
-//			assertEquals(2, targets.size, "There are more targets!")
-//			assertEquals(15.0, rank)
-//			assertEquals(listOf(entities["3"], entities["1"]), targets.map { it.entity })
-//			assertEquals(listOf(Target(10.0, entities["3"]), Target(5.0, entities["1"])), targets)
-//		}
-//	}
+	@Test
+	fun `Number of targets from an Attribute with same Rank`() {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("alfa") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+							1.2.bareHandTargets(),
+						)
+					})
+				}
+				entity("beta") {
+					attributes(
+						15.0.health(),
+					)
+				}
+			}
+			formation("beta") {
+				entity("foo") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				}
+				entity("bar") {
+					attributes(
+						12.0.health(),
+						5.0.physicalDefense(),
+					)
+				}
+				entity("foo-bar") {
+					attributes(
+						20.0.health(),
+					)
+				}
+			}
+		}
+
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(2, it.size, "There are more targets!")
+			assertEquals(35.0, it.sumByDouble { sum -> sum.rank })
+			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["foo"]), it.map { map -> map.target })
+		}
+	}
 //
 //	@Test
 //	fun `Number of targets from an Attribute with same Rank another attempt`() {
