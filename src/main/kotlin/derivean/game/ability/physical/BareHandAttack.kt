@@ -25,19 +25,13 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	}
 
 	override fun rank(entity: Entity, target: Entity): Double {
-		if (entity.entity == target.entity) {
-			/**
-			 * Do not damage self.
-			 */
+		if (!target.isAlive()) {
 			return 0.0
 		}
-		/**
-		 * When implementing Friendly-Fire, it's possible to use coefficient here - by default it will be 0.0.
-		 */
 		return damage(entity, target)
 	}
 
-	private fun damage(entity: Entity, target: Entity) = max(entity.strength() - target.physicalDefense(), 0.0)
+	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)
 
 	companion object {
 		const val ABILITY = "ability.physical.BareHandAttack"

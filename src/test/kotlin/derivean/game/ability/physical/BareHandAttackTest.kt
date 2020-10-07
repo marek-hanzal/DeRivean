@@ -28,7 +28,7 @@ class BareHandAttackTest {
 		}
 
 		assertEquals(5.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, beta["Beta"]))
-		assertEquals(5.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, alfa["Alfa"]))
+		assertEquals(10.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, alfa["Alfa"]))
 
 		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
 		assertEquals(5.0, alfa["Alfa"].damage(), "Source does not contain expected amount of damage.")
@@ -99,7 +99,11 @@ class BareHandAttackTest {
 					attributes(
 						10.0.strength(),
 					)
-					ability(BareHandAttack.build {})
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+						)
+					})
 				}
 			}
 			formation("beta") {

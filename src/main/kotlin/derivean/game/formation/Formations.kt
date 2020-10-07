@@ -8,6 +8,8 @@ class Formations(val map: Map<String, Formation>) : Iterable<Map.Entry<String, F
 
 	operator fun get(name: String) = map.getOrElse(name) { throw UnknownFormationException("Requested unknown formation [${name}].") }
 
+	fun formations() = map.values.iterator()
+
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 	}

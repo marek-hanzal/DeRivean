@@ -9,6 +9,15 @@ import derivean.game.formation.Formations
  */
 class RankSelector : AbstractSelector() {
 	override fun select(entity: Entity, formations: Formations) = Entities.build {
+		val list = mutableListOf<Pair<Double, Entity>>()
+		for (ability in entity.abilities) {
+			for (formation in formations.formations()) {
+				for (target in formation) {
+					list.add(Pair(ability.rank(entity, target), target))
+				}
+			}
+		}
+		entity(list.filter { it.first > 0 }.sortedByDescending { it.first }.take(1).map { it.second })
 	}
 
 	companion object {

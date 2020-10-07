@@ -21,11 +21,9 @@ open class Entities(val map: Map<String, Entity>) : Iterable<Entity> {
 		/**
 		 * Simply add all Entities already created somewhere else.
 		 */
-		fun entity(vararg entity: Entity) {
-			entity.forEach {
-				map[it.toString()] = it
-			}
-		}
+		fun entity(entity: List<Entity>) = map.putAll(entity.map { it.entity to it })
+
+		fun entity(vararg entity: Entity) = entity(entity.toList())
 
 		/**
 		 * Use, when it's needed to create an Entity in place.
