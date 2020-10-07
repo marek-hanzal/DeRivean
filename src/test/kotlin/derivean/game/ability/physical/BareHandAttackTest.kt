@@ -2,7 +2,6 @@ package derivean.game.ability.physical
 
 import derivean.game.attribute.common.*
 import derivean.game.formation.Formations
-import derivean.game.selector.RankSelector
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -213,11 +212,10 @@ class BareHandAttackTest {
 			}
 		}
 
-		RankSelector.build { }.select(formations["alfa"]["alfa"], formations).let {
-			assertEquals(2, it.map.size, "There are more targets!")
-//			assertEquals(18.0, rank)
-//			assertEquals(listOf(entities["3"], entities["2"]), targets.map { it.entity })
-//			assertEquals(listOf(Target(10.0, entities["3"]), Target(8.0, entities["2"])), targets)
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(2, it.size, "There are more targets!")
+			assertEquals(38.0, it.sumByDouble { sum -> sum.rank })
+			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["bar"]), it.map { map -> map.target })
 		}
 	}
 

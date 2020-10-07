@@ -45,7 +45,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 				})
 			}
 		}
-	}.sortedByDescending { it.rank }.take(ceil(attributes(entity).bareHandTargets()).toInt())
+	}.filter { it.rank > 0 }.sortedByDescending { it.rank }.take(ceil(attributes(entity).bareHandTargets()).toInt())
 
 	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)
 
