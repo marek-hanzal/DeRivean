@@ -4,7 +4,6 @@ import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.Target
 import org.junit.Test
 import kotlin.test.assertEquals
 

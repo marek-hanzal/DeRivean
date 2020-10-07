@@ -1,29 +1,16 @@
 package derivean.game.ability
 
-import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.IMutator
-import derivean.game.mutator.Target
-import derivean.game.mutator.Targets
+import derivean.game.formation.Member
 
 interface IAbility {
 	/**
-	 * Ability name.
+	 * Use the given ability on a list of targets.
 	 */
-	val ability: String
+	fun use(entity: Entity, targets: List<Entity>)
 
 	/**
-	 * Mutator of this Ability.
+	 * Compute rank of this ability (for selectors).
 	 */
-	val mutator: IMutator
-
-	/**
-	 * Compute Target for this ability (using it's attributes).
-	 */
-	fun target(entity: Entity, target: Entity): Target
-
-	/**
-	 * Compute targets based on input Entities.
-	 */
-	fun targets(entity: Entity, entities: Entities): Targets
+	fun rank(entity: Member, target: Member): Double
 }

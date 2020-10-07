@@ -1,5 +1,6 @@
 package derivean.game.mutator.element.fire
 
+import derivean.game.ability.AbstractAbility
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.damage
 import derivean.game.attribute.common.health
@@ -10,53 +11,44 @@ import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.AbstractMutator
-import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
-import derivean.game.mutator.Target
 import kotlin.math.max
 
-class Fireball : AbstractMutator() {
-	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
-		mutation {
+class Fireball(attributes: Attributes) : AbstractAbility(attributes) {
+	override fun mutate(mutator: Mutator, targets: Entities) {
+		/**
+		 * Compute base attack of source entity.
+		 */
+		val attack = (mutator.current.fireAttack() + mutator.current.fireballAttack()) * (1 + mutator.current.fireElement())
+
+		/**
+		 * Take cost of casting fireball and mark it as mana loss (decrease).
+		 */
+		mutator.member.decOrZero(mutator.current.fireballCost().mana())
+
+		for (target in targets) {
 			/**
-			 * Compute base attack of source entity.
+			 * Base target entity defense.
 			 */
-			val attack = (mutator.current.fireAttack() + mutator.current.fireballAttack()) * (1 + mutator.current.fireElement())
+			val defense = if (target.fireElement() <= -1) -attack else target.fireDefense() * (1 + target.fireElement())
 
 			/**
-			 * Take cost of casting fireball and mark it as mana loss (decrease).
+			 * Compute final damage (if any).
 			 */
-			mutator.member.decOrZero(mutator.current.fireballCost().mana())
-
-			for (target in targets) {
-				/**
-				 * Base target entity defense.
-				 */
-				val defense = if (target.fireElement() <= -1) -attack else target.fireDefense() * (1 + target.fireElement())
-
-				/**
-				 * Compute final damage (if any).
-				 */
-				val damage = if (target.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
-				/**
-				 * Set (general) damage done in this duel.
-				 */
-				mutator.member.inc(damage.damage())
-				/**
-				 * Set fire damage done in this duel.
-				 */
-				mutator.member.inc(damage.fireDamage())
-				/**
-				 * Take damage as health and decrease it (health loss done by fireball).
-				 */
-				target.decOrZero(damage.health())
-			}
+			val damage = if (target.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
+			/**
+			 * Set (general) damage done in this duel.
+			 */
+			mutator.member.inc(damage.damage())
+			/**
+			 * Set fire damage done in this duel.
+			 */
+			mutator.member.inc(damage.fireDamage())
+			/**
+			 * Take damage as health and decrease it (health loss done by fireball).
+			 */
+			target.decOrZero(damage.health())
 		}
-	}
-
-	override fun resolveTarget(mutator: Mutator, entity: Entity): Target {
-		TODO("Implement rank in Fireball Mutator!")
 	}
 
 	companion object {
