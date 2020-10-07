@@ -159,48 +159,56 @@ class BareHandAttackTest {
 		}
 	}
 
-//	@Test
-//	fun `Number of targets from an Attribute`() {
-//		val entity = Entity.build("Alfa") {
-//			attributes(
-//				10.0.strength(),
-//			)
-//			ability(
-//				BareHandAttack.ability(
-//					"attack.bare-hands", Attributes(
-//						1.2.bareHandTargets(),
-//					)
-//				)
-//			)
-//		}
-//		val entities = Entities.build {
-//			entity("1") {
-//				attributes(
-//					15.0.health(),
-//					5.0.physicalDefense(),
-//				)
-//			}
-//			entity("2") {
-//				attributes(
-//					12.0.health(),
-//					2.0.physicalDefense(),
-//				)
-//			}
-//			entity("3") {
-//				attributes(
-//					20.0.health(),
-//				)
-//			}
-//		}
-//
-//		with(entity.targets("attack.bare-hands", entities)) {
-//			assertEquals(2, targets.size, "There are more targets!")
+	@Test
+	fun `Number of targets from an Attribute`() {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("Alfa") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+							1.2.bareHandTargets(),
+						)
+					})
+				}
+				entity("Beta") {
+					attributes(
+						15.0.health(),
+					)
+				}
+			}
+			formation("beta") {
+				entity("1") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				}
+				entity("2") {
+					attributes(
+						12.0.health(),
+						2.0.physicalDefense(),
+					)
+				}
+				entity("3") {
+					attributes(
+						20.0.health(),
+					)
+				}
+			}
+		}
+
+		RankSelector.build { }.select(formations["alfa"]["Alfa"], formations).let {
+			assertEquals(2, it.map.size, "There are more targets!")
 //			assertEquals(18.0, rank)
 //			assertEquals(listOf(entities["3"], entities["2"]), targets.map { it.entity })
 //			assertEquals(listOf(Target(10.0, entities["3"]), Target(8.0, entities["2"])), targets)
-//		}
-//	}
-//
+		}
+	}
+
 //	@Test
 //	fun `Number of targets from an Attribute with same Rank`() {
 //		val entity = Entity.build("Alfa") {

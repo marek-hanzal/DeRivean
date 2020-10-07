@@ -37,6 +37,10 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		const val ABILITY = "ability.physical.BareHandAttack"
 
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+
+		private const val ATTRIBUTE_TARGETS = "ability.physical.BareHandAttack.targets"
+		fun targets(value: Double) = ATTRIBUTE_TARGETS to value
+		fun targets(attributes: Attributes) = attributes[ATTRIBUTE_TARGETS]
 	}
 
 	class Builder {
@@ -50,3 +54,6 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		)
 	}
 }
+
+fun Double.bareHandTargets() = BareHandAttack.targets(this)
+fun Attributes.bareHandTargets() = BareHandAttack.targets(this)
