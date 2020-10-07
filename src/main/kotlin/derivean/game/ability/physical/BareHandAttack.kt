@@ -72,6 +72,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	}
 }
 
+fun Abilities.bareHand() = this[BareHandAttack.ABILITY]
+
 fun Double.bareHandTargets() = BareHandAttack.targets(this)
 fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
-fun Abilities.bareHand() = this[BareHandAttack.ABILITY]

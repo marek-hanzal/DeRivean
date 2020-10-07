@@ -1,5 +1,6 @@
 package derivean.game.ability.element.fire
 
+import derivean.game.ability.Abilities
 import derivean.game.ability.AbstractAbility
 import derivean.game.ability.Target
 import derivean.game.attribute.Attribute
@@ -57,6 +58,8 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 	}
 
 	companion object {
+		const val ABILITY = "ability.element.fire.Fireball"
+
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 
 		private const val ATTRIBUTE_COST = "spell.fireball.cost"
@@ -74,11 +77,13 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
 
 		fun build() = Fireball(
-			"ability.element.fire.Fireball",
+			ABILITY,
 			attributes,
 		)
 	}
 }
+
+fun Abilities.fireball() = this[Fireball.ABILITY]
 
 fun Double.fireballCost() = Fireball.cost(this)
 fun Attributes.fireballCost() = Fireball.cost(this)

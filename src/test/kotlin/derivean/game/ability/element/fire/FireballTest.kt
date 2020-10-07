@@ -92,7 +92,7 @@ class FireballTest {
 			)
 		}
 
-		ability.use(entity, entity)
+		ability.use(entity, target)
 
 		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
 		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")
