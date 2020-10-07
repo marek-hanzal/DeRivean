@@ -126,35 +126,39 @@ class BareHandAttackTest {
 			assertEquals(mapOf("Beta" to formations["beta"]["Beta"]), it.map)
 		}
 	}
-//
-//	@Test
-//	fun `No Friendly-fire`() {
-//		val entities = Entities.build {
-//			entity("Alfa") {
-//				attributes(
-//					10.0.strength(),
-//				)
-//				ability(BareHandAttack.ability("attack.bare-hands"))
-//			}
-//			entity("This one is alive") {
-//				attributes(
-//					15.0.health(),
-//					5.0.physicalDefense(),
-//				)
-//			}
-//			entity("This one is not alive") {
-//				attributes(
-//					0.0.health(),
-//				)
-//			}
-//		}
-//
-//		with(entities["Alfa"].targets("attack.bare-hands", entities)) {
-//			assertEquals(0.0, rank, "Rank should be zero!")
-//			assertEquals(0, targets.size, "There are more targets!")
-//		}
-//	}
-//
+
+	@Test
+	fun `No Friendly-fire`() {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("Alfa") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+						)
+					})
+				}
+				entity("Beta") {
+					attributes(
+						15.0.health(),
+						15.0.physicalDefense(),
+					)
+				}
+				entity("Gama") {
+					attributes(
+						0.0.health(),
+					)
+				}
+			}
+		}
+		RankSelector.build { }.select(formations["alfa"]["Alfa"], formations).let {
+			assertEquals(0, it.map.size, "There are more targets!")
+		}
+	}
+
 //	@Test
 //	fun `Number of targets from an Attribute`() {
 //		val entity = Entity.build("Alfa") {
