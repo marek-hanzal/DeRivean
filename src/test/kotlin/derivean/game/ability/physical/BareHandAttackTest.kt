@@ -11,7 +11,7 @@ class BareHandAttackTest {
 	fun `Bare hand attack`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("1") {
+				entity("alfa") {
 					attributes(
 						10.0.strength(),
 					)
@@ -19,7 +19,7 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("1") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 						5.0.physicalDefense(),
@@ -28,27 +28,27 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
 			assertEquals(1, it.size)
 			assertEquals(5.0, it.first().rank)
 		}
 
-		formations["alfa"]["1"].ability(BareHandAttack.ABILITY, formations["alfa"]["1"])
-		assertEquals(5.0, formations["alfa"]["1"].damage(), "Source does not contain expected amount of damage.")
-		assertEquals(5.0, formations["alfa"]["1"].physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(10.0, formations["beta"]["1"].health(), "Target does not have expected amount of health.")
+		formations["alfa"]["alfa"].ability(BareHandAttack.ABILITY, formations["alfa"]["1"])
+		assertEquals(5.0, formations["alfa"]["alfa"].damage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, formations["alfa"]["alfa"].physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, formations["beta"]["beta"].health(), "Target does not have expected amount of health.")
 
 		formations["alfa"]["1"].ability(BareHandAttack.ABILITY, formations["alfa"]["1"])
-		assertEquals(10.0, formations["alfa"]["1"].damage(), "Source does not contain expected amount of damage.")
-		assertEquals(10.0, formations["alfa"]["1"].physicalDamage(), "Source does not contain expected amount of damage.")
-		assertEquals(5.0, formations["beta"]["1"].health(), "Target does not have expected amount of health.")
+		assertEquals(10.0, formations["alfa"]["alfa"].damage(), "Source does not contain expected amount of damage.")
+		assertEquals(10.0, formations["alfa"]["alfa"].physicalDamage(), "Source does not contain expected amount of damage.")
+		assertEquals(5.0, formations["beta"]["beta"].health(), "Target does not have expected amount of health.")
 	}
 
 	@Test
 	fun `Bare hand attack without damage`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("1") {
+				entity("alfa") {
 					attributes(
 						10.0.strength(),
 					)
@@ -56,7 +56,7 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("1") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 						15.0.physicalDefense(),
@@ -64,17 +64,17 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
 			assertEquals(0, it.size)
 		}
-		assertEquals(15.0, formations["beta"]["1"].health(), "Target's health is different.")
+		assertEquals(15.0, formations["beta"]["beta"].health(), "Target's health is different.")
 	}
 
 	@Test
 	fun `Bare hand attack with Attributes`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("1") {
+				entity("alfa") {
 					attributes(
 						10.0.strength(),
 					)
@@ -86,7 +86,7 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("1") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 						15.0.physicalDefense(),
@@ -94,11 +94,11 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
 			assertEquals(1, it.size)
 			assertEquals(5.0, it.first().rank)
 		}
-		assertEquals(10.0, formations["beta"]["1"].health(), "Target's health is different.")
+		assertEquals(10.0, formations["beta"]["beta"].health(), "Target's health is different.")
 	}
 
 	@Test
