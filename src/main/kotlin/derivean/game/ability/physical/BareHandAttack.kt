@@ -7,6 +7,7 @@ import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
+import kotlin.math.ceil
 import kotlin.math.max
 
 class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
@@ -44,7 +45,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 				})
 			}
 		}
-	}
+	}.take(ceil(attributes(entity).bareHandTargets()).toInt())
 
 	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)
 

@@ -74,7 +74,7 @@ class BareHandAttackTest {
 	fun `Bare hand attack with Attributes`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("Alfa") {
+				entity("1") {
 					attributes(
 						10.0.strength(),
 					)
@@ -86,7 +86,7 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("Beta") {
+				entity("1") {
 					attributes(
 						15.0.health(),
 						15.0.physicalDefense(),
