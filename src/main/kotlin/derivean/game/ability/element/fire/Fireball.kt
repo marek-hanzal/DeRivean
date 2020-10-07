@@ -11,7 +11,6 @@ import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
 import derivean.game.entity.Entity
-import derivean.game.formation.Member
 import kotlin.math.max
 
 class Fireball(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
@@ -51,7 +50,7 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		}
 	}
 
-	override fun rank(entity: Member, target: Member): Double {
+	override fun rank(entity: Entity, target: Entity): Double {
 		TODO("Not yet implemented")
 	}
 

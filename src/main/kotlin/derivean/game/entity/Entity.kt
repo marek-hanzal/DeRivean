@@ -20,8 +20,11 @@ class Entity(
 	 */
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
 
-	fun inc(attribute: Attribute) = attributes.inc(attribute)
+	fun rank(ability: String, target: Entity) = abilities[ability].rank(this, target)
 
+	fun ability(ability: String, target: Entity) = abilities[ability].use(this, target)
+
+	fun inc(attribute: Attribute) = attributes.inc(attribute)
 	fun decOrZero(attribute: Attribute) = attributes.decOrZero(attribute)
 
 	companion object {

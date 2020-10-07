@@ -10,4 +10,13 @@ import derivean.game.formation.Formations
 class RankSelector : AbstractSelector() {
 	override fun select(entity: Entity, formations: Formations) = Entities.build {
 	}
+
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+	}
+
+	class Builder {
+		fun build() = RankSelector(
+		)
+	}
 }

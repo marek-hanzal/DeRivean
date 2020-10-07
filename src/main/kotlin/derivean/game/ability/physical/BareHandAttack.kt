@@ -5,7 +5,6 @@ import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
-import derivean.game.formation.Member
 import kotlin.math.max
 
 class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
@@ -25,22 +24,17 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		}
 	}
 
-	override fun rank(entity: Member, target: Member): Double {
+	override fun rank(entity: Entity, target: Entity): Double {
 		if (entity.entity == target.entity) {
 			/**
 			 * Do not damage self.
-			 */
-			return 0.0
-		} else if (target.formation.isMember(entity)) {
-			/**
-			 * Prevent friendly-fire.
 			 */
 			return 0.0
 		}
 		/**
 		 * When implementing Friendly-Fire, it's possible to use coefficient here - by default it will be 0.0.
 		 */
-		return damage(entity.entity, target.entity)
+		return damage(entity, target)
 	}
 
 	private fun damage(entity: Entity, target: Entity) = max(entity.strength() - target.physicalDefense(), 0.0)

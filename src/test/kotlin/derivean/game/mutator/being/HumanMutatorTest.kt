@@ -13,9 +13,9 @@ class HumanMutatorTest {
 	fun `Basic mutation of an Entity`() {
 		val entity = Entity.build("Wind River")
 		assertEquals(0.0, entity.health())
-		HumanMutator().mutate().evaluate()
+		HumanMutator().mutate(entity)
 		assertEquals(100.0, entity.health())
-		assertEquals(5.0, entity.strength(), "Strength is not set from Equipment or in different value.")
-		assertTrue(entity.abilities["attack.bare-hands"].mutator is BareHandAttack)
+		assertEquals(10.0, entity.strength(), "Strength is not set from Equipment or in different value.")
+		assertTrue(entity.abilities[BareHandAttack.ABILITY] is BareHandAttack)
 	}
 }

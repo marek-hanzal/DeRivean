@@ -1,5 +1,6 @@
 package derivean.game.mutator.being
 
+import derivean.game.ability.physical.BareHandAttack
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
@@ -18,6 +19,7 @@ class HumanMutator : AbstractMutator() {
 			10.0.strength(),
 			5.0.physicalDefense(),
 		)
+		entity.abilities.ability(BareHandAttack.build { })
 	}
 
 	companion object {
