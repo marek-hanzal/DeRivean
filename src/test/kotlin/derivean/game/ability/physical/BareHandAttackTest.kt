@@ -10,25 +10,29 @@ import kotlin.test.assertEquals
 class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack`() {
-		val alfa = Formation.build("alfa") {
-			entity("Alfa") {
-				attributes(
-					10.0.strength(),
-				)
-				ability(BareHandAttack.build {})
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("1") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {})
+				}
 			}
-		}
-		val beta = Formation.build("beta") {
-			entity("Beta") {
-				attributes(
-					15.0.health(),
-					5.0.physicalDefense(),
-				)
+			formation("beta") {
+				entity("2") {
+					attributes(
+						15.0.health(),
+						5.0.physicalDefense(),
+					)
+				}
 			}
 		}
 
-		assertEquals(5.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, beta["Beta"]))
-		assertEquals(10.0, alfa["Alfa"].rank(BareHandAttack.ABILITY, alfa["Alfa"]))
+		formations["alfa"]["1"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(1, it.size)
+			assertEquals(5.0, it.first().rank)
+		}
 
 		alfa["Alfa"].ability(BareHandAttack.ABILITY, beta["Beta"])
 		assertEquals(5.0, alfa["Alfa"].damage(), "Source does not contain expected amount of damage.")

@@ -13,7 +13,6 @@ class RankSelector : AbstractSelector() {
 		for (ability in entity.abilities) {
 			for (formation in formations.formations()) {
 				for (target in formation) {
-					list.add(Pair(ability.rank(entity, target, formation.relation(entity)), target))
 				}
 			}
 		}

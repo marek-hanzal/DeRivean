@@ -1,6 +1,7 @@
 package derivean.game.ability
 
 import derivean.game.entity.Entity
+import derivean.game.formation.Formations
 
 interface IAbility {
 	val ability: String
@@ -15,5 +16,5 @@ interface IAbility {
 	/**
 	 * Compute rank of this ability (for selectors).
 	 */
-	fun rank(entity: Entity, target: Entity, relation: Double): Double
+	fun targets(entity: Entity, formations: Formations): List<Target>
 }

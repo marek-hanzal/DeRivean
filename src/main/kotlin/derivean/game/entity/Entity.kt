@@ -4,6 +4,7 @@ import derivean.game.ability.Abilities
 import derivean.game.ability.IAbility
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
+import derivean.game.formation.Formations
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.
@@ -20,7 +21,7 @@ class Entity(
 	 */
 	fun attributes(vararg attributes: Attribute) = this.attributes.set(*attributes)
 
-	fun rank(ability: String, target: Entity, relation: Double = 1.0) = abilities[ability].rank(this, target, relation)
+	fun targets(ability: String, formations: Formations) = abilities[ability].targets(this, formations)
 
 	fun ability(ability: String, target: Entity) = abilities[ability].use(this, target)
 
