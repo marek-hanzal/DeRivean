@@ -144,8 +144,9 @@ class BareHandAttackTest {
 	fun `No Friendly-fire`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("Alfa") {
+				entity("alfa") {
 					attributes(
+						10.0.health(),
 						10.0.strength(),
 					)
 					ability(BareHandAttack.build {
@@ -154,22 +155,20 @@ class BareHandAttackTest {
 						)
 					})
 				}
-				entity("Beta") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 						15.0.physicalDefense(),
 					)
 				}
-				entity("Gama") {
+				entity("gama") {
 					attributes(
 						0.0.health(),
 					)
 				}
 			}
 		}
-		RankSelector.build { }.select(formations["alfa"]["Alfa"], formations).let {
-			assertEquals(0, it.map.size, "There are more targets!")
-		}
+		assertEquals(0, formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).size, "There are more targets!")
 	}
 
 	@Test
