@@ -58,6 +58,6 @@ class InitiativeTest {
 
 		assertEquals(formations["alfa"]["Foo"], initiative.resolve(formations["alfa"]))
 		assertEquals(formations["beta"]["Far"], initiative.resolve(formations["beta"]))
-		assertEquals(formations["beta"]["Far"], initiative.resolveEntity(formations))
+		assertEquals(formations["beta"]["Far"], initiative.initiative(formations))
 	}
 }

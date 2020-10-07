@@ -11,7 +11,7 @@ import derivean.game.mutator.Mutator
  * Adjust attributes for a Water Element - for example weakness or strength.
  */
 class WaterElementMutator : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			mutator.attributes(
 				/**

@@ -10,7 +10,7 @@ import derivean.game.mutator.Mutator
 import derivean.game.mutator.Mutators
 
 class WarriorClassMutator : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			mutator.attributes(
 				/**

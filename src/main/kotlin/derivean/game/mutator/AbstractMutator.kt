@@ -13,7 +13,7 @@ abstract class AbstractMutator : IMutator {
 				 * - Rank must be more than 0; this could be used when source entity (mutator) does not have mana for casting spells
 				 * - No friendly fire; in support Mutators this behavior should be overridden
 				 */
-				if (entity.isAlive() && rank > 0 && !entities.isMember(mutator.entity)) {
+				if (entity.isAlive() && rank > 0 && !entities.isMember(mutator.member)) {
 					addTarget(this)
 				}
 			}

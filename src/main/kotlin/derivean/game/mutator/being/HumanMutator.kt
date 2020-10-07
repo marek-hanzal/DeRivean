@@ -12,7 +12,7 @@ import derivean.game.mutator.physical.BareHandAttack
  * This mutator provides basic attributes and abilities related to human beings.
  */
 class HumanMutator : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			mutator.attributes(
 				100.0.health(),

@@ -17,7 +17,7 @@ import derivean.game.mutator.Target
 import kotlin.math.max
 
 class Fireball : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			/**
 			 * Compute base attack of source entity.
@@ -27,7 +27,7 @@ class Fireball : AbstractMutator() {
 			/**
 			 * Take cost of casting fireball and mark it as mana loss (decrease).
 			 */
-			mutator.entity.decOrZero(mutator.current.fireballCost().mana())
+			mutator.member.decOrZero(mutator.current.fireballCost().mana())
 
 			for (target in targets) {
 				/**
@@ -42,11 +42,11 @@ class Fireball : AbstractMutator() {
 				/**
 				 * Set (general) damage done in this duel.
 				 */
-				mutator.entity.inc(damage.damage())
+				mutator.member.inc(damage.damage())
 				/**
 				 * Set fire damage done in this duel.
 				 */
-				mutator.entity.inc(damage.fireDamage())
+				mutator.member.inc(damage.fireDamage())
 				/**
 				 * Take damage as health and decrease it (health loss done by fireball).
 				 */

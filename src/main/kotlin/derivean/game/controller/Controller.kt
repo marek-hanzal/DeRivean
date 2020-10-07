@@ -3,15 +3,9 @@ package derivean.game.controller
 import derivean.game.formation.Formations
 import derivean.game.initiative.IInitiative
 
-/**
- * Battle controller is responsible for evaluating all the stuff related to
- * (automated) battle of two teams.
- *
- * Use case of this controller is when a player is just looking on (live) battle.
- */
-class BattleController : AbstractController() {
+class Controller : AbstractController() {
 	override fun loop(initiative: IInitiative, formations: Formations) {
-		initiative.resolveEntity(formations).let { entity ->
+		initiative.initiative(formations).let { entity ->
 			//
 		}
 

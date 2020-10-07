@@ -27,5 +27,5 @@ interface IInitiative {
 	/**
 	 * Shortcut method for resolving member from Formations.
 	 */
-	fun resolveEntity(formations: Formations) = resolve(resolve(formations))
+	fun initiative(formations: Formations) = resolve(resolve(formations))
 }

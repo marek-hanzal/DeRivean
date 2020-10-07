@@ -6,38 +6,27 @@ import derivean.game.attribute.common.*
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
-import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
-import derivean.game.mutator.Target
 import kotlin.math.ceil
 import kotlin.math.max
 
 class BareHandAttack : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
-		mutation {
-			for (target in targets) {
-				damage(mutator, target) {
-					/**
-					 * Accumulate overall entity's damage and physical damage done.
-					 */
-					mutator.entity.inc(damage())
-					mutator.entity.inc(physicalDamage())
-					/**
-					 * Convert damage to heal loss of target entity; health cannot go under zero.
-					 */
-					target.decOrZero(health())
+	override fun mutate(mutator: Mutator, targets: Entities) {
+		for (target in targets) {
+			damage(mutator, target) {
+				/**
+				 * Accumulate overall entity's damage and physical damage done.
+				 */
+				mutator.member.inc(damage())
+				mutator.member.inc(physicalDamage())
+				/**
+				 * Convert damage to heal loss of target entity; health cannot go under zero.
+				 */
+				target.decOrZero(health())
 				}
 			}
 		}
 	}
-
-	override fun resolveTarget(mutator: Mutator, entity: Entity) = Target.build(entity) {
-		damage(mutator, entity) {
-			rank = this
-		}
-	}
-
-	override fun resolveTargets(mutator: Mutator) = mutator.current.bareHandTargets()
 
 	private fun damage(mutator: Mutator, target: Entity, block: Double.() -> Unit) = block(max(mutator.current.strength() - target.physicalDefense(), 0.0))
 

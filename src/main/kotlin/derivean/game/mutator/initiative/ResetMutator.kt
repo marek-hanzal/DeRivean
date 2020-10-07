@@ -7,7 +7,7 @@ import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
 
 class ResetMutator : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			mutator.attributes(0.0.currentInitiative())
 		}

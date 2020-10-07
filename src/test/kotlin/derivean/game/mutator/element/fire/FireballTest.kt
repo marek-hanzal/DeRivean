@@ -93,7 +93,7 @@ class FireballTest {
 			)
 		}
 
-		mutator.mutation(entity, Entities.build { entity(target) })
+		mutator.mutate(entity, Entities.build { entity(target) })
 
 		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
 		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")

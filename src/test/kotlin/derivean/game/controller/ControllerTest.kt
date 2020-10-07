@@ -13,7 +13,7 @@ import derivean.game.mutator.role.warriorMutator
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class BattleControllerTest {
+class ControllerTest {
 	@Test
 	fun `Do some simple battle, dude!`() {
 		val mutators = Mutators.build {
@@ -23,7 +23,7 @@ class BattleControllerTest {
 			)
 		}
 
-		BattleController().let { controller ->
+		Controller().let { controller ->
 			Initiative.build {}.let { initiative ->
 				Formations.build {
 					formation("alfa") {
@@ -34,15 +34,15 @@ class BattleControllerTest {
 							 */
 							attributes(5.0.currentInitiative())
 						}.let { entity ->
-							mutators.humanMutator().mutation(entity)
-							mutators.warriorMutator().mutation(entity)
+							mutators.humanMutator().mutate(entity)
+							mutators.warriorMutator().mutate(entity)
 						}
 					}
 					formation("beta") {
 						entity("Wind River") {
 						}.let { entity ->
-							mutators.humanMutator().mutation(entity)
-							mutators.warriorMutator().mutation(entity)
+							mutators.humanMutator().mutate(entity)
+							mutators.warriorMutator().mutate(entity)
 						}
 					}
 				}.let { formations ->

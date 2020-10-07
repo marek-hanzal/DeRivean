@@ -8,7 +8,7 @@ import derivean.game.mutator.Mutation
 import derivean.game.mutator.Mutator
 
 class RoundMutator : AbstractMutator() {
-	override fun mutation(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
+	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
 		mutation {
 			/**
 			 * Round initiative is used as current initiative on round reset (thus here).
