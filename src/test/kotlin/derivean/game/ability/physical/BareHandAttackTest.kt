@@ -108,7 +108,7 @@ class BareHandAttackTest {
 	fun `Correct targets with dead Entity`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("Alfa") {
+				entity("alfa") {
 					attributes(
 						10.0.strength(),
 					)
@@ -120,13 +120,13 @@ class BareHandAttackTest {
 				}
 			}
 			formation("beta") {
-				entity("Beta") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 						15.0.physicalDefense(),
 					)
 				}
-				entity("Gama") {
+				entity("gama") {
 					attributes(
 						0.0.health(),
 					)
@@ -134,9 +134,9 @@ class BareHandAttackTest {
 			}
 		}
 
-		RankSelector.build { }.select(formations["alfa"]["Alfa"], formations).let {
-			assertEquals(1, it.map.size, "There are more targets!")
-			assertEquals(mapOf("Beta" to formations["beta"]["Beta"]), it.map)
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
+			assertEquals(1, it.size, "There are more targets!")
+			assertEquals(formations["beta"]["beta"], it.first().target)
 		}
 	}
 
@@ -176,7 +176,7 @@ class BareHandAttackTest {
 	fun `Number of targets from an Attribute`() {
 		val formations = Formations.build {
 			formation("alfa") {
-				entity("Alfa") {
+				entity("alfa") {
 					attributes(
 						10.0.strength(),
 					)
@@ -187,26 +187,26 @@ class BareHandAttackTest {
 						)
 					})
 				}
-				entity("Beta") {
+				entity("beta") {
 					attributes(
 						15.0.health(),
 					)
 				}
 			}
 			formation("beta") {
-				entity("1") {
+				entity("foo") {
 					attributes(
 						15.0.health(),
 						5.0.physicalDefense(),
 					)
 				}
-				entity("2") {
+				entity("bar") {
 					attributes(
 						12.0.health(),
 						2.0.physicalDefense(),
 					)
 				}
-				entity("3") {
+				entity("foo-bar") {
 					attributes(
 						20.0.health(),
 					)
@@ -214,7 +214,7 @@ class BareHandAttackTest {
 			}
 		}
 
-		RankSelector.build { }.select(formations["alfa"]["Alfa"], formations).let {
+		RankSelector.build { }.select(formations["alfa"]["alfa"], formations).let {
 			assertEquals(2, it.map.size, "There are more targets!")
 //			assertEquals(18.0, rank)
 //			assertEquals(listOf(entities["3"], entities["2"]), targets.map { it.entity })
