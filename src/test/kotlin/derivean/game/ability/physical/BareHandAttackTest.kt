@@ -97,6 +97,9 @@ class BareHandAttackTest {
 		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
 			assertEquals(1, it.size)
 			assertEquals(5.0, it.first().rank)
+			for (target in it) {
+				target.resolve()
+			}
 		}
 		assertEquals(10.0, formations["beta"]["beta"].health(), "Target's health is different.")
 	}

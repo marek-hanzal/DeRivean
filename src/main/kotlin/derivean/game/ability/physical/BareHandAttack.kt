@@ -30,7 +30,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	override fun targets(entity: Entity, formations: Formations) = mutableListOf<Target>().apply {
 		for (formation in formations.formations()) {
 			for (target in formation) {
-				add(Target.build {
+				add(Target.build(entity, target, this@BareHandAttack) {
 					rank = when {
 						target.isNotAlive() -> {
 							0.0
