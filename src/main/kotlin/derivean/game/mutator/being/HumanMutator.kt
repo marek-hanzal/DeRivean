@@ -1,34 +1,29 @@
 package derivean.game.mutator.being
 
 import derivean.game.attribute.common.*
-import derivean.game.entity.Entities
+import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
-import derivean.game.mutator.Mutation
-import derivean.game.mutator.Mutator
 import derivean.game.mutator.Mutators
-import derivean.game.mutator.physical.BareHandAttack
 
 /**
  * This mutator provides basic attributes and abilities related to human beings.
  */
 class HumanMutator : AbstractMutator() {
-	override fun mutate(mutator: Mutator, targets: Entities) = Mutation.build(mutator, targets) {
-		mutation {
-			mutator.attributes(
-				100.0.health(),
-				50.0.maxMana(),
-				50.0.mana(),
-				10.0.currentInitiative(),
-				10.0.strength(),
-				5.0.physicalDefense(),
-			)
-			mutator.ability(BareHandAttack.ability("attack.bare-hands"))
-		}
+	override fun mutate(entity: Entity) {
+		entity.attributes(
+			100.0.health(),
+			50.0.maxMana(),
+			50.0.mana(),
+			10.0.currentInitiative(),
+			10.0.strength(),
+			5.0.physicalDefense(),
+		)
 	}
 
 	companion object {
-		fun mutator() = Pair("being.human", HumanMutator())
+		const val MUTATOR = "being.human"
+		fun mutator() = Pair(MUTATOR, HumanMutator())
 	}
 }
 
-fun Mutators.humanMutator() = this["being.human"]
+fun Mutators.humanMutator() = this[HumanMutator.MUTATOR]

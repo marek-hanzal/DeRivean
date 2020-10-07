@@ -8,7 +8,7 @@ import derivean.game.initiative.Initiative
 import derivean.game.mutator.Mutators
 import derivean.game.mutator.being.HumanMutator
 import derivean.game.mutator.being.humanMutator
-import derivean.game.mutator.role.WarriorClassMutator
+import derivean.game.mutator.role.WarriorRoleMutator
 import derivean.game.mutator.role.warriorMutator
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -19,7 +19,7 @@ class ControllerTest {
 		val mutators = Mutators.build {
 			mutator(
 				HumanMutator.mutator(),
-				WarriorClassMutator.mutator(),
+				WarriorRoleMutator.mutator(),
 			)
 		}
 
@@ -34,15 +34,15 @@ class ControllerTest {
 							 */
 							attributes(5.0.currentInitiative())
 						}.let { entity ->
-							mutators.humanMutator().mutate(entity)
-							mutators.warriorMutator().mutate(entity)
+							mutators.humanMutator().mutate()
+							mutators.warriorMutator().mutate()
 						}
 					}
 					formation("beta") {
 						entity("Wind River") {
 						}.let { entity ->
-							mutators.humanMutator().mutate(entity)
-							mutators.warriorMutator().mutate(entity)
+							mutators.humanMutator().mutate()
+							mutators.warriorMutator().mutate()
 						}
 					}
 				}.let { formations ->

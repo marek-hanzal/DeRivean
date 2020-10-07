@@ -1,36 +1,43 @@
-package derivean.game.mutator.physical
+package derivean.game.ability.physical
 
 import derivean.game.attribute.Attributes
-import derivean.game.attribute.common.*
+import derivean.game.attribute.common.health
+import derivean.game.attribute.common.physicalDefense
+import derivean.game.attribute.common.strength
 import derivean.game.entity.Entities
 import derivean.game.entity.Entity
+import derivean.game.formation.Formation
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class BareHandAttackTest {
 	@Test
 	fun `Bare hand attack`() {
-		val entity = Entity.build("Alfa") {
-			attributes(
-				10.0.strength(),
-			)
-			ability(BareHandAttack.ability("attack.bare-hands"))
+		val alfa = Formation.build("alfa") {
+			entity("Alfa") {
+				attributes(
+					10.0.strength(),
+				)
+				ability(BareHandAttack.build {})
+			}
 		}
-		val target = Entity.build("Beta") {
-			attributes(
-				15.0.health(),
-				5.0.physicalDefense(),
-			)
+		val beta = Formation.build("beta") {
+			entity("Beta") {
+				attributes(
+					15.0.health(),
+					5.0.physicalDefense(),
+				)
+			}
 		}
 
-		assertEquals(5.0, entity.target("attack.bare-hands", target).rank)
+		assertEquals(5.0, alfa["Alfa"].abilities[BareHandAttack.ABILITY].rank())
 
-//		entity.ability("attack.bare-hands", target)
+		entity.ability("attack.bare-hands", target)
 		assertEquals(5.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, target.health(), "Target does not have expected amount of health.")
 
-//		entity.ability("attack.bare-hands", target)
+		entity.ability("attack.bare-hands", target)
 		assertEquals(10.0, entity.damage(), "Source does not contain expected amount of damage.")
 		assertEquals(10.0, entity.physicalDamage(), "Source does not contain expected amount of damage.")
 		assertEquals(5.0, target.health(), "Target does not have expected amount of health.")

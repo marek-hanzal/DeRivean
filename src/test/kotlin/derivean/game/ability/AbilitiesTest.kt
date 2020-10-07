@@ -1,6 +1,6 @@
 package derivean.game.ability
 
-import derivean.game.mutator.physical.BareHandAttack
+import derivean.game.ability.physical.BareHandAttack
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -8,7 +8,8 @@ import kotlin.test.assertFailsWith
 class AbilitiesTest {
 	@Test
 	fun `Abilities should return an Ability`() {
-		val ability = Ability("foo", BareHandAttack())
+		val ability = BareHandAttack.build {
+		}
 		val abilities = Abilities().apply {
 			ability(ability)
 		}

@@ -1,7 +1,6 @@
 package derivean.game.attribute.element
 
 import derivean.game.attribute.Attributes
-import derivean.game.entity.Entity
 
 /**
  * Common Water attributes.
@@ -29,16 +28,12 @@ class WaterAttributes {
 
 fun Double.waterAttack() = WaterAttributes.attack(this)
 fun Attributes.waterAttack() = WaterAttributes.attack(this)
-fun Entity.waterAttack() = this.attributes.waterAttack()
 
 fun Double.waterDefense() = WaterAttributes.defense(this)
 fun Attributes.waterDefense() = WaterAttributes.defense(this)
-fun Entity.waterDefense() = this.attributes.waterDefense()
 
 fun Double.waterElement() = WaterAttributes.element(this)
 fun Attributes.waterElement() = WaterAttributes.element(this)
-fun Entity.waterElement() = this.attributes.waterElement()
 
 fun Double.waterDamage() = WaterAttributes.damage(this)
 fun Attributes.waterDamage() = WaterAttributes.damage(this)
-fun Entity.waterDamage() = this.attributes.waterDamage()

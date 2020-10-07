@@ -1,6 +1,7 @@
-package derivean.game.mutator.element.fire
+package derivean.game.ability.element.fire
 
 import derivean.game.ability.AbstractAbility
+import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.damage
 import derivean.game.attribute.common.health
@@ -9,23 +10,22 @@ import derivean.game.attribute.element.fireAttack
 import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
-import derivean.game.entity.Entities
 import derivean.game.entity.Entity
-import derivean.game.mutator.Mutator
+import derivean.game.formation.Member
 import kotlin.math.max
 
-class Fireball(attributes: Attributes) : AbstractAbility(attributes) {
-	override fun mutate(mutator: Mutator, targets: Entities) {
+class Fireball(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
+	override fun use(entity: Entity, targets: List<Entity>) {
+		val attributes = attributes(entity)
+
 		/**
 		 * Compute base attack of source entity.
 		 */
-		val attack = (mutator.current.fireAttack() + mutator.current.fireballAttack()) * (1 + mutator.current.fireElement())
-
+		val attack = (attributes.fireAttack() + attributes.fireballAttack()) * (1 + attributes.fireElement())
 		/**
 		 * Take cost of casting fireball and mark it as mana loss (decrease).
 		 */
-		mutator.member.decOrZero(mutator.current.fireballCost().mana())
-
+		entity.decOrZero(attributes.fireballCost().mana())
 		for (target in targets) {
 			/**
 			 * Base target entity defense.
@@ -39,11 +39,11 @@ class Fireball(attributes: Attributes) : AbstractAbility(attributes) {
 			/**
 			 * Set (general) damage done in this duel.
 			 */
-			mutator.member.inc(damage.damage())
+			entity.inc(damage.damage())
 			/**
 			 * Set fire damage done in this duel.
 			 */
-			mutator.member.inc(damage.fireDamage())
+			entity.inc(damage.fireDamage())
 			/**
 			 * Take damage as health and decrease it (health loss done by fireball).
 			 */
@@ -51,7 +51,13 @@ class Fireball(attributes: Attributes) : AbstractAbility(attributes) {
 		}
 	}
 
+	override fun rank(entity: Member, target: Member): Double {
+		TODO("Not yet implemented")
+	}
+
 	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+
 		private const val ATTRIBUTE_COST = "spell.fireball.cost"
 		fun cost(value: Double) = ATTRIBUTE_COST to value
 		fun cost(attributes: Attributes) = attributes[ATTRIBUTE_COST]
@@ -60,12 +66,21 @@ class Fireball(attributes: Attributes) : AbstractAbility(attributes) {
 		fun attack(value: Double) = ATTRIBUTE_ATTACK to value
 		fun attack(attributes: Attributes) = attributes[ATTRIBUTE_ATTACK]
 	}
+
+	class Builder {
+		private val attributes = Attributes()
+
+		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
+
+		fun build() = Fireball(
+			"ability.element.fire.Fireball",
+			attributes,
+		)
+	}
 }
 
 fun Double.fireballCost() = Fireball.cost(this)
 fun Attributes.fireballCost() = Fireball.cost(this)
-fun Entity.fireballCost() = this.attributes.fireballCost()
 
 fun Double.fireballAttack() = Fireball.attack(this)
 fun Attributes.fireballAttack() = Fireball.attack(this)
-fun Entity.fireballAttack() = this.attributes.fireballAttack()
