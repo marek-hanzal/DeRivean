@@ -1,5 +1,6 @@
 package derivean.game.ability.physical
 
+import derivean.game.ability.Abilities
 import derivean.game.ability.AbstractAbility
 import derivean.game.ability.Target
 import derivean.game.attribute.Attribute
@@ -73,3 +74,4 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 
 fun Double.bareHandTargets() = BareHandAttack.targets(this)
 fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
+fun Abilities.bareHand() = this[BareHandAttack.ABILITY]

@@ -1,6 +1,7 @@
 package derivean.game.ability
 
 import derivean.game.ability.physical.BareHandAttack
+import derivean.game.ability.physical.bareHand
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -13,7 +14,7 @@ class AbilitiesTest {
 		val abilities = Abilities().apply {
 			ability(ability)
 		}
-		assertEquals(ability, abilities["foo"])
+		assertEquals(ability, abilities.bareHand())
 	}
 
 	@Test
