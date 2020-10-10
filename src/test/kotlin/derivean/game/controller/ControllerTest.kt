@@ -180,7 +180,6 @@ class ControllerTest {
 					entity("The Candle Holder").let { entity ->
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
-						entity.attributes.set(5.0.currentInitiative())
 						entity.attributes.set(5.0.roundInitiative())
 						entity.abilities.ability(SwordAttackAbility.build {
 							attributes(
@@ -194,7 +193,7 @@ class ControllerTest {
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
 						entity.attributes.set(
-							20.0.health(),
+							44.0.health(),
 						)
 					}
 				}

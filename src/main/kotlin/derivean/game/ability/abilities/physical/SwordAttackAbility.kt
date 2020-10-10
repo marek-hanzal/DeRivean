@@ -1,5 +1,6 @@
 package derivean.game.ability.abilities.physical
 
+import derivean.game.ability.Abilities
 import derivean.game.ability.abilities.AbstractAttackAbility
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
@@ -19,9 +20,11 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 		}
 	}
 
-	override fun targets(entity: Entity, formations: Formations) = rank(entity, entity.attributes.bareHandTargets(), formations) { attributes, target, _, _ ->
+	override fun targets(entity: Entity, formations: Formations) = rank(entity, formations) { attributes, target, _, _ ->
 		damage(attributes, target)
 	}
+
+	override fun limit(attributes: Attributes) = attributes.swordAttackTargets()
 
 	private fun damage(attributes: Attributes, target: Entity) = max(attributes.strength() - target.attributes.physicalDefense(), 0.0)
 
@@ -40,9 +43,13 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
 
-		fun build() = BareHandAttack(
+		fun build() = SwordAttackAbility(
 			ABILITY,
 			attributes,
 		)
 	}
 }
+
+fun Abilities.swordAttack() = this[SwordAttackAbility.ABILITY]
+fun Double.swordAttackTargets() = SwordAttackAbility.targets(this)
+fun Attributes.swordAttackTargets(default: Double = 1.0) = SwordAttackAbility.targets(this, default)

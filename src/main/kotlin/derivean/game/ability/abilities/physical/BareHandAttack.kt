@@ -20,9 +20,11 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 		}
 	}
 
-	override fun targets(entity: Entity, formations: Formations) = rank(entity, entity.attributes.bareHandTargets(), formations) { attributes, target, _, _ ->
+	override fun targets(entity: Entity, formations: Formations) = rank(entity, formations) { attributes, target, _, _ ->
 		damage(attributes, target)
 	}
+
+	override fun limit(attributes: Attributes) = attributes.bareHandTargets()
 
 	private fun damage(attributes: Attributes, target: Entity) = max(attributes.strength() - target.attributes.physicalDefense(), 0.0)
 
