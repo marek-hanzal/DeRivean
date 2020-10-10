@@ -3,6 +3,7 @@ package derivean.game.controller
 import derivean.game.ability.abilities.physical.SwordAttackAbility
 import derivean.game.attribute.common.currentInitiative
 import derivean.game.attribute.common.health
+import derivean.game.attribute.common.roundInitiative
 import derivean.game.attribute.common.strength
 import derivean.game.mutator.Mutators
 import derivean.game.mutator.mutators.being.HumanMutator
@@ -172,7 +173,7 @@ class ControllerTest {
 
 		Controller.build {
 			terminator = BattleTerminator.build {
-				limit = 3
+				limit = 6
 			}
 			formations {
 				formation("alfa") {
@@ -180,9 +181,10 @@ class ControllerTest {
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
 						entity.attributes.set(5.0.currentInitiative())
+						entity.attributes.set(5.0.roundInitiative())
 						entity.abilities.ability(SwordAttackAbility.build {
 							attributes(
-
+								15.0.strength(),
 							)
 						})
 					}
@@ -191,11 +193,19 @@ class ControllerTest {
 					entity("Wind River").let { entity ->
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
+						entity.attributes.set(
+							20.0.health(),
+						)
 					}
 				}
 			}
 		}.let { controller ->
 			controller.loop()
+			controller.loop()
+			controller.loop()
+			assertFailsWith<TheEndException> {
+				controller.loop()
+			}
 		}
 	}
 }
