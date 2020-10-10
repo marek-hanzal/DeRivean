@@ -5,43 +5,56 @@ import kotlin.math.max
 /**
  * Low-level class holding all attributes used in computing across the game.
  */
-class Attributes(vararg values: Attribute) {
-	private var map = mutableMapOf<String, Double>()
+class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) : Iterable<Map.Entry<String, Double>> {
+	override fun iterator() = map.iterator()
 
-	init {
-		map.putAll(values)
-	}
-
-	operator fun plusAssign(attributes: Attributes) {
-		attributes.map.forEach { (k, v) ->
-			map.merge(k, v, fun(t, u) = t + u)
-		}
-	}
-
-	operator fun plusAssign(attribute: Attribute) = map.set(attribute.first, attribute.second)
-
+	/**
+	 * Variable set of attributes.
+	 */
 	fun set(vararg attributes: Attribute) {
-		for (value in attributes) {
-			map[value.first] = value.second
+		for ((k, v) in attributes) {
+			map[k] = v
 		}
 	}
 
+	/**
+	 * Override current attributes by ones from attributes.
+	 */
 	fun set(attributes: Attributes) = map.putAll(attributes.map)
 
+	/**
+	 * Return a value of an attribute or a default value.
+	 */
 	operator fun get(name: String, default: Double = 0.0) = map.getOrDefault(name, default)
 
+	/**
+	 * Increase an attribute by the given one.
+	 */
 	fun inc(attribute: Attribute) {
 		map[attribute.first] = get(attribute.first) + attribute.second
 	}
 
-	fun dec(attribute: Attribute) = inc(Attribute(attribute.first, -attribute.second))
+	/**
+	 * Increase all attributes from incoming attributes.
+	 */
+	fun incBy(attributes: Attributes) {
+		for ((k, v) in attributes) {
+			map[k] = get(k) + v
+		}
+	}
 
+	/**
+	 * Decrease a given attribute or leave zero.
+	 */
 	fun decOrZero(attribute: Attribute) {
 		map[attribute.first] = max(0.0, get(attribute.first) - attribute.second)
 	}
 
-	fun multiply(attribute: Attribute) {
-		map[attribute.first] = get(attribute.first) * attribute.second
+	/**
+	 * Multiply given attribute; default sets default behavior (should keep zero or 1.0 * attribute).
+	 */
+	fun multiply(attribute: Attribute, default: Double = 0.0) {
+		map[attribute.first] = get(attribute.first, default) * attribute.second
 	}
 
 	override fun equals(other: Any?): Boolean {
@@ -66,8 +79,12 @@ class Attributes(vararg values: Attribute) {
 	companion object {
 		fun from(vararg attributes: Attributes) = Attributes().also {
 			for (attr in attributes) {
-				it += attr
+				it.incBy(attr)
 			}
+		}
+
+		fun from(vararg attributes: Attribute) = Attributes().also {
+			it.set(*attributes)
 		}
 	}
 }
