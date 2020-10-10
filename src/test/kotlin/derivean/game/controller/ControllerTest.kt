@@ -8,6 +8,7 @@ import derivean.game.mutator.mutators.being.HumanMutator
 import derivean.game.mutator.mutators.being.humanMutator
 import derivean.game.mutator.mutators.role.WarriorRoleMutator
 import derivean.game.mutator.mutators.role.warriorMutator
+import derivean.game.terminator.BattleTerminator
 import derivean.game.terminator.TheEndException
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -110,6 +111,50 @@ class ControllerTest {
 			 * The Candle Holder's play - in this moment Terminator should stop the game as Wind River will die.
 			 */
 			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
+				controller.loop()
+			}.message)
+		}
+	}
+
+	@Test
+	fun `Loop count Termination`() {
+		val mutators = Mutators.build {
+			mutator(
+				HumanMutator.mutator(),
+				WarriorRoleMutator.mutator(),
+			)
+		}
+
+		Controller.build {
+			terminator = BattleTerminator.build {
+				limit = 3
+			}
+			formations {
+				formation("alfa") {
+					entity("The Candle Holder").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						/**
+						 * Lower the initiative - so second team member (beta) should
+						 * take the initial round.
+						 */
+						entity.attributes.set(5.0.currentInitiative())
+					}
+				}
+				formation("beta") {
+					entity("Wind River").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+					}
+				}
+			}
+		}.let { controller ->
+			controller.loop()
+			controller.loop()
+			/**
+			 * The Candle Holder's play - in this moment Terminator should stop the game as Wind River will die.
+			 */
+			assertEquals("Loop limit reached!", assertFailsWith<TheEndException> {
 				controller.loop()
 			}.message)
 		}
