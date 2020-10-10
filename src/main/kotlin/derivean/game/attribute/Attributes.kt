@@ -22,6 +22,10 @@ class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) :
 	 */
 	fun set(attributes: Attributes) = map.putAll(attributes.map)
 
+	fun set(pair: Pair<String, String>) {
+		map[pair.first] = get(pair.second)
+	}
+
 	/**
 	 * Return a value of an attribute or a default value.
 	 */

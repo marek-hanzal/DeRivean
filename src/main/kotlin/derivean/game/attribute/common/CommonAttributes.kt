@@ -37,11 +37,11 @@ class CommonAttributes {
 		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
 		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
 
-		private const val ATTRIBUTE_CURRENT_INITIATIVE = "current-initiative"
+		const val ATTRIBUTE_CURRENT_INITIATIVE = "current-initiative"
 		fun currentInitiative(value: Double) = ATTRIBUTE_CURRENT_INITIATIVE to value
 		fun currentInitiative(attributes: Attributes) = attributes[ATTRIBUTE_CURRENT_INITIATIVE]
 
-		private const val ATTRIBUTE_ROUND_INITIATIVE = "round-initiative"
+		const val ATTRIBUTE_ROUND_INITIATIVE = "round-initiative"
 		fun roundInitiative(value: Double) = ATTRIBUTE_ROUND_INITIATIVE to value
 		fun roundInitiative(attributes: Attributes) = attributes[ATTRIBUTE_ROUND_INITIATIVE]
 	}
@@ -75,6 +75,8 @@ fun Attributes.damage() = CommonAttributes.damage(this)
 
 fun Double.currentInitiative() = CommonAttributes.currentInitiative(this)
 fun Attributes.currentInitiative() = CommonAttributes.currentInitiative(this)
+fun currentInitiative() = CommonAttributes.ATTRIBUTE_CURRENT_INITIATIVE
 
 fun Double.roundInitiative() = CommonAttributes.roundInitiative(this)
 fun Attributes.roundInitiative() = CommonAttributes.roundInitiative(this)
+fun roundInitiative() = CommonAttributes.ATTRIBUTE_ROUND_INITIATIVE

@@ -16,6 +16,7 @@ class HumanMutator : AbstractMutator() {
 			50.0.maxMana(),
 			50.0.mana(),
 			10.0.currentInitiative(),
+			10.0.roundInitiative(),
 			10.0.strength(),
 			5.0.physicalDefense(),
 		)
