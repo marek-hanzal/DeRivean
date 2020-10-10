@@ -201,10 +201,22 @@ class ControllerTest {
 				}
 			}
 		}.let { controller ->
+			/**
+			 * Wind River attacks (still alive)
+			 */
 			controller.loop()
+			/**
+			 * Candle Holder attacks (half of River's life is out)
+			 */
 			controller.loop()
+			/**
+			 * Wind River attacks (still alive, but before final attack)
+			 */
 			controller.loop()
 			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
+				/**
+				 * Candle Holder attacks, killing Wind River
+				 */
 				controller.loop()
 			}.message)
 			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
