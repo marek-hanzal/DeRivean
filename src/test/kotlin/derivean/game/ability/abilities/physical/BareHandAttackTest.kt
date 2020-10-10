@@ -113,11 +113,12 @@ class BareHandAttackTest {
 				entity("alfa") {
 					attributes(
 						10.0.strength(),
+						1.0.haste(),
 					)
 					ability(BareHandAttack.build {
 						attributes(
 							10.0.strength(),
-							0.2.haste(),
+							0.8.haste(),
 						)
 					})
 				}

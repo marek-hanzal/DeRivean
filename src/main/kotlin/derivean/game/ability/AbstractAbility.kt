@@ -20,7 +20,10 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 		attributes(entity) { attributes ->
 			for (target in targets) {
 				timeline.entry {
-					time = attributes.haste()
+					/**
+					 * Take Entity's Haste and multiply it with this ability's default Haste.
+					 */
+					time = attributes.haste() * haste(attributes)
 					resolve {
 						useOn(attributes, entity, target)
 					}
@@ -33,6 +36,8 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 	}
 
 	open fun limit(attributes: Attributes) = 1.0
+
+	open fun haste(attributes: Attributes) = 1.0
 
 	fun rank(entity: Entity, formations: Formations, rank: RankCallback) = Targets.build {
 		attributes(entity) { attributes ->
