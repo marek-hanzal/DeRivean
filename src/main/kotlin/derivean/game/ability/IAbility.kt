@@ -12,11 +12,9 @@ interface IAbility {
 	val ability: String
 
 	/**
-	 * Use the given ability on a list of targets.
+	 * Use the given ability on a target.
 	 */
-	fun use(entity: Entity, targets: List<Entity>, timeline: ITimeline)
-
-	fun use(entity: Entity, target: Entity, timeline: ITimeline) = use(entity, listOf(target), timeline)
+	fun use(entity: Entity, target: Entity, timeline: ITimeline)
 
 	/**
 	 * Compute rank of this ability (for selectors).

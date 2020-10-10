@@ -275,10 +275,6 @@ class ControllerTest {
 			 * Wind River attacks (still alive, but before final attack).
 			 */
 			controller.loop()
-			/**
-			 * One more loop, because Sword Attack has time 1.0.
-			 */
-			controller.loop()
 			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
 				/**
 				 * Candle Holder attacks, killing Wind River
@@ -286,6 +282,7 @@ class ControllerTest {
 				controller.loop()
 			}.message)
 			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
+				assertTrue(candleHolder.isAlive())
 				assertEquals(44.0, candleHolder.attributes.damage())
 				assertEquals(44.0, candleHolder.attributes.physicalDamage())
 			}

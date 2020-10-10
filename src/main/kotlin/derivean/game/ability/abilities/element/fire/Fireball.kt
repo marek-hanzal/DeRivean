@@ -18,7 +18,7 @@ import derivean.game.timeline.ITimeline
 import kotlin.math.max
 
 class Fireball(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
-	override fun use(entity: Entity, targets: List<Entity>, timeline: ITimeline) {
+	override fun use(entity: Entity, target: Entity, timeline: ITimeline) {
 		val attributes = attributes(entity)
 
 		/**
@@ -29,29 +29,27 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		 * Take cost of casting fireball and mark it as mana loss (decrease).
 		 */
 		entity.attributes.decOrZero(attributes.fireballCost().mana())
-		for (target in targets) {
-			/**
-			 * Base target entity defense.
-			 */
-			val defense = if (target.attributes.fireElement() <= -1) -attack else target.attributes.fireDefense() * (1 + target.attributes.fireElement())
+		/**
+		 * Base target entity defense.
+		 */
+		val defense = if (target.attributes.fireElement() <= -1) -attack else target.attributes.fireDefense() * (1 + target.attributes.fireElement())
 
-			/**
-			 * Compute final damage (if any).
-			 */
-			val damage = if (target.attributes.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
-			/**
-			 * Set (general) damage done in this duel.
-			 */
-			entity.attributes.inc(damage.damage())
-			/**
-			 * Set fire damage done in this duel.
-			 */
-			entity.attributes.inc(damage.fireDamage())
-			/**
-			 * Take damage as health and decrease it (health loss done by fireball).
-			 */
-			target.attributes.decOrZero(damage.health())
-		}
+		/**
+		 * Compute final damage (if any).
+		 */
+		val damage = if (target.attributes.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
+		/**
+		 * Set (general) damage done in this duel.
+		 */
+		entity.attributes.inc(damage.damage())
+		/**
+		 * Set fire damage done in this duel.
+		 */
+		entity.attributes.inc(damage.fireDamage())
+		/**
+		 * Take damage as health and decrease it (health loss done by fireball).
+		 */
+		target.attributes.decOrZero(damage.health())
 	}
 
 	override fun targets(entity: Entity, formations: Formations) = Targets.build {
