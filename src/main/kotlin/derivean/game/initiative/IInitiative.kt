@@ -24,13 +24,17 @@ interface IInitiative {
 	 */
 	fun resolve(entities: Entities): Entity
 
+	fun onInitiative(entity: Entity)
+
+	fun onInitiatives(formations: Formations)
+
 	/**
 	 * Shortcut method for resolving member from Formations.
 	 */
-	fun initiative(formations: Formations, onInitiative: (Entity) -> Unit = {}, onInitiatives: (Formations) -> Unit = {}, onEntity: (Entity) -> Unit = {}) = try {
-		resolve(resolve(formations)).also(onInitiative).also(onEntity)
+	fun initiative(formations: Formations, onEntity: (Entity) -> Unit = {}) = try {
+		resolve(resolve(formations)).also { onInitiative(it) }.also(onEntity)
 	} catch (e: NoInitiativeException) {
 		onInitiatives(formations)
-		resolve(resolve(formations)).also(onInitiative).also(onEntity)
+		resolve(resolve(formations)).also { onInitiative(it) }.also(onEntity)
 	}
 }
