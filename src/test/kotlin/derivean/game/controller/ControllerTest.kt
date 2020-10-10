@@ -36,7 +36,7 @@ class ControllerTest {
 						 * Lower the initiative - so second team member (beta) should
 						 * take the initial round.
 						 */
-						entity.attributes.set(5.0.currentInitiative())
+						entity.attributes.set(5.0.roundInitiative())
 					}
 				}
 				formation("beta") {
@@ -47,27 +47,31 @@ class ControllerTest {
 				}
 			}
 		}.let { controller ->
-			assertEquals(150.0, controller.formations["alfa"]["The Candle Holder"].attributes.health())
-			assertEquals(12.0, controller.formations["alfa"]["The Candle Holder"].attributes.strength())
-			assertEquals(150.0, controller.formations["beta"]["Wind River"].attributes.health())
-			assertEquals(12.0, controller.formations["beta"]["Wind River"].attributes.strength())
+			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
+				controller.formations["beta"]["Wind River"].let { windRiver ->
+					assertEquals(150.0, candleHolder.attributes.health())
+					assertEquals(12.0, candleHolder.attributes.strength())
+					assertEquals(150.0, windRiver.attributes.health())
+					assertEquals(12.0, windRiver.attributes.strength())
 
-			controller.loop()
+					controller.loop()
 
-			assertEquals(0.0, controller.formations["beta"]["Wind River"].attributes.currentInitiative())
-			assertEquals(143.0, controller.formations["alfa"]["The Candle Holder"].attributes.health())
-			assertEquals(150.0, controller.formations["beta"]["Wind River"].attributes.health())
+					assertEquals(0.0, windRiver.attributes.currentInitiative())
+					assertEquals(143.0, candleHolder.attributes.health())
+					assertEquals(150.0, windRiver.attributes.health())
 
-			controller.loop()
+					controller.loop()
 
-			assertEquals(0.0, controller.formations["alfa"]["The Candle Holder"].attributes.currentInitiative())
-			assertEquals(143.0, controller.formations["alfa"]["The Candle Holder"].attributes.health())
-			assertEquals(143.0, controller.formations["beta"]["Wind River"].attributes.health())
+					assertEquals(0.0, candleHolder.attributes.currentInitiative())
+					assertEquals(143.0, candleHolder.attributes.health())
+					assertEquals(143.0, windRiver.attributes.health())
 
-			/**
-			 * Just empty loop to see, if internal initiative works properly.
-			 */
-			controller.loop()
+					/**
+					 * Just empty loop to see, if internal initiative works properly.
+					 */
+					controller.loop()
+				}
+			}
 		}
 	}
 
