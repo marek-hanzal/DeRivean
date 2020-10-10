@@ -6,6 +6,7 @@ import derivean.game.entity.Entity
 import derivean.game.formation.Formation
 import derivean.game.formation.Formations
 import derivean.game.selector.Targets
+import derivean.game.timeline.ITimeline
 
 typealias RankCallback = (attributes: Attributes, target: Entity, entity: Entity, formation: Formation) -> Double
 
@@ -14,7 +15,7 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 
 	fun attributes(entity: Entity) = Attributes.from(entity.attributes, attributes)
 
-	override fun use(entity: Entity, targets: List<Entity>) {
+	override fun use(entity: Entity, targets: List<Entity>, timeline: ITimeline) {
 		attributes(entity) { attributes ->
 			for (target in targets) {
 				useOn(attributes, entity, target)

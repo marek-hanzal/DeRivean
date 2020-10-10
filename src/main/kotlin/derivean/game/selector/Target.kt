@@ -2,9 +2,10 @@ package derivean.game.selector
 
 import derivean.game.ability.IAbility
 import derivean.game.entity.Entity
+import derivean.game.timeline.ITimeline
 
 class Target(val rank: Double, var entity: Entity, var target: Entity, var ability: IAbility) {
-	fun resolve() = ability.use(entity, target)
+	fun resolve(timeline: ITimeline) = ability.use(entity, target, timeline)
 
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()

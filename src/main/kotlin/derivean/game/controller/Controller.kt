@@ -5,15 +5,18 @@ import derivean.game.initiative.IInitiative
 import derivean.game.initiative.Initiative
 import derivean.game.terminator.BattleTerminator
 import derivean.game.terminator.ITerminator
+import derivean.game.timeline.ITimeline
+import derivean.game.timeline.Timeline
 
-class Controller(initiative: IInitiative, terminator: ITerminator, formations: Formations) : AbstractController(initiative, terminator, formations) {
+class Controller(initiative: IInitiative, terminator: ITerminator, formations: Formations, timeline: ITimeline) : AbstractController(initiative, terminator, formations, timeline) {
 	override fun loop() {
 		initiative.initiative(formations) { entity ->
 			entity.select(formations) { targets ->
-				targets.resolve()
+				targets.resolve(timeline)
 			}
 		}
 		terminator.loop(formations)
+		timeline.loop()
 	}
 
 	companion object {
@@ -24,6 +27,7 @@ class Controller(initiative: IInitiative, terminator: ITerminator, formations: F
 		var initiative: IInitiative = Initiative.build { }
 		lateinit var formations: Formations
 		var terminator: ITerminator = BattleTerminator.build {}
+		var timeline: ITimeline = Timeline.build {}
 
 		fun formations(block: Formations.Builder.() -> Unit) {
 			formations = Formations.build(block)
@@ -33,6 +37,7 @@ class Controller(initiative: IInitiative, terminator: ITerminator, formations: F
 			initiative,
 			terminator,
 			formations,
+			timeline,
 		)
 	}
 }

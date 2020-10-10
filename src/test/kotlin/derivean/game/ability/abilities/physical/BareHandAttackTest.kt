@@ -2,6 +2,7 @@ package derivean.game.ability.abilities.physical
 
 import derivean.game.attribute.common.*
 import derivean.game.formation.Formations
+import derivean.game.timeline.Timeline
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -28,16 +29,17 @@ class BareHandAttackTest {
 				}
 			}
 		}
+		val timeline = Timeline.build { }
 
 		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
-			targets.resolve()
+			targets.resolve(timeline)
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
 
-			targets.resolve()
+			targets.resolve(timeline)
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
@@ -64,7 +66,8 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve() })
+		val timeline = Timeline.build { }
+		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve(timeline) })
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
@@ -92,10 +95,11 @@ class BareHandAttackTest {
 				}
 			}
 		}
+		val timeline = Timeline.build { }
 		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
-			targets.resolve()
+			targets.resolve(timeline)
 		})
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
@@ -129,7 +133,6 @@ class BareHandAttackTest {
 				}
 			}
 		}
-
 		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(1, targets.size, "There are more targets!")
 			assertEquals(formations["beta"]["beta"], targets.list.first().target)
@@ -164,7 +167,8 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve() })
+		val timeline = Timeline.build { }
+		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve(timeline) })
 	}
 
 	@Test
@@ -208,7 +212,6 @@ class BareHandAttackTest {
 				}
 			}
 		}
-
 		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(2, targets.size, "There are more targets!")
 			assertEquals(38.0, targets.rank)

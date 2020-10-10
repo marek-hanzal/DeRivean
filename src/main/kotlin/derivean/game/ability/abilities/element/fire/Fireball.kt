@@ -14,10 +14,11 @@ import derivean.game.attribute.element.fireElement
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
 import derivean.game.selector.Targets
+import derivean.game.timeline.ITimeline
 import kotlin.math.max
 
 class Fireball(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
-	override fun use(entity: Entity, targets: List<Entity>) {
+	override fun use(entity: Entity, targets: List<Entity>, timeline: ITimeline) {
 		val attributes = attributes(entity)
 
 		/**

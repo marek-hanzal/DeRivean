@@ -1,13 +1,14 @@
 package derivean.game.selector
 
+import derivean.game.timeline.ITimeline
 import kotlin.math.ceil
 
 class Targets(val rank: Double, val list: List<Target>) : Iterable<Target> {
 	val size get() = list.size
 
-	fun resolve() {
+	fun resolve(timeline: ITimeline) {
 		for (target in list) {
-			target.resolve()
+			target.resolve(timeline)
 		}
 	}
 
