@@ -14,19 +14,15 @@ class Attributes(vararg values: Attribute) {
 
 	operator fun plusAssign(attributes: Attributes) {
 		attributes.map.forEach { (k, v) ->
-			map.merge(k, v, fun(t, u): Double? {
-				return t + u
-			})
+			map.merge(k, v, fun(t, u) = t + u)
 		}
 	}
 
-	operator fun plusAssign(attribute: Attribute) = set(attribute.first, attribute.second)
-
-	fun set(key: String, value: Double) = map.set(key, value)
+	operator fun plusAssign(attribute: Attribute) = map.set(attribute.first, attribute.second)
 
 	fun set(vararg attributes: Attribute) {
 		for (value in attributes) {
-			set(value.first, value.second)
+			map[value.first] = value.second
 		}
 	}
 
@@ -40,9 +36,13 @@ class Attributes(vararg values: Attribute) {
 
 	fun dec(attribute: Attribute) = inc(Attribute(attribute.first, -attribute.second))
 
-	fun decOrZero(attribute: Attribute) = set(attribute.first, max(0.0, get(attribute.first) - attribute.second))
+	fun decOrZero(attribute: Attribute) {
+		map[attribute.first] = max(0.0, get(attribute.first) - attribute.second)
+	}
 
-	fun multiply(attribute: Attribute) = set(attribute.first, get(attribute.first) * attribute.second)
+	fun multiply(attribute: Attribute) {
+		map[attribute.first] = get(attribute.first) * attribute.second
+	}
 
 	override fun equals(other: Any?): Boolean {
 		if (this === other) {
