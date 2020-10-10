@@ -10,10 +10,8 @@ class Controller : AbstractController() {
 		initiative.initiative(formations, { entity ->
 			entity.attributes.set(0.0.currentInitiative())
 		}, {
-			for ((_, formation) in it) {
-				for (entity in formation) {
-					entity.attributes.set(currentInitiative() to roundInitiative())
-				}
+			it.entities { entity ->
+				entity.attributes.set(currentInitiative() to roundInitiative())
 			}
 		}) { entity ->
 			entity.select(formations) { targets ->

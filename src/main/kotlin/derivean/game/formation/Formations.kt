@@ -1,5 +1,7 @@
 package derivean.game.formation
 
+import derivean.game.entity.Entity
+
 /**
  * Contains all formations in an Environment (like in a Battle, a Pub or Whatever...).
  */
@@ -9,6 +11,14 @@ class Formations(val map: Map<String, Formation>) : Iterable<Map.Entry<String, F
 	operator fun get(name: String) = map.getOrElse(name) { throw UnknownFormationException("Requested unknown formation [${name}].") }
 
 	fun formations() = map.values.iterator()
+
+	fun entities(block: (Entity) -> Unit) {
+		for (formation in map.values) {
+			for (entity in formation) {
+				block(entity)
+			}
+		}
+	}
 
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
