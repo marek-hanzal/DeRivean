@@ -21,6 +21,10 @@ class CommonAttributes {
 		fun health(value: Double) = ATTRIBUTE_HEALTH to value
 		fun health(attributes: Attributes) = attributes[ATTRIBUTE_HEALTH]
 
+		private const val ATTRIBUTE_HASTE = "haste"
+		fun haste(value: Double) = ATTRIBUTE_HASTE to value
+		fun haste(attributes: Attributes) = attributes[ATTRIBUTE_HASTE]
+
 		private const val ATTRIBUTE_MANA = "mana"
 		fun mana(value: Double) = ATTRIBUTE_MANA to value
 		fun mana(attributes: Attributes) = attributes[ATTRIBUTE_MANA]
@@ -60,6 +64,9 @@ fun Entity.isDead() = this.attributes.health() <= 0
 
 fun Double.maxHealth() = CommonAttributes.maxHealth(this)
 fun Attributes.maxHealth() = CommonAttributes.maxHealth(this)
+
+fun Double.haste() = CommonAttributes.haste(this)
+fun Attributes.haste() = CommonAttributes.haste(this)
 
 fun Double.mana() = CommonAttributes.mana(this)
 fun Attributes.mana() = CommonAttributes.mana(this)

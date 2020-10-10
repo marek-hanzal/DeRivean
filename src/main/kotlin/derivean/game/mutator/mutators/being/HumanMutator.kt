@@ -12,12 +12,38 @@ import derivean.game.mutator.Mutators
 class HumanMutator : AbstractMutator() {
 	override fun mutate(entity: Entity) {
 		entity.attributes.set(
+			/**
+			 * Default health of all human beings.
+			 */
 			100.0.health(),
+			/**
+			 * Average amount of mana a human being have.
+			 */
 			50.0.maxMana(),
+			/**
+			 * Current amount of mana of a human being.
+			 */
 			50.0.mana(),
+			/**
+			 * Amount of initiative per new round.
+			 */
 			10.0.roundInitiative(),
+			/**
+			 * Average strength of a human being.
+			 */
 			10.0.strength(),
+			/**
+			 * Some physical defense of a human.
+			 */
 			5.0.physicalDefense(),
+			/**
+			 * Average speed (haste) of human.
+			 */
+			1.0.haste(),
+			/**
+			 * By default there is no XP gain on the beginning.
+			 */
+			0.0.xp(),
 		)
 		entity.abilities.ability(BareHandAttack.build { })
 	}
