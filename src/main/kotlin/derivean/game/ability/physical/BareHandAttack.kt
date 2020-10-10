@@ -30,22 +30,20 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	override fun targets(entity: Entity, formations: Formations) = Targets.build {
 		attributes(entity) { attributes ->
 			this.limit = attributes.bareHandTargets()
-			for (formation in formations.formations()) {
-				for (target in formation) {
-					target {
-						this.entity = entity
-						this.target = target
-						this.ability = this@BareHandAttack
-						this.rank = when {
-							target.isNotAlive() -> {
-								0.0
-							}
-							formation.hasMember(entity) -> {
-								0.0
-							}
-							else -> {
-								damage(entity, target)
-							}
+			formations.entities { target, formation ->
+				target {
+					this.entity = entity
+					this.target = target
+					this.ability = this@BareHandAttack
+					this.rank = when {
+						target.isNotAlive() -> {
+							0.0
+						}
+						formation.hasMember(entity) -> {
+							0.0
+						}
+						else -> {
+							damage(entity, target)
 						}
 					}
 				}

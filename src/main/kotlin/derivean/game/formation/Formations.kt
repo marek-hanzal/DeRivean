@@ -12,10 +12,10 @@ class Formations(val map: Map<String, Formation>) : Iterable<Map.Entry<String, F
 
 	fun formations() = map.values.iterator()
 
-	fun entities(block: (Entity) -> Unit) {
+	fun entities(block: (Entity, Formation) -> Unit) {
 		for (formation in map.values) {
 			for (entity in formation) {
-				block(entity)
+				block(entity, formation)
 			}
 		}
 	}
