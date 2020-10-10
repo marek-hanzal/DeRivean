@@ -53,7 +53,7 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		}
 	}
 
-	override fun targets(entity: Entity, formations: Formations): Targets {
+	override fun targets(entity: Entity, formations: Formations) = Targets.build {
 		TODO("Not yet implemented")
 	}
 
