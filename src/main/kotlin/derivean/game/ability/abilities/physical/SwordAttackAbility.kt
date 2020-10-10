@@ -26,6 +26,8 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 
 	override fun limit(attributes: Attributes) = attributes.swordAttackTargets()
 
+	override fun time(attributes: Attributes) = attributes.swordAttackTime()
+
 	private fun damage(attributes: Attributes, target: Entity) = max(attributes.strength() - target.attributes.physicalDefense(), 0.0)
 
 	companion object {
@@ -33,13 +35,19 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 
-		private const val ATTRIBUTE_TARGETS = "${ABILITY}.targets"
+		private const val ATTRIBUTE_TARGETS = "$ABILITY.targets"
 		fun targets(value: Double) = ATTRIBUTE_TARGETS to value
 		fun targets(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_TARGETS, default]
+
+		private const val ATTRIBUTE_TIME = "$ABILITY.time"
+		fun time(value: Double) = ATTRIBUTE_TIME to value
+		fun time(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_TIME, default]
 	}
 
 	class Builder {
-		private val attributes = Attributes()
+		private val attributes = Attributes.from(
+			1.0.swordAttackTime(),
+		)
 
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
 
@@ -51,5 +59,9 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 }
 
 fun Abilities.swordAttack() = this[SwordAttackAbility.ABILITY]
+
 fun Double.swordAttackTargets() = SwordAttackAbility.targets(this)
 fun Attributes.swordAttackTargets(default: Double = 1.0) = SwordAttackAbility.targets(this, default)
+
+fun Double.swordAttackTime() = SwordAttackAbility.time(this)
+fun Attributes.swordAttackTime(default: Double = 1.0) = SwordAttackAbility.time(this, default)

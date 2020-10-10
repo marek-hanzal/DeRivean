@@ -67,5 +67,5 @@ fun Abilities.bareHand() = this[BareHandAttack.ABILITY]
 fun Double.bareHandTargets() = BareHandAttack.targets(this)
 fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
 
-fun Double.bareHandTime() = BareHandAttack.targets(this)
-fun Attributes.bareHandTime(default: Double = 1.0) = BareHandAttack.targets(this, default)
+fun Double.bareHandTime() = BareHandAttack.time(this)
+fun Attributes.bareHandTime(default: Double = 1.0) = BareHandAttack.time(this, default)

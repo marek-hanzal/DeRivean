@@ -36,7 +36,6 @@ class ControllerTest {
 						 */
 						entity.attributes.set(
 							5.0.roundInitiative(),
-							0.0.haste(),
 						)
 					}
 				}
@@ -44,9 +43,6 @@ class ControllerTest {
 					entity("Wind River").let { entity ->
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
-						entity.attributes.set(
-							0.0.haste(),
-						)
 					}
 				}
 			}
@@ -100,7 +96,6 @@ class ControllerTest {
 						 */
 						entity.attributes.set(
 							5.0.roundInitiative(),
-							0.0.haste(),
 						)
 					}
 				}
@@ -113,7 +108,6 @@ class ControllerTest {
 						 */
 						entity.attributes.set(
 							1.0.health(),
-							0.0.haste(),
 						)
 					}
 				}
@@ -196,7 +190,6 @@ class ControllerTest {
 						mutators.warriorMutator().mutate(entity)
 						entity.attributes.set(
 							5.0.roundInitiative(),
-							0.0.haste(),
 						)
 						entity.abilities.ability(SwordAttackAbility.build {
 							attributes(
@@ -211,22 +204,25 @@ class ControllerTest {
 						mutators.warriorMutator().mutate(entity)
 						entity.attributes.set(
 							44.0.health(),
-							0.0.haste(),
 						)
 					}
 				}
 			}
 		}.let { controller ->
 			/**
-			 * Wind River attacks (still alive)
+			 * Wind River attacks (still alive).
 			 */
 			controller.loop()
 			/**
-			 * Candle Holder attacks (half of River's life is out)
+			 * Candle Holder attacks (half of River's life is out).
 			 */
 			controller.loop()
 			/**
-			 * Wind River attacks (still alive, but before final attack)
+			 * Wind River attacks (still alive, but before final attack).
+			 */
+			controller.loop()
+			/**
+			 * One more loop, because Sword Attack has time 1.0.
 			 */
 			controller.loop()
 			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
