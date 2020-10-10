@@ -1,7 +1,7 @@
 package derivean.game.ability.abilities.physical
 
 import derivean.game.ability.Abilities
-import derivean.game.ability.AbstractAbility
+import derivean.game.ability.abilities.AbstractAttackAbility
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
@@ -9,7 +9,7 @@ import derivean.game.entity.Entity
 import derivean.game.formation.Formations
 import kotlin.math.max
 
-class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
+class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAbility(ability, attributes) {
 	override fun useOn(attributes: Attributes, entity: Entity, target: Entity) {
 		damage(attributes, target).let { damage ->
 			entity.attributes.inc(

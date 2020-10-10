@@ -1,5 +1,6 @@
 package derivean.game.controller
 
+import derivean.game.ability.abilities.physical.SwordAttackAbility
 import derivean.game.attribute.common.currentInitiative
 import derivean.game.attribute.common.health
 import derivean.game.attribute.common.strength
@@ -157,6 +158,44 @@ class ControllerTest {
 			assertEquals("Loop limit reached!", assertFailsWith<TheEndException> {
 				controller.loop()
 			}.message)
+		}
+	}
+
+	@Test
+	fun `Better Ability Selection`() {
+		val mutators = Mutators.build {
+			mutator(
+				HumanMutator.mutator(),
+				WarriorRoleMutator.mutator(),
+			)
+		}
+
+		Controller.build {
+			terminator = BattleTerminator.build {
+				limit = 3
+			}
+			formations {
+				formation("alfa") {
+					entity("The Candle Holder").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						entity.attributes.set(5.0.currentInitiative())
+						entity.abilities.ability(SwordAttackAbility.build {
+							attributes(
+
+							)
+						})
+					}
+				}
+				formation("beta") {
+					entity("Wind River").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+					}
+				}
+			}
+		}.let { controller ->
+			controller.loop()
 		}
 	}
 }
