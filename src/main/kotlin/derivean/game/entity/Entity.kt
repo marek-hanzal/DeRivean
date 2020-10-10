@@ -40,7 +40,7 @@ class Entity(
 		var selector: ISelector = RankSelector()
 
 		fun attributes(vararg values: Attribute) {
-			attributes = Attributes(*values)
+			attributes.set(*values)
 		}
 
 		fun ability(ability: IAbility) {

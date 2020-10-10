@@ -27,15 +27,14 @@ class ControllerTest {
 			Initiative.build {}.let { initiative ->
 				Formations.build {
 					formation("alfa") {
-						entity("The Candle Holder") {
+						entity("The Candle Holder") {}.let { entity ->
+							mutators.humanMutator().mutate(entity)
+							mutators.warriorMutator().mutate(entity)
 							/**
 							 * Lower the initiative - so second team member (beta) should
 							 * take the initial round.
 							 */
-							attributes(5.0.currentInitiative())
-						}.let { entity ->
-							mutators.humanMutator().mutate(entity)
-							mutators.warriorMutator().mutate(entity)
+							entity.attributes.set(5.0.currentInitiative())
 						}
 					}
 					formation("beta") {
