@@ -1,7 +1,7 @@
 package derivean.game.timeline
 
 class Timeline(time: Double, step: Double, entries: MutableList<Entry>) : AbstractTimeline(time, step, entries) {
-	fun entry(block: Entry.Builder.() -> Unit) = Entry.build(block).also { entries.add(it) }
+	override fun entry(block: Entry.Builder.() -> Unit) = Entry.build(block).also { entries.add(it) }
 
 	override fun loop() {
 		step()

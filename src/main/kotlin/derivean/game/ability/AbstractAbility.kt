@@ -1,6 +1,7 @@
 package derivean.game.ability
 
 import derivean.game.attribute.Attributes
+import derivean.game.attribute.common.haste
 import derivean.game.attribute.common.isDead
 import derivean.game.entity.Entity
 import derivean.game.formation.Formation
@@ -18,7 +19,12 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 	override fun use(entity: Entity, targets: List<Entity>, timeline: ITimeline) {
 		attributes(entity) { attributes ->
 			for (target in targets) {
-				useOn(attributes, entity, target)
+				timeline.entry {
+					time = attributes.haste()
+					resolve {
+						useOn(attributes, entity, target)
+					}
+				}
 			}
 		}
 	}

@@ -1,3 +1,5 @@
 package derivean.game.timeline
 
-interface IEntry
+interface IEntry {
+	fun resolve()
+}
