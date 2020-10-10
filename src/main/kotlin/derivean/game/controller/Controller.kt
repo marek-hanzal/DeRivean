@@ -15,8 +15,8 @@ class Controller(initiative: IInitiative, terminator: ITerminator, formations: F
 				targets.resolve(timeline)
 			}
 		}
-		terminator.loop(formations)
 		timeline.loop()
+		terminator.loop(formations)
 	}
 
 	companion object {

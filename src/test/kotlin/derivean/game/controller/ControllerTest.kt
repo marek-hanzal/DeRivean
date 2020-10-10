@@ -34,13 +34,19 @@ class ControllerTest {
 						 * Lower the initiative - so second team member (beta) should
 						 * take the initial round.
 						 */
-						entity.attributes.set(5.0.roundInitiative())
+						entity.attributes.set(
+							5.0.roundInitiative(),
+							0.0.haste(),
+						)
 					}
 				}
 				formation("beta") {
 					entity("Wind River").let { entity ->
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
+						entity.attributes.set(
+							0.0.haste(),
+						)
 					}
 				}
 			}
@@ -92,7 +98,10 @@ class ControllerTest {
 						 * Lower the initiative - so second team member (beta) should
 						 * take the initial round.
 						 */
-						entity.attributes.set(5.0.roundInitiative())
+						entity.attributes.set(
+							5.0.roundInitiative(),
+							0.0.haste(),
+						)
 					}
 				}
 				formation("beta") {
@@ -102,7 +111,10 @@ class ControllerTest {
 						/**
 						 * Make the entity almost dead, thus Terminator should end the loop.
 						 */
-						entity.attributes.set(1.0.health())
+						entity.attributes.set(
+							1.0.health(),
+							0.0.haste(),
+						)
 					}
 				}
 			}
@@ -182,7 +194,10 @@ class ControllerTest {
 					entity("The Candle Holder").let { entity ->
 						mutators.humanMutator().mutate(entity)
 						mutators.warriorMutator().mutate(entity)
-						entity.attributes.set(5.0.roundInitiative())
+						entity.attributes.set(
+							5.0.roundInitiative(),
+							0.0.haste(),
+						)
 						entity.abilities.ability(SwordAttackAbility.build {
 							attributes(
 								15.0.strength(),
@@ -196,6 +211,7 @@ class ControllerTest {
 						mutators.warriorMutator().mutate(entity)
 						entity.attributes.set(
 							44.0.health(),
+							0.0.haste(),
 						)
 					}
 				}

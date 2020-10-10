@@ -50,7 +50,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 		 */
 		private val attributes = Attributes.from(
 			targets(1.0),
-			time(1.0),
+			time(0.0),
 		)
 
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)

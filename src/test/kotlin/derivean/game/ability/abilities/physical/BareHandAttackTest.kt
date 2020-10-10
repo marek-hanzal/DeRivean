@@ -16,6 +16,7 @@ class BareHandAttackTest {
 				entity("alfa") {
 					attributes(
 						10.0.strength(),
+						100.0.health(),
 					)
 					ability(BareHandAttack.build {})
 				}
@@ -35,11 +36,13 @@ class BareHandAttackTest {
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
 			targets.resolve(timeline)
+			timeline.loop()
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
 
 			targets.resolve(timeline)
+			timeline.loop()
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
@@ -78,6 +81,7 @@ class BareHandAttackTest {
 				entity("alfa") {
 					attributes(
 						10.0.strength(),
+						100.0.health(),
 					)
 					ability(BareHandAttack.build {
 						attributes(
@@ -107,18 +111,17 @@ class BareHandAttackTest {
 	}
 
 	@Test
-	fun `Bare hand attack with Delayed Attack`() {
+	fun `Dead Entity could not attack`() {
 		val formations = Formations.build {
 			formation("alfa") {
 				entity("alfa") {
 					attributes(
 						10.0.strength(),
-						1.0.haste(),
+						0.0.health(),
 					)
 					ability(BareHandAttack.build {
 						attributes(
 							10.0.strength(),
-							0.8.haste(),
 						)
 					})
 				}
@@ -141,6 +144,50 @@ class BareHandAttackTest {
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 		timeline.loop()
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+	}
+
+	@Test
+	fun `Bare hand attack with Delayed Attack`() {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("alfa") {
+					attributes(
+						10.0.strength(),
+						/**
+						 * Twice as slow Entity, reaaaly lazy one.
+						 */
+						2.0.haste(),
+						100.0.health(),
+					)
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+							1.0.bareHandTime(),
+						)
+					})
+				}
+			}
+			formation("beta") {
+				entity("beta") {
+					attributes(
+						15.0.health(),
+						15.0.physicalDefense(),
+					)
+				}
+			}
+		}
+		val timeline = Timeline.build { }
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(1, targets.size)
+			assertEquals(5.0, targets.rank)
+			targets.resolve(timeline)
+		})
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+		timeline.loop()
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+		/**
+		 * Because there is very lazy Entity, it needs two loops before it will do it's attack.
+		 */
 		timeline.loop()
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}

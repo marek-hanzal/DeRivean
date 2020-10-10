@@ -9,7 +9,7 @@ import derivean.game.formation.Formation
 import derivean.game.formation.Formations
 import derivean.game.selector.Targets
 import derivean.game.timeline.ITimeline
-import kotlin.math.min
+import kotlin.math.max
 
 typealias RankCallback = (attributes: Attributes, target: Entity, entity: Entity, formation: Formation) -> Double
 
@@ -25,7 +25,7 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 					/**
 					 * Take Entity's Haste and multiply it with this ability's default Haste.
 					 */
-					time = min(0.0, attributes.haste()) * time(attributes)
+					time = max(0.0, attributes.haste()) * time(attributes)
 					resolve {
 						/**
 						 * Check if source entity is still alive as it could be killed before an Ability is used.
