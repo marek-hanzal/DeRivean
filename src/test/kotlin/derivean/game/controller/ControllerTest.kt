@@ -5,6 +5,7 @@ import derivean.game.attribute.common.health
 import derivean.game.attribute.common.strength
 import derivean.game.formation.Formations
 import derivean.game.initiative.Initiative
+import derivean.game.initiative.NoInitiativeException
 import derivean.game.mutator.Mutators
 import derivean.game.mutator.being.HumanMutator
 import derivean.game.mutator.being.humanMutator
@@ -12,6 +13,7 @@ import derivean.game.mutator.role.WarriorRoleMutator
 import derivean.game.mutator.role.warriorMutator
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ControllerTest {
 	@Test
@@ -61,6 +63,10 @@ class ControllerTest {
 					assertEquals(0.0, formations["alfa"]["The Candle Holder"].attributes.currentInitiative())
 					assertEquals(143.0, formations["alfa"]["The Candle Holder"].attributes.health())
 					assertEquals(143.0, formations["beta"]["Wind River"].attributes.health())
+
+					assertEquals("Cannot resolve Initiative, all entities are without Initiative.", assertFailsWith<NoInitiativeException> {
+						controller.loop(initiative, formations)
+					}.message)
 				}
 			}
 		}
