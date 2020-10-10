@@ -35,6 +35,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 					target {
 						this.entity = entity
 						this.target = target
+						this.ability = this@BareHandAttack
 						this.rank = when {
 							target.isNotAlive() -> {
 								0.0
