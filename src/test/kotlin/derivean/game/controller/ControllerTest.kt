@@ -171,6 +171,64 @@ class ControllerTest {
 	}
 
 	@Test
+	fun `Slow one dies`() {
+		val mutators = Mutators.build {
+			mutator(
+				HumanMutator.mutator(),
+				WarriorRoleMutator.mutator(),
+			)
+		}
+
+		Controller.build {
+			terminator = BattleTerminator.build {
+				limit = 10
+			}
+			formations {
+				formation("alfa") {
+					entity("The Candle Holder").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						/**
+						 * Lower the initiative - so second team member (beta) should
+						 * take the initial round.
+						 */
+						entity.attributes.set(50.0.roundInitiative())
+						entity.abilities.ability(SwordAttackAbility.build {
+							attributes(
+								/**
+								 * Even this Entity has higher initiative, it will die as it's quite slow.
+								 */
+								1.1.haste(),
+								15000.0.strength(),
+							)
+						})
+					}
+				}
+				formation("beta") {
+					entity("Wind River").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						entity.attributes.set(
+							15000.0.strength(),
+						)
+					}
+				}
+			}
+		}.let { controller ->
+			controller.loop()
+			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
+				controller.loop()
+			}.message)
+			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
+				assertTrue(candleHolder.isDead())
+			}
+			controller.formations["beta"]["Wind River"].let { windRiver ->
+				assertTrue(windRiver.isAlive())
+			}
+		}
+	}
+
+	@Test
 	fun `Better Ability Selection`() {
 		val mutators = Mutators.build {
 			mutator(

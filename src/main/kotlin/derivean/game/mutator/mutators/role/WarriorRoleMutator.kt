@@ -21,7 +21,7 @@ class WarriorRoleMutator : AbstractMutator() {
 		/**
 		 * A little increase in haste for warriors.
 		 */
-		entity.attributes.inc(0.2.haste())
+		entity.attributes.decOrZero(0.1.haste())
 		entity.attributes.set(
 			1.0.classWarrior(),
 		)
