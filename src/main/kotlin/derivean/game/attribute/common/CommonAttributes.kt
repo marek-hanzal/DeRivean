@@ -56,7 +56,7 @@ fun Attributes.xp() = CommonAttributes.xp(this)
 fun Double.health() = CommonAttributes.health(this)
 fun Attributes.health() = CommonAttributes.health(this)
 fun Entity.isAlive() = this.attributes.health() > 0
-fun Entity.isNotAlive() = this.attributes.health() <= 0
+fun Entity.isDead() = this.attributes.health() <= 0
 
 fun Double.maxHealth() = CommonAttributes.maxHealth(this)
 fun Attributes.maxHealth() = CommonAttributes.maxHealth(this)

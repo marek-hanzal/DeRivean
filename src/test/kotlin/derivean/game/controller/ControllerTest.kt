@@ -1,10 +1,7 @@
 package derivean.game.controller
 
 import derivean.game.ability.abilities.physical.SwordAttackAbility
-import derivean.game.attribute.common.currentInitiative
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.roundInitiative
-import derivean.game.attribute.common.strength
+import derivean.game.attribute.common.*
 import derivean.game.mutator.Mutators
 import derivean.game.mutator.mutators.being.HumanMutator
 import derivean.game.mutator.mutators.being.humanMutator
@@ -15,6 +12,7 @@ import derivean.game.terminator.TheEndException
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class ControllerTest {
 	@Test
@@ -94,7 +92,7 @@ class ControllerTest {
 						 * Lower the initiative - so second team member (beta) should
 						 * take the initial round.
 						 */
-						entity.attributes.set(5.0.currentInitiative())
+						entity.attributes.set(5.0.roundInitiative())
 					}
 				}
 				formation("beta") {
@@ -144,7 +142,7 @@ class ControllerTest {
 						 * Lower the initiative - so second team member (beta) should
 						 * take the initial round.
 						 */
-						entity.attributes.set(5.0.currentInitiative())
+						entity.attributes.set(5.0.roundInitiative())
 					}
 				}
 				formation("beta") {
@@ -206,8 +204,16 @@ class ControllerTest {
 			controller.loop()
 			controller.loop()
 			controller.loop()
-			assertFailsWith<TheEndException> {
+			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
 				controller.loop()
+			}.message)
+			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
+				assertEquals(44.0, candleHolder.attributes.damage())
+				assertEquals(44.0, candleHolder.attributes.physicalDamage())
+			}
+			controller.formations["beta"]["Wind River"].let { windRiver ->
+				assertEquals(0.0, windRiver.attributes.health())
+				assertTrue(windRiver.isDead())
 			}
 		}
 	}

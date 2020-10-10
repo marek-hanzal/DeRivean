@@ -1,7 +1,7 @@
 package derivean.game.ability
 
 import derivean.game.attribute.Attributes
-import derivean.game.attribute.common.isNotAlive
+import derivean.game.attribute.common.isDead
 import derivean.game.entity.Entity
 import derivean.game.formation.Formation
 import derivean.game.formation.Formations
@@ -36,7 +36,7 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 					this.target = target
 					this.ability = this@AbstractAbility
 					this.rank = when {
-						target.isNotAlive() -> {
+						target.isDead() -> {
 							0.0
 						}
 						formation.hasMember(entity) -> {
