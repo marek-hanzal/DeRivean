@@ -219,12 +219,8 @@ class ControllerTest {
 			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
 				controller.loop()
 			}.message)
-			controller.formations["alfa"]["The Candle Holder"].let { candleHolder ->
-				assertTrue(candleHolder.isDead())
-			}
-			controller.formations["beta"]["Wind River"].let { windRiver ->
-				assertTrue(windRiver.isAlive())
-			}
+			assertTrue(controller.formations["alfa"]["The Candle Holder"].isDead())
+			assertTrue(controller.formations["beta"]["Wind River"].isAlive())
 		}
 	}
 
