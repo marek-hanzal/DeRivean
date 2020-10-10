@@ -8,8 +8,10 @@ import derivean.game.mutator.mutators.being.HumanMutator
 import derivean.game.mutator.mutators.being.humanMutator
 import derivean.game.mutator.mutators.role.WarriorRoleMutator
 import derivean.game.mutator.mutators.role.warriorMutator
+import derivean.game.terminator.TheEndException
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ControllerTest {
 	@Test
@@ -63,6 +65,53 @@ class ControllerTest {
 			 * Just empty loop to see, if internal initiative works properly.
 			 */
 			controller.loop()
+		}
+	}
+
+	@Test
+	fun `Full loop with Terminator`() {
+		val mutators = Mutators.build {
+			mutator(
+				HumanMutator.mutator(),
+				WarriorRoleMutator.mutator(),
+			)
+		}
+
+		Controller.build {
+			formations {
+				formation("alfa") {
+					entity("The Candle Holder").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						/**
+						 * Lower the initiative - so second team member (beta) should
+						 * take the initial round.
+						 */
+						entity.attributes.set(5.0.currentInitiative())
+					}
+				}
+				formation("beta") {
+					entity("Wind River").let { entity ->
+						mutators.humanMutator().mutate(entity)
+						mutators.warriorMutator().mutate(entity)
+						/**
+						 * Make the entity almost dead, thus Terminator should end the loop.
+						 */
+						entity.attributes.set(1.0.health())
+					}
+				}
+			}
+		}.let { controller ->
+			/**
+			 * Wind River's play
+			 */
+			controller.loop()
+			/**
+			 * The Candle Holder's play - in this moment Terminator should stop the game as Wind River will die.
+			 */
+			assertEquals("The Battle has Ended.", assertFailsWith<TheEndException> {
+				controller.loop()
+			}.message)
 		}
 	}
 }
