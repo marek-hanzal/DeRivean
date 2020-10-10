@@ -101,6 +101,46 @@ class BareHandAttackTest {
 			assertEquals(5.0, targets.rank)
 			targets.resolve(timeline)
 		})
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+		timeline.loop()
+		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+	}
+
+	@Test
+	fun `Bare hand attack with Delayed Attack`() {
+		val formations = Formations.build {
+			formation("alfa") {
+				entity("alfa") {
+					attributes(
+						10.0.strength(),
+					)
+					ability(BareHandAttack.build {
+						attributes(
+							10.0.strength(),
+							0.2.haste(),
+						)
+					})
+				}
+			}
+			formation("beta") {
+				entity("beta") {
+					attributes(
+						15.0.health(),
+						15.0.physicalDefense(),
+					)
+				}
+			}
+		}
+		val timeline = Timeline.build { }
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(1, targets.size)
+			assertEquals(5.0, targets.rank)
+			targets.resolve(timeline)
+		})
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+		timeline.loop()
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
+		timeline.loop()
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
