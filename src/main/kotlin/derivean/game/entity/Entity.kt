@@ -6,8 +6,8 @@ import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.formation.Formations
 import derivean.game.selector.ISelector
-import derivean.game.selector.RankSelector
 import derivean.game.selector.Targets
+import derivean.game.selector.selectors.RankSelector
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.

@@ -1,7 +1,9 @@
-package derivean.game.selector
+package derivean.game.selector.selectors
 
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
+import derivean.game.selector.AbstractSelector
+import derivean.game.selector.Targets
 
 /**
  * Basic selector based on Mutator rank.

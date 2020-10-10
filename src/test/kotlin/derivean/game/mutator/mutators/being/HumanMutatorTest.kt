@@ -1,6 +1,6 @@
-package derivean.game.mutator.being
+package derivean.game.mutator.mutators.being
 
-import derivean.game.ability.physical.BareHandAttack
+import derivean.game.ability.abilities.physical.BareHandAttack
 import derivean.game.attribute.common.health
 import derivean.game.attribute.common.strength
 import derivean.game.entity.Entity

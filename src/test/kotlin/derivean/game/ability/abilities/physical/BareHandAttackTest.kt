@@ -1,4 +1,4 @@
-package derivean.game.ability.physical
+package derivean.game.ability.abilities.physical
 
 import derivean.game.attribute.common.*
 import derivean.game.formation.Formations

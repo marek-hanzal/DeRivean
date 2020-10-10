@@ -6,10 +6,10 @@ import derivean.game.attribute.common.strength
 import derivean.game.formation.Formations
 import derivean.game.initiative.Initiative
 import derivean.game.mutator.Mutators
-import derivean.game.mutator.being.HumanMutator
-import derivean.game.mutator.being.humanMutator
-import derivean.game.mutator.role.WarriorRoleMutator
-import derivean.game.mutator.role.warriorMutator
+import derivean.game.mutator.mutators.being.HumanMutator
+import derivean.game.mutator.mutators.being.humanMutator
+import derivean.game.mutator.mutators.role.WarriorRoleMutator
+import derivean.game.mutator.mutators.role.warriorMutator
 import org.junit.Test
 import kotlin.test.assertEquals
 

@@ -1,7 +1,7 @@
 package derivean.game.ability
 
-import derivean.game.ability.physical.BareHandAttack
-import derivean.game.ability.physical.bareHand
+import derivean.game.ability.abilities.physical.BareHandAttack
+import derivean.game.ability.abilities.physical.bareHand
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith

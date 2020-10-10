@@ -1,4 +1,4 @@
-package derivean.game.ability.element.fire
+package derivean.game.ability.abilities.element.fire
 
 import derivean.game.attribute.common.damage
 import derivean.game.attribute.common.health

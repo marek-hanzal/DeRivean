@@ -1,4 +1,4 @@
-package derivean.game.mutator.element.water
+package derivean.game.mutator.mutators.element.water
 
 import derivean.game.attribute.element.fireElement
 import derivean.game.attribute.element.waterElement
