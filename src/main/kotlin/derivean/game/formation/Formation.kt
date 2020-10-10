@@ -34,6 +34,8 @@ class Formation(val formation: String, map: Map<String, Entity>) : Entities(map)
 			map[name] = this
 		}
 
+		fun entity(name: String) = entity(name) {}
+
 		fun build() = Formation(
 			formation,
 			map,

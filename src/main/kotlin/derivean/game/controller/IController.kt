@@ -1,8 +1,5 @@
 package derivean.game.controller
 
-import derivean.game.formation.Formations
-import derivean.game.initiative.IInitiative
-
 /**
  * A Controller is responsible for the game workflow; it should be state-less and able to
  * take a battle properly when used for example on REST API.
@@ -13,5 +10,5 @@ interface IController {
 	 * standalone team, thus if there is battle controller, they will be attacking
 	 * each other.
 	 */
-	fun loop(initiative: IInitiative, formations: Formations)
+	fun loop()
 }
