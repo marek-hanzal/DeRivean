@@ -27,21 +27,18 @@ class BareHandAttackTest {
 			}
 		}
 
-		TODO("Change Targets for select() and test BareHandAttack has been selected")
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(1, it.list.size)
-			assertEquals(5.0, it.list.first().rank)
-			it.list.first().let { target ->
-				target.resolve()
-				assertEquals(5.0, target.entity.attributes.damage(), "Source does not contain expected amount of damage.")
-				assertEquals(5.0, target.entity.attributes.physicalDamage(), "Source does not contain expected amount of damage.")
-				assertEquals(10.0, target.target.attributes.health(), "Target does not have expected amount of health.")
+		formations["alfa"]["alfa"].select(formations).let { targets ->
+			assertEquals(1, targets.size)
+			assertEquals(5.0, targets.rank)
+			targets.resolve()
+			assertEquals(5.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
+			assertEquals(5.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
+			assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
 
-				target.resolve()
-				assertEquals(10.0, target.entity.attributes.damage(), "Source does not contain expected amount of damage.")
-				assertEquals(10.0, target.entity.attributes.physicalDamage(), "Source does not contain expected amount of damage.")
-				assertEquals(5.0, target.target.attributes.health(), "Target does not have expected amount of health.")
-			}
+			targets.resolve()
+			assertEquals(10.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
+			assertEquals(10.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
+			assertEquals(5.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
 		}
 	}
 

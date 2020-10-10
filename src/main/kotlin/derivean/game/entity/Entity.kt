@@ -13,9 +13,9 @@ import derivean.game.selector.RankSelector
  */
 class Entity(
 	val entity: String,
-	val selector: ISelector,
 	val attributes: Attributes,
 	val abilities: Abilities,
+	private val selector: ISelector,
 ) {
 	override fun toString() = entity
 
@@ -47,9 +47,9 @@ class Entity(
 
 		fun build() = Entity(
 			name,
-			selector,
 			attributes,
 			abilities,
+			selector,
 		)
 	}
 }
