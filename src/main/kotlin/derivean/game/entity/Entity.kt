@@ -13,17 +13,29 @@ import derivean.game.selector.selectors.RankSelector
  * An Entity is responsible for holding Attributes and equipping items.
  */
 class Entity(
+	/**
+	 * Entity name - to prevent clashes, it has same property name as the class.
+	 */
 	val entity: String,
+	/**
+	 * Default attributes of this Entity (should be modified only when they're permanently modified).
+	 */
 	val attributes: Attributes,
+	/**
+	 * Abilities of this Entity - should be modified only when abilities are permanently modified.
+	 */
 	val abilities: Abilities,
+	/**
+	 * Selector of this entity used for computing targets.
+	 */
 	private val selector: ISelector,
 ) {
 	override fun toString() = entity
 
-	fun targets(ability: String, formations: Formations) = abilities[ability].targets(this, formations)
-
-	fun select(formations: Formations) = selector.select(this, formations)
-
+	/**
+	 * Use internal Selector to select targets with available abilities. Selector is responsible for selecting optimal
+	 * targets based on current situation (battle, university, ...).
+	 */
 	fun select(formations: Formations, block: (Targets) -> Unit) = selector.select(this, formations)?.let {
 		block(it)
 		it
@@ -39,14 +51,23 @@ class Entity(
 		private var abilities = Abilities()
 		var selector: ISelector = RankSelector()
 
+		/**
+		 * Set attributes of the newborn Entity.
+		 */
 		fun attributes(vararg values: Attribute) {
 			attributes.set(*values)
 		}
 
-		fun ability(ability: IAbility) {
-			abilities.ability(ability)
+		/**
+		 * Set abilities of this Entity.
+		 */
+		fun ability(vararg ability: IAbility) {
+			abilities.ability(*ability)
 		}
 
+		/**
+		 * Setup internal ability/target Selector of this Entity.
+		 */
 		fun selector(selector: ISelector) {
 			this.selector = selector
 		}
