@@ -7,6 +7,7 @@ import derivean.game.attribute.Attributes
 import derivean.game.formation.Formations
 import derivean.game.selector.ISelector
 import derivean.game.selector.RankSelector
+import derivean.game.selector.Targets
 
 /**
  * An Entity is responsible for holding Attributes and equipping items.
@@ -22,6 +23,11 @@ class Entity(
 	fun targets(ability: String, formations: Formations) = abilities[ability].targets(this, formations)
 
 	fun select(formations: Formations) = selector.select(this, formations)
+
+	fun select(formations: Formations, block: (Targets) -> Unit) = selector.select(this, formations)?.let {
+		block(it)
+		it
+	}
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()

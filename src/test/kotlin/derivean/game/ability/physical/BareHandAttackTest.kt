@@ -4,6 +4,7 @@ import derivean.game.attribute.common.*
 import derivean.game.formation.Formations
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 class BareHandAttackTest {
 	@Test
@@ -27,7 +28,7 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["alfa"].select(formations).let { targets ->
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
 			targets.resolve()
@@ -39,7 +40,7 @@ class BareHandAttackTest {
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
-		}
+		})
 	}
 
 	@Test
