@@ -38,6 +38,12 @@ class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) :
 		map[attribute.first] = get(attribute.first) + attribute.second
 	}
 
+	fun inc(vararg attributes: Attribute) {
+		for (attribute in attributes) {
+			inc(attribute)
+		}
+	}
+
 	/**
 	 * Increase all attributes from incoming attributes.
 	 */

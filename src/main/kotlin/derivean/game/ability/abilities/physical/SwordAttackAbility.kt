@@ -1,6 +1,5 @@
 package derivean.game.ability.abilities.physical
 
-import derivean.game.ability.Abilities
 import derivean.game.ability.AbstractAbility
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
@@ -9,7 +8,7 @@ import derivean.game.entity.Entity
 import derivean.game.formation.Formations
 import kotlin.math.max
 
-class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
+class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
 	override fun useOn(attributes: Attributes, entity: Entity, target: Entity) {
 		damage(attributes, target).let { damage ->
 			entity.attributes.inc(
@@ -27,11 +26,11 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 	private fun damage(attributes: Attributes, target: Entity) = max(attributes.strength() - target.attributes.physicalDefense(), 0.0)
 
 	companion object {
-		const val ABILITY = "ability.physical.BareHandAttack"
+		const val ABILITY = "ability.physical.SwordAttackAbility"
 
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
 
-		private const val ATTRIBUTE_TARGETS = "$ABILITY.targets"
+		private const val ATTRIBUTE_TARGETS = "${ABILITY}.targets"
 		fun targets(value: Double) = ATTRIBUTE_TARGETS to value
 		fun targets(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_TARGETS, default]
 	}
@@ -47,7 +46,3 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		)
 	}
 }
-
-fun Abilities.bareHand() = this[BareHandAttack.ABILITY]
-fun Double.bareHandTargets() = BareHandAttack.targets(this)
-fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
