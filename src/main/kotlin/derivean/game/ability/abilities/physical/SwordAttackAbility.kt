@@ -10,7 +10,7 @@ import derivean.game.formation.Formations
 import kotlin.math.max
 
 class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAttackAbility(ability, attributes) {
-	override fun useOn(attributes: Attributes, entity: Entity, target: Entity) {
+	override fun resolve(attributes: Attributes, entity: Entity, target: Entity) {
 		damage(attributes, target).let { damage ->
 			entity.attributes.inc(
 				damage.damage(),

@@ -31,7 +31,7 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 						 * Check if source entity is still alive as it could be killed before an Ability is used.
 						 */
 						if (entity.isAlive()) {
-							useOn(attributes, entity, target)
+							resolve(attributes, entity, target)
 						}
 					}
 				}
@@ -39,7 +39,7 @@ abstract class AbstractAbility(override val ability: String, val attributes: Att
 		}
 	}
 
-	open fun useOn(attributes: Attributes, entity: Entity, target: Entity) {
+	open fun resolve(attributes: Attributes, entity: Entity, target: Entity) {
 	}
 
 	open fun limit(attributes: Attributes) = 1.0
