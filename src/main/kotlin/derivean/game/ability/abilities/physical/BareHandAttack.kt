@@ -26,7 +26,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 
 	override fun limit(attributes: Attributes) = attributes.bareHandTargets()
 
-	override fun haste(attributes: Attributes) = attributes.bareHandHaste()
+	override fun time(attributes: Attributes) = attributes.bareHandTime()
 
 	private fun damage(attributes: Attributes, target: Entity) = max(attributes.strength() - target.attributes.physicalDefense(), 0.0)
 
@@ -39,9 +39,9 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 		fun targets(value: Double) = ATTRIBUTE_TARGETS to value
 		fun targets(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_TARGETS, default]
 
-		private const val ATTRIBUTE_HASTE = "$ABILITY.haste"
-		fun haste(value: Double) = ATTRIBUTE_HASTE to value
-		fun haste(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_HASTE, default]
+		private const val ATTRIBUTE_TIME = "$ABILITY.time"
+		fun time(value: Double) = ATTRIBUTE_TIME to value
+		fun time(attributes: Attributes, default: Double = 1.0) = attributes[ATTRIBUTE_TIME, default]
 	}
 
 	class Builder {
@@ -50,7 +50,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 		 */
 		private val attributes = Attributes.from(
 			targets(1.0),
-			haste(1.0),
+			time(1.0),
 		)
 
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
@@ -67,5 +67,5 @@ fun Abilities.bareHand() = this[BareHandAttack.ABILITY]
 fun Double.bareHandTargets() = BareHandAttack.targets(this)
 fun Attributes.bareHandTargets(default: Double = 1.0) = BareHandAttack.targets(this, default)
 
-fun Double.bareHandHaste() = BareHandAttack.targets(this)
-fun Attributes.bareHandHaste(default: Double = 1.0) = BareHandAttack.targets(this, default)
+fun Double.bareHandTime() = BareHandAttack.targets(this)
+fun Attributes.bareHandTime(default: Double = 1.0) = BareHandAttack.targets(this, default)

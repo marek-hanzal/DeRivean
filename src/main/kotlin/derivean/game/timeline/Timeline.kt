@@ -10,7 +10,7 @@ class Timeline(time: Double, step: Double, entries: MutableList<Entry>) : Abstra
 	}.also { entries.add(it) }
 
 	override fun loop() {
-		entries.filter { it.time <= time }.forEach {
+		entries.filter { it.time <= time }.sortedBy { it.time }.forEach {
 			it.resolve()
 		}
 		step()
