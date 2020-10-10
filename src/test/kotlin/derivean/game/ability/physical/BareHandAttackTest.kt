@@ -5,6 +5,7 @@ import derivean.game.formation.Formations
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class BareHandAttackTest {
 	@Test
@@ -63,7 +64,7 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		assertEquals(0, formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).list.size)
+		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve() })
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
@@ -91,11 +92,11 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let { targets ->
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
 			targets.resolve()
-		}
+		})
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
@@ -129,10 +130,10 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(1, it.size, "There are more targets!")
-			assertEquals(formations["beta"]["beta"], it.first().target)
-		}
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(1, targets.size, "There are more targets!")
+			assertEquals(formations["beta"]["beta"], targets.list.first().target)
+		})
 	}
 
 	@Test
@@ -163,7 +164,7 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		assertEquals(0, formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).size, "There are more targets!")
+		assertNull(formations["alfa"]["alfa"].select(formations) { targets -> targets.resolve() })
 	}
 
 	@Test
@@ -208,11 +209,11 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(2, it.size, "There are more targets!")
-			assertEquals(38.0, it.sumByDouble { sum -> sum.rank })
-			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["bar"]), it.map { map -> map.target })
-		}
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(38.0, targets.rank)
+			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["bar"]), targets.map { map -> map.target })
+		})
 	}
 
 	@Test
@@ -257,11 +258,11 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(2, it.size, "There are more targets!")
-			assertEquals(35.0, it.sumByDouble { sum -> sum.rank })
-			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["foo"]), it.map { map -> map.target })
-		}
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(35.0, targets.rank)
+			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["foo"]), targets.map { map -> map.target })
+		})
 	}
 
 	@Test
@@ -312,10 +313,10 @@ class BareHandAttackTest {
 			}
 		}
 
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(2, it.size, "There are more targets!")
-			assertEquals(35.0, it.sumByDouble { sum -> sum.rank })
-			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["ooo"]), it.map { map -> map.target })
-		}
+		assertNotNull(formations["alfa"]["alfa"].select(formations) { targets ->
+			assertEquals(2, targets.size, "There are more targets!")
+			assertEquals(35.0, targets.rank)
+			assertEquals(listOf(formations["beta"]["foo-bar"], formations["beta"]["ooo"]), targets.map { map -> map.target })
+		})
 	}
 }

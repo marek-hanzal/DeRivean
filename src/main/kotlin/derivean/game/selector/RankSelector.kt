@@ -11,7 +11,7 @@ class RankSelector : AbstractSelector() {
 		for (ability in entity.abilities) {
 			list.add(ability.targets(entity, formations))
 		}
-		list.maxByOrNull { it.rank }
+		list.filter { it.rank > 0 }.maxByOrNull { it.rank }
 	}
 
 	companion object {
