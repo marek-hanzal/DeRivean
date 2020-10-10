@@ -1,7 +1,6 @@
 package derivean.game.attribute.common
 
 import derivean.game.attribute.Attributes
-import derivean.game.entity.Entity
 
 class PhysicalAttributes {
 	companion object {
@@ -17,10 +16,6 @@ class PhysicalAttributes {
 
 fun Double.physicalDamage() = PhysicalAttributes.damage(this)
 fun Attributes.physicalDamage() = PhysicalAttributes.damage(this)
-fun Entity.physicalDamage() = this.attributes.physicalDamage()
-fun Entity.physicalDamage(value: Double) = this.attributes(PhysicalAttributes.damage(value))
 
 fun Double.physicalDefense() = PhysicalAttributes.defense(this)
 fun Attributes.physicalDefense() = PhysicalAttributes.defense(this)
-fun Entity.physicalDefense() = this.attributes.physicalDefense()
-fun Entity.physicalDefense(value: Double) = this.attributes(PhysicalAttributes.defense(value))

@@ -27,29 +27,29 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 		/**
 		 * Take cost of casting fireball and mark it as mana loss (decrease).
 		 */
-		entity.decOrZero(attributes.fireballCost().mana())
+		entity.attributes.decOrZero(attributes.fireballCost().mana())
 		for (target in targets) {
 			/**
 			 * Base target entity defense.
 			 */
-			val defense = if (target.fireElement() <= -1) -attack else target.fireDefense() * (1 + target.fireElement())
+			val defense = if (target.attributes.fireElement() <= -1) -attack else target.attributes.fireDefense() * (1 + target.attributes.fireElement())
 
 			/**
 			 * Compute final damage (if any).
 			 */
-			val damage = if (target.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
+			val damage = if (target.attributes.fireElement() >= 1) 0.0 else max(attack - defense, 0.0)
 			/**
 			 * Set (general) damage done in this duel.
 			 */
-			entity.inc(damage.damage())
+			entity.attributes.inc(damage.damage())
 			/**
 			 * Set fire damage done in this duel.
 			 */
-			entity.inc(damage.fireDamage())
+			entity.attributes.inc(damage.fireDamage())
 			/**
 			 * Take damage as health and decrease it (health loss done by fireball).
 			 */
-			target.decOrZero(damage.health())
+			target.attributes.decOrZero(damage.health())
 		}
 	}
 

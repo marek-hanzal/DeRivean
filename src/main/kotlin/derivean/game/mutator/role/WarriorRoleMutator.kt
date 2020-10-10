@@ -9,15 +9,15 @@ import derivean.game.mutator.Mutators
 
 class WarriorRoleMutator : AbstractMutator() {
 	override fun mutate(entity: Entity) {
-		entity.attributes(
-			/**
-			 * Take default health and increase it by a half.
-			 */
-			(entity.health() * 1.5).health(),
-			/**
-			 * Take default Strength and increase it by 20%.
-			 */
-			(entity.strength() * 1.2).strength(),
+		/**
+		 * Take default health and increase it by a half.
+		 */
+		entity.attributes.multiply(1.5.health())
+		/**
+		 * Take default Strength and increase it by 20%.
+		 */
+		entity.attributes.multiply(1.2.strength())
+		entity.attributes.set(
 			1.0.classWarrior(),
 		)
 	}

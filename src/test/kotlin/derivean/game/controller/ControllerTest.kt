@@ -46,22 +46,22 @@ class ControllerTest {
 						}
 					}
 				}.let { formations ->
-					assertEquals(150.0, formations["alfa"]["The Candle Holder"].health())
-					assertEquals(12.0, formations["alfa"]["The Candle Holder"].strength())
-					assertEquals(150.0, formations["beta"]["Wind River"].health())
-					assertEquals(12.0, formations["beta"]["Wind River"].strength())
+					assertEquals(150.0, formations["alfa"]["The Candle Holder"].attributes.health())
+					assertEquals(12.0, formations["alfa"]["The Candle Holder"].attributes.strength())
+					assertEquals(150.0, formations["beta"]["Wind River"].attributes.health())
+					assertEquals(12.0, formations["beta"]["Wind River"].attributes.strength())
 
 					controller.loop(initiative, formations)
 
-					assertEquals(0.0, formations["beta"]["Wind River"].currentInitiative())
-					assertEquals(143.0, formations["alfa"]["The Candle Holder"].health())
-					assertEquals(150.0, formations["beta"]["Wind River"].health())
+					assertEquals(0.0, formations["beta"]["Wind River"].attributes.currentInitiative())
+					assertEquals(143.0, formations["alfa"]["The Candle Holder"].attributes.health())
+					assertEquals(150.0, formations["beta"]["Wind River"].attributes.health())
 
 					controller.loop(initiative, formations)
 
-					assertEquals(0.0, formations["alfa"]["The Candle Holder"].currentInitiative())
-					assertEquals(143.0, formations["alfa"]["The Candle Holder"].health())
-					assertEquals(143.0, formations["beta"]["Wind River"].health())
+					assertEquals(0.0, formations["alfa"]["The Candle Holder"].attributes.currentInitiative())
+					assertEquals(143.0, formations["alfa"]["The Candle Holder"].attributes.health())
+					assertEquals(143.0, formations["beta"]["Wind River"].attributes.health())
 				}
 			}
 		}

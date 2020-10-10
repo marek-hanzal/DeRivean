@@ -27,19 +27,20 @@ class BareHandAttackTest {
 			}
 		}
 
+		TODO("Change Targets for select() and test BareHandAttack has been selected")
 		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
 			assertEquals(1, it.list.size)
 			assertEquals(5.0, it.list.first().rank)
 			it.list.first().let { target ->
 				target.resolve()
-				assertEquals(5.0, target.entity.damage(), "Source does not contain expected amount of damage.")
-				assertEquals(5.0, target.entity.physicalDamage(), "Source does not contain expected amount of damage.")
-				assertEquals(10.0, target.target.health(), "Target does not have expected amount of health.")
+				assertEquals(5.0, target.entity.attributes.damage(), "Source does not contain expected amount of damage.")
+				assertEquals(5.0, target.entity.attributes.physicalDamage(), "Source does not contain expected amount of damage.")
+				assertEquals(10.0, target.target.attributes.health(), "Target does not have expected amount of health.")
 
 				target.resolve()
-				assertEquals(10.0, target.entity.damage(), "Source does not contain expected amount of damage.")
-				assertEquals(10.0, target.entity.physicalDamage(), "Source does not contain expected amount of damage.")
-				assertEquals(5.0, target.target.health(), "Target does not have expected amount of health.")
+				assertEquals(10.0, target.entity.attributes.damage(), "Source does not contain expected amount of damage.")
+				assertEquals(10.0, target.entity.attributes.physicalDamage(), "Source does not contain expected amount of damage.")
+				assertEquals(5.0, target.target.attributes.health(), "Target does not have expected amount of health.")
 			}
 		}
 	}
@@ -65,7 +66,7 @@ class BareHandAttackTest {
 			}
 		}
 		assertEquals(0, formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).list.size)
-		assertEquals(15.0, formations["beta"]["beta"].health(), "Target's health is different.")
+		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
 	@Test
@@ -97,7 +98,7 @@ class BareHandAttackTest {
 			assertEquals(5.0, targets.rank)
 			targets.resolve()
 		}
-		assertEquals(10.0, formations["beta"]["beta"].health(), "Target's health is different.")
+		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
 	@Test

@@ -17,12 +17,12 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 				/**
 				 * Accumulate overall entity's damage and physical damage done.
 				 */
-				entity.inc(damage())
-				entity.inc(physicalDamage())
+				entity.attributes.inc(damage())
+				entity.attributes.inc(physicalDamage())
 				/**
 				 * Convert damage to heal loss of target entity; health cannot go under zero.
 				 */
-				target.decOrZero(health())
+				target.attributes.decOrZero(health())
 			}
 		}
 	}
@@ -53,7 +53,7 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		}
 	}
 
-	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)
+	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.attributes.physicalDefense(), 0.0)
 
 	companion object {
 		const val ABILITY = "ability.physical.BareHandAttack"

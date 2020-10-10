@@ -94,10 +94,10 @@ class FireballTest {
 
 		ability.use(entity, target)
 
-		assertEquals(9.75, entity.mana(), "Mana was not adjusted :(.")
-		assertEquals(sourceDamage, entity.damage(), "Unexpected damage.")
-		assertEquals(sourceDamage, entity.fireDamage(), "Unexpected fire damage.")
+		assertEquals(9.75, entity.attributes.mana(), "Mana was not adjusted :(.")
+		assertEquals(sourceDamage, entity.attributes.damage(), "Unexpected damage.")
+		assertEquals(sourceDamage, entity.attributes.fireDamage(), "Unexpected fire damage.")
 
-		assertEquals(targetHealth, target.health(), "Target does not have expected health.")
+		assertEquals(targetHealth, target.attributes.health(), "Target does not have expected health.")
 	}
 }

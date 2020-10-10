@@ -11,7 +11,7 @@ import derivean.game.mutator.Mutators
  */
 class HumanMutator : AbstractMutator() {
 	override fun mutate(entity: Entity) {
-		entity.attributes(
+		entity.attributes.set(
 			100.0.health(),
 			50.0.maxMana(),
 			50.0.mana(),

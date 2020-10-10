@@ -42,6 +42,8 @@ class Attributes(vararg values: Attribute) {
 
 	fun decOrZero(attribute: Attribute) = set(attribute.first, max(0.0, get(attribute.first) - attribute.second))
 
+	fun multiply(attribute: Attribute) = set(attribute.first, get(attribute.first) * attribute.second)
+
 	override fun equals(other: Any?): Boolean {
 		if (this === other) {
 			return true

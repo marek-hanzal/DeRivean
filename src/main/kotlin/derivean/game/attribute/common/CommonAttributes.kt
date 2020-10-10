@@ -49,45 +49,32 @@ class CommonAttributes {
 
 fun Double.level() = CommonAttributes.level(this)
 fun Attributes.level() = CommonAttributes.level(this)
-fun Entity.level() = this.attributes.level()
 
 fun Double.xp() = CommonAttributes.xp(this)
 fun Attributes.xp() = CommonAttributes.xp(this)
-fun Entity.xp() = this.attributes.xp()
 
 fun Double.health() = CommonAttributes.health(this)
 fun Attributes.health() = CommonAttributes.health(this)
-fun Entity.health() = this.attributes.health()
-fun Entity.health(value: Double) = this.attributes(CommonAttributes.health(value))
-fun Entity.isAlive() = this.health() > 0
-fun Entity.isNotAlive() = this.health() <= 0
+fun Entity.isAlive() = this.attributes.health() > 0
+fun Entity.isNotAlive() = this.attributes.health() <= 0
 
 fun Double.maxHealth() = CommonAttributes.maxHealth(this)
 fun Attributes.maxHealth() = CommonAttributes.maxHealth(this)
-fun Entity.maxHealth() = this.attributes.maxHealth()
 
 fun Double.mana() = CommonAttributes.mana(this)
 fun Attributes.mana() = CommonAttributes.mana(this)
-fun Entity.mana() = this.attributes.mana()
-fun Entity.mana(value: Double) = this.attributes(CommonAttributes.mana(value))
 
 fun Double.maxMana() = CommonAttributes.maxMana(this)
 fun Attributes.maxMana() = CommonAttributes.maxMana(this)
-fun Entity.maxMana() = this.attributes.maxMana()
 
 fun Double.strength() = CommonAttributes.strength(this)
 fun Attributes.strength() = CommonAttributes.strength(this)
-fun Entity.strength() = this.attributes.strength()
 
 fun Double.damage() = CommonAttributes.damage(this)
 fun Attributes.damage() = CommonAttributes.damage(this)
-fun Entity.damage() = this.attributes.damage()
-fun Entity.damage(value: Double) = this.attributes(CommonAttributes.damage(value))
 
 fun Double.currentInitiative() = CommonAttributes.currentInitiative(this)
 fun Attributes.currentInitiative() = CommonAttributes.currentInitiative(this)
-fun Entity.currentInitiative() = this.attributes.currentInitiative()
 
 fun Double.roundInitiative() = CommonAttributes.roundInitiative(this)
 fun Attributes.roundInitiative() = CommonAttributes.roundInitiative(this)
-fun Entity.roundInitiative() = this.attributes.roundInitiative()
