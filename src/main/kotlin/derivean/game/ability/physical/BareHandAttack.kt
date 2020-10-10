@@ -2,13 +2,12 @@ package derivean.game.ability.physical
 
 import derivean.game.ability.Abilities
 import derivean.game.ability.AbstractAbility
-import derivean.game.ability.Target
 import derivean.game.attribute.Attribute
 import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
-import kotlin.math.ceil
+import derivean.game.selector.Targets
 import kotlin.math.max
 
 class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(ability, attributes) {
@@ -28,25 +27,30 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAbility(
 		}
 	}
 
-	override fun targets(entity: Entity, formations: Formations) = mutableListOf<Target>().apply {
-		for (formation in formations.formations()) {
-			for (target in formation) {
-				add(Target.build(entity, target, this@BareHandAttack) {
-					rank = when {
-						target.isNotAlive() -> {
-							0.0
-						}
-						formation.hasMember(entity) -> {
-							0.0
-						}
-						else -> {
-							damage(entity, target)
+	override fun targets(entity: Entity, formations: Formations) = Targets.build {
+		attributes(entity) { attributes ->
+			this.limit = attributes.bareHandTargets()
+			for (formation in formations.formations()) {
+				for (target in formation) {
+					target {
+						this.entity = entity
+						this.target = target
+						this.rank = when {
+							target.isNotAlive() -> {
+								0.0
+							}
+							formation.hasMember(entity) -> {
+								0.0
+							}
+							else -> {
+								damage(entity, target)
+							}
 						}
 					}
-				})
+				}
 			}
 		}
-	}.filter { it.rank > 0 }.sortedByDescending { it.rank }.take(ceil(attributes(entity).bareHandTargets()).toInt())
+	}
 
 	private fun damage(entity: Entity, target: Entity) = max(attributes(entity).strength() - target.physicalDefense(), 0.0)
 

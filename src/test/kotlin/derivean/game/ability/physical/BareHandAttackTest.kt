@@ -28,9 +28,9 @@ class BareHandAttackTest {
 		}
 
 		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(1, it.size)
-			assertEquals(5.0, it.first().rank)
-			it.first().let { target ->
+			assertEquals(1, it.list.size)
+			assertEquals(5.0, it.list.first().rank)
+			it.list.first().let { target ->
 				target.resolve()
 				assertEquals(5.0, target.entity.damage(), "Source does not contain expected amount of damage.")
 				assertEquals(5.0, target.entity.physicalDamage(), "Source does not contain expected amount of damage.")
@@ -64,9 +64,7 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(0, it.size)
-		}
+		assertEquals(0, formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).list.size)
 		assertEquals(15.0, formations["beta"]["beta"].health(), "Target's health is different.")
 	}
 
@@ -94,12 +92,10 @@ class BareHandAttackTest {
 				}
 			}
 		}
-		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let {
-			assertEquals(1, it.size)
-			assertEquals(5.0, it.first().rank)
-			for (target in it) {
-				target.resolve()
-			}
+		formations["alfa"]["alfa"].targets(BareHandAttack.ABILITY, formations).let { targets ->
+			assertEquals(1, targets.size)
+			assertEquals(5.0, targets.rank)
+			targets.resolve()
 		}
 		assertEquals(10.0, formations["beta"]["beta"].health(), "Target's health is different.")
 	}
