@@ -1,14 +1,15 @@
 package derivean.game.selector
 
+import derivean.game.log.ILog
 import derivean.game.timeline.ITimeline
 import kotlin.math.ceil
 
 class Targets(val rank: Double, val list: List<Target>) : Iterable<Target> {
 	val size get() = list.size
 
-	fun resolve(timeline: ITimeline) {
+	fun resolve(timeline: ITimeline, log: ILog) {
 		for (target in list) {
-			target.resolve(timeline)
+			target.resolve(timeline, log)
 		}
 	}
 

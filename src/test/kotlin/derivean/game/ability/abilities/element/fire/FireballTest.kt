@@ -8,6 +8,7 @@ import derivean.game.attribute.element.fireDamage
 import derivean.game.attribute.element.fireDefense
 import derivean.game.attribute.element.fireElement
 import derivean.game.entity.Entity
+import derivean.game.log.Log
 import derivean.game.timeline.Timeline
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -93,8 +94,9 @@ class FireballTest {
 			)
 		}
 		val timeline = Timeline.build { }
+		val log = Log.build { }
 
-		ability.use(entity, target, timeline)
+		ability.use(entity, target, timeline, log)
 
 		assertEquals(9.75, entity.attributes.mana(), "Mana was not adjusted :(.")
 		assertEquals(sourceDamage, entity.attributes.damage(), "Unexpected damage.")

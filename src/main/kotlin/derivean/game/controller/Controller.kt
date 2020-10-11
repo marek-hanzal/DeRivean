@@ -3,16 +3,24 @@ package derivean.game.controller
 import derivean.game.formation.Formations
 import derivean.game.initiative.IInitiative
 import derivean.game.initiative.Initiative
+import derivean.game.log.ILog
+import derivean.game.log.Log
 import derivean.game.terminator.BattleTerminator
 import derivean.game.terminator.ITerminator
 import derivean.game.timeline.ITimeline
 import derivean.game.timeline.Timeline
 
-class Controller(initiative: IInitiative, terminator: ITerminator, formations: Formations, timeline: ITimeline) : AbstractController(initiative, terminator, formations, timeline) {
+class Controller(
+	initiative: IInitiative,
+	terminator: ITerminator,
+	formations: Formations,
+	timeline: ITimeline,
+	log: ILog,
+) : AbstractController(initiative, terminator, formations, timeline, log) {
 	override fun loop() {
 		initiative.initiative(formations) { entity ->
 			entity.select(formations) { targets ->
-				targets.resolve(timeline)
+				targets.resolve(timeline, log)
 			}
 		}
 		timeline.loop()
@@ -28,6 +36,7 @@ class Controller(initiative: IInitiative, terminator: ITerminator, formations: F
 		lateinit var formations: Formations
 		var terminator: ITerminator = BattleTerminator.build {}
 		var timeline: ITimeline = Timeline.build {}
+		var log: ILog = Log.build { }
 
 		fun formations(block: Formations.Builder.() -> Unit) {
 			formations = Formations.build(block)
@@ -38,6 +47,7 @@ class Controller(initiative: IInitiative, terminator: ITerminator, formations: F
 			terminator,
 			formations,
 			timeline,
+			log,
 		)
 	}
 }

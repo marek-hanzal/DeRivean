@@ -7,6 +7,7 @@ import derivean.game.attribute.common.isDead
 import derivean.game.entity.Entity
 import derivean.game.formation.Formation
 import derivean.game.formation.Formations
+import derivean.game.log.ILog
 import derivean.game.selector.Targets
 import derivean.game.timeline.ITimeline
 import kotlin.math.max
@@ -21,7 +22,7 @@ abstract class AbstractAbility(
 
 	fun attributes(entity: Entity) = Attributes.from(entity.attributes, attributes)
 
-	override fun use(entity: Entity, target: Entity, timeline: ITimeline) {
+	override fun use(entity: Entity, target: Entity, timeline: ITimeline, log: ILog) {
 		attributes(entity) { attributes ->
 			timeline.entry {
 				/**

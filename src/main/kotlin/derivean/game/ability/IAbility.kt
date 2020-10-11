@@ -2,6 +2,7 @@ package derivean.game.ability
 
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
+import derivean.game.log.ILog
 import derivean.game.selector.Targets
 import derivean.game.timeline.ITimeline
 
@@ -14,7 +15,7 @@ interface IAbility {
 	/**
 	 * Use the given ability on a target.
 	 */
-	fun use(entity: Entity, target: Entity, timeline: ITimeline)
+	fun use(entity: Entity, target: Entity, timeline: ITimeline, log: ILog)
 
 	/**
 	 * Compute rank of this ability (for selectors).
