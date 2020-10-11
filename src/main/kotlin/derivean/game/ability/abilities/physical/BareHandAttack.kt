@@ -20,7 +20,12 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 			target.attributes.decOrZero(damage.health())
 			log.record {
 				ability(entity, target, this@BareHandAttack)
-				log("[$entity] uses bare hand attack on [$target] and did [$damage] damage.")
+				log(
+					if (target.isDead())
+						"[$entity] uses bare hand attack on [$target] and did [$damage] damage. [$target] is dead by this attack."
+					else
+						"[$entity] uses bare hand attack on [$target] and did [$damage] damage."
+				)
 			}
 		}
 	}
