@@ -18,6 +18,10 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 				damage.physicalDamage(),
 			)
 			target.attributes.decOrZero(damage.health())
+			log.record {
+				ability(entity, target, this@SwordAttackAbility)
+				log("[$entity] uses sword attack on [$target] and did [$damage] damage.")
+			}
 		}
 	}
 

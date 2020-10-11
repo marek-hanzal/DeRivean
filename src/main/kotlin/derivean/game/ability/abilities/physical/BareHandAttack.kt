@@ -18,6 +18,10 @@ class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAb
 				damage.physicalDamage(),
 			)
 			target.attributes.decOrZero(damage.health())
+			log.record {
+				ability(entity, target, this@BareHandAttack)
+				log("[$entity] uses bare hand attack on [$target] and did [$damage] damage.")
+			}
 		}
 	}
 
