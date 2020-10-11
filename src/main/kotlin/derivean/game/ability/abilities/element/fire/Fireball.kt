@@ -83,7 +83,9 @@ class Fireball(ability: String, attributes: Attributes) : AbstractAbility(abilit
 }
 
 fun Abilities.fireball() = this[Fireball.ABILITY]
+
 fun Double.fireballCost() = Fireball.cost(this)
 fun Attributes.fireballCost() = Fireball.cost(this)
+
 fun Double.fireballAttack() = Fireball.attack(this)
 fun Attributes.fireballAttack() = Fireball.attack(this)

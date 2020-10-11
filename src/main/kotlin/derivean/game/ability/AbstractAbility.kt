@@ -13,7 +13,10 @@ import kotlin.math.max
 
 typealias RankCallback = (attributes: Attributes, target: Entity, entity: Entity, formation: Formation) -> Double
 
-abstract class AbstractAbility(override val ability: String, val attributes: Attributes) : IAbility {
+abstract class AbstractAbility(
+	override val ability: String,
+	val attributes: Attributes,
+) : IAbility {
 	fun attributes(entity: Entity, block: (Attributes) -> Unit) = block(attributes(entity))
 
 	fun attributes(entity: Entity) = Attributes.from(entity.attributes, attributes)
