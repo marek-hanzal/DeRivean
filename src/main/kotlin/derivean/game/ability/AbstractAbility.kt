@@ -32,8 +32,7 @@ abstract class AbstractAbility(
 				 */
 				time = max(0.0, attributes.haste()) * time(attributes)
 				log.record {
-					ability(entity, target, this@AbstractAbility)
-					log("[$entity] will use [${this@AbstractAbility}] on [$target] in [$time].")
+					log("[$entity] will use [${this@AbstractAbility}] on [$target] in [${if (time == 0.0) "now" else time}].")
 				}
 				resolve {
 					/**

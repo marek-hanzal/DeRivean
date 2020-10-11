@@ -23,7 +23,7 @@ class Controller(
 				targets.resolve(timeline, log)
 			}
 		}
-		timeline.loop()
+		timeline.loop(log)
 		terminator.loop(formations)
 	}
 

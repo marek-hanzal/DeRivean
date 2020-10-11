@@ -1,5 +1,7 @@
 package derivean.game.timeline
 
+import derivean.game.log.ILog
+
 class Timeline(time: Double, step: Double, entries: MutableList<Entry>) : AbstractTimeline(time, step, entries) {
 	override fun entry(block: Entry.Builder.() -> Unit) = Entry.build {
 		block(this)
@@ -9,8 +11,9 @@ class Timeline(time: Double, step: Double, entries: MutableList<Entry>) : Abstra
 		time += this@Timeline.time
 	}.also { entries.add(it) }
 
-	override fun loop() {
+	override fun loop(log: ILog) {
 		step()
+		log.log("Current time [$time].")
 		entries.filter { it.time <= time }.sortedBy { it.time }.forEach {
 			it.resolve()
 			entries.remove(it)

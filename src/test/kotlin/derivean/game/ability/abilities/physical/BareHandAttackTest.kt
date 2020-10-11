@@ -38,13 +38,13 @@ class BareHandAttackTest {
 			assertEquals(1, targets.size)
 			assertEquals(5.0, targets.rank)
 			targets.resolve(timeline, log)
-			timeline.loop()
+			timeline.loop(log)
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
 
 			targets.resolve(timeline, log)
-			timeline.loop()
+			timeline.loop(log)
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.damage(), "Source does not contain expected amount of damage.")
 			assertEquals(10.0, formations["alfa"]["alfa"].attributes.physicalDamage(), "Source does not contain expected amount of damage.")
 			assertEquals(5.0, formations["beta"]["beta"].attributes.health(), "Target does not have expected amount of health.")
@@ -110,7 +110,7 @@ class BareHandAttackTest {
 			targets.resolve(timeline, log)
 		})
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
-		timeline.loop()
+		timeline.loop(log)
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
@@ -147,7 +147,7 @@ class BareHandAttackTest {
 			targets.resolve(timeline, log)
 		})
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
-		timeline.loop()
+		timeline.loop(log)
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 
@@ -189,12 +189,12 @@ class BareHandAttackTest {
 			targets.resolve(timeline, log)
 		})
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
-		timeline.loop()
+		timeline.loop(log)
 		assertEquals(15.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 		/**
 		 * Because there is very lazy Entity, it needs two loops before it will do it's attack.
 		 */
-		timeline.loop()
+		timeline.loop(log)
 		assertEquals(10.0, formations["beta"]["beta"].attributes.health(), "Target's health is different.")
 	}
 

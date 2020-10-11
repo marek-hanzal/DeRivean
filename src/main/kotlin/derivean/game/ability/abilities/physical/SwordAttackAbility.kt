@@ -18,14 +18,11 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 				damage.physicalDamage(),
 			)
 			target.attributes.decOrZero(damage.health())
-			log.record {
-				ability(entity, target, this@SwordAttackAbility)
-				log(
-					if (target.isDead())
-						"[$entity] uses sword attack on [$target] and did [$damage] damage. [$target] is dead by this attack."
-					else
-						"[$entity] uses sword attack on [$target] and did [$damage] damage."
-				)
+			log.log("[$entity] uses sword attack on [$target] and did [$damage] damage.")
+			if (target.isDead()) {
+				log.log("[$target] is dead by this attack.")
+			} else {
+				log.log("[$target] has [${target.attributes.health()}] health.")
 			}
 		}
 	}
