@@ -7,10 +7,11 @@ import derivean.game.attribute.Attributes
 import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.formation.Formations
+import derivean.game.log.ILog
 import kotlin.math.max
 
 class BareHandAttack(ability: String, attributes: Attributes) : AbstractAttackAbility(ability, attributes) {
-	override fun resolve(attributes: Attributes, entity: Entity, target: Entity) {
+	override fun resolve(attributes: Attributes, entity: Entity, target: Entity, log: ILog) {
 		damage(attributes, target).let { damage ->
 			entity.attributes.inc(
 				damage.damage(),

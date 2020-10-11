@@ -34,14 +34,14 @@ abstract class AbstractAbility(
 					 * Check if source entity is still alive as it could be killed before an Ability is used.
 					 */
 					if (entity.isAlive()) {
-						resolve(attributes, entity, target)
+						resolve(attributes, entity, target, log)
 					}
 				}
 			}
 		}
 	}
 
-	open fun resolve(attributes: Attributes, entity: Entity, target: Entity) {
+	open fun resolve(attributes: Attributes, entity: Entity, target: Entity, log: ILog) {
 	}
 
 	open fun limit(attributes: Attributes) = 1.0
