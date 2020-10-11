@@ -18,6 +18,8 @@ abstract class AbstractAbility(
 	override val ability: String,
 	val attributes: Attributes,
 ) : IAbility {
+	override fun toString() = ability
+
 	fun attributes(entity: Entity, block: (Attributes) -> Unit) = block(attributes(entity))
 
 	fun attributes(entity: Entity) = Attributes.from(entity.attributes, attributes)
@@ -29,6 +31,10 @@ abstract class AbstractAbility(
 				 * Take Entity's Haste and multiply it with this ability's default Haste.
 				 */
 				time = max(0.0, attributes.haste()) * time(attributes)
+				log.record {
+					ability(entity, target, this@AbstractAbility)
+					log("[$entity] will use [${this@AbstractAbility}] on [$target] in [$time].")
+				}
 				resolve {
 					/**
 					 * Check if source entity is still alive as it could be killed before an Ability is used.
