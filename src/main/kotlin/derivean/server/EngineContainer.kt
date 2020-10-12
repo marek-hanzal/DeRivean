@@ -21,6 +21,9 @@ object EngineContainer {
 		register(u2020_09_25::class) {
 			u2020_09_25(this)
 		}
+		register(u2020_10_12::class) {
+			u2020_10_12(this)
+		}
 		service(PlayerRepository::class) { PlayerRepository(this) }
 		service(EntityRepository::class) { EntityRepository(this) }
 		configurator(IUpgradeManager::class) {
