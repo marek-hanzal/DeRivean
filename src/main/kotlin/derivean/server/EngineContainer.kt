@@ -10,6 +10,7 @@ import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
 import derivean.server.upgrade.u2020_09_25
+import derivean.server.upgrade.u2020_10_12
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -24,6 +25,7 @@ object EngineContainer {
 		service(EntityRepository::class) { EntityRepository(this) }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
+			register(u2020_10_12::class)
 		}
 		block(this)
 	}

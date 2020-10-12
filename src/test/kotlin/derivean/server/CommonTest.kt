@@ -21,6 +21,7 @@ class CommonTest {
 	@Test
 	fun `Entity from database`() {
 		val container = setup()
+
 	}
 }
 

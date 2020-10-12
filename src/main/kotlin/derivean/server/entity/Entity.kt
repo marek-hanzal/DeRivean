@@ -12,6 +12,7 @@ import java.util.*
 object EntityTable : UUIDTable("entity") {
 	val player = reference("player", PlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 	val name = varchar("name", 64)
+	val ancestor = reference("ancestor", EntityTable, ReferenceOption.SET_NULL, ReferenceOption.SET_NULL).nullable()
 }
 
 class Entity(id: EntityID<UUID>) : UUIDEntity(id) {
@@ -19,4 +20,5 @@ class Entity(id: EntityID<UUID>) : UUIDEntity(id) {
 
 	var player by Player referencedOn EntityTable.player
 	var name by EntityTable.name
+	var ancestor by Entity optionalReferencedOn EntityTable.ancestor
 }
