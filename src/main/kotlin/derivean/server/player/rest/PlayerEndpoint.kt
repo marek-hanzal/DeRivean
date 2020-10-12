@@ -12,7 +12,7 @@ class PlayerEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 
 	override fun install(routing: Routing) = fetch(
 		routing,
-		"/player/{id}",
+		"/player",
 		playerFetchMapper,
 		playerRepository,
 		"player",

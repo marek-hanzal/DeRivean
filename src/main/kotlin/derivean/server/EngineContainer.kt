@@ -8,7 +8,11 @@ import derivean.lib.server.HttpServerConfig
 import derivean.lib.server.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.config.EngineConfig
+import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
+import derivean.server.entity.rest.EntityEndpoint
+import derivean.server.entity.rest.EntityPageEndpoint
+import derivean.server.entity.rest.mapper.EntityFetchMapper
 import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerHttpModule
@@ -36,14 +40,24 @@ object EngineContainer {
 		 */
 		register(DiscoveryHttpModule::class) { DiscoveryHttpModule(this) }
 		register(ClientHttpModule::class) { ClientHttpModule(this) }
+		/**
+		 * Player related stuff.
+		 */
 		register(PlayerHttpModule::class) { PlayerHttpModule(this) }
 		register(PlayerPagesEndpoint::class) { PlayerPagesEndpoint(this) }
 		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
 		/**
+		 * Entity related stuff.
+		 */
+		register(EntityHttpModule::class) { EntityHttpModule(this) }
+		register(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
+		register(EntityEndpoint::class) { EntityEndpoint(this) }
+		/**
 		 * Mappers
 		 */
 		register(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
+		register(EntityFetchMapper::class) { EntityFetchMapper(this) }
 		/**
 		 * Server-side Services
 		 */
@@ -57,6 +71,7 @@ object EngineContainer {
 			register(DiscoveryHttpModule::class)
 			register(ClientHttpModule::class)
 			register(PlayerHttpModule::class)
+			register(EntityHttpModule::class)
 		}
 		block(this)
 	}
