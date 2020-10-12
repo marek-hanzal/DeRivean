@@ -12,6 +12,7 @@ import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
 import derivean.server.entity.rest.EntityEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
+import derivean.server.entity.rest.EntityPagesEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
 import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
@@ -51,6 +52,7 @@ object EngineContainer {
 		 * Entity related stuff.
 		 */
 		register(EntityHttpModule::class) { EntityHttpModule(this) }
+		register(EntityPagesEndpoint::class) { EntityPagesEndpoint(this) }
 		register(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
 		register(EntityEndpoint::class) { EntityEndpoint(this) }
 		/**
