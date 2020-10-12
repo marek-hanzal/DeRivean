@@ -21,4 +21,5 @@ class Entity(id: EntityID<UUID>) : UUIDEntity(id) {
 	var player by Player referencedOn EntityTable.player
 	var name by EntityTable.name
 	var ancestor by Entity optionalReferencedOn EntityTable.ancestor
+	val attributes by EntityAttribute referrersOn EntityAttributeTable.entity
 }

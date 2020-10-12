@@ -14,11 +14,15 @@ class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFe
 		this.id = item.id
 		this.name = item.name
 		this.ancestor = item.ancestor
+		for (attribute in item.attributes) {
+			attributes.add(Attribute(attribute.name, attribute.value))
+		}
 	}
 
 	data class Fetch(
 		val name: String,
 		val id: String,
+		val attributes: List<Attribute>,
 		val ancestor: Ancestor?,
 	) {
 		companion object {
@@ -28,11 +32,13 @@ class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFe
 		class Builder(val linkGenerator: ILinkGenerator) {
 			lateinit var id: EntityID<UUID>
 			lateinit var name: String
+			val attributes = mutableListOf<Attribute>()
 			var ancestor: Entity? = null
 
 			fun build() = Fetch(
 				name,
 				id.toString(),
+				attributes,
 				ancestor?.let { Ancestor(ancestor!!.name, ancestor!!.id.toString(), linkGenerator.link("/entity/${ancestor!!.id}").toString()) },
 			)
 		}
@@ -42,5 +48,10 @@ class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFe
 		val name: String,
 		val id: String,
 		val href: String,
+	)
+
+	data class Attribute(
+		val name: String,
+		val value: Double,
 	)
 }
