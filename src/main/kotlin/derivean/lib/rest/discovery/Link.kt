@@ -1,8 +1,8 @@
 package derivean.lib.rest.discovery
 
-import io.ktor.http.Url
+import io.ktor.http.*
 
-data class Link(
+class Link(
 	val name: String,
 	val link: String,
 	val description: String,
@@ -19,4 +19,22 @@ data class Link(
 		description,
 		parameters
 	)
+
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+	}
+
+	class Builder {
+		var name: String = ""
+		var link: String = ""
+		var description: String = ""
+		var parameters = mutableListOf<Parameter>()
+
+		fun build() = Link(
+			name,
+			link,
+			description,
+			parameters,
+		)
+	}
 }

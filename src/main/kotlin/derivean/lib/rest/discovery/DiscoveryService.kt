@@ -11,14 +11,7 @@ class DiscoveryService(container: IContainer) : AbstractService(container), IDis
 	/**
 	 * register a new named discovery path
 	 */
-	override fun register(name: String, path: String, description: String, parameters: List<Parameter>) {
-		discovery[name] = Link(name, linkGenerator.link(path), description, parameters)
-	}
-
-	/**
-	 * set all items from the given map
-	 */
-	override fun register(map: Map<String, Link>) = discovery.putAll(map)
+	override fun register(block: Link.Builder.() -> Unit) = Link.build(block).also { discovery[it.name] = it }
 
 	override fun discovery(): Discovery = Discovery(discovery)
 }

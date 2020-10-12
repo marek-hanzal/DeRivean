@@ -5,7 +5,7 @@ package derivean.lib.rest
 import com.google.gson.JsonSyntaxException
 import derivean.lib.container.IContainer
 import derivean.lib.rest.discovery.IDiscoveryService
-import derivean.lib.rest.discovery.Parameter
+import derivean.lib.rest.discovery.Link
 import io.ktor.application.*
 import mu.KotlinLogging
 
@@ -13,7 +13,7 @@ abstract class AbstractEndpoint(container: IContainer) : IEndpoint {
 	protected val discoveryService: IDiscoveryService by container.lazy()
 	protected val logger = KotlinLogging.logger(this::class.qualifiedName!!)
 
-	protected fun discovery(name: String, path: String, description: String, parameters: List<Parameter> = listOf()) = discoveryService.register(name, path, description, parameters)
+	protected fun discovery(block: Link.Builder.() -> Unit) = discoveryService.register(block)
 
 	suspend fun handle(
 		call: ApplicationCall,
