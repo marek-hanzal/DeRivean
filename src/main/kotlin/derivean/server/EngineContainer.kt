@@ -12,6 +12,8 @@ import derivean.server.entity.EntityRepository
 import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerRepository
+import derivean.server.player.rest.PlayerHttpModule
+import derivean.server.player.rest.PlayerListEndpoint
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
 import io.github.config4k.extract
@@ -31,6 +33,8 @@ object EngineContainer {
 		 */
 		register(DiscoveryHttpModule::class) { DiscoveryHttpModule(this) }
 		register(ClientHttpModule::class) { ClientHttpModule(this) }
+		register(PlayerHttpModule::class) { PlayerHttpModule(this) }
+		register(PlayerListEndpoint::class) { PlayerListEndpoint(this) }
 		/**
 		 * Server-side Services
 		 */
@@ -43,6 +47,7 @@ object EngineContainer {
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
 			register(ClientHttpModule::class)
+			register(PlayerHttpModule::class)
 		}
 		block(this)
 	}

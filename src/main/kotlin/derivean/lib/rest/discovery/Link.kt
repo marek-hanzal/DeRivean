@@ -1,40 +1,28 @@
 package derivean.lib.rest.discovery
 
-import io.ktor.http.*
+import derivean.lib.server.ILinkGenerator
 
-class Link(
+data class Link(
+	val group: String,
 	val name: String,
 	val link: String,
 	val description: String,
-	val parameters: List<Parameter> = listOf()
 ) {
-	constructor(
-		name: String,
-		link: Url,
-		description: String,
-		parameters: List<Parameter> = listOf()
-	) : this(
-		name,
-		link.toString(),
-		description,
-		parameters
-	)
-
 	companion object {
-		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+		inline fun build(linkGenerator: ILinkGenerator, block: Builder.() -> Unit) = Builder(linkGenerator).apply(block).build()
 	}
 
-	class Builder {
+	class Builder(private val linkGenerator: ILinkGenerator) {
+		var group: String = ""
 		var name: String = ""
 		var link: String = ""
 		var description: String = ""
-		var parameters = mutableListOf<Parameter>()
 
 		fun build() = Link(
+			group,
 			name,
-			link,
+			linkGenerator.link(link).toString(),
 			description,
-			parameters,
 		)
 	}
 }

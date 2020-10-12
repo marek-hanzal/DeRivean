@@ -6,11 +6,13 @@ import com.google.gson.JsonSyntaxException
 import derivean.lib.container.IContainer
 import derivean.lib.rest.discovery.IDiscoveryService
 import derivean.lib.rest.discovery.Link
+import derivean.lib.server.ILinkGenerator
 import io.ktor.application.*
 import mu.KotlinLogging
 
 abstract class AbstractEndpoint(container: IContainer) : IEndpoint {
 	protected val discoveryService: IDiscoveryService by container.lazy()
+	protected val linkGenerator: ILinkGenerator by container.lazy()
 	protected val logger = KotlinLogging.logger(this::class.qualifiedName!!)
 
 	protected fun discovery(block: Link.Builder.() -> Unit) = discoveryService.register(block)
