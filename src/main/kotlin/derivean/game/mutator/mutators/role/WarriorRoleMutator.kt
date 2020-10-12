@@ -1,9 +1,6 @@
 package derivean.game.mutator.mutators.role
 
-import derivean.game.attribute.common.classWarrior
-import derivean.game.attribute.common.haste
-import derivean.game.attribute.common.health
-import derivean.game.attribute.common.strength
+import derivean.game.attribute.common.*
 import derivean.game.entity.Entity
 import derivean.game.mutator.AbstractMutator
 import derivean.game.mutator.Mutators
@@ -14,6 +11,7 @@ class WarriorRoleMutator : AbstractMutator() {
 		 * Take default health and increase it by a half.
 		 */
 		entity.attributes.multiply(1.5.health())
+		entity.attributes.multiply(1.5.maxHealth())
 		/**
 		 * Take default Strength and increase it by 20%.
 		 */
