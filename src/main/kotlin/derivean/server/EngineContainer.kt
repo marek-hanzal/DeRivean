@@ -9,7 +9,7 @@ import derivean.lib.server.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityRepository
-import derivean.server.http.ClientModule
+import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerRepository
 import derivean.server.upgrade.u2020_09_25
@@ -30,7 +30,7 @@ object EngineContainer {
 		 * Http Modules
 		 */
 		register(DiscoveryHttpModule::class) { DiscoveryHttpModule(this) }
-		register(ClientModule::class) { ClientModule(this) }
+		register(ClientHttpModule::class) { ClientHttpModule(this) }
 		/**
 		 * Server-side Services
 		 */
@@ -41,7 +41,8 @@ object EngineContainer {
 			register(u2020_10_12::class)
 		}
 		configurator(IHttpServer::class) {
-			register(ClientModule::class)
+			register(DiscoveryHttpModule::class)
+			register(ClientHttpModule::class)
 		}
 		block(this)
 	}

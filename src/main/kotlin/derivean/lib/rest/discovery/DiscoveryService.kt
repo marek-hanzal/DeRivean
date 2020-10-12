@@ -1,9 +1,10 @@
 package derivean.lib.rest.discovery
 
+import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.server.ILinkGenerator
 
-class DiscoveryService(container: IContainer) : IDiscoveryService {
+class DiscoveryService(container: IContainer) : AbstractService(container), IDiscoveryService {
 	private val linkGenerator: ILinkGenerator by container.lazy()
 	private val discovery: MutableMap<String, Link> = mutableMapOf()
 

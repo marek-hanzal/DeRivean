@@ -12,7 +12,7 @@ import io.ktor.routing.*
 /**
  * Http Client Module responsible for serving UI stuff (client application).
  */
-class ClientModule(container: IContainer) : AbstractHttpModule(container) {
+class ClientHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	private val linkGenerator: ILinkGenerator by container.lazy()
 
 	override fun install(routing: Routing) {
@@ -31,9 +31,7 @@ class ClientModule(container: IContainer) : AbstractHttpModule(container) {
 		}
 	}
 
-	data class ClientConfigResponse(
-		val discovery: String
-	) {
+	data class ClientConfigResponse(val discovery: String) {
 		constructor(discovery: Url) : this(discovery.toString())
 	}
 }
