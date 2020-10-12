@@ -10,7 +10,7 @@ import kotlin.reflect.KClass
 abstract class AbstractHttpModule(container: IContainer) : AbstractService(container), IHttpModule {
 	protected val logger = KotlinLogging.logger(this::class.qualifiedName!!)
 
-	fun <T : IEndpoint> install(routing: Routing, vararg endpoints: KClass<T>) {
+	fun install(routing: Routing, vararg endpoints: KClass<out IEndpoint>) {
 		for (endpoint in endpoints) {
 			container.create(endpoint).install(routing)
 		}

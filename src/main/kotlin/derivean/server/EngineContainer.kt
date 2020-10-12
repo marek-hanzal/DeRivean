@@ -13,6 +13,7 @@ import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
+import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.PlayerPagesEndpoint
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
@@ -35,6 +36,7 @@ object EngineContainer {
 		register(ClientHttpModule::class) { ClientHttpModule(this) }
 		register(PlayerHttpModule::class) { PlayerHttpModule(this) }
 		register(PlayerPagesEndpoint::class) { PlayerPagesEndpoint(this) }
+		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		/**
 		 * Server-side Services
 		 */

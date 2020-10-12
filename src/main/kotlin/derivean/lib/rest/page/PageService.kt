@@ -1,6 +1,7 @@
 package derivean.lib.rest.page
 
 import derivean.lib.container.IContainer
+import derivean.lib.repository.IRepository
 import derivean.lib.rest.Href
 import derivean.lib.rest.RestException
 import derivean.lib.rest.badRequest
@@ -16,6 +17,13 @@ import kotlin.math.floor
 class PageService(container: IContainer) : IPageService {
 	private val storage: IStorage by container.lazy()
 	private val linkGenerator: ILinkGenerator by container.lazy()
+
+	override fun pages(href: String, limit: Int, repository: IRepository<*>) = PagesIndex.build {
+		val link = linkGenerator.link(href).toString()
+		this.total = repository.total()
+		this.limit = limit
+		repeat(ceil(this.total.toDouble() / this.limit.toDouble()).toInt()) { this.hrefs.add(Href(link.replace("{page}", "$it"))) }
+	}
 
 	override suspend fun index(
 		call: ApplicationCall,

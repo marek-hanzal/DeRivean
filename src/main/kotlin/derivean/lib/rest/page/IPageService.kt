@@ -1,7 +1,8 @@
 package derivean.lib.rest.page
 
-import io.ktor.application.ApplicationCall
-import io.ktor.http.Url
+import derivean.lib.repository.IRepository
+import io.ktor.application.*
+import io.ktor.http.*
 import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.SortOrder
@@ -13,6 +14,8 @@ typealias OrderByMap = Map<String?, OrderByPair>
  * Service used for (clever) paging support over collections.
  */
 interface IPageService {
+	fun pages(href: String, limit: Int, repository: IRepository<*>): PagesIndex
+
 	/**
 	 * respond with page index; href should contain **{page}** placeholder being replaced by a page number
 	 */

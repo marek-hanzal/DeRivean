@@ -2,6 +2,7 @@ package derivean.server.player
 
 import derivean.lib.container.IContainer
 import derivean.lib.server.AbstractHttpModule
+import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.PlayerPagesEndpoint
 import io.ktor.routing.*
 
@@ -10,6 +11,7 @@ class PlayerHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			PlayerPagesEndpoint::class,
+			PlayerPageEndpoint::class,
 		)
 	}
 }
