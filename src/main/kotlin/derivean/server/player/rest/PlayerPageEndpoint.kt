@@ -10,9 +10,7 @@ class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 
 	override fun install(routing: Routing) = page(
 		routing,
-		"/player",
-		playerRepository,
 		"player",
-		"Access to selected page of players.",
+		playerRepository,
 	)
 }

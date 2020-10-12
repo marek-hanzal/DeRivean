@@ -12,17 +12,17 @@ import org.jetbrains.exposed.dao.UUIDEntity
 abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	val storage: IStorage by container.lazy()
 
-	fun <T : UUIDEntity> fetch(routing: Routing, url: String, mapper: IMapper<T, out Any>, repository: IRepository<T>, group: String, description: String) {
+	fun <T : UUIDEntity> fetch(routing: Routing, target: String, mapper: IMapper<T, out Any>, repository: IRepository<T>) {
 		discovery {
-			this.group = group
+			this.group = target
 			this.name = "fetch"
-			this.link = "$url/{id}"
-			this.description = description
+			this.link = "/$target/{id}"
+			this.description = "Get [$target] by UUID."
 		}
-		routing.get(url) {
-			call.badRequest("Missing id parameter in url: [$url/{id}].")
+		routing.get("/$target") {
+			call.badRequest("Missing id parameter in url: [/$target/{id}].")
 		}
-		routing.get("$url/{id}") {
+		routing.get("/$target/{id}") {
 			call.respond(
 				mapper.map(storage.read {
 					repository.find(call.parameters["id"]!!)

@@ -12,10 +12,8 @@ class EntityEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 
 	override fun install(routing: Routing) = fetch(
 		routing,
-		"/entity",
+		"entity",
 		entityFetchMapper,
 		entityRepository,
-		"entity",
-		"Get Entity's data.",
 	)
 }
