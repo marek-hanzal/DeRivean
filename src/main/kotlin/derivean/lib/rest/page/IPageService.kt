@@ -2,7 +2,6 @@ package derivean.lib.rest.page
 
 import derivean.lib.repository.IRepository
 import io.ktor.application.*
-import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.SortOrder
 
@@ -27,25 +26,4 @@ interface IPageService {
 	 * Extract page limit from the application call.
 	 */
 	fun limit(call: ApplicationCall, default: Int = 100): Int
-
-	/**
-	 * respond with the given page - return item hrefs and timestamp
-	 */
-	suspend fun page(
-		call: ApplicationCall,
-		orderByMap: OrderByMap,
-		count: () -> Int,
-		items: (limit: Int, offset: Int, orderByPair: OrderByPair) -> List<ListItem>
-	)
-
-	/**
-	 * respond with the given page - return item hrefs and timestamp; href should contain **{id}** placeholder for
-	 * proper link generation
-	 */
-	suspend fun page(
-		call: ApplicationCall,
-		href: String,
-		orderByMap: OrderByMap,
-		table: UUIDTable
-	)
 }

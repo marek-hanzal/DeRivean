@@ -1,5 +1,6 @@
 package derivean.lib.repository
 
+import org.jetbrains.exposed.dao.EntityID
 import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
 
@@ -18,4 +19,9 @@ interface IRepository<T : UUIDEntity> {
 	 * Return total number of records in this repository (total number of rows in table).
 	 */
 	fun total(): Int
+
+	/**
+	 * Return just UUIDs of the given entity page.
+	 */
+	fun page(page: Int, limit: Int, block: (EntityID<UUID>) -> Unit)
 }

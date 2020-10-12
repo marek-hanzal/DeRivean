@@ -2,7 +2,10 @@ package derivean.server.player.rest
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.page.AbstractPageEndpoint
+import derivean.lib.rest.page.PageIndex
 import derivean.server.player.PlayerRepository
+import io.ktor.application.*
+import io.ktor.response.*
 import io.ktor.routing.*
 
 class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
@@ -11,12 +14,23 @@ class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 	override fun install(routing: Routing) {
 		discovery {
 			group = "player"
-			name = "pages"
-			link = "/player/pages"
-			description = "Access to available pages of players (just prepared paging)."
+			name = "page"
+			link = "/player/page"
+			description = "Access to selected page of players."
 		}
 		routing.get("/player/page/{page}") {
-
+			call.respond(
+				storage.read {
+					PageIndex.build(linkGenerator) {
+						playerRepository.page(0, 100) { uuid ->
+							item {
+								this.id = uuid.toString()
+								this.href = "/player/{id}".replace("{id}", this.id)
+							}
+						}
+					}
+				}
+			)
 		}
 	}
 }
