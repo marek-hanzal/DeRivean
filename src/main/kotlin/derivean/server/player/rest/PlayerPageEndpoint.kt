@@ -2,10 +2,8 @@ package derivean.server.player.rest
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.page.AbstractPageEndpoint
-import derivean.lib.rest.page.PageIndex
 import derivean.server.player.PlayerRepository
 import io.ktor.application.*
-import io.ktor.response.*
 import io.ktor.routing.*
 
 class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
@@ -19,18 +17,7 @@ class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 			description = "Access to selected page of players."
 		}
 		routing.get("/player/page/{page}") {
-			call.respond(
-				storage.read {
-					PageIndex.build(linkGenerator) {
-						playerRepository.page(0, 100) { uuid ->
-							item {
-								this.id = uuid.toString()
-								this.href = "/player/{id}".replace("{id}", this.id)
-							}
-						}
-					}
-				}
-			)
+			pageService.page(call, "/player/{id}", playerRepository)
 		}
 	}
 }

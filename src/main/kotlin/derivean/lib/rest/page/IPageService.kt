@@ -17,6 +17,8 @@ interface IPageService {
 	 */
 	suspend fun pages(call: ApplicationCall, href: String, repository: IRepository<*>)
 
+	suspend fun page(call: ApplicationCall, href: String, repository: IRepository<*>)
+
 	/**
 	 * Extract page limit from the application call.
 	 */
