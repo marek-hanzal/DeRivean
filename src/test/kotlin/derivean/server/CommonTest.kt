@@ -33,6 +33,7 @@ class CommonTest {
 			assertNotNull(windRiver.ancestor)
 			assertEquals("Horwath, Greatest of Warriors", windRiver.ancestor?.name)
 			assertEquals("Gwork, The First Human", windRiver.ancestor?.ancestor?.name)
+			// entityService.from(windRiver) - test ancestors attributes, ...
 		}
 	}
 }

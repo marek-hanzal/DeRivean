@@ -12,7 +12,7 @@ import io.ktor.server.netty.*
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
-class HttpServer(private val container: IContainer) : AbstractConfigurable(), IHttpServer {
+class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
 	private var modules = arrayOf<KClass<out IHttpModule>>()
 	private val logger = KotlinLogging.logger { }
@@ -45,9 +45,8 @@ class HttpServer(private val container: IContainer) : AbstractConfigurable(), IH
 			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
-				this.routing {
-					TODO("This piece of not done yet")
-//					container.create(it).install(this)
+				routing {
+					container.create(it).install(this)
 				}
 			}
 			if (modules.isEmpty()) {

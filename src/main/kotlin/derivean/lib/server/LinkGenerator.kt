@@ -1,10 +1,10 @@
 package derivean.lib.server
 
+import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
-import io.ktor.http.Parameters
-import io.ktor.http.Url
+import io.ktor.http.*
 
-class LinkGenerator(container: IContainer) : ILinkGenerator {
+class LinkGenerator(container: IContainer) : AbstractService(container), ILinkGenerator {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
 	private val host by lazy { Url(httpServerConfig.host) }
 
