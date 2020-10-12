@@ -11,8 +11,8 @@ import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityRepository
 import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
+import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
-import derivean.server.player.rest.PlayerHttpModule
 import derivean.server.player.rest.PlayerListEndpoint
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
