@@ -23,11 +23,11 @@ abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(c
 			call.badRequest("Missing id parameter in url: [/$target/{id}].")
 		}
 		routing.get("/$target/{id}") {
-			call.respond(
-				mapper.map(storage.read {
+			call.respond(storage.read {
+				mapper.map(
 					repository.find(call.parameters["id"]!!)
-				})
-			)
+				)
+			})
 		}
 	}
 }
