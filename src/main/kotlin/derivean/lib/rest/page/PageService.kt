@@ -16,16 +16,14 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 	private val storage: IStorage by container.lazy()
 	private val linkGenerator: ILinkGenerator by container.lazy()
 
-	override fun pages(href: String, limit: Int, repository: IRepository<*>) = PagesIndex.build {
-		val link = linkGenerator.link(href).toString()
-		this.total = repository.total()
-		this.limit = limit
-		repeat(ceil(this.total.toDouble() / this.limit.toDouble()).toInt()) { this.hrefs.add(Href(link.replace("{page}", "$it"))) }
-	}
-
-	override suspend fun pagesIndex(call: ApplicationCall, href: String, repository: IRepository<*>) {
+	override suspend fun pages(call: ApplicationCall, href: String, repository: IRepository<*>) {
 		call.respond(storage.read {
-			pages("/player/page/{page}", limit(call), repository)
+			PagesIndex.build {
+				val link = linkGenerator.link(href).toString()
+				this.total = repository.total()
+				this.limit = limit(call)
+				repeat(ceil(this.total.toDouble() / this.limit.toDouble()).toInt()) { this.hrefs.add(Href(link.replace("{page}", "$it"))) }
+			}
 		})
 	}
 

@@ -13,14 +13,9 @@ typealias OrderByMap = Map<String?, OrderByPair>
  */
 interface IPageService {
 	/**
-	 * Generate Pages info.
-	 */
-	fun pages(href: String, limit: Int, repository: IRepository<*>): PagesIndex
-
-	/**
 	 * Response with Pages info object.
 	 */
-	suspend fun pagesIndex(call: ApplicationCall, href: String, repository: IRepository<*>)
+	suspend fun pages(call: ApplicationCall, href: String, repository: IRepository<*>)
 
 	/**
 	 * Extract page limit from the application call.

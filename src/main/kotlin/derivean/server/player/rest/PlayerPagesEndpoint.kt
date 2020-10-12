@@ -17,7 +17,7 @@ class PlayerPagesEndpoint(container: IContainer) : AbstractPageEndpoint(containe
 			description = "Access to available pages of players (just prepared paging)."
 		}
 		routing.get("/player/pages") {
-			pageService.pagesIndex(call, "/player/page/{page}", playerRepository)
+			pageService.pages(call, "/player/page/{page}", playerRepository)
 		}
 	}
 }
