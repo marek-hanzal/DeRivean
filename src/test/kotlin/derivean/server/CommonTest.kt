@@ -8,6 +8,7 @@ import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
 import org.junit.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
 class CommonTest {
@@ -29,6 +30,9 @@ class CommonTest {
 		storage.transaction {
 			val windRiver = entityRepository.findByName("Wind River")
 			assertNotNull(windRiver)
+			assertNotNull(windRiver.ancestor)
+			assertEquals("Horwath, Greatest of Warriors", windRiver.ancestor?.name)
+			assertEquals("Gwork, The First Human", windRiver.ancestor?.ancestor?.name)
 		}
 	}
 }
