@@ -7,7 +7,7 @@ import derivean.lib.repository.UnknownEntityException
 import derivean.server.player.Player
 import java.util.*
 
-class EntityRepository(container: IContainer) : AbstractRepository<Entity>(container) {
+class EntityRepository(container: IContainer) : AbstractRepository<Entity>(EntityTable, container) {
 	fun create(player: Player, ancestor: String?, block: Entity.() -> Unit) = Entity.new {
 		this.player = player
 		block(this)

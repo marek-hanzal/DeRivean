@@ -6,8 +6,8 @@ import derivean.lib.rest.RestException
 import derivean.lib.rest.badRequest
 import derivean.lib.server.ILinkGenerator
 import derivean.lib.storage.IStorage
-import io.ktor.application.ApplicationCall
-import io.ktor.response.respond
+import io.ktor.application.*
+import io.ktor.response.*
 import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.selectAll
 import kotlin.math.ceil
@@ -24,14 +24,13 @@ class PageService(container: IContainer) : IPageService {
 	) = call.respond(storage.transaction {
 		val total = table.slice(table.id).selectAll().count()
 		val limit = if (call.parameters.contains("limit")) call.parameters["limit"]!!.toInt() else 100
-		with(mutableListOf<Href>()) {
-			repeat(ceil(total.toDouble() / limit.toDouble()).toInt()) { add(Href(linkGenerator.link(href.replace("{page}", "$it")))) }
-			PagesIndex(
-				total,
-				limit,
-				count(),
-				this
-			)
+		mutableListOf<Href>().let { list ->
+			repeat(ceil(total.toDouble() / limit.toDouble()).toInt()) { list.add(Href(linkGenerator.link(href.replace("{page}", "$it")))) }
+			PagesIndex.build {
+				this.total = total
+				this.limit = limit
+				this.hrefs = list
+			}
 		}
 	})
 

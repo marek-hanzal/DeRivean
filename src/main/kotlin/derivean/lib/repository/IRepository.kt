@@ -13,4 +13,9 @@ interface IRepository<T : UUIDEntity> {
 	fun delete(uuid: String) = delete(UUID.fromString(uuid))
 
 	fun delete(uuid: UUID)
+
+	/**
+	 * Return total number of records in this repository (total number of rows in table).
+	 */
+	fun total(): Int
 }
