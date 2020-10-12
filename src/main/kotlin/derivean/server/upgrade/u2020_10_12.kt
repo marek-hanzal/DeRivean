@@ -1,23 +1,14 @@
 package derivean.server.upgrade
 
-import derivean.game.attribute.Attribute
 import derivean.game.attribute.common.*
 import derivean.lib.container.IContainer
 import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.entity.Entity
-import derivean.server.entity.EntityAttribute
+import derivean.server.entity.EntityRepository
 import derivean.server.player.Player
 
 class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
-	fun attribute(entity: Entity, vararg attributes: Attribute) {
-		for (attribute in attributes) {
-			EntityAttribute.new {
-				this.entity = entity
-				this.name = attribute.first
-				this.value = attribute.second
-			}
-		}
-	}
+	private val entityRepository: EntityRepository by container.lazy()
 
 	override fun upgrade() {
 		storage.transaction {
@@ -30,7 +21,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				Entity.new {
 					this.player = player
 					this.name = "Gwork, The First Human"
-					attribute(
+					entityRepository.attributes(
 						this,
 						100.0.health(),
 						100.0.maxHealth(),
@@ -49,7 +40,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Horwath, Greatest of Warriors"
-						attribute(
+						entityRepository.attributes(
 							this,
 							160.0.health(),
 							160.0.maxHealth(),
@@ -69,7 +60,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Moo, Greatest of Mages"
-						attribute(
+						entityRepository.attributes(
 							this,
 							70.0.health(),
 							70.0.maxHealth(),

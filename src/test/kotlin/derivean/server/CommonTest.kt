@@ -1,11 +1,14 @@
 package derivean.server
 
+import derivean.game.attribute.common.health
 import derivean.lib.container.IContainer
+import derivean.lib.storage.IStorage
 import derivean.lib.upgrade.AbstractUpgrade
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
 import org.junit.Test
+import kotlin.test.assertNotNull
 
 class CommonTest {
 	private fun setup() = EngineContainer.create {
@@ -21,7 +24,12 @@ class CommonTest {
 	@Test
 	fun `Entity from database`() {
 		val container = setup()
-
+		val storage = container.create(IStorage::class)
+		val entityRepository = container.create(EntityRepository::class)
+		storage.transaction {
+			val windRiver = entityRepository.findByName("Wind River")
+			assertNotNull(windRiver)
+		}
 	}
 }
 
@@ -31,11 +39,17 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 
 	override fun upgrade() {
 		storage.transaction {
-			val player = playerRepository.create {
-				name = "Tester"
-			}
-			entityRepository.create(player) {
-				name = "Wind River"
+			playerRepository.create {
+				this.name = "Tester"
+			}.let { player ->
+				entityRepository.create(player, "Horwath, Greatest of Warriors") {
+					this.name = "Wind River"
+				}.let {
+					entityRepository.attributes(
+						it,
+						170.0.health(),
+					)
+				}
 			}
 		}
 	}
