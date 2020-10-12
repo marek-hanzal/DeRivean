@@ -16,6 +16,7 @@ import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.PlayerPagesEndpoint
+import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
 import io.github.config4k.extract
@@ -39,6 +40,10 @@ object EngineContainer {
 		register(PlayerPagesEndpoint::class) { PlayerPagesEndpoint(this) }
 		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
+		/**
+		 * Mappers
+		 */
+		register(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
 		/**
 		 * Server-side Services
 		 */

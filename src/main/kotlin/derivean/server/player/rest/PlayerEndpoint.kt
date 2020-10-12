@@ -1,24 +1,21 @@
 package derivean.server.player.rest
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.AbstractEndpoint
-import derivean.lib.rest.badRequest
-import io.ktor.application.*
+import derivean.lib.rest.AbstractFetchEndpoint
+import derivean.server.player.PlayerRepository
+import derivean.server.player.rest.mapper.PlayerFetchMapper
 import io.ktor.routing.*
 
-class PlayerEndpoint(container: IContainer) : AbstractEndpoint(container) {
-	override fun install(routing: Routing) {
-		discovery {
-			group = "player"
-			name = "fetch"
-			link = "/player/{id}"
-			description = "Get player's data."
-		}
-		routing.get("/player") {
-			call.badRequest("Missing id parameter in url: [/player/{id}].")
-		}
-		routing.get("/player/{id}") {
+class PlayerEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
+	private val playerFetchMapper: PlayerFetchMapper by container.lazy()
+	private val playerRepository: PlayerRepository by container.lazy()
 
-		}
-	}
+	override fun install(routing: Routing) = fetch(
+		routing,
+		"/player/{id}",
+		playerFetchMapper,
+		playerRepository,
+		"player",
+		"Get player's data.",
+	)
 }

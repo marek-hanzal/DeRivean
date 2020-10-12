@@ -34,5 +34,5 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity>(Entit
 
 	fun findByName(name: String) = Entity.find { EntityTable.name eq name }.firstOrNull()
 
-	override fun getById(uuid: UUID) = Entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
+	override fun find(uuid: UUID) = Entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
 }

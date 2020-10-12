@@ -5,11 +5,11 @@ import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
 
 interface IRepository<T : UUIDEntity> {
-	fun update(uuid: String, block: T.() -> T) = block(getById(uuid))
+	fun update(uuid: String, block: T.() -> T) = block(find(uuid))
 
-	fun getById(uuid: String) = getById(UUID.fromString(uuid))
+	fun find(uuid: String) = find(UUID.fromString(uuid))
 
-	fun getById(uuid: UUID): T
+	fun find(uuid: UUID): T
 
 	fun delete(uuid: String) = delete(UUID.fromString(uuid))
 

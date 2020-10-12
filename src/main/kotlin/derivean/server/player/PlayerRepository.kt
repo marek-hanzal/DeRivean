@@ -10,5 +10,5 @@ class PlayerRepository(container: IContainer) : AbstractRepository<Player>(Playe
 		block(this)
 	}
 
-	override fun getById(uuid: UUID) = Player.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
+	override fun find(uuid: UUID) = Player.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
 }

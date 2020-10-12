@@ -12,7 +12,7 @@ import java.util.*
 abstract class AbstractRepository<T : UUIDEntity>(val table: UUIDTable, container: IContainer) : AbstractService(container), IRepository<T> {
 	protected val storage: IStorage by container.lazy()
 
-	override fun delete(uuid: UUID) = storage.write { getById(uuid).delete() }
+	override fun delete(uuid: UUID) = storage.write { find(uuid).delete() }
 
 	override fun total() = table.slice(table.id).selectAll().count()
 
