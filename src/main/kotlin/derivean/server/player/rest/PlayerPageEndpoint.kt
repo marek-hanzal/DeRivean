@@ -14,7 +14,7 @@ class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 		discovery {
 			group = "player"
 			name = "page"
-			link = "/player/page"
+			link = "/player/page/{page}"
 			description = "Access to selected page of players."
 		}
 		routing.get("/player/page") {
