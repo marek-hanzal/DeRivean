@@ -1,6 +1,7 @@
 package derivean.server.player.rest
 
 import derivean.lib.container.IContainer
+import derivean.lib.rest.badRequest
 import derivean.lib.rest.page.AbstractPageEndpoint
 import derivean.server.player.PlayerRepository
 import io.ktor.application.*
@@ -15,6 +16,9 @@ class PlayerPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 			name = "page"
 			link = "/player/page"
 			description = "Access to selected page of players."
+		}
+		routing.get("/player/page") {
+			call.badRequest("Missing page parameter in url: [/player/page/{page}].")
 		}
 		routing.get("/player/page/{page}") {
 			pageService.page(call, "/player/{id}", playerRepository)
