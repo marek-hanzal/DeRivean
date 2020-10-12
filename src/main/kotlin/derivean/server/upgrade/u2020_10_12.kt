@@ -62,6 +62,24 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 							1.0.classWarrior(),
 						)
 					}
+					/**
+					 * Base Entity for all Mage Class related Entities.
+					 */
+					Entity.new {
+						this.player = player
+						this.ancestor = human
+						this.name = "Moo, Greatest of Mages"
+						attribute(
+							this,
+							70.0.health(),
+							70.0.maxHealth(),
+							100.0.mana(),
+							100.0.maxMana(),
+							0.75.haste(),
+							10.0.roundInitiative(),
+							1.0.classMage(),
+						)
+					}
 				}
 			}
 		}
