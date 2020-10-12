@@ -9,19 +9,19 @@
 
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{YYYY-mm-dd HH:mm:ss.SSS} [%thread] %-5level %logger: %msg%n</pattern>
+			<pattern>%boldGreen(%d{YYYY-mm-dd HH:mm:ss.SSS}) %highlight(%-5level) %blue(%-8.8thread) %white(%-28.28logger{28}) %highlight(%msg%n)</pattern>
 		</encoder>
 	</appender>
 
 	<logger name="io.netty" level="info"/>
 	<logger name="com.zaxxer" level="info"/>
-	<logger name="ktor" level="info"/>
+	<logger name="ktor" level="trace"/>
 	<logger name="Exposed" level="info"/>
-	<logger name="derivean.lib" level="info"/>
+	<logger name="derivean.lib" level="debug"/>
 
 	<root level="trace">
 		<appender-ref ref="console"/>
 	</root>
 
-	<include optional="true" file="logback.xml"/>
+	<include optional="true" file="logback.local.xml"/>
 </configuration>
