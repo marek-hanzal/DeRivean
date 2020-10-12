@@ -1,5 +1,6 @@
 package derivean.lib.rest.page
 
+import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.Href
@@ -14,7 +15,7 @@ import org.jetbrains.exposed.sql.selectAll
 import kotlin.math.ceil
 import kotlin.math.floor
 
-class PageService(container: IContainer) : IPageService {
+class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 	private val linkGenerator: ILinkGenerator by container.lazy()
 
@@ -25,22 +26,13 @@ class PageService(container: IContainer) : IPageService {
 		repeat(ceil(this.total.toDouble() / this.limit.toDouble()).toInt()) { this.hrefs.add(Href(link.replace("{page}", "$it"))) }
 	}
 
-	override suspend fun index(
-		call: ApplicationCall,
-		href: String,
-		table: UUIDTable
-	) = call.respond(storage.transaction {
-		val total = table.slice(table.id).selectAll().count()
-		val limit = if (call.parameters.contains("limit")) call.parameters["limit"]!!.toInt() else 100
-		mutableListOf<Href>().let { list ->
-			repeat(ceil(total.toDouble() / limit.toDouble()).toInt()) { list.add(Href(linkGenerator.link(href.replace("{page}", "$it")))) }
-			PagesIndex.build {
-				this.total = total
-				this.limit = limit
-				this.hrefs = list
-			}
-		}
-	})
+	override suspend fun pagesIndex(call: ApplicationCall, href: String, repository: IRepository<*>) {
+		call.respond(storage.read {
+			pages("/player/page/{page}", limit(call), repository)
+		})
+	}
+
+	override fun limit(call: ApplicationCall, default: Int) = if (call.parameters.contains("limit")) call.parameters["limit"]!!.toInt() else default
 
 	override suspend fun page(
 		call: ApplicationCall,

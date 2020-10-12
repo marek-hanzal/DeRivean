@@ -2,7 +2,6 @@ package derivean.lib.rest.page
 
 import derivean.lib.repository.IRepository
 import io.ktor.application.*
-import io.ktor.http.*
 import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.SortOrder
@@ -14,25 +13,20 @@ typealias OrderByMap = Map<String?, OrderByPair>
  * Service used for (clever) paging support over collections.
  */
 interface IPageService {
+	/**
+	 * Generate Pages info.
+	 */
 	fun pages(href: String, limit: Int, repository: IRepository<*>): PagesIndex
 
 	/**
-	 * respond with page index; href should contain **{page}** placeholder being replaced by a page number
+	 * Response with Pages info object.
 	 */
-	suspend fun index(
-		call: ApplicationCall,
-		href: String,
-		table: UUIDTable
-	)
+	suspend fun pagesIndex(call: ApplicationCall, href: String, repository: IRepository<*>)
 
 	/**
-	 * respond with page index; href should contain **{page}** placeholder being replaced by a page number
+	 * Extract page limit from the application call.
 	 */
-	suspend fun index(
-		call: ApplicationCall,
-		href: Url,
-		table: UUIDTable
-	) = index(call, href.toString(), table)
+	fun limit(call: ApplicationCall, default: Int = 100): Int
 
 	/**
 	 * respond with the given page - return item hrefs and timestamp
