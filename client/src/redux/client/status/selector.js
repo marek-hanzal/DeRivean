@@ -1,4 +1,6 @@
-const branch = state => state.client.status;
+import {clientBranch} from '../selector';
+
+const branch = state => clientBranch(state).status;
 
 /**
  * Is client data being loaded?
@@ -25,6 +27,7 @@ const isClientSuccess = state => branch(state) === 'SUCCESS';
 const isClientFailure = state => branch(state) === 'FAILURE';
 
 export {
+	branch as clientStatusBranch,
 	isLoading,
 	isClientSuccess,
 	isClientFailure,

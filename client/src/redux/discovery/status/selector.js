@@ -1,4 +1,6 @@
-const branch = state => state.discovery.status;
+import {discoveryBranch} from '../selector';
+
+const branch = state => discoveryBranch(state).status;
 
 /**
  * is discovery data being loaded?
@@ -19,6 +21,7 @@ const isDiscoverySuccess = state => branch(state) === 'SUCCESS';
 const isDiscoveryFailure = state => branch(state) === 'FAILURE';
 
 export {
+	branch as discoveryStateBranch,
 	isLoading,
 	isDiscoverySuccess,
 	isDiscoveryFailure,

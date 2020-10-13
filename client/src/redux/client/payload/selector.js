@@ -1,4 +1,6 @@
-const branch = state => state.client.payload;
+import {clientBranch} from '../selector';
+
+const branch = state => clientBranch(state).payload;
 
 /**
  * return current backend discovery url
@@ -9,5 +11,6 @@ const branch = state => state.client.payload;
 const getDiscoveryHref = state => branch(state).discovery;
 
 export {
+	branch as clientPayloadBranch,
 	getDiscoveryHref,
 };

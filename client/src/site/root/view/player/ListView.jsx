@@ -3,6 +3,7 @@ import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import CommonLayout from '../../../../component/CommonLayout';
+import {getPlayerPagesHref} from '../../../../redux/discovery/payload/selector';
 import {onPlayerPages} from '../../../../redux/player/pages/payload/action';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
@@ -11,6 +12,7 @@ import Path from '../../router/Path';
 const ListView = (
 	{
 		onPlayerPages,
+		playerPagesHref,
 		t,
 	}) =>
 	<CommonLayout
@@ -39,12 +41,14 @@ const ListView = (
 			},
 		]}
 	>
-		{onPlayerPages('href')}
+		{onPlayerPages(playerPagesHref)}
 	</CommonLayout>
 ;
 
 export default connect(
-	state => ({}),
+	state => ({
+		playerPagesHref: getPlayerPagesHref(state),
+	}),
 	dispatch => ({
 		onPlayerPages: href => dispatch(onPlayerPages(href)),
 	})
