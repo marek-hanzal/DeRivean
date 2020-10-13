@@ -9,9 +9,10 @@ import Path from './Path';
 const HomeView = ({t}) =>
 	<CommonLayout
 		title='root.home.title'
-		menu={<MainMenu/>}
+		menu={<MainMenu
+			selected={[Path.ROOT]}
+		/>}
 		footer={<Footer/>}
-		selected={[Path.ROOT]}
 		breadcrumbs={[
 			{
 				id: 'root.home',

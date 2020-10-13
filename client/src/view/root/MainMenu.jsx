@@ -2,27 +2,20 @@ import {HomeOutlined, PoweroffOutlined} from '@ant-design/icons';
 import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {onOpenMenu} from '../../redux/menu/open/action';
-import {getOpenMenu} from '../../redux/menu/open/selector';
+import BaseMenu from '../../component/common/BaseMenu';
 import Path from './Path';
 
 const MainMenu = (
 	{
-		openState,
 		open = [],
 		selected = [],
-		onOpenChange,
 		onLogout,
 		t
 	}) =>
-	<Menu
-		mode='inline'
-		selectable={true}
-		defaultOpenKeys={openState || open}
-		selectedKeys={selected}
-		onOpenChange={onOpenChange}
+	<BaseMenu
+		open={open}
+		selected={selected}
 		style={{
 			height: '100vh',
 		}}
@@ -51,14 +44,7 @@ const MainMenu = (
 			<PoweroffOutlined/>
 			{t('root.logout.menu')}
 		</Menu.Item>
-	</Menu>
+	</BaseMenu>
 ;
 
-export default connect(
-	state => ({
-		openState: getOpenMenu(state),
-	}),
-	dispatch => ({
-		onOpenChange: open => dispatch(onOpenMenu(open)),
-	})
-)(withTranslation()(MainMenu));
+export default withTranslation()(MainMenu);
