@@ -1,11 +1,32 @@
 {
 	"internal": {
 		"spinner": "Making some hard magick to make things work!",
-		"dashboard": {
-			"title": "Internal Dashboard",
-			"link": "Dashboard",
-			"menu": "Dashboard",
-			"breadcrumb": "Dashboard"
+		"home": {
+			"title": "Internal Home",
+			"link": "Home",
+			"menu": "Home",
+			"breadcrumb": "Home"
+		},
+		"logout": {
+			"menu": "Logout"
+		}
+	},
+	"root": {
+		"home": {
+			"title": "Root Administration",
+			"menu": "Home"
+		},
+		"player": {
+			"menu": "Players",
+			"home": {
+				"menu": "Players"
+			},
+			"create": {
+				"menu": "New Player"
+			},
+			"list": {
+				"menu": "Player List"
+			}
 		},
 		"logout": {
 			"menu": "Logout"

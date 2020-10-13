@@ -10,7 +10,7 @@ const HomeView = ({t}) =>
 	<CommonLayout
 		title='root.home.title'
 		menu={<MainMenu
-			selected={[Path.ROOT]}
+			selected={[Path.root]}
 		/>}
 		footer={<Footer/>}
 		breadcrumbs={[

@@ -1,4 +1,4 @@
-import {HomeOutlined, PoweroffOutlined} from '@ant-design/icons';
+import {BookOutlined, CodeOutlined, DatabaseOutlined, FundOutlined, HomeOutlined, PoweroffOutlined} from '@ant-design/icons';
 import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
@@ -21,25 +21,25 @@ const MainMenu = (
 			height: '100vh',
 		}}
 	>
-		<Menu.Item key={Path.ROOT}>
+		<Menu.Item key={Path.root}>
 			<HomeOutlined/>
-			<Link to={Path.ROOT}>{t('root.home.menu')}</Link>
+			<Link to={Path.root}>{t('root.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('root.invoice.menu')}</>}>*/}
-		{/*	<Menu.Item key={InvoicePath.DASHBOARD}>*/}
-		{/*		<FundOutlined/>*/}
-		{/*		<Link to={InvoicePath.DASHBOARD}>{t('root.invoice.home.menu')}</Link>*/}
-		{/*	</Menu.Item>*/}
-		{/*	<Menu.Item key={InvoicePath.CREATE}>*/}
-		{/*		<CodeOutlined/>*/}
-		{/*		<Link to={InvoicePath.CREATE}>{t('root.invoice.create.menu')}</Link>*/}
-		{/*	</Menu.Item>*/}
-		{/*	<Menu.Item key={InvoicePath.LIST}>*/}
-		{/*		<DatabaseOutlined/>*/}
-		{/*		<Link to={InvoicePath.LIST}>{t('root.invoice.list.menu')}</Link>*/}
-		{/*	</Menu.Item>*/}
-		{/*</Menu.SubMenu>*/}
+		<Menu.SubMenu key={Path.root} title={<><BookOutlined/>{t('root.player.menu')}</>}>
+			<Menu.Item key={Path.player.home}>
+				<FundOutlined/>
+				<Link to={Path.player.home}>{t('root.player.home.menu')}</Link>
+			</Menu.Item>
+			<Menu.Item key={Path.player.create}>
+				<CodeOutlined/>
+				<Link to={Path.player.create}>{t('root.player.create.menu')}</Link>
+			</Menu.Item>
+			<Menu.Item key={Path.player.list}>
+				<DatabaseOutlined/>
+				<Link to={Path.player.list}>{t('root.player.list.menu')}</Link>
+			</Menu.Item>
+		</Menu.SubMenu>
 		<Menu.Divider/>
 		<Menu.Item key='root.logout' onClick={() => onLogout()}>
 			<PoweroffOutlined/>
