@@ -5,14 +5,14 @@ import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../component/common/BaseMenu';
-import Path from './Path';
+import Path from '../../router/root/Path';
 
 const MainMenu = (
 	{
 		open = [],
 		selected = [],
 		onLogout,
-		t
+		t,
 	}) =>
 	<BaseMenu
 		open={open}
@@ -23,27 +23,27 @@ const MainMenu = (
 	>
 		<Menu.Item key={Path.ROOT}>
 			<HomeOutlined/>
-			<Link to={Path.ROOT}>{t('internal.home.menu')}</Link>
+			<Link to={Path.ROOT}>{t('root.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('internal.invoice.menu')}</>}>*/}
+		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('root.invoice.menu')}</>}>*/}
 		{/*	<Menu.Item key={InvoicePath.DASHBOARD}>*/}
 		{/*		<FundOutlined/>*/}
-		{/*		<Link to={InvoicePath.DASHBOARD}>{t('internal.invoice.home.menu')}</Link>*/}
+		{/*		<Link to={InvoicePath.DASHBOARD}>{t('root.invoice.home.menu')}</Link>*/}
 		{/*	</Menu.Item>*/}
 		{/*	<Menu.Item key={InvoicePath.CREATE}>*/}
 		{/*		<CodeOutlined/>*/}
-		{/*		<Link to={InvoicePath.CREATE}>{t('internal.invoice.create.menu')}</Link>*/}
+		{/*		<Link to={InvoicePath.CREATE}>{t('root.invoice.create.menu')}</Link>*/}
 		{/*	</Menu.Item>*/}
 		{/*	<Menu.Item key={InvoicePath.LIST}>*/}
 		{/*		<DatabaseOutlined/>*/}
-		{/*		<Link to={InvoicePath.LIST}>{t('internal.invoice.list.menu')}</Link>*/}
+		{/*		<Link to={InvoicePath.LIST}>{t('root.invoice.list.menu')}</Link>*/}
 		{/*	</Menu.Item>*/}
 		{/*</Menu.SubMenu>*/}
 		<Menu.Divider/>
-		<Menu.Item key='internal.logout' onClick={() => onLogout()}>
+		<Menu.Item key='root.logout' onClick={() => onLogout()}>
 			<PoweroffOutlined/>
-			{t('internal.logout.menu')}
+			{t('root.logout.menu')}
 		</Menu.Item>
 	</BaseMenu>
 ;

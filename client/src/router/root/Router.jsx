@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import HomeView from './HomeView';
+import HomeView from '../../view/root/HomeView';
 
 const Router = () =>
 	<>

@@ -2,19 +2,19 @@ import {HomeOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../component/common/CommonLayout';
-import Footer from './Footer';
-import MainMenu from './MainMenu';
-import Path from './Path';
+import Footer from '../../component/internal/Footer';
+import MainMenu from '../../component/internal/MainMenu';
+import Path from '../../router/internal/Path';
 
 const HomeView = ({t}) =>
 	<CommonLayout
-		title='internal.dashboard.title'
+		title='internal.home.title'
 		menu={<MainMenu/>}
 		footer={<Footer/>}
 		selected={[Path.ROOT]}
 		breadcrumbs={[
 			{
-				id: 'internal.dashboard',
+				id: 'internal.home',
 				icon: <HomeOutlined/>,
 			}
 		]}
