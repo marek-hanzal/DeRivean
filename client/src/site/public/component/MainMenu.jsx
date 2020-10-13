@@ -4,8 +4,8 @@ import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import BaseMenu from '../../component/common/BaseMenu';
-import Path from '../../router/public/Path';
+import BaseMenu from '../../../component/BaseMenu';
+import Path from '../router/Path';
 
 const MainMenu = (
 	{

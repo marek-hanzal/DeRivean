@@ -3,10 +3,10 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
-import Breadcrumbs from '../../component/common/Breadcrumbs';
-import {isLoading} from '../../redux/loading/selector';
-import {onMenuCollapse} from '../../redux/menu/collapse/action';
-import {isMenuCollapsed} from '../../redux/menu/collapse/selector';
+import {isLoading} from '../redux/loading/selector';
+import {onMenuCollapse} from '../redux/menu/collapse/action';
+import {isMenuCollapsed} from '../redux/menu/collapse/selector';
+import Breadcrumbs from './Breadcrumbs';
 
 const CommonLayout = (
 	{
@@ -20,8 +20,6 @@ const CommonLayout = (
 			lg: {span: 24},
 			xl: {span: 24},
 		},
-		open = [],
-		selected = [],
 		breadcrumbs = [],
 		loading,
 		isCollapsed,

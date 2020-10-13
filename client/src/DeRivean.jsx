@@ -6,9 +6,9 @@ import {BrowserRouter} from 'react-router-dom';
 import Client from './component/Config';
 import Discovery from './component/Discovery';
 import {getDiscoveryHref} from './redux/client/payload/selector';
-import {default as InternalRouter} from './router/internal/Router';
-import {default as PublicRouter} from './router/public/Router';
-import {default as RootRouter} from './router/root/Router';
+import {default as InternalRouter} from './site/internal/router/Router';
+import {default as PublicRouter} from './site/public/router/Router';
+import {default as RootRouter} from './site/root/router/Router';
 import LoaderView from './view/LoaderView';
 import NotFoundView from './view/NotFoundView';
 

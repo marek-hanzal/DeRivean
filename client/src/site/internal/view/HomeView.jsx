@@ -1,10 +1,10 @@
 import {HomeOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
-import CommonLayout from '../../component/common/CommonLayout';
-import Footer from '../../component/internal/Footer';
-import MainMenu from '../../component/internal/MainMenu';
-import Path from '../../router/internal/Path';
+import CommonLayout from '../../../component/CommonLayout';
+import Footer from '../component/Footer';
+import MainMenu from '../component/MainMenu';
+import Path from '../router/Path';
 
 const HomeView = ({t}) =>
 	<CommonLayout

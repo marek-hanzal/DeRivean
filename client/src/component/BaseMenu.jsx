@@ -2,8 +2,8 @@ import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
-import {onOpenMenu} from '../../redux/menu/open/action';
-import {getOpenMenu} from '../../redux/menu/open/selector';
+import {onOpenMenu} from '../redux/menu/open/action';
+import {getOpenMenu} from '../redux/menu/open/selector';
 
 const BaseMenu = (
 	{
