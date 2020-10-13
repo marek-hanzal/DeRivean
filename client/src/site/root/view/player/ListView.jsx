@@ -1,12 +1,18 @@
 import {FundOutlined, HomeOutlined, UnorderedListOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
+import {connect} from 'react-redux';
 import CommonLayout from '../../../../component/CommonLayout';
+import {onPlayerPages} from '../../../../redux/player/pages/payload/action';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
 import Path from '../../router/Path';
 
-const ListView = ({t}) =>
+const ListView = (
+	{
+		onPlayerPages,
+		t,
+	}) =>
 	<CommonLayout
 		title='root.player.list.title'
 		menu={<MainMenu
@@ -33,8 +39,13 @@ const ListView = ({t}) =>
 			},
 		]}
 	>
-
+		{onPlayerPages('href')}
 	</CommonLayout>
 ;
 
-export default withTranslation()(ListView);
+export default connect(
+	state => ({}),
+	dispatch => ({
+		onPlayerPages: href => dispatch(onPlayerPages(href)),
+	})
+)(withTranslation()(ListView));
