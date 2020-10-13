@@ -1,0 +1,14 @@
+{
+	"internal": {
+		"spinner": "Making some hard magick to make things work!",
+		"dashboard": {
+			"title": "Internal Dashboard",
+			"link": "Dashboard",
+			"menu": "Dashboard",
+			"breadcrumb": "Dashboard"
+		},
+		"logout": {
+			"menu": "Logout"
+		}
+	}
+}

@@ -24,6 +24,13 @@ sourceSets {
 	}
 }
 
+task copyWeb(type: Copy) {
+	from "client/build"
+	into "$buildDir/resources/main/client"
+}
+
+build.dependsOn copyWeb
+
 dependencies {
 	implementation "org.jetbrains.exposed:exposed:$exposed_version"
 	implementation "ch.qos.logback:logback-classic:$logback_version"
