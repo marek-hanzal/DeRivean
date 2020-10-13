@@ -33,7 +33,7 @@ const DeRivean = ({router, discovery}) =>
 ;
 
 const mapStateToProps = state => ({
-	router: 'internal',
+	router: 'root',
 	discovery: getDiscoveryHref(state),
 });
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import HomeView from './HomeView';
+import DashboardView from './DashboardView';
 
 const RootRouter = () =>
 	<>
-		<Route exact path="/" component={HomeView}/>
+		<Route exact path="/" component={DashboardView}/>
 	</>
 ;
 
