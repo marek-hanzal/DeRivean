@@ -6,15 +6,15 @@ import Footer from './Footer';
 import MainMenu from './MainMenu';
 import Path from './Path';
 
-const DashboardView = ({t}) =>
+const HomeView = ({t}) =>
 	<CommonLayout
-		title='root.dashboard.title'
+		title='root.home.title'
 		menu={<MainMenu/>}
 		footer={<Footer/>}
 		selected={[Path.ROOT]}
 		breadcrumbs={[
 			{
-				id: 'root.dashboard',
+				id: 'root.home',
 				icon: <HomeOutlined/>,
 			}
 		]}
@@ -22,4 +22,4 @@ const DashboardView = ({t}) =>
 	</CommonLayout>
 ;
 
-export default withTranslation()(DashboardView);
+export default withTranslation()(HomeView);

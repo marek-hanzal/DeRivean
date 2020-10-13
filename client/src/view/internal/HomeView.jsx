@@ -6,7 +6,7 @@ import Footer from './Footer';
 import MainMenu from './MainMenu';
 import Path from './Path';
 
-const DashboardView = ({t}) =>
+const HomeView = ({t}) =>
 	<CommonLayout
 		title='internal.dashboard.title'
 		menu={<MainMenu/>}
@@ -22,4 +22,4 @@ const DashboardView = ({t}) =>
 	</CommonLayout>
 ;
 
-export default withTranslation()(DashboardView);
+export default withTranslation()(HomeView);
