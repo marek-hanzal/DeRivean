@@ -6,10 +6,10 @@ import {BrowserRouter} from 'react-router-dom';
 import Client from './component/Config';
 import Discovery from './component/Discovery';
 import {getDiscoveryHref} from './redux/client/payload/selector';
-import InternalRouter from './view/internal/InternalRouter';
+import {default as InternalRouter} from './view/internal/Router';
 import LoaderView from './view/LoaderView';
 import NotFoundView from './view/NotFoundView';
-import PublicRouter from './view/public/PublicRouter';
+import {default as PublicRouter} from './view/public/Router';
 import {default as RootRouter} from './view/root/Router';
 
 const DeRivean = ({router, discovery}) =>

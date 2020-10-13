@@ -7,12 +7,12 @@ import Breadcrumbs from '../../component/common/Breadcrumbs';
 import {isLoading} from '../../redux/loading/selector';
 import {onMenuCollapse} from '../../redux/menu/collapse/action';
 import {isMenuCollapsed} from '../../redux/menu/collapse/selector';
-import Footer from './Footer';
-import Menu from './MainMenu';
 
 const CommonLayout = (
 	{
 		title,
+		footer,
+		menu,
 		spans = {
 			xs: {span: 24},
 			sm: {span: 24},
@@ -45,7 +45,8 @@ const CommonLayout = (
 					left: 0,
 				}}
 			>
-				<Menu open={isCollapsed ? [] : open} selected={selected}/>
+				{menu}
+				{/*<Menu open={isCollapsed ? [] : open} selected={selected}/>*/}
 			</Layout.Sider>
 			<Layout style={isCollapsed ? {
 				marginLeft: 80,
@@ -67,7 +68,7 @@ const CommonLayout = (
 								</Col>
 							</Row>
 						</Layout.Content>
-						<Layout.Footer style={{textAlign: 'center'}}><Footer/></Layout.Footer>
+						<Layout.Footer style={{textAlign: 'center'}}>{footer}</Layout.Footer>
 					</Col>
 				</Row>
 			</Layout>

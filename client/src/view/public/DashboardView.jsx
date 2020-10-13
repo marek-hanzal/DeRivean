@@ -1,13 +1,17 @@
 import {HomeOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
-import PublicLayout from './PublicLayout';
-import PublicPath from './PublicPath';
+import CommonLayout from '../../component/common/CommonLayout';
+import Footer from './Footer';
+import MainMenu from './MainMenu';
+import Path from './Path';
 
 const DashboardView = ({t}) =>
-	<PublicLayout
+	<CommonLayout
 		title='public.dashboard.title'
-		selected={[PublicPath.ROOT]}
+		menu={<MainMenu/>}
+		footer={<Footer/>}
+		selected={[Path.ROOT]}
 		breadcrumbs={[
 			{
 				id: 'public.dashboard',
@@ -15,7 +19,7 @@ const DashboardView = ({t}) =>
 			}
 		]}
 	>
-	</PublicLayout>
+	</CommonLayout>
 ;
 
 export default withTranslation()(DashboardView);

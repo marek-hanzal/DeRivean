@@ -2,10 +2,10 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import HomeView from './HomeView';
 
-const PublicRouter = () =>
+const Router = () =>
 	<>
 		<Route exact path="/" component={HomeView}/>
 	</>
 ;
 
-export default PublicRouter;
+export default Router;
