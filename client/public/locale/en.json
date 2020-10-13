@@ -1,11 +1,11 @@
 {
 	"error": {
 		"discovery": {
-			"title": "Discovery",
+			"title": "Discovery Error",
 			"body": "Cannot make Discovery request, server is probably unavailable."
 		},
 		"client": {
-			"title": "Client",
+			"title": "Client Error",
 			"body": "Cannot load Client configuration, server is probably dead."
 		}
 	},
