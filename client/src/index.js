@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {applyMiddleware, compose, createStore} from 'redux';
-import {createLogger} from 'redux-logger';
 import {persistReducer, persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
@@ -22,7 +21,7 @@ const store = createStore(persistReducer({
 		whitelist: ['session'],
 	}, reducer),
 	compose(
-		applyMiddleware(thunkMiddleware, createLogger()),
+		applyMiddleware(thunkMiddleware),
 		window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f)
 );
 

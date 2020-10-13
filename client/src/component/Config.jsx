@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {onClient} from '../redux/client/payload/action';
+import {isClientFailure, isClientSuccess} from '../redux/client/status/selector';
+import ClientErrorView from '../view/ClientErrorView';
+import LoaderView from '../view/LoaderView';
 
 class Client extends React.PureComponent {
 	componentDidMount() {
@@ -8,14 +11,21 @@ class Client extends React.PureComponent {
 	}
 
 	render() {
-		return (
-			<>{this.props.children}</>
-		);
+		if (this.props.isSuccess) {
+			return this.props.children;
+		} else if (this.props.isFailure) {
+			return <ClientErrorView/>;
+		}
+		return <LoaderView/>;
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-	onClient: href => dispatch(onClient(href))
-});
-
-export default connect(null, mapDispatchToProps)(Client);
+export default connect(
+	state => ({
+		isSuccess: isClientSuccess(state),
+		isFailure: isClientFailure(state),
+	}),
+	dispatch => ({
+		onClient: href => dispatch(onClient(href)),
+	})
+)(Client);
