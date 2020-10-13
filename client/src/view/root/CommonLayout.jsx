@@ -3,14 +3,14 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
+import Breadcrumbs from '../../component/common/Breadcrumbs';
 import {isLoading} from '../../redux/loading/selector';
 import {onMenuCollapse} from '../../redux/menu/collapse/action';
 import {isMenuCollapsed} from '../../redux/menu/collapse/selector';
-import RootBreadcrumbs from './RootBreadcrumbs';
-import RootFooter from './RootFooter';
-import RootMenu from './RootMenu';
+import Footer from './Footer';
+import Menu from './MainMenu';
 
-const RootLayout = (
+const CommonLayout = (
 	{
 		title,
 		spans = {
@@ -45,7 +45,7 @@ const RootLayout = (
 					left: 0,
 				}}
 			>
-				<RootMenu open={isCollapsed ? [] : open} selected={selected}/>
+				<Menu open={isCollapsed ? [] : open} selected={selected}/>
 			</Layout.Sider>
 			<Layout style={isCollapsed ? {
 				marginLeft: 80,
@@ -56,7 +56,7 @@ const RootLayout = (
 			}}>
 				<Row type='flex' justify='center'>
 					<Col span={23}>
-						<RootBreadcrumbs breadcrumbs={breadcrumbs}/>
+						<Breadcrumbs breadcrumbs={breadcrumbs}/>
 						<Layout.Content style={{minHeight: '100vh'}}>
 							<Row type='flex' justify='center'>
 								<Col {...spans}>
@@ -67,7 +67,7 @@ const RootLayout = (
 								</Col>
 							</Row>
 						</Layout.Content>
-						<Layout.Footer style={{textAlign: 'center'}}><RootFooter/></Layout.Footer>
+						<Layout.Footer style={{textAlign: 'center'}}><Footer/></Layout.Footer>
 					</Col>
 				</Row>
 			</Layout>
@@ -83,5 +83,5 @@ export default connect(
 	dispatch => ({
 		onCollapse: isCollapsed => dispatch(onMenuCollapse(isCollapsed)),
 	})
-)(withTranslation()(RootLayout));
+)(withTranslation()(CommonLayout));
 

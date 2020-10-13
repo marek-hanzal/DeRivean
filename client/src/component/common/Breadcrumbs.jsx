@@ -3,7 +3,7 @@ import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {Link} from 'react-router-dom';
 
-const InternalBreadcrumbs = ({breadcrumbs, t}) =>
+const Breadcrumbs = ({breadcrumbs, t}) =>
 	<Breadcrumb style={{margin: '16px 0'}}>
 		{breadcrumbs.map(breadcrumb => (
 			<Breadcrumb.Item key={breadcrumb.id}>
@@ -23,4 +23,4 @@ const InternalBreadcrumbs = ({breadcrumbs, t}) =>
 	</Breadcrumb>
 ;
 
-export default withTranslation()(InternalBreadcrumbs);
+export default withTranslation()(Breadcrumbs);

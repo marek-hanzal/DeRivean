@@ -2,10 +2,10 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import DashboardView from './DashboardView';
 
-const RootRouter = () =>
+const Router = () =>
 	<>
 		<Route exact path="/" component={DashboardView}/>
 	</>
 ;
 
-export default RootRouter;
+export default Router;

@@ -6,9 +6,9 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {onOpenMenu} from '../../redux/menu/open/action';
 import {getOpenMenu} from '../../redux/menu/open/selector';
-import RootPath from './RootPath';
+import Path from './Path';
 
-const RootMenu = (
+const MainMenu = (
 	{
 		openState,
 		open = [],
@@ -27,9 +27,9 @@ const RootMenu = (
 			height: '100vh',
 		}}
 	>
-		<Menu.Item key={RootPath.ROOT}>
+		<Menu.Item key={Path.ROOT}>
 			<HomeOutlined/>
-			<Link to={RootPath.ROOT}>{t('root.dashboard.menu')}</Link>
+			<Link to={Path.ROOT}>{t('root.dashboard.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
 		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('root.invoice.menu')}</>}>*/}
@@ -61,4 +61,4 @@ export default connect(
 	dispatch => ({
 		onOpenChange: open => dispatch(onOpenMenu(open)),
 	})
-)(withTranslation()(RootMenu));
+)(withTranslation()(MainMenu));

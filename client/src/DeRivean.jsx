@@ -10,7 +10,7 @@ import InternalRouter from './view/internal/InternalRouter';
 import LoaderView from './view/LoaderView';
 import NotFoundView from './view/NotFoundView';
 import PublicRouter from './view/public/PublicRouter';
-import RootRouter from './view/root/RootRouter';
+import {default as RootRouter} from './view/root/Router';
 
 const DeRivean = ({router, discovery}) =>
 	<BrowserRouter>

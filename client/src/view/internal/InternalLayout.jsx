@@ -3,10 +3,10 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
+import Breadcrumbs from '../../component/common/Breadcrumbs';
 import {isLoading} from '../../redux/loading/selector';
 import {onMenuCollapse} from '../../redux/menu/collapse/action';
 import {isMenuCollapsed} from '../../redux/menu/collapse/selector';
-import InternalBreadcrumbs from './InternalBreadcrumbs';
 import InternalFooter from './InternalFooter';
 import InternalMenu from './InternalMenu';
 
@@ -56,7 +56,7 @@ const InternalLayout = (
 			}}>
 				<Row type='flex' justify='center'>
 					<Col span={23}>
-						<InternalBreadcrumbs breadcrumbs={breadcrumbs}/>
+						<Breadcrumbs breadcrumbs={breadcrumbs}/>
 						<Layout.Content style={{minHeight: '100vh'}}>
 							<Row type='flex' justify='center'>
 								<Col {...spans}>
