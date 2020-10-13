@@ -2,8 +2,8 @@ import {HomeOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../component/common/CommonLayout';
-import MainMenu from '../root/MainMenu';
 import Footer from './Footer';
+import MainMenu from './MainMenu';
 import Path from './Path';
 
 const DashboardView = ({t}) =>
