@@ -45,7 +45,15 @@
 			"list": {
 				"title": "Player List",
 				"menu": "Player List",
-				"breadcrumb": "Player List"
+				"breadcrumb": "Player List",
+				"table": {
+					"id": {
+						"title": "ID"
+					},
+					"name": {
+						"title": "Name"
+					}
+				}
 			}
 		},
 		"logout": {

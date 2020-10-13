@@ -1,4 +1,6 @@
 import {FundOutlined, HomeOutlined, UnorderedListOutlined} from '@ant-design/icons';
+import Table from 'antd/lib/table';
+import Column from 'antd/lib/table/Column';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
@@ -41,7 +43,22 @@ const ListView = (
 			},
 		]}
 	>
-		{onPlayerPages(playerPagesHref)}
+		{/*onPlayerPages(playerPagesHref)*/}
+		<Table
+			dataSource={[
+				{
+					key: '1323-453-45',
+					name: 'Hrac',
+				},
+				{
+					key: '143534-5345-345345',
+					name: 'Dalsi hrac',
+				},
+			]}
+		>
+			<Column title={t('root.player.list.table.id.title')} dataIndex='key'/>
+			<Column title={t('root.player.list.table.name.title')} dataIndex='name'/>
+		</Table>
 	</CommonLayout>
 ;
 
