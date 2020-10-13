@@ -1,4 +1,17 @@
 {
+	"error": {
+		"discovery": {
+			"title": "Discovery",
+			"body": "Cannot make Discovery request, server is probably unavailable."
+		},
+		"client": {
+			"title": "Client",
+			"body": "Cannot load Client configuration, server is probably dead."
+		}
+	},
+	"common": {
+		"refresh": "Refresh"
+	},
 	"internal": {
 		"spinner": "Making some hard magick to make things work!",
 		"home": {
