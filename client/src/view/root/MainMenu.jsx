@@ -2,6 +2,7 @@ import {HomeOutlined, PoweroffOutlined} from '@ant-design/icons';
 import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../component/common/BaseMenu';
 import Path from './Path';
@@ -11,7 +12,7 @@ const MainMenu = (
 		open = [],
 		selected = [],
 		onLogout,
-		t
+		t,
 	}) =>
 	<BaseMenu
 		open={open}
@@ -22,13 +23,13 @@ const MainMenu = (
 	>
 		<Menu.Item key={Path.ROOT}>
 			<HomeOutlined/>
-			<Link to={Path.ROOT}>{t('root.dashboard.menu')}</Link>
+			<Link to={Path.ROOT}>{t('root.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
 		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('root.invoice.menu')}</>}>*/}
 		{/*	<Menu.Item key={InvoicePath.DASHBOARD}>*/}
 		{/*		<FundOutlined/>*/}
-		{/*		<Link to={InvoicePath.DASHBOARD}>{t('root.invoice.dashboard.menu')}</Link>*/}
+		{/*		<Link to={InvoicePath.DASHBOARD}>{t('root.invoice.home.menu')}</Link>*/}
 		{/*	</Menu.Item>*/}
 		{/*	<Menu.Item key={InvoicePath.CREATE}>*/}
 		{/*		<CodeOutlined/>*/}
@@ -47,4 +48,7 @@ const MainMenu = (
 	</BaseMenu>
 ;
 
-export default withTranslation()(MainMenu);
+export default connect(
+	state => ({}),
+	dispatch => ({})
+)(withTranslation()(MainMenu));
