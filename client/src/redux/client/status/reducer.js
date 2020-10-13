@@ -1,8 +1,8 @@
 import {handleActions} from 'redux-actions';
-import {onStatus} from './action';
+import {onClientStatus} from './action';
 
 const status = handleActions({
-	[onStatus]: (state, {payload}) => payload,
+	[onClientStatus]: (state, {payload}) => payload,
 }, null);
 
 export default status;

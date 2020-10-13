@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import {createAction} from 'redux-actions';
 import {onLoading} from '../../loading/action';
-import {onStatus} from '../status/action';
+import {onDiscoveryStatus} from '../status/action';
 
 const
 	onDiscoveryRequest = createAction('ON_DISCOVERY_REQUEST', () => null),
@@ -9,17 +9,17 @@ const
 	onDiscoveryFailure = createAction('ON_DISCOVERY_FAILURE', error => error),
 	onDiscovery = href => dispatch => {
 		dispatch(onLoading(true));
-		dispatch(onStatus('LOADING'));
+		dispatch(onDiscoveryStatus('LOADING'));
 		dispatch(onDiscoveryRequest());
 		Axios.get(href)
 			.then(response => {
 				dispatch(onDiscoverySuccess(response.data));
-				dispatch(onStatus('SUCCESS'));
+				dispatch(onDiscoveryStatus('SUCCESS'));
 				dispatch(onLoading(false));
 			})
 			.catch(error => {
 				dispatch(onDiscoveryFailure(error));
-				dispatch(onStatus('FAILURE'));
+				dispatch(onDiscoveryStatus('FAILURE'));
 				dispatch(onLoading(false));
 			});
 	};

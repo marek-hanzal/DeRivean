@@ -12,6 +12,7 @@
 		}
 	},
 	"root": {
+		"spinner": "Making some hard magick to make things work!",
 		"home": {
 			"title": "Root Administration",
 			"menu": "Home"

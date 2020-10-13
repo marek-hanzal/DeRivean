@@ -1,4 +1,4 @@
-const branch = state => state.discovery.status;
+const branch = state => state.client.status;
 
 /**
  * is client data being loaded?

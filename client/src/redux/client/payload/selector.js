@@ -1,7 +1,7 @@
 const branch = state => state.client.payload;
 
 /**
- * return current backedn discovery url
+ * return current backend discovery url
  *
  * @param state
  * @returns {string}

@@ -1,8 +1,8 @@
 import {createAction} from 'redux-actions';
 
 const
-	onStatus = createAction('ON_STATUS', status => status);
+	onDiscoveryStatus = createAction('ON_DISCOVERY_STATUS', status => status);
 
 export {
-	onStatus,
+	onDiscoveryStatus,
 };
