@@ -1,4 +1,4 @@
-import {BookOutlined, CodeOutlined, DatabaseOutlined, FundOutlined, HomeOutlined, PoweroffOutlined} from '@ant-design/icons';
+import {BookOutlined, FormOutlined, FundOutlined, HomeOutlined, PoweroffOutlined, UnorderedListOutlined} from '@ant-design/icons';
 import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
@@ -26,17 +26,17 @@ const MainMenu = (
 			<Link to={Path.root}>{t('root.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		<Menu.SubMenu key={Path.root} title={<><BookOutlined/>{t('root.player.menu')}</>}>
+		<Menu.SubMenu key={Path.player.root} title={<><BookOutlined/>{t('root.player.menu')}</>}>
 			<Menu.Item key={Path.player.home}>
 				<FundOutlined/>
 				<Link to={Path.player.home}>{t('root.player.home.menu')}</Link>
 			</Menu.Item>
 			<Menu.Item key={Path.player.create}>
-				<CodeOutlined/>
+				<FormOutlined/>
 				<Link to={Path.player.create}>{t('root.player.create.menu')}</Link>
 			</Menu.Item>
 			<Menu.Item key={Path.player.list}>
-				<DatabaseOutlined/>
+				<UnorderedListOutlined/>
 				<Link to={Path.player.list}>{t('root.player.list.menu')}</Link>
 			</Menu.Item>
 		</Menu.SubMenu>

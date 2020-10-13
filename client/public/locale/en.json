@@ -19,13 +19,19 @@
 		"player": {
 			"menu": "Players",
 			"home": {
-				"menu": "Players"
+				"title": "Players",
+				"menu": "Players",
+				"breadcrumb": "Players"
 			},
 			"create": {
-				"menu": "New Player"
+				"title": "Create a new Player",
+				"menu": "New Player",
+				"breadcrumb": "New Player"
 			},
 			"list": {
-				"menu": "Player List"
+				"title": "Player List",
+				"menu": "Player List",
+				"breadcrumb": "Player List"
 			}
 		},
 		"logout": {
