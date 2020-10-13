@@ -19,6 +19,7 @@ import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerEndpoint
+import derivean.server.player.rest.PlayerFixturesEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.PlayerPagesEndpoint
 import derivean.server.player.rest.mapper.PlayerFetchMapper
@@ -48,6 +49,7 @@ object EngineContainer {
 		register(PlayerPagesEndpoint::class) { PlayerPagesEndpoint(this) }
 		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
+		register(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
 		/**
 		 * Entity related stuff.
 		 */
