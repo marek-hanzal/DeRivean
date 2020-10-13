@@ -32,9 +32,10 @@ const DeRivean = ({router, discovery}) =>
 	</BrowserRouter>
 ;
 
-const mapStateToProps = state => ({
-	router: 'root',
-	discovery: getDiscoveryHref(state),
-});
-
-export default connect(mapStateToProps)(DeRivean);
+export default connect(
+	state => ({
+		router: 'root',
+		discovery: getDiscoveryHref(state),
+	}),
+	dispatch => ({})
+)(DeRivean);
