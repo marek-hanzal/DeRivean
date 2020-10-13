@@ -5,7 +5,7 @@ import {onPlayerPagesStatus} from '../status/action';
 
 const
 	onPlayerPagesRequest = createAction('ON_PLAYER_PAGES_REQUEST', () => null),
-	onPlayerPagesSuccess = createAction('ON_PLAYER_PAGES_SUCCESS', client => client),
+	onPlayerPagesSuccess = createAction('ON_PLAYER_PAGES_SUCCESS', pages => pages),
 	onPlayerPagesFailure = createAction('ON_PLAYER_PAGES_FAILURE', error => error),
 	onPlayerPages = href => dispatch => {
 		dispatch(onLoading(true));
