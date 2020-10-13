@@ -31,6 +31,15 @@ class ListView extends React.Component {
 			console.log(pages);
 			pagination = {
 				total: pages.total,
+				pageSize: pages.limit,
+				defaultPageSize: pages.limit,
+				showQuickJumper: true,
+				showSizeChanger: false,
+				onChange: (page, pageSize) => {
+					console.log(page, pageSize, pages.hrefs[page]);
+				},
+				onShowSizeChange: (current, size) => {
+				}
 			};
 		}
 
