@@ -1,5 +1,6 @@
 package derivean.lib.rest.page
 
+import derivean.lib.mapper.IMapper
 import derivean.lib.repository.IRepository
 import io.ktor.application.*
 import org.jetbrains.exposed.sql.Column
@@ -15,9 +16,9 @@ interface IPageService {
 	/**
 	 * Response with Pages info object.
 	 */
-	suspend fun pages(call: ApplicationCall, href: String, repository: IRepository<*>)
+	suspend fun pages(call: ApplicationCall, repository: IRepository<*>)
 
-	suspend fun page(call: ApplicationCall, href: String, repository: IRepository<*>)
+	suspend fun page(call: ApplicationCall, repository: IRepository<*>, mapper: IMapper<Any, out Any>)
 
 	/**
 	 * Extract page limit from the application call.

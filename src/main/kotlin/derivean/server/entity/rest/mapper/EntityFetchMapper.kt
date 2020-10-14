@@ -29,7 +29,7 @@ class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFe
 			inline fun build(linkGenerator: ILinkGenerator, block: Builder.() -> Unit) = Builder(linkGenerator).apply(block).build()
 		}
 
-		class Builder(val linkGenerator: ILinkGenerator) {
+		class Builder(private val linkGenerator: ILinkGenerator) {
 			lateinit var id: EntityID<UUID>
 			lateinit var name: String
 			val attributes = mutableListOf<Attribute>()

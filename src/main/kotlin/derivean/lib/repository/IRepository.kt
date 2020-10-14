@@ -1,10 +1,9 @@
 package derivean.lib.repository
 
-import org.jetbrains.exposed.dao.EntityID
-import org.jetbrains.exposed.dao.UUIDEntity
+import org.jetbrains.exposed.dao.Entity
 import java.util.*
 
-interface IRepository<T : UUIDEntity> {
+interface IRepository<T : Entity<*>> {
 	fun update(uuid: String, block: T.() -> T) = block(find(uuid))
 
 	fun find(uuid: String) = find(UUID.fromString(uuid))
@@ -23,5 +22,5 @@ interface IRepository<T : UUIDEntity> {
 	/**
 	 * Return just UUIDs of the given entity page.
 	 */
-	fun page(page: Int, limit: Int, block: (EntityID<UUID>) -> Unit)
+	fun page(page: Int, limit: Int, block: (T) -> Unit)
 }

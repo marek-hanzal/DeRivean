@@ -19,7 +19,7 @@ abstract class AbstractPagesEndpoint(container: IContainer) : AbstractEndpoint(c
 			this.description = "Paging support for [$target]."
 		}
 		routing.get("/$target/pages") {
-			pageService.pages(call, "/$target/page/{page}", repository)
+			pageService.pages(call, repository)
 		}
 	}
 }

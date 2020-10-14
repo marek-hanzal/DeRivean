@@ -1,6 +1,7 @@
 package derivean.lib.rest.page
 
 import derivean.lib.container.IContainer
+import derivean.lib.mapper.IMapper
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.AbstractEndpoint
 import derivean.lib.rest.badRequest
@@ -12,7 +13,7 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 	val storage: IStorage by container.lazy()
 	val pageService: IPageService by container.lazy()
 
-	fun page(routing: Routing, target: String, repository: IRepository<*>) {
+	fun page(routing: Routing, target: String, repository: IRepository<*>, mapper: IMapper<Any, out Any>) {
 		discovery {
 			this.group = target
 			this.name = "page"
@@ -23,7 +24,7 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 			call.badRequest("Missing page parameter in url: [/$target/page/{page}].")
 		}
 		routing.get("/$target/page/{page}") {
-			pageService.page(call, "/$target/{id}", repository)
+			pageService.page(call, repository, mapper)
 		}
 	}
 }
