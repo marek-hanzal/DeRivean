@@ -66,7 +66,6 @@ class ListView extends React.Component {
 				<Table
 					dataSource={page.items}
 					rowKey={record => record.id}
-					size={'small'}
 					loading={isLoading ? 100 : false}
 					pagination={pagination}
 				>
