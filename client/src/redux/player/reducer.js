@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import pages from './pages/reducer';
+import page from './page/reducer';
 
 const player = combineReducers({
-	pages,
+	page,
 });
 
 export default player;

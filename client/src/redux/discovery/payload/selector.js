@@ -6,11 +6,11 @@ const getDiscoveryIndex = state => branch(state).index;
 
 const getPlayerGroup = state => getDiscoveryIndex(state).player;
 
-const getPlayerPagesHref = state => getPlayerGroup(state).pages.link;
+const getPlayerPageHref = state => getPlayerGroup(state).page.link;
 
 export {
 	branch as discoveryPayloadBranch,
 	getDiscoveryIndex,
 	getPlayerGroup,
-	getPlayerPagesHref,
+	getPlayerPageHref,
 };

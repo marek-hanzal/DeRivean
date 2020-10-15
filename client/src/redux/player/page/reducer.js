@@ -2,9 +2,9 @@ import {combineReducers} from 'redux';
 import payload from './payload/reducer';
 import status from './status/reducer';
 
-const pages = combineReducers({
+const page = combineReducers({
 	status,
 	payload,
 });
 
-export default pages;
+export default page;

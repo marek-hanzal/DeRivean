@@ -1,6 +1,6 @@
-import {playerPagesBranch} from '../selector';
+import {playerPageBranch} from '../selector';
 
-const branch = state => playerPagesBranch(state).status;
+const branch = state => playerPageBranch(state).status;
 
 /**
  * Is client data being loaded?
@@ -16,7 +16,7 @@ const isLoading = state => branch(state) === 'LOADING';
  * @param state
  * @returns {boolean}
  */
-const isPlayerPagesSuccess = state => branch(state) === 'SUCCESS';
+const isPlayerPageSuccess = state => branch(state) === 'SUCCESS';
 
 /**
  * Checks if player pages is in failure state.
@@ -24,11 +24,11 @@ const isPlayerPagesSuccess = state => branch(state) === 'SUCCESS';
  * @param state
  * @returns {boolean}
  */
-const isPlayerPagesFailure = state => branch(state) === 'FAILURE';
+const isPlayerPageFailure = state => branch(state) === 'FAILURE';
 
 export {
 	branch as playerPagesStatusBranch,
 	isLoading,
-	isPlayerPagesSuccess,
-	isPlayerPagesFailure,
+	isPlayerPageSuccess,
+	isPlayerPageFailure,
 };

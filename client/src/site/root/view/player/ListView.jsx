@@ -5,17 +5,18 @@ import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import CommonLayout from '../../../../component/CommonLayout';
-import {getPlayerPagesHref} from '../../../../redux/discovery/payload/selector';
-import {onPlayerPages} from '../../../../redux/player/pages/payload/action';
-import {getPlayerPages} from '../../../../redux/player/pages/payload/selector';
-import {isLoading} from '../../../../redux/player/pages/status/selector';
+import {onPlayerPage} from '../../../../redux/player/page/payload/action';
+import {isLoading} from '../../../../redux/player/page/status/selector';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
 import Path from '../../router/Path';
 
 class ListView extends React.Component {
 	componentDidMount() {
-		this.props.onPlayerPages(this.props.playerPagesHref);
+		/**
+		 * Fetch initial page and get overall paging data.
+		 */
+		this.props.onPlayerPage(0);
 	}
 
 	render() {
@@ -36,7 +37,7 @@ class ListView extends React.Component {
 				showQuickJumper: true,
 				showSizeChanger: false,
 				onChange: (page, pageSize) => {
-					console.log(page, pageSize, pages.hrefs[page]);
+					this.props.onPlayerPage(page, pageSize);
 				},
 				onShowSizeChange: (current, size) => {
 				}
@@ -95,11 +96,9 @@ class ListView extends React.Component {
 
 export default connect(
 	state => ({
-		playerPagesHref: getPlayerPagesHref(state),
 		isLoading: isLoading(state),
-		pages: getPlayerPages(state),
 	}),
 	dispatch => ({
-		onPlayerPages: href => dispatch(onPlayerPages(href)),
+		onPlayerPage: page => dispatch(onPlayerPage(page)),
 	})
 )(withTranslation()(ListView));

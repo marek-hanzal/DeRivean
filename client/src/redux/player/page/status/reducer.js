@@ -1,8 +1,8 @@
 import {handleActions} from 'redux-actions';
-import {onPlayerPagesStatus} from './action';
+import {onPlayerPageStatus} from './action';
 
 const status = handleActions({
-	[onPlayerPagesStatus]: (state, {payload}) => payload,
+	[onPlayerPageStatus]: (state, {payload}) => payload,
 }, null);
 
 export default status;
