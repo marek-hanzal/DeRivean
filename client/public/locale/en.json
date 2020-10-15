@@ -56,6 +56,35 @@
 				}
 			}
 		},
+		"entity": {
+			"menu": "Entitys",
+			"home": {
+				"title": "Entities",
+				"menu": "Entities",
+				"breadcrumb": "Entities"
+			},
+			"create": {
+				"title": "Create a new Entity",
+				"menu": "New Entity",
+				"breadcrumb": "New Entity"
+			},
+			"list": {
+				"title": "Entity List",
+				"menu": "Entity List",
+				"breadcrumb": "Entity List",
+				"table": {
+					"id": {
+						"title": "ID"
+					},
+					"name": {
+						"title": "Name"
+					},
+					"ancestor": {
+						"title": "Ancestor"
+					}
+				}
+			}
+		},
 		"logout": {
 			"menu": "Logout"
 		}

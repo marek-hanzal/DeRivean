@@ -5,9 +5,9 @@ import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import CommonLayout from '../../../../component/CommonLayout';
-import {onPlayerPage} from '../../../../redux/player/page/payload/action';
-import {getPlayerPage} from '../../../../redux/player/page/payload/selector';
-import {isLoading} from '../../../../redux/player/page/status/selector';
+import {onEntityPage} from '../../../../redux/entity/page/payload/action';
+import {getEntityPage} from '../../../../redux/entity/page/payload/selector';
+import {isLoading} from '../../../../redux/entity/page/status/selector';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
 import Path from '../../router/Path';
@@ -17,7 +17,7 @@ class ListView extends React.Component {
 		/**
 		 * Fetch initial page and get overall paging data.
 		 */
-		this.props.onPlayerPage(0, 10);
+		this.props.onEntityPage(0, 10);
 	}
 
 	render() {
@@ -33,15 +33,15 @@ class ListView extends React.Component {
 			defaultPageSize: page.size,
 			showQuickJumper: true,
 			hideOnSinglePage: true,
-			onChange: (current, size) => this.props.onPlayerPage(current - 1, size),
+			onChange: (current, size) => this.props.onEntityPage(current - 1, size),
 		};
 
 		return (
 			<CommonLayout
-				title='root.player.list.title'
+				title='root.entity.list.title'
 				menu={<MainMenu
-					open={[Path.player.root]}
-					selected={[Path.player.list]}
+					open={[Path.entity.root]}
+					selected={[Path.entity.list]}
 				/>}
 				footer={<Footer/>}
 				breadcrumbs={[
@@ -51,14 +51,14 @@ class ListView extends React.Component {
 						href: Path.root,
 					},
 					{
-						id: Path.player.home,
-						title: 'root.player.home.breadcrumb',
-						href: Path.player.home,
+						id: Path.entity.home,
+						title: 'root.entity.home.breadcrumb',
+						href: Path.entity.home,
 						icon: <FundOutlined/>,
 					},
 					{
-						id: Path.player.list,
-						title: 'root.player.list.breadcrumb',
+						id: Path.entity.list,
+						title: 'root.entity.list.breadcrumb',
 						icon: <UnorderedListOutlined/>,
 					},
 				]}
@@ -70,8 +70,9 @@ class ListView extends React.Component {
 					loading={isLoading ? 100 : false}
 					pagination={pagination}
 				>
-					<Column title={t('root.player.list.table.id.title')} dataIndex='id'/>
-					<Column title={t('root.player.list.table.name.title')} dataIndex='name'/>
+					<Column title={t('root.entity.list.table.id.title')} dataIndex='id'/>
+					<Column title={t('root.entity.list.table.name.title')} dataIndex='name'/>
+					<Column title={t('root.entity.list.table.ancestor.title')} dataIndex={['ancestor', 'name']}/>
 				</Table>
 			</CommonLayout>
 		);
@@ -80,10 +81,10 @@ class ListView extends React.Component {
 
 export default connect(
 	state => ({
-		page: getPlayerPage(state),
+		page: getEntityPage(state),
 		isLoading: isLoading(state),
 	}),
 	dispatch => ({
-		onPlayerPage: (page, size = 100) => dispatch(onPlayerPage(page, size)),
+		onEntityPage: (page, size = 100) => dispatch(onEntityPage(page, size)),
 	})
 )(withTranslation()(ListView));

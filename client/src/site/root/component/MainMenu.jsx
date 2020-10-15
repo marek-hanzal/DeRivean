@@ -41,6 +41,21 @@ const MainMenu = (
 			</Menu.Item>
 		</Menu.SubMenu>
 		<Menu.Divider/>
+		<Menu.SubMenu key={Path.entity.root} title={<><BookOutlined/>{t('root.entity.menu')}</>}>
+			<Menu.Item key={Path.entity.home}>
+				<FundOutlined/>
+				<Link to={Path.entity.home}>{t('root.entity.home.menu')}</Link>
+			</Menu.Item>
+			<Menu.Item key={Path.entity.create}>
+				<FormOutlined/>
+				<Link to={Path.entity.create}>{t('root.entity.create.menu')}</Link>
+			</Menu.Item>
+			<Menu.Item key={Path.entity.list}>
+				<UnorderedListOutlined/>
+				<Link to={Path.entity.list}>{t('root.entity.list.menu')}</Link>
+			</Menu.Item>
+		</Menu.SubMenu>
+		<Menu.Divider/>
 		<Menu.Item key='root.logout' onClick={() => onLogout()}>
 			<PoweroffOutlined/>
 			{t('root.logout.menu')}
