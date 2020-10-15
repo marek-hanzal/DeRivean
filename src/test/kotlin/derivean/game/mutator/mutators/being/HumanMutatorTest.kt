@@ -12,7 +12,7 @@ class HumanMutatorTest {
 	@Test
 	fun `Basic mutation of an Entity`() {
 		val entity = Entity.build("Wind River")
-		assertEquals(0.0, entity.attributes.health())
+		assertEquals(1.0, entity.attributes.health())
 		HumanMutator().mutate(entity)
 		assertEquals(100.0, entity.attributes.health())
 		assertEquals(10.0, entity.attributes.strength(), "Strength is not set from Equipment or in different value.")
