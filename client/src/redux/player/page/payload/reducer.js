@@ -3,6 +3,11 @@ import {onPlayerPageSuccess} from './action';
 
 const payload = handleActions({
 	[onPlayerPageSuccess]: (state, {payload}) => payload,
-}, null);
+}, {
+	total: 0,
+	limit: 0,
+	size: 0,
+	items: [],
+});
 
 export default payload;

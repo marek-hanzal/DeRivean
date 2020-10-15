@@ -2,7 +2,6 @@ import Axios from 'axios';
 import buildUrl from 'build-url';
 import {createAction} from 'redux-actions';
 import {getPlayerPageHref} from '../../../discovery/payload/selector';
-import {onLoading} from '../../../loading/action';
 import {onPlayerPageStatus} from '../status/action';
 
 const
@@ -15,19 +14,16 @@ const
 				limit: size,
 			}
 		});
-		dispatch(onLoading(true));
 		dispatch(onPlayerPageStatus('LOADING'));
 		dispatch(onPlayerPageRequest());
 		Axios.get(href)
 			.then(response => {
 				dispatch(onPlayerPageSuccess(response.data));
 				dispatch(onPlayerPageStatus('SUCCESS'));
-				dispatch(onLoading(false));
 			})
 			.catch(error => {
 				dispatch(onPlayerPageFailure(error));
 				dispatch(onPlayerPageStatus('FAILURE'));
-				dispatch(onLoading(false));
 			});
 	};
 

@@ -6,6 +6,7 @@ import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import CommonLayout from '../../../../component/CommonLayout';
 import {onPlayerPage} from '../../../../redux/player/page/payload/action';
+import {getPlayerPage} from '../../../../redux/player/page/payload/selector';
 import {isLoading} from '../../../../redux/player/page/status/selector';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
@@ -16,33 +17,25 @@ class ListView extends React.Component {
 		/**
 		 * Fetch initial page and get overall paging data.
 		 */
-		this.props.onPlayerPage(0);
+		this.props.onPlayerPage(0, 10);
 	}
 
 	render() {
 		const {
 			t,
-			pages,
+			page,
 			isLoading,
 		} = this.props;
 
-		let pagination = {};
-
-		if (pages && !isLoading) {
-			console.log(pages);
-			pagination = {
-				total: pages.total,
-				pageSize: pages.limit,
-				defaultPageSize: pages.limit,
-				showQuickJumper: true,
-				showSizeChanger: false,
-				onChange: (page, pageSize) => {
-					this.props.onPlayerPage(page, pageSize);
-				},
-				onShowSizeChange: (current, size) => {
-				}
-			};
-		}
+		const pagination = {
+			total: page.total,
+			pageSize: page.size,
+			defaultPageSize: page.size,
+			showQuickJumper: true,
+			onChange: (current, size) => {
+				this.props.onPlayerPage(current - 1, size);
+			},
+		};
 
 		return (
 			<CommonLayout
@@ -72,21 +65,13 @@ class ListView extends React.Component {
 				]}
 			>
 				<Table
-					dataSource={[
-						{
-							key: '1323-453-45',
-							name: 'Hrac',
-						},
-						{
-							key: '143534-5345-345345',
-							name: 'Dalsi hrac',
-						},
-					]}
+					dataSource={page.items}
+					rowKey={record => record.id}
 					size={'small'}
-					loading={isLoading}
+					loading={isLoading ? 100 : false}
 					pagination={pagination}
 				>
-					<Column title={t('root.player.list.table.id.title')} dataIndex='key'/>
+					<Column title={t('root.player.list.table.id.title')} dataIndex='id'/>
 					<Column title={t('root.player.list.table.name.title')} dataIndex='name'/>
 				</Table>
 			</CommonLayout>
@@ -96,9 +81,10 @@ class ListView extends React.Component {
 
 export default connect(
 	state => ({
+		page: getPlayerPage(state),
 		isLoading: isLoading(state),
 	}),
 	dispatch => ({
-		onPlayerPage: page => dispatch(onPlayerPage(page)),
+		onPlayerPage: (page, size = 100) => dispatch(onPlayerPage(page, size)),
 	})
 )(withTranslation()(ListView));
