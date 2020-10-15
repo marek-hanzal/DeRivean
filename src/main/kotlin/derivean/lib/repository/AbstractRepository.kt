@@ -16,8 +16,8 @@ abstract class AbstractRepository<T : Entity<*>>(val entity: EntityClass<*, *>, 
 	override fun total() = entity.table.slice(entity.table.id).selectAll().count()
 
 	override fun page(page: Int, limit: Int, block: (T) -> Unit) {
-//		table.slice(table.id).selectAll().orderBy().forEach {
 		entity.all().limit(limit, page * limit).forEach {
+			@Suppress("UNCHECKED_CAST")
 			block(it as T)
 		}
 	}

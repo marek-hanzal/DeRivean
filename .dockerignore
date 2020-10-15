@@ -1,0 +1,6 @@
+.gradle
+build
+client/build
+client/node_modules
+*.db
+*.local*
