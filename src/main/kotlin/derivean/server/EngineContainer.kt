@@ -12,7 +12,6 @@ import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
 import derivean.server.entity.rest.EntityEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
-import derivean.server.entity.rest.EntityPagesEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
 import derivean.server.http.ClientHttpModule
 import derivean.server.http.DiscoveryHttpModule
@@ -21,7 +20,6 @@ import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerEndpoint
 import derivean.server.player.rest.PlayerFixturesEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint
-import derivean.server.player.rest.PlayerPagesEndpoint
 import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
@@ -46,7 +44,6 @@ object EngineContainer {
 		 * Player related stuff.
 		 */
 		register(PlayerHttpModule::class) { PlayerHttpModule(this) }
-		register(PlayerPagesEndpoint::class) { PlayerPagesEndpoint(this) }
 		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
 		register(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
@@ -54,7 +51,6 @@ object EngineContainer {
 		 * Entity related stuff.
 		 */
 		register(EntityHttpModule::class) { EntityHttpModule(this) }
-		register(EntityPagesEndpoint::class) { EntityPagesEndpoint(this) }
 		register(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
 		register(EntityEndpoint::class) { EntityEndpoint(this) }
 		/**

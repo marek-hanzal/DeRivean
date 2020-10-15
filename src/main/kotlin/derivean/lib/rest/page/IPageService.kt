@@ -13,11 +13,6 @@ typealias OrderByMap = Map<String?, OrderByPair>
  * Service used for (clever) paging support over collections.
  */
 interface IPageService {
-	/**
-	 * Response with Pages info object.
-	 */
-	suspend fun pages(call: ApplicationCall, repository: IRepository<*>)
-
 	suspend fun page(call: ApplicationCall, repository: IRepository<*>, mapper: IMapper<Any, out Any>)
 
 	/**

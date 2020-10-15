@@ -5,14 +5,12 @@ import derivean.lib.server.AbstractHttpModule
 import derivean.server.player.rest.PlayerEndpoint
 import derivean.server.player.rest.PlayerFixturesEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint
-import derivean.server.player.rest.PlayerPagesEndpoint
 import io.ktor.routing.*
 
 class PlayerHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		install(
 			routing,
-			PlayerPagesEndpoint::class,
 			PlayerPageEndpoint::class,
 			PlayerEndpoint::class,
 			PlayerFixturesEndpoint::class,
