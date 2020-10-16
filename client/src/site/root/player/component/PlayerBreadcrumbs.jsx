@@ -1,4 +1,4 @@
-import {Route, Switch} from "react-router";
+import {Route} from "react-router";
 import Breadcrumb from "antd/lib/breadcrumb";
 import RootPath from "../../router/RootPath";
 import {Link} from "react-router-dom";
@@ -8,7 +8,7 @@ import {withTranslation} from "react-i18next";
 import PlayerPath from "../router/PlayerPath";
 
 const PlayerBreadcrumbs = ({t}) =>
-	<Switch>
+	<>
 		<Route exact={true} path={PlayerPath.home}>
 			<Breadcrumb>
 				<Breadcrumb.Item key={RootPath.root}>
@@ -45,7 +45,7 @@ const PlayerBreadcrumbs = ({t}) =>
 				</Breadcrumb.Item>
 			</Breadcrumb>
 		</Route>
-	</Switch>
+	</>
 ;
 
 export default withTranslation()(PlayerBreadcrumbs);

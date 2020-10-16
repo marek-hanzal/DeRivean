@@ -11,4 +11,4 @@ const HomeView = () =>
 	</RootView>
 ;
 
-export default HomeView
+export default HomeView;
