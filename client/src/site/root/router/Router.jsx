@@ -1,15 +1,17 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { default as EntityPath } from '../entity/router/Path';
+import { default as EntityRouter } from '../entity/router/Router';
+import { default as PlayerPath } from '../player/router/Path';
+import { default as PlayerRouter } from '../player/router/Router';
 import HomeView from '../view/HomeView';
-import EntityRouter from './EntityRouter';
 import Path from './Path';
-import PlayerRouter from './PlayerRouter';
 
 const Router = () =>
 	<>
-		<Route exact path="/" component={HomeView}/>
-		<Route path={Path.player.root} component={PlayerRouter}/>
-		<Route path={Path.entity.root} component={EntityRouter}/>
+		<Route exact path={Path.root} component={HomeView}/>
+		<Route path={PlayerPath.root} component={PlayerRouter}/>
+		<Route path={EntityPath.root} component={EntityRouter}/>
 	</>
 ;
 
