@@ -7,10 +7,15 @@
 		"client": {
 			"title": "Client Error",
 			"body": "Cannot load Client configuration, server is probably dead."
+		},
+		"not-found": {
+			"title": "Not Found!",
+			"body": "Yay, this page does not exists, really :(."
 		}
 	},
 	"common": {
-		"refresh": "Refresh"
+		"refresh": "Refresh",
+		"homepage": "Go to Homepage"
 	},
 	"internal": {
 		"spinner": "Making some hard magick to make things work!",
