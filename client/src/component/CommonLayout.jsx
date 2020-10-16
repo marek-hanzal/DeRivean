@@ -48,8 +48,9 @@ const CommonLayout = (
 					children={menu}
 				/>
 				<Layout.Content style={{minHeight: '100vh', marginLeft: isCollapsed ? 80 : 220}}>
-					{breadcrumbs}
-					<PageHeader title={t(title)} subTitle={'subtitle'}/>
+					<PageHeader title={t(title)} subTitle={'subtitle'}>
+						{breadcrumbs}
+					</PageHeader>
 					<Card children={children}/>
 				</Layout.Content>
 			</Layout>
