@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from "react-router";
+import {Route} from "react-router";
 import {default as EntityPath} from "../router/Path";
 import BaseMenu from "../../../../component/BaseMenu";
 import {Menu} from "antd";
@@ -12,21 +12,14 @@ const EntityMenu = (
 	{
 		t,
 	}) =>
-	<Switch>
-		<Route path={EntityPath.root}>
-			<BaseMenu
-				style={{
-					minHeight: '100vh',
-				}}
-			>
-				<Menu.Item key={Path.root}>
-					<HomeOutlined/>
-					<Link to={Path.root}>{t('root.home.menu')}</Link>
-				</Menu.Item>
-				<Menu.Divider/>
-			</BaseMenu>
-		</Route>
-	</Switch>
+	<Route path={EntityPath.root}>
+		<BaseMenu>
+			<Menu.Item key={Path.root} icon={<HomeOutlined/>}>
+				<Link to={Path.root}>{t('root.home.menu')}</Link>
+			</Menu.Item>
+			<Menu.Divider/>
+		</BaseMenu>
+	</Route>
 ;
 
 export default withTranslation()(EntityMenu);
