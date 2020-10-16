@@ -3,13 +3,11 @@ import Column from 'antd/lib/table/Column';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
-import CommonLayout from '../../../../component/CommonLayout';
 import {onEntityPage} from '../../../../redux/entity/page/payload/action';
 import {getEntityPage} from '../../../../redux/entity/page/payload/selector';
 import {isLoading} from '../../../../redux/entity/page/status/selector';
-import Footer from '../../component/Footer';
-import MainMenu from '../../component/MainMenu';
 import EntityPath from "../router/EntityPath";
+import RootView from "../../component/RootView";
 
 class ListView extends React.Component {
 	componentDidMount() {
@@ -36,31 +34,10 @@ class ListView extends React.Component {
 		};
 
 		return (
-			<CommonLayout
+			<RootView
 				title='root.entity.list.title'
-				menu={<MainMenu
-					open={[EntityPath.root]}
-					selected={[EntityPath.list]}
-				/>}
-				footer={<Footer/>}
-				// breadcrumbs={[
-				// 	{
-				// 		id: 'root.home',
-				// 		icon: <HomeOutlined/>,
-				// 		href: Path.root,
-				// 	},
-				// 	{
-				// 		id: Path.home,
-				// 		title: 'root.entity.home.breadcrumb',
-				// 		href: Path.home,
-				// 		icon: <FundOutlined/>,
-				// 	},
-				// 	{
-				// 		id: Path.list,
-				// 		title: 'root.entity.list.breadcrumb',
-				// 		icon: <UnorderedListOutlined/>,
-				// 	},
-				// ]}
+				open={[EntityPath.root]}
+				selected={[EntityPath.list]}
 			>
 				<Table
 					dataSource={page.items}
@@ -72,7 +49,7 @@ class ListView extends React.Component {
 					<Column title={t('root.entity.list.table.name.title')} dataIndex='name'/>
 					<Column title={t('root.entity.list.table.ancestor.title')} dataIndex={['ancestor', 'name']}/>
 				</Table>
-			</CommonLayout>
+			</RootView>
 		);
 	}
 }
