@@ -1,5 +1,7 @@
 const PublicPath = {
-	root: '/'
+	root: '/',
+	registration: '/sign-up',
+	login: '/sign-in',
 };
 
 export default PublicPath;

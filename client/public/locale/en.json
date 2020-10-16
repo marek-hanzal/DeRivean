@@ -21,6 +21,12 @@
 		"home": {
 			"title": "Welcome to DeRivean!",
 			"menu": "Home"
+		},
+		"registration": {
+			"menu": "Sign-up"
+		},
+		"login": {
+			"menu": "Sing-in"
 		}
 	},
 	"internal": {

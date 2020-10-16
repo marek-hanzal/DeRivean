@@ -1,4 +1,4 @@
-import {HomeOutlined} from '@ant-design/icons';
+import {CarryOutOutlined, HomeOutlined, LoginOutlined} from '@ant-design/icons';
 import {Menu} from 'antd';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
@@ -14,6 +14,13 @@ const MainMenu = (
 	<BaseMenu>
 		<Menu.Item key={PublicPath.root} icon={<HomeOutlined/>}>
 			<Link to={PublicPath.root}>{t('public.home.menu')}</Link>
+		</Menu.Item>
+		<Menu.Divider/>
+		<Menu.Item key={PublicPath.registration} icon={<CarryOutOutlined/>}>
+			<Link to={PublicPath.registration}>{t('public.registration.menu')}</Link>
+		</Menu.Item>
+		<Menu.Item key={PublicPath.login} icon={<LoginOutlined/>}>
+			<Link to={PublicPath.login}>{t('public.login.menu')}</Link>
 		</Menu.Item>
 	</BaseMenu>
 ;
