@@ -10,8 +10,8 @@ const CreateView = ({t}) =>
 	<CommonLayout
 		title='root.player.create.title'
 		menu={<MainMenu
-			open={[Path.player.root]}
-			selected={[Path.player.create]}
+			open={[Path.root]}
+			selected={[Path.create]}
 		/>}
 		footer={<Footer/>}
 		breadcrumbs={[
@@ -21,13 +21,13 @@ const CreateView = ({t}) =>
 				href: Path.root,
 			},
 			{
-				id: Path.player.home,
+				id: Path.home,
 				title: 'root.player.home.breadcrumb',
-				href: Path.player.home,
+				href: Path.home,
 				icon: <FundOutlined/>,
 			},
 			{
-				id: Path.player.create,
+				id: Path.create,
 				title: 'root.player.create.breadcrumb',
 				icon: <FormOutlined/>,
 			},

@@ -10,8 +10,8 @@ const HomeView = ({t}) =>
 	<CommonLayout
 		title='root.player.home.title'
 		menu={<MainMenu
-			open={[Path.player.root]}
-			selected={[Path.player.home]}
+			open={[Path.root]}
+			selected={[Path.home]}
 		/>}
 		footer={<Footer/>}
 		breadcrumbs={[
@@ -21,7 +21,7 @@ const HomeView = ({t}) =>
 				href: Path.root,
 			},
 			{
-				id: Path.player.home,
+				id: Path.home,
 				title: 'root.player.home.breadcrumb',
 				icon: <FundOutlined/>,
 			},

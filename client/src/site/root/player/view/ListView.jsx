@@ -40,8 +40,8 @@ class ListView extends React.Component {
 			<CommonLayout
 				title='root.player.list.title'
 				menu={<MainMenu
-					open={[Path.player.root]}
-					selected={[Path.player.list]}
+					open={[Path.root]}
+					selected={[Path.list]}
 				/>}
 				footer={<Footer/>}
 				breadcrumbs={[
@@ -51,13 +51,13 @@ class ListView extends React.Component {
 						href: Path.root,
 					},
 					{
-						id: Path.player.home,
+						id: Path.home,
 						title: 'root.player.home.breadcrumb',
-						href: Path.player.home,
+						href: Path.home,
 						icon: <FundOutlined/>,
 					},
 					{
-						id: Path.player.list,
+						id: Path.list,
 						title: 'root.player.list.breadcrumb',
 						icon: <UnorderedListOutlined/>,
 					},

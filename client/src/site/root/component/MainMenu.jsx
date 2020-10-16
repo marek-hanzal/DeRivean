@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../../component/BaseMenu';
 import Path from '../router/Path';
+import {default as PlayerPath} from '../player/router/Path';
+import {default as EntityPath} from '../entity/router/Path';
 
 const MainMenu = (
 	{
@@ -26,33 +28,33 @@ const MainMenu = (
 			<Link to={Path.root}>{t('root.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		<Menu.SubMenu key={Path.player.root} title={<><BookOutlined/>{t('root.player.menu')}</>}>
-			<Menu.Item key={Path.player.home}>
+		<Menu.SubMenu key={PlayerPath.root} title={<><BookOutlined/>{t('root.player.menu')}</>}>
+			<Menu.Item key={PlayerPath.home}>
 				<FundOutlined/>
-				<Link to={Path.player.home}>{t('root.player.home.menu')}</Link>
+				<Link to={PlayerPath.home}>{t('root.player.home.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={Path.player.create}>
+			<Menu.Item key={PlayerPath.create}>
 				<FormOutlined/>
-				<Link to={Path.player.create}>{t('root.player.create.menu')}</Link>
+				<Link to={PlayerPath.create}>{t('root.player.create.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={Path.player.list}>
+			<Menu.Item key={PlayerPath.list}>
 				<UnorderedListOutlined/>
-				<Link to={Path.player.list}>{t('root.player.list.menu')}</Link>
+				<Link to={PlayerPath.list}>{t('root.player.list.menu')}</Link>
 			</Menu.Item>
 		</Menu.SubMenu>
 		<Menu.Divider/>
-		<Menu.SubMenu key={Path.entity.root} title={<><BookOutlined/>{t('root.entity.menu')}</>}>
-			<Menu.Item key={Path.entity.home}>
+		<Menu.SubMenu key={EntityPath.root} title={<><BookOutlined/>{t('root.entity.menu')}</>}>
+			<Menu.Item key={EntityPath.home}>
 				<FundOutlined/>
-				<Link to={Path.entity.home}>{t('root.entity.home.menu')}</Link>
+				<Link to={EntityPath.home}>{t('root.entity.home.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={Path.entity.create}>
+			<Menu.Item key={EntityPath.create}>
 				<FormOutlined/>
-				<Link to={Path.entity.create}>{t('root.entity.create.menu')}</Link>
+				<Link to={EntityPath.create}>{t('root.entity.create.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={Path.entity.list}>
+			<Menu.Item key={EntityPath.list}>
 				<UnorderedListOutlined/>
-				<Link to={Path.entity.list}>{t('root.entity.list.menu')}</Link>
+				<Link to={EntityPath.list}>{t('root.entity.list.menu')}</Link>
 			</Menu.Item>
 		</Menu.SubMenu>
 		<Menu.Divider/>

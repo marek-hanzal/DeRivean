@@ -1,10 +1,6 @@
-import {
-	FormOutlined,
-	FundOutlined,
-	HomeOutlined
-} from '@ant-design/icons';
+import {FormOutlined, FundOutlined, HomeOutlined} from '@ant-design/icons';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../../../component/CommonLayout';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
@@ -14,8 +10,8 @@ const CreateView = ({t}) =>
 	<CommonLayout
 		title='root.entity.create.title'
 		menu={<MainMenu
-			open={[Path.entity.root]}
-			selected={[Path.entity.create]}
+			open={[Path.root]}
+			selected={[Path.create]}
 		/>}
 		footer={<Footer/>}
 		breadcrumbs={[
@@ -25,13 +21,13 @@ const CreateView = ({t}) =>
 				href: Path.root,
 			},
 			{
-				id: Path.entity.home,
+				id: Path.home,
 				title: 'root.entity.home.breadcrumb',
-				href: Path.entity.home,
+				href: Path.home,
 				icon: <FundOutlined/>,
 			},
 			{
-				id: Path.entity.create,
+				id: Path.create,
 				title: 'root.entity.create.breadcrumb',
 				icon: <FormOutlined/>,
 			},

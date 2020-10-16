@@ -1,9 +1,6 @@
-import {
-	FundOutlined,
-	HomeOutlined
-} from '@ant-design/icons';
+import {FundOutlined, HomeOutlined} from '@ant-design/icons';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../../../component/CommonLayout';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
@@ -13,8 +10,8 @@ const HomeView = ({t}) =>
 	<CommonLayout
 		title='root.entity.home.title'
 		menu={<MainMenu
-			open={[Path.entity.root]}
-			selected={[Path.entity.home]}
+			open={[Path.root]}
+			selected={[Path.home]}
 		/>}
 		footer={<Footer/>}
 		breadcrumbs={[
@@ -24,7 +21,7 @@ const HomeView = ({t}) =>
 				href: Path.root,
 			},
 			{
-				id: Path.entity.home,
+				id: Path.home,
 				title: 'root.entity.home.breadcrumb',
 				icon: <FundOutlined/>,
 			},
