@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {isLoading} from '../redux/loading/selector';
 import {onMenuCollapse} from '../redux/menu/collapse/action';
 import {isMenuCollapsed} from '../redux/menu/collapse/selector';
-import Breadcrumbs from './Breadcrumbs';
 
 const CommonLayout = (
 	{
@@ -55,7 +54,7 @@ const CommonLayout = (
 			}}>
 				<Row type='flex' justify='center'>
 					<Col span={23}>
-						<Breadcrumbs breadcrumbs={breadcrumbs}/>
+						{/*<Breadcrumbs breadcrumbs={breadcrumbs}/>*/}
 						<Layout.Content style={{minHeight: '100vh'}}>
 							<Row type='flex' justify='center'>
 								<Col {...spans}>
