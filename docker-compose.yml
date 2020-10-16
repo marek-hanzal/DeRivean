@@ -6,7 +6,6 @@ services:
         hostname: derivean
         container_name: derivean
         environment:
-            #            HTTP_HOST=
             - DATABASE_URL="jdbc:postgresql://postgres:5432/derivean"
             - DATABASE_USER="postgres"
             - DATABASE_PASSWORD="1234"
