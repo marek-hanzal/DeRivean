@@ -3,11 +3,11 @@ import EntityMenu from "../entity/component/EntityMenu";
 import RootMenu from "./RootMenu";
 import PlayerMenu from "../player/component/PlayerMenu";
 
-const MainMenu = () =>
+const MainMenu = (props) =>
 	<>
-		<PlayerMenu/>
-		<EntityMenu/>
-		<RootMenu/>
+		<PlayerMenu {...props}/>
+		<EntityMenu {...props}/>
+		<RootMenu {...props}/>
 	</>
 ;
 

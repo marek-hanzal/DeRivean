@@ -17,11 +17,11 @@ const RootMenu = (
 	}) =>
 	<Route exact={true} path={RootPath.root}>
 		<BaseMenu>
-			<Menu.Item key={PlayerPath.root} icon={<MehOutlined/>}>
-				<Link to={PlayerPath.root}>{t('root.player.menu')}</Link>
+			<Menu.Item key={PlayerPath.home} icon={<MehOutlined/>}>
+				<Link to={PlayerPath.home}>{t('root.player.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={EntityPath.root} icon={<RobotOutlined/>}>
-				<Link to={EntityPath.root}>{t('root.entity.menu')}</Link>
+			<Menu.Item key={EntityPath.home} icon={<RobotOutlined/>}>
+				<Link to={EntityPath.home}>{t('root.entity.menu')}</Link>
 			</Menu.Item>
 			<Menu.Divider/>
 			<Menu.Item key='root.logout' onClick={() => onLogout()} icon={<PoweroffOutlined/>}>

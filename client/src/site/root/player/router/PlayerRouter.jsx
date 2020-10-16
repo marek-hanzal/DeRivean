@@ -1,15 +1,15 @@
 import React from 'react';
-import {Route} from 'react-router';
+import {Route, Switch} from 'react-router';
 import CreateView from '../view/CreateView';
 import HomeView from '../view/HomeView';
 import ListView from '../view/ListView';
 import PlayerPath from "./PlayerPath";
 
 const PlayerRouter = () =>
-	<>
-		<Route exact={true} path={PlayerPath.root} component={HomeView}/>
+	<Switch>
+		<Route exact={true} path={PlayerPath.home} component={HomeView}/>
 		<Route path={PlayerPath.create} component={CreateView}/>
 		<Route path={PlayerPath.list} component={ListView}/>
-	</>
+	</Switch>
 ;
 export default PlayerRouter;

@@ -10,6 +10,7 @@ import {isLoading} from '../../../../redux/player/page/status/selector';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
 import RootPath from "../../router/RootPath";
+import PlayerPath from "../router/PlayerPath";
 
 class ListView extends React.Component {
 	componentDidMount() {
@@ -40,7 +41,7 @@ class ListView extends React.Component {
 				title='root.player.list.title'
 				menu={<MainMenu
 					open={[RootPath.root]}
-					selected={[RootPath.list]}
+					selected={[PlayerPath.list]}
 				/>}
 				footer={<Footer/>}
 				// breadcrumbs={[

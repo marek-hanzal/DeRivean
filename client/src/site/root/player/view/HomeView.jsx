@@ -1,11 +1,10 @@
 import React from 'react';
-import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../../../component/CommonLayout';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
 import PlayerPath from "../router/PlayerPath";
 
-const HomeView = ({t}) =>
+const HomeView = () =>
 	<CommonLayout
 		title='root.player.home.title'
 		menu={<MainMenu
@@ -29,4 +28,4 @@ const HomeView = ({t}) =>
 	</CommonLayout>
 ;
 
-export default withTranslation()(HomeView);
+export default HomeView;

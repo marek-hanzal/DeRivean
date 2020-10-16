@@ -8,15 +8,15 @@ import {Route} from "react-router";
 import React from "react";
 import PlayerPath from "../router/PlayerPath";
 
-const PlayerMenu = ({t}) =>
+const PlayerMenu = ({t, ...props}) =>
 	<Route path={PlayerPath.root}>
-		<BaseMenu>
+		<BaseMenu {...props}>
 			<Menu.Item key={RootPath.root} icon={<HomeOutlined/>}>
 				<Link to={RootPath.root}>{t('root.home.menu')}</Link>
 			</Menu.Item>
 			<Menu.Divider/>
-			<Menu.Item key={PlayerPath.root} icon={<FundOutlined/>}>
-				<Link to={PlayerPath.root}>{t('root.player.home.menu')}</Link>
+			<Menu.Item key={PlayerPath.home} icon={<FundOutlined/>}>
+				<Link to={PlayerPath.home}>{t('root.player.home.menu')}</Link>
 			</Menu.Item>
 			<Menu.Item key={PlayerPath.create} icon={<FormOutlined/>}>
 				<Link to={PlayerPath.create}>{t('root.player.create.menu')}</Link>
