@@ -5,11 +5,11 @@ import HomeView from '../view/HomeView';
 import ListView from '../view/ListView';
 import EntityPath from "./EntityPath";
 
-const Router = () =>
+const EntityRouter = () =>
 	<>
 		<Route path={EntityPath.home} component={HomeView}/>
 		<Route path={EntityPath.create} component={CreateView}/>
 		<Route path={EntityPath.list} component={ListView}/>
 	</>
 ;
-export default Router;
+export default EntityRouter;

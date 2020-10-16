@@ -3,10 +3,10 @@ import {Route} from 'react-router-dom';
 import HomeView from '../view/HomeView';
 import InternalPath from "./InternalPath";
 
-const Router = () =>
+const InternalRouter = () =>
 	<>
 		<Route exact path={InternalPath.root} component={HomeView}/>
 	</>
 ;
 
-export default Router;
+export default InternalRouter;

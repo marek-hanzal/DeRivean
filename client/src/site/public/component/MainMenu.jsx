@@ -5,7 +5,7 @@ import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../../component/BaseMenu';
-import PublicPath from "../router/Path";
+import PublicPath from "../router/PublicPath";
 
 const MainMenu = (
 	{

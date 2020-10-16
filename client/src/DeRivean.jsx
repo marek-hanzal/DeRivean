@@ -5,9 +5,9 @@ import {Route, Switch} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
 import Client from './component/Config';
 import Discovery from './component/Discovery';
-import {default as InternalRouter} from './site/internal/router/Router';
-import {default as PublicRouter} from './site/public/router/Router';
-import {default as RootRouter} from './site/root/router/Router';
+import InternalRouter from './site/internal/router/InternalRouter';
+import PublicRouter from './site/public/router/PublicRouter';
+import RootRouter from './site/root/router/RootRouter';
 import LoaderView from './view/LoaderView';
 import NotFoundView from './view/NotFoundView';
 
