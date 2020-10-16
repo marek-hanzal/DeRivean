@@ -5,25 +5,16 @@ import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../../component/BaseMenu';
-import Path from '../router/Path';
+import InternalPath from "../router/InternalPath";
 
 const MainMenu = (
 	{
-		open = [],
-		selected = [],
 		onLogout,
 		t
 	}) =>
-	<BaseMenu
-		open={open}
-		selected={selected}
-		style={{
-			height: '100vh',
-		}}
-	>
-		<Menu.Item key={Path.ROOT}>
-			<HomeOutlined/>
-			<Link to={Path.ROOT}>{t('internal.home.menu')}</Link>
+	<BaseMenu>
+		<Menu.Item key={InternalPath.root} icon={<HomeOutlined/>}>
+			<Link to={InternalPath.root}>{t('internal.home.menu')}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
 		{/*<Menu.SubMenu key={InvoicePath.ROOT} title={<><BookOutlined/>{t('internal.invoice.menu')}</>}>*/}
@@ -41,8 +32,7 @@ const MainMenu = (
 		{/*	</Menu.Item>*/}
 		{/*</Menu.SubMenu>*/}
 		<Menu.Divider/>
-		<Menu.Item key='internal.logout' onClick={() => onLogout()}>
-			<PoweroffOutlined/>
+		<Menu.Item key='internal.logout' onClick={() => onLogout()} icon={<PoweroffOutlined/>}>
 			{t('internal.logout.menu')}
 		</Menu.Item>
 	</BaseMenu>
@@ -50,5 +40,9 @@ const MainMenu = (
 
 export default connect(
 	state => ({}),
-	dispatch => ({})
+	dispatch => ({
+		onLogout: () => {
+			alert('logout!');
+		}
+	})
 )(withTranslation()(MainMenu));

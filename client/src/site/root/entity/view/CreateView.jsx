@@ -1,37 +1,36 @@
-import {FormOutlined, FundOutlined, HomeOutlined} from '@ant-design/icons';
 import React from 'react';
 import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../../../component/CommonLayout';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
-import Path from '../../router/Path';
+import EntityPath from "../router/EntityPath";
 
 const CreateView = ({t}) =>
 	<CommonLayout
 		title='root.entity.create.title'
 		menu={<MainMenu
-			open={[Path.root]}
-			selected={[Path.create]}
+			open={[EntityPath.root]}
+			selected={[EntityPath.create]}
 		/>}
 		footer={<Footer/>}
-		breadcrumbs={[
-			{
-				id: 'root.home',
-				icon: <HomeOutlined/>,
-				href: Path.root,
-			},
-			{
-				id: Path.home,
-				title: 'root.entity.home.breadcrumb',
-				href: Path.home,
-				icon: <FundOutlined/>,
-			},
-			{
-				id: Path.create,
-				title: 'root.entity.create.breadcrumb',
-				icon: <FormOutlined/>,
-			},
-		]}
+		// breadcrumbs={[
+		// 	{
+		// 		id: 'root.home',
+		// 		icon: <HomeOutlined/>,
+		// 		href: Path.root,
+		// 	},
+		// 	{
+		// 		id: Path.home,
+		// 		title: 'root.entity.home.breadcrumb',
+		// 		href: Path.home,
+		// 		icon: <FundOutlined/>,
+		// 	},
+		// 	{
+		// 		id: Path.create,
+		// 		title: 'root.entity.create.breadcrumb',
+		// 		icon: <FormOutlined/>,
+		// 	},
+		// ]}
 	>
 	</CommonLayout>
 ;

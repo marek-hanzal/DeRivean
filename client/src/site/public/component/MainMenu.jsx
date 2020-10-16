@@ -5,24 +5,15 @@ import {withTranslation} from 'react-i18next';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import BaseMenu from '../../../component/BaseMenu';
-import Path from '../router/Path';
+import PublicPath from "../router/Path";
 
 const MainMenu = (
 	{
-		open = [],
-		selected = [],
 		t,
 	}) =>
-	<BaseMenu
-		open={open}
-		selected={selected}
-		style={{
-			height: '100vh',
-		}}
-	>
-		<Menu.Item key={Path.ROOT}>
-			<HomeOutlined/>
-			<Link to={Path.ROOT}>{t('public.home.menu')}</Link>
+	<BaseMenu>
+		<Menu.Item key={PublicPath.root} icon={<HomeOutlined/>}>
+			<Link to={PublicPath.root}>{t('public.home.menu')}</Link>
 		</Menu.Item>
 	</BaseMenu>
 ;

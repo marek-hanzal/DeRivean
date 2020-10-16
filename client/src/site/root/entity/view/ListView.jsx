@@ -1,4 +1,3 @@
-import {FundOutlined, HomeOutlined, UnorderedListOutlined} from '@ant-design/icons';
 import Table from 'antd/lib/table';
 import Column from 'antd/lib/table/Column';
 import React from 'react';
@@ -10,7 +9,7 @@ import {getEntityPage} from '../../../../redux/entity/page/payload/selector';
 import {isLoading} from '../../../../redux/entity/page/status/selector';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
-import Path from '../../router/Path';
+import EntityPath from "../router/EntityPath";
 
 class ListView extends React.Component {
 	componentDidMount() {
@@ -40,28 +39,28 @@ class ListView extends React.Component {
 			<CommonLayout
 				title='root.entity.list.title'
 				menu={<MainMenu
-					open={[Path.root]}
-					selected={[Path.list]}
+					open={[EntityPath.root]}
+					selected={[EntityPath.list]}
 				/>}
 				footer={<Footer/>}
-				breadcrumbs={[
-					{
-						id: 'root.home',
-						icon: <HomeOutlined/>,
-						href: Path.root,
-					},
-					{
-						id: Path.home,
-						title: 'root.entity.home.breadcrumb',
-						href: Path.home,
-						icon: <FundOutlined/>,
-					},
-					{
-						id: Path.list,
-						title: 'root.entity.list.breadcrumb',
-						icon: <UnorderedListOutlined/>,
-					},
-				]}
+				// breadcrumbs={[
+				// 	{
+				// 		id: 'root.home',
+				// 		icon: <HomeOutlined/>,
+				// 		href: Path.root,
+				// 	},
+				// 	{
+				// 		id: Path.home,
+				// 		title: 'root.entity.home.breadcrumb',
+				// 		href: Path.home,
+				// 		icon: <FundOutlined/>,
+				// 	},
+				// 	{
+				// 		id: Path.list,
+				// 		title: 'root.entity.list.breadcrumb',
+				// 		icon: <UnorderedListOutlined/>,
+				// 	},
+				// ]}
 			>
 				<Table
 					dataSource={page.items}

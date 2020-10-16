@@ -1,33 +1,31 @@
-import {FundOutlined, HomeOutlined} from '@ant-design/icons';
 import React from 'react';
-import {withTranslation} from 'react-i18next';
 import CommonLayout from '../../../../component/CommonLayout';
 import Footer from '../../component/Footer';
 import MainMenu from '../../component/MainMenu';
-import Path from '../../router/Path';
+import EntityPath from "../router/EntityPath";
 
-const HomeView = ({t}) =>
+const HomeView = () =>
 	<CommonLayout
 		title='root.entity.home.title'
 		menu={<MainMenu
-			open={[Path.root]}
-			selected={[Path.home]}
+			open={[EntityPath.root]}
+			selected={[EntityPath.home]}
 		/>}
 		footer={<Footer/>}
-		breadcrumbs={[
-			{
-				id: 'root.home',
-				icon: <HomeOutlined/>,
-				href: Path.root,
-			},
-			{
-				id: Path.home,
-				title: 'root.entity.home.breadcrumb',
-				icon: <FundOutlined/>,
-			},
-		]}
+		// breadcrumbs={[
+		// 	{
+		// 		id: 'root.home',
+		// 		icon: <HomeOutlined/>,
+		// 		href: Path.root,
+		// 	},
+		// 	{
+		// 		id: Path.home,
+		// 		title: 'root.entity.home.breadcrumb',
+		// 		icon: <FundOutlined/>,
+		// 	},
+		// ]}
 	>
 	</CommonLayout>
 ;
 
-export default withTranslation()(HomeView);
+export default HomeView

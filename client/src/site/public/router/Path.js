@@ -1,5 +1,5 @@
-const Path = {
-	ROOT: '/'
+const PublicPath = {
+	root: '/'
 };
 
-export default Path;
+export default PublicPath;

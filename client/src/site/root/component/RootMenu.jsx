@@ -1,23 +1,23 @@
 import React from 'react';
 import {Route} from "react-router";
-import Path from "../router/Path";
+import RootPath from "../router/RootPath";
 import {Menu} from "antd";
 import {HomeOutlined, MehOutlined, PoweroffOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
-import {default as PlayerPath} from "../player/router/Path";
 import BaseMenu from "../../../component/BaseMenu";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
+import PlayerPath from "../player/router/PlayerPath";
 
 const RootMenu = (
 	{
 		t,
 		onLogout,
 	}) =>
-	<Route exact={true} path={Path.root}>
+	<Route exact={true} path={RootPath.root}>
 		<BaseMenu>
-			<Menu.Item key={Path.root} icon={<HomeOutlined/>}>
-				<Link to={Path.root}>{t('root.home.menu')}</Link>
+			<Menu.Item key={RootPath.root} icon={<HomeOutlined/>}>
+				<Link to={RootPath.root}>{t('root.home.menu')}</Link>
 			</Menu.Item>
 			<Menu.Divider/>
 			<Menu.Item key={PlayerPath.root} icon={<MehOutlined/>}>
