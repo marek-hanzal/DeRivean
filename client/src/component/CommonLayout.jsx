@@ -31,6 +31,7 @@ const CommonLayout = (
 		<Layout style={{minHeight: '100vh'}}>
 			<Layout.Sider
 				collapsible
+				collapsed={isCollapsed}
 				defaultCollapsed={isCollapsed}
 				onCollapse={onCollapse}
 				width={220}
@@ -41,10 +42,8 @@ const CommonLayout = (
 					backgroundColor: 'rgb(240, 242, 245)',
 					left: 0,
 				}}
-			>
-				{menu}
-				{/*<Menu open={isCollapsed ? [] : open} selected={selected}/>*/}
-			</Layout.Sider>
+				children={menu}
+			/>
 			<Layout style={isCollapsed ? {
 				marginLeft: 80,
 				transition: 'all 0.2s'
@@ -59,9 +58,7 @@ const CommonLayout = (
 							<Row type='flex' justify='center'>
 								<Col {...spans}>
 									<PageHeader title={t(title)} subTitle={'subtitle'}/>
-									<Card>
-										{children}
-									</Card>
+									<Card children={children}/>
 								</Col>
 							</Row>
 						</Layout.Content>

@@ -22,9 +22,8 @@ const BaseMenu = (
 		style={{
 			height: '100vh',
 		}}
-	>
-		{children}
-	</Menu>
+		children={children}
+	/>
 ;
 
 export default connect(
