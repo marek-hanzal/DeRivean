@@ -6,11 +6,11 @@ services:
         hostname: derivean
         container_name: derivean
         environment:
-            - DATABASE_URL="jdbc:postgresql://postgres:5432/derivean"
-            - DATABASE_USER="postgres"
-            - DATABASE_PASSWORD="1234"
+            - DATABASE_URL=jdbc:postgresql://postgres:5432/derivean
+            - DATABASE_USER=postgres
+            - DATABASE_PASSWORD=1234
         ports:
-            - "8081:8080"
+            - "8080:8080"
         networks:
             # docker network create common --attachable
             - common

@@ -5,6 +5,7 @@ build
 client/build
 client/node_modules
 gradle
+src/main/resources/client
 *.db
 *.local*
 *.log

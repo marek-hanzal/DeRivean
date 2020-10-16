@@ -5,12 +5,18 @@
     <HTMLCodeStyleSettings>
       <option name="HTML_DO_NOT_INDENT_CHILDREN_OF" value="" />
     </HTMLCodeStyleSettings>
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
     <codeStyleSettings language="HOCON">
       <indentOptions>
         <option name="INDENT_SIZE" value="4" />
         <option name="CONTINUATION_INDENT_SIZE" value="4" />
         <option name="TAB_SIZE" value="4" />
       </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
     </codeStyleSettings>
   </code_scheme>
 </component>

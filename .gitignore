@@ -1,5 +1,6 @@
 .gradle
 build
+src/main/resources/client
 *.log
 *.db
 *.local*
