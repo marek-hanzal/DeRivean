@@ -2,12 +2,13 @@ import React from 'react';
 import {Route} from "react-router";
 import RootPath from "../router/RootPath";
 import {Menu} from "antd";
-import {HomeOutlined, MehOutlined, PoweroffOutlined} from "@ant-design/icons";
+import {MehOutlined, PoweroffOutlined, RobotOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 import BaseMenu from "../../../component/BaseMenu";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import PlayerPath from "../player/router/PlayerPath";
+import EntityPath from "../entity/router/EntityPath";
 
 const RootMenu = (
 	{
@@ -16,24 +17,12 @@ const RootMenu = (
 	}) =>
 	<Route exact={true} path={RootPath.root}>
 		<BaseMenu>
-			<Menu.Item key={RootPath.root} icon={<HomeOutlined/>}>
-				<Link to={RootPath.root}>{t('root.home.menu')}</Link>
-			</Menu.Item>
-			<Menu.Divider/>
 			<Menu.Item key={PlayerPath.root} icon={<MehOutlined/>}>
 				<Link to={PlayerPath.root}>{t('root.player.menu')}</Link>
 			</Menu.Item>
-			{/*<Menu.SubMenu key={EntityPath.root} icon={<RobotOutlined/>} title={t('root.entity.menu')}>*/}
-			{/*	<Menu.Item key={EntityPath.home} icon={<FundOutlined/>}>*/}
-			{/*		<Link to={EntityPath.home}>{t('root.entity.home.menu')}</Link>*/}
-			{/*	</Menu.Item>*/}
-			{/*	<Menu.Item key={EntityPath.create} icon={<FormOutlined/>}>*/}
-			{/*		<Link to={EntityPath.create}>{t('root.entity.create.menu')}</Link>*/}
-			{/*	</Menu.Item>*/}
-			{/*	<Menu.Item key={EntityPath.list} icon={<UnorderedListOutlined/>}>*/}
-			{/*		<Link to={EntityPath.list}>{t('root.entity.list.menu')}</Link>*/}
-			{/*	</Menu.Item>*/}
-			{/*</Menu.SubMenu>*/}
+			<Menu.Item key={EntityPath.root} icon={<RobotOutlined/>}>
+				<Link to={EntityPath.root}>{t('root.entity.menu')}</Link>
+			</Menu.Item>
 			<Menu.Divider/>
 			<Menu.Item key='root.logout' onClick={() => onLogout()} icon={<PoweroffOutlined/>}>
 				{t('root.logout.menu')}
@@ -45,8 +34,6 @@ const RootMenu = (
 export default connect(
 	state => ({}),
 	dispatch => ({
-		onLogout: () => {
-			alert('logout');
-		}
+		onLogout: () => alert('logout')
 	}),
 )(withTranslation()(RootMenu));

@@ -7,7 +7,7 @@ import PlayerPath from "./PlayerPath";
 
 const PlayerRouter = () =>
 	<>
-		<Route path={PlayerPath.home} component={HomeView}/>
+		<Route path={PlayerPath.root} component={HomeView}/>
 		<Route path={PlayerPath.create} component={CreateView}/>
 		<Route path={PlayerPath.list} component={ListView}/>
 	</>
