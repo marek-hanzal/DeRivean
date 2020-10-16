@@ -7,7 +7,7 @@ import EntityPath from "./EntityPath";
 
 const EntityRouter = () =>
 	<Switch>
-		<Route exact={true} path={EntityPath.root} component={HomeView}/>
+		<Route exact={true} path={EntityPath.home} component={HomeView}/>
 		<Route path={EntityPath.create} component={CreateView}/>
 		<Route path={EntityPath.list} component={ListView}/>
 	</Switch>
