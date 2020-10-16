@@ -7,12 +7,14 @@ import React from "react";
 const RootView = (
 	{
 		title,
+		subtitle,
 		open,
 		selected,
 		children,
 	}) =>
 	<CommonLayout
 		title={title}
+		subtitle={subtitle}
 		menu={<MainMenu
 			open={open}
 			selected={selected}

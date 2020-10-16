@@ -14,6 +14,7 @@ import {Link} from "react-router-dom";
 const CommonLayout = (
 	{
 		title,
+		subtitle,
 		footer,
 		menu,
 		breadcrumbs,
@@ -48,7 +49,7 @@ const CommonLayout = (
 					children={menu}
 				/>
 				<Layout.Content style={{minHeight: '100vh', marginLeft: isCollapsed ? 80 : 220}}>
-					<PageHeader title={t(title)} subTitle={'subtitle'}>
+					<PageHeader title={t(title)} subTitle={t(subtitle)}>
 						{breadcrumbs}
 					</PageHeader>
 					<Card children={children}/>

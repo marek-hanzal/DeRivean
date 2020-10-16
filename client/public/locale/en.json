@@ -38,12 +38,14 @@
 				"breadcrumb": "Players"
 			},
 			"create": {
-				"title": "Create a new Player",
+				"title": "New Player",
+				"subtitle": "Create a new Player",
 				"menu": "New Player",
 				"breadcrumb": "New Player"
 			},
 			"list": {
 				"title": "Player List",
+				"subtitle": "All players available on the Server",
 				"menu": "Player List",
 				"breadcrumb": "Player List",
 				"table": {
@@ -64,12 +66,14 @@
 				"breadcrumb": "Entities"
 			},
 			"create": {
-				"title": "Create a new Entity",
+				"title": "New Entity",
+				"subtitle": "Create a new Entity",
 				"menu": "New Entity",
 				"breadcrumb": "New Entity"
 			},
 			"list": {
 				"title": "Entity List",
+				"subtitle": "List of all Entities",
 				"menu": "Entity List",
 				"breadcrumb": "Entity List",
 				"table": {

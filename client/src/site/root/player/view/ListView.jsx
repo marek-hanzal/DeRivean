@@ -37,6 +37,7 @@ class ListView extends React.Component {
 		return (
 			<RootView
 				title='root.player.list.title'
+				subtitle='root.player.list.subtitle'
 				open={[RootPath.root]}
 				selected={[PlayerPath.list]}
 			>
