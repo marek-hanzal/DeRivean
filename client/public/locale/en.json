@@ -17,6 +17,12 @@
 		"refresh": "Refresh",
 		"homepage": "Go to Homepage"
 	},
+	"public": {
+		"home": {
+			"title": "Welcome to DeRivean!",
+			"menu": "Home"
+		}
+	},
 	"internal": {
 		"spinner": "Making some hard magick to make things work!",
 		"home": {
