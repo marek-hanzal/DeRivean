@@ -1,4 +1,4 @@
-import {Card, Col, Layout, PageHeader, Row, Spin} from 'antd';
+import {Card, Layout, PageHeader, Spin} from 'antd';
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import {withTranslation} from 'react-i18next';
@@ -12,13 +12,6 @@ const CommonLayout = (
 		title,
 		footer,
 		menu,
-		spans = {
-			xs: {span: 24},
-			sm: {span: 24},
-			md: {span: 24},
-			lg: {span: 24},
-			xl: {span: 24},
-		},
 		breadcrumbs = [],
 		loading,
 		isCollapsed,
@@ -48,28 +41,11 @@ const CommonLayout = (
 					}}
 					children={menu}
 				/>
-				<Layout style={isCollapsed ? {
-					marginLeft: 80,
-					transition: 'all 0.2s'
-				} : {
-					marginLeft: 220,
-					transition: 'all 0.2s'
-				}}>
-					<Row type='flex' justify='center'>
-						<Col span={23}>
-							{/*<Breadcrumbs breadcrumbs={breadcrumbs}/>*/}
-							<Layout.Content style={{minHeight: '100vh'}}>
-								<Row type='flex' justify='center'>
-									<Col {...spans}>
-										<PageHeader title={t(title)} subTitle={'subtitle'}/>
-										<Card children={children}/>
-									</Col>
-								</Row>
-							</Layout.Content>
-
-						</Col>
-					</Row>
-				</Layout>
+				{/*<Breadcrumbs breadcrumbs={breadcrumbs}/>*/}
+				<Layout.Content style={{minHeight: '100vh', marginLeft: isCollapsed ? 80 : 220}}>
+					<PageHeader title={t(title)} subTitle={'subtitle'}/>
+					<Card children={children}/>
+				</Layout.Content>
 			</Layout>
 			<Layout.Footer style={{textAlign: 'center'}} children={footer}/>
 		</Layout>
