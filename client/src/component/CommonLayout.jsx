@@ -12,7 +12,7 @@ const CommonLayout = (
 		title,
 		footer,
 		menu,
-		breadcrumbs = [],
+		breadcrumbs,
 		loading,
 		isCollapsed,
 		onCollapse,
@@ -41,8 +41,8 @@ const CommonLayout = (
 					}}
 					children={menu}
 				/>
-				{/*<Breadcrumbs breadcrumbs={breadcrumbs}/>*/}
 				<Layout.Content style={{minHeight: '100vh', marginLeft: isCollapsed ? 80 : 220}}>
+					{breadcrumbs}
 					<PageHeader title={t(title)} subTitle={'subtitle'}/>
 					<Card children={children}/>
 				</Layout.Content>
