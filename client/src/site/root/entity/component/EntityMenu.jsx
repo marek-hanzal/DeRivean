@@ -10,15 +10,11 @@ import Path from "../../router/Path";
 
 const EntityMenu = (
 	{
-		open,
-		selected,
 		t,
 	}) =>
 	<Switch>
 		<Route path={EntityPath.root}>
 			<BaseMenu
-				open={open}
-				selected={selected}
 				style={{
 					minHeight: '100vh',
 				}}
