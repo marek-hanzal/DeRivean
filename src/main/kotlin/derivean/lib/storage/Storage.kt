@@ -10,7 +10,7 @@ class Storage(container: IContainer) : AbstractService(container), IStorage {
 	private val pool: IPool by container.lazy()
 	private lateinit var database: Database
 
-	override fun <T> transaction(statement: Transaction.() -> T): T = org.jetbrains.exposed.sql.transactions.transaction(this.database, statement)
+	override fun <T> transaction(statement: Transaction.() -> T) = org.jetbrains.exposed.sql.transactions.transaction(this.database, statement)
 
 	override fun onSetup() {
 		database = Database.connect(pool.source())

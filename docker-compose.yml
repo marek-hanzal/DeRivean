@@ -1,0 +1,21 @@
+version: '2.0'
+services:
+    derivean:
+        # docker build -t marekhanzal/derivean:edge .
+        image: marekhanzal/derivean:edge
+        hostname: derivean
+        container_name: derivean
+        environment:
+            #            HTTP_HOST=
+            - DATABASE_URL="jdbc:postgresql://postgres:5432/derivean"
+            - DATABASE_USER="postgres"
+            - DATABASE_PASSWORD="1234"
+        ports:
+            - "8081:8080"
+        networks:
+            # docker network create common --attachable
+            - common
+
+networks:
+    common:
+        external: true

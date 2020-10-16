@@ -1,6 +1,10 @@
+.git
+.github
 .gradle
 build
 client/build
 client/node_modules
+gradle
 *.db
 *.local*
+*.log
