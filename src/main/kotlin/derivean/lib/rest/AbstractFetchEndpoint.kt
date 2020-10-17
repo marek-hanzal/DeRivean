@@ -16,13 +16,13 @@ abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(c
 		discovery {
 			this.group = target
 			this.name = "fetch"
-			this.link = "/$target/fetch/{id}"
+			this.link = "/api/$target/fetch/{id}"
 			this.description = "Get [$target] by UUID."
 		}
-		routing.get("/$target/fetch") {
-			call.badRequest("Missing id parameter in url: [/$target/fetch/{id}].")
+		routing.get("/api/$target/fetch") {
+			call.badRequest("Missing id parameter in url: [/api/$target/fetch/{id}].")
 		}
-		routing.get("/$target/fetch/{id}") {
+		routing.get("/api/$target/fetch/{id}") {
 			call.respond(storage.read {
 				mapper.map(
 					repository.find(call.parameters["id"]!!)

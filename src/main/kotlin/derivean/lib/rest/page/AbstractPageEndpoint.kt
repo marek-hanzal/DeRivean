@@ -17,13 +17,13 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 		discovery {
 			this.group = target
 			this.name = "page"
-			this.link = "$target/page/{page}"
+			this.link = "/api/$target/page/{page}"
 			this.description = "Retrieve given page of [$target]."
 		}
-		routing.get("/$target/page") {
-			call.badRequest("Missing page parameter in url: [/$target/page/{page}].")
+		routing.get("/api/$target/page") {
+			call.badRequest("Missing page parameter in url: [/api/$target/page/{page}].")
 		}
-		routing.get("/$target/page/{page}") {
+		routing.get("/api/$target/page/{page}") {
 			pageService.page(call, repository, mapper)
 		}
 	}

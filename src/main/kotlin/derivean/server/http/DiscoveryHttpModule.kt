@@ -12,7 +12,7 @@ class DiscoveryHttpModule(container: IContainer) : AbstractHttpModule(container)
 
 	override fun install(routing: Routing) {
 		routing {
-			get("/discovery") {
+			get("/api/discovery") {
 				call.discovery(discoveryService.discovery())
 			}
 		}
