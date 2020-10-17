@@ -25,27 +25,27 @@ const RegistrationForm = (
 		onFinishFailed={onFailure}
 	>
 		<Form.Item
-			label="[Name]"
+			label={t("public.registration.form.name.label")}
 			name="name"
-			rules={[{required: true, message: "[Please input your username!]"}]}
+			rules={[{required: true, message: t("public.registration.form.name.required")}]}
 			children={<Input/>}
 		/>
 		<Form.Item
-			label="[Username]"
+			label={t("public.registration.form.user.label")}
 			name="user"
-			rules={[{required: true, message: "[Please input your username!]"}]}
+			rules={[{required: true, message: t("public.registration.form.user.required")}]}
 			children={<Input/>}
 		/>
 
 		<Form.Item
-			label="[Password]"
+			label={t("public.registration.form.password.label")}
 			name="password"
-			rules={[{required: true, message: "[Please input your password!]"}]}
+			rules={[{required: true, message: t("public.registration.form.password.required")}]}
 			children={<Input.Password/>}
 		/>
 
 		<Form.Item {...tailLayout}>
-			<Button type="primary" htmlType="submit">[Sign-up]</Button>
+			<Button type="primary" htmlType="submit">{t("public.registration.form.submit.label")}</Button>
 		</Form.Item>
 	</Form>
 ;

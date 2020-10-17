@@ -25,7 +25,24 @@
 		"registration": {
 			"menu": "Sign-up",
 			"title": "Sign-up to DeRivean",
-			"subtitle": "Are you new to here? Just give us a few clicks and start playing!"
+			"subtitle": "Are you new to here? Just give us a few clicks and start playing!",
+			"form": {
+				"name": {
+					"label": "Display name",
+					"required": "Sorry, display name is required!"
+				},
+				"user": {
+					"label": "User name (used for login)",
+					"required": "We need user name, or how do you want to log in?"
+				},
+				"password": {
+					"label": "Password",
+					"required": "Some super secret of you is needed!"
+				},
+				"submit": {
+					"label": "Sing-up"
+				}
+			}
 		},
 		"login": {
 			"menu": "Sing-in",
