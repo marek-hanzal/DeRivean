@@ -1,9 +1,11 @@
 import React from 'react';
 import PublicView from "../component/PublicView";
+import PublicPath from "../router/PublicPath";
 
 const HomeView = () =>
 	<PublicView
 		title='public.home.title'
+		selected={[PublicPath.root]}
 	>
 		<h1>Theophrastus mediocriterne delectat, cum tractat locos ab Aristotele ante tractatos?</h1>
 

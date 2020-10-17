@@ -10,8 +10,9 @@ import PublicPath from "../router/PublicPath";
 const MainMenu = (
 	{
 		t,
+		...props
 	}) =>
-	<BaseMenu>
+	<BaseMenu {...props}>
 		<Menu.Item key={PublicPath.root} icon={<HomeOutlined/>}>
 			<Link to={PublicPath.root}>{t('public.home.menu')}</Link>
 		</Menu.Item>

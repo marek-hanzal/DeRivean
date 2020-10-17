@@ -23,7 +23,8 @@
 			"menu": "Home"
 		},
 		"registration": {
-			"menu": "Sign-up"
+			"menu": "Sign-up",
+			"title": "Sign-up to DeRivean"
 		},
 		"login": {
 			"menu": "Sing-in"
