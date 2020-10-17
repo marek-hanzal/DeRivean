@@ -5,7 +5,6 @@ import derivean.lib.server.AbstractHttpModule
 import derivean.lib.server.ILinkGenerator
 import io.ktor.application.*
 import io.ktor.http.*
-import io.ktor.http.content.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
@@ -17,10 +16,10 @@ class ClientHttpModule(container: IContainer) : AbstractHttpModule(container) {
 
 	override fun install(routing: Routing) {
 		routing {
-			static {
-				resources("client")
-				defaultResource("client/index.html")
-			}
+//			static {
+//				resources("client")
+//				defaultResource("client/index.html")
+//			}
 			get("/client.json") {
 				call.respond(
 					ClientConfigResponse(
