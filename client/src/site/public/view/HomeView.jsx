@@ -5,6 +5,7 @@ import PublicPath from "../router/PublicPath";
 const HomeView = () =>
 	<PublicView
 		title='public.home.title'
+		open={[PublicPath.root]}
 		selected={[PublicPath.root]}
 	>
 		<h1>Theophrastus mediocriterne delectat, cum tractat locos ab Aristotele ante tractatos?</h1>
