@@ -20,8 +20,7 @@ const RegistrationForm = (
 	}) =>
 	<Form
 		{...layout}
-		name="basic"
-		initialValues={{remember: true}}
+		name="registration"
 		onFinish={onFinish}
 		onFinishFailed={onFailure}
 	>
@@ -53,5 +52,9 @@ const RegistrationForm = (
 
 export default connect(
 	state => ({}),
-	dispatch => ({}),
+	dispatch => ({
+		onFinish: values => {
+			console.log(values);
+		}
+	}),
 )(withTranslation()(RegistrationForm));
