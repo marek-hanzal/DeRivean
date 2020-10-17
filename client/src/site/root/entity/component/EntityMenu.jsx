@@ -18,11 +18,11 @@ const EntityMenu = ({t, ...props}) =>
 			<Menu.Item key={EntityPath.home} icon={<FundOutlined/>}>
 				<Link to={EntityPath.home}>{t('root.entity.home.menu')}</Link>
 			</Menu.Item>
-			<Menu.Item key={EntityPath.create} icon={<FormOutlined/>}>
-				<Link to={EntityPath.create}>{t('root.entity.create.menu')}</Link>
-			</Menu.Item>
 			<Menu.Item key={EntityPath.list} icon={<UnorderedListOutlined/>}>
 				<Link to={EntityPath.list}>{t('root.entity.list.menu')}</Link>
+			</Menu.Item>
+			<Menu.Item key={EntityPath.create} icon={<FormOutlined/>}>
+				<Link to={EntityPath.create}>{t('root.entity.create.menu')}</Link>
 			</Menu.Item>
 		</BaseMenu>
 	</Route>
