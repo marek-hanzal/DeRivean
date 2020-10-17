@@ -1,9 +1,9 @@
 import CommonLayout from "component/CommonLayout";
 import React from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import MainMenu from "./MainMenu";
-import PublicBreadcrumbs from "./PublicBreadcrumbs";
+import Footer from "site/public/component/Footer";
+import Header from "site/public/component/Header";
+import MainMenu from "site/public/component/MainMenu";
+import PublicBreadcrumbs from "site/public/component/PublicBreadcrumbs";
 
 const PublicView = (
 	{

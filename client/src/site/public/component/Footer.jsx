@@ -1,7 +1,8 @@
 import React from "react";
 
-const Footer = () =>
-	<div>footer</div>
+const Footer = () => {
+		return <div>v{process.env.REACT_APP_VERSION}</div>;
+	}
 ;
 
 export default Footer;
