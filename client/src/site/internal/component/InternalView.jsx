@@ -1,11 +1,10 @@
-import MainMenu from "./MainMenu";
-import RootBreadcrumbs from "./RootBreadcrumbs";
-import Footer from "./Footer";
 import CommonLayout from "../../../component/CommonLayout";
 import React from "react";
+import MainMenu from "./MainMenu";
+import Footer from "./Footer";
 import Header from "./Header";
 
-const RootView = (
+const InternalView = (
 	{
 		title,
 		subtitle,
@@ -20,11 +19,11 @@ const RootView = (
 			open={open}
 			selected={selected}
 		/>}
-		breadcrumbs={<RootBreadcrumbs/>}
+		// breadcrumbs={<PublicBreadcrumbs/>}
 		header={<Header/>}
 		footer={<Footer/>}
 		children={children}
 	/>
 ;
 
-export default RootView;
+export default InternalView;

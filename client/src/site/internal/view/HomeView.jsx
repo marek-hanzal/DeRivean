@@ -1,22 +1,15 @@
 import React from 'react';
 import {withTranslation} from 'react-i18next';
-import CommonLayout from '../../../component/CommonLayout';
-import Footer from '../component/Footer';
-import MainMenu from '../component/MainMenu';
+import InternalView from "../component/InternalView";
+import InternalPath from "../router/InternalPath";
 
 const HomeView = ({t}) =>
-	<CommonLayout
+	<InternalView
 		title='internal.home.title'
-		menu={<MainMenu/>}
-		footer={<Footer/>}
-		// breadcrumbs={[
-		// 	{
-		// 		id: 'internal.home',
-		// 		icon: <HomeOutlined/>,
-		// 	}
-		// ]}
+		open={[InternalPath.root]}
+		selected={[InternalPath.root]}
 	>
-	</CommonLayout>
+	</InternalView>
 ;
 
 export default withTranslation()(HomeView);
