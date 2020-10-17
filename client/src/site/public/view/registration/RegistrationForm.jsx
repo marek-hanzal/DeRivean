@@ -1,6 +1,7 @@
 import {Button, Form, Input} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
 
 const layout = {
 	labelCol: {span: 8},
@@ -50,4 +51,7 @@ const RegistrationForm = (
 	</Form>
 ;
 
-export default withTranslation()(RegistrationForm);
+export default connect(
+	state => ({}),
+	dispatch => ({}),
+)(withTranslation()(RegistrationForm));
