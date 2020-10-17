@@ -1,10 +1,10 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import HomeView from '../view/HomeView';
-import PublicPath from "./PublicPath";
-import NotFoundView from "../../../view/NotFoundView";
-import RegistrationView from "../view/RegistrationView";
-import LoginView from "../view/LoginView";
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import PublicPath from "site/public/router/PublicPath";
+import HomeView from "site/public/view/HomeView";
+import LoginView from "site/public/view/LoginView";
+import RegistrationView from "site/public/view/registration/RegistrationView";
+import NotFoundView from "view/NotFoundView";
 
 const PublicRouter = () =>
 	<Switch>
