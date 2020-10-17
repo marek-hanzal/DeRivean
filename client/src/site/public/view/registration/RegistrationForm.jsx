@@ -2,6 +2,7 @@ import {Button, Form, Input} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
+import {onUserRegister} from "redux/user/register/action";
 
 const layout = {
 	labelCol: {span: 8},
@@ -54,7 +55,7 @@ export default connect(
 	state => ({}),
 	dispatch => ({
 		onFinish: values => {
-			console.log(values);
+			dispatch(onUserRegister(values));
 		}
 	}),
 )(withTranslation()(RegistrationForm));

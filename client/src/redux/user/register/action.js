@@ -6,7 +6,8 @@ const
 	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", () => null),
 	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", register => register),
 	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => error),
-	onRegister = register => (dispatch, getState) => {
+	onUserRegister = register => (dispatch, getState) => {
+		alert(JSON.stringify(register));
 		// const href = buildUrl(getUserCreateHref(getState()).replace("{page}", page), {
 		// });
 		const href = "nope";
@@ -27,5 +28,5 @@ export {
 	onUserRegisterRequest,
 	onUserRegisterSuccess,
 	onUserRegisterFailure,
-	onRegister,
+	onUserRegister,
 };
