@@ -4,9 +4,9 @@ import EntityPath from "site/root/entity/router/EntityPath";
 import EntityRouter from "site/root/entity/router/EntityRouter";
 import PlayerPath from "site/root/player/router/PlayerPath";
 import PlayerRouter from "site/root/player/router/PlayerRouter";
+import RootPath from "site/root/router/RootPath";
 import HomeView from "site/root/view/HomeView";
 import NotFoundView from "view/NotFoundView";
-import RootPath from "./RootPath";
 
 const RootRouter = () =>
 	<Switch>

@@ -1,10 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {getDiscoveryHref} from '../redux/client/payload/selector';
-import {onDiscovery} from '../redux/discovery/payload/action';
-import {isDiscoveryFailure, isDiscoverySuccess} from '../redux/discovery/status/selector';
-import DiscoveryErrorView from '../view/DiscoveryErrorView';
-import LoaderView from '../view/LoaderView';
+import React from "react";
+import {connect} from "react-redux";
+import {getDiscoveryHref} from "redux/client/payload/selector";
+import {onDiscovery} from "redux/discovery/payload/action";
+import {isDiscoveryFailure, isDiscoverySuccess} from "redux/discovery/status/selector";
+import DiscoveryErrorView from "view/DiscoveryErrorView";
+import LoaderView from "view/LoaderView";
 
 class Discovery extends React.PureComponent {
 	componentDidMount() {

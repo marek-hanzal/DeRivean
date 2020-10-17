@@ -1,6 +1,6 @@
-import React from 'react';
-import PlayerPath from "../router/PlayerPath";
-import RootView from "../../component/RootView";
+import React from "react";
+import RootView from "site/root/component/RootView";
+import PlayerPath from "site/root/player/router/PlayerPath";
 
 const HomeView = () =>
 	<RootView

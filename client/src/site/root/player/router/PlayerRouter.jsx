@@ -1,16 +1,16 @@
-import React from 'react';
-import {Route, Switch} from 'react-router';
-import CreateView from '../view/CreateView';
-import HomeView from '../view/HomeView';
-import ListView from '../view/ListView';
-import PlayerPath from "./PlayerPath";
-import NotFoundView from "../../../../view/NotFoundView";
+import React from "react";
+import {Route, Switch} from "react-router";
+import PlayerPath from "site/root/player/router/PlayerPath";
+import CreateView from "site/root/player/view/CreateView";
+import HomeView from "site/root/player/view/HomeView";
+import ListView from "site/root/player/view/ListView";
+import NotFoundView from "view/NotFoundView";
 
 const PlayerRouter = () =>
 	<Switch>
-		<Route exact={true} path={PlayerPath.home} component={HomeView}/>
-		<Route path={PlayerPath.create} component={CreateView}/>
-		<Route path={PlayerPath.list} component={ListView}/>
+		<Route exact path={PlayerPath.home} component={HomeView}/>
+		<Route exact path={PlayerPath.create} component={CreateView}/>
+		<Route exact path={PlayerPath.list} component={ListView}/>
 		<Route component={NotFoundView}/>
 	</Switch>
 ;

@@ -1,4 +1,4 @@
-import {entityPageBranch} from '../selector';
+import {entityPageBranch} from "redux/entity/page/selector";
 
 const branch = state => entityPageBranch(state).status;
 
@@ -8,7 +8,7 @@ const branch = state => entityPageBranch(state).status;
  * @param state
  * @returns {boolean}
  */
-const isLoading = state => branch(state) === 'LOADING';
+const isLoading = state => branch(state) === "LOADING";
 
 /**
  * Checks if entity pages is in success state.
@@ -16,7 +16,7 @@ const isLoading = state => branch(state) === 'LOADING';
  * @param state
  * @returns {boolean}
  */
-const isEntityPageSuccess = state => branch(state) === 'SUCCESS';
+const isEntityPageSuccess = state => branch(state) === "SUCCESS";
 
 /**
  * Checks if entity pages is in failure state.
@@ -24,7 +24,7 @@ const isEntityPageSuccess = state => branch(state) === 'SUCCESS';
  * @param state
  * @returns {boolean}
  */
-const isEntityPageFailure = state => branch(state) === 'FAILURE';
+const isEntityPageFailure = state => branch(state) === "FAILURE";
 
 export {
 	branch as entityPagesStatusBranch,

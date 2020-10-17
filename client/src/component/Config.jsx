@@ -1,9 +1,9 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {onClient} from '../redux/client/payload/action';
-import {isClientFailure, isClientSuccess} from '../redux/client/status/selector';
-import ClientErrorView from '../view/ClientErrorView';
-import LoaderView from '../view/LoaderView';
+import React from "react";
+import {connect} from "react-redux";
+import {onClient} from "redux/client/payload/action";
+import {isClientFailure, isClientSuccess} from "redux/client/status/selector";
+import ClientErrorView from "view/ClientErrorView";
+import LoaderView from "view/LoaderView";
 
 class Client extends React.PureComponent {
 	componentDidMount() {

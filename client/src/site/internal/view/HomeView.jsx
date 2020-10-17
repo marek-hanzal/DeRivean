@@ -1,7 +1,7 @@
-import React from 'react';
-import {withTranslation} from 'react-i18next';
-import InternalView from "../component/InternalView";
-import InternalPath from "../router/InternalPath";
+import React from "react";
+import {withTranslation} from "react-i18next";
+import InternalView from "site/internal/component/InternalView";
+import InternalPath from "site/internal/router/InternalPath";
 
 const HomeView = ({t}) =>
 	<InternalView

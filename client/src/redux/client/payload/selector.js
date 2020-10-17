@@ -1,4 +1,4 @@
-import {clientBranch} from '../selector';
+import {clientBranch} from "redux/client/selector";
 
 const branch = state => clientBranch(state).payload;
 

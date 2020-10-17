@@ -1,4 +1,6 @@
-const branch = state => state.menu.open;
+import {menuBranch} from "redux/menu/selector";
+
+const branch = state => menuBranch(state).open;
 
 /**
  * return an array of opened menu items

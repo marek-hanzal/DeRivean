@@ -1,7 +1,7 @@
-import {createAction} from 'redux-actions';
+import {createAction} from "redux-actions";
 
 const
-	onEntityPageStatus = createAction('ON_ENTITY_PAGE_STATUS', status => status);
+	onEntityPageStatus = createAction("ON_ENTITY_PAGE_STATUS", status => status);
 
 export {
 	onEntityPageStatus,

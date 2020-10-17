@@ -1,4 +1,6 @@
-const branch = state => state.menu.collapse;
+import {menuBranch} from "redux/menu/selector";
+
+const branch = state => menuBranch(state).collapse;
 
 /**
  * is the main menu collapsed?

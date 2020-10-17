@@ -1,7 +1,7 @@
-import React from 'react';
-import EntityMenu from "../entity/component/EntityMenu";
-import RootMenu from "./RootMenu";
-import PlayerMenu from "../player/component/PlayerMenu";
+import React from "react";
+import RootMenu from "site/root/component/RootMenu";
+import EntityMenu from "site/root/entity/component/EntityMenu";
+import PlayerMenu from "site/root/player/component/PlayerMenu";
 
 const MainMenu = (props) =>
 	<>

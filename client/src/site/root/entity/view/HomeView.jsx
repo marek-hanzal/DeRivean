@@ -1,6 +1,6 @@
-import React from 'react';
-import EntityPath from "../router/EntityPath";
-import RootView from "../../component/RootView";
+import React from "react";
+import RootView from "site/root/component/RootView";
+import EntityPath from "site/root/entity/router/EntityPath";
 
 const HomeView = () =>
 	<RootView

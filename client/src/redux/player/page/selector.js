@@ -1,4 +1,4 @@
-import {playerBranch} from '../selector';
+import {playerBranch} from "redux/player/selector";
 
 const branch = state => playerBranch(state).page;
 

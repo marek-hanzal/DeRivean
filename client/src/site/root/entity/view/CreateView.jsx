@@ -1,7 +1,7 @@
-import React from 'react';
-import {withTranslation} from 'react-i18next';
-import EntityPath from "../router/EntityPath";
-import RootView from "../../component/RootView";
+import React from "react";
+import {withTranslation} from "react-i18next";
+import RootView from "site/root/component/RootView";
+import EntityPath from "site/root/entity/router/EntityPath";
 
 const CreateView = ({t}) =>
 	<RootView

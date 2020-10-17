@@ -1,9 +1,9 @@
+import CommonLayout from "component/CommonLayout";
+import React from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 import MainMenu from "./MainMenu";
 import RootBreadcrumbs from "./RootBreadcrumbs";
-import Footer from "./Footer";
-import CommonLayout from "../../../component/CommonLayout";
-import React from "react";
-import Header from "./Header";
 
 const RootView = (
 	{

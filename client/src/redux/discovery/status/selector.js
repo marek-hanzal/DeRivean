@@ -1,4 +1,4 @@
-import {discoveryBranch} from '../selector';
+import {discoveryBranch} from "redux/discovery/selector";
 
 const branch = state => discoveryBranch(state).status;
 
@@ -8,7 +8,7 @@ const branch = state => discoveryBranch(state).status;
  * @param state
  * @returns {boolean}
  */
-const isLoading = state => branch(state) === 'LOADING';
+const isLoading = state => branch(state) === "LOADING";
 
 /**
  * Checks if discovery is in success state.
@@ -16,9 +16,9 @@ const isLoading = state => branch(state) === 'LOADING';
  * @param state
  * @returns {boolean}
  */
-const isDiscoverySuccess = state => branch(state) === 'SUCCESS';
+const isDiscoverySuccess = state => branch(state) === "SUCCESS";
 
-const isDiscoveryFailure = state => branch(state) === 'FAILURE';
+const isDiscoveryFailure = state => branch(state) === "FAILURE";
 
 export {
 	branch as discoveryStateBranch,

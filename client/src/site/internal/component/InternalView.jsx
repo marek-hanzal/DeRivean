@@ -1,8 +1,8 @@
-import CommonLayout from "../../../component/CommonLayout";
+import CommonLayout from "component/CommonLayout";
 import React from "react";
-import MainMenu from "./MainMenu";
 import Footer from "./Footer";
 import Header from "./Header";
+import MainMenu from "./MainMenu";
 
 const InternalView = (
 	{

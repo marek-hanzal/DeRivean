@@ -1,7 +1,7 @@
-import {createAction} from 'redux-actions';
+import {createAction} from "redux-actions";
 
 const
-	onPlayerPageStatus = createAction('ON_PLAYER_PAGE_STATUS', status => status);
+	onPlayerPageStatus = createAction("ON_PLAYER_PAGE_STATUS", status => status);
 
 export {
 	onPlayerPageStatus,

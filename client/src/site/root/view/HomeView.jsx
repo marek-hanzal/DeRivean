@@ -1,7 +1,7 @@
-import React from 'react';
-import MainMenu from '../component/MainMenu';
-import RootPath from "../router/RootPath";
-import RootView from "../component/RootView";
+import React from "react";
+import MainMenu from "site/root/component/MainMenu";
+import RootView from "site/root/component/RootView";
+import RootPath from "site/root/router/RootPath";
 
 const HomeView = () =>
 	<RootView

@@ -1,14 +1,13 @@
-import Table from 'antd/lib/table';
-import Column from 'antd/lib/table/Column';
-import React from 'react';
-import {withTranslation} from 'react-i18next';
-import {connect} from 'react-redux';
-import {onPlayerPage} from '../../../../redux/player/page/payload/action';
-import {getPlayerPage} from '../../../../redux/player/page/payload/selector';
-import {isLoading} from '../../../../redux/player/page/status/selector';
-import RootPath from "../../router/RootPath";
-import PlayerPath from "../router/PlayerPath";
-import RootView from "../../component/RootView";
+import Table from "antd/lib/table";
+import Column from "antd/lib/table/Column";
+import React from "react";
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {onPlayerPage} from "redux/player/page/payload/action";
+import {getPlayerPage} from "redux/player/page/payload/selector";
+import {isLoading} from "redux/player/page/status/selector";
+import RootView from "site/root/component/RootView";
+import PlayerPath from "site/root/player/router/PlayerPath";
 
 class ListView extends React.Component {
 	componentDidMount() {
@@ -38,7 +37,7 @@ class ListView extends React.Component {
 			<RootView
 				title='root.player.list.title'
 				subtitle='root.player.list.subtitle'
-				open={[RootPath.root]}
+				open={[PlayerPath.root]}
 				selected={[PlayerPath.list]}
 			>
 				<Table
@@ -50,8 +49,8 @@ class ListView extends React.Component {
 					}}
 					pagination={pagination}
 				>
-					<Column title={t('root.player.list.table.id.title')} dataIndex='id'/>
-					<Column title={t('root.player.list.table.name.title')} dataIndex='name'/>
+					<Column title={t("root.player.list.table.id.title")} dataIndex='id'/>
+					<Column title={t("root.player.list.table.name.title")} dataIndex='name'/>
 				</Table>
 			</RootView>
 		);

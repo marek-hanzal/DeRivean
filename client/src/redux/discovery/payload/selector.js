@@ -1,4 +1,4 @@
-import {discoveryBranch} from '../selector';
+import {discoveryBranch} from "redux/discovery/selector";
 
 const branch = state => discoveryBranch(state).payload;
 
@@ -11,7 +11,6 @@ const getPlayerPageHref = state => getPlayerGroup(state).page.link;
 const getEntityGroup = state => getDiscoveryIndex(state).entity;
 
 const getEntityPageHref = state => getEntityGroup(state).page.link;
-
 
 export {
 	branch as discoveryPayloadBranch,

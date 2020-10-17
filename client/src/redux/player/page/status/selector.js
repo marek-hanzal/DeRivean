@@ -1,4 +1,4 @@
-import {playerPageBranch} from '../selector';
+import {playerPageBranch} from "redux/player/page/selector";
 
 const branch = state => playerPageBranch(state).status;
 
@@ -8,7 +8,7 @@ const branch = state => playerPageBranch(state).status;
  * @param state
  * @returns {boolean}
  */
-const isLoading = state => branch(state) === 'LOADING';
+const isLoading = state => branch(state) === "LOADING";
 
 /**
  * Checks if player pages is in success state.
@@ -16,7 +16,7 @@ const isLoading = state => branch(state) === 'LOADING';
  * @param state
  * @returns {boolean}
  */
-const isPlayerPageSuccess = state => branch(state) === 'SUCCESS';
+const isPlayerPageSuccess = state => branch(state) === "SUCCESS";
 
 /**
  * Checks if player pages is in failure state.
@@ -24,7 +24,7 @@ const isPlayerPageSuccess = state => branch(state) === 'SUCCESS';
  * @param state
  * @returns {boolean}
  */
-const isPlayerPageFailure = state => branch(state) === 'FAILURE';
+const isPlayerPageFailure = state => branch(state) === "FAILURE";
 
 export {
 	branch as playerPagesStatusBranch,

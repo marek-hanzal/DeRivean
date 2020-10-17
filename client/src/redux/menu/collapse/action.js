@@ -1,7 +1,7 @@
-import {createAction} from 'redux-actions';
+import {createAction} from "redux-actions";
 
 const
-	onMenuCollapse = createAction('ON_MENU_COLLAPSE', isCollapsed => isCollapsed);
+	onMenuCollapse = createAction("ON_MENU_COLLAPSE", isCollapsed => isCollapsed);
 
 export {
 	onMenuCollapse,

@@ -1,8 +1,8 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import HomeView from '../view/HomeView';
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import HomeView from "site/internal/view/HomeView";
+import NotFoundView from "view/NotFoundView";
 import InternalPath from "./InternalPath";
-import NotFoundView from "../../../view/NotFoundView";
 
 const InternalRouter = () =>
 	<Switch>

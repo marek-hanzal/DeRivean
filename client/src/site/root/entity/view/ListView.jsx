@@ -1,13 +1,13 @@
-import Table from 'antd/lib/table';
-import Column from 'antd/lib/table/Column';
-import React from 'react';
-import {withTranslation} from 'react-i18next';
-import {connect} from 'react-redux';
-import {onEntityPage} from '../../../../redux/entity/page/payload/action';
-import {getEntityPage} from '../../../../redux/entity/page/payload/selector';
-import {isLoading} from '../../../../redux/entity/page/status/selector';
-import EntityPath from "../router/EntityPath";
-import RootView from "../../component/RootView";
+import Table from "antd/lib/table";
+import Column from "antd/lib/table/Column";
+import React from "react";
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {onEntityPage} from "redux/entity/page/payload/action";
+import {getEntityPage} from "redux/entity/page/payload/selector";
+import {isLoading} from "redux/entity/page/status/selector";
+import RootView from "site/root/component/RootView";
+import EntityPath from "site/root/entity/router/EntityPath";
 
 class ListView extends React.Component {
 	componentDidMount() {
@@ -49,9 +49,9 @@ class ListView extends React.Component {
 					}}
 					pagination={pagination}
 				>
-					<Column title={t('root.entity.list.table.id.title')} dataIndex='id'/>
-					<Column title={t('root.entity.list.table.name.title')} dataIndex='name'/>
-					<Column title={t('root.entity.list.table.ancestor.title')} dataIndex={['ancestor', 'name']}/>
+					<Column title={t("root.entity.list.table.id.title")} dataIndex='id'/>
+					<Column title={t("root.entity.list.table.name.title")} dataIndex='name'/>
+					<Column title={t("root.entity.list.table.ancestor.title")} dataIndex={["ancestor", "name"]}/>
 				</Table>
 			</RootView>
 		);

@@ -1,28 +1,28 @@
-import React from 'react';
-import PublicView from "../component/PublicView";
-import PublicPath from "../router/PublicPath";
+import {LockOutlined, UserOutlined} from "@ant-design/icons";
+import Button from "antd/lib/button";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
-import {LockOutlined, UserOutlined} from '@ant-design/icons'
-import Button from "antd/lib/button";
+import React from "react";
+import PublicView from "site/public/component/PublicView";
+import PublicPath from "site/public/router/PublicPath";
 
 const LoginView = () =>
 	<PublicView
-		title={'public.login.title'}
-		subtitle={'public.login.subtitle'}
+		title={"public.login.title"}
+		subtitle={"public.login.subtitle"}
 		open={[PublicPath.root]}
 		selected={[PublicPath.login]}
 	>
 		<Form layout="inline">
 			<Form.Item
 				name="username"
-				rules={[{required: true, message: 'Please input your username!'}]}
+				rules={[{required: true, message: "Please input your username!"}]}
 			>
 				<Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Username"/>
 			</Form.Item>
 			<Form.Item
 				name="password"
-				rules={[{required: true, message: 'Please input your password!'}]}
+				rules={[{required: true, message: "Please input your password!"}]}
 			>
 				<Input
 					prefix={<LockOutlined className="site-form-item-icon"/>}

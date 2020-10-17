@@ -1,4 +1,4 @@
-import {entityPageBranch} from '../selector';
+import {entityPageBranch} from "redux/entity/page/selector";
 
 const branch = state => entityPageBranch(state).payload;
 
