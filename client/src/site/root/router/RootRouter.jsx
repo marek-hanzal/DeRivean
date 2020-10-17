@@ -1,12 +1,12 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import EntityRouter from '../entity/router/EntityRouter';
-import PlayerRouter from '../player/router/PlayerRouter';
-import HomeView from '../view/HomeView';
-import RootPath from './RootPath';
-import PlayerPath from "../player/router/PlayerPath";
-import EntityPath from "../entity/router/EntityPath";
-import NotFoundView from "../../../view/NotFoundView";
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import EntityPath from "site/root/entity/router/EntityPath";
+import EntityRouter from "site/root/entity/router/EntityRouter";
+import PlayerPath from "site/root/player/router/PlayerPath";
+import PlayerRouter from "site/root/player/router/PlayerRouter";
+import HomeView from "site/root/view/HomeView";
+import NotFoundView from "view/NotFoundView";
+import RootPath from "./RootPath";
 
 const RootRouter = () =>
 	<Switch>
