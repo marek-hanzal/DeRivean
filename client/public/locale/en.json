@@ -24,10 +24,13 @@
 		},
 		"registration": {
 			"menu": "Sign-up",
-			"title": "Sign-up to DeRivean"
+			"title": "Sign-up to DeRivean",
+			"subtitle": "Are you new to here? Just give us a few clicks and start playing!"
 		},
 		"login": {
-			"menu": "Sing-in"
+			"menu": "Sing-in",
+			"title": "Login to DeRivean",
+			"subtitle": "Just login and start playing!"
 		}
 	},
 	"internal": {
