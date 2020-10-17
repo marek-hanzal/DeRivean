@@ -23,6 +23,7 @@ import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
+import derivean.server.upgrade.u2020_10_17
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -35,6 +36,7 @@ object EngineContainer {
 		 */
 		register(u2020_09_25::class) { u2020_09_25(this) }
 		register(u2020_10_12::class) { u2020_10_12(this) }
+		register(u2020_10_17::class) { u2020_10_17(this) }
 		/**
 		 * Http Modules
 		 */
@@ -66,6 +68,7 @@ object EngineContainer {
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 			register(u2020_10_12::class)
+			register(u2020_10_17::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
