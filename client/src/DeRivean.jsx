@@ -28,7 +28,7 @@ const DeRivean = ({router}) =>
 
 export default connect(
 	state => ({
-		router: 'public',
+		router: 'root',
 	}),
 	dispatch => ({})
 )(DeRivean);

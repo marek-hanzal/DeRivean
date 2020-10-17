@@ -43,7 +43,10 @@ class ListView extends React.Component {
 				<Table
 					dataSource={page.items}
 					rowKey={record => record.id}
-					loading={isLoading ? 100 : false}
+					loading={{
+						spinning: isLoading,
+						delay: 100,
+					}}
 					pagination={pagination}
 				>
 					<Column title={t('root.entity.list.table.id.title')} dataIndex='id'/>
