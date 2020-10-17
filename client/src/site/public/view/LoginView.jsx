@@ -1,6 +1,10 @@
 import React from 'react';
 import PublicView from "../component/PublicView";
 import PublicPath from "../router/PublicPath";
+import Form from "antd/lib/form";
+import Input from "antd/lib/input";
+import {LockOutlined, UserOutlined} from '@ant-design/icons'
+import Button from "antd/lib/button";
 
 const LoginView = () =>
 	<PublicView
@@ -9,6 +13,39 @@ const LoginView = () =>
 		open={[PublicPath.root]}
 		selected={[PublicPath.login]}
 	>
+		<Form layout="inline">
+			<Form.Item
+				name="username"
+				rules={[{required: true, message: 'Please input your username!'}]}
+			>
+				<Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Username"/>
+			</Form.Item>
+			<Form.Item
+				name="password"
+				rules={[{required: true, message: 'Please input your password!'}]}
+			>
+				<Input
+					prefix={<LockOutlined className="site-form-item-icon"/>}
+					type="password"
+					placeholder="Password"
+				/>
+			</Form.Item>
+			<Form.Item shouldUpdate={true}>
+				{() => (
+					<Button
+						type="primary"
+						htmlType="submit"
+						disabled={
+							false
+							// !form.isFieldsTouched(true) ||
+							// form.getFieldsError().filter(({errors}) => errors.length).length
+						}
+					>
+						Log in
+					</Button>
+				)}
+			</Form.Item>
+		</Form>
 	</PublicView>
 ;
 

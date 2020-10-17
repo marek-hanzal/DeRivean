@@ -3,6 +3,7 @@ import React from "react";
 import MainMenu from "./MainMenu";
 import PublicBreadcrumbs from "./PublicBreadcrumbs";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const PublicView = (
 	{
@@ -20,6 +21,7 @@ const PublicView = (
 			selected={selected}
 		/>}
 		breadcrumbs={<PublicBreadcrumbs/>}
+		header={<Header/>}
 		footer={<Footer/>}
 		children={children}
 	/>
