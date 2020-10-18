@@ -24,6 +24,7 @@ import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
 import derivean.server.upgrade.u2020_10_17
+import derivean.server.user.UserRepository
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -49,22 +50,23 @@ object EngineContainer {
 		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
 		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
 		register(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
+		service(PlayerRepository::class) { PlayerRepository(this) }
 		/**
 		 * Entity related stuff.
 		 */
 		register(EntityHttpModule::class) { EntityHttpModule(this) }
 		register(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
 		register(EntityEndpoint::class) { EntityEndpoint(this) }
+		service(EntityRepository::class) { EntityRepository(this) }
+		/**
+		 * User related stuff.
+		 */
+		service(UserRepository::class) { UserRepository(this) }
 		/**
 		 * Mappers
 		 */
 		register(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
 		register(EntityFetchMapper::class) { EntityFetchMapper(this) }
-		/**
-		 * Server-side Services
-		 */
-		service(PlayerRepository::class) { PlayerRepository(this) }
-		service(EntityRepository::class) { EntityRepository(this) }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 			register(u2020_10_12::class)

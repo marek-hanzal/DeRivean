@@ -7,6 +7,7 @@ import derivean.lib.upgrade.AbstractUpgrade
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.entity.EntityRepository
 import derivean.server.player.PlayerRepository
+import derivean.server.user.UserRepository
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -41,19 +42,23 @@ class CommonTest {
 class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 	private val playerRepository: PlayerRepository by container.lazy()
 	private val entityRepository: EntityRepository by container.lazy()
+	private val userRepository: UserRepository by container.lazy()
 
 	override fun upgrade() {
 		storage.transaction {
-			playerRepository.create {
-				this.name = "Tester"
-			}.let { player ->
-				entityRepository.create(player, "Horwath, Greatest of Warriors") {
-					this.name = "Wind River"
-				}.let {
-					entityRepository.attributes(
-						it,
-						170.0.health(),
-					)
+			userRepository.findByUser("root").let { user ->
+				playerRepository.create {
+					this.name = "Tester"
+					this.user = user
+				}.let { player ->
+					entityRepository.create(player, "Horwath, Greatest of Warriors") {
+						this.name = "Wind River"
+					}.let {
+						entityRepository.attributes(
+							it,
+							170.0.health(),
+						)
+					}
 				}
 			}
 		}
