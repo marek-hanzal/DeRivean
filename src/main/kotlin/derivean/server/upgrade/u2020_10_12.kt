@@ -19,8 +19,9 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				u2020_09_25.Entity.new {
 					this.player = player
 					this.name = "Gwork, The First Human"
+				}.also {
 					entityRepository.attributes(
-						this,
+						it.id,
 						100.0.health(),
 						100.0.maxHealth(),
 						25.0.mana(),
@@ -38,8 +39,9 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Horwath, Greatest of Warriors"
+					}.also {
 						entityRepository.attributes(
-							this,
+							it.id,
 							160.0.health(),
 							160.0.maxHealth(),
 							5.0.mana(),
@@ -58,8 +60,9 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Moo, Greatest of Mages"
+					}.also {
 						entityRepository.attributes(
-							this,
+							it.id,
 							70.0.health(),
 							70.0.maxHealth(),
 							100.0.mana(),

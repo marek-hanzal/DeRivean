@@ -55,7 +55,7 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 						this.name = "Wind River"
 					}.let {
 						entityRepository.attributes(
-							it,
+							it.id,
 							170.0.health(),
 						)
 					}
