@@ -1,16 +1,6 @@
 package derivean.server.equipment
 
-import derivean.lib.storage.EntityUUID
-import org.jetbrains.exposed.dao.UUIDEntity
-import org.jetbrains.exposed.dao.UUIDEntityClass
-import org.jetbrains.exposed.dao.UUIDTable
+import derivean.server.upgrade.u2020_10_17
 
-object EquipmentTable : UUIDTable("equipment") {
-	val name = varchar("name", 64)
-}
-
-class Equipment(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<Equipment>(EquipmentTable)
-
-	var name by EquipmentTable.name
-}
+typealias EquipmentTable = u2020_10_17.EquipmentTable
+typealias Equipment = u2020_10_17.Equipment
