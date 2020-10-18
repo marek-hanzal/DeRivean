@@ -2,18 +2,17 @@ package derivean.server.user.rest.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
+import derivean.server.user.User
 import derivean.server.user.UserRepository
 
-class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateMapper.UserCreate>(container) {
+class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateMapper.UserCreate, User>(container) {
 	private val userRepository: UserRepository by container.lazy()
 
-	override fun resolve(item: UserCreate) {
-		userRepository.create {
-			this.name = item.name
-			this.user = item.user
-			this.password = item.password
-			this.token = item.token
-		}
+	override fun resolve(item: UserCreate) = userRepository.create {
+		this.name = item.name
+		this.user = item.user
+		this.password = item.password
+		this.token = item.token
 	}
 
 	data class UserCreate(
