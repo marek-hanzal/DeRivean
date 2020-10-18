@@ -3,14 +3,12 @@ package derivean.server.entity
 import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
-import derivean.lib.repository.UnknownEntityException
 import derivean.lib.storage.EntityUUID
 import derivean.server.player.Player
 import derivean.server.upgrade.u2020_10_17.Entity
-import java.util.*
 
-class EntityRepository(container: IContainer) : AbstractRepository<Entity>(Entity, container) {
-	fun create(player: Player, ancestor: String?, block: Entity.() -> Unit) = Entity.new {
+class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
+	fun create(player: Player, ancestor: String?, block: Entity.() -> Unit) = entity.new {
 		this.player = player
 		block(this)
 		ancestor?.let {
@@ -23,7 +21,7 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity>(Entit
 	 */
 	fun attributes(id: EntityUUID, vararg attributes: Attribute) {
 		val entity = find(id)
-		EntityAttribute.find { EntityAttributeTable.entity eq entity.id }.forEach {
+		entity.attributes.forEach {
 			it.delete()
 		}
 		for (attribute in attributes) {
@@ -35,7 +33,5 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity>(Entit
 		}
 	}
 
-	fun findByName(name: String) = Entity.find { EntityTable.name eq name }.firstOrNull()
-
-	override fun find(uuid: UUID) = Entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
+	fun findByName(name: String) = entity.find { table.name eq name }.firstOrNull()
 }

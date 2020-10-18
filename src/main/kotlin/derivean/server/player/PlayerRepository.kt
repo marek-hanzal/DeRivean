@@ -2,13 +2,6 @@ package derivean.server.player
 
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
-import derivean.lib.repository.UnknownEntityException
-import java.util.*
+import derivean.server.upgrade.u2020_10_17.Player
 
-class PlayerRepository(container: IContainer) : AbstractRepository<Player>(Player, container) {
-	fun create(block: Player.() -> Unit) = Player.new {
-		block(this)
-	}
-
-	override fun find(uuid: UUID) = Player.findById(uuid) ?: throw UnknownEntityException("Requested an unknown Entity [${uuid}].")
-}
+class PlayerRepository(container: IContainer) : AbstractRepository<Player, PlayerTable>(Player, PlayerTable, container)
