@@ -1,6 +1,5 @@
 package derivean.lib.repository
 
-import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.Entity
 import java.util.*
 
@@ -10,8 +9,6 @@ interface IRepository<T : Entity<*>> {
 	fun find(uuid: String) = find(UUID.fromString(uuid))
 
 	fun find(uuid: UUID): T
-
-	fun find(id: EntityUUID) = find(id.toString())
 
 	fun delete(uuid: String) = delete(UUID.fromString(uuid))
 

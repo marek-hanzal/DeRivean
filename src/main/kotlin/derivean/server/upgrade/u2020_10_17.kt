@@ -14,6 +14,20 @@ class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
 		storage.transaction {
 			SchemaUtils.createMissingTablesAndColumns(
 				UserTable,
+				PlayerNullableTable,
+			)
+		}
+		storage.transaction {
+			val user = User.new {
+				name = "The God"
+				user = "root"
+			}
+			Player.all().forEach {
+				it.user = user
+			}
+		}
+		storage.transaction {
+			SchemaUtils.createMissingTablesAndColumns(
 				PlayerTable,
 			)
 		}
@@ -33,6 +47,11 @@ class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
 		var user by UserTable.user
 		var password by UserTable.password
 		var token by UserTable.token
+	}
+
+	object PlayerNullableTable : UUIDTable("player") {
+		val name = varchar("name", 128).uniqueIndex()
+		val user = reference("user", UserTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE).nullable()
 	}
 
 	object PlayerTable : UUIDTable("player") {

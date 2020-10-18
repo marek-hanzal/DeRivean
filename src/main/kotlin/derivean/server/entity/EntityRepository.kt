@@ -20,7 +20,7 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity, Entit
 	 * Replace Entity's attributes by the new ones.
 	 */
 	fun attributes(id: EntityUUID, vararg attributes: Attribute) {
-		val entity = find(id)
+		val entity = find(id.value)
 		entity.attributes.forEach {
 			it.delete()
 		}

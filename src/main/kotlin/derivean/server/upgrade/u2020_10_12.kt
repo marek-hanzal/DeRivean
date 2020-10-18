@@ -19,18 +19,6 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				u2020_09_25.Entity.new {
 					this.player = player
 					this.name = "Gwork, The First Human"
-				}.also {
-					entityRepository.attributes(
-						it.id,
-						100.0.health(),
-						100.0.maxHealth(),
-						25.0.mana(),
-						25.0.maxMana(),
-						10.0.strength(),
-						5.0.physicalDefense(),
-						10.0.roundInitiative(),
-						1.0.haste(),
-					)
 				}.also { human ->
 					/**
 					 * Base Entity for all Warrior Class related Entities.
@@ -39,19 +27,6 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Horwath, Greatest of Warriors"
-					}.also {
-						entityRepository.attributes(
-							it.id,
-							160.0.health(),
-							160.0.maxHealth(),
-							5.0.mana(),
-							5.0.maxMana(),
-							20.0.strength(),
-							12.0.physicalDefense(),
-							0.9.haste(),
-							12.5.roundInitiative(),
-							1.0.classWarrior(),
-						)
 					}
 					/**
 					 * Base Entity for all Mage Class related Entities.
@@ -60,20 +35,44 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 						this.player = player
 						this.ancestor = human
 						this.name = "Moo, Greatest of Mages"
-					}.also {
-						entityRepository.attributes(
-							it.id,
-							70.0.health(),
-							70.0.maxHealth(),
-							100.0.mana(),
-							100.0.maxMana(),
-							0.75.haste(),
-							10.0.roundInitiative(),
-							1.0.classMage(),
-						)
 					}
 				}
 			}
+		}
+		storage.transaction {
+			entityRepository.attributes(
+				entityRepository.findByName("Gwork, The First Human")!!.id,
+				100.0.health(),
+				100.0.maxHealth(),
+				25.0.mana(),
+				25.0.maxMana(),
+				10.0.strength(),
+				5.0.physicalDefense(),
+				10.0.roundInitiative(),
+				1.0.haste(),
+			)
+			entityRepository.attributes(
+				entityRepository.findByName("Horwath, Greatest of Warriors")!!.id,
+				160.0.health(),
+				160.0.maxHealth(),
+				5.0.mana(),
+				5.0.maxMana(),
+				20.0.strength(),
+				12.0.physicalDefense(),
+				0.9.haste(),
+				12.5.roundInitiative(),
+				1.0.classWarrior(),
+			)
+			entityRepository.attributes(
+				entityRepository.findByName("Moo, Greatest of Mages")!!.id,
+				70.0.health(),
+				70.0.maxHealth(),
+				100.0.mana(),
+				100.0.maxMana(),
+				0.75.haste(),
+				10.0.roundInitiative(),
+				1.0.classMage(),
+			)
 		}
 	}
 }

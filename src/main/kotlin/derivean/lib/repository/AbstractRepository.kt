@@ -2,7 +2,6 @@ package derivean.lib.repository
 
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
-import derivean.lib.storage.EntityUUID
 import derivean.lib.storage.IStorage
 import org.jetbrains.exposed.dao.Entity
 import org.jetbrains.exposed.dao.EntityClass
@@ -23,5 +22,5 @@ abstract class AbstractRepository<T : Entity<UUID>, U : UUIDTable>(val entity: E
 		entity.all().limit(limit, page * limit).forEach { block(it) }
 	}
 
-	override fun find(uuid: UUID) = entity.findById(EntityUUID(uuid, entity.table)) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")
+	override fun find(uuid: UUID) = entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")
 }
