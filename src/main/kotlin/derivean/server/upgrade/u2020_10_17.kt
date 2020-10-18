@@ -19,7 +19,6 @@ class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
 		}
 	}
 
-
 	object UserTable : UUIDTable("user") {
 		val name = varchar("name", 128).uniqueIndex()
 		val user = varchar("user", 128).uniqueIndex()

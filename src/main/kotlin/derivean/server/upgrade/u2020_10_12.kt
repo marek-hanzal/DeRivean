@@ -3,22 +3,20 @@ package derivean.server.upgrade
 import derivean.game.attribute.common.*
 import derivean.lib.container.IContainer
 import derivean.lib.upgrade.AbstractUpgrade
-import derivean.server.entity.Entity
 import derivean.server.entity.EntityRepository
-import derivean.server.player.Player
 
 class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 	private val entityRepository: EntityRepository by container.lazy()
 
 	override fun upgrade() {
 		storage.transaction {
-			Player.new {
+			u2020_09_25.Player.new {
 				name = "The God"
 			}.also { player ->
 				/**
 				 * Base Entity for all Human related Entities.
 				 */
-				Entity.new {
+				u2020_09_25.Entity.new {
 					this.player = player
 					this.name = "Gwork, The First Human"
 					entityRepository.attributes(
@@ -36,7 +34,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 					/**
 					 * Base Entity for all Warrior Class related Entities.
 					 */
-					Entity.new {
+					u2020_09_25.Entity.new {
 						this.player = player
 						this.ancestor = human
 						this.name = "Horwath, Greatest of Warriors"
@@ -56,7 +54,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 					/**
 					 * Base Entity for all Mage Class related Entities.
 					 */
-					Entity.new {
+					u2020_09_25.Entity.new {
 						this.player = player
 						this.ancestor = human
 						this.name = "Moo, Greatest of Mages"
