@@ -1,12 +1,11 @@
 package derivean.server.equipment
 
+import derivean.lib.storage.EntityUUID
 import derivean.server.entity.EntityAttributeTable
-import org.jetbrains.exposed.dao.EntityID
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
-import java.util.*
 
 object EquipmentAttributeTable : UUIDTable("equipment-attribute") {
 	val equipment = reference("equipment", EquipmentTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
@@ -14,7 +13,7 @@ object EquipmentAttributeTable : UUIDTable("equipment-attribute") {
 	val value = double("value")
 }
 
-class EquipmentAttribute(id: EntityID<UUID>) : UUIDEntity(id) {
+class EquipmentAttribute(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<EquipmentAttribute>(EquipmentAttributeTable)
 
 	var equipment by EquipmentAttribute referencedOn EquipmentAttributeTable.equipment

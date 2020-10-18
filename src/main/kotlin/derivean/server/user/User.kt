@@ -1,10 +1,9 @@
 package derivean.server.user
 
-import org.jetbrains.exposed.dao.EntityID
+import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.UUIDTable
-import java.util.*
 
 object UserTable : UUIDTable("user") {
 	val name = varchar("name", 128).uniqueIndex()
@@ -13,7 +12,7 @@ object UserTable : UUIDTable("user") {
 	val token = varchar("token", 128).uniqueIndex().nullable()
 }
 
-class User(id: EntityID<UUID>) : UUIDEntity(id) {
+class User(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<User>(UserTable)
 
 	var name by UserTable.name
