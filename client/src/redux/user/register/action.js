@@ -1,5 +1,6 @@
 import Axios from "axios";
 import {createAction} from "redux-actions";
+import {getUserCreateHref} from "redux/discovery/payload/selector";
 import {onUserRegisterStatus} from "redux/user/registerStatus/action";
 
 const
@@ -7,13 +8,9 @@ const
 	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", register => register),
 	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => error),
 	onUserRegister = register => (dispatch, getState) => {
-		alert(JSON.stringify(register));
-		// const href = buildUrl(getUserCreateHref(getState()).replace("{page}", page), {
-		// });
-		const href = "nope";
 		dispatch(onUserRegisterStatus("LOADING"));
 		dispatch(onUserRegisterRequest());
-		Axios.get(href)
+		Axios.post(getUserCreateHref(getState()), register)
 			.then(response => {
 				dispatch(onUserRegisterSuccess(response.data));
 				dispatch(onUserRegisterStatus("SUCCESS"));

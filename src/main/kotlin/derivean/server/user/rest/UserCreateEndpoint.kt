@@ -19,7 +19,9 @@ class UserCreateEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			this.link = "/api/user/create"
 		}
 		routing.post("/api/user/create") {
-			call.created(linkGenerator.link("/api/user/${userCreateMapper.resolve(call.receive()).id}"))
+			handle(call) {
+				created(linkGenerator.link("/api/user/${userCreateMapper.resolve(receive()).id}"))
+			}
 		}
 	}
 }
