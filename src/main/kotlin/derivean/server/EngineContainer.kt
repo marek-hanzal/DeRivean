@@ -7,6 +7,7 @@ import derivean.lib.pool.PoolConfig
 import derivean.lib.server.HttpServerConfig
 import derivean.lib.server.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
+import derivean.server.auth.AuthenticatorService
 import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
@@ -73,6 +74,10 @@ object EngineContainer {
 		 */
 		service(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
 		service(EntityFetchMapper::class) { EntityFetchMapper(this) }
+		/**
+		 * Common services.
+		 */
+		service(AuthenticatorService::class) { AuthenticatorService(this) }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 			register(u2020_10_12::class)

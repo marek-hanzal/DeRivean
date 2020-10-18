@@ -6,7 +6,14 @@ import io.ktor.routing.*
 
 class UserCreateEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	override fun install(routing: Routing) {
-
-		TODO("Not yet implemented")
+		discovery {
+			this.name = "create"
+			this.group = "user"
+			this.description = "Create a new User"
+			this.link = "/api/user/create"
+		}
+		routing.post("/api/user/create") {
+			TODO("Finish user create")
+		}
 	}
 }

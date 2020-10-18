@@ -13,10 +13,10 @@ data class Link(
 	}
 
 	class Builder(private val linkGenerator: ILinkGenerator) {
-		var group: String = ""
-		var name: String = ""
-		var link: String = ""
-		var description: String = ""
+		lateinit var group: String
+		lateinit var name: String
+		lateinit var link: String
+		lateinit var description: String
 
 		fun build() = Link(
 			group,
