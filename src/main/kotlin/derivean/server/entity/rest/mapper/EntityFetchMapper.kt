@@ -3,9 +3,8 @@ package derivean.server.entity.rest.mapper
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.server.ILinkGenerator
+import derivean.lib.storage.EntityUUID
 import derivean.server.entity.Entity
-import org.jetbrains.exposed.dao.EntityID
-import java.util.*
 
 class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFetchMapper.Fetch>(container) {
 	private val linkGenerator: ILinkGenerator by container.lazy()
@@ -30,7 +29,7 @@ class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFe
 		}
 
 		class Builder(private val linkGenerator: ILinkGenerator) {
-			lateinit var id: EntityID<UUID>
+			lateinit var id: EntityUUID
 			lateinit var name: String
 			val attributes = mutableListOf<Attribute>()
 			var ancestor: Entity? = null

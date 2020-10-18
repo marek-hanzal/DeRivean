@@ -7,7 +7,7 @@ data class PageIndex(
 	/**
 	 * Total number of items available.
 	 */
-	val total: Int,
+	val total: Long,
 	/**
 	 * Current page size (should correspond with other values).
 	 */
@@ -30,7 +30,7 @@ data class PageIndex(
 	}
 
 	class Builder {
-		var total by Delegates.notNull<Int>()
+		var total by Delegates.notNull<Long>()
 		var size by Delegates.notNull<Int>()
 		val items = mutableListOf<Any>()
 

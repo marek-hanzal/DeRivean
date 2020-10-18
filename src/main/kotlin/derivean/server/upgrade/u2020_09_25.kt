@@ -5,7 +5,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.lib.upgrade.AbstractUpgrade
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
-import org.jetbrains.exposed.dao.UUIDTable
+import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.SchemaUtils
 
@@ -18,6 +18,7 @@ class u2020_09_25(container: IContainer) : AbstractUpgrade(container) {
 				EntityAttributeTable,
 				EquipmentTable,
 				EquipmentAttributeTable,
+				inBatch = true,
 			)
 		}
 	}

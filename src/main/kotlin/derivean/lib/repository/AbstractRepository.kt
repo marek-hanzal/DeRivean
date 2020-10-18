@@ -5,7 +5,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.storage.IStorage
 import org.jetbrains.exposed.dao.Entity
 import org.jetbrains.exposed.dao.EntityClass
-import org.jetbrains.exposed.dao.UUIDTable
+import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.selectAll
 import java.util.*
 
@@ -19,7 +19,7 @@ abstract class AbstractRepository<T : Entity<UUID>, U : UUIDTable>(val entity: E
 	override fun total() = entity.table.slice(entity.table.id).selectAll().count()
 
 	override fun page(page: Int, limit: Int, block: (T) -> Unit) {
-		entity.all().limit(limit, page * limit).forEach { block(it) }
+		entity.all().limit(limit, (page * limit).toLong()).forEach { block(it) }
 	}
 
 	override fun find(uuid: UUID) = entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")

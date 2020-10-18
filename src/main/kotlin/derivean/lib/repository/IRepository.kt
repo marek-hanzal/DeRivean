@@ -17,7 +17,7 @@ interface IRepository<T : Entity<*>> {
 	/**
 	 * Return total number of records in this repository (total number of rows in table).
 	 */
-	fun total(): Int
+	fun total(): Long
 
 	/**
 	 * Return just UUIDs of the given entity page.

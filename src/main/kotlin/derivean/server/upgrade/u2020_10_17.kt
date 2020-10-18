@@ -5,7 +5,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.lib.upgrade.AbstractUpgrade
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
-import org.jetbrains.exposed.dao.UUIDTable
+import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.SchemaUtils
 
@@ -15,6 +15,7 @@ class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
 			SchemaUtils.createMissingTablesAndColumns(
 				UserTable,
 				PlayerNullableTable,
+				inBatch = true,
 			)
 		}
 		storage.transaction {
