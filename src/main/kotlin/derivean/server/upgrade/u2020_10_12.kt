@@ -10,20 +10,20 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 
 	override fun upgrade() {
 		storage.transaction {
-			u2020_09_25.Player.new {
+			u2020_09_25.uPlayer.new {
 				name = "The God"
 			}.also { player ->
 				/**
 				 * Base Entity for all Human related Entities.
 				 */
-				u2020_09_25.Entity.new {
+				u2020_09_25.uEntity.new {
 					this.player = player
 					this.name = "Gwork, The First Human"
 				}.also { human ->
 					/**
 					 * Base Entity for all Warrior Class related Entities.
 					 */
-					u2020_09_25.Entity.new {
+					u2020_09_25.uEntity.new {
 						this.player = player
 						this.ancestor = human
 						this.name = "Horwath, Greatest of Warriors"
@@ -31,7 +31,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 					/**
 					 * Base Entity for all Mage Class related Entities.
 					 */
-					u2020_09_25.Entity.new {
+					u2020_09_25.uEntity.new {
 						this.player = player
 						this.ancestor = human
 						this.name = "Moo, Greatest of Mages"
@@ -39,6 +39,10 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				}
 			}
 		}
+		/**
+		 * A new transaction is needed to disconnect old cached entities from the new ones used by
+		 * current code in services/repositories.
+		 */
 		storage.transaction {
 			entityRepository.attributes(
 				entityRepository.findByName("Gwork, The First Human")!!.id,

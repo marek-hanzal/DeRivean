@@ -13,76 +13,76 @@ class u2020_09_25(container: IContainer) : AbstractUpgrade(container) {
 	override fun upgrade() {
 		storage.transaction {
 			SchemaUtils.create(
-				PlayerTable,
-				EntityTable,
-				EntityAttributeTable,
-				EquipmentTable,
-				EquipmentAttributeTable,
+				uPlayerTable,
+				uEntityTable,
+				uEntityAttributeTable,
+				uEquipmentTable,
+				uEquipmentAttributeTable,
 				inBatch = true,
 			)
 		}
 	}
 
-	object PlayerTable : UUIDTable("player") {
+	object uPlayerTable : UUIDTable("player") {
 		val name = varchar("name", 128).uniqueIndex()
 	}
 
-	class Player(id: EntityUUID) : UUIDEntity(id) {
-		companion object : UUIDEntityClass<Player>(PlayerTable)
+	class uPlayer(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uPlayer>(uPlayerTable)
 
-		var name by PlayerTable.name
+		var name by uPlayerTable.name
 	}
 
-	object EntityTable : UUIDTable("entity") {
-		val player = reference("player", PlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+	object uEntityTable : UUIDTable("entity") {
+		val player = reference("player", uPlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 		val name = varchar("name", 64)
-		val ancestor = reference("ancestor", EntityTable, ReferenceOption.SET_NULL, ReferenceOption.SET_NULL).nullable()
+		val ancestor = reference("ancestor", uEntityTable, ReferenceOption.SET_NULL, ReferenceOption.SET_NULL).nullable()
 	}
 
-	class Entity(id: EntityUUID) : UUIDEntity(id) {
-		companion object : UUIDEntityClass<Entity>(EntityTable)
+	class uEntity(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uEntity>(uEntityTable)
 
-		var player by Player referencedOn EntityTable.player
-		var name by EntityTable.name
-		var ancestor by Entity optionalReferencedOn EntityTable.ancestor
-		val attributes by EntityAttribute referrersOn EntityAttributeTable.entity
+		var player by uPlayer referencedOn uEntityTable.player
+		var name by uEntityTable.name
+		var ancestor by uEntity optionalReferencedOn uEntityTable.ancestor
+		val attributes by uEntityAttribute referrersOn uEntityAttributeTable.entity
 	}
 
-	object EntityAttributeTable : UUIDTable("entity-attribute") {
-		val entity = reference("entity", EntityTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
-		val name = varchar("name", 64)
-		val value = double("value")
-	}
-
-	class EntityAttribute(id: EntityUUID) : UUIDEntity(id) {
-		companion object : UUIDEntityClass<EntityAttribute>(EntityAttributeTable)
-
-		var entity by Entity referencedOn EntityAttributeTable.entity
-		var name by EntityAttributeTable.name
-		var value by EntityAttributeTable.value
-	}
-
-	object EquipmentTable : UUIDTable("equipment") {
-		val name = varchar("name", 64)
-	}
-
-	class Equipment(id: EntityUUID) : UUIDEntity(id) {
-		companion object : UUIDEntityClass<Equipment>(EquipmentTable)
-
-		var name by EquipmentTable.name
-	}
-
-	object EquipmentAttributeTable : UUIDTable("equipment-attribute") {
-		val equipment = reference("equipment", EquipmentTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+	object uEntityAttributeTable : UUIDTable("entity-attribute") {
+		val entity = reference("entity", uEntityTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 		val name = varchar("name", 64)
 		val value = double("value")
 	}
 
-	class EquipmentAttribute(id: EntityUUID) : UUIDEntity(id) {
-		companion object : UUIDEntityClass<EquipmentAttribute>(EquipmentAttributeTable)
+	class uEntityAttribute(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uEntityAttribute>(uEntityAttributeTable)
 
-		var equipment by EquipmentAttribute referencedOn EquipmentAttributeTable.equipment
-		var name by EntityAttributeTable.name
-		var value by EntityAttributeTable.value
+		var entity by uEntity referencedOn uEntityAttributeTable.entity
+		var name by uEntityAttributeTable.name
+		var value by uEntityAttributeTable.value
+	}
+
+	object uEquipmentTable : UUIDTable("equipment") {
+		val name = varchar("name", 64)
+	}
+
+	class uEquipment(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uEquipment>(uEquipmentTable)
+
+		var name by uEquipmentTable.name
+	}
+
+	object uEquipmentAttributeTable : UUIDTable("equipment-attribute") {
+		val equipment = reference("equipment", uEquipmentTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+		val name = varchar("name", 64)
+		val value = double("value")
+	}
+
+	class uEquipmentAttribute(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uEquipmentAttribute>(uEquipmentAttributeTable)
+
+		var equipment by uEquipmentAttribute referencedOn uEquipmentAttributeTable.equipment
+		var name by uEntityAttributeTable.name
+		var value by uEntityAttributeTable.value
 	}
 }
