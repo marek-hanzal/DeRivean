@@ -24,7 +24,10 @@ import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
 import derivean.server.upgrade.u2020_10_17
+import derivean.server.user.UserHttpModule
 import derivean.server.user.UserRepository
+import derivean.server.user.rest.UserCreateEndpoint
+import derivean.server.user.rest.mapper.UserCreateMapper
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -41,32 +44,35 @@ object EngineContainer {
 		/**
 		 * Http Modules
 		 */
-		register(DiscoveryHttpModule::class) { DiscoveryHttpModule(this) }
-		register(ClientHttpModule::class) { ClientHttpModule(this) }
+		service(DiscoveryHttpModule::class) { DiscoveryHttpModule(this) }
+		service(ClientHttpModule::class) { ClientHttpModule(this) }
 		/**
 		 * Player related stuff.
 		 */
-		register(PlayerHttpModule::class) { PlayerHttpModule(this) }
-		register(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
-		register(PlayerEndpoint::class) { PlayerEndpoint(this) }
-		register(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
+		service(PlayerHttpModule::class) { PlayerHttpModule(this) }
+		service(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
+		service(PlayerEndpoint::class) { PlayerEndpoint(this) }
+		service(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
 		service(PlayerRepository::class) { PlayerRepository(this) }
 		/**
 		 * Entity related stuff.
 		 */
-		register(EntityHttpModule::class) { EntityHttpModule(this) }
-		register(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
-		register(EntityEndpoint::class) { EntityEndpoint(this) }
+		service(EntityHttpModule::class) { EntityHttpModule(this) }
+		service(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
+		service(EntityEndpoint::class) { EntityEndpoint(this) }
 		service(EntityRepository::class) { EntityRepository(this) }
 		/**
 		 * User related stuff.
 		 */
+		service(UserHttpModule::class) { UserHttpModule(this) }
+		service(UserCreateEndpoint::class) { UserCreateEndpoint(this) }
+		service(UserCreateMapper::class) { UserCreateMapper(this) }
 		service(UserRepository::class) { UserRepository(this) }
 		/**
 		 * Mappers
 		 */
-		register(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
-		register(EntityFetchMapper::class) { EntityFetchMapper(this) }
+		service(PlayerFetchMapper::class) { PlayerFetchMapper(this) }
+		service(EntityFetchMapper::class) { EntityFetchMapper(this) }
 		configurator(IUpgradeManager::class) {
 			register(u2020_09_25::class)
 			register(u2020_10_12::class)
@@ -77,6 +83,7 @@ object EngineContainer {
 			register(ClientHttpModule::class)
 			register(PlayerHttpModule::class)
 			register(EntityHttpModule::class)
+			register(UserHttpModule::class)
 		}
 		block(this)
 	}

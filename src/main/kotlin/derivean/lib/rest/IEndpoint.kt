@@ -1,7 +1,8 @@
 package derivean.lib.rest
 
-import io.ktor.routing.Routing
+import derivean.lib.config.IConfigurable
+import io.ktor.routing.*
 
-interface IEndpoint {
+interface IEndpoint : IConfigurable {
 	fun install(routing: Routing)
 }
