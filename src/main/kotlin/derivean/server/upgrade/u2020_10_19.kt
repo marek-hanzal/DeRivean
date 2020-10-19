@@ -2,6 +2,7 @@ package derivean.server.upgrade
 
 import derivean.lib.container.IContainer
 import derivean.lib.storage.EntityUUID
+import derivean.lib.storage.drop
 import derivean.lib.upgrade.AbstractUpgrade
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
@@ -19,11 +20,18 @@ class u2020_10_19(container: IContainer) : AbstractUpgrade(container) {
 			)
 		}
 		storage.transaction {
+			/**
+			 * Data migration (move current values to a new column).
+			 */
 			UserNullableTable.update {
 				it[login] = user
 			}
 		}
 		storage.transaction {
+			/**
+			 * SchemaUtils will not drop any columns, thus it's necessary to kill them manually.
+			 */
+			UserNullableTable.user.drop(this)
 			SchemaUtils.createMissingTablesAndColumns(
 				UserTable,
 				inBatch = true,
