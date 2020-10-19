@@ -1,5 +1,6 @@
 const InternalPath = {
-	root: '/'
+	root: "/",
+	signIn: "/sign-in",
 };
 
 export default InternalPath;
