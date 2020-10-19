@@ -1,4 +1,7 @@
 {
+	"raw": {
+		"User with the given name already exists": "User with the given name already exists."
+	},
 	"error": {
 		"discovery": {
 			"title": "Discovery Error",
@@ -42,6 +45,12 @@
 				"submit": {
 					"label": "Sing-up"
 				}
+			},
+			"failed": {
+				"title": "Registration failed!"
+			},
+			"close": {
+				"title": "Close"
 			}
 		},
 		"login": {

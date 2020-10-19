@@ -1,2 +1,5 @@
 {
+	"raw": {
+		"User with the given name already exists": "Uživatel se zadaným jménem je již registrovaný."
+	}
 }
