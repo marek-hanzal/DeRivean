@@ -35,8 +35,8 @@
 					"required": "Sorry, display name is required!"
 				},
 				"login": {
-					"label": "User name (used for login)",
-					"required": "We need user name, or how do you want to log in?"
+					"label": "Login",
+					"required": "We need some login information."
 				},
 				"password": {
 					"label": "Password",

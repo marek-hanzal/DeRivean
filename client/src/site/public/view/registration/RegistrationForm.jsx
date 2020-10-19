@@ -5,12 +5,12 @@ import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
 
 const layout = {
-	labelCol: {span: 8},
+	labelCol: {span: 6},
 	wrapperCol: {span: 16},
 };
 
 const tailLayout = {
-	wrapperCol: {offset: 8, span: 16},
+	wrapperCol: {offset: layout.labelCol.span + 4, span: layout.wrapperCol.span},
 };
 
 const RegistrationForm = (

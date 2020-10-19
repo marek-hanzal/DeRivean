@@ -1,3 +1,4 @@
+import {Col, Row} from "antd";
 import React from "react";
 import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
@@ -14,7 +15,13 @@ function resolveStatus(status) {
 		case "FAILURE":
 			return <RegistrationFailed/>;
 		default:
-			return <RegistrationForm/>;
+			return (
+				<Row justify={"center"}>
+					<Col span={8}>
+						<RegistrationForm/>
+					</Col>
+				</Row>
+			);
 	}
 }
 
