@@ -19,8 +19,8 @@ const RootMenu = ({t, ...props}) =>
 				<Link to={EntityPath.home}>{t("root.entity.menu")}</Link>
 			</Menu.Item>
 			<Menu.Divider/>
-			<Menu.Item key='root.logout' icon={<PoweroffOutlined/>}>
-				<Link to={RootPath.signOut}>{t("root.logout.menu")}</Link>
+			<Menu.Item key='root.sign-out' icon={<PoweroffOutlined/>}>
+				<Link to={RootPath.signOut}>{t("root.sign-out.menu")}</Link>
 			</Menu.Item>
 		</BaseMenu>
 	</Route>

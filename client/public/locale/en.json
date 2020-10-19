@@ -193,7 +193,7 @@
 				}
 			}
 		},
-		"logout": {
+		"sign-out": {
 			"menu": "Logout"
 		}
 	}
