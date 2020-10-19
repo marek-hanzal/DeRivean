@@ -1,4 +1,4 @@
-import {Button, Result} from "antd";
+import {Button, Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -10,19 +10,20 @@ const SingInView = (
 		t,
 	}) =>
 	<InternalView
-		title='internal.home.title'
 		open={[InternalPath.root]}
 	>
-		<Result
-			status="success"
-			title={t("internal.sign-in.succeed.title")}
-			subTitle={t("internal.sign-in.succeed.subtitle")}
-			extra={[
-				<Button type="primary" key="continue">
-					<Link to={InternalPath.root}>{t("internal.sign-in.continue.title")}</Link>
-				</Button>
-			]}
-		/>
+		<Card>
+			<Result
+				status="success"
+				title={t("internal.sign-in.succeed.title")}
+				subTitle={t("internal.sign-in.succeed.subtitle")}
+				extra={[
+					<Button type="primary" key="continue">
+						<Link to={InternalPath.root}>{t("internal.sign-in.continue.title")}</Link>
+					</Button>
+				]}
+			/>
+		</Card>
 	</InternalView>
 ;
 

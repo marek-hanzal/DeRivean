@@ -110,7 +110,11 @@
 			"title": "Internal Home",
 			"link": "Home",
 			"menu": "Home",
-			"breadcrumb": "Home"
+			"breadcrumb": "Home",
+			"content": {
+				"title": "Welcome to the Game!",
+				"subtitle": "So it's time to check out World of DeRivean!"
+			}
 		},
 		"sign-out": {
 			"menu": "Logout"
