@@ -17,8 +17,8 @@ const
 				dispatch(onClientStatus("SUCCESS"));
 				dispatch(onLoading(false));
 			})
-			.catch(error => {
-				dispatch(onClientFailure(error));
+			.catch(({response}) => {
+				dispatch(onClientFailure(response));
 				dispatch(onClientStatus("FAILURE"));
 				dispatch(onLoading(false));
 			});

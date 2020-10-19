@@ -18,8 +18,8 @@ const
 				dispatch(onDiscoveryStatus("SUCCESS"));
 				dispatch(onLoading(false));
 			})
-			.catch(error => {
-				dispatch(onDiscoveryFailure(error));
+			.catch(({response}) => {
+				dispatch(onDiscoveryFailure(response));
 				dispatch(onDiscoveryStatus("FAILURE"));
 				dispatch(onLoading(false));
 			});

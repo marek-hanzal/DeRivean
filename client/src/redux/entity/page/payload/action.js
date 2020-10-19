@@ -20,8 +20,8 @@ const
 				dispatch(onEntityPageSuccess(response.data));
 				dispatch(onEntityPageStatus("SUCCESS"));
 			})
-			.catch(error => {
-				dispatch(onEntityPageFailure(error));
+			.catch(({response}) => {
+				dispatch(onEntityPageFailure(response));
 				dispatch(onEntityPageStatus("FAILURE"));
 			});
 	};

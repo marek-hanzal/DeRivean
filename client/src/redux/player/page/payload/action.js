@@ -20,8 +20,8 @@ const
 				dispatch(onPlayerPageSuccess(response.data));
 				dispatch(onPlayerPageStatus("SUCCESS"));
 			})
-			.catch(error => {
-				dispatch(onPlayerPageFailure(error));
+			.catch(({response}) => {
+				dispatch(onPlayerPageFailure(response));
 				dispatch(onPlayerPageStatus("FAILURE"));
 			});
 	};
