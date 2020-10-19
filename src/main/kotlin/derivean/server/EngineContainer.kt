@@ -19,6 +19,7 @@ import derivean.server.entity.rest.EntityPageEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
 import derivean.server.equipment.EquipmentAttributeRepository
 import derivean.server.equipment.EquipmentRepository
+import derivean.server.kingdom.KingdomRepository
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerFetchEndpoint
@@ -48,6 +49,7 @@ object EngineContainer {
 		register(u2020_10_17::class) { u2020_10_17(this) }
 		register(u2020_10_19::class) { u2020_10_19(this) }
 		register(u2020_10_19_01::class) { u2020_10_19_01(this) }
+		register(u2020_10_19_02::class) { u2020_10_19_02(this) }
 		/**
 		 * Http Modules
 		 */
@@ -61,6 +63,10 @@ object EngineContainer {
 		service(PlayerFetchEndpoint::class) { PlayerFetchEndpoint(this) }
 		service(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
 		service(PlayerRepository::class) { PlayerRepository(this) }
+		/**
+		 * Kingdom related stuff.
+		 */
+		service(KingdomRepository::class) { KingdomRepository(this) }
 		/**
 		 * Entity related stuff.
 		 */
@@ -105,6 +111,7 @@ object EngineContainer {
 			register(u2020_10_17::class)
 			register(u2020_10_19::class)
 			register(u2020_10_19_01::class)
+			register(u2020_10_19_02::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)

@@ -24,6 +24,8 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 	} catch (e: ExposedSQLException) {
 		if (e.message?.contains("user_login_unique") == true) {
 			throw DuplicateUserException("User with the given login already exists", e)
+		} else if (e.message?.contains("user_name_unique") == true) {
+			throw DuplicateUserException("User with the given name already exists", e)
 		}
 		throw e
 	}

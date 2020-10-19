@@ -9,42 +9,68 @@ import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.SchemaUtils
 
-class u2020_09_25(container: IContainer) : AbstractUpgrade(container) {
+class u2020_10_19_02(container: IContainer) : AbstractUpgrade(container) {
 	override fun upgrade() {
 		storage.transaction {
-			SchemaUtils.create(
-				uPlayerTable,
-				uEntityTable,
-				uEntityAttributeTable,
-				uEquipmentTable,
-				uEquipmentAttributeTable,
+			SchemaUtils.createMissingTablesAndColumns(
+				uKingdomTable,
 				inBatch = true,
 			)
 		}
 	}
 
+	object uUserTable : UUIDTable("user") {
+		val name = varchar("name", 128).uniqueIndex()
+		val login = varchar("login", 128).uniqueIndex()
+		val password = varchar("password", 128).nullable()
+		val token = varchar("token", 128).uniqueIndex().nullable()
+	}
+
+	class uUser(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uUser>(uUserTable)
+
+		var name by uUserTable.name
+		var login by uUserTable.login
+		var password by uUserTable.password
+		var token by uUserTable.token
+	}
+
 	object uPlayerTable : UUIDTable("player") {
+		val user = reference("user", uUserTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 		val name = varchar("name", 128).uniqueIndex()
 	}
 
 	class uPlayer(id: EntityUUID) : UUIDEntity(id) {
 		companion object : UUIDEntityClass<uPlayer>(uPlayerTable)
 
+		var user by uUser referencedOn uPlayerTable.user
 		var name by uPlayerTable.name
+	}
+
+	object uKingdomTable : UUIDTable() {
+		val player = reference("player", uPlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+		val name = varchar("name", 128).uniqueIndex()
+	}
+
+	class uKingdom(id: EntityUUID) : UUIDEntity(id) {
+		companion object : UUIDEntityClass<uKingdom>(uKingdomTable)
+
+		var player by uPlayer referencedOn uKingdomTable.player
+		var name by uKingdomTable.name
 	}
 
 	object uEntityTable : UUIDTable("entity") {
 		val player = reference("player", uPlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
-		val name = varchar("name", 64)
 		val ancestor = reference("ancestor", uEntityTable, ReferenceOption.SET_NULL, ReferenceOption.SET_NULL).nullable()
+		val name = varchar("name", 64)
 	}
 
 	class uEntity(id: EntityUUID) : UUIDEntity(id) {
 		companion object : UUIDEntityClass<uEntity>(uEntityTable)
 
 		var player by uPlayer referencedOn uEntityTable.player
-		var name by uEntityTable.name
 		var ancestor by uEntity optionalReferencedOn uEntityTable.ancestor
+		var name by uEntityTable.name
 		val attributes by uEntityAttribute referrersOn uEntityAttributeTable.entity
 	}
 

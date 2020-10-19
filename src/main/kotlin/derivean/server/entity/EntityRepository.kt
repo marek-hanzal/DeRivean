@@ -6,10 +6,9 @@ import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.EntityUUID
 import derivean.server.player.PlayerRepository
 import derivean.server.upgrade.u2020_10_19
-import derivean.server.upgrade.u2020_10_19.Entity
 
-typealias EntityTable = u2020_10_19.EntityTable
-typealias Entity = u2020_10_19.Entity
+typealias EntityTable = u2020_10_19.uEntityTable
+typealias Entity = u2020_10_19.uEntity
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
 	private val playerRepository: PlayerRepository by container.lazy()
