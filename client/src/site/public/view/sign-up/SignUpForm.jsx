@@ -6,12 +6,11 @@ import {onUserRegister} from "redux/user/register/action";
 import {getUserRegisterRequest, isUserRegisterLoading} from "redux/user/register/selector";
 
 const layout = {
-	labelCol: {span: 6},
-	wrapperCol: {span: 16},
+	wrapperCol: {span: 24},
 };
 
 const tailLayout = {
-	wrapperCol: {offset: layout.labelCol.span + 4, span: layout.wrapperCol.span},
+	wrapperCol: {offset: 10, span: layout.wrapperCol.span},
 };
 
 const SignUpForm = (
@@ -22,7 +21,7 @@ const SignUpForm = (
 		onFinish,
 		onFailure,
 	}) =>
-	<Spin spinning={isLoading} delay={200}>
+	<Spin spinning={isLoading}>
 		<Form
 			{...layout}
 			initialValues={initials}
@@ -31,23 +30,20 @@ const SignUpForm = (
 			onFinishFailed={onFailure}
 		>
 			<Form.Item
-				label={t("public.sign-up.form.name.label")}
 				name="name"
 				rules={[{required: true, message: t("public.sign-up.form.name.required")}]}
-				children={<Input/>}
+				children={<Input placeholder={t("public.sign-up.form.name.label")}/>}
 			/>
 			<Form.Item
-				label={t("public.sign-up.form.login.label")}
 				name="login"
 				rules={[{required: true, message: t("public.sign-up.form.login.required")}]}
-				children={<Input/>}
+				children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
 			/>
 
 			<Form.Item
-				label={t("public.sign-up.form.password.label")}
 				name="password"
 				rules={[{required: true, message: t("public.sign-up.form.password.required")}]}
-				children={<Input.Password/>}
+				children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
 			/>
 
 			<Form.Item {...tailLayout}>

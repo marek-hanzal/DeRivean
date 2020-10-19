@@ -1,3 +1,4 @@
+import {Col, Row} from "antd";
 import React from "react";
 import PublicView from "site/public/component/PublicView";
 import PublicPath from "site/public/router/PublicPath";
@@ -9,8 +10,13 @@ const SingInView = () =>
 		subtitle={"public.sign-in.subtitle"}
 		open={[PublicPath.root]}
 		selected={[PublicPath.signIn]}
-		children={<SignInForm/>}
-	/>
+	>
+		<Row justify={"center"}>
+			<Col span={4}>
+				<SignInForm/>
+			</Col>
+		</Row>
+	</PublicView>
 ;
 
 export default SingInView;
