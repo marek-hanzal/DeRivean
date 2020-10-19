@@ -21,6 +21,11 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 		embeddedServer(Netty, httpServerConfig.port) {
 			install(CORS) {
 				header("Authorization")
+				header(HttpHeaders.XForwardedProto)
+				header(HttpHeaders.AccessControlAllowHeaders)
+				header(HttpHeaders.ContentType)
+				header(HttpHeaders.AccessControlAllowOrigin)
+				method(HttpMethod.Options)
 				method(HttpMethod.Head)
 				method(HttpMethod.Get)
 				method(HttpMethod.Post)
