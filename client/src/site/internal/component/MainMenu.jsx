@@ -5,6 +5,7 @@ import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {onSessionClose} from "redux/session/action";
 import InternalPath from "site/internal/router/InternalPath";
 
 const MainMenu = (
@@ -27,6 +28,6 @@ const MainMenu = (
 export default connect(
 	state => ({}),
 	dispatch => ({
-		onLogout: () => alert("logout!")
+		onLogout: () => dispatch(onSessionClose())
 	})
 )(withTranslation()(MainMenu));

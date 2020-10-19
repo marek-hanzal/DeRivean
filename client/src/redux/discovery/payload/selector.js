@@ -16,6 +16,8 @@ const getUserGroup = state => getDiscoveryIndex(state).user;
 
 const getUserCreateHref = state => getUserGroup(state).create.link;
 
+const getUserLoginHref = state => getUserGroup(state).login.link;
+
 export {
 	branch as discoveryPayloadBranch,
 	getDiscoveryIndex,
@@ -25,4 +27,5 @@ export {
 	getEntityPageHref,
 	getUserGroup,
 	getUserCreateHref,
+	getUserLoginHref,
 };

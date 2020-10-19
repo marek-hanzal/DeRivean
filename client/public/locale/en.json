@@ -63,7 +63,20 @@
 		"sign-in": {
 			"menu": "Sing-in",
 			"title": "Login to DeRivean",
-			"subtitle": "Just login and start playing!"
+			"subtitle": "Just login and start playing!",
+			"form": {
+				"login": {
+					"label": "Login (user name)",
+					"required": "We cannot make login request without... login!"
+				},
+				"password": {
+					"label": "Password",
+					"required": "Please, give us your deepest secret!"
+				},
+				"submit": {
+					"label": "Login!"
+				}
+			}
 		}
 	},
 	"internal": {

@@ -19,15 +19,13 @@ const SignUpForm = (
 		isLoading,
 		initials,
 		onFinish,
-		onFailure,
 	}) =>
 	<Spin spinning={isLoading}>
 		<Form
 			{...layout}
 			initialValues={initials}
-			name="registration"
 			onFinish={onFinish}
-			onFinishFailed={onFailure}
+			name={"sign-up"}
 		>
 			<Form.Item
 				name="name"

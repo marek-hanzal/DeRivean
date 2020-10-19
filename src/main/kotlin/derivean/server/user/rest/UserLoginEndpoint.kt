@@ -2,7 +2,9 @@ package derivean.server.user.rest
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.internalServerError
 import derivean.lib.rest.ok
+import derivean.lib.rest.resolve
 import derivean.server.user.rest.mapper.UserLoginMapper
 import io.ktor.application.*
 import io.ktor.routing.*
@@ -18,8 +20,12 @@ class UserLoginEndpoint(container: IContainer) : AbstractActionEndpoint(containe
 			this.link = "/api/user/login"
 		}
 		routing.post("/api/user/login") {
-			resolve(call, userLoginMapper) {
-				ok(this)
+			try {
+				resolve(call, userLoginMapper) {
+					ok(this)
+				}
+			} catch (e: Throwable) {
+				call.resolve(internalServerError("Internal Server Error"))
 			}
 		}
 	}

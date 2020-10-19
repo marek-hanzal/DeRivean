@@ -12,7 +12,7 @@ const SingInView = () =>
 		selected={[PublicPath.signIn]}
 	>
 		<Row justify={"center"}>
-			<Col span={4}>
+			<Col span={6}>
 				<SignInForm/>
 			</Col>
 		</Row>
