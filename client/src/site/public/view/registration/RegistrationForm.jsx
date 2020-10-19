@@ -51,7 +51,7 @@ const RegistrationForm = (
 			/>
 
 			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit">{t("public.registration.form.submit.label")}</Button>
+				<Button type="primary" htmlType="submit" disabled={isLoading}>{t("public.registration.form.submit.label")}</Button>
 			</Form.Item>
 		</Form>
 	</Spin>
