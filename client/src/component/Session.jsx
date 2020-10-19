@@ -13,7 +13,7 @@ const Session = (
 		public: <PublicRouter/>,
 		internal: <InternalRouter/>,
 		root: <RootRouter/>
-	}[session.user ? session.route : "public"])
+	}[session.user ? session.user.site : "public"])
 ;
 
 export default connect(

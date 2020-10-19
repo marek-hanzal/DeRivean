@@ -3,8 +3,9 @@ import {Button, Col, Form, Input, Row} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {onUserLogin} from "redux/user/login/action";
-import {isUserLoginLoading} from "redux/user/login/selector";
+import {onSessionOpen} from "redux/session/action";
+import {onUserLogin, onUserLoginDismiss} from "redux/user/login/action";
+import {getUserLoginUser, isUserLoginLoading} from "redux/user/login/selector";
 
 const SignInForm = (
 	{
@@ -53,9 +54,12 @@ export default connect(
 		isLoading: isUserLoginLoading(state),
 		initials: {},
 	}),
-	dispatch => ({
-		onFinish: values => {
-			dispatch(onUserLogin(values));
+	{
+		onFinish: values => (dispatch, getState) => {
+			dispatch(onUserLogin(values)).then(() => {
+				dispatch(onSessionOpen(getUserLoginUser(getState())));
+				dispatch(onUserLoginDismiss());
+			});
 		}
-	}),
+	},
 )(withTranslation()(SignInForm));

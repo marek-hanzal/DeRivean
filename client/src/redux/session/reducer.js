@@ -5,8 +5,9 @@ const session = handleActions({
 	[onSessionOpen]: (state, {payload}) => ({...state, ...payload}),
 	[onSessionClose]: (state, {payload}) => ({...state, ...payload}),
 }, {
-	route: "public",
-	user: null,
+	user: {
+		site: "public",
+	},
 });
 
 export default session;

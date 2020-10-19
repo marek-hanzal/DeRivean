@@ -12,7 +12,7 @@ const
 		dispatch(onLoading(true));
 		dispatch(onDiscoveryStatus("LOADING"));
 		dispatch(onDiscoveryRequest());
-		Axios.get(getDiscoveryHref(getState()))
+		return Axios.get(getDiscoveryHref(getState()))
 			.then(response => {
 				dispatch(onDiscoverySuccess(response.data));
 				dispatch(onDiscoveryStatus("SUCCESS"));

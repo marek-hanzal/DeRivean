@@ -11,7 +11,7 @@ const
 		dispatch(onLoading(true));
 		dispatch(onClientStatus("LOADING"));
 		dispatch(onClientRequest());
-		Axios.get(href)
+		return Axios.get(href)
 			.then(response => {
 				dispatch(onClientSuccess(response.data));
 				dispatch(onClientStatus("SUCCESS"));

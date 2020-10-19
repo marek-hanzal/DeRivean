@@ -9,7 +9,7 @@ const
 	onUserRegisterDismiss = createAction("ON_USER_REGISTER_DISMISS", () => ({status: null, error: null, register: null})),
 	onUserRegister = register => (dispatch, getState) => {
 		dispatch(onUserRegisterRequest(register));
-		Axios.post(getUserCreateHref(getState()), register)
+		return Axios.post(getUserCreateHref(getState()), register)
 			.then(response => dispatch(onUserRegisterSuccess(response.data)))
 			.catch(({response}) => dispatch(onUserRegisterFailure(response)));
 	};

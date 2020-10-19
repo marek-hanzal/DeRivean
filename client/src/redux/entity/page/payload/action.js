@@ -11,7 +11,7 @@ const
 	onEntityPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onEntityPageStatus("LOADING"));
 		dispatch(onEntityPageRequest());
-		Axios.get(buildUrl(getEntityPageHref(getState()).replace("{page}", page), {
+		return Axios.get(buildUrl(getEntityPageHref(getState()).replace("{page}", page), {
 			queryParams: {
 				limit: size,
 			}

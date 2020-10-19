@@ -11,7 +11,7 @@ const
 	onPlayerPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onPlayerPageStatus("LOADING"));
 		dispatch(onPlayerPageRequest());
-		Axios.get(buildUrl(getPlayerPageHref(getState()).replace("{page}", page), {
+		return Axios.get(buildUrl(getPlayerPageHref(getState()).replace("{page}", page), {
 			queryParams: {
 				limit: size,
 			}
