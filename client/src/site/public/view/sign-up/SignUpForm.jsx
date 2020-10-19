@@ -14,7 +14,7 @@ const tailLayout = {
 	wrapperCol: {offset: layout.labelCol.span + 4, span: layout.wrapperCol.span},
 };
 
-const RegistrationForm = (
+const SignUpForm = (
 	{
 		t,
 		isLoading,
@@ -31,27 +31,27 @@ const RegistrationForm = (
 			onFinishFailed={onFailure}
 		>
 			<Form.Item
-				label={t("public.registration.form.name.label")}
+				label={t("public.sign-up.form.name.label")}
 				name="name"
-				rules={[{required: true, message: t("public.registration.form.name.required")}]}
+				rules={[{required: true, message: t("public.sign-up.form.name.required")}]}
 				children={<Input/>}
 			/>
 			<Form.Item
-				label={t("public.registration.form.login.label")}
+				label={t("public.sign-up.form.login.label")}
 				name="login"
-				rules={[{required: true, message: t("public.registration.form.login.required")}]}
+				rules={[{required: true, message: t("public.sign-up.form.login.required")}]}
 				children={<Input/>}
 			/>
 
 			<Form.Item
-				label={t("public.registration.form.password.label")}
+				label={t("public.sign-up.form.password.label")}
 				name="password"
-				rules={[{required: true, message: t("public.registration.form.password.required")}]}
+				rules={[{required: true, message: t("public.sign-up.form.password.required")}]}
 				children={<Input.Password/>}
 			/>
 
 			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" disabled={isLoading}>{t("public.registration.form.submit.label")}</Button>
+				<Button type="primary" htmlType="submit" disabled={isLoading}>{t("public.sign-up.form.submit.label")}</Button>
 			</Form.Item>
 		</Form>
 	</Spin>
@@ -67,4 +67,4 @@ export default connect(
 			dispatch(onUserRegister(values));
 		}
 	}),
-)(withTranslation()(RegistrationForm));
+)(withTranslation()(SignUpForm));

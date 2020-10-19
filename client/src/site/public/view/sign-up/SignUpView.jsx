@@ -4,36 +4,36 @@ import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
 import PublicView from "site/public/component/PublicView";
 import PublicPath from "site/public/router/PublicPath";
-import RegistrationFailed from "site/public/view/registration/RegistrationFailed";
-import RegistrationForm from "site/public/view/registration/RegistrationForm";
-import RegistrationSucceed from "site/public/view/registration/RegistrationSucceed";
+import FailedResult from "site/public/view/sign-up/FailedResult";
+import SignUpForm from "site/public/view/sign-up/SignUpForm";
+import SucceedResult from "site/public/view/sign-up/SucceedResult";
 
 function resolveStatus(status) {
 	switch (status) {
 		case "SUCCESS":
-			return <RegistrationSucceed/>;
+			return <SucceedResult/>;
 		case "FAILURE":
-			return <RegistrationFailed/>;
+			return <FailedResult/>;
 		default:
 			return (
 				<Row justify={"center"}>
 					<Col span={8}>
-						<RegistrationForm/>
+						<SignUpForm/>
 					</Col>
 				</Row>
 			);
 	}
 }
 
-const RegistrationView = (
+const SignUpView = (
 	{
 		status,
 	}) =>
 	<PublicView
-		title={"public.registration.title"}
-		subtitle={"public.registration.subtitle"}
+		title={"public.sign-up.title"}
+		subtitle={"public.sign-up.subtitle"}
 		open={[PublicPath.root]}
-		selected={[PublicPath.registration]}
+		selected={[PublicPath.signUp]}
 		children={resolveStatus(status)}
 	/>
 ;
@@ -42,5 +42,5 @@ export default connect(
 	state => ({
 		status: getUserRegisterStatus(state),
 	}),
-	dispatch => ({}),
-)(RegistrationView);
+	{},
+)(SignUpView);

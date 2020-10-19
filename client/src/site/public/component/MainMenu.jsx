@@ -17,11 +17,11 @@ const MainMenu = (
 			<Link to={PublicPath.root}>{t("public.home.menu")}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		<Menu.Item key={PublicPath.registration} icon={<CarryOutOutlined/>}>
-			<Link to={PublicPath.registration}>{t('public.registration.menu')}</Link>
+		<Menu.Item key={PublicPath.signUp} icon={<CarryOutOutlined/>}>
+			<Link to={PublicPath.signUp}>{t("public.sign-up.menu")}</Link>
 		</Menu.Item>
-		<Menu.Item key={PublicPath.login} icon={<LoginOutlined/>}>
-			<Link to={PublicPath.login}>{t('public.login.menu')}</Link>
+		<Menu.Item key={PublicPath.signIn} icon={<LoginOutlined/>}>
+			<Link to={PublicPath.signIn}>{t("public.sign-in.menu")}</Link>
 		</Menu.Item>
 	</BaseMenu>
 ;

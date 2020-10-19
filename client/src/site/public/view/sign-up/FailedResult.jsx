@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {onUserRegisterDismiss} from "redux/user/register/action";
 import {getUserRegisterError} from "redux/user/register/selector";
 
-const RegistrationFailed = (
+const FailedResult = (
 	{
 		t,
 		error,
@@ -13,11 +13,11 @@ const RegistrationFailed = (
 	}) =>
 	<Result
 		status="error"
-		title={t("public.registration.failed.title")}
+		title={t("public.sign-up.failed.title")}
 		subTitle={t("raw." + error)}
 		extra={[
 			<Button type="primary" key="close" onClick={() => onDismiss()}>
-				{t("public.registration.close.title")}
+				{t("public.sign-up.close.title")}
 			</Button>
 		]}
 	/>
@@ -30,4 +30,4 @@ export default connect(
 	dispatch => ({
 		onDismiss: () => dispatch(onUserRegisterDismiss()),
 	}),
-)(withTranslation()(RegistrationFailed));
+)(withTranslation()(FailedResult));
