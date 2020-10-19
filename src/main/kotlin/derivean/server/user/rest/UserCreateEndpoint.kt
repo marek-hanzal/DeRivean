@@ -19,7 +19,7 @@ class UserCreateEndpoint(container: IContainer) : AbstractActionEndpoint(contain
 		}
 		routing.post("/api/user/create") {
 			resolve(call, userCreateMapper) {
-				created(linkGenerator.link("/api/user/${id}"))
+				created(linkGenerator.link("/api/user/fetch/${id}"))
 			}
 		}
 	}

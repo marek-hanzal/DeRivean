@@ -3,6 +3,7 @@ package derivean.server.user
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
 import derivean.server.user.rest.UserCreateEndpoint
+import derivean.server.user.rest.UserFetchEndpoint
 import io.ktor.routing.*
 
 class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {
@@ -10,6 +11,7 @@ class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			UserCreateEndpoint::class,
+			UserFetchEndpoint::class,
 		)
 	}
 }

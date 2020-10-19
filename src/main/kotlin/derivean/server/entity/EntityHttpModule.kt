@@ -2,7 +2,7 @@ package derivean.server.entity
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.server.entity.rest.EntityEndpoint
+import derivean.server.entity.rest.EntityFetchEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
 import io.ktor.routing.*
 
@@ -11,7 +11,7 @@ class EntityHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			EntityPageEndpoint::class,
-			EntityEndpoint::class,
+			EntityFetchEndpoint::class,
 		)
 	}
 }

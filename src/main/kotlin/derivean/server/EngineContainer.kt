@@ -14,14 +14,14 @@ import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityAttributeRepository
 import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
-import derivean.server.entity.rest.EntityEndpoint
+import derivean.server.entity.rest.EntityFetchEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
 import derivean.server.equipment.EquipmentAttributeRepository
 import derivean.server.equipment.EquipmentRepository
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
-import derivean.server.player.rest.PlayerEndpoint
+import derivean.server.player.rest.PlayerFetchEndpoint
 import derivean.server.player.rest.PlayerFixturesEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint
 import derivean.server.player.rest.mapper.PlayerFetchMapper
@@ -31,7 +31,9 @@ import derivean.server.upgrade.u2020_10_17
 import derivean.server.user.UserHttpModule
 import derivean.server.user.UserRepository
 import derivean.server.user.rest.UserCreateEndpoint
+import derivean.server.user.rest.UserFetchEndpoint
 import derivean.server.user.rest.mapper.UserCreateMapper
+import derivean.server.user.rest.mapper.UserFetchMapper
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -55,7 +57,7 @@ object EngineContainer {
 		 */
 		service(PlayerHttpModule::class) { PlayerHttpModule(this) }
 		service(PlayerPageEndpoint::class) { PlayerPageEndpoint(this) }
-		service(PlayerEndpoint::class) { PlayerEndpoint(this) }
+		service(PlayerFetchEndpoint::class) { PlayerFetchEndpoint(this) }
 		service(PlayerFixturesEndpoint::class) { PlayerFixturesEndpoint(this) }
 		service(PlayerRepository::class) { PlayerRepository(this) }
 		/**
@@ -63,7 +65,7 @@ object EngineContainer {
 		 */
 		service(EntityHttpModule::class) { EntityHttpModule(this) }
 		service(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
-		service(EntityEndpoint::class) { EntityEndpoint(this) }
+		service(EntityFetchEndpoint::class) { EntityFetchEndpoint(this) }
 		service(EntityRepository::class) { EntityRepository(this) }
 		/**
 		 * Entity Attributes.
@@ -82,7 +84,9 @@ object EngineContainer {
 		 */
 		service(UserHttpModule::class) { UserHttpModule(this) }
 		service(UserCreateEndpoint::class) { UserCreateEndpoint(this) }
+		service(UserFetchEndpoint::class) { UserFetchEndpoint(this) }
 		service(UserCreateMapper::class) { UserCreateMapper(this) }
+		service(UserFetchMapper::class) { UserFetchMapper(this) }
 		service(UserRepository::class) { UserRepository(this) }
 		/**
 		 * Mappers
