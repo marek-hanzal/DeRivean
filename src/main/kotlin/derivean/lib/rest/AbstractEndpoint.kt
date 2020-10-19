@@ -33,9 +33,6 @@ abstract class AbstractEndpoint(container: IContainer) : AbstractService(contain
 		} catch (e: UnauthorizedException) {
 			call.resolve(forbidden("Your request looks not good for us, sorry."))
 			logger.error(e.message, e)
-		} catch (e: Throwable) {
-			call.resolve(internalServerError("Something went wrong"))
-			logger.error(e.message, e)
 		}
 	}
 }
