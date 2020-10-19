@@ -89,6 +89,15 @@
 		},
 		"logout": {
 			"menu": "Logout"
+		},
+		"sign-up": {
+			"succeed": {
+				"title": "Welcome back!",
+				"subtitle": "Look around to see, what's new!"
+			},
+			"continue": {
+				"title": "Continue"
+			}
 		}
 	},
 	"root": {
