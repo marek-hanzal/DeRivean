@@ -32,6 +32,7 @@ import derivean.server.user.UserHttpModule
 import derivean.server.user.UserRepository
 import derivean.server.user.rest.UserCreateEndpoint
 import derivean.server.user.rest.UserFetchEndpoint
+import derivean.server.user.rest.UserPageEndpoint
 import derivean.server.user.rest.mapper.UserCreateMapper
 import derivean.server.user.rest.mapper.UserFetchMapper
 import io.github.config4k.extract
@@ -85,6 +86,7 @@ object EngineContainer {
 		service(UserHttpModule::class) { UserHttpModule(this) }
 		service(UserCreateEndpoint::class) { UserCreateEndpoint(this) }
 		service(UserFetchEndpoint::class) { UserFetchEndpoint(this) }
+		service(UserPageEndpoint::class) { UserPageEndpoint(this) }
 		service(UserCreateMapper::class) { UserCreateMapper(this) }
 		service(UserFetchMapper::class) { UserFetchMapper(this) }
 		service(UserRepository::class) { UserRepository(this) }
