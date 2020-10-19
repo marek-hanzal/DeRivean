@@ -23,6 +23,6 @@ const RegistrationSucceed = (
 export default connect(
 	state => ({}),
 	dispatch => ({
-		onSubmit: () => alert("yaaaay!")
+		onSubmit: () => alert("lklklk")
 	}),
 )(withTranslation()(RegistrationSucceed));
