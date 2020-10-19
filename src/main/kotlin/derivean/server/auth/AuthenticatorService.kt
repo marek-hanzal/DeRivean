@@ -9,13 +9,15 @@ import derivean.server.user.UserRepository
 class AuthenticatorService(container: IContainer) : AbstractService(container) {
 	private val userRepository: UserRepository by container.lazy()
 
-	fun password(password: String): String = BCrypt.withDefaults().hashToString(12, password.toCharArray())
+	fun encrypt(password: String): String = BCrypt.withDefaults().hashToString(12, password.toCharArray())
+
+	fun verify(password: String, hash: String) = BCrypt.verifyer().verify(password.toCharArray(), hash).verified
 
 	fun authenticate(user: String, password: String) = userRepository.findByLogin(user).also {
 		if (it.password == null) {
 			throw UserException("Inactive user")
 		}
-		if (!BCrypt.verifyer().verify(password.toCharArray(), it.password).verified) {
+		if (!verify(password, it.password!!)) {
 			throw UserException("Invalid password")
 		}
 		userRepository.token(it)

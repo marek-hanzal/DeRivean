@@ -32,9 +32,9 @@ const RegistrationForm = (
 			children={<Input/>}
 		/>
 		<Form.Item
-			label={t("public.registration.form.user.label")}
-			name="user"
-			rules={[{required: true, message: t("public.registration.form.user.required")}]}
+			label={t("public.registration.form.login.label")}
+			name="login"
+			rules={[{required: true, message: t("public.registration.form.login.required")}]}
 			children={<Input/>}
 		/>
 
