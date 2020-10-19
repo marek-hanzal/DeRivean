@@ -20,8 +20,7 @@ const RegistrationFailed = (
 				{t("public.registration.close.title")}
 			</Button>
 		]}
-	>
-	</Result>
+	/>
 ;
 
 export default connect(

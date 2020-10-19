@@ -46,11 +46,18 @@
 					"label": "Sing-up"
 				}
 			},
+			"succeed": {
+				"title": "Welcome to the World of DeRivean!",
+				"subtitle": "Now you can continue to your account and start playing!"
+			},
 			"failed": {
 				"title": "Registration failed!"
 			},
 			"close": {
 				"title": "Close"
+			},
+			"continue": {
+				"title": "Continue"
 			}
 		},
 		"login": {
