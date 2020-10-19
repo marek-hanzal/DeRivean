@@ -77,6 +77,15 @@
 					"label": "Login!"
 				}
 			}
+		},
+		"sign-out": {
+			"succeed": {
+				"title": "You are logged out!",
+				"subtitle": "We will miss you, so see you soon!"
+			},
+			"continue": {
+				"title": "Continue"
+			}
 		}
 	},
 	"internal": {
@@ -87,7 +96,7 @@
 			"menu": "Home",
 			"breadcrumb": "Home"
 		},
-		"logout": {
+		"sign-out": {
 			"menu": "Logout"
 		},
 		"sign-up": {

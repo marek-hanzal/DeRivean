@@ -5,12 +5,10 @@ import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {onSessionClose} from "redux/session/action";
 import InternalPath from "site/internal/router/InternalPath";
 
 const MainMenu = (
 	{
-		onLogout,
 		t,
 		...props
 	}) =>
@@ -19,15 +17,13 @@ const MainMenu = (
 			<Link to={InternalPath.root}>{t("internal.home.menu")}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		<Menu.Item key='internal.logout' onClick={() => onLogout()} icon={<PoweroffOutlined/>}>
-			{t("internal.logout.menu")}
+		<Menu.Item key='internal.logout' icon={<PoweroffOutlined/>}>
+			<Link to={InternalPath.signOut}>{t("internal.sign-out.menu")}</Link>
 		</Menu.Item>
 	</BaseMenu>
 ;
 
 export default connect(
 	state => ({}),
-	dispatch => ({
-		onLogout: () => dispatch(onSessionClose())
-	})
+	dispatch => ({})
 )(withTranslation()(MainMenu));
