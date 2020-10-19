@@ -11,7 +11,6 @@ const HomeView = (
 		t,
 	}) =>
 	<PublicView
-		title='public.home.title'
 		open={[PublicPath.root]}
 		selected={[PublicPath.root]}
 	>
@@ -52,7 +51,7 @@ const HomeView = (
 					</Typography.Paragraph>
 				</div>
 			</Result>
-		</Card>;
+		</Card>
 	</PublicView>
 ;
 

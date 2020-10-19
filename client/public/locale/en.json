@@ -129,7 +129,11 @@
 		"spinner": "Making some hard magick to make things work!",
 		"home": {
 			"title": "Root Administration",
-			"menu": "Home"
+			"menu": "Home",
+			"content": {
+				"title": "Root Administration Application",
+				"subtitle": "This is the place where all the dark magic happens!"
+			}
 		},
 		"sign-in": {
 			"succeed": {

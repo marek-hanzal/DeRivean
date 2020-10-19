@@ -1,4 +1,4 @@
-import {Button, Result} from "antd";
+import {Button, Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -11,16 +11,18 @@ const FailedResult = (
 		error,
 		onDismiss,
 	}) =>
-	<Result
-		status="error"
-		title={t("public.sign-up.failed.title")}
-		subTitle={t("raw." + error)}
-		extra={[
-			<Button type="primary" key="close" onClick={() => onDismiss()}>
-				{t("public.sign-up.close.title")}
-			</Button>
-		]}
-	/>
+	<Card>
+		<Result
+			status="error"
+			title={t("public.sign-up.failed.title")}
+			subTitle={t("raw." + error)}
+			extra={[
+				<Button type="primary" key="close" onClick={() => onDismiss()}>
+					{t("public.sign-up.close.title")}
+				</Button>
+			]}
+		/>
+	</Card>
 ;
 
 export default connect(
