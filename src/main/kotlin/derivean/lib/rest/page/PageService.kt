@@ -5,6 +5,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.IMapper
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.badRequest
+import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.response.*
@@ -50,7 +51,7 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 				}
 			})
 		} catch (e: Exception) {
-			call.badRequest(e.message ?: "You're making me suffering from huge pain!")
+			call.resolve(badRequest(e.message ?: "You're making me suffering from huge pain!"))
 		}
 	}
 

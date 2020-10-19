@@ -1,10 +1,9 @@
 package derivean.lib.rest
 
 import derivean.lib.rest.discovery.Discovery
-import io.ktor.application.ApplicationCall
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.Url
-import io.ktor.response.respond
+import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.response.*
 
 data class MessageResponse(val message: String)
 data class ErrorResponse(val error: String)
@@ -12,59 +11,63 @@ data class LinkResponse(val href: String) {
 	constructor(href: Url) : this(href.toString())
 }
 
+data class Response(val code: HttpStatusCode, val response: Any? = null)
+
+suspend fun ApplicationCall.resolve(response: Response) = if (response.response !== null) respond(response.code, response) else respond(response.code)
+
 /**
  * send response with Bad Request status code
  */
-suspend fun ApplicationCall.badRequest(error: String) = respond(HttpStatusCode.BadRequest, ErrorResponse(error))
+fun badRequest(error: String) = Response(HttpStatusCode.BadRequest, ErrorResponse(error))
 
 /**
  * send response with Forbidden status code
  */
-suspend fun ApplicationCall.forbidden(error: String) = respond(HttpStatusCode.Forbidden, ErrorResponse(error))
+fun forbidden(error: String) = Response(HttpStatusCode.Forbidden, ErrorResponse(error))
 
 /**
  * send response with Unauthorized status code
  */
-suspend fun ApplicationCall.unauthorized(error: String) = respond(HttpStatusCode.Unauthorized, ErrorResponse(error))
+fun unauthorized(error: String) = Response(HttpStatusCode.Unauthorized, ErrorResponse(error))
 
 /**
  * send response with Created status code
  */
-suspend fun ApplicationCall.created(href: Url) = respond(HttpStatusCode.Created, LinkResponse(href))
+fun created(href: Url) = Response(HttpStatusCode.Created, LinkResponse(href))
 
 /**
  * send response with No Content status code
  */
-suspend fun ApplicationCall.noContent() = respond(HttpStatusCode.NoContent)
+fun noContent() = Response(HttpStatusCode.NoContent)
 
 /**
  * send response with Not Found status code
  */
-suspend fun ApplicationCall.notFound(error: String) = respond(HttpStatusCode.NotFound, ErrorResponse(error))
+fun notFound(error: String) = Response(HttpStatusCode.NotFound, ErrorResponse(error))
 
 /**
  * send response with Conflict status code
  */
-suspend fun ApplicationCall.conflict(error: String) = respond(HttpStatusCode.Conflict, ErrorResponse(error))
+fun conflict(error: String) = Response(HttpStatusCode.Conflict, ErrorResponse(error))
 
 /**
  * send response with Not Implemented status code
  */
-suspend fun ApplicationCall.notImplemented(error: String) = respond(HttpStatusCode.NotImplemented, ErrorResponse(error))
+fun notImplemented(error: String) = Response(HttpStatusCode.NotImplemented, ErrorResponse(error))
 
 /**
  * send response with Internal Server Error status code
  */
-suspend fun ApplicationCall.internalServerError(error: String) = respond(HttpStatusCode.InternalServerError, ErrorResponse(error))
+fun internalServerError(error: String) = Response(HttpStatusCode.InternalServerError, ErrorResponse(error))
 
 /**
  * send response with Accepted status code
  */
-suspend fun ApplicationCall.accepted(message: String) = respond(HttpStatusCode.Accepted, MessageResponse(message))
+fun accepted(message: String) = Response(HttpStatusCode.Accepted, MessageResponse(message))
 
 /**
  * send response with Accepted status code
  */
-suspend fun ApplicationCall.accepted() = respond(HttpStatusCode.Accepted)
+fun accepted() = Response(HttpStatusCode.Accepted)
 
-suspend fun ApplicationCall.discovery(discovery: Discovery) = respond(discovery)
+fun discovery(discovery: Discovery) = Response(HttpStatusCode.OK, discovery)

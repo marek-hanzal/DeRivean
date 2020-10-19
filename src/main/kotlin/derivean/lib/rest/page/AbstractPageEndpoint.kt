@@ -5,6 +5,7 @@ import derivean.lib.mapper.IMapper
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.AbstractEndpoint
 import derivean.lib.rest.badRequest
+import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.routing.*
@@ -21,7 +22,7 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 			this.description = "Retrieve given page of [$target]."
 		}
 		routing.get("/api/$target/page") {
-			call.badRequest("Missing page parameter in url: [/api/$target/page/{page}].")
+			call.resolve(badRequest("Missing page parameter in url: [/api/$target/page/{page}]."))
 		}
 		routing.get("/api/$target/page/{page}") {
 			pageService.page(call, repository, mapper)

@@ -20,7 +20,7 @@ abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(c
 			this.description = "Get [$target] by UUID."
 		}
 		routing.get("/api/$target/fetch") {
-			call.badRequest("Missing id parameter in url: [/api/$target/fetch/{id}].")
+			call.resolve(badRequest("Missing id parameter in url: [/api/$target/fetch/{id}]."))
 		}
 		routing.get("/api/$target/fetch/{id}") {
 			call.respond(storage.read {

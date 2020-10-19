@@ -25,16 +25,16 @@ abstract class AbstractEndpoint(container: IContainer) : AbstractService(contain
 		try {
 			callback(call)
 		} catch (e: JsonSyntaxException) {
-			call.badRequest("Malformed JSON")
+			call.resolve(badRequest("Malformed JSON"))
 			logger.error(e.message, e)
 		} catch (e: InvalidRequestException) {
-			call.badRequest(e.message ?: "You sent something strange and I don't understand your request. Try read docs, make a coffee or fix this bug :)")
+			call.resolve(badRequest(e.message ?: "You sent something strange and I don't understand your request. Try read docs, make a coffee or fix this bug :)"))
 			logger.error(e.message, e)
 		} catch (e: UnauthorizedException) {
-			call.forbidden("Your request looks not good for us, sorry.")
+			call.resolve(forbidden("Your request looks not good for us, sorry."))
 			logger.error(e.message, e)
 		} catch (e: Throwable) {
-			call.internalServerError("Something went wrong")
+			call.resolve(internalServerError("Something went wrong"))
 			logger.error(e.message, e)
 		}
 	}

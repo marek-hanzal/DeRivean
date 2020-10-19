@@ -1,14 +1,13 @@
 package derivean.server.user.rest
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.AbstractEndpoint
+import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.created
 import derivean.server.user.rest.mapper.UserCreateMapper
 import io.ktor.application.*
-import io.ktor.request.*
 import io.ktor.routing.*
 
-class UserCreateEndpoint(container: IContainer) : AbstractEndpoint(container) {
+class UserCreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val userCreateMapper: UserCreateMapper by container.lazy()
 
 	override fun install(routing: Routing) {
@@ -19,8 +18,8 @@ class UserCreateEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			this.link = "/api/user/create"
 		}
 		routing.post("/api/user/create") {
-			handle(call) {
-				created(linkGenerator.link("/api/user/${userCreateMapper.resolve(receive()).id}"))
+			resolve(call, userCreateMapper) {
+				created(linkGenerator.link("/api/user/${id}"))
 			}
 		}
 	}
