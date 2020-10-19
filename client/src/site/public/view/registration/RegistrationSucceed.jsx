@@ -2,6 +2,9 @@ import {Button, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import {onSessionOpen} from "redux/session/action";
+import {getUserRegisterUser} from "redux/user/register/selector";
 
 const RegistrationSucceed = (
 	{
@@ -14,7 +17,7 @@ const RegistrationSucceed = (
 		subTitle={t("public.registration.succeed.subtitle")}
 		extra={[
 			<Button type="primary" key="close" onClick={() => onSubmit()}>
-				{t("public.registration.continue.title")}
+				<Link to={"/"}>{t("public.registration.continue.title")}</Link>
 			</Button>
 		]}
 	/>
@@ -22,7 +25,7 @@ const RegistrationSucceed = (
 
 export default connect(
 	state => ({}),
-	dispatch => ({
-		onSubmit: () => alert("lklklk")
-	}),
+	{
+		onSubmit: () => (dispatch, getState) => dispatch(onSessionOpen(getUserRegisterUser(getState()))),
+	},
 )(withTranslation()(RegistrationSucceed));
