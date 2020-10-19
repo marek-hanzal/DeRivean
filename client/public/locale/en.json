@@ -26,7 +26,13 @@
 			"menu": "Home",
 			"content": {
 				"title": "Welcome to DeRivean!",
-				"subtitle": "You're welcome to look around and start playing!"
+				"subtitle": "You're welcome to look around and start playing!",
+				"list": {
+					"title": "DeRivean is simple game, where you will:",
+					"item-0": "Create your own heroes and take them to battle.",
+					"item-1": "Gain experience in quite different way and build you kingdom.",
+					"item-2": "Fight other players, pass stages and become most powerful king over here!"
+				}
 			},
 			"sign-in": {
 				"title": "Sign-in!"

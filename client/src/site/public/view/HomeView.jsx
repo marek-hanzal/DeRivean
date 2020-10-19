@@ -1,5 +1,5 @@
 import {CarryOutOutlined, LoginOutlined, SmileOutlined} from "@ant-design/icons";
-import {Button, Result} from "antd";
+import {Button, Card, Result, Typography} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -15,20 +15,44 @@ const HomeView = (
 		open={[PublicPath.root]}
 		selected={[PublicPath.root]}
 	>
-		<Result
-			icon={<SmileOutlined/>}
-			status={"success"}
-			title={t("public.home.content.title")}
-			subTitle={t("public.home.content.subtitle")}
-			extra={[
-				<Button type="primary" key="sign-in">
-					<Link to={PublicPath.signIn}><LoginOutlined/>&nbsp;{t("public.home.sign-in.title")}</Link>
-				</Button>,
-				<Button key="sign-up">
-					<Link to={PublicPath.signUp}><CarryOutOutlined/>&nbsp;{t("public.home.sign-up.title")}</Link>
-				</Button>,
-			]}
-		/>
+		<Card>
+			<Result
+				icon={<SmileOutlined/>}
+				status={"success"}
+				title={t("public.home.content.title")}
+				subTitle={t("public.home.content.subtitle")}
+				extra={[
+					<Button type="primary" key="sign-in">
+						<Link to={PublicPath.signIn}><LoginOutlined/>&nbsp;{t("public.home.sign-in.title")}</Link>
+					</Button>,
+					<Button key="sign-up">
+						<Link to={PublicPath.signUp}><CarryOutOutlined/>&nbsp;{t("public.home.sign-up.title")}</Link>
+					</Button>,
+				]}
+			>
+				<div className="desc">
+					<Typography.Paragraph>
+						<Typography.Text
+							strong
+							style={{
+								fontSize: 16,
+							}}
+						>
+							{t("public.home.content.list.title")}
+						</Typography.Text>
+					</Typography.Paragraph>
+					<Typography.Paragraph>
+						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-0")}
+					</Typography.Paragraph>
+					<Typography.Paragraph>
+						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-1")}
+					</Typography.Paragraph>
+					<Typography.Paragraph>
+						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-2")}
+					</Typography.Paragraph>
+				</div>
+			</Result>
+		</Card>;
 	</PublicView>
 ;
 

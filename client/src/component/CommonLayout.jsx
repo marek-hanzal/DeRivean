@@ -1,4 +1,4 @@
-import {Card, Layout, PageHeader, Spin} from "antd";
+import {Layout, PageHeader, Spin} from "antd";
 import React from "react";
 import {Helmet} from "react-helmet";
 import {withTranslation} from "react-i18next";
@@ -43,7 +43,7 @@ const CommonLayout = (
 				/>
 				<Layout.Content style={{minHeight: "100vh", marginLeft: isCollapsed ? 80 : 220}}>
 					<PageHeader title={t(title)} subTitle={t(subtitle)} children={breadcrumbs}/>
-					<Card children={children}/>
+					{children}
 					<Layout.Footer style={{textAlign: "center"}} children={footer}/>
 				</Layout.Content>
 			</Layout>
