@@ -15,11 +15,11 @@ const SingInView = (
 	>
 		<Result
 			status="success"
-			title={t("internal.sign-up.succeed.title")}
-			subTitle={t("internal.sign-up.succeed.subtitle")}
+			title={t("internal.sign-in.succeed.title")}
+			subTitle={t("internal.sign-in.succeed.subtitle")}
 			extra={[
 				<Button type="primary" key="continue">
-					<Link to={InternalPath.root}>{t("internal.sign-up.continue.title")}</Link>
+					<Link to={InternalPath.root}>{t("internal.sign-in.continue.title")}</Link>
 				</Button>
 			]}
 		/>

@@ -1,5 +1,7 @@
 const RootPath = {
-	root: '/',
+	root: "/",
+	signIn: "/sign-in",
+	signOut: "/sign-out",
 };
 
 export default RootPath;

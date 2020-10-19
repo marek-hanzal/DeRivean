@@ -109,7 +109,7 @@
 		"sign-out": {
 			"menu": "Logout"
 		},
-		"sign-up": {
+		"sign-in": {
 			"succeed": {
 				"title": "Welcome back!",
 				"subtitle": "Look around to see, what's new!"
@@ -124,6 +124,15 @@
 		"home": {
 			"title": "Root Administration",
 			"menu": "Home"
+		},
+		"sign-in": {
+			"succeed": {
+				"title": "Welcome back to the Root!",
+				"subtitle": "Be careful here, dude, it's quite dangerous 'round here!"
+			},
+			"continue": {
+				"title": "Continue"
+			}
 		},
 		"player": {
 			"menu": "Players",
