@@ -23,7 +23,17 @@
 	"public": {
 		"home": {
 			"title": "Welcome to DeRivean!",
-			"menu": "Home"
+			"menu": "Home",
+			"content": {
+				"title": "Welcome to DeRivean!",
+				"subtitle": "You're welcome to look around and start playing!"
+			},
+			"sign-in": {
+				"title": "Sign-in!"
+			},
+			"sign-up": {
+				"title": "Sign-up!"
+			}
 		},
 		"sign-up": {
 			"menu": "Sign-up",
