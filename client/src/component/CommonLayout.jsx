@@ -42,13 +42,11 @@ const CommonLayout = (
 					children={menu}
 				/>
 				<Layout.Content style={{minHeight: "100vh", marginLeft: isCollapsed ? 80 : 220}}>
-					<PageHeader title={t(title)} subTitle={t(subtitle)}>
-						{breadcrumbs}
-					</PageHeader>
+					<PageHeader title={t(title)} subTitle={t(subtitle)} children={breadcrumbs}/>
 					<Card children={children}/>
+					<Layout.Footer style={{textAlign: "center"}} children={footer}/>
 				</Layout.Content>
 			</Layout>
-			<Layout.Footer style={{textAlign: "center"}} children={footer}/>
 		</Layout>
 	</Spin>
 ;
