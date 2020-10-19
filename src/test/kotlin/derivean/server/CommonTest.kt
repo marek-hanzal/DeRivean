@@ -51,7 +51,7 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 					this.name = "Tester"
 					this.user = user
 				}.let { player ->
-					entityRepository.create(player, "Horwath, Greatest of Warriors") {
+					entityRepository.create(player.id, "Horwath, Greatest of Warriors") {
 						this.name = "Wind River"
 					}.let {
 						entityRepository.attributes(
