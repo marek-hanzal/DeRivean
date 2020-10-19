@@ -47,7 +47,7 @@ class u2020_10_19_02(container: IContainer) : AbstractUpgrade(container) {
 		var name by uPlayerTable.name
 	}
 
-	object uKingdomTable : UUIDTable() {
+	object uKingdomTable : UUIDTable("kingdom") {
 		val player = reference("player", uPlayerTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 		val name = varchar("name", 128).uniqueIndex()
 	}
