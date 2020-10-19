@@ -1,24 +1,16 @@
 import Axios from "axios";
 import {createAction} from "redux-actions";
 import {getUserCreateHref} from "redux/discovery/payload/selector";
-import {onUserRegisterStatus} from "redux/user/registerStatus/action";
 
 const
-	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", () => null),
-	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", register => register),
-	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => error),
+	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", () => ({status: "REQUEST"})),
+	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", register => ({status: "SUCCESS", register})),
+	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => ({status: "FAILURE", error})),
 	onUserRegister = register => (dispatch, getState) => {
-		dispatch(onUserRegisterStatus("LOADING"));
 		dispatch(onUserRegisterRequest());
 		Axios.post(getUserCreateHref(getState()), register)
-			.then(response => {
-				dispatch(onUserRegisterSuccess(response.data));
-				dispatch(onUserRegisterStatus("SUCCESS"));
-			})
-			.catch(({response}) => {
-				dispatch(onUserRegisterFailure(response));
-				dispatch(onUserRegisterStatus("FAILURE"));
-			});
+			.then(response => dispatch(onUserRegisterSuccess(response.data)))
+			.catch(({response}) => dispatch(onUserRegisterFailure(response)));
 	};
 
 export {

@@ -23,7 +23,7 @@ class UserCreateEndpoint(container: IContainer) : AbstractActionEndpoint(contain
 		routing.post("/api/user/create") {
 			try {
 				resolve(call, userCreateMapper) {
-					created(linkGenerator.link("/api/user/fetch/${id}"))
+					created(this)
 				}
 			} catch (e: DuplicateUserException) {
 				call.resolve(conflict(e.message ?: "Request caused duplicated user creation, thus it could not be processed."))

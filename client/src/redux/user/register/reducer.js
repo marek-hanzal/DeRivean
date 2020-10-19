@@ -1,9 +1,12 @@
 import {handleActions} from "redux-actions";
-import {onUserRegisterFailure, onUserRegisterSuccess} from "redux/user/register/action";
+import {onUserRegisterFailure, onUserRegisterRequest, onUserRegisterSuccess} from "redux/user/register/action";
 
 const register = handleActions({
+	[onUserRegisterRequest]: (state, {payload}) => payload,
 	[onUserRegisterSuccess]: (state, {payload}) => payload,
 	[onUserRegisterFailure]: (state, {payload}) => payload,
-}, null);
+}, {
+	status: null,
+});
 
 export default register;
