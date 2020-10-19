@@ -12,6 +12,8 @@ const getUserRegisterStatus = state => branch(state).status;
 
 const getUserRegisterError = state => branch(state).error.data.error;
 
+const getUserRegisterRequest = state => branch(state).request;
+
 export {
 	branch as userRegisterBranch,
 	isUserRegisterSuccess,
@@ -19,4 +21,5 @@ export {
 	getUserRegisterStatus,
 	getUserRegisterError,
 	isUserRegisterLoading,
+	getUserRegisterRequest,
 };

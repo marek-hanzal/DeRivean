@@ -3,7 +3,7 @@ import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
-import {isUserRegisterLoading} from "redux/user/register/selector";
+import {getUserRegisterRequest, isUserRegisterLoading} from "redux/user/register/selector";
 
 const layout = {
 	labelCol: {span: 6},
@@ -18,12 +18,14 @@ const RegistrationForm = (
 	{
 		t,
 		isLoading,
+		initials,
 		onFinish,
 		onFailure,
 	}) =>
 	<Spin spinning={isLoading} delay={200}>
 		<Form
 			{...layout}
+			initialValues={initials}
 			name="registration"
 			onFinish={onFinish}
 			onFinishFailed={onFailure}
@@ -58,6 +60,7 @@ const RegistrationForm = (
 export default connect(
 	state => ({
 		isLoading: isUserRegisterLoading(state),
+		initials: getUserRegisterRequest(state),
 	}),
 	dispatch => ({
 		onFinish: values => {
