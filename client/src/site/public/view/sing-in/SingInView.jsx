@@ -14,7 +14,7 @@ const SingInView = ({t}) =>
 	>
 		<Row justify={"center"}>
 			<Col span={6}>
-				<Card title={t("public.sign-in.title")} hoverable={true}>
+				<Card title={t("public.sign-in.title")}>
 					<SignInForm/>
 				</Card>
 			</Col>

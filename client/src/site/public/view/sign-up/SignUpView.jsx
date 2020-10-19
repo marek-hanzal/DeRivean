@@ -19,7 +19,7 @@ function resolveStatus(t, status) {
 			return (
 				<Row justify={"center"}>
 					<Col span={8}>
-						<Card title={t("public.sign-up.title")} hoverable={true}>
+						<Card title={t("public.sign-up.title")}>
 							<SignUpForm/>
 						</Card>
 					</Col>
