@@ -1,7 +1,7 @@
 package derivean.server.entity
 
 import derivean.lib.container.IContainer
-import derivean.lib.server.AbstractHttpModule
+import derivean.lib.http.AbstractHttpModule
 import derivean.server.entity.rest.EntityEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
 import io.ktor.routing.*

@@ -1,6 +1,6 @@
 package derivean.lib.rest.page
 
-import derivean.lib.server.ILinkGenerator
+import derivean.lib.http.ILinkGenerator
 
 data class ListItem(val id: String, val href: String) {
 	companion object {

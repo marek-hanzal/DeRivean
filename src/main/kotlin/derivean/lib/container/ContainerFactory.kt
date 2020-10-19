@@ -1,15 +1,15 @@
 package derivean.lib.container
 
+import derivean.lib.http.HttpServer
+import derivean.lib.http.IHttpServer
+import derivean.lib.http.ILinkGenerator
+import derivean.lib.http.LinkGenerator
 import derivean.lib.pool.IPool
 import derivean.lib.pool.Pool
 import derivean.lib.rest.discovery.DiscoveryService
 import derivean.lib.rest.discovery.IDiscoveryService
 import derivean.lib.rest.page.IPageService
 import derivean.lib.rest.page.PageService
-import derivean.lib.server.HttpServer
-import derivean.lib.server.IHttpServer
-import derivean.lib.server.ILinkGenerator
-import derivean.lib.server.LinkGenerator
 import derivean.lib.storage.IStorage
 import derivean.lib.storage.Storage
 import derivean.lib.upgrade.IUpgradeManager

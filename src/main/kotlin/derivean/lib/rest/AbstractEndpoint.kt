@@ -5,9 +5,9 @@ package derivean.lib.rest
 import com.google.gson.JsonSyntaxException
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
+import derivean.lib.http.ILinkGenerator
 import derivean.lib.rest.discovery.IDiscoveryService
 import derivean.lib.rest.discovery.Link
-import derivean.lib.server.ILinkGenerator
 import io.ktor.application.*
 import mu.KotlinLogging
 

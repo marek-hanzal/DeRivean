@@ -1,4 +1,4 @@
-package derivean.lib.server
+package derivean.lib.http
 
 import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass

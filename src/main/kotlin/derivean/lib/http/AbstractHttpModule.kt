@@ -1,4 +1,4 @@
-package derivean.lib.server
+package derivean.lib.http
 
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer

@@ -1,6 +1,6 @@
 package derivean.lib.rest.discovery
 
-import derivean.lib.server.ILinkGenerator
+import derivean.lib.http.ILinkGenerator
 
 data class Link(
 	val group: String,

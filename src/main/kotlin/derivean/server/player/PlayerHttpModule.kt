@@ -1,7 +1,7 @@
 package derivean.server.player
 
 import derivean.lib.container.IContainer
-import derivean.lib.server.AbstractHttpModule
+import derivean.lib.http.AbstractHttpModule
 import derivean.server.player.rest.PlayerEndpoint
 import derivean.server.player.rest.PlayerFixturesEndpoint
 import derivean.server.player.rest.PlayerPageEndpoint

@@ -3,9 +3,11 @@ package derivean.server
 import com.typesafe.config.ConfigFactory
 import derivean.lib.container.ContainerFactory
 import derivean.lib.container.IContainer
+import derivean.lib.http.HttpServerConfig
+import derivean.lib.http.IHttpServer
+import derivean.lib.http.modules.ClientHttpModule
+import derivean.lib.http.modules.DiscoveryHttpModule
 import derivean.lib.pool.PoolConfig
-import derivean.lib.server.HttpServerConfig
-import derivean.lib.server.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.auth.AuthenticatorService
 import derivean.server.config.EngineConfig
@@ -14,8 +16,6 @@ import derivean.server.entity.EntityRepository
 import derivean.server.entity.rest.EntityEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
-import derivean.server.http.ClientHttpModule
-import derivean.server.http.DiscoveryHttpModule
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerEndpoint

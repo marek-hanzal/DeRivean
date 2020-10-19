@@ -1,7 +1,7 @@
 package derivean.server.user
 
 import derivean.lib.container.IContainer
-import derivean.lib.server.AbstractHttpModule
+import derivean.lib.http.AbstractHttpModule
 import derivean.server.user.rest.UserCreateEndpoint
 import io.ktor.routing.*
 

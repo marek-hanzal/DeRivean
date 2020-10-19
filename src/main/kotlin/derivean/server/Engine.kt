@@ -1,7 +1,7 @@
 package derivean.server
 
 import derivean.lib.container.IContainer
-import derivean.lib.server.IHttpServer
+import derivean.lib.http.IHttpServer
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.lib.upgrade.IVersionService
 import derivean.lib.utils.asStamp

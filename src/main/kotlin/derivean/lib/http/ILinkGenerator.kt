@@ -1,4 +1,4 @@
-package derivean.lib.server
+package derivean.lib.http
 
 import io.ktor.http.*
 import java.net.URLEncoder

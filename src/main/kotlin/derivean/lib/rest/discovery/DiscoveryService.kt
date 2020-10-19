@@ -2,7 +2,7 @@ package derivean.lib.rest.discovery
 
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
-import derivean.lib.server.ILinkGenerator
+import derivean.lib.http.ILinkGenerator
 
 class DiscoveryService(container: IContainer) : AbstractService(container), IDiscoveryService {
 	private val linkGenerator: ILinkGenerator by container.lazy()

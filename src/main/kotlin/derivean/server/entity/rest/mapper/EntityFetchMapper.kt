@@ -1,8 +1,8 @@
 package derivean.server.entity.rest.mapper
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.ILinkGenerator
 import derivean.lib.mapper.AbstractMapper
-import derivean.lib.server.ILinkGenerator
 import derivean.lib.storage.EntityUUID
 import derivean.server.entity.Entity
 
