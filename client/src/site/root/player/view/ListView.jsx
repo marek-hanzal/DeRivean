@@ -1,5 +1,4 @@
-import Table from "antd/lib/table";
-import Column from "antd/lib/table/Column";
+import {Card, Table} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -35,23 +34,23 @@ class ListView extends React.Component {
 
 		return (
 			<RootView
-				title='root.player.list.title'
-				subtitle='root.player.list.subtitle'
 				open={[PlayerPath.root]}
 				selected={[PlayerPath.list]}
 			>
-				<Table
-					dataSource={page.items}
-					rowKey={record => record.id}
-					loading={{
-						spinning: isLoading,
-						delay: 100,
-					}}
-					pagination={pagination}
-				>
-					<Column title={t("root.player.list.table.id.title")} dataIndex='id'/>
-					<Column title={t("root.player.list.table.name.title")} dataIndex='name'/>
-				</Table>
+				<Card title={t("root.player.list.title")}>
+					<Table
+						dataSource={page.items}
+						rowKey={record => record.id}
+						loading={{
+							spinning: isLoading,
+							delay: 100,
+						}}
+						pagination={pagination}
+					>
+						<Table.Column title={t("root.player.list.table.id.title")} dataIndex='id'/>
+						<Table.Column title={t("root.player.list.table.name.title")} dataIndex='name'/>
+					</Table>
+				</Card>
 			</RootView>
 		);
 	}

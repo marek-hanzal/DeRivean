@@ -12,8 +12,7 @@ const EntityBreadcrumbs = ({t}) =>
 		<Route exact={true} path={EntityPath.home}>
 			<Breadcrumb>
 				<Breadcrumb.Item key={RootPath.root}>
-					<Link to={RootPath.root}/>
-					<HomeOutlined/>
+					<Link to={RootPath.root}><HomeOutlined/></Link>
 				</Breadcrumb.Item>
 				<Breadcrumb.Item key={EntityPath.home}>
 					<RobotOutlined/>

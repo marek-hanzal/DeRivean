@@ -1,5 +1,6 @@
-import {Col, Row} from "antd";
+import {Card, Col, Row} from "antd";
 import React from "react";
+import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
 import PublicView from "site/public/component/PublicView";
@@ -8,7 +9,7 @@ import FailedResult from "site/public/view/sign-up/FailedResult";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
 
-function resolveStatus(status) {
+function resolveStatus(t, status) {
 	switch (status) {
 		case "SUCCESS":
 			return <SucceedResult/>;
@@ -18,7 +19,9 @@ function resolveStatus(status) {
 			return (
 				<Row justify={"center"}>
 					<Col span={8}>
-						<SignUpForm/>
+						<Card title={t("public.sign-up.title")} hoverable={true}>
+							<SignUpForm/>
+						</Card>
 					</Col>
 				</Row>
 			);
@@ -27,6 +30,7 @@ function resolveStatus(status) {
 
 const SignUpView = (
 	{
+		t,
 		status,
 	}) =>
 	<PublicView
@@ -34,7 +38,7 @@ const SignUpView = (
 		subtitle={"public.sign-up.subtitle"}
 		open={[PublicPath.root]}
 		selected={[PublicPath.signUp]}
-		children={resolveStatus(status)}
+		children={resolveStatus(t, status)}
 	/>
 ;
 
@@ -43,4 +47,4 @@ export default connect(
 		status: getUserRegisterStatus(state),
 	}),
 	{},
-)(SignUpView);
+)(withTranslation()(SignUpView));

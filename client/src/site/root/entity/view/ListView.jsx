@@ -1,5 +1,4 @@
-import Table from "antd/lib/table";
-import Column from "antd/lib/table/Column";
+import {Card, Table} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -35,24 +34,24 @@ class ListView extends React.Component {
 
 		return (
 			<RootView
-				title='root.entity.list.title'
-				subtitle='root.entity.list.subtitle'
 				open={[EntityPath.root]}
 				selected={[EntityPath.list]}
 			>
-				<Table
-					dataSource={page.items}
-					rowKey={record => record.id}
-					loading={{
-						spinning: isLoading,
-						delay: 100,
-					}}
-					pagination={pagination}
-				>
-					<Column title={t("root.entity.list.table.id.title")} dataIndex='id'/>
-					<Column title={t("root.entity.list.table.name.title")} dataIndex='name'/>
-					<Column title={t("root.entity.list.table.ancestor.title")} dataIndex={["ancestor", "name"]}/>
-				</Table>
+				<Card title={"root.entity.list.title"}>
+					<Table
+						dataSource={page.items}
+						rowKey={record => record.id}
+						loading={{
+							spinning: isLoading,
+							delay: 100,
+						}}
+						pagination={pagination}
+					>
+						<Table.Column title={t("root.entity.list.table.id.title")} dataIndex='id'/>
+						<Table.Column title={t("root.entity.list.table.name.title")} dataIndex='name'/>
+						<Table.Column title={t("root.entity.list.table.ancestor.title")} dataIndex={["ancestor", "name"]}/>
+					</Table>
+				</Card>
 			</RootView>
 		);
 	}

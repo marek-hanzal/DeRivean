@@ -1,14 +1,17 @@
+import {Card} from "antd";
 import React from "react";
+import {withTranslation} from "react-i18next";
 import RootView from "site/root/component/RootView";
 import EntityPath from "site/root/entity/router/EntityPath";
 
-const HomeView = () =>
+const HomeView = ({t}) =>
 	<RootView
-		title='root.entity.home.title'
 		open={[EntityPath.root]}
 		selected={[EntityPath.home]}
 	>
+		<Card title={t("root.entity.home.title")}>
+		</Card>
 	</RootView>
 ;
 
-export default HomeView;
+export default withTranslation()(HomeView);
