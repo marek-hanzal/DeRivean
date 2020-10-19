@@ -1,7 +1,7 @@
-import {createAction} from 'redux-actions';
+import {createAction} from "redux-actions";
 
 const
-	onClientStatus = createAction('ON_CLIENT_STATUS', status => status);
+	onClientStatus = createAction("ON_CLIENT_STATUS", status => status);
 
 export {
 	onClientStatus,
