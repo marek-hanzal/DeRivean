@@ -1,8 +1,9 @@
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, Spin} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
+import {isUserRegisterLoading} from "redux/user/register/selector";
 
 const layout = {
 	labelCol: {span: 6},
@@ -16,43 +17,48 @@ const tailLayout = {
 const RegistrationForm = (
 	{
 		t,
+		isLoading,
 		onFinish,
 		onFailure,
 	}) =>
-	<Form
-		{...layout}
-		name="registration"
-		onFinish={onFinish}
-		onFinishFailed={onFailure}
-	>
-		<Form.Item
-			label={t("public.registration.form.name.label")}
-			name="name"
-			rules={[{required: true, message: t("public.registration.form.name.required")}]}
-			children={<Input/>}
-		/>
-		<Form.Item
-			label={t("public.registration.form.login.label")}
-			name="login"
-			rules={[{required: true, message: t("public.registration.form.login.required")}]}
-			children={<Input/>}
-		/>
+	<Spin spinning={isLoading} delay={200}>
+		<Form
+			{...layout}
+			name="registration"
+			onFinish={onFinish}
+			onFinishFailed={onFailure}
+		>
+			<Form.Item
+				label={t("public.registration.form.name.label")}
+				name="name"
+				rules={[{required: true, message: t("public.registration.form.name.required")}]}
+				children={<Input/>}
+			/>
+			<Form.Item
+				label={t("public.registration.form.login.label")}
+				name="login"
+				rules={[{required: true, message: t("public.registration.form.login.required")}]}
+				children={<Input/>}
+			/>
 
-		<Form.Item
-			label={t("public.registration.form.password.label")}
-			name="password"
-			rules={[{required: true, message: t("public.registration.form.password.required")}]}
-			children={<Input.Password/>}
-		/>
+			<Form.Item
+				label={t("public.registration.form.password.label")}
+				name="password"
+				rules={[{required: true, message: t("public.registration.form.password.required")}]}
+				children={<Input.Password/>}
+			/>
 
-		<Form.Item {...tailLayout}>
-			<Button type="primary" htmlType="submit">{t("public.registration.form.submit.label")}</Button>
-		</Form.Item>
-	</Form>
+			<Form.Item {...tailLayout}>
+				<Button type="primary" htmlType="submit">{t("public.registration.form.submit.label")}</Button>
+			</Form.Item>
+		</Form>
+	</Spin>
 ;
 
 export default connect(
-	state => ({}),
+	state => ({
+		isLoading: isUserRegisterLoading(state),
+	}),
 	dispatch => ({
 		onFinish: values => {
 			dispatch(onUserRegister(values));
