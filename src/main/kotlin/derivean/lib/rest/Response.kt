@@ -67,6 +67,8 @@ fun internalServerError(error: String) = Response(HttpStatusCode.InternalServerE
  */
 fun accepted(message: String) = Response(HttpStatusCode.Accepted, MessageResponse(message))
 
+fun ok(response: Any) = Response(HttpStatusCode.OK, response)
+
 /**
  * send response with Accepted status code
  */

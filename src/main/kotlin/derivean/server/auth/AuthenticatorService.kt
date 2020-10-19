@@ -13,7 +13,7 @@ class AuthenticatorService(container: IContainer) : AbstractService(container) {
 
 	fun verify(password: String, hash: String) = BCrypt.verifyer().verify(password.toCharArray(), hash).verified
 
-	fun authenticate(user: String, password: String) = userRepository.findByLogin(user).also {
+	fun authenticate(login: String, password: String) = userRepository.findByLogin(login).also {
 		if (it.password == null) {
 			throw UserException("Inactive user")
 		}

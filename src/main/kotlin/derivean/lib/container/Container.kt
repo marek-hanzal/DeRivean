@@ -4,6 +4,8 @@ package derivean.lib.container
 
 import derivean.lib.config.IConfigurable
 import kotlin.reflect.KClass
+import kotlin.reflect.full.allSupertypes
+import kotlin.reflect.full.primaryConstructor
 
 class Container : IContainer {
 	private var register: HashMap<String, (container: IContainer) -> Any> = hashMapOf()
@@ -49,6 +51,23 @@ class Container : IContainer {
 				instances[name] = it
 			}
 		}
+
+		/**
+		 * A little hack to support unregistered services.
+		 */
+		(Class.forName(name).kotlin as KClass<T>).apply {
+			primaryConstructor?.also { constructor ->
+				if (constructor.parameters.size == 1 && constructor.parameters[0].type.classifier == IContainer::class) {
+					if (allSupertypes.map { it.classifier }.contains(IConfigurable::class)) {
+						service(this) { constructor.call(this) }
+					} else {
+						register(this) { constructor.call(this) }
+					}
+					return create(name)
+				}
+			}
+		}
+
 		throw ContainerException("Cannot create unknown service [${name}].")
 	}
 }
