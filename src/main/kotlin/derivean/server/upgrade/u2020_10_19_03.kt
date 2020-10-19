@@ -34,6 +34,7 @@ class u2020_10_19_03(container: IContainer) : AbstractUpgrade(container) {
 		var login by uUserTable.login
 		var password by uUserTable.password
 		var token by uUserTable.token
+		var site by uUserTable.site
 	}
 
 	object uPlayerTable : UUIDTable("player") {

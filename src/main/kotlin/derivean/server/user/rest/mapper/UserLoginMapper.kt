@@ -9,7 +9,7 @@ class UserLoginMapper(container: IContainer) : AbstractActionMapper<UserLoginMap
 
 	override fun resolve(item: UserLogin) = storage.transaction {
 		authenticatorService.authenticate(item.login, item.password).let {
-			User(it.login, it.name, it.token!!, "internal")
+			User(it.login, it.name, it.token!!, it.site)
 		}
 	}
 
