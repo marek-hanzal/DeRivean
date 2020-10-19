@@ -8,35 +8,40 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.update
 
-class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
+class u2020_10_19(container: IContainer) : AbstractUpgrade(container) {
 	override fun upgrade() {
 		storage.transaction {
 			SchemaUtils.createMissingTablesAndColumns(
-				UserTable,
-				PlayerNullableTable,
+				UserNullableTable,
 				inBatch = true,
 			)
 		}
 		storage.transaction {
-			val user = User.new {
-				name = "The God"
-				user = "root"
-			}
-			Player.all().forEach {
-				it.user = user
+			UserNullableTable.update {
+				it[login] = user
 			}
 		}
 		storage.transaction {
 			SchemaUtils.createMissingTablesAndColumns(
-				PlayerTable,
+				UserTable,
+				inBatch = true,
 			)
 		}
 	}
 
-	object UserTable : UUIDTable("user") {
+	object UserNullableTable : UUIDTable("user") {
 		val name = varchar("name", 128).uniqueIndex()
 		val user = varchar("user", 128).uniqueIndex()
+		val login = varchar("login", 128).uniqueIndex().nullable()
+		val password = varchar("password", 128).nullable()
+		val token = varchar("token", 128).uniqueIndex().nullable()
+	}
+
+	object UserTable : UUIDTable("user") {
+		val name = varchar("name", 128).uniqueIndex()
+		val login = varchar("login", 128).uniqueIndex()
 		val password = varchar("password", 128).nullable()
 		val token = varchar("token", 128).uniqueIndex().nullable()
 	}
@@ -45,14 +50,9 @@ class u2020_10_17(container: IContainer) : AbstractUpgrade(container) {
 		companion object : UUIDEntityClass<User>(UserTable)
 
 		var name by UserTable.name
-		var user by UserTable.user
+		var login by UserTable.login
 		var password by UserTable.password
 		var token by UserTable.token
-	}
-
-	object PlayerNullableTable : UUIDTable("player") {
-		val name = varchar("name", 128).uniqueIndex()
-		val user = reference("user", UserTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE).nullable()
 	}
 
 	object PlayerTable : UUIDTable("player") {

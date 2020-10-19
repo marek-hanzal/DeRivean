@@ -14,7 +14,7 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 		storage.write {
 			userRepository.create {
 				this.name = item.name
-				this.user = item.user
+				this.login = item.login
 				this.password = item.password
 				this.token = item.token
 			}
@@ -27,7 +27,7 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 	}
 
 	data class UserCreate(
-		val user: String,
+		val login: String,
 		val name: String,
 		val password: String?,
 		val token: String?,

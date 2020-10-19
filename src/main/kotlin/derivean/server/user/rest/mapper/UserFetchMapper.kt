@@ -9,13 +9,13 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 	override fun map(item: User) = Fetch.build {
 		this.id = item.id
 		this.name = item.name
-		this.user = item.user
+		this.login = item.login
 	}
 
 	data class Fetch(
 		val id: String,
 		val name: String,
-		val user: String,
+		val login: String,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -24,12 +24,12 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 		class Builder {
 			lateinit var id: EntityUUID
 			lateinit var name: String
-			lateinit var user: String
+			lateinit var login: String
 
 			fun build() = Fetch(
 				id.toString(),
 				name,
-				user,
+				login,
 			)
 		}
 	}

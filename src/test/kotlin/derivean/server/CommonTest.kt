@@ -46,7 +46,7 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 
 	override fun upgrade() {
 		storage.transaction {
-			userRepository.findByUser("root").let { user ->
+			userRepository.findByLogin("root").let { user ->
 				playerRepository.create {
 					this.name = "Tester"
 					this.user = user

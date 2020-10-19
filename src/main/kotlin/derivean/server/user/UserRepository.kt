@@ -2,14 +2,15 @@ package derivean.server.user
 
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
-import derivean.server.upgrade.u2020_10_17
+import derivean.server.upgrade.u2020_10_19
+import derivean.server.upgrade.u2020_10_19.User
 import java.util.*
 
-typealias UserTable = u2020_10_17.uUserTable
-typealias User = u2020_10_17.uUser
+typealias UserTable = u2020_10_19.UserTable
+typealias User = u2020_10_19.User
 
 class UserRepository(container: IContainer) : AbstractRepository<User, UserTable>(User, UserTable, container) {
-	fun findByUser(user: String) = entity.find { table.user eq user }.first()
+	fun findByLogin(login: String) = entity.find { table.login eq login }.first()
 
 	fun token(user: User) {
 		user.token = UUID.randomUUID().toString()

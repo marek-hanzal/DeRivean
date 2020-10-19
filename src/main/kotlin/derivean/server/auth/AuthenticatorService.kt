@@ -11,7 +11,7 @@ class AuthenticatorService(container: IContainer) : AbstractService(container) {
 
 	fun password(password: String): String = BCrypt.withDefaults().hashToString(12, password.toCharArray())
 
-	fun authenticate(user: String, password: String) = userRepository.findByUser(user).also {
+	fun authenticate(user: String, password: String) = userRepository.findByLogin(user).also {
 		if (it.password == null) {
 			throw UserException("Inactive user")
 		}

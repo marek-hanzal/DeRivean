@@ -28,6 +28,7 @@ import derivean.server.player.rest.mapper.PlayerFetchMapper
 import derivean.server.upgrade.u2020_09_25
 import derivean.server.upgrade.u2020_10_12
 import derivean.server.upgrade.u2020_10_17
+import derivean.server.upgrade.u2020_10_19
 import derivean.server.user.UserHttpModule
 import derivean.server.user.UserRepository
 import derivean.server.user.rest.UserCreateEndpoint
@@ -48,6 +49,7 @@ object EngineContainer {
 		register(u2020_09_25::class) { u2020_09_25(this) }
 		register(u2020_10_12::class) { u2020_10_12(this) }
 		register(u2020_10_17::class) { u2020_10_17(this) }
+		register(u2020_10_19::class) { u2020_10_19(this) }
 		/**
 		 * Http Modules
 		 */
@@ -103,6 +105,7 @@ object EngineContainer {
 			register(u2020_09_25::class)
 			register(u2020_10_12::class)
 			register(u2020_10_17::class)
+			register(u2020_10_19::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
