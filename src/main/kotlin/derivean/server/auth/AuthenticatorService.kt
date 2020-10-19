@@ -3,7 +3,7 @@ package derivean.server.auth
 import at.favre.lib.crypto.bcrypt.BCrypt
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
-import derivean.server.user.UserException
+import derivean.lib.user.UserException
 import derivean.server.user.UserRepository
 
 class AuthenticatorService(container: IContainer) : AbstractService(container) {
