@@ -11,11 +11,14 @@ import derivean.lib.pool.PoolConfig
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.auth.AuthenticatorService
 import derivean.server.config.EngineConfig
+import derivean.server.entity.EntityAttributeRepository
 import derivean.server.entity.EntityHttpModule
 import derivean.server.entity.EntityRepository
 import derivean.server.entity.rest.EntityEndpoint
 import derivean.server.entity.rest.EntityPageEndpoint
 import derivean.server.entity.rest.mapper.EntityFetchMapper
+import derivean.server.equipment.EquipmentAttributeRepository
+import derivean.server.equipment.EquipmentRepository
 import derivean.server.player.PlayerHttpModule
 import derivean.server.player.PlayerRepository
 import derivean.server.player.rest.PlayerEndpoint
@@ -62,6 +65,18 @@ object EngineContainer {
 		service(EntityPageEndpoint::class) { EntityPageEndpoint(this) }
 		service(EntityEndpoint::class) { EntityEndpoint(this) }
 		service(EntityRepository::class) { EntityRepository(this) }
+		/**
+		 * Entity Attributes.
+		 */
+		service(EntityAttributeRepository::class) { EntityAttributeRepository(this) }
+		/**
+		 * Equipment.
+		 */
+		service(EquipmentRepository::class) { EquipmentRepository(this) }
+		/**
+		 * Equipment Attributes.
+		 */
+		service(EquipmentAttributeRepository::class) { EquipmentAttributeRepository(this) }
 		/**
 		 * User related stuff.
 		 */
