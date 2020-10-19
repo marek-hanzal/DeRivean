@@ -9,14 +9,13 @@ const
 	onEntityPageSuccess = createAction("ON_ENTITY_PAGE_SUCCESS", pages => pages),
 	onEntityPageFailure = createAction("ON_ENTITY_PAGE_FAILURE", error => error),
 	onEntityPage = (page, size = 100) => (dispatch, getState) => {
-		const href = buildUrl(getEntityPageHref(getState()).replace("{page}", page), {
+		dispatch(onEntityPageStatus("LOADING"));
+		dispatch(onEntityPageRequest());
+		Axios.get(buildUrl(getEntityPageHref(getState()).replace("{page}", page), {
 			queryParams: {
 				limit: size,
 			}
-		});
-		dispatch(onEntityPageStatus("LOADING"));
-		dispatch(onEntityPageRequest());
-		Axios.get(href)
+		}))
 			.then(response => {
 				dispatch(onEntityPageSuccess(response.data));
 				dispatch(onEntityPageStatus("SUCCESS"));

@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {getDiscoveryHref} from "redux/client/payload/selector";
 import {onDiscovery} from "redux/discovery/payload/action";
 import {isDiscoveryFailure, isDiscoverySuccess} from "redux/discovery/status/selector";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
@@ -8,7 +7,7 @@ import LoaderView from "view/LoaderView";
 
 class Discovery extends React.PureComponent {
 	componentDidMount() {
-		this.props.onDiscovery(this.props.href);
+		this.props.onDiscovery();
 	}
 
 	render() {
@@ -23,11 +22,10 @@ class Discovery extends React.PureComponent {
 
 export default connect(
 	state => ({
-		href: getDiscoveryHref(state),
 		isSuccess: isDiscoverySuccess(state),
 		isFailure: isDiscoveryFailure(state),
 	}),
 	dispatch => ({
-		onDiscovery: href => dispatch(onDiscovery(href)),
+		onDiscovery: () => dispatch(onDiscovery()),
 	})
 )(Discovery);

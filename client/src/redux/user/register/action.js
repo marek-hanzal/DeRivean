@@ -16,6 +16,7 @@ const
 				dispatch(onUserRegisterStatus("SUCCESS"));
 			})
 			.catch(error => {
+				console.log("boom", error);
 				dispatch(onUserRegisterFailure(error));
 				dispatch(onUserRegisterStatus("FAILURE"));
 			});
