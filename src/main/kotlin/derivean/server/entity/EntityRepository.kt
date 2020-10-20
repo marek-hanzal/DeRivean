@@ -4,10 +4,6 @@ import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.EntityUUID
-import derivean.server.upgrade.u2020_10_20
-
-typealias EntityTable = u2020_10_20.uEntityTable
-typealias Entity = u2020_10_20.uEntity
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
 	fun create(ancestor: String?, block: Entity.() -> Unit) = create {
