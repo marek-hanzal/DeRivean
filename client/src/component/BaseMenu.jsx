@@ -19,9 +19,7 @@ const BaseMenu = (
 		defaultOpenKeys={openState || open}
 		selectedKeys={selected}
 		onOpenChange={onOpenChange}
-		style={{
-			height: "100vh",
-		}}
+		style={{height: "100vh"}}
 		children={children}
 	/>
 ;

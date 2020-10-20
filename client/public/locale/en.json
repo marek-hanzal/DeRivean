@@ -155,7 +155,12 @@
 			"heroes": {
 				"menu": "Heroes",
 				"home": {
-					"breadcrumb": "Heroes"
+					"title": "Heroes Dashboard",
+					"breadcrumb": "Heroes",
+					"content": {
+						"title": "Heroes Overview",
+						"subtitle": "Here you will find all your Heroes!"
+					}
 				}
 			}
 		},

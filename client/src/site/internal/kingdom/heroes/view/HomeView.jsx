@@ -1,11 +1,24 @@
+import {MehOutlined} from "@ant-design/icons";
+import {Card, Result} from "antd";
 import React from "react";
+import {withTranslation} from "react-i18next";
 import InternalView from "site/internal/component/InternalView";
+import KingdomHeroesPath from "site/internal/kingdom/heroes/router/KingdomHeroesPath";
 
-const HomeView = () =>
+const HomeView = ({t}) =>
 	<InternalView
+		open={[KingdomHeroesPath.root]}
+		selected={[KingdomHeroesPath.home]}
 	>
-		<h1>Heroes home</h1>
+		<Card title={t("internal.kingdom.heroes.home.title")}>
+			<Result
+				icon={<MehOutlined/>}
+				status={"success"}
+				title={t("internal.kingdom.heroes.home.content.title")}
+				subTitle={t("internal.kingdom.heroes.home.content.subtitle")}
+			/>
+		</Card>
 	</InternalView>
 ;
 
-export default HomeView;
+export default withTranslation()(HomeView);
