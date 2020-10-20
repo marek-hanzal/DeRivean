@@ -1,52 +1,16 @@
-import {FormOutlined, HomeOutlined, RobotOutlined, UnorderedListOutlined} from "@ant-design/icons";
-import Breadcrumb from "antd/lib/breadcrumb";
 import React from "react";
-import {withTranslation} from "react-i18next";
 import {Route, Switch} from "react-router";
-import {Link} from "react-router-dom";
+import EntityCreateBreadcrumbs from "site/root/entity/component/EntityCreateBreadcrumbs";
+import EntityHomeBreadcrumbs from "site/root/entity/component/EntityHomeBreadcrumbs";
+import EntityListBreadcrumbs from "site/root/entity/component/EntityListBreadcrumbs";
 import EntityPath from "site/root/entity/router/EntityPath";
-import RootPath from "site/root/router/RootPath";
 
-const EntityBreadcrumbs = ({t}) =>
+const EntityBreadcrumbs = () =>
 	<Switch>
-		<Route exact path={EntityPath.home}>
-			<Breadcrumb>
-				<Breadcrumb.Item key={RootPath.root}>
-					<Link to={RootPath.root}><HomeOutlined/></Link>
-				</Breadcrumb.Item>
-				<Breadcrumb.Item key={EntityPath.home}>
-					<RobotOutlined/>
-					<span>{t("root.entity.home.breadcrumb")}</span>
-				</Breadcrumb.Item>
-			</Breadcrumb>
-		</Route>
-		<Route exact path={EntityPath.create}>
-			<Breadcrumb>
-				<Breadcrumb.Item key={RootPath.root}>
-					<Link to={RootPath.root}><HomeOutlined/></Link>
-				</Breadcrumb.Item>
-				<Breadcrumb.Item key={EntityPath.home}>
-					<Link to={EntityPath.home}><RobotOutlined/>&nbsp;{t("root.entity.home.breadcrumb")}</Link>
-				</Breadcrumb.Item>
-				<Breadcrumb.Item key={EntityPath.create}>
-					<span><FormOutlined/>&nbsp;{t("root.entity.create.breadcrumb")}</span>
-				</Breadcrumb.Item>
-			</Breadcrumb>
-		</Route>
-		<Route exact path={EntityPath.list}>
-			<Breadcrumb>
-				<Breadcrumb.Item key={RootPath.root}>
-					<Link to={RootPath.root}><HomeOutlined/></Link>
-				</Breadcrumb.Item>
-				<Breadcrumb.Item key={EntityPath.home}>
-					<Link to={EntityPath.home}><RobotOutlined/>&nbsp;{t("root.entity.home.breadcrumb")}</Link>
-				</Breadcrumb.Item>
-				<Breadcrumb.Item key={EntityPath.list}>
-					<span><UnorderedListOutlined/>&nbsp;{t("root.entity.list.breadcrumb")}</span>
-				</Breadcrumb.Item>
-			</Breadcrumb>
-		</Route>
+		<Route path={EntityPath.home} component={EntityHomeBreadcrumbs}/>
+		<Route path={EntityPath.create} component={EntityCreateBreadcrumbs}/>
+		<Route path={EntityPath.list} component={EntityListBreadcrumbs}/>
 	</Switch>
 ;
 
-export default withTranslation()(EntityBreadcrumbs);
+export default EntityBreadcrumbs;

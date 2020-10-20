@@ -153,6 +153,7 @@
 				}
 			},
 			"heroes": {
+				"menu": "Heroes",
 				"home": {
 					"menu": "Heroes",
 					"title": "Heroes Dashboard",
