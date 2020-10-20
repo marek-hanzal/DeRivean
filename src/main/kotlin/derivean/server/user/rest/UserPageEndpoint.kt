@@ -14,6 +14,6 @@ class UserPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) 
 		routing,
 		userRepository.table.tableName,
 		userRepository,
-		userFetchMapper.toMapper(),
+		userFetchMapper,
 	)
 }

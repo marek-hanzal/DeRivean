@@ -1,9 +1,9 @@
 package derivean.lib.repository
 
-import org.jetbrains.exposed.dao.Entity
+import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
 
-interface IRepository<T : Entity<*>> {
+interface IRepository<T : UUIDEntity> {
 	fun update(uuid: String, block: T.() -> T) = block(find(uuid))
 
 	fun find(uuid: String) = find(UUID.fromString(uuid))

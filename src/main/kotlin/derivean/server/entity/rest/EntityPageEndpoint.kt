@@ -14,6 +14,6 @@ class EntityPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 		routing,
 		"entity",
 		entityRepository,
-		entityFetchMapper.toMapper(),
+		entityFetchMapper,
 	)
 }

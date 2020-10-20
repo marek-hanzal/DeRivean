@@ -14,6 +14,6 @@ class KingdomPageEndpoint(container: IContainer) : AbstractPageEndpoint(containe
 		routing,
 		"kingdom",
 		kingdomRepository,
-		kingdomFetchMapper.toMapper(),
+		kingdomFetchMapper,
 	)
 }

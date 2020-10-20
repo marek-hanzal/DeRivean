@@ -9,12 +9,13 @@ import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.response.*
+import org.jetbrains.exposed.dao.UUIDEntity
 import kotlin.math.floor
 
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 
-	override suspend fun page(call: ApplicationCall, repository: IRepository<*>, mapper: IMapper<Any, out Any>) {
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
 		try {
 			call.respond(storage.read {
 				PageIndex.build {

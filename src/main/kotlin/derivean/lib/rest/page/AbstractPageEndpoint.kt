@@ -15,7 +15,7 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 	val storage: IStorage by container.lazy()
 	val pageService: IPageService by container.lazy()
 
-	fun <T : UUIDEntity> page(routing: Routing, target: String, repository: IRepository<T>, mapper: IMapper<Any, out Any>) {
+	fun <T : UUIDEntity> page(routing: Routing, target: String, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
 		discovery {
 			this.group = target
 			this.name = "page"
