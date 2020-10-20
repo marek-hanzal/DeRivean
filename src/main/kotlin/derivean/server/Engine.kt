@@ -20,7 +20,7 @@ class Engine(container: IContainer) {
 	fun run() {
 		measureTimeMillis {
 			logger.info { "Starting DeRivean Server: version: ${engineConfig.version}, upgrade: [${versionService.getVersion()}]" }
-			versionService.getCollection().toList().apply {
+			versionService.getCollection().toList().asReversed().apply {
 				logger.info { if (count() > 0) "Installed upgrades:" else "Initial application state" }
 			}.forEach {
 				logger.info { "\t\tstamp: [${it.stamp.asStamp()}], version: [${it.version}]" }
