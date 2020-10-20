@@ -13,7 +13,7 @@ const InternalBreadcrumbs = () =>
 	<Switch>
 		<Route path={KingdomHeroesPath.root} component={KingdomHeroesBreadcrumbs}/>
 		<Route path={KingdomPath.root} component={KingdomBreadcrumbs}/>
-		<Route exact path={InternalPath.root} render={() => (
+		<Route path={InternalPath.root} render={() => (
 			<Breadcrumb>
 				<Breadcrumb.Item key={InternalPath.root}>
 					<Link to={InternalPath.root}><HomeOutlined/></Link>

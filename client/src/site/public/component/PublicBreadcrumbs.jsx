@@ -1,8 +1,5 @@
 import React from "react";
 
-const PublicBreadcrumbs = () =>
-	<>
-	</>
-;
+const PublicBreadcrumbs = () => null;
 
 export default PublicBreadcrumbs;

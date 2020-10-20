@@ -2,14 +2,14 @@ import {FormOutlined, HomeOutlined, RobotOutlined, UnorderedListOutlined} from "
 import Breadcrumb from "antd/lib/breadcrumb";
 import React from "react";
 import {withTranslation} from "react-i18next";
-import {Route} from "react-router";
+import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
 import PlayerPath from "site/root/player/router/PlayerPath";
 import RootPath from "site/root/router/RootPath";
 
 const PlayerBreadcrumbs = ({t}) =>
-	<>
-		<Route exact={true} path={PlayerPath.home}>
+	<Switch>
+		<Route exact path={PlayerPath.home}>
 			<Breadcrumb>
 				<Breadcrumb.Item key={RootPath.root}>
 					<Link to={RootPath.root}><HomeOutlined/></Link>
@@ -19,7 +19,7 @@ const PlayerBreadcrumbs = ({t}) =>
 				</Breadcrumb.Item>
 			</Breadcrumb>
 		</Route>
-		<Route exact={true} path={PlayerPath.create}>
+		<Route exact path={PlayerPath.create}>
 			<Breadcrumb>
 				<Breadcrumb.Item key={RootPath.root}>
 					<Link to={RootPath.root}><HomeOutlined/></Link>
@@ -32,7 +32,7 @@ const PlayerBreadcrumbs = ({t}) =>
 				</Breadcrumb.Item>
 			</Breadcrumb>
 		</Route>
-		<Route exact={true} path={PlayerPath.list}>
+		<Route exact path={PlayerPath.list}>
 			<Breadcrumb>
 				<Breadcrumb.Item key={RootPath.root}>
 					<Link to={RootPath.root}><HomeOutlined/></Link>
@@ -45,7 +45,7 @@ const PlayerBreadcrumbs = ({t}) =>
 				</Breadcrumb.Item>
 			</Breadcrumb>
 		</Route>
-	</>
+	</Switch>
 ;
 
 export default withTranslation()(PlayerBreadcrumbs);
