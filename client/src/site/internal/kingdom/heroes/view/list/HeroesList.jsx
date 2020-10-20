@@ -1,6 +1,7 @@
 import {LikeOutlined, MessageOutlined, StarOutlined} from "@ant-design/icons";
 import {Avatar, List, Space} from "antd";
 import React from "react";
+import {withTranslation} from "react-i18next";
 
 const IconText = ({icon, text}) => (
 	<Space>
@@ -9,7 +10,7 @@ const IconText = ({icon, text}) => (
 	</Space>
 );
 
-const HeroesList = () =>
+const HeroesList = ({t}) =>
 	<List
 		itemLayout="vertical"
 		size="large"
@@ -40,4 +41,4 @@ const HeroesList = () =>
 	/>
 ;
 
-export default HeroesList;
+export default withTranslation()(HeroesList);
