@@ -1,25 +1,25 @@
-import {FormOutlined, RightCircleOutlined} from "@ant-design/icons";
-import {Card, Col, Result, Row, Typography} from "antd";
-import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {getUserRegisterStatus} from "redux/user/register/selector";
-import MinimalView from "site/public/component/MinimalView";
-import PublicView from "site/public/component/PublicView";
-import PublicPath from "site/public/router/PublicPath";
-import FailedResult from "site/public/view/sign-up/FailedResult";
-import SignUpForm from "site/public/view/sign-up/SignUpForm";
-import SucceedResult from "site/public/view/sign-up/SucceedResult";
+import {FormOutlined, RightCircleOutlined} from '@ant-design/icons';
+import {Card, Col, Result, Row, Typography} from 'antd';
+import React from 'react';
+import {withTranslation} from 'react-i18next';
+import {connect} from 'react-redux';
+import {getUserRegisterStatus} from 'redux/user/register/selector';
+import MinimalView from 'site/public/component/MinimalView';
+import PublicView from 'site/public/component/PublicView';
+import PublicPath from 'site/public/router/PublicPath';
+import FailedResult from 'site/public/view/sign-up/FailedResult';
+import SignUpForm from 'site/public/view/sign-up/SignUpForm';
+import SucceedResult from 'site/public/view/sign-up/SucceedResult';
 
 function resolveStatus(t, status) {
 	switch (status) {
-		case "SUCCESS":
+		case 'SUCCESS':
 			return (
 				<MinimalView>
 					<SucceedResult/>
 				</MinimalView>
 			);
-		case "FAILURE":
+		case 'FAILURE':
 			return (
 				<MinimalView>
 					<FailedResult/>
@@ -54,8 +54,8 @@ function resolveStatus(t, status) {
 										</Typography.Text>
 									</Typography.Paragraph>
 									{[0, 1, 2, 3, 4].map(index => (
-										<Typography.Paragraph>
-											<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
+										<Typography.Paragraph key={index}>
+											<RightCircleOutlined style={{color: '#1890ff'}}/>&nbsp;{t('public.sign-up.content.list.item-' + index)}
 										</Typography.Paragraph>
 									))}
 								</Col>
