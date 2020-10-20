@@ -13,10 +13,12 @@ import NotFoundView from "view/NotFoundView";
 const RootRouter = () =>
 	<Switch>
 		<Route exact path={RootPath.root} component={HomeView}/>
-		<Route path={PlayerPath.root} component={PlayerRouter}/>
-		<Route path={EntityPath.root} component={EntityRouter}/>
 		<Route exact path={RootPath.signIn} component={SingInView}/>
 		<Route exact path={RootPath.signOut} component={SingOutView}/>
+
+		<Route path={EntityPath.root} component={EntityRouter}/>
+		<Route path={PlayerPath.root} component={PlayerRouter}/>
+
 		<Route component={NotFoundView}/>
 	</Switch>
 ;

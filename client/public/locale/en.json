@@ -143,7 +143,15 @@
 			}
 		},
 		"kingdom": {
-			"menu": "Kingdom"
+			"menu": "Kingdom",
+			"home": {
+				"breadcrumb": "Kingdom",
+				"title": "Kingdom Dashboard",
+				"content": {
+					"title": "Kingdom Overview",
+					"subtitle": "Kingdom under you fingerprints!"
+				}
+			}
 		},
 		"sign-out": {
 			"menu": "Logout"
