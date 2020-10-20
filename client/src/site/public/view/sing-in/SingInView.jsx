@@ -14,7 +14,7 @@ const SingInView = ({t}) =>
 		<Card title={t("public.sign-in.title")}>
 			<Result
 				icon={<LoginOutlined/>}
-				status={"success"}
+				status={"info"}
 				title={t("public.sign-in.content.title")}
 				subTitle={t("public.sign-in.content.subtitle")}
 			>
@@ -33,18 +33,11 @@ const SingInView = ({t}) =>
 								{t("public.sign-in.content.list.title")}
 							</Typography.Text>
 						</Typography.Paragraph>
-						<Typography.Paragraph>
-							<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-in.content.list.item-0")}
-						</Typography.Paragraph>
-						<Typography.Paragraph>
-							<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-in.content.list.item-1")}
-						</Typography.Paragraph>
-						<Typography.Paragraph>
-							<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-in.content.list.item-2")}
-						</Typography.Paragraph>
-						<Typography.Paragraph>
-							<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-in.content.list.item-3")}
-						</Typography.Paragraph>
+						{[0, 1, 2, 3].map(index => (
+							<Typography.Paragraph>
+								<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-in.content.list.item-" + index)}
+							</Typography.Paragraph>
+						))}
 					</Col>
 				</Row>
 			</Result>

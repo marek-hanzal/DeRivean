@@ -34,7 +34,7 @@ function resolveStatus(t, status) {
 					<Card title={t("public.sign-up.title")}>
 						<Result
 							icon={<FormOutlined/>}
-							status={"success"}
+							status={"info"}
 							title={t("public.sign-up.content.title")}
 							subTitle={t("public.sign-up.content.subtitle")}
 						>
@@ -53,21 +53,11 @@ function resolveStatus(t, status) {
 											{t("public.sign-up.content.list.title")}
 										</Typography.Text>
 									</Typography.Paragraph>
-									<Typography.Paragraph>
-										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-0")}
-									</Typography.Paragraph>
-									<Typography.Paragraph>
-										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-1")}
-									</Typography.Paragraph>
-									<Typography.Paragraph>
-										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-2")}
-									</Typography.Paragraph>
-									<Typography.Paragraph>
-										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-3")}
-									</Typography.Paragraph>
-									<Typography.Paragraph>
-										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-4")}
-									</Typography.Paragraph>
+									{[0, 1, 2, 3, 4].map(index => (
+										<Typography.Paragraph>
+											<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
+										</Typography.Paragraph>
+									))}
 								</Col>
 							</Row>
 						</Result>
