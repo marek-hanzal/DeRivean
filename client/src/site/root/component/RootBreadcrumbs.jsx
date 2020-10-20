@@ -3,9 +3,9 @@ import Breadcrumb from "antd/lib/breadcrumb";
 import React from "react";
 import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
-import EntityBreadcrumbs from "site/root/entity/component/EntityBreadcrumbs";
+import EntityBreadcrumbs from "site/root/entity/component/breadcrumbs/EntityBreadcrumbs";
 import EntityPath from "site/root/entity/router/EntityPath";
-import PlayerBreadcrumbs from "site/root/player/component/PlayerBreadcrumbs";
+import PlayerBreadcrumbs from "site/root/player/component/breadcrumbs/PlayerBreadcrumbs";
 import PlayerPath from "site/root/player/router/PlayerPath";
 import RootPath from "site/root/router/RootPath";
 

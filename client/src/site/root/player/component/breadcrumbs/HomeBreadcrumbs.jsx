@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import PlayerPath from "site/root/player/router/PlayerPath";
 import RootPath from "site/root/router/RootPath";
 
-const PlayerHomeBreadcrumbs = ({t}) =>
+const HomeBreadcrumbs = ({t}) =>
 	<Breadcrumb>
 		<Breadcrumb.Item key={RootPath.root}>
 			<Link to={RootPath.root}><HomeOutlined/></Link>
@@ -17,4 +17,4 @@ const PlayerHomeBreadcrumbs = ({t}) =>
 	</Breadcrumb>
 ;
 
-export default withTranslation()(PlayerHomeBreadcrumbs);
+export default withTranslation()(HomeBreadcrumbs);

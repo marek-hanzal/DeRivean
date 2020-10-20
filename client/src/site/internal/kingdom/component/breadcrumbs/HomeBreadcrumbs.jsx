@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import KingdomPath from "site/internal/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
 
-const KingdomBreadcrumbs = ({t}) =>
+const HomeBreadcrumbs = ({t}) =>
 	<Breadcrumb>
 		<Breadcrumb.Item key={InternalPath.root}>
 			<Link to={InternalPath.root}><HomeOutlined/></Link>
@@ -18,4 +18,4 @@ const KingdomBreadcrumbs = ({t}) =>
 	</Breadcrumb>
 ;
 
-export default withTranslation()(KingdomBreadcrumbs);
+export default withTranslation()(HomeBreadcrumbs);

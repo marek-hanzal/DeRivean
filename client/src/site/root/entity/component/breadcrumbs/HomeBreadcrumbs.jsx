@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import EntityPath from "site/root/entity/router/EntityPath";
 import RootPath from "site/root/router/RootPath";
 
-const EntityHomeBreadcrumbs = ({t}) =>
+const HomeBreadcrumbs = ({t}) =>
 	<Breadcrumb>
 		<Breadcrumb.Item key={RootPath.root}>
 			<Link to={RootPath.root}><HomeOutlined/></Link>
@@ -18,4 +18,4 @@ const EntityHomeBreadcrumbs = ({t}) =>
 	</Breadcrumb>
 ;
 
-export default withTranslation()(EntityHomeBreadcrumbs);
+export default withTranslation()(HomeBreadcrumbs);
