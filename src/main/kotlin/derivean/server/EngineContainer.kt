@@ -11,7 +11,6 @@ import derivean.lib.pool.PoolConfig
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.config.EngineConfig
 import derivean.server.entity.EntityHttpModule
-import derivean.server.player.PlayerHttpModule
 import derivean.server.upgrade.*
 import derivean.server.user.UserHttpModule
 import io.github.config4k.extract
@@ -38,7 +37,6 @@ object EngineContainer {
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
 			register(ClientHttpModule::class)
-			register(PlayerHttpModule::class)
 			register(EntityHttpModule::class)
 			register(UserHttpModule::class)
 		}

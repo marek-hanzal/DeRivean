@@ -4,24 +4,18 @@ import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.EntityUUID
-import derivean.server.player.PlayerRepository
-import derivean.server.upgrade.u2020_10_19_03
+import derivean.server.upgrade.u2020_10_20
 
-typealias EntityTable = u2020_10_19_03.uEntityTable
-typealias Entity = u2020_10_19_03.uEntity
+typealias EntityTable = u2020_10_20.uEntityTable
+typealias Entity = u2020_10_20.uEntity
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
-	private val playerRepository: PlayerRepository by container.lazy()
-
-	fun create(player: String, ancestor: String?, block: Entity.() -> Unit) = create {
-		this.player = playerRepository.find(player)
+	fun create(ancestor: String?, block: Entity.() -> Unit) = create {
 		block(this)
 		ancestor?.let {
 			this.ancestor = findByName(it)
 		}
 	}
-
-	fun create(player: EntityUUID, ancestor: String?, block: Entity.() -> Unit) = create(player.toString(), ancestor, block)
 
 	/**
 	 * Replace Entity's attributes by the new ones.
