@@ -18,7 +18,8 @@
 	},
 	"common": {
 		"refresh": "Refresh",
-		"homepage": "Go to Homepage"
+		"homepage": "Go to Homepage",
+		"spinner": "Making some hard magick to make things work!"
 	},
 	"public": {
 		"home": {
@@ -105,7 +106,6 @@
 		}
 	},
 	"internal": {
-		"spinner": "Making some hard magick to make things work!",
 		"home": {
 			"title": "Internal Home",
 			"link": "Home",
@@ -130,7 +130,6 @@
 		}
 	},
 	"root": {
-		"spinner": "Making some hard magick to make things work!",
 		"home": {
 			"title": "Root Administration",
 			"menu": "Home",

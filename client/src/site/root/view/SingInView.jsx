@@ -2,15 +2,14 @@ import {Button, Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import RootView from "site/root/component/RootView";
+import MinimalView from "site/root/component/MinimalView";
 import RootPath from "site/root/router/RootPath";
 
 const SingInView = (
 	{
 		t,
 	}) =>
-	<RootView
-		title='root.home.title'
+	<MinimalView
 		open={[RootPath.root]}
 	>
 		<Card>
@@ -25,7 +24,7 @@ const SingInView = (
 				]}
 			/>
 		</Card>
-	</RootView>
+	</MinimalView>
 ;
 
 export default withTranslation()(SingInView);

@@ -2,14 +2,14 @@ import {Button, Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import InternalView from "site/internal/component/InternalView";
+import MinimalView from "site/internal/component/MinimalView";
 import InternalPath from "site/internal/router/InternalPath";
 
 const SingInView = (
 	{
 		t,
 	}) =>
-	<InternalView
+	<MinimalView
 		open={[InternalPath.root]}
 	>
 		<Card>
@@ -24,7 +24,7 @@ const SingInView = (
 				]}
 			/>
 		</Card>
-	</InternalView>
+	</MinimalView>
 ;
 
 export default withTranslation()(SingInView);

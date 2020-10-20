@@ -2,15 +2,14 @@ import {Button, Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PublicView from "site/public/component/PublicView";
+import MinimalView from "site/public/component/MinimalView";
 import PublicPath from "site/public/router/PublicPath";
 
 const SingOutView = (
 	{
 		t,
 	}) =>
-	<PublicView
-		title='public.home.title'
+	<MinimalView
 		open={[PublicPath.root]}
 	>
 		<Card>
@@ -25,7 +24,7 @@ const SingOutView = (
 				]}
 			/>
 		</Card>
-	</PublicView>
+	</MinimalView>
 ;
 
 export default withTranslation()(SingOutView);
