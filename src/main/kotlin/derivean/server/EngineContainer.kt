@@ -33,6 +33,7 @@ object EngineContainer {
 			register(u2020_10_19_02::class)
 			register(u2020_10_19_03::class)
 			register(u2020_10_19_04::class)
+			register(u2020_10_20::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
