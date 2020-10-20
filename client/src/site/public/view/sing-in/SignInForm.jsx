@@ -1,4 +1,4 @@
-import {LockOutlined, UserOutlined} from "@ant-design/icons";
+import {LockOutlined, LoginOutlined, UserOutlined} from "@ant-design/icons";
 import {Button, Col, Form, Input, Row} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
@@ -41,7 +41,7 @@ const SignInForm = (
 		<Row justify={"center"}>
 			<Col>
 				<Form.Item>
-					<Button type="primary" htmlType="submit" disabled={isLoading}>
+					<Button type="primary" htmlType="submit" icon={<LoginOutlined/>} disabled={isLoading}>
 						{t("public.sign-in.form.submit.label")}
 					</Button>
 				</Form.Item>

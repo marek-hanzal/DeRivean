@@ -1,5 +1,6 @@
-import {CarryOutOutlined, LoginOutlined, SmileOutlined} from "@ant-design/icons";
-import {Button, Card, Result, Typography} from "antd";
+import {FormOutlined, LoginOutlined, SmileOutlined} from "@ant-design/icons";
+import {Button, Card, Image, Result, Typography} from "antd";
+import icon from "assets/icon-small.png";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -16,7 +17,7 @@ const HomeView = (
 	>
 		<Card>
 			<Result
-				icon={<SmileOutlined/>}
+				icon={<Image width={128} height={128} src={icon}/>}
 				status={"success"}
 				title={t("public.home.content.title")}
 				subTitle={t("public.home.content.subtitle")}
@@ -25,31 +26,27 @@ const HomeView = (
 						<Link to={PublicPath.signIn}><LoginOutlined/>&nbsp;{t("public.home.sign-in.title")}</Link>
 					</Button>,
 					<Button key="sign-up">
-						<Link to={PublicPath.signUp}><CarryOutOutlined/>&nbsp;{t("public.home.sign-up.title")}</Link>
+						<Link to={PublicPath.signUp}><FormOutlined/>&nbsp;{t("public.home.sign-up.title")}</Link>
 					</Button>,
 				]}
 			>
-				<div className="desc">
-					<Typography.Paragraph>
-						<Typography.Text
-							strong
-							style={{
-								fontSize: 16,
-							}}
-						>
-							{t("public.home.content.list.title")}
-						</Typography.Text>
-					</Typography.Paragraph>
-					<Typography.Paragraph>
-						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-0")}
-					</Typography.Paragraph>
-					<Typography.Paragraph>
-						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-1")}
-					</Typography.Paragraph>
-					<Typography.Paragraph>
-						<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-2")}
-					</Typography.Paragraph>
-				</div>
+				<Typography.Paragraph>
+					<Typography.Text
+						strong
+						style={{fontSize: 16,}}
+					>
+						{t("public.home.content.list.title")}
+					</Typography.Text>
+				</Typography.Paragraph>
+				<Typography.Paragraph>
+					<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-0")}
+				</Typography.Paragraph>
+				<Typography.Paragraph>
+					<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-1")}
+				</Typography.Paragraph>
+				<Typography.Paragraph>
+					<SmileOutlined style={{color: "green"}}/>&nbsp;{t("public.home.content.list.item-2")}
+				</Typography.Paragraph>
 			</Result>
 		</Card>
 	</PublicView>

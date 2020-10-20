@@ -1,4 +1,5 @@
-import {Card, Col, Row} from "antd";
+import {FormOutlined, RightCircleOutlined} from "@ant-design/icons";
+import {Card, Col, Result, Row, Typography} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -27,18 +28,50 @@ function resolveStatus(t, status) {
 		default:
 			return (
 				<PublicView
-					title={"public.sign-up.title"}
-					subtitle={"public.sign-up.subtitle"}
 					open={[PublicPath.root]}
 					selected={[PublicPath.signUp]}
 				>
-					<Row justify={"center"}>
-						<Col span={8}>
-							<Card title={t("public.sign-up.title")}>
-								<SignUpForm/>
-							</Card>
-						</Col>
-					</Row>
+					<Card title={t("public.sign-up.title")}>
+						<Result
+							icon={<FormOutlined/>}
+							status={"success"}
+							title={t("public.sign-up.content.title")}
+							subTitle={t("public.sign-up.content.subtitle")}
+						>
+							<Row gutter={128} justify={"center"}>
+								<Col span={12}>
+									<Card title={t("public.sign-up.content.form.title")}>
+										<SignUpForm/>
+									</Card>
+								</Col>
+								<Col span={12}>
+									<Typography.Paragraph>
+										<Typography.Text
+											strong
+											style={{fontSize: 16,}}
+										>
+											{t("public.sign-up.content.list.title")}
+										</Typography.Text>
+									</Typography.Paragraph>
+									<Typography.Paragraph>
+										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-0")}
+									</Typography.Paragraph>
+									<Typography.Paragraph>
+										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-1")}
+									</Typography.Paragraph>
+									<Typography.Paragraph>
+										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-2")}
+									</Typography.Paragraph>
+									<Typography.Paragraph>
+										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-3")}
+									</Typography.Paragraph>
+									<Typography.Paragraph>
+										<RightCircleOutlined style={{color: "green"}}/>&nbsp;{t("public.sign-up.content.list.item-4")}
+									</Typography.Paragraph>
+								</Col>
+							</Row>
+						</Result>
+					</Card>
 				</PublicView>
 			);
 	}

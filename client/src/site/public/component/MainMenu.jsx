@@ -1,4 +1,4 @@
-import {CarryOutOutlined, HomeOutlined, LoginOutlined} from "@ant-design/icons";
+import {FormOutlined, HomeOutlined, LoginOutlined} from "@ant-design/icons";
 import {Menu} from "antd";
 import BaseMenu from "component/BaseMenu";
 import React from "react";
@@ -17,7 +17,7 @@ const MainMenu = (
 			<Link to={PublicPath.root}>{t("public.home.menu")}</Link>
 		</Menu.Item>
 		<Menu.Divider/>
-		<Menu.Item key={PublicPath.signUp} icon={<CarryOutOutlined/>}>
+		<Menu.Item key={PublicPath.signUp} icon={<FormOutlined/>}>
 			<Link to={PublicPath.signUp}>{t("public.sign-up.menu")}</Link>
 		</Menu.Item>
 		<Menu.Item key={PublicPath.signIn} icon={<LoginOutlined/>}>

@@ -1,3 +1,4 @@
+import {CheckCircleOutlined} from "@ant-design/icons";
 import {Button, Form, Input, Spin} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
@@ -6,7 +7,8 @@ import {onUserRegister} from "redux/user/register/action";
 import {getUserRegisterRequest, isUserRegisterLoading} from "redux/user/register/selector";
 
 const layout = {
-	wrapperCol: {span: 24},
+	labelCol: {span: 8},
+	wrapperCol: {span: 16},
 };
 
 const tailLayout = {
@@ -29,23 +31,29 @@ const SignUpForm = (
 		>
 			<Form.Item
 				name="name"
+				labelAlign={"left"}
+				label={t("public.sign-up.form.name.label")}
 				rules={[{required: true, message: t("public.sign-up.form.name.required")}]}
 				children={<Input placeholder={t("public.sign-up.form.name.label")}/>}
 			/>
 			<Form.Item
 				name="login"
+				labelAlign={"left"}
+				label={t("public.sign-up.form.login.label")}
 				rules={[{required: true, message: t("public.sign-up.form.login.required")}]}
 				children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
 			/>
 
 			<Form.Item
 				name="password"
+				labelAlign={"left"}
+				label={t("public.sign-up.form.password.label")}
 				rules={[{required: true, message: t("public.sign-up.form.password.required")}]}
 				children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
 			/>
 
 			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" disabled={isLoading}>{t("public.sign-up.form.submit.label")}</Button>
+				<Button type="primary" htmlType="submit" icon={<CheckCircleOutlined/>} disabled={isLoading}>{t("public.sign-up.form.submit.label")}</Button>
 			</Form.Item>
 		</Form>
 	</Spin>

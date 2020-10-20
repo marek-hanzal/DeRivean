@@ -44,8 +44,22 @@
 		},
 		"sign-up": {
 			"menu": "Sign-up",
-			"title": "Sign-up to DeRivean",
-			"subtitle": "Are you new to here? Just give us a few clicks and start playing!",
+			"title": "Sign-up",
+			"content": {
+				"title": "Sign-up to join World of DeRivean",
+				"subtitle": "Just type a few things and start playing!",
+				"form": {
+					"title": "Registration"
+				},
+				"list": {
+					"title": "This is a RPG game, where you will:",
+					"item-0": "Create your own heroes",
+					"item-1": "Build up a Kingdom of Yours",
+					"item-2": "Gain resources, XP, level up Heroes, merge them",
+					"item-3": "Fight for becoming the greatest King over here",
+					"item-4": "...and a lot more awaits for you!"
+				}
+			},
 			"form": {
 				"name": {
 					"label": "Display name",
