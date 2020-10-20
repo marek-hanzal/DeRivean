@@ -1,4 +1,4 @@
-package derivean.server.user
+package derivean.server.user.entities
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 

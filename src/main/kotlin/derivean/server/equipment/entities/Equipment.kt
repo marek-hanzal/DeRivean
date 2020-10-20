@@ -1,4 +1,4 @@
-package derivean.server.equipment
+package derivean.server.equipment.entities
 
 import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity

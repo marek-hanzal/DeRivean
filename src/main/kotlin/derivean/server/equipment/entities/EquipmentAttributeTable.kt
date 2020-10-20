@@ -1,4 +1,4 @@
-package derivean.server.equipment
+package derivean.server.equipment.entities
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption

@@ -1,4 +1,4 @@
-package derivean.server.hero
+package derivean.server.hero.entities
 
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption

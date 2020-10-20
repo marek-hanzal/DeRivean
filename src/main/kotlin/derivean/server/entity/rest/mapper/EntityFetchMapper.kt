@@ -4,7 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.ILinkGenerator
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
-import derivean.server.entity.Entity
+import derivean.server.entity.entities.Entity
 
 class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFetchMapper.Fetch>(container) {
 	private val linkGenerator: ILinkGenerator by container.lazy()

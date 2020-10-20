@@ -4,6 +4,9 @@ import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.EntityUUID
+import derivean.server.entity.entities.Entity
+import derivean.server.entity.entities.EntityAttribute
+import derivean.server.entity.entities.EntityTable
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
 	fun create(ancestor: String?, block: Entity.() -> Unit) = create {

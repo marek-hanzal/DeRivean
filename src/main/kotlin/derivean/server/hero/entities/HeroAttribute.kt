@@ -1,4 +1,4 @@
-package derivean.server.hero
+package derivean.server.hero.entities
 
 import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity

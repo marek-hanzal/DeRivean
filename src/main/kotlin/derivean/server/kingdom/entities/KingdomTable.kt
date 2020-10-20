@@ -1,6 +1,6 @@
-package derivean.server.kingdom
+package derivean.server.kingdom.entities
 
-import derivean.server.user.UserTable
+import derivean.server.user.entities.UserTable
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 

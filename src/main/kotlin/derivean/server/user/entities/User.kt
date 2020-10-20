@@ -1,4 +1,4 @@
-package derivean.server.user
+package derivean.server.user.entities
 
 import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity
@@ -13,4 +13,3 @@ class User(id: EntityUUID) : UUIDEntity(id) {
 	var token by UserTable.token
 	var site by UserTable.site
 }
-
