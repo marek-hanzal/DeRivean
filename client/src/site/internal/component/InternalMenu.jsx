@@ -1,4 +1,4 @@
-import {HomeOutlined, PoweroffOutlined} from "@ant-design/icons";
+import {CrownOutlined, HomeOutlined, PoweroffOutlined} from "@ant-design/icons";
 import {Menu} from "antd";
 import BaseMenu from "component/BaseMenu";
 import React from "react";
@@ -12,6 +12,10 @@ const InternalMenu = ({t, ...props}) =>
 		<BaseMenu {...props}>
 			<Menu.Item key={InternalPath.root} icon={<HomeOutlined/>}>
 				<Link to={InternalPath.root}>{t("internal.home.menu")}</Link>
+			</Menu.Item>
+			<Menu.Divider/>
+			<Menu.Item key={InternalPath.kingdom} icon={<CrownOutlined/>}>
+				<Link to={InternalPath.kingdom}>{t("internal.kingdom.menu")}</Link>
 			</Menu.Item>
 			<Menu.Divider/>
 			<Menu.Item key='internal.logout' icon={<PoweroffOutlined/>}>

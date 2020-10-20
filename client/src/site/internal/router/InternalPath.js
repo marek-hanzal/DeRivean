@@ -1,5 +1,6 @@
 const InternalPath = {
 	root: "/",
+	kingdom: "/kingdom",
 	signIn: "/sign-in",
 	signOut: "/sign-out",
 };

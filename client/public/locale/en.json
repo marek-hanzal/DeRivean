@@ -142,6 +142,9 @@
 				"subtitle": "So it's time to check out World of DeRivean!"
 			}
 		},
+		"kingdom": {
+			"menu": "Kingdom"
+		},
 		"sign-out": {
 			"menu": "Logout"
 		},
