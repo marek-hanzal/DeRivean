@@ -6,7 +6,7 @@ const
 	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", request => ({status: "REQUEST", request})),
 	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", register => ({status: "SUCCESS", register})),
 	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => ({status: "FAILURE", error})),
-	onUserRegisterDismiss = createAction("ON_USER_REGISTER_DISMISS", () => ({status: null, error: null, register: null})),
+	onUserRegisterDismiss = createAction("ON_USER_REGISTER_DISMISS", () => ({status: null, error: null, register: null, request: null})),
 	onUserRegister = register => (dispatch, getState) => {
 		dispatch(onUserRegisterRequest(register));
 		return Axios.post(getUserCreateHref(getState()), register)
