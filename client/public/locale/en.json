@@ -153,14 +153,19 @@
 				}
 			},
 			"heroes": {
-				"menu": "Heroes",
 				"home": {
+					"menu": "Heroes",
 					"title": "Heroes Dashboard",
 					"breadcrumb": "Heroes",
 					"content": {
 						"title": "Heroes Overview",
 						"subtitle": "Here you will find all your Heroes!"
 					}
+				},
+				"list": {
+					"menu": "List",
+					"title": "Your Heroes",
+					"breadcrumb": "List of Heroes"
 				}
 			}
 		},
