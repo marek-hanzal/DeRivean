@@ -151,6 +151,12 @@
 					"title": "Kingdom Overview",
 					"subtitle": "Kingdom under you fingerprints!"
 				}
+			},
+			"heroes": {
+				"menu": "Heroes",
+				"home": {
+					"breadcrumb": "Heroes"
+				}
 			}
 		},
 		"sign-out": {

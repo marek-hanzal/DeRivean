@@ -1,6 +1,9 @@
+const root = "/kingdom";
+
 const KingdomPath = {
-	root: "/kingdom",
-	home: "/kingdom/home"
+	root: root,
+	home: root + "/home",
+	heroes: root + "/heroes"
 };
 
 export default KingdomPath;

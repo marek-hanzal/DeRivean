@@ -1,20 +1,26 @@
 import {HomeOutlined} from "@ant-design/icons";
 import Breadcrumb from "antd/lib/breadcrumb";
 import React from "react";
-import {Route} from "react-router";
+import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
 import KingdomBreadcrumbs from "site/internal/kingdom/component/KingdomBreadcrumbs";
+import KingdomHeroesBreadcrumbs from "site/internal/kingdom/heroes/component/KingdomHeroesBreadcrumbs";
+import KingdomHeroesPath from "site/internal/kingdom/heroes/router/KingdomHeroesPath";
+import KingdomPath from "site/internal/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
 
 const InternalBreadcrumbs = () =>
-	<>
-		<Route exact path={InternalPath.root} render={() => (<Breadcrumb>
-			<Breadcrumb.Item key={InternalPath.root}>
-				<Link to={InternalPath.root}><HomeOutlined/></Link>
-			</Breadcrumb.Item>
-		</Breadcrumb>)}/>
-		<KingdomBreadcrumbs/>
-	</>
+	<Switch>
+		<Route path={KingdomHeroesPath.root} component={KingdomHeroesBreadcrumbs}/>
+		<Route path={KingdomPath.root} component={KingdomBreadcrumbs}/>
+		<Route exact path={InternalPath.root} render={() => (
+			<Breadcrumb>
+				<Breadcrumb.Item key={InternalPath.root}>
+					<Link to={InternalPath.root}><HomeOutlined/></Link>
+				</Breadcrumb.Item>
+			</Breadcrumb>
+		)}/>
+	</Switch>
 ;
 
 export default InternalBreadcrumbs;
