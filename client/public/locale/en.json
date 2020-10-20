@@ -166,7 +166,13 @@
 				"list": {
 					"menu": "List",
 					"title": "Your Heroes",
+					"create": "Create your first brave Hero!",
 					"breadcrumb": "List of Heroes"
+				},
+				"create": {
+					"menu": "Create",
+					"title": "Create a new Hero",
+					"breadcrumb": "Create"
 				}
 			}
 		},

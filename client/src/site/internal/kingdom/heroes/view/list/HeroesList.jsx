@@ -2,6 +2,7 @@ import {LikeOutlined, MessageOutlined, StarOutlined} from "@ant-design/icons";
 import {Avatar, List, Space} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
 
 const IconText = ({icon, text}) => (
 	<Space>
@@ -10,10 +11,11 @@ const IconText = ({icon, text}) => (
 	</Space>
 );
 
-const HeroesList = ({t}) =>
+const HeroesList = ({t, list}) =>
 	<List
 		itemLayout="vertical"
 		size="large"
+		dataSet={list}
 		renderItem={item => (
 			<List.Item
 				key={item.title}
@@ -41,4 +43,9 @@ const HeroesList = ({t}) =>
 	/>
 ;
 
-export default withTranslation()(HeroesList);
+export default connect(
+	state => ({
+		list: []
+	}),
+	dispatch => ({}),
+)(withTranslation()(HeroesList));

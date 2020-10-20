@@ -1,4 +1,4 @@
-import {CrownOutlined, HomeOutlined, MehOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import {CrownOutlined, FormOutlined, HomeOutlined, MehOutlined, UnorderedListOutlined} from "@ant-design/icons";
 import {Menu} from "antd";
 import BaseMenu from "component/BaseMenu";
 import React from "react";
@@ -22,6 +22,9 @@ const KingdomHeroesMenu = ({t, ...props}) => (
 		</Menu.Item>
 		<Menu.Item key={KingdomHeroesPath.list} icon={<UnorderedListOutlined/>}>
 			<Link to={KingdomHeroesPath.list}>{t("internal.kingdom.heroes.list.menu")}</Link>
+		</Menu.Item>
+		<Menu.Item key={KingdomHeroesPath.create} icon={<FormOutlined/>}>
+			<Link to={KingdomHeroesPath.create}>{t("internal.kingdom.heroes.create.menu")}</Link>
 		</Menu.Item>
 	</BaseMenu>)
 ;
