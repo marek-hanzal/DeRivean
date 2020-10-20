@@ -5,12 +5,11 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onSessionOpen} from "redux/session/action";
 import {onUserLogin, onUserLoginDismiss} from "redux/user/login/action";
-import {getUserLoginUser, isUserLoginLoading} from "redux/user/login/selector";
+import {getUserLoginUser} from "redux/user/login/selector";
 
 const SignInForm = (
 	{
 		t,
-		isLoading,
 		initials,
 		onFinish,
 	}) =>
@@ -41,7 +40,7 @@ const SignInForm = (
 		<Row justify={"center"}>
 			<Col>
 				<Form.Item>
-					<Button type="primary" htmlType="submit" icon={<LoginOutlined/>} disabled={isLoading}>
+					<Button type="primary" htmlType="submit" icon={<LoginOutlined/>}>
 						{t("public.sign-in.form.submit.label")}
 					</Button>
 				</Form.Item>
@@ -51,7 +50,6 @@ const SignInForm = (
 ;
 export default connect(
 	state => ({
-		isLoading: isUserLoginLoading(state),
 		initials: {},
 	}),
 	{

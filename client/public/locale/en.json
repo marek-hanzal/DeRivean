@@ -93,11 +93,23 @@
 		},
 		"sign-in": {
 			"menu": "Sing-in",
-			"title": "Login to DeRivean",
-			"subtitle": "Just login and start playing!",
+			"title": "Login",
+			"content": {
+				"title": "Welcome back, brave Hero!",
+				"form": {
+					"title": "Open a magic gate by your password!"
+				},
+				"list": {
+					"title": "Check, what's new in your Kingdom",
+					"item-0": "Don't forget to claim your resources",
+					"item-1": "Look for some new battles",
+					"item-2": "See Store for new equipment",
+					"item-3": "Level up your Heroes and Buddies"
+				}
+			},
 			"form": {
 				"login": {
-					"label": "Login (user name)",
+					"label": "Login",
 					"required": "We cannot make login request without... login!"
 				},
 				"password": {

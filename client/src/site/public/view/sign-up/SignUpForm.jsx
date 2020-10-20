@@ -1,10 +1,10 @@
 import {CheckCircleOutlined} from "@ant-design/icons";
-import {Button, Form, Input, Spin} from "antd";
+import {Button, Form, Input} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
-import {getUserRegisterRequest, isUserRegisterLoading} from "redux/user/register/selector";
+import {getUserRegisterRequest} from "redux/user/register/selector";
 
 const layout = {
 	labelCol: {span: 8},
@@ -18,50 +18,46 @@ const tailLayout = {
 const SignUpForm = (
 	{
 		t,
-		isLoading,
 		initials,
 		onFinish,
 	}) =>
-	<Spin spinning={isLoading}>
-		<Form
-			{...layout}
-			initialValues={initials}
-			onFinish={onFinish}
-			name={"sign-up"}
-		>
-			<Form.Item
-				name="name"
-				labelAlign={"left"}
-				label={t("public.sign-up.form.name.label")}
-				rules={[{required: true, message: t("public.sign-up.form.name.required")}]}
-				children={<Input placeholder={t("public.sign-up.form.name.label")}/>}
-			/>
-			<Form.Item
-				name="login"
-				labelAlign={"left"}
-				label={t("public.sign-up.form.login.label")}
-				rules={[{required: true, message: t("public.sign-up.form.login.required")}]}
-				children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
-			/>
+	<Form
+		{...layout}
+		initialValues={initials}
+		onFinish={onFinish}
+		name={"sign-up"}
+	>
+		<Form.Item
+			name="name"
+			labelAlign={"left"}
+			label={t("public.sign-up.form.name.label")}
+			rules={[{required: true, message: t("public.sign-up.form.name.required")}]}
+			children={<Input placeholder={t("public.sign-up.form.name.label")}/>}
+		/>
+		<Form.Item
+			name="login"
+			labelAlign={"left"}
+			label={t("public.sign-up.form.login.label")}
+			rules={[{required: true, message: t("public.sign-up.form.login.required")}]}
+			children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
+		/>
 
-			<Form.Item
-				name="password"
-				labelAlign={"left"}
-				label={t("public.sign-up.form.password.label")}
-				rules={[{required: true, message: t("public.sign-up.form.password.required")}]}
-				children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
-			/>
+		<Form.Item
+			name="password"
+			labelAlign={"left"}
+			label={t("public.sign-up.form.password.label")}
+			rules={[{required: true, message: t("public.sign-up.form.password.required")}]}
+			children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
+		/>
 
-			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" icon={<CheckCircleOutlined/>} disabled={isLoading}>{t("public.sign-up.form.submit.label")}</Button>
-			</Form.Item>
-		</Form>
-	</Spin>
+		<Form.Item {...tailLayout}>
+			<Button type="primary" htmlType="submit" icon={<CheckCircleOutlined/>}>{t("public.sign-up.form.submit.label")}</Button>
+		</Form.Item>
+	</Form>
 ;
 
 export default connect(
 	state => ({
-		isLoading: isUserRegisterLoading(state),
 		initials: getUserRegisterRequest(state),
 	}),
 	dispatch => ({
