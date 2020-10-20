@@ -9,12 +9,13 @@ import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.routing.*
+import org.jetbrains.exposed.dao.UUIDEntity
 
 abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	val storage: IStorage by container.lazy()
 	val pageService: IPageService by container.lazy()
 
-	fun page(routing: Routing, target: String, repository: IRepository<*>, mapper: IMapper<Any, out Any>) {
+	fun <T : UUIDEntity> page(routing: Routing, target: String, repository: IRepository<T>, mapper: IMapper<Any, out Any>) {
 		discovery {
 			this.group = target
 			this.name = "page"
