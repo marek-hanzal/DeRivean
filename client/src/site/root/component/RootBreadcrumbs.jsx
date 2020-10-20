@@ -9,7 +9,7 @@ import RootPath from "site/root/router/RootPath";
 
 const RootBreadcrumbs = () =>
 	<>
-		<Route exact={true} path={RootPath.root} render={() => (<Breadcrumb>
+		<Route exact path={RootPath.root} render={() => (<Breadcrumb>
 			<Breadcrumb.Item key={RootPath.root}>
 				<Link to={RootPath.root}><HomeOutlined/></Link>
 			</Breadcrumb.Item>

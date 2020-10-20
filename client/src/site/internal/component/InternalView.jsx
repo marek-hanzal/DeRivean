@@ -1,5 +1,6 @@
 import CommonLayout from "component/CommonLayout";
 import React from "react";
+import InternalBreadcrumbs from "site/internal/component/InternalBreadcrumbs";
 import Footer from "./Footer";
 import Header from "./Header";
 import MainMenu from "./MainMenu";
@@ -19,7 +20,7 @@ const InternalView = (
 			open={open}
 			selected={selected}
 		/>}
-		// breadcrumbs={<PublicBreadcrumbs/>}
+		breadcrumbs={<InternalBreadcrumbs/>}
 		header={<Header/>}
 		footer={<Footer/>}
 		children={children}

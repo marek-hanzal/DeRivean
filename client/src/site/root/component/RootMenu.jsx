@@ -10,7 +10,7 @@ import PlayerPath from "site/root/player/router/PlayerPath";
 import RootPath from "site/root/router/RootPath";
 
 const RootMenu = ({t, ...props}) =>
-	<Route exact={true} path={RootPath.root}>
+	<Route exact path={RootPath.root}>
 		<BaseMenu {...props}>
 			<Menu.Item key={PlayerPath.home} icon={<MehOutlined/>}>
 				<Link to={PlayerPath.home}>{t("root.player.menu")}</Link>
