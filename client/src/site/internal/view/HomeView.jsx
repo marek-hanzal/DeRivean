@@ -13,7 +13,7 @@ const HomeView = ({t}) =>
 		<Card title={t("internal.home.title")}>
 			<Result
 				icon={<RobotOutlined/>}
-				status={"success"}
+				status={"info"}
 				title={t("internal.home.content.title")}
 				subTitle={t("internal.home.content.subtitle")}
 			/>
