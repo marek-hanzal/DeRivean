@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import KingdomPath from "site/internal/kingdom/router/KingdomPath";
-import KingdomRouter from "site/internal/kingdom/router/KingdomRouter";
+import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
+import KingdomRouter from "site/internal/module/kingdom/router/KingdomRouter";
 import HomeView from "site/internal/view/HomeView";
 import SingOutView from "site/internal/view/SignOutView";
 import SingInView from "site/internal/view/SingInView";

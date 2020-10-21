@@ -1,9 +1,9 @@
 import React from "react";
 import {Route, Switch} from "react-router";
-import KingdomHeroesPath from "site/internal/kingdom/heroes/router/KingdomHeroesPath";
-import CreateView from "site/internal/kingdom/heroes/view/create/CreateView";
-import HomeView from "site/internal/kingdom/heroes/view/HomeView";
-import ListView from "site/internal/kingdom/heroes/view/list/ListView";
+import KingdomHeroesPath from "site/internal/module/kingdom/heroes/router/KingdomHeroesPath";
+import CreateView from "site/internal/module/kingdom/heroes/view/create/CreateView";
+import HomeView from "site/internal/module/kingdom/heroes/view/HomeView";
+import ListView from "site/internal/module/kingdom/heroes/view/list/ListView";
 
 const KingdomHeroesRouter = () =>
 	<Switch>

@@ -3,7 +3,7 @@ import {Card, Result} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import InternalView from "site/internal/component/InternalView";
-import KingdomPath from "site/internal/kingdom/router/KingdomPath";
+import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 
 const HomeView = ({t}) =>
 	<InternalView

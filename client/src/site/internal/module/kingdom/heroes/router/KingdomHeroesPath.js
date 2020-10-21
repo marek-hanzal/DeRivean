@@ -1,4 +1,4 @@
-import KingdomPath from "site/internal/kingdom/router/KingdomPath";
+import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 
 const root = KingdomPath.root + "/heroes";
 

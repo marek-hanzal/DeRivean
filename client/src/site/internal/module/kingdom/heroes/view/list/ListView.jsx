@@ -4,8 +4,8 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import InternalView from "site/internal/component/InternalView";
-import KingdomHeroesPath from "site/internal/kingdom/heroes/router/KingdomHeroesPath";
-import HeroesList from "site/internal/kingdom/heroes/view/list/HeroesList";
+import KingdomHeroesPath from "site/internal/module/kingdom/heroes/router/KingdomHeroesPath";
+import HeroesList from "site/internal/module/kingdom/heroes/view/list/HeroesList";
 
 const ListView = ({t, list}) =>
 	<InternalView
