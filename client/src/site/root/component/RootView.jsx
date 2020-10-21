@@ -5,6 +5,7 @@ import React from "react";
 import EntityPath from "site/root/module/entity/router/EntityPath";
 import UserPath from "site/root/module/user/router/UserPath";
 import RootPath from "site/root/router/RootPath";
+import menu from "utils/menu/menu";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 import Footer from "./Footer";
@@ -26,26 +27,20 @@ const RootView = (
 			open={open}
 			selected={selected}
 			items={[
-				{
-					path: EntityPath.root,
-					menu: [
-						menuItem(RootPath.root, "root.home", <HomeOutlined/>),
-						menuItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
-						menuItem(EntityPath.list, "root.entity.list", <UnorderedListOutlined/>),
-						menuDivider(),
-						menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
-					]
-				},
-				{
-					path: RootPath.root,
-					menu: [
-						menuItem(RootPath.root, "root.home", <HomeOutlined/>),
-						menuItem(UserPath.home, "root.user.home", <MehOutlined/>),
-						menuItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
-						menuDivider(),
-						menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
-					]
-				}
+				menu(EntityPath.root, [
+					menuItem(RootPath.root, "root.home", <HomeOutlined/>),
+					menuItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
+					menuItem(EntityPath.list, "root.entity.list", <UnorderedListOutlined/>),
+					menuDivider(),
+					menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
+				]),
+				menu(RootPath.root, [
+					menuItem(RootPath.root, "root.home", <HomeOutlined/>),
+					menuItem(UserPath.home, "root.user.home", <MehOutlined/>),
+					menuItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
+					menuDivider(),
+					menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
+				]),
 			]}
 		/>}
 		breadcrumbs={<RootBreadcrumbs/>}
