@@ -11,7 +11,7 @@ const Breadcrumbs = (
 	}) =>
 	<Switch>
 		{items.map(item =>
-			<Route path={item.path}>
+			<Route key={item.path} path={item.path}>
 				<Breadcrumb>
 					{item.items.map(breadcrumb =>
 						breadcrumb.label ?

@@ -18,8 +18,9 @@ const Menu = (
 	}) =>
 	<Switch>
 		{items.map(item =>
-			<Route path={item.path}>
+			<Route key={item.path} path={item.path}>
 				<AntdMenu
+					key={item.path}
 					mode='inline'
 					selectable={true}
 					defaultOpenKeys={openState || open}
@@ -27,7 +28,7 @@ const Menu = (
 					onOpenChange={onOpenChange}
 					style={{height: "100vh"}}
 				>
-					{item.menu.map(item => item === "-" ? <AntdMenu.Divider/> :
+					{item.menu.map((item, index) => item === "-" ? <AntdMenu.Divider key={index}/> :
 						<AntdMenu.Item key={item.href} icon={item.icon}>
 							<Link to={item.href}>{t(`${item.label}.menu`)}</Link>
 						</AntdMenu.Item>
