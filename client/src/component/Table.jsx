@@ -36,7 +36,7 @@ class Table extends React.Component {
 					showQuickJumper: true,
 					onChange: (current, size) => onPage(current - 1, size),
 				}}
-				children={columns.map(item => <AntdTable.Column title={t(`${translation}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
+				children={columns.map(item => <AntdTable.Column render={item.render} title={t(`${translation}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
 			/>
 		);
 	}
