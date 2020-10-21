@@ -1,17 +1,16 @@
-import {CrownOutlined, FormOutlined, HomeOutlined, MehOutlined, PoweroffOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import {CrownOutlined, FormOutlined, HomeOutlined, MehOutlined, UnorderedListOutlined} from "@ant-design/icons";
 import Breadcrumbs from "component/Breadcrumbs";
 import Layout from "component/Layout";
 import Menu from "component/Menu";
 import React from "react";
-import KingdomHeroesPath from "site/internal/module/kingdom/heroes/router/KingdomHeroesPath";
+import InternalMenu from "site/internal/InternalMenu";
+import KingdomMenu from "site/internal/module/kingdom/KingdomMenu";
+import KingdomHeroesPath from "site/internal/module/kingdom/module/heroes/router/KingdomHeroesPath";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
 import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
 import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
-import menu from "utils/menu/menu";
-import menuDivider from "utils/menu/menuDivider";
-import menuItem from "utils/menu/menuItem";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -29,31 +28,10 @@ const InternalView = (
 		menu={<Menu
 			open={open}
 			selected={selected}
-			items={[
-				menu(KingdomHeroesPath.root, [
-					menuItem(InternalPath.root, "internal.home", <HomeOutlined/>),
-					menuItem(KingdomPath.home, "internal.kingdom", <CrownOutlined/>),
-					menuDivider(),
-					menuItem(KingdomHeroesPath.home, "internal.kingdom.heroes.home", <MehOutlined/>),
-					menuItem(KingdomHeroesPath.create, "internal.kingdom.heroes.create", <FormOutlined/>),
-					menuItem(KingdomHeroesPath.list, "internal.kingdom.heroes.list", <UnorderedListOutlined/>),
-					menuDivider(),
-					menuItem(InternalPath.signOut, "internal.sign-out", <PoweroffOutlined/>),
-				]),
-				menu(KingdomPath.root, [
-					menuItem(InternalPath.root, "internal.home", <HomeOutlined/>),
-					menuItem(KingdomPath.home, "internal.kingdom", <CrownOutlined/>),
-					menuItem(KingdomHeroesPath.home, "internal.kingdom.heroes", <MehOutlined/>),
-					menuDivider(),
-					menuItem(InternalPath.signOut, "internal.sign-out", <PoweroffOutlined/>),
-				]),
-				menu(InternalPath.root, [
-					menuItem(InternalPath.root, "internal.home", <HomeOutlined/>),
-					menuItem(KingdomPath.home, "internal.kingdom", <CrownOutlined/>),
-					menuDivider(),
-					menuItem(InternalPath.signOut, "internal.sign-out", <PoweroffOutlined/>),
-				]),
-			]}
+			items={[].concat(
+				KingdomMenu(),
+				InternalMenu(),
+			)}
 		/>}
 		breadcrumbs={<Breadcrumbs
 			items={[
