@@ -8,6 +8,7 @@ const register = handleActions({
 	[onUserRegisterDismiss]: (state, {payload}) => ({...state, ...payload}),
 }, {
 	status: null,
+	loading: false,
 });
 
 export default register;
