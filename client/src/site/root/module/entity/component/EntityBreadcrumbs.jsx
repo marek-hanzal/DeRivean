@@ -1,21 +1,14 @@
-import {HomeOutlined, RobotOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import {RobotOutlined} from "@ant-design/icons";
 import React from "react";
 import EntityPath from "site/root/module/entity/router/EntityPath";
 import RootPath from "site/root/router/RootPath";
-import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
-import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
-import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
+import commonBreadcrumbs from "utils/breadcrumbs/commonBreadcrumbs";
 
-const EntityBreadcrumbs = () => ([
-	breadcrumbs(EntityPath.list, [
-		breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),
-		breadcrumbItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
-		breadcrumbItem(EntityPath.list, "root.entity.list", <UnorderedListOutlined/>),
-	]),
-	breadcrumbs(EntityPath.root, [
-		breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),
-		breadcrumbItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
-	]),
-]);
+const EntityBreadcrumbs = () => commonBreadcrumbs(
+	RootPath.root,
+	EntityPath.root,
+	<RobotOutlined/>,
+	"root.entity"
+);
 
 export default EntityBreadcrumbs;

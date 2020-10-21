@@ -9,14 +9,13 @@ const Module = (
 		create,
 		edit,
 		list,
-		view,
-		translation,
+		...props
 	}) =>
 	<Switch>
-		<Route path={`${root}/home`} render={() => createElement(home, {view, root, translation})}/>
-		<Route path={`${root}/create`} render={() => createElement(create, {view, root, translation})}/>
-		<Route path={`${root}/edit`} render={() => createElement(edit, {view, root, translation})}/>
-		<Route path={`${root}/list`} render={() => createElement(list, {view, root, translation})}/>
+		<Route path={`${root}/home`} render={() => createElement(home, {root, ...props})}/>
+		<Route path={`${root}/create`} render={() => createElement(create, {root, ...props})}/>
+		<Route path={`${root}/edit`} render={() => createElement(edit, {root, ...props})}/>
+		<Route path={`${root}/list`} render={() => createElement(list, {root, ...props})}/>
 		<Route component={NotFoundView}/>
 	</Switch>
 ;

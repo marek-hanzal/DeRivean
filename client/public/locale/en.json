@@ -209,6 +209,22 @@
 				"title": "Continue"
 			}
 		},
+		"user": {
+			"home": {
+				"title": "Users Dashboard",
+				"menu": "Users",
+				"breadcrumb": "Users"
+			},
+			"create": {
+				"title": "Create User",
+				"menu": "Create User",
+				"breadcrumb": "Create User"
+			},
+			"list": {
+				"title": "User List",
+				"menu": "User List"
+			}
+		},
 		"entity": {
 			"menu": "Entities",
 			"home": {

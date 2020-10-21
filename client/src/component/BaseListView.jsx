@@ -1,6 +1,7 @@
 import {Card} from "antd";
 import Table from "component/Table";
 import React, {createElement} from "react";
+import {withTranslation} from "react-i18next";
 
 const BaseListView = (
 	{
@@ -29,4 +30,4 @@ const BaseListView = (
 	</Card>
 );
 
-export default BaseListView;
+export default withTranslation()(BaseListView);
