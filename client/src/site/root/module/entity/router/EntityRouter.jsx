@@ -1,9 +1,9 @@
 import React from "react";
 import {Route, Switch} from "react-router";
-import EntityPath from "site/root/entity/router/EntityPath";
-import CreateView from "site/root/entity/view/CreateView";
-import HomeView from "site/root/entity/view/HomeView";
-import ListView from "site/root/entity/view/ListView";
+import EntityPath from "site/root/module/entity/router/EntityPath";
+import CreateView from "site/root/module/entity/view/CreateView";
+import HomeView from "site/root/module/entity/view/HomeView";
+import ListView from "site/root/module/entity/view/ListView";
 import NotFoundView from "view/NotFoundView";
 
 const EntityRouter = () =>

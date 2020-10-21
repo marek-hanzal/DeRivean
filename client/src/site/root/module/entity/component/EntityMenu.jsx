@@ -5,7 +5,7 @@ import React from "react";
 import {withTranslation} from "react-i18next";
 import {Route} from "react-router";
 import {Link} from "react-router-dom";
-import EntityPath from "site/root/entity/router/EntityPath";
+import EntityPath from "site/root/module/entity/router/EntityPath";
 import RootPath from "site/root/router/RootPath";
 
 const EntityMenu = ({t, ...props}) =>

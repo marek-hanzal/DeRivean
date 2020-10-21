@@ -1,9 +1,9 @@
 import React from "react";
 import {Route, Switch} from "react-router";
-import CreateBreadcrumbs from "site/root/entity/component/breadcrumbs/CreateBreadcrumbs";
-import HomeBreadcrumbs from "site/root/entity/component/breadcrumbs/HomeBreadcrumbs";
-import ListBreadcrumbs from "site/root/entity/component/breadcrumbs/ListBreadcrumbs";
-import EntityPath from "site/root/entity/router/EntityPath";
+import CreateBreadcrumbs from "site/root/module/entity/component/breadcrumbs/CreateBreadcrumbs";
+import HomeBreadcrumbs from "site/root/module/entity/component/breadcrumbs/HomeBreadcrumbs";
+import ListBreadcrumbs from "site/root/module/entity/component/breadcrumbs/ListBreadcrumbs";
+import EntityPath from "site/root/module/entity/router/EntityPath";
 
 const EntityBreadcrumbs = () =>
 	<Switch>

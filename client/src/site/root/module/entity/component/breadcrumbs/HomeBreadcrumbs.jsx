@@ -3,7 +3,7 @@ import Breadcrumb from "antd/lib/breadcrumb";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PlayerPath from "site/root/player/router/PlayerPath";
+import EntityPath from "site/root/module/entity/router/EntityPath";
 import RootPath from "site/root/router/RootPath";
 
 const HomeBreadcrumbs = ({t}) =>
@@ -11,8 +11,9 @@ const HomeBreadcrumbs = ({t}) =>
 		<Breadcrumb.Item key={RootPath.root}>
 			<Link to={RootPath.root}><HomeOutlined/></Link>
 		</Breadcrumb.Item>
-		<Breadcrumb.Item key={PlayerPath.home}>
-			<span><RobotOutlined/>&nbsp;{t("root.player.home.breadcrumb")}</span>
+		<Breadcrumb.Item key={EntityPath.home}>
+			<RobotOutlined/>
+			<span>{t("root.entity.home.breadcrumb")}</span>
 		</Breadcrumb.Item>
 	</Breadcrumb>
 ;
