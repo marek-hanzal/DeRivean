@@ -31,6 +31,7 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 				name = "The God"
 				login = "root"
 				password = authenticatorService.encrypt("root")
+				site = "root"
 			}
 			/**
 			 * Base Entity for all Human related Entities.
