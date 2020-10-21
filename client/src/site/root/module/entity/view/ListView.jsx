@@ -1,37 +1,22 @@
-import {Card} from "antd";
-import Table from "component/Table";
-import React, {createElement} from "react";
+import BaseListView from "component/BaseListView";
+import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onEntityPage} from "redux/entity/page/payload/action";
 import {getEntityPage} from "redux/entity/page/payload/selector";
 import {isLoading} from "redux/entity/page/status/selector";
+import column from "utils/table/column";
 
-const ListView = (
-	{
-		t,
-		root,
-		translation,
-		view,
-		...props
-	}) => createElement(
-	view,
-	{
-		open: [root],
-		selected: [`${root}/list`],
-	},
-	<Card title={t(`${translation}.list.title`)}>
-		<Table
-			{...props}
-			translation={`${translation}.list.table`}
-			columns={[
-				{name: "id"},
-				{name: "name"},
-				{name: ["ancestor", "name"], title: "ancestor"},
-			]}
-		/>
-	</Card>
-);
+const ListView = ({...props}) =>
+	<BaseListView
+		{...props}
+		columns={[
+			column("id"),
+			column("name"),
+			column(["ancestor", "name"], "ancestor"),
+		]}
+	/>
+;
 
 export default connect(
 	state => ({
