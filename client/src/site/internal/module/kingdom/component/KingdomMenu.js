@@ -1,6 +1,6 @@
 import {CrownOutlined, HomeOutlined, MehOutlined, PoweroffOutlined} from "@ant-design/icons";
 import React from "react";
-import HeroesMenu from "site/internal/module/kingdom/module/heroes/HeroesMenu";
+import HeroesMenu from "site/internal/module/kingdom/module/heroes/component/HeroesMenu";
 import KingdomHeroesPath from "site/internal/module/kingdom/module/heroes/router/KingdomHeroesPath";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
