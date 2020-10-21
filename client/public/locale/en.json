@@ -207,34 +207,6 @@
 				"title": "Continue"
 			}
 		},
-		"player": {
-			"menu": "Players",
-			"home": {
-				"title": "Players",
-				"menu": "Players",
-				"breadcrumb": "Players"
-			},
-			"create": {
-				"title": "New Player",
-				"subtitle": "Create a new Player",
-				"menu": "New Player",
-				"breadcrumb": "New Player"
-			},
-			"list": {
-				"title": "Player List",
-				"subtitle": "All players available on the Server",
-				"menu": "Player List",
-				"breadcrumb": "Player List",
-				"table": {
-					"id": {
-						"title": "ID"
-					},
-					"name": {
-						"title": "Name"
-					}
-				}
-			}
-		},
 		"entity": {
 			"menu": "Entities",
 			"home": {
@@ -255,13 +227,13 @@
 				"breadcrumb": "Entity List",
 				"table": {
 					"id": {
-						"title": "ID"
+						"column": "ID"
 					},
 					"name": {
-						"title": "Name"
+						"column": "Name"
 					},
 					"ancestor": {
-						"title": "Ancestor"
+						"column": "Ancestor"
 					}
 				}
 			}

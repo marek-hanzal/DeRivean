@@ -24,19 +24,6 @@ const ListView = ({t, ...props}) =>
 					{name: ["ancestor", "name"], title: "ancestor"},
 				]}
 			/>
-			{/*<Table*/}
-			{/*	dataSource={page.items}*/}
-			{/*	rowKey={record => record.id}*/}
-			{/*	loading={{*/}
-			{/*		spinning: isLoading,*/}
-			{/*		delay: 100,*/}
-			{/*	}}*/}
-			{/*	pagination={pagination}*/}
-			{/*>*/}
-			{/*	<Table.Column title={t("root.entity.list.table.id.title")} dataIndex='id'/>*/}
-			{/*	<Table.Column title={t("root.entity.list.table.name.title")} dataIndex='name'/>*/}
-			{/*	<Table.Column title={t("root.entity.list.table.ancestor.title")} dataIndex={["ancestor", "name"]}/>*/}
-			{/*</Table>*/}
 		</Card>
 	</RootView>;
 
