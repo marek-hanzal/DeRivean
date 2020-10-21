@@ -44,6 +44,7 @@
 		},
 		"sign-up": {
 			"menu": "Sign-up",
+			"breadcrumb": "Sign-up",
 			"title": "Sign-up",
 			"content": {
 				"title": "Sign-up to join World of DeRivean",
@@ -93,6 +94,7 @@
 		},
 		"sign-in": {
 			"menu": "Sing-in",
+			"breadcrumb": "Sing-in",
 			"title": "Login",
 			"content": {
 				"title": "Welcome back, brave Hero!",
