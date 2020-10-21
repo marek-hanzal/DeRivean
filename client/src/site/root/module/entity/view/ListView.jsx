@@ -6,13 +6,12 @@ import {connect} from "react-redux";
 import {onEntityPage} from "redux/entity/page/payload/action";
 import {getEntityPage} from "redux/entity/page/payload/selector";
 import {isLoading} from "redux/entity/page/status/selector";
-import EntityPath from "site/root/module/entity/router/EntityPath";
 
-const ListView = ({t, view, ...props}) => createElement(
+const ListView = ({t, root, view, ...props}) => createElement(
 	view,
 	{
-		open: [EntityPath.root],
-		selected: [EntityPath.list],
+		open: [root],
+		selected: [`${root}/list`],
 	},
 	<Card title={t("root.entity.list.title")}>
 		<Table
