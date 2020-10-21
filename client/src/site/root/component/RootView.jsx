@@ -1,7 +1,7 @@
 import {HomeOutlined, MehOutlined, PoweroffOutlined, RobotOutlined, UnorderedListOutlined} from "@ant-design/icons";
-import CommonBreadcrumbs from "component/CommonBreadcrumbs";
-import CommonLayout from "component/CommonLayout";
-import CommonMenu from "component/CommonMenu";
+import Breadcrumbs from "component/Breadcrumbs";
+import Layout from "component/Layout";
+import Menu from "component/Menu";
 import React from "react";
 import EntityPath from "site/root/module/entity/router/EntityPath";
 import UserPath from "site/root/module/user/router/UserPath";
@@ -23,10 +23,10 @@ const RootView = (
 		selected,
 		children,
 	}) =>
-	<CommonLayout
+	<Layout
 		title={title}
 		subtitle={subtitle}
-		menu={<CommonMenu
+		menu={<Menu
 			open={open}
 			selected={selected}
 			items={[
@@ -46,7 +46,7 @@ const RootView = (
 				]),
 			]}
 		/>}
-		breadcrumbs={<CommonBreadcrumbs
+		breadcrumbs={<Breadcrumbs
 			items={[
 				breadcrumbs(EntityPath.list, [
 					breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),

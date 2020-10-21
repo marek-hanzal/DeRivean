@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
+import EntityModule from "site/root/module/entity/EntityModule";
 import EntityPath from "site/root/module/entity/router/EntityPath";
-import EntityRouter from "site/root/module/entity/router/EntityRouter";
 import RootPath from "site/root/router/RootPath";
 import HomeView from "site/root/view/HomeView";
 import SingOutView from "site/root/view/SignOutView";
@@ -14,7 +14,7 @@ const RootRouter = () =>
 		<Route exact path={RootPath.signIn} component={SingInView}/>
 		<Route exact path={RootPath.signOut} component={SingOutView}/>
 
-		<Route path={EntityPath.root} component={EntityRouter}/>
+		<Route path={EntityPath.root} render={() => <EntityModule root={EntityPath.root}/>}/>
 
 		<Route component={NotFoundView}/>
 	</Switch>

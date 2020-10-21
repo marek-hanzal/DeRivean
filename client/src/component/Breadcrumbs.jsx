@@ -4,7 +4,7 @@ import {withTranslation} from "react-i18next";
 import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
 
-const CommonBreadcrumbs = (
+const Breadcrumbs = (
 	{
 		t,
 		items,
@@ -28,4 +28,4 @@ const CommonBreadcrumbs = (
 	</Switch>
 ;
 
-export default withTranslation()(CommonBreadcrumbs);
+export default withTranslation()(Breadcrumbs);

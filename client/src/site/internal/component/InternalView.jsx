@@ -1,4 +1,4 @@
-import CommonLayout from "component/CommonLayout";
+import Layout from "component/Layout";
 import React from "react";
 import InternalBreadcrumbs from "site/internal/component/InternalBreadcrumbs";
 import Footer from "./Footer";
@@ -13,7 +13,7 @@ const InternalView = (
 		selected,
 		children,
 	}) =>
-	<CommonLayout
+	<Layout
 		title={title}
 		subtitle={subtitle}
 		menu={<MainMenu

@@ -1,4 +1,4 @@
-import {Menu} from "antd";
+import {Menu as AntdMenu} from "antd";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {onOpenMenu} from "redux/menu/open/action";
 import {getOpenMenu} from "redux/menu/open/selector";
 
-const CommonMenu = (
+const Menu = (
 	{
 		t,
 		open = [],
@@ -19,7 +19,7 @@ const CommonMenu = (
 	<Switch>
 		{items.map(item =>
 			<Route path={item.path}>
-				<Menu
+				<AntdMenu
 					mode='inline'
 					selectable={true}
 					defaultOpenKeys={openState || open}
@@ -27,12 +27,12 @@ const CommonMenu = (
 					onOpenChange={onOpenChange}
 					style={{height: "100vh"}}
 				>
-					{item.menu.map(item => item === "-" ? <Menu.Divider/> :
-						<Menu.Item key={item.href} icon={item.icon}>
+					{item.menu.map(item => item === "-" ? <AntdMenu.Divider/> :
+						<AntdMenu.Item key={item.href} icon={item.icon}>
 							<Link to={item.href}>{t(`${item.label}.menu`)}</Link>
-						</Menu.Item>
+						</AntdMenu.Item>
 					)}
-				</Menu>
+				</AntdMenu>
 			</Route>
 		)}
 	</Switch>
@@ -45,4 +45,4 @@ export default connect(
 	dispatch => ({
 		onOpenChange: open => dispatch(onOpenMenu(open)),
 	})
-)(withTranslation()(CommonMenu));
+)(withTranslation()(Menu));

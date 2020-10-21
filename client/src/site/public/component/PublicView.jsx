@@ -1,4 +1,4 @@
-import CommonLayout from "component/CommonLayout";
+import Layout from "component/Layout";
 import React from "react";
 import Footer from "site/public/component/Footer";
 import Header from "site/public/component/Header";
@@ -13,7 +13,7 @@ const PublicView = (
 		selected,
 		children,
 	}) =>
-	<CommonLayout
+	<Layout
 		title={title}
 		subtitle={subtitle}
 		menu={<MainMenu
