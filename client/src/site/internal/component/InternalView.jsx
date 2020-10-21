@@ -1,11 +1,14 @@
 import {CrownOutlined, FormOutlined, HomeOutlined, MehOutlined, PoweroffOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import Breadcrumbs from "component/Breadcrumbs";
 import Layout from "component/Layout";
 import Menu from "component/Menu";
 import React from "react";
-import InternalBreadcrumbs from "site/internal/component/InternalBreadcrumbs";
 import KingdomHeroesPath from "site/internal/kingdom/heroes/router/KingdomHeroesPath";
 import KingdomPath from "site/internal/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
+import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
+import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
+import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
 import menu from "utils/menu/menu";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
@@ -52,7 +55,34 @@ const InternalView = (
 				]),
 			]}
 		/>}
-		breadcrumbs={<InternalBreadcrumbs/>}
+		breadcrumbs={<Breadcrumbs
+			items={[
+				breadcrumbs(KingdomHeroesPath.create, [
+					breadcrumbSimpleItem(InternalPath.root, <HomeOutlined/>),
+					breadcrumbItem(KingdomPath.home, "internal.kingdom.home", <CrownOutlined/>),
+					breadcrumbItem(KingdomHeroesPath.home, "internal.kingdom.heroes.home", <MehOutlined/>),
+					breadcrumbItem(KingdomHeroesPath.create, "internal.kingdom.heroes.create", <FormOutlined/>),
+				]),
+				breadcrumbs(KingdomHeroesPath.list, [
+					breadcrumbSimpleItem(InternalPath.root, <HomeOutlined/>),
+					breadcrumbItem(KingdomPath.home, "internal.kingdom.home", <CrownOutlined/>),
+					breadcrumbItem(KingdomHeroesPath.home, "internal.kingdom.heroes.home", <MehOutlined/>),
+					breadcrumbItem(KingdomHeroesPath.list, "internal.kingdom.heroes.list", <UnorderedListOutlined/>),
+				]),
+				breadcrumbs(KingdomHeroesPath.root, [
+					breadcrumbSimpleItem(InternalPath.root, <HomeOutlined/>),
+					breadcrumbItem(KingdomPath.home, "internal.kingdom.home", <CrownOutlined/>),
+					breadcrumbItem(KingdomHeroesPath.home, "internal.kingdom.heroes.home", <MehOutlined/>),
+				]),
+				breadcrumbs(KingdomPath.root, [
+					breadcrumbSimpleItem(InternalPath.root, <HomeOutlined/>),
+					breadcrumbItem(KingdomPath.home, "internal.kingdom.home", <CrownOutlined/>),
+				]),
+				breadcrumbs(InternalPath.root, [
+					breadcrumbSimpleItem(InternalPath.root, <HomeOutlined/>),
+				]),
+			]}
+		/>}
 		header={<Header/>}
 		footer={<Footer/>}
 		children={children}
