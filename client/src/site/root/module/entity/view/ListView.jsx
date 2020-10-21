@@ -7,16 +7,23 @@ import {onEntityPage} from "redux/entity/page/payload/action";
 import {getEntityPage} from "redux/entity/page/payload/selector";
 import {isLoading} from "redux/entity/page/status/selector";
 
-const ListView = ({t, root, view, ...props}) => createElement(
+const ListView = (
+	{
+		t,
+		root,
+		translation,
+		view,
+		...props
+	}) => createElement(
 	view,
 	{
 		open: [root],
 		selected: [`${root}/list`],
 	},
-	<Card title={t("root.entity.list.title")}>
+	<Card title={t(`${translation}.list.title`)}>
 		<Table
 			{...props}
-			translation={"root.entity.list.table"}
+			translation={`${translation}.list.table`}
 			columns={[
 				{name: "id"},
 				{name: "name"},

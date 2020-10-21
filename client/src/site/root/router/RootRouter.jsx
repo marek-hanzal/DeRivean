@@ -15,7 +15,13 @@ const RootRouter = () =>
 		<Route exact path={RootPath.signIn} component={SingInView}/>
 		<Route exact path={RootPath.signOut} component={SingOutView}/>
 
-		<Route path={EntityPath.root} render={() => <EntityModule root={EntityPath.root} view={RootView}/>}/>
+		<Route path={EntityPath.root}>
+			<EntityModule
+				root={EntityPath.root}
+				view={RootView}
+				translation={"root"}
+			/>
+		</Route>
 
 		<Route component={NotFoundView}/>
 	</Switch>
