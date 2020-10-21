@@ -34,7 +34,6 @@ class CommonTable extends React.Component {
 					pageSize: page.size,
 					defaultPageSize: page.size,
 					showQuickJumper: true,
-					hideOnSinglePage: true,
 					onChange: (current, size) => onPage(current - 1, size),
 				}}
 				children={columns.map(item => <Table.Column title={t(`${translation}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
