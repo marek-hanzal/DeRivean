@@ -9,13 +9,6 @@ import derivean.server.entity.entities.EntityAttribute
 import derivean.server.entity.entities.EntityTable
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
-	fun create(ancestor: String?, block: Entity.() -> Unit) = create {
-		block(this)
-		ancestor?.let {
-			this.ancestor = findByName(it)
-		}
-	}
-
 	/**
 	 * Replace Entity's attributes by the new ones.
 	 */
@@ -36,5 +29,7 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity, Entit
 
 	fun attributes(id: EntityUUID, vararg attributes: Attribute) = attributes(id.toString(), *attributes)
 
-	fun findByName(name: String) = entity.find { table.name eq name }.firstOrNull()
+	fun findByNameOrNull(name: String) = entity.find { table.name eq name }.firstOrNull()
+
+	fun findByName(name: String) = entity.find { table.name eq name }.first()
 }

@@ -45,7 +45,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 		 */
 		storage.transaction {
 			entityRepository.attributes(
-				entityRepository.findByName("Gwork, The First Human")!!.id,
+				entityRepository.findByName("Gwork, The First Human").id,
 				100.0.health(),
 				100.0.maxHealth(),
 				25.0.mana(),
@@ -56,7 +56,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				1.0.haste(),
 			)
 			entityRepository.attributes(
-				entityRepository.findByName("Horwath, Greatest of Warriors")!!.id,
+				entityRepository.findByName("Horwath, Greatest of Warriors").id,
 				160.0.health(),
 				160.0.maxHealth(),
 				5.0.mana(),
@@ -68,7 +68,7 @@ class u2020_10_12(container: IContainer) : AbstractUpgrade(container) {
 				1.0.classWarrior(),
 			)
 			entityRepository.attributes(
-				entityRepository.findByName("Moo, Greatest of Mages")!!.id,
+				entityRepository.findByName("Moo, Greatest of Mages").id,
 				70.0.health(),
 				70.0.maxHealth(),
 				100.0.mana(),

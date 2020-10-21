@@ -12,9 +12,6 @@ import kotlin.test.assertNotNull
 
 class CommonTest {
 	private fun setup() = EngineContainer.create {
-		register(Fixtures::class) {
-			Fixtures(this)
-		}
 		configurator(IUpgradeManager::class) {
 			register(Fixtures::class)
 		}
@@ -42,8 +39,9 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 
 	override fun upgrade() {
 		storage.transaction {
-			entityRepository.create("Horwath, Greatest of Warriors") {
+			entityRepository.create {
 				this.name = "Wind River"
+				this.ancestor = entityRepository.findByName("Horwath, Greatest of Warriors")
 			}.let {
 				entityRepository.attributes(
 					it.id,
