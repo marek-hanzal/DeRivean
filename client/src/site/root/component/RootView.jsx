@@ -1,16 +1,19 @@
 import {HomeOutlined, MehOutlined, PoweroffOutlined, RobotOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import CommonBreadcrumbs from "component/CommonBreadcrumbs";
 import CommonLayout from "component/CommonLayout";
 import CommonMenu from "component/CommonMenu";
 import React from "react";
 import EntityPath from "site/root/module/entity/router/EntityPath";
 import UserPath from "site/root/module/user/router/UserPath";
 import RootPath from "site/root/router/RootPath";
+import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
+import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
+import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
 import menu from "utils/menu/menu";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 import Footer from "./Footer";
 import Header from "./Header";
-import RootBreadcrumbs from "./RootBreadcrumbs";
 
 const RootView = (
 	{
@@ -43,7 +46,22 @@ const RootView = (
 				]),
 			]}
 		/>}
-		breadcrumbs={<RootBreadcrumbs/>}
+		breadcrumbs={<CommonBreadcrumbs
+			items={[
+				breadcrumbs(EntityPath.list, [
+					breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),
+					breadcrumbItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
+					breadcrumbItem(EntityPath.list, "root.entity.list", <UnorderedListOutlined/>),
+				]),
+				breadcrumbs(EntityPath.root, [
+					breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),
+					breadcrumbItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
+				]),
+				breadcrumbs(RootPath.root, [
+					breadcrumbSimpleItem(RootPath.root, <HomeOutlined/>),
+				]),
+			]}
+		/>}
 		header={<Header/>}
 		footer={<Footer/>}
 		children={children}
