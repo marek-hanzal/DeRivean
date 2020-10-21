@@ -17,6 +17,7 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 			SchemaUtils.create(
 				UpgradeUserTable,
 				UpgradeKingdomTable,
+				UpgradeBuildingTable,
 				UpgradeHeroTable,
 				UpgradeHeroAttributeTable,
 				UpgradeEntityTable,
@@ -53,6 +54,10 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 					this.ancestor = human
 					this.name = "Moo, Greatest of Mages"
 				}
+			}
+			UpgradeKingdom.new {
+				user = UpgradeUser.find { UpgradeUserTable.login eq "root" }.first()
+				name = "root"
 			}
 		}
 		storage.transaction {
