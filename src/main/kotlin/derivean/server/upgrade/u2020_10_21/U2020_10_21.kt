@@ -14,6 +14,7 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 			SchemaUtils.create(
 				UpgradeUserTable,
 				UpgradeKingdomTable,
+				UpgradeKingdomAttributeTable,
 				UpgradeBuildingTable,
 				UpgradeBuildingAttributeTable,
 				UpgradeHeroTable,
@@ -21,7 +22,7 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 				UpgradeEntityTable,
 				UpgradeEntityAttributeTable,
 				UpgradeEquipmentTable,
-				UpgradeEntityAttributeTable,
+				UpgradeEquipmentAttributeTable,
 				inBatch = true,
 			)
 		}
