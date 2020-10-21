@@ -4,10 +4,6 @@ const branch = state => discoveryBranch(state).payload;
 
 const getDiscoveryIndex = state => branch(state).index;
 
-const getPlayerGroup = state => getDiscoveryIndex(state).player;
-
-const getPlayerPageHref = state => getPlayerGroup(state).page.link;
-
 const getEntityGroup = state => getDiscoveryIndex(state).entity;
 
 const getEntityPageHref = state => getEntityGroup(state).page.link;
@@ -18,14 +14,15 @@ const getUserCreateHref = state => getUserGroup(state).create.link;
 
 const getUserLoginHref = state => getUserGroup(state).login.link;
 
+const getUserPageHref = state => getUserGroup(state).page.link;
+
 export {
 	branch as discoveryPayloadBranch,
 	getDiscoveryIndex,
-	getPlayerGroup,
-	getPlayerPageHref,
 	getEntityGroup,
 	getEntityPageHref,
 	getUserGroup,
 	getUserCreateHref,
 	getUserLoginHref,
+	getUserPageHref,
 };

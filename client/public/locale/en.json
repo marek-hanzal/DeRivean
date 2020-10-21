@@ -222,7 +222,22 @@
 			},
 			"list": {
 				"title": "User List",
-				"menu": "User List"
+				"menu": "User List",
+				"breadcrumb": "User List",
+				"table": {
+					"id": {
+						"column": "ID"
+					},
+					"name": {
+						"column": "Name"
+					},
+					"token": {
+						"column": "Token"
+					},
+					"site": {
+						"column": "Site"
+					}
+				}
 			}
 		},
 		"entity": {

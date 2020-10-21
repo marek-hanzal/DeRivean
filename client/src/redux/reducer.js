@@ -4,7 +4,6 @@ import discovery from "./discovery/reducer";
 import entity from "./entity/reducer";
 import loading from "./loading/reducer";
 import menu from "./menu/reducer";
-import player from "./player/reducer";
 import session from "./session/reducer";
 import user from "./user/reducer";
 
@@ -13,7 +12,6 @@ export default combineReducers({
 	discovery,
 	loading,
 	menu,
-	player,
 	entity,
 	user,
 	session,

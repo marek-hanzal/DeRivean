@@ -10,12 +10,16 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login
+		this.token = item.token
+		this.site = item.site
 	}
 
 	data class Fetch(
 		val id: String,
 		val name: String,
 		val login: String,
+		val token: String?,
+		val site: String,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -25,11 +29,15 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 			lateinit var id: EntityUUID
 			lateinit var name: String
 			lateinit var login: String
+			var token: String? = null
+			lateinit var site: String
 
 			fun build() = Fetch(
 				id.toString(),
 				name,
 				login,
+				token,
+				site,
 			)
 		}
 	}

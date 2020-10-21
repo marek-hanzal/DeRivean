@@ -1,14 +1,10 @@
 import {handleActions} from "redux-actions";
+import defaultPage from "utils/page";
 import {onEntityPageFailure, onEntityPageSuccess} from "./action";
 
 const payload = handleActions({
 	[onEntityPageSuccess]: (state, {payload}) => payload,
 	[onEntityPageFailure]: (state, {payload}) => payload,
-}, {
-	total: 0,
-	limit: 0,
-	size: 0,
-	items: [],
-});
+}, defaultPage);
 
 export default payload;
