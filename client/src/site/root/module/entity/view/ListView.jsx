@@ -1,5 +1,5 @@
 import {Card} from "antd";
-import CommonTable from "component/CommonTable";
+import Table from "component/Table";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -15,7 +15,7 @@ const ListView = ({t, ...props}) =>
 		selected={[EntityPath.list]}
 	>
 		<Card title={t("root.entity.list.title")}>
-			<CommonTable
+			<Table
 				{...props}
 				translation={"root.entity.list.table"}
 				columns={[
