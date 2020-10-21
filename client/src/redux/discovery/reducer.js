@@ -1,10 +1,14 @@
-import {combineReducers} from 'redux';
-import payload from './payload/reducer';
-import status from './status/reducer';
+import {handleActions} from "redux-actions";
+import {onDiscoveryFailure, onDiscoveryRequest, onDiscoverySuccess} from "./action";
 
-const discovery = combineReducers({
-	status,
-	payload,
+const payload = handleActions({
+	[onDiscoveryRequest]: (state, {payload}) => ({...state, ...payload}),
+	[onDiscoverySuccess]: (state, {payload}) => ({...state, ...payload}),
+	[onDiscoveryFailure]: (state, {payload}) => ({...state, ...payload}),
+}, {
+	status: null,
+	loading: false,
+	payload: null,
 });
 
-export default discovery;
+export default payload;

@@ -1,12 +1,11 @@
 import {handleActions} from "redux-actions";
 import defaultPage from "utils/page";
-import {onUserPageDismiss, onUserPageFailure, onUserPageRequest, onUserPageSuccess} from "./action";
+import {onUserPageFailure, onUserPageRequest, onUserPageSuccess} from "./action";
 
 const page = handleActions({
 	[onUserPageRequest]: (state, {payload}) => ({...state, ...payload}),
 	[onUserPageSuccess]: (state, {payload}) => ({...state, ...payload}),
 	[onUserPageFailure]: (state, {payload}) => ({...state, ...payload}),
-	[onUserPageDismiss]: (state, {payload}) => ({...state, ...payload}),
 }, {
 	status: null,
 	loading: false,

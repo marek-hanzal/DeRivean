@@ -1,7 +1,7 @@
 import Axios from "axios";
 import buildUrl from "build-url";
 import {createAction} from "redux-actions";
-import {getEntityPageHref} from "redux/discovery/payload/selector";
+import {getEntityPageHref} from "redux/discovery/selector";
 import {onEntityPageStatus} from "redux/entity/page/status/action";
 
 const

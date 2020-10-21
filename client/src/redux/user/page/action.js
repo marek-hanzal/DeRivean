@@ -1,7 +1,7 @@
 import Axios from "axios";
 import buildUrl from "build-url";
 import {createAction} from "redux-actions";
-import {getUserPageHref} from "redux/discovery/payload/selector";
+import {getUserPageHref} from "redux/discovery/selector";
 
 const
 	onUserPageRequest = createAction("ON_USER_PAGE_REQUEST", () => ({status: "REQUEST", loading: true})),

@@ -1,26 +1,22 @@
 import Axios from "axios";
 import {createAction} from "redux-actions";
-import {getDiscoveryHref} from "redux/client/payload/selector";
-import {onDiscoveryStatus} from "redux/discovery/status/action";
+import {getDiscoveryHref} from "redux/client/selector";
 import {onLoading} from "redux/loading/action";
 
 const
-	onDiscoveryRequest = createAction("ON_DISCOVERY_REQUEST", () => null),
-	onDiscoverySuccess = createAction("ON_DISCOVERY_SUCCESS", discovery => discovery),
-	onDiscoveryFailure = createAction("ON_DISCOVERY_FAILURE", error => error),
+	onDiscoveryRequest = createAction("ON_DISCOVERY_REQUEST", () => ({status: "REQUEST", loading: true})),
+	onDiscoverySuccess = createAction("ON_DISCOVERY_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onDiscoveryFailure = createAction("ON_DISCOVERY_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onDiscovery = () => (dispatch, getState) => {
 		dispatch(onLoading(true));
-		dispatch(onDiscoveryStatus("LOADING"));
 		dispatch(onDiscoveryRequest());
 		return Axios.get(getDiscoveryHref(getState()))
 			.then(response => {
 				dispatch(onDiscoverySuccess(response.data));
-				dispatch(onDiscoveryStatus("SUCCESS"));
 				dispatch(onLoading(false));
 			})
 			.catch(({response}) => {
 				dispatch(onDiscoveryFailure(response));
-				dispatch(onDiscoveryStatus("FAILURE"));
 				dispatch(onLoading(false));
 			});
 	};

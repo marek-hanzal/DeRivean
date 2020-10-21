@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
-import {onClient} from "redux/client/payload/action";
-import {isClientFailure, isClientSuccess} from "redux/client/status/selector";
+import {onClient} from "redux/client/action";
+import {getClientStatus} from "redux/client/selector";
 import ClientErrorView from "view/ClientErrorView";
 import LoaderView from "view/LoaderView";
 
@@ -11,19 +11,20 @@ class Client extends React.PureComponent {
 	}
 
 	render() {
-		if (this.props.isSuccess) {
-			return this.props.children;
-		} else if (this.props.isFailure) {
-			return <ClientErrorView/>;
+		switch (this.props.status) {
+			case "SUCCESS":
+				return this.props.children;
+			case "FAILURE":
+				return <ClientErrorView/>;
+			default:
+				return <LoaderView/>;
 		}
-		return <LoaderView/>;
 	}
 }
 
 export default connect(
 	state => ({
-		isSuccess: isClientSuccess(state),
-		isFailure: isClientFailure(state),
+		status: getClientStatus(state),
 	}),
 	dispatch => ({
 		onClient: href => dispatch(onClient(href)),

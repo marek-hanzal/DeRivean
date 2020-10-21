@@ -8,6 +8,8 @@ const register = handleActions({
 	[onUserLoginDismiss]: (state, {payload}) => ({...state, ...payload}),
 }, {
 	status: null,
+	loading: false,
+	payload: null,
 });
 
 export default register;
