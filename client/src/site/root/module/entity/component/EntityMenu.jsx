@@ -1,11 +1,11 @@
 import React from "react";
-import EntityHomeIcon from "site/root/module/entity/component/icon/EntityHomeIcon";
-import EntityPath from "site/root/module/entity/router/EntityPath";
+import EntityDashboardIcon from "site/root/module/entity/component/icon/EntityDashboardIcon";
+import EntityPath from "site/root/module/entity/EntityPath";
 import commonMenu from "utils/menu/commonMenu";
 
 const EntityMenu = () => commonMenu(
 	EntityPath.root,
-	<EntityHomeIcon/>,
+	<EntityDashboardIcon/>,
 	"root.entity"
 );
 

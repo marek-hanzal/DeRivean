@@ -2,7 +2,7 @@ const root = "/user";
 
 const UserPath = {
 	root: root,
-	home: root + "/home",
+	dashboard: root + "/dashboard",
 	create: root + "/create",
 	list: root + "/list",
 	edit: root + "/edit",

@@ -15,7 +15,7 @@ const commonMenu = (
 ) => ([
 	menu(root, [
 		menuItem(RootPath.root, "root.home", <HomeIcon/>),
-		menuItem(`${root}/home`, `${translation}.home`, icon),
+		menuItem(`${root}/dashboard`, `${translation}.dashboard`, icon),
 		menuItem(`${root}/create`, `${translation}.create`, <CreateIcon/>),
 		menuItem(`${root}/list`, `${translation}.list`, <ListIcon/>),
 		menuDivider(),

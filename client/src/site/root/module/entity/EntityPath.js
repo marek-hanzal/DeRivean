@@ -1,6 +1,6 @@
 const EntityPath = {
 	root: "/entity",
-	home: "/entity/home",
+	dashboard: "/entity/dashboard",
 	create: "/entity/create",
 	list: "/entity/list",
 };

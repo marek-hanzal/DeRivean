@@ -2,7 +2,7 @@ import {Card} from "antd";
 import React, {createElement} from "react";
 import {withTranslation} from "react-i18next";
 
-const HomeView = (
+const DashboardView = (
 	{
 		t,
 		root,
@@ -12,10 +12,10 @@ const HomeView = (
 	view,
 	{
 		open: [root],
-		selected: [`${root}/home`],
+		selected: [`${root}/dashboard`],
 	},
-	<Card title={t(`${translation}.home.title`)}>
+	<Card title={t(`${translation}.dashboard.title`)}>
 	</Card>
 );
 
-export default withTranslation()(HomeView);
+export default withTranslation()(DashboardView);

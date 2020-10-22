@@ -216,7 +216,7 @@
 			}
 		},
 		"user": {
-			"home": {
+			"dashboard": {
 				"title": "Users Dashboard",
 				"menu": "Users",
 				"breadcrumb": "Users"
@@ -248,7 +248,7 @@
 		},
 		"entity": {
 			"menu": "Entities",
-			"home": {
+			"dashboard": {
 				"title": "Entities",
 				"menu": "Entities",
 				"breadcrumb": "Entities"

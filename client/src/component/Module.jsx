@@ -5,14 +5,14 @@ import NotFoundView from "view/NotFoundView";
 const Module = (
 	{
 		root,
-		home,
+		dashboard,
 		create,
 		edit,
 		list,
 		...props
 	}) =>
 	<Switch>
-		<Route path={`${root}/home`} render={() => createElement(home, {root, ...props})}/>
+		<Route path={`${root}/dashboard`} render={() => createElement(dashboard, {root, ...props})}/>
 		<Route path={`${root}/create`} render={() => createElement(create, {root, ...props})}/>
 		<Route path={`${root}/edit`} render={() => createElement(edit, {root, ...props})}/>
 		<Route path={`${root}/list`} render={() => createElement(list, {root, ...props})}/>
