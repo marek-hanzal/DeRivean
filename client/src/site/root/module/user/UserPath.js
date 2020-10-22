@@ -6,7 +6,7 @@ const UserPath = {
 	create: root + "/create",
 	list: root + "/list",
 	edit: root + "/edit",
-	home: uuid => `${root}/${uuid}/home`,
+	home: (uuid = null) => uuid ? `${root}/${uuid}/home` : root + "/:user/home",
 };
 
 export default UserPath;

@@ -4,7 +4,7 @@ Legacy of DeRivean as the game (server) engine.
 
 ## Welcome!
 
-This project is my main personal work to play with Kotlin and React and try to do stuff as good as possible - thus making this piece of software as a showcase of my abilities
+This project is my main personal work to play with Kotlin and React and try to do stuff as good as possible - thus making this piece of software showcase of my abilities
 
 Server is written in [Kotlin](https://kotlinlang.org/) / [Ktor](https://ktor.io/) / [Exposed](https://github.com/JetBrains/Exposed), client is using [React](https://reactjs.org/), [Redux Store](https://redux.js.org/api/store)
 , [React Router](https://reactrouter.com/) and for me the best UI,

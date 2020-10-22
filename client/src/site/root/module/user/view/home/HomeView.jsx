@@ -10,7 +10,7 @@ import UserName from "site/root/module/user/view/home/component/UserName";
 
 class HomeView extends React.PureComponent {
 	componentDidMount() {
-		this.props.onFetch(this.props.match.params.uuid);
+		this.props.onFetch(this.props.match.params.user);
 	}
 
 	render() {

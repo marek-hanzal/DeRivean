@@ -9,6 +9,7 @@ const UserModule = ({root, translation, view}) =>
 	<Module
 		root={root}
 		view={view}
+		uuid={"user"}
 		dashboard={DashboardView}
 		home={HomeView}
 		create={CreateView}

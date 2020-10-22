@@ -8,6 +8,7 @@ const EntityModule = ({root, translation, view}) =>
 	<Module
 		root={root}
 		view={view}
+		uuid={"entity"}
 		dashboard={DashboardView}
 		create={CreateView}
 		list={ListView}
