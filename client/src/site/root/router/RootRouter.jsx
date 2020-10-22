@@ -1,5 +1,9 @@
+import SingOutView from "component/view/SingOutView";
 import React from "react";
+import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
+import {onSessionClose} from "redux/session/action";
+import InternalPath from "site/internal/router/InternalPath";
 import RootView from "site/root/component/RootView";
 import EntityModule from "site/root/module/entity/EntityModule";
 import EntityPath from "site/root/module/entity/router/EntityPath";
@@ -7,15 +11,14 @@ import UserPath from "site/root/module/user/router/UserPath";
 import UserModule from "site/root/module/user/UserModule";
 import RootPath from "site/root/router/RootPath";
 import HomeView from "site/root/view/HomeView";
-import SingOutView from "site/root/view/SignOutView";
 import SingInView from "site/root/view/SingInView";
 import NotFoundView from "view/NotFoundView";
 
-const RootRouter = ({translation = "root"}) =>
+const RootRouter = ({onLogout, translation = "root"}) =>
 	<Switch>
 		<Route exact path={RootPath.root} component={HomeView}/>
 		<Route exact path={RootPath.signIn} component={SingInView}/>
-		<Route exact path={RootPath.signOut} component={SingOutView}/>
+		<Route exact path={InternalPath.signOut} render={() => <SingOutView translation={"root"} onLogout={onLogout}/>}/>
 
 		<Route path={EntityPath.root}>
 			<EntityModule
@@ -37,4 +40,9 @@ const RootRouter = ({translation = "root"}) =>
 	</Switch>
 ;
 
-export default RootRouter;
+export default connect(
+	state => ({}),
+	dispatch => ({
+		onLogout: () => dispatch(onSessionClose())
+	}),
+)(RootRouter);

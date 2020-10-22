@@ -1,4 +1,5 @@
 import {Layout as AntdLayout, PageHeader, Spin} from "antd";
+import ScrollToTop from "component/ScrollToTop";
 import React from "react";
 import {Helmet} from "react-helmet";
 import {withTranslation} from "react-i18next";
@@ -21,7 +22,9 @@ const Layout = (
 		children,
 		t,
 	}) =>
+
 	<Spin spinning={loading} tip={t("common.spinner")}>
+		<ScrollToTop/>
 		<AntdLayout>
 			<Helmet title={t(title)}/>
 			{header}

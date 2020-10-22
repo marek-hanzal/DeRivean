@@ -179,7 +179,13 @@
 			}
 		},
 		"sign-out": {
-			"menu": "Logout"
+			"menu": "Sign-out",
+			"title": "Sign-out",
+			"subtitle": "Do you really want to leave the game?",
+			"button": {
+				"sign-out": "Leave!",
+				"back": "Return!"
+			}
 		},
 		"sign-in": {
 			"succeed": {
@@ -272,7 +278,13 @@
 			}
 		},
 		"sign-out": {
-			"menu": "Logout"
+			"menu": "Logout",
+			"title": "Sign-out",
+			"subtitle": "Do you really want to leave administration?",
+			"button": {
+				"sign-out": "Leave!",
+				"back": "Return!"
+			}
 		}
 	}
 }
