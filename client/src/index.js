@@ -1,24 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {applyMiddleware, compose, createStore} from 'redux';
-import {persistReducer, persistStore} from 'redux-persist';
-import {PersistGate} from 'redux-persist/lib/integration/react';
+import { Provider } from 'react-redux';
+import {
+	applyMiddleware,
+	compose,
+	createStore
+} from 'redux';
+import {
+	persistReducer,
+	persistStore
+} from 'redux-persist';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storageSession from 'redux-persist/lib/storage/session';
 import thunkMiddleware from 'redux-thunk';
 import './assets/index.css';
 import DeRivean from './DeRivean';
 import './i18n';
+import MirageServer from './mirage';
 import reducer from './redux/reducer';
 import * as ServiceWorker from './ServiceWorker';
 
+if (process.env.NODE_ENV === 'development') {
+	MirageServer({environment: process.env.NODE_ENV});
+}
+
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 const store = createStore(persistReducer({
-		key: 'root',
-		storage: storageSession,
+		key:             'root',
+		storage:         storageSession,
 		stateReconciler: autoMergeLevel2,
-		whitelist: ['session'],
+		whitelist:       ['session'],
 	}, reducer),
 	compose(
 		applyMiddleware(thunkMiddleware),
@@ -36,7 +48,7 @@ ReactDOM.render(
 
 // ServiceWorker.register({
 ServiceWorker.unregister({
-	onUpdate: () => {
+	onUpdate:  () => {
 		console.log('Update available');
 	},
 	onSuccess: () => {
