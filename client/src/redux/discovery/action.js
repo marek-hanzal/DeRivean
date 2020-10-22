@@ -1,12 +1,14 @@
 import Axios from "axios";
-import {createAction} from "redux-actions";
 import {getDiscoveryHref} from "redux/client/selector";
 import {onLoading} from "redux/loading/action";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
 
 const
-	onDiscoveryRequest = createAction("ON_DISCOVERY_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
-	onDiscoverySuccess = createAction("ON_DISCOVERY_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onDiscoveryFailure = createAction("ON_DISCOVERY_FAILURE", error => ({status: "FAILURE", loading: false, error})),
+	onDiscoveryRequest = requestAction("discovery"),
+	onDiscoverySuccess = successAction("discovery"),
+	onDiscoveryFailure = failureAction("discovery"),
 	onDiscovery = () => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onDiscoveryRequest());

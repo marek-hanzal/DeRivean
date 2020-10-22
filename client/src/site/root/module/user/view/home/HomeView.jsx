@@ -6,6 +6,7 @@ import {onUserFetch} from "redux/user/fetch/action";
 import {getUserFetch, isUserFetchLoading} from "redux/user/fetch/selector";
 import RootView from "site/root/component/RootView";
 import UserHomeIcon from "site/root/module/user/component/icon/UserHomeIcon";
+import UserName from "site/root/module/user/view/home/component/UserName";
 
 class HomeView extends React.PureComponent {
 	componentDidMount() {
@@ -21,7 +22,7 @@ class HomeView extends React.PureComponent {
 					<Result
 						icon={<UserHomeIcon/>}
 					>
-						{user && user.name}
+						<UserName user={user}/>
 					</Result>
 				</Card>
 			</RootView>

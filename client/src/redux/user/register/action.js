@@ -1,13 +1,16 @@
 import Axios from "axios";
-import {createAction} from "redux-actions";
 import {getUserCreateHref} from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
+import dismissAction from "utils/action/actions/dismissAction";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
 
 const
-	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", request => ({status: "REQUEST", loading: true, error: null, request})),
-	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => ({status: "FAILURE", loading: false, error})),
-	onUserRegisterDismiss = createAction("ON_USER_REGISTER_DISMISS", () => ({status: null, error: null, loading: false, register: null, payload: null})),
+	onUserRegisterRequest = requestAction("user.register"),
+	onUserRegisterSuccess = successAction("user.register"),
+	onUserRegisterFailure = failureAction("user.register"),
+	onUserRegisterDismiss = dismissAction("user.register"),
 	onUserRegister = register => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onUserRegisterRequest(register));

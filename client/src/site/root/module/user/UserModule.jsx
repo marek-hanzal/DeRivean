@@ -1,8 +1,8 @@
 import Module from "component/Module";
 import React from "react";
-import CreateView from "site/root/module/user/view/CreateView";
+import CreateView from "site/root/module/user/view/create/CreateView";
 import DashboardView from "site/root/module/user/view/DashboardView";
-import HomeView from "site/root/module/user/view/HomeView";
+import HomeView from "site/root/module/user/view/home/HomeView";
 import ListView from "site/root/module/user/view/ListView";
 
 const UserModule = ({root, translation, view}) =>

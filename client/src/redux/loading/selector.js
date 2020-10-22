@@ -6,7 +6,7 @@ const branch = state => state.loading;
  * @param state
  * @returns {boolean}
  */
-const isLoading = state => branch(state) === true;
+const isLoading = state => branch(state).state;
 
 export {
 	isLoading,

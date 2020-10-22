@@ -1,12 +1,15 @@
 import Axios from "axios";
 import buildUrl from "build-url";
-import {createAction} from "redux-actions";
 import {getEntityPageHref} from "redux/discovery/selector";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
+import defaultPage from "utils/page";
 
 const
-	onEntityPageRequest = createAction("ON_ENTITY_PAGE_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
-	onEntityPageSuccess = createAction("ON_ENTITY_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onEntityPageFailure = createAction("ON_ENTITY_PAGE_FAILURE", error => ({status: "FAILURE", loading: false, error})),
+	onEntityPageRequest = requestAction("entity.page", defaultPage),
+	onEntityPageSuccess = successAction("entity.page"),
+	onEntityPageFailure = failureAction("entity.page"),
 	onEntityPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onEntityPageRequest());
 		return Axios.get(buildUrl(getEntityPageHref(getState()).replace("{page}", page), {queryParams: {limit: size,}}))

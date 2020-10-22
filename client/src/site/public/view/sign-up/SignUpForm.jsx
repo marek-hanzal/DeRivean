@@ -4,7 +4,7 @@ import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
-import {getUserRegisterRequest} from "redux/user/register/selector";
+import {getUserRegister} from "redux/user/register/selector";
 
 const layout = {
 	labelCol: {span: 8},
@@ -58,7 +58,7 @@ const SignUpForm = (
 
 export default connect(
 	state => ({
-		initials: getUserRegisterRequest(state),
+		initials: getUserRegister(state),
 	}),
 	dispatch => ({
 		onFinish: values => {

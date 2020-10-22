@@ -1,24 +1,13 @@
-import Axios from "axios";
-import {createAction} from "redux-actions";
-import {onLoading} from "redux/loading/action";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
+import onFetch from "utils/action/onFetch";
 
 const
-	onClientRequest = createAction("ON_CLIENT_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
-	onClientSuccess = createAction("ON_CLIENT_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onClientFailure = createAction("ON_CLIENT_FAILURE", error => ({status: "FAILURE", loading: false, error})),
-	onClient = href => dispatch => {
-		dispatch(onLoading(true));
-		dispatch(onClientRequest());
-		return Axios.get(href)
-			.then(({data}) => {
-				dispatch(onClientSuccess(data));
-				dispatch(onLoading(false));
-			})
-			.catch(({response}) => {
-				dispatch(onClientFailure(response));
-				dispatch(onLoading(false));
-			});
-	};
+	onClientRequest = requestAction("client"),
+	onClientSuccess = successAction("client"),
+	onClientFailure = failureAction("client"),
+	onClient = href => onFetch(href, onClientRequest, onClientSuccess, onClientFailure);
 
 export {
 	onClientRequest,

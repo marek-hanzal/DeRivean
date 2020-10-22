@@ -5,8 +5,8 @@ import {Helmet} from "react-helmet";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {isLoading} from "redux/loading/selector";
-import {onMenuCollapse} from "redux/menu/collapse/action";
-import {isMenuCollapsed} from "redux/menu/collapse/selector";
+import {onMenuCollapse} from "redux/menu/action";
+import {isMenuCollapsed} from "redux/menu/selector";
 
 const Layout = (
 	{

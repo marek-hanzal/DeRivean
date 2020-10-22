@@ -1,13 +1,16 @@
 import Axios from "axios";
-import {createAction} from "redux-actions";
 import {getUserLoginHref} from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
+import dismissAction from "utils/action/actions/dismissAction";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
 
 const
-	onUserLoginRequest = createAction("ON_USER_LOGIN_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
-	onUserLoginSuccess = createAction("ON_USER_LOGIN_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onUserLoginFailure = createAction("ON_USER_LOGIN_FAILURE", error => ({status: "FAILURE", loading: false, error})),
-	onUserLoginDismiss = createAction("ON_USER_LOGIN_DISMISS", () => ({status: null, loading: false, error: null, payload: null})),
+	onUserLoginRequest = requestAction("user.login"),
+	onUserLoginSuccess = successAction("user.login"),
+	onUserLoginFailure = failureAction("user.login"),
+	onUserLoginDismiss = dismissAction("user.login"),
 	onUserLogin = login => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onUserLoginRequest());

@@ -4,8 +4,8 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
-import {onOpenMenu} from "redux/menu/open/action";
-import {getOpenMenu} from "redux/menu/open/selector";
+import {onMenuOpen} from "redux/menu/action";
+import {getOpenMenu} from "redux/menu/selector";
 
 const Menu = (
 	{
@@ -44,6 +44,6 @@ export default connect(
 		openState: getOpenMenu(state),
 	}),
 	dispatch => ({
-		onOpenChange: open => dispatch(onOpenMenu(open)),
+		onOpenChange: open => dispatch(onMenuOpen(open)),
 	})
 )(withTranslation()(Menu));

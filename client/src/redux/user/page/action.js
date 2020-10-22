@@ -1,12 +1,15 @@
 import Axios from "axios";
 import buildUrl from "build-url";
-import {createAction} from "redux-actions";
 import {getUserPageHref} from "redux/discovery/selector";
+import failureAction from "utils/action/actions/failureAction";
+import requestAction from "utils/action/actions/requestAction";
+import successAction from "utils/action/actions/successAction";
+import defaultPage from "utils/page";
 
 const
-	onUserPageRequest = createAction("ON_USER_PAGE_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
-	onUserPageSuccess = createAction("ON_USER_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
-	onUserPageFailure = createAction("ON_USER_PAGE_FAILURE", error => ({status: "FAILURE", loading: false, error})),
+	onUserPageRequest = requestAction("user.page", defaultPage),
+	onUserPageSuccess = successAction("user.page"),
+	onUserPageFailure = failureAction("user.page"),
 	onUserPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onUserPageRequest());
 		return Axios.get(buildUrl(getUserPageHref(getState()).replace("{page}", page), {queryParams: {limit: size,}}))

@@ -1,6 +1,4 @@
-import {handleActions} from "redux-actions";
+import reducerSimpleActions from "utils/action/reducerSimpleActions";
 import {onLoading} from "./action";
 
-export default handleActions({
-	[onLoading]: (state, {payload}) => ({...state, ...payload}),
-}, false);
+export default reducerSimpleActions([onLoading], {state: false});
