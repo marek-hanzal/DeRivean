@@ -278,7 +278,7 @@
 			}
 		},
 		"sign-out": {
-			"menu": "Logout",
+			"menu": "Sign-out",
 			"title": "Sign-out",
 			"subtitle": "Do you really want to leave administration?",
 			"button": {
