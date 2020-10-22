@@ -1,4 +1,6 @@
-import {FormOutlined, HomeOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import CreateIcon from "component/icon/CreateIcon";
+import HomeIcon from "component/icon/HomeIcon";
+import ListIcon from "component/icon/ListIcon";
 import React from "react";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
 import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
@@ -11,17 +13,17 @@ const commonBreadcrumbs = (
 	translation,
 ) => ([
 	breadcrumbs(`${root}/list`, [
-		breadcrumbSimpleItem(home, <HomeOutlined/>),
+		breadcrumbSimpleItem(home, <HomeIcon/>),
 		breadcrumbItem(`${root}/home`, `${translation}.home`, icon),
-		breadcrumbItem(`${root}/list`, `${translation}.list`, <UnorderedListOutlined/>),
+		breadcrumbItem(`${root}/list`, `${translation}.list`, <ListIcon/>),
 	]),
 	breadcrumbs(`${root}/create`, [
-		breadcrumbSimpleItem(home, <HomeOutlined/>),
+		breadcrumbSimpleItem(home, <HomeIcon/>),
 		breadcrumbItem(`${root}/home`, `${translation}.home`, icon),
-		breadcrumbItem(`${root}/create`, `${translation}.create`, <FormOutlined/>),
+		breadcrumbItem(`${root}/create`, `${translation}.create`, <CreateIcon/>),
 	]),
 	breadcrumbs(root, [
-		breadcrumbSimpleItem(home, <HomeOutlined/>),
+		breadcrumbSimpleItem(home, <HomeIcon/>),
 		breadcrumbItem(`${root}/home`, `${translation}.home`, icon),
 	]),
 ]);

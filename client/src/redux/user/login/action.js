@@ -4,8 +4,8 @@ import {getUserLoginHref} from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
 
 const
-	onUserLoginRequest = createAction("ON_USER_LOGIN_REQUEST", () => ({status: "REQUEST", loading: true})),
-	onUserLoginSuccess = createAction("ON_USER_LOGIN_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onUserLoginRequest = createAction("ON_USER_LOGIN_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
+	onUserLoginSuccess = createAction("ON_USER_LOGIN_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
 	onUserLoginFailure = createAction("ON_USER_LOGIN_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onUserLoginDismiss = createAction("ON_USER_LOGIN_DISMISS", () => ({status: null, loading: false, error: null, payload: null})),
 	onUserLogin = login => (dispatch, getState) => {

@@ -3,8 +3,8 @@ import {createAction} from "redux-actions";
 import {onLoading} from "redux/loading/action";
 
 const
-	onClientRequest = createAction("ON_CLIENT_REQUEST", () => ({status: "REQUEST", loading: true})),
-	onClientSuccess = createAction("ON_CLIENT_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onClientRequest = createAction("ON_CLIENT_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
+	onClientSuccess = createAction("ON_CLIENT_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
 	onClientFailure = createAction("ON_CLIENT_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onClient = href => dispatch => {
 		dispatch(onLoading(true));

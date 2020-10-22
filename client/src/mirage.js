@@ -1,10 +1,7 @@
-import {
-	createServer,
-	RestSerializer
-} from 'miragejs';
-import { v4 as uuid4 } from 'uuid';
+import {createServer, RestSerializer} from "miragejs";
+import {v4 as uuid4} from "uuid";
 
-const MirageServer = ({environment = 'development'} = {}) => createServer({
+const MirageServer = ({environment = "development"} = {}) => createServer({
 	environment,
 
 	serializers: {
@@ -38,7 +35,7 @@ const MirageServer = ({environment = 'development'} = {}) => createServer({
 	},
 
 	inflector: {
-		pluralize:   word => word,
+		pluralize: word => word,
 		singularize: word => word,
 	},
 
@@ -50,13 +47,12 @@ const MirageServer = ({environment = 'development'} = {}) => createServer({
 		/**
 		 * Passthrough all requests not defined in Mirage's routes (thus proxying all the stuff to Kotlin backend).
 		 */
-		// this.passthrough('/locale/**');
-		this.passthrough();
+		this.passthrough("**", process.env.REACT_APP_BACKEND + "/**");
 
 		/**
 		 * Fake client.json file which makes default configuration of the client.
 		 */
-		this.get('/client.json', _ => ({
+		this.get("/client.json", _ => ({
 			discovery: process.env.REACT_APP_DISCOVERY,
 		}));
 	},

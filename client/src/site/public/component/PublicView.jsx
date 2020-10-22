@@ -1,5 +1,7 @@
-import {FormOutlined, HomeOutlined, LoginOutlined} from "@ant-design/icons";
 import Breadcrumbs from "component/Breadcrumbs";
+import HomeIcon from "component/icon/HomeIcon";
+import SignInIcon from "component/icon/SignInIcon";
+import SignUpIcon from "component/icon/SignUpIcon";
 import Layout from "component/Layout";
 import Menu from "component/Menu";
 import React from "react";
@@ -28,24 +30,24 @@ const PublicView = (
 			selected={selected}
 			items={[
 				menu(PublicPath.root, [
-					menuItem(PublicPath.root, "public.home", <HomeOutlined/>),
-					menuItem(PublicPath.signUp, "public.sign-up", <FormOutlined/>),
-					menuItem(PublicPath.signIn, "public.sign-in", <LoginOutlined/>),
+					menuItem(PublicPath.root, "public.home", <HomeIcon/>),
+					menuItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
+					menuItem(PublicPath.signIn, "public.sign-in", <SignInIcon/>),
 				])
 			]}
 		/>}
 		breadcrumbs={<Breadcrumbs
 			items={[
 				breadcrumbs(PublicPath.signUp, [
-					breadcrumbSimpleItem(PublicPath.root, <HomeOutlined/>),
-					breadcrumbItem(PublicPath.signUp, "public.sign-up", <FormOutlined/>),
+					breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
+					breadcrumbItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
 				]),
 				breadcrumbs(PublicPath.signIn, [
-					breadcrumbSimpleItem(PublicPath.root, <HomeOutlined/>),
-					breadcrumbItem(PublicPath.signUp, "public.sign-in", <LoginOutlined/>),
+					breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
+					breadcrumbItem(PublicPath.signUp, "public.sign-in", <SignInIcon/>),
 				]),
 				breadcrumbs(PublicPath.root, [
-					breadcrumbSimpleItem(PublicPath.root, <HomeOutlined/>),
+					breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
 				]),
 			]}
 		/>}

@@ -1,5 +1,7 @@
-import {CrownOutlined, HomeOutlined, PoweroffOutlined} from "@ant-design/icons";
+import HomeIcon from "component/icon/HomeIcon";
+import SignOutIcon from "component/icon/SignOutIcon";
 import React from "react";
+import KingdomHomeIcon from "site/internal/module/kingdom/component/icon/KingdomHomeIcon";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 import InternalPath from "site/internal/router/InternalPath";
 import menu from "utils/menu/menu";
@@ -8,10 +10,10 @@ import menuItem from "utils/menu/menuItem";
 
 const InternalMenu = () => ([
 	menu(InternalPath.root, [
-		menuItem(InternalPath.root, "internal.home", <HomeOutlined/>),
-		menuItem(KingdomPath.home, "internal.kingdom", <CrownOutlined/>),
+		menuItem(InternalPath.root, "internal.home", <HomeIcon/>),
+		menuItem(KingdomPath.home, "internal.kingdom", <KingdomHomeIcon/>),
 		menuDivider(),
-		menuItem(InternalPath.signOut, "internal.sign-out", <PoweroffOutlined/>),
+		menuItem(InternalPath.signOut, "internal.sign-out", <SignOutIcon/>),
 	])
 ]);
 

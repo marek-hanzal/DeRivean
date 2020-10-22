@@ -1,4 +1,7 @@
-import {FormOutlined, HomeOutlined, PoweroffOutlined, UnorderedListOutlined} from "@ant-design/icons";
+import CreateIcon from "component/icon/CreateIcon";
+import HomeIcon from "component/icon/HomeIcon";
+import ListIcon from "component/icon/ListIcon";
+import SignOutIcon from "component/icon/SignOutIcon";
 import React from "react";
 import RootPath from "site/root/router/RootPath";
 import menu from "utils/menu/menu";
@@ -11,12 +14,12 @@ const commonMenu = (
 	translation,
 ) => ([
 	menu(root, [
-		menuItem(RootPath.root, "root.home", <HomeOutlined/>),
+		menuItem(RootPath.root, "root.home", <HomeIcon/>),
 		menuItem(`${root}/home`, `${translation}.home`, icon),
-		menuItem(`${root}/create`, `${translation}.create`, <FormOutlined/>),
-		menuItem(`${root}/list`, `${translation}.list`, <UnorderedListOutlined/>),
+		menuItem(`${root}/create`, `${translation}.create`, <CreateIcon/>),
+		menuItem(`${root}/list`, `${translation}.list`, <ListIcon/>),
 		menuDivider(),
-		menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
+		menuItem(RootPath.signOut, "root.sign-out", <SignOutIcon/>),
 	])
 ]);
 

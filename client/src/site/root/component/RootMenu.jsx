@@ -1,6 +1,9 @@
-import {HomeOutlined, MehOutlined, PoweroffOutlined, RobotOutlined} from "@ant-design/icons";
+import HomeIcon from "component/icon/HomeIcon";
+import SignOutIcon from "component/icon/SignOutIcon";
 import React from "react";
+import EntityHomeIcon from "site/root/module/entity/component/icon/EntityHomeIcon";
 import EntityPath from "site/root/module/entity/router/EntityPath";
+import UserHomeIcon from "site/root/module/user/component/icon/UserHomeIcon";
 import UserPath from "site/root/module/user/router/UserPath";
 import RootPath from "site/root/router/RootPath";
 import menu from "utils/menu/menu";
@@ -9,11 +12,11 @@ import menuItem from "utils/menu/menuItem";
 
 const RootMenu = () => ([
 	menu(RootPath.root, [
-		menuItem(RootPath.root, "root.home", <HomeOutlined/>),
-		menuItem(UserPath.home, "root.user.home", <MehOutlined/>),
-		menuItem(EntityPath.home, "root.entity.home", <RobotOutlined/>),
+		menuItem(RootPath.root, "root.home", <HomeIcon/>),
+		menuItem(UserPath.home, "root.user.home", <UserHomeIcon/>),
+		menuItem(EntityPath.home, "root.entity.home", <EntityHomeIcon/>),
 		menuDivider(),
-		menuItem(RootPath.signOut, "root.sign-out", <PoweroffOutlined/>),
+		menuItem(RootPath.signOut, "root.sign-out", <SignOutIcon/>),
 	]),
 ]);
 

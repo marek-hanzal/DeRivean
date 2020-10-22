@@ -4,8 +4,8 @@ import {getUserCreateHref} from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
 
 const
-	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", request => ({status: "REQUEST", loading: true, request})),
-	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onUserRegisterRequest = createAction("ON_USER_REGISTER_REQUEST", request => ({status: "REQUEST", loading: true, error: null, request})),
+	onUserRegisterSuccess = createAction("ON_USER_REGISTER_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
 	onUserRegisterFailure = createAction("ON_USER_REGISTER_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onUserRegisterDismiss = createAction("ON_USER_REGISTER_DISMISS", () => ({status: null, error: null, loading: false, register: null, payload: null})),
 	onUserRegister = register => (dispatch, getState) => {

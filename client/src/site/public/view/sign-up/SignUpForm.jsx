@@ -1,5 +1,5 @@
-import {CheckCircleOutlined} from "@ant-design/icons";
 import {Button, Form, Input} from "antd";
+import SignUpIcon from "component/icon/SignUpIcon";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
@@ -51,7 +51,7 @@ const SignUpForm = (
 		/>
 
 		<Form.Item {...tailLayout}>
-			<Button type="primary" htmlType="submit" icon={<CheckCircleOutlined/>}>{t("public.sign-up.form.submit.label")}</Button>
+			<Button type="primary" htmlType="submit" icon={<SignUpIcon/>}>{t("public.sign-up.form.submit.label")}</Button>
 		</Form.Item>
 	</Form>
 ;

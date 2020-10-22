@@ -1,6 +1,8 @@
-import {FormOutlined, LoginOutlined, SmileOutlined} from "@ant-design/icons";
+import {SmileOutlined} from "@ant-design/icons";
 import {Button, Card, Image, Result, Typography} from "antd";
 import icon from "assets/icon-small.png";
+import SignInIcon from "component/icon/SignInIcon";
+import SignUpIcon from "component/icon/SignUpIcon";
 import React from "react";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -23,10 +25,10 @@ const HomeView = (
 				subTitle={t("public.home.content.subtitle")}
 				extra={[
 					<Button type="primary" key="sign-in">
-						<Link to={PublicPath.signIn}><LoginOutlined/>&nbsp;{t("public.home.sign-in.title")}</Link>
+						<Link to={PublicPath.signIn}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
 					</Button>,
 					<Button key="sign-up">
-						<Link to={PublicPath.signUp}><FormOutlined/>&nbsp;{t("public.home.sign-up.title")}</Link>
+						<Link to={PublicPath.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
 					</Button>,
 				]}
 			>

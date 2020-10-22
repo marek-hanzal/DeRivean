@@ -4,8 +4,8 @@ import {createAction} from "redux-actions";
 import {getUserPageHref} from "redux/discovery/selector";
 
 const
-	onUserPageRequest = createAction("ON_USER_PAGE_REQUEST", () => ({status: "REQUEST", loading: true})),
-	onUserPageSuccess = createAction("ON_USER_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onUserPageRequest = createAction("ON_USER_PAGE_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
+	onUserPageSuccess = createAction("ON_USER_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
 	onUserPageFailure = createAction("ON_USER_PAGE_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onUserPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onUserPageRequest());

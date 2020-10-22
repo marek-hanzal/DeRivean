@@ -4,8 +4,8 @@ import {createAction} from "redux-actions";
 import {getEntityPageHref} from "redux/discovery/selector";
 
 const
-	onEntityPageRequest = createAction("ON_ENTITY_PAGE_REQUEST", () => ({status: "REQUEST", loading: true})),
-	onEntityPageSuccess = createAction("ON_ENTITY_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, payload})),
+	onEntityPageRequest = createAction("ON_ENTITY_PAGE_REQUEST", () => ({status: "REQUEST", loading: true, error: null,})),
+	onEntityPageSuccess = createAction("ON_ENTITY_PAGE_SUCCESS", payload => ({status: "SUCCESS", loading: false, error: null, payload})),
 	onEntityPageFailure = createAction("ON_ENTITY_PAGE_FAILURE", error => ({status: "FAILURE", loading: false, error})),
 	onEntityPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onEntityPageRequest());
