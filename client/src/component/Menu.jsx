@@ -6,13 +6,7 @@ import {Route, Switch, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import {onMenuOpen} from "redux/menu/action";
 import {getOpenMenu} from "redux/menu/selector";
-
-function rehref(href, params) {
-	for (let [key, value] of Object.entries(params)) {
-		href = href.replace(":" + key, value);
-	}
-	return href;
-}
+import rehref from "utils/rehref";
 
 const Menu = (
 	{
