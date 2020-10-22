@@ -1,7 +1,7 @@
 import {handleActions} from "redux-actions";
 import {onClientFailure, onClientRequest, onClientSuccess} from "./action";
 
-const client = handleActions({
+export default handleActions({
 	[onClientRequest]: (state, {payload}) => ({...state, ...payload}),
 	[onClientFailure]: (state, {payload}) => ({...state, ...payload}),
 	[onClientSuccess]: (state, {payload}) => ({...state, ...payload}),
@@ -10,5 +10,3 @@ const client = handleActions({
 	loading: false,
 	payload: null,
 });
-
-export default client;

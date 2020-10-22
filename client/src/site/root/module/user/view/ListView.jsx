@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {onUserPage} from "redux/user/page/action";
 import {getUserPage, isUserPageLoading} from "redux/user/page/selector";
+import UserPath from "site/root/module/user/UserPath";
 import column from "utils/table/column";
 import columnRender from "utils/table/columnRender";
 
@@ -12,7 +13,7 @@ const ListView = ({...props}) =>
 	<BaseListView
 		{...props}
 		columns={[
-			columnRender("id", (text, record) => <Link to={`/root/user/${record.id}/home`}>{text}</Link>),
+			columnRender("id", (text, record) => <Link to={UserPath.home(record.id)}>{text}</Link>),
 			column("name"),
 			column("token"),
 			column("site"),

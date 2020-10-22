@@ -1,8 +1,6 @@
-import {combineReducers} from 'redux';
-import page from './page/reducer';
+import {combineReducers} from "redux";
+import page from "./page/reducer";
 
-const entity = combineReducers({
+export default combineReducers({
 	page,
 });
-
-export default entity;

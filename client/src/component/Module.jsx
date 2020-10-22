@@ -6,16 +6,18 @@ const Module = (
 	{
 		root,
 		dashboard,
+		home,
 		create,
 		edit,
 		list,
-		...props
+		...other
 	}) =>
 	<Switch>
-		<Route path={`${root}/dashboard`} render={() => createElement(dashboard, {root, ...props})}/>
-		<Route path={`${root}/create`} render={() => createElement(create, {root, ...props})}/>
-		<Route path={`${root}/edit`} render={() => createElement(edit, {root, ...props})}/>
-		<Route path={`${root}/list`} render={() => createElement(list, {root, ...props})}/>
+		<Route path={`${root}/dashboard`} render={props => createElement(dashboard, {root, ...props, ...other})}/>
+		<Route path={`${root}/:uuid/home`} render={props => createElement(home, {root, ...props, ...other})}/>
+		<Route path={`${root}/create`} render={props => createElement(create, {root, ...props, ...other})}/>
+		<Route path={`${root}/edit`} render={props => createElement(edit, {root, ...props, ...other})}/>
+		<Route path={`${root}/list`} render={props => createElement(list, {root, ...props, ...other})}/>
 		<Route component={NotFoundView}/>
 	</Switch>
 ;

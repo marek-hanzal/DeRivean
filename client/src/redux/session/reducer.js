@@ -1,7 +1,7 @@
 import {handleActions} from "redux-actions";
 import {onSessionClose, onSessionOpen} from "redux/session/action";
 
-const session = handleActions({
+export default handleActions({
 	[onSessionOpen]: (state, {payload}) => ({...state, ...payload}),
 	[onSessionClose]: (state, {payload}) => ({...state, ...payload}),
 }, {
@@ -9,5 +9,3 @@ const session = handleActions({
 		site: "public",
 	},
 });
-
-export default session;

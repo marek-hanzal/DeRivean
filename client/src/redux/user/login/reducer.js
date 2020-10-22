@@ -1,7 +1,7 @@
 import {handleActions} from "redux-actions";
 import {onUserLoginDismiss, onUserLoginFailure, onUserLoginRequest, onUserLoginSuccess} from "redux/user/login/action";
 
-const register = handleActions({
+export default handleActions({
 	[onUserLoginRequest]: (state, {payload}) => ({...state, ...payload}),
 	[onUserLoginSuccess]: (state, {payload}) => ({...state, ...payload}),
 	[onUserLoginFailure]: (state, {payload}) => ({...state, ...payload}),
@@ -11,5 +11,3 @@ const register = handleActions({
 	loading: false,
 	payload: null,
 });
-
-export default register;

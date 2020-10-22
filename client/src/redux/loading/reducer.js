@@ -1,8 +1,6 @@
-import {handleActions} from 'redux-actions';
-import {onLoading} from './action';
+import {handleActions} from "redux-actions";
+import {onLoading} from "./action";
 
-const loading = handleActions({
-	[onLoading]: (state, {payload}) => payload,
+export default handleActions({
+	[onLoading]: (state, {payload}) => ({...state, ...payload}),
 }, false);
-
-export default loading;

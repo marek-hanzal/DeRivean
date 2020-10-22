@@ -17,6 +17,6 @@
 - https://immutable-js.github.io/immutable-js/
 - https://github.com/reduxjs/reselect
 - https://redux-docs.netlify.com/recipes/computing-derived-data
-- https://redux-actions.js.org/
+- https://redux-action.js.org/
 - https://www.rethinkdb.com/
 - https://blog.isquaredsoftware.com/2017/12/idiomatic-redux-using-reselect-selectors/
