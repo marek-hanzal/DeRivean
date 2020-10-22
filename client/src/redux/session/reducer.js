@@ -1,11 +1,4 @@
-import {handleActions} from "redux-actions";
 import {onSessionClose, onSessionOpen} from "redux/session/action";
+import reducerSimpleActions from "utils/action/reducerSimpleActions";
 
-export default handleActions({
-	[onSessionOpen]: (state, {payload}) => ({...state, ...payload}),
-	[onSessionClose]: (state, {payload}) => ({...state, ...payload}),
-}, {
-	user: {
-		site: "public",
-	},
-});
+export default reducerSimpleActions([onSessionOpen, onSessionClose], {user: {site: "public",},});
