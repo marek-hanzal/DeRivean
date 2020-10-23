@@ -98,6 +98,7 @@
 			"title": "Login",
 			"content": {
 				"title": "Welcome back, brave Hero!",
+				"subtitle": "Login and look around, what's new!",
 				"form": {
 					"title": "Open a magic gate by your password!"
 				},
