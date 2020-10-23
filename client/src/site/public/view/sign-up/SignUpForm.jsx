@@ -2,7 +2,7 @@ import {Button, Form, Input} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {onUserRegister} from "redux/user/register/action";
+import {onUserRegister, onUserRegisterDismiss} from "redux/user/register/action";
 import {getUserRegisterError} from "redux/user/register/selector";
 import validationFor from "utils/form/validationFor";
 
@@ -22,6 +22,7 @@ const SignUpForm = (
 	{
 		t,
 		onFinish,
+		onDismiss,
 		payload,
 	}) =>
 	<Form
@@ -31,7 +32,7 @@ const SignUpForm = (
 	>
 		<Form.Item
 			name="name"
-			{...validationFor("name", payload)}
+			{...validationFor("name", payload, t)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.name.label")}
 			rules={[
@@ -44,7 +45,7 @@ const SignUpForm = (
 		/>
 		<Form.Item
 			name="login"
-			{...validationFor("login", payload)}
+			{...validationFor("login", payload, t)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.login.label")}
 			rules={[
@@ -58,7 +59,7 @@ const SignUpForm = (
 
 		<Form.Item
 			name="password"
-			{...validationFor("password", payload)}
+			{...validationFor("password", payload, t)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.password.label")}
 			rules={[
@@ -71,7 +72,7 @@ const SignUpForm = (
 		/>
 
 		<Form.Item {...tailLayout}>
-			<Button type="primary" htmlType="submit" icon={<SignUpIcon/>}>{t("public.sign-up.form.submit.label")}</Button>
+			<Button type="primary" htmlType="submit" icon={<SignUpIcon/>} onClick={() => onDismiss()}>{t("public.sign-up.form.submit.label")}</Button>
 		</Form.Item>
 	</Form>
 ;
@@ -81,6 +82,7 @@ export default connect(
 		payload: getUserRegisterError(state),
 	}),
 	dispatch => ({
+		onDismiss: () => dispatch(onUserRegisterDismiss()),
 		onFinish: values => {
 			dispatch(onUserRegister(values));
 		}
