@@ -4,7 +4,7 @@ import Session from "component/system/Session";
 import {Suspense} from "react";
 import {Helmet} from "react-helmet";
 import {BrowserRouter} from "react-router-dom";
-import PublicRouter from "site/public/router/PublicRouter";
+import PublicSite from "site/public/site/PublicSite";
 import RootSite from "site/root/site/RootSite";
 import LoaderView from "./view/LoaderView";
 
@@ -15,7 +15,7 @@ const DeRivean = () =>
 			<Client>
 				<Discovery>
 					<Session sites={{
-						public: <PublicRouter/>,
+						public: <PublicSite/>,
 						// game: <GameRouter/>,
 						root: <RootSite/>,
 					}}/>

@@ -8,10 +8,10 @@ import NotFoundView from "view/NotFoundView";
 
 const PublicRouter = () =>
 	<Routes>
-		<Route exact path={PublicPath.root} component={HomeView}/>
-		<Route exact path={PublicPath.signUp} component={SignUpView}/>
-		<Route exact path={PublicPath.signIn} component={SingInView}/>
-		<Route exact path={PublicPath.signOut} component={SingOutView}/>
+		<Route path={PublicPath.root} component={HomeView}/>
+		<Route path={PublicPath.signUp} component={SignUpView}/>
+		<Route path={PublicPath.signIn} component={SingInView}/>
+		<Route path={PublicPath.signOut} component={SingOutView}/>
 		<Route component={NotFoundView}/>
 	</Routes>
 ;
