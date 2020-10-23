@@ -11,6 +11,31 @@ data class LinkResponse(val href: String) {
 	constructor(href: Url) : this(href.toString())
 }
 
+data class ValidationResponse(
+	val message: String,
+	val validations: Map<String, Validation>,
+) {
+	companion object {
+		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
+	}
+
+	class Builder {
+		lateinit var message: String
+		private var validations = mutableMapOf<String, Validation>()
+
+		fun validation(field: String, status: String, message: String) {
+			validations[field] = Validation(status, message)
+		}
+
+		fun build() = ValidationResponse(
+			message,
+			validations,
+		)
+	}
+
+	data class Validation(val status: String, val message: String)
+}
+
 data class Response(val code: HttpStatusCode, val response: Any? = null)
 
 suspend fun ApplicationCall.resolve(response: Response) = if (response.response !== null) respond(response.code, response.response) else respond(response.code)
@@ -23,7 +48,9 @@ fun badRequest(error: String) = Response(HttpStatusCode.BadRequest, ErrorRespons
 /**
  * send response with Forbidden status code
  */
-fun forbidden(error: String) = Response(HttpStatusCode.Forbidden, ErrorResponse(error))
+fun forbidden(any: Any) = Response(HttpStatusCode.Forbidden, any)
+
+fun forbidden(error: String) = forbidden(ErrorResponse(error))
 
 /**
  * send response with Unauthorized status code

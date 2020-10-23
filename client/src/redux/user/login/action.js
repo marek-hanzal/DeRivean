@@ -20,8 +20,9 @@ const
 				dispatch(onLoading(false));
 			})
 			.catch(({response}) => {
-				dispatch(onUserLoginFailure(response));
+				dispatch(onUserLoginFailure(response.data));
 				dispatch(onLoading(false));
+				return Promise.reject();
 			});
 	};
 

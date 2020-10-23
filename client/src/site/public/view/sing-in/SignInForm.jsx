@@ -6,17 +6,18 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onSessionOpen} from "redux/session/action";
 import {onUserLogin, onUserLoginDismiss} from "redux/user/login/action";
-import {getUserLoginUser} from "redux/user/login/selector";
+import {getUserLoginError, getUserLoginUser} from "redux/user/login/selector";
+import validationFor from "utils/form/validationFor";
 
 const SignInForm = (
 	{
 		t,
-		initials,
 		onFinish,
+		onDismiss,
+		payload,
 	}) =>
 	<Form
 		wrapperCol={{span: 24}}
-		initialValues={initials}
 		onFinish={onFinish}
 		name={"sign-in"}
 	>
@@ -24,6 +25,7 @@ const SignInForm = (
 			<Col span={24}>
 				<Form.Item
 					name="login"
+					{...validationFor("login", payload, t)}
 					rules={[
 						{
 							required: true,
@@ -38,6 +40,7 @@ const SignInForm = (
 			<Col span={24}>
 				<Form.Item
 					name="password"
+					{...validationFor("password", payload, t)}
 					rules={[
 						{
 							required: true,
@@ -51,7 +54,7 @@ const SignInForm = (
 		<Row justify={"center"}>
 			<Col>
 				<Form.Item>
-					<Button type="primary" htmlType="submit" icon={<SignInIcon/>}>
+					<Button type="primary" htmlType="submit" icon={<SignInIcon/>} onClick={() => onDismiss()}>
 						{t("public.sign-in.form.submit.label")}
 					</Button>
 				</Form.Item>
@@ -61,13 +64,13 @@ const SignInForm = (
 ;
 export default connect(
 	state => ({
-		initials: {},
+		payload: getUserLoginError(state),
 	}),
 	{
+		onDismiss: () => dispatch => dispatch(onUserLoginDismiss()),
 		onFinish: values => (dispatch, getState) => {
 			dispatch(onUserLogin(values)).then(() => {
 				dispatch(onSessionOpen(getUserLoginUser(getState())));
-				dispatch(onUserLoginDismiss());
 			});
 		}
 	},

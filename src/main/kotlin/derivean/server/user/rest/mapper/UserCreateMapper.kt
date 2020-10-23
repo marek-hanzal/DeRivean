@@ -2,10 +2,7 @@ package derivean.server.user.rest.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.Response
-import derivean.lib.rest.conflict
-import derivean.lib.rest.created
-import derivean.lib.rest.internalServerError
+import derivean.lib.rest.*
 import derivean.server.auth.AuthenticatorService
 import derivean.server.user.UserRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
@@ -27,13 +24,13 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 	} catch (e: ExposedSQLException) {
 		when {
 			e.message?.contains("user_login_unique") == true -> {
-				conflict(UserCreateError.build {
+				conflict(ValidationResponse.build {
 					message = "Cannot register new user"
 					validation("login", "error", "User with the given login already exists")
 				})
 			}
 			e.message?.contains("user_name_unique") == true -> {
-				conflict(UserCreateError.build {
+				conflict(ValidationResponse.build {
 					message = "Cannot register new user"
 					validation("name", "error", "User with the given login already exists")
 				})
@@ -43,7 +40,7 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 			}
 		}
 	} catch (e: Throwable) {
-		internalServerError(UserCreateError.build {
+		internalServerError(ValidationResponse.build {
 			message = "Some ugly internal server error happened!"
 		})
 	}
@@ -54,29 +51,4 @@ class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateM
 		val password: String?,
 		val token: String?,
 	)
-
-	data class UserCreateError(
-		val message: String,
-		val validations: Map<String, Validation>,
-	) {
-		companion object {
-			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
-		}
-
-		class Builder {
-			lateinit var message: String
-			private var validations = mutableMapOf<String, Validation>()
-
-			fun validation(field: String, status: String, message: String) {
-				validations[field] = Validation(status, message)
-			}
-
-			fun build() = UserCreateError(
-				message,
-				validations,
-			)
-		}
-	}
-
-	data class Validation(val status: String, val message: String)
 }
