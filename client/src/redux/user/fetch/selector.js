@@ -1,4 +1,4 @@
-import { userBranch } from "redux/user/selector";
+import {userBranch} from "redux/user/selector";
 
 const branch = state => userBranch(state).fetch;
 

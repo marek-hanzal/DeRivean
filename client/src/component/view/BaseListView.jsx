@@ -1,6 +1,6 @@
 import {Card} from "antd";
 import Table from "component/Table";
-import React, {createElement} from "react";
+import {createElement} from "react";
 import {withTranslation} from "react-i18next";
 
 const BaseListView = (

@@ -1,11 +1,6 @@
-import {
-	Button,
-	Card,
-	Result
-} from "antd";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import {Button, Card, Result} from "antd";
+import {withTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 import PublicPath from "site/public/router/PublicPath";
 
 const SingOutView = (

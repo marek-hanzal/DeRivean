@@ -1,11 +1,7 @@
-import {
-	Button,
-	Result
-} from "antd";
-import React from "react";
-import { Helmet } from "react-helmet";
-import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import {Button, Result} from "antd";
+import {Helmet} from "react-helmet";
+import {withTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 
 const NotFoundView = ({t}) =>
 	<>

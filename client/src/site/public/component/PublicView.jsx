@@ -3,7 +3,7 @@ import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
 import Menu from "component/Menu";
-import React from "react";
+
 import Footer from "site/public/component/Footer";
 import Header from "site/public/component/Header";
 import PublicPath from "site/public/router/PublicPath";

@@ -1,16 +1,10 @@
-import { RightCircleOutlined } from "@ant-design/icons";
-import {
-	Card,
-	Col,
-	Result,
-	Row,
-	Typography
-} from "antd";
+import {RightCircleOutlined} from "@ant-design/icons";
+import {Card, Col, Result, Row, Typography} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { connect } from "react-redux";
-import { getUserRegisterStatus } from "redux/user/register/selector";
+
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {getUserRegisterStatus} from "redux/user/register/selector";
 import FailedResult from "site/public/view/sign-up/FailedResult";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";

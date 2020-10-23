@@ -1,12 +1,7 @@
-import {
-	Button,
-	Card,
-	Result
-} from "antd";
+import {Button, Card, Result} from "antd";
 import WithMenu from "component/view/WithMenu";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import {withTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 import RootPath from "site/root/router/RootPath";
 
 const SingInView = ({t}) =>

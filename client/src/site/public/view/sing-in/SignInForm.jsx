@@ -1,24 +1,12 @@
-import {
-	LockOutlined,
-	UserOutlined
-} from "@ant-design/icons";
-import {
-	Button,
-	Col,
-	Form,
-	Input,
-	Row
-} from "antd";
+import {LockOutlined, UserOutlined} from "@ant-design/icons";
+import {Button, Col, Form, Input, Row} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { connect } from "react-redux";
-import { onSessionOpen } from "redux/session/action";
-import {
-	onUserLogin,
-	onUserLoginDismiss
-} from "redux/user/login/action";
-import { getUserLoginUser } from "redux/user/login/selector";
+
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {onSessionOpen} from "redux/session/action";
+import {onUserLogin, onUserLoginDismiss} from "redux/user/login/action";
+import {getUserLoginUser} from "redux/user/login/selector";
 
 const SignInForm = (
 	{
@@ -39,7 +27,7 @@ const SignInForm = (
 					rules={[
 						{
 							required: true,
-							message:  t("public.sign-in.form.login.required")
+							message: t("public.sign-in.form.login.required")
 						}
 					]}
 					children={<Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder={t("public.sign-in.form.login.label")}/>}
@@ -53,7 +41,7 @@ const SignInForm = (
 					rules={[
 						{
 							required: true,
-							message:  t("public.sign-in.form.password.required")
+							message: t("public.sign-in.form.password.required")
 						}
 					]}
 					children={<Input.Password prefix={<LockOutlined className="site-form-item-icon"/>} placeholder={t("public.sign-in.form.password.label")}/>}

@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { onDiscovery } from "redux/discovery/action";
-import { getDiscoveryStatus } from "redux/discovery/selector";
+import {Component} from "react";
+import {connect} from "react-redux";
+import {onDiscovery} from "redux/discovery/action";
+import {getDiscoveryStatus} from "redux/discovery/selector";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
 
-class Discovery extends React.PureComponent {
+class Discovery extends Component {
 	componentDidMount() {
 		this.props.onDiscovery();
 	}

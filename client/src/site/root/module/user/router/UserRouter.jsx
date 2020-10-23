@@ -1,12 +1,11 @@
-import React from "react";
-import {Route, Switch} from "react-router";
+import {Route, Routes} from "react-router";
 import UserPath from "site/root/module/user/router/UserPath";
 import DashboardView from "site/root/module/user/view/DashboardView";
 
 const UserRouter = () =>
-	<Switch>
+	<Routes>
 		<Route path={UserPath.dashboard} component={DashboardView}/>
-	</Switch>
+	</Routes>
 ;
 
 export default UserRouter;

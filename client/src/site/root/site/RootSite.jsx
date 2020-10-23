@@ -1,11 +1,7 @@
-import {
-	Layout,
-	PageHeader,
-} from "antd";
+import {Layout, PageHeader,} from "antd";
 import CollapsibleContent from "component/layout/CollapsibleContent";
 import Loading from "component/Loading";
 import ScrollToTop from "component/ScrollToTop";
-import React from "react";
 import RootRouter from "site/root/router/RootRouter";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
@@ -18,7 +14,7 @@ const RootSite = () =>
 			<Header/>
 			<Layout style={{
 				minHeight: "100vh",
-				padding:   "0 50px",
+				padding: "0 50px",
 				marginTop: 64
 			}}>
 				<Sider/>

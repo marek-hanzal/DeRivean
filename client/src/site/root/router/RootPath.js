@@ -1,6 +1,6 @@
 const RootPath = {
-	root:    "/",
-	signIn:  "/sign-in",
+	root: "/",
+	signIn: "/sign-in",
 	signOut: "/sign-out",
 };
 

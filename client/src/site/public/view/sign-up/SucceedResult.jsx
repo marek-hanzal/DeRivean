@@ -1,13 +1,9 @@
-import {
-	Button,
-	Card,
-	Result
-} from "antd";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { onUserRegisterDismiss } from "redux/user/register/action";
+import {Button, Card, Result} from "antd";
+
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import {onUserRegisterDismiss} from "redux/user/register/action";
 import PublicPath from "site/public/router/PublicPath";
 
 const SucceedResult = (

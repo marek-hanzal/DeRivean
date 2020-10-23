@@ -1,7 +1,6 @@
 import CreateIcon from "component/icon/CreateIcon";
 import HomeIcon from "component/icon/HomeIcon";
 import ListIcon from "component/icon/ListIcon";
-import React from "react";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
 import breadcrumbs from "utils/breadcrumbs/breadcrumbs";
 import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";

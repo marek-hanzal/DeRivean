@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { onMenuItems } from "redux/menu/action";
+import {Component} from "react";
+import {connect} from "react-redux";
+import {onMenuItems} from "redux/menu/action";
 
-class WithMenu extends React.Component {
+class WithMenu extends Component {
 	componentDidMount() {
 		this.props.onMenuItems(this.props.menu);
 	}

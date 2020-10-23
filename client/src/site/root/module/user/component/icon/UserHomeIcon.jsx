@@ -1,5 +1,4 @@
-import { MehOutlined } from "@ant-design/icons";
-import React from "react";
+import {MehOutlined} from "@ant-design/icons";
 
 const UserHomeIcon = () => <MehOutlined/>;
 

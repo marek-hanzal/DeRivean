@@ -1,15 +1,7 @@
-import { UserOutlined } from "@ant-design/icons";
-import {
-	Button,
-	Card,
-	Col,
-	Input,
-	Result,
-	Row
-} from "antd";
+import {UserOutlined} from "@ant-design/icons";
+import {Button, Card, Col, Input, Result, Row} from "antd";
 import CreateIcon from "component/icon/CreateIcon";
-import React, { createElement } from "react";
-import { withTranslation } from "react-i18next";
+import {withTranslation} from "react-i18next";
 
 const CreateView = (
 	{
@@ -17,12 +9,7 @@ const CreateView = (
 		root,
 		translation,
 		view,
-	}) => createElement(
-	view,
-	{
-		open:     [root],
-		selected: [`${root}/create`],
-	},
+	}) =>
 	<Card title={t(`${translation}.create.title`)}>
 		<Result
 			icon={<CreateIcon/>}
@@ -34,11 +21,11 @@ const CreateView = (
 				</Row>
 			}>
 			<div>
-				// ... rest of fields
+				... rest of fields
 			</div>
 			<Button type={"primary"}>[Submit]</Button>
 		</Result>
 	</Card>
-);
+;
 
 export default withTranslation()(CreateView);

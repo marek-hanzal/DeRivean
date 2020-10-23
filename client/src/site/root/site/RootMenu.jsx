@@ -1,6 +1,5 @@
 import HomeIcon from "component/icon/HomeIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
-import React from "react";
 import EntityDashboardIcon from "site/root/module/entity/component/icon/EntityDashboardIcon";
 import EntityPath from "site/root/module/entity/EntityPath";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";

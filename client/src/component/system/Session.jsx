@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import { getSession } from "redux/session/selector";
+import {connect} from "react-redux";
+import {getSession} from "redux/session/selector";
 
 const Session = (
 	{
@@ -12,5 +12,4 @@ export default connect(
 	state => ({
 		session: getSession(state),
 	}),
-	dispatch => ({}),
 )(Session);

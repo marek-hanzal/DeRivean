@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import fetch from "redux/user/fetch/reducer";
 import login from "redux/user/login/reducer";
 import page from "redux/user/page/reducer";

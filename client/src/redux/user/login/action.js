@@ -1,6 +1,6 @@
 import Axios from "axios";
-import { getUserLoginHref } from "redux/discovery/selector";
-import { onLoading } from "redux/loading/action";
+import {getUserLoginHref} from "redux/discovery/selector";
+import {onLoading} from "redux/loading/action";
 import dismissAction from "utils/action/actions/dismissAction";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
@@ -11,7 +11,7 @@ const
 	onUserLoginSuccess = successAction("user.login"),
 	onUserLoginFailure = failureAction("user.login"),
 	onUserLoginDismiss = dismissAction("user.login"),
-	onUserLogin        = login => (dispatch, getState) => {
+	onUserLogin = login => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onUserLoginRequest());
 		return Axios.post(getUserLoginHref(getState()), login)

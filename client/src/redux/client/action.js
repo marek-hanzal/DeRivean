@@ -7,7 +7,7 @@ const
 	onClientRequest = requestAction("client"),
 	onClientSuccess = successAction("client"),
 	onClientFailure = failureAction("client"),
-	onClient        = href => onFetch(href, onClientRequest, onClientSuccess, onClientFailure);
+	onClient = href => onFetch(href, onClientRequest, onClientSuccess, onClientFailure);
 
 export {
 	onClientRequest,

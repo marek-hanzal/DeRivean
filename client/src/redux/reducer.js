@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import client from "./client/reducer";
 import discovery from "./discovery/reducer";
 import entity from "./entity/reducer";

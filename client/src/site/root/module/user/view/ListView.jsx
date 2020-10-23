@@ -1,5 +1,5 @@
 import BaseListView from "component/view/BaseListView";
-import React from "react";
+
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";

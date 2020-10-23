@@ -1,7 +1,7 @@
 const PublicPath = {
-	root:    "/",
-	signUp:  "/sign-up",
-	signIn:  "/sign-in",
+	root: "/",
+	signUp: "/sign-up",
+	signIn: "/sign-in",
 	signOut: "/sign-out",
 };
 

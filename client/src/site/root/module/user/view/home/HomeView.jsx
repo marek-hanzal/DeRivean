@@ -1,44 +1,33 @@
-import {
-	Card,
-	Result
-} from "antd";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { connect } from "react-redux";
-import { onUserFetch } from "redux/user/fetch/action";
-import {
-	getUserFetch,
-	isUserFetchLoading
-} from "redux/user/fetch/selector";
-import RootView from "site/root/component/RootView";
-import UserHomeIcon from "site/root/module/user/component/icon/UserHomeIcon";
-import UserName from "site/root/module/user/view/home/component/UserName";
+import {Component} from "react";
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {onUserFetch} from "redux/user/fetch/action";
+import {getUserFetch, isUserFetchLoading} from "redux/user/fetch/selector";
 
-class HomeView extends React.PureComponent {
+class HomeView extends Component {
 	componentDidMount() {
 		this.props.onFetch(this.props.match.params.user);
 	}
 
 	render() {
-		const {user} = this.props;
+		// const {user} = this.props;
 
-		return (
-			<RootView>
-				<Card title={"[user home with details]"}>
-					<Result
-						icon={<UserHomeIcon/>}
-					>
-						<UserName user={user}/>
-					</Result>
-				</Card>
-			</RootView>
-		);
+		return (null);
+		// <RootView>
+		// 	<Card title={"[user home with details]"}>
+		// 		<Result
+		// 			icon={<UserHomeIcon/>}
+		// 		>
+		// 			<UserName user={user}/>
+		// 		</Result>
+		// 	</Card>
+		// </RootView>
 	}
 }
 
 export default connect(
 	state => ({
-		user:      getUserFetch(state),
+		user: getUserFetch(state),
 		isLoading: isUserFetchLoading(state),
 	}),
 	dispatch => ({

@@ -1,10 +1,10 @@
-import { createAction } from "redux-actions";
+import {createAction} from "redux-actions";
 import toActionName from "utils/action/actions/toActionName";
 
 const successAction = name => createAction(toActionName(name + ".success"), payload => ({
-	status:  "SUCCESS",
+	status: "SUCCESS",
 	loading: false,
-	error:   null,
+	error: null,
 	payload,
 }));
 

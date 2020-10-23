@@ -1,7 +1,6 @@
 import Breadcrumb from "antd/lib/breadcrumb";
-import React from "react";
 import {withTranslation} from "react-i18next";
-import {Route, Switch, useParams} from "react-router";
+import {Route, Routes, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import rehref from "utils/rehref";
 
@@ -12,7 +11,7 @@ const Breadcrumbs = (
 	}) => {
 		const params = useParams();
 		return (
-			<Switch>
+			<Routes>
 				{items.map(item =>
 					<Route key={item.path} path={item.path}>
 						<Breadcrumb>
@@ -29,7 +28,7 @@ const Breadcrumbs = (
 						</Breadcrumb>
 					</Route>
 				)}
-			</Switch>
+			</Routes>
 		);
 	}
 ;

@@ -1,10 +1,8 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
 import WithMenu from "component/view/WithMenu";
-import React from "react";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {withRouter} from "react-router";
 import {onSessionClose} from "redux/session/action";
 
 const SingOutView = (
@@ -38,4 +36,4 @@ export default connect(
 	dispatch => ({
 		onLogout: () => dispatch(onSessionClose())
 	}),
-)(withRouter(withTranslation()(SingOutView)));
+)(withTranslation()(SingOutView));

@@ -1,8 +1,8 @@
 import {Table as AntdTable} from "antd";
-import React from "react";
+import {Component} from "react";
 import {withTranslation} from "react-i18next";
 
-class Table extends React.Component {
+class Table extends Component {
 	componentDidMount() {
 		/**
 		 * Fetch initial page and get overall paging data.

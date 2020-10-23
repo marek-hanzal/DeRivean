@@ -1,13 +1,9 @@
-import {
-	Button,
-	Card,
-	Result
-} from "antd";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { connect } from "react-redux";
-import { onUserRegisterDismiss } from "redux/user/register/action";
-import { getUserRegisterError } from "redux/user/register/selector";
+import {Button, Card, Result} from "antd";
+
+import {withTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {onUserRegisterDismiss} from "redux/user/register/action";
+import {getUserRegisterError} from "redux/user/register/selector";
 
 const FailedResult = (
 	{

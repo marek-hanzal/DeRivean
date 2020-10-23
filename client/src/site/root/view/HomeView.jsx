@@ -1,11 +1,7 @@
-import { SmileOutlined } from "@ant-design/icons";
-import {
-	Card,
-	Result
-} from "antd";
+import {SmileOutlined} from "@ant-design/icons";
+import {Card, Result} from "antd";
 import WithMenu from "component/view/WithMenu";
-import React from "react";
-import { withTranslation } from "react-i18next";
+import {withTranslation} from "react-i18next";
 import RootMenu from "site/root/site/RootMenu";
 
 const HomeView = ({t}) =>

@@ -1,17 +1,10 @@
-import { SmileOutlined } from "@ant-design/icons";
-import {
-	Button,
-	Card,
-	Image,
-	Result,
-	Typography
-} from "antd";
+import {SmileOutlined} from "@ant-design/icons";
+import {Button, Card, Image, Result, Typography} from "antd";
 import icon from "assets/icon-small.png";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
-import React from "react";
-import { withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import {withTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 import PublicView from "site/public/component/PublicView";
 import PublicPath from "site/public/router/PublicPath";
 
