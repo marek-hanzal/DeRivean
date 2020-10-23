@@ -1,6 +1,6 @@
 import React from "react";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
-import UserPath from "site/root/module/user/UserPath";
+import UserPath from "site/root/module/user/router/UserPath";
 import RootPath from "site/root/router/RootPath";
 import commonBreadcrumbs from "utils/breadcrumbs/commonBreadcrumbs";
 

@@ -4,7 +4,7 @@ import React from "react";
 import EntityDashboardIcon from "site/root/module/entity/component/icon/EntityDashboardIcon";
 import EntityPath from "site/root/module/entity/EntityPath";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
-import UserPath from "site/root/module/user/UserPath";
+import UserPath from "site/root/module/user/router/UserPath";
 import RootPath from "site/root/router/RootPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
