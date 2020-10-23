@@ -1,5 +1,5 @@
 const PublicPath = {
-	root: "/public",
+	root: "/",
 	signUp: "sign-up",
 	signIn: "sign-in",
 	signOut: "sign-out",

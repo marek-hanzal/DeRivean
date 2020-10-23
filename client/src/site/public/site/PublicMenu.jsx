@@ -21,7 +21,6 @@ const RootMenu = () =>
 const PublicMenu = () =>
 	<Routes>
 		<Route path={PublicPath.root + "/*"} element={<RootMenu/>}>
-
 		</Route>
 	</Routes>
 ;

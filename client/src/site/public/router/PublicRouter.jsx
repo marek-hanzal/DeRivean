@@ -14,7 +14,7 @@ const PublicRouter = () =>
 			<Route path={PublicPath.signOut} element={<SingOutView/>}/>
 			<Route element={<HomeView/>}/>
 		</Route>
-		<Route element={<NotFoundView/>}/>
+		<Route path={"*"} element={<NotFoundView/>}/>
 	</Routes>
 ;
 
