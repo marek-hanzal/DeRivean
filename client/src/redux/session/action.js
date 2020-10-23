@@ -1,8 +1,8 @@
-import {createAction} from "redux-actions";
+import miniAction from "utils/action/actions/miniAction";
 
 const
-	onSessionOpen = createAction("ON_SESSION_OPEN", user => ({user})),
-	onSessionClose = createAction("ON_SESSION_CLOSE", () => ({user: {site: "public"}}));
+	onSessionOpen  = miniAction("session.open", "user"),
+	onSessionClose = miniAction("session.close", "user", {site: "public"});
 
 export {
 	onSessionOpen,
