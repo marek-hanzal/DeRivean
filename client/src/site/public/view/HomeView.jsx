@@ -12,7 +12,7 @@ const HomeView = (
 	{
 		t,
 	}) =>
-	<PublicView menu={"public.home"}>
+	<PublicView id={"public.home"}>
 		<Card>
 			<Result
 				icon={<Image width={128} height={128} src={icon}/>}

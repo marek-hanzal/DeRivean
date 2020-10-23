@@ -13,19 +13,19 @@ function resolveStatus(t, status) {
 	switch (status) {
 		case "SUCCESS":
 			return (
-				<PublicView menu={"public.sign-up"}>
+				<PublicView id={"public.sign-up"}>
 					<SucceedResult/>
 				</PublicView>
 			);
 		case "FAILURE":
 			return (
-				<PublicView menu={"public.sign-up"}>
+				<PublicView id={"public.sign-up"}>
 					<FailedResult/>
 				</PublicView>
 			);
 		default:
 			return (
-				<PublicView menu={"public.sign-up"}>
+				<PublicView id={"public.sign-up"}>
 					<Card title={t("public.sign-up.title")}>
 						<Result
 							icon={<SignUpIcon/>}

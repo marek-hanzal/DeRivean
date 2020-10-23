@@ -9,7 +9,7 @@ const SingOutView = (
 	{
 		t,
 	}) =>
-	<PublicView>
+	<PublicView id={"public.sign-out"}>
 		<FullsizeContent fullsize={true} reset={true}/>
 		<Card>
 			<Result

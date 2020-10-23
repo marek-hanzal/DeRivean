@@ -6,7 +6,7 @@ import PublicView from "site/public/site/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 
 const SingInView = ({t}) =>
-	<PublicView menu={"public.sign-in"}>
+	<PublicView id={"public.sign-in"}>
 		<Card title={t("public.sign-in.title")}>
 			<Result
 				icon={<SignInIcon/>}

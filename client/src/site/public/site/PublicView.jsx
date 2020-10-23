@@ -1,10 +1,20 @@
 import SelectMenu from "component/menu/SelectMenu";
+import {Helmet} from "react-helmet";
+import {withTranslation} from "react-i18next";
 
-const PublicView = ({menu, children}) =>
+const PublicView = (
+	{
+		t,
+		id,
+		menu = id,
+		title = id,
+		children,
+	}) =>
 	<>
+		<Helmet title={t(`${title}.title`)}/>
 		<SelectMenu menu={menu}/>
 		{children}
 	</>
 ;
 
-export default PublicView;
+export default withTranslation()(PublicView);
