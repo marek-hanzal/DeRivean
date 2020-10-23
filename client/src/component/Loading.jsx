@@ -8,7 +8,7 @@ const Loading = (
 		t,
 		isLoading,
 		children,
-	}) => <Spin spinning={isLoading} tip={t("common.spinner")} children={children}/>
+	}) => <Spin spinning={isLoading} delay={100} tip={t("common.spinner")} children={children}/>
 ;
 
 export default connect(

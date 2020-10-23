@@ -1,7 +1,6 @@
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {Button, Col, Form, Input, Row} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
-
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onSessionOpen} from "redux/session/action";
@@ -71,7 +70,7 @@ export default connect(
 		onFinish: values => (dispatch, getState) => {
 			dispatch(onUserLogin(values)).then(() => {
 				dispatch(onSessionOpen(getUserLoginUser(getState())));
-			});
+			}, () => null);
 		}
 	},
 )(withTranslation()(SignInForm));
