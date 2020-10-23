@@ -7,6 +7,12 @@ class FullsizeContent extends Component {
 		this.props.onFullsize(this.props.fullsize);
 	}
 
+	componentWillUnmount() {
+		if (this.props.reset) {
+			this.props.onFullsize(false);
+		}
+	}
+
 	render() {
 		return null;
 	}

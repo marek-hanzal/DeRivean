@@ -10,7 +10,7 @@ const SingOutView = (
 		t,
 	}) =>
 	<PublicView>
-		<FullsizeContent fullsize={true}/>
+		<FullsizeContent fullsize={true} reset={true}/>
 		<Card>
 			<Result
 				status="success"
