@@ -1,12 +1,16 @@
-import {Layout as AntdLayout, PageHeader, Spin} from "antd";
+import {
+	Layout as AtLayout,
+	PageHeader,
+	Spin
+} from "antd";
 import ScrollToTop from "component/ScrollToTop";
 import React from "react";
-import {Helmet} from "react-helmet";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {isLoading} from "redux/loading/selector";
-import {onMenuCollapse} from "redux/menu/action";
-import {isMenuCollapsed} from "redux/menu/selector";
+import { Helmet } from "react-helmet";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { isLoading } from "redux/loading/selector";
+import { onMenuCollapse } from "redux/menu/action";
+import { isMenuCollapsed } from "redux/menu/selector";
 
 const Layout = (
 	{
@@ -22,14 +26,17 @@ const Layout = (
 		children,
 		t,
 	}) =>
-
 	<Spin spinning={loading} tip={t("common.spinner")}>
 		<ScrollToTop/>
-		<AntdLayout>
+		<AtLayout>
 			<Helmet title={t(title)}/>
 			{header}
-			<AntdLayout style={{minHeight: "100vh", padding: "0 50px", marginTop: 64}}>
-				<AntdLayout.Sider
+			<AtLayout style={{
+				minHeight: "100vh",
+				padding:   "0 50px",
+				marginTop: 64
+			}}>
+				<AtLayout.Sider
 					collapsible
 					collapsed={isCollapsed}
 					defaultCollapsed={isCollapsed}
@@ -44,13 +51,16 @@ const Layout = (
 					}}
 					children={menu}
 				/>
-				<AntdLayout.Content style={{minHeight: "100vh", marginLeft: isCollapsed ? 80 : 220}}>
+				<AtLayout.Content style={{
+					minHeight:  "100vh",
+					marginLeft: isCollapsed ? 80 : 220
+				}}>
 					<PageHeader title={t(title)} subTitle={t(subtitle)} children={breadcrumbs}/>
 					{children}
-					<AntdLayout.Footer style={{textAlign: "center"}} children={footer}/>
-				</AntdLayout.Content>
-			</AntdLayout>
-		</AntdLayout>
+					<AtLayout.Footer style={{textAlign: "center"}} children={footer}/>
+				</AtLayout.Content>
+			</AtLayout>
+		</AtLayout>
 	</Spin>
 ;
 

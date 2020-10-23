@@ -1,6 +1,6 @@
-import {Card} from "antd";
-import React, {createElement} from "react";
-import {withTranslation} from "react-i18next";
+import { Card } from "antd";
+import React, { createElement } from "react";
+import { withTranslation } from "react-i18next";
 
 const DashboardView = (
 	{
@@ -11,7 +11,7 @@ const DashboardView = (
 	}) => createElement(
 	view,
 	{
-		open: [root],
+		open:     [root],
 		selected: [`${root}/dashboard`],
 	},
 	<Card title={t(`${translation}.dashboard.title`)}>

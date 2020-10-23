@@ -1,12 +1,20 @@
-import {Avatar, Layout} from "antd";
+import {
+	Avatar,
+	Layout
+} from "antd";
 import Menu from "antd/lib/menu";
 import icon from "assets/icon.png";
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PublicPath from "site/public/router/PublicPath";
 
 const Header = () =>
-	<Layout.Header style={{position: "fixed", zIndex: 1, width: "100%", padding: "0"}}>
+	<Layout.Header style={{
+		position: "fixed",
+		zIndex:   1,
+		width:    "100%",
+		padding:  "0"
+	}}>
 		<Menu theme="dark" mode="horizontal" selectable={false}>
 			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={PublicPath.root}>DeRivean</Link></Menu.Item>
 		</Menu>

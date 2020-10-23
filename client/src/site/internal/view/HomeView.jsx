@@ -1,6 +1,9 @@
-import {Card, Result} from "antd";
+import {
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
+import { withTranslation } from "react-i18next";
 import InternalHomeIcon from "site/internal/component/icon/InternalHomeIcon";
 import InternalView from "site/internal/component/InternalView";
 import InternalPath from "site/internal/router/InternalPath";

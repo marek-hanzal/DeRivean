@@ -1,9 +1,12 @@
 import BaseListView from "component/view/BaseListView";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {onEntityPage} from "redux/entity/page/action";
-import {getEntityPage, isEntityPageLoading} from "redux/entity/page/selector";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { onEntityPage } from "redux/entity/page/action";
+import {
+	getEntityPage,
+	isEntityPageLoading
+} from "redux/entity/page/selector";
 import column from "utils/table/column";
 
 const ListView = ({...props}) =>
@@ -19,8 +22,8 @@ const ListView = ({...props}) =>
 
 export default connect(
 	state => ({
-		page: getEntityPage(state),
-		items: getEntityPage(state).items,
+		page:      getEntityPage(state),
+		items:     getEntityPage(state).items,
 		isLoading: isEntityPageLoading(state),
 	}),
 	dispatch => ({

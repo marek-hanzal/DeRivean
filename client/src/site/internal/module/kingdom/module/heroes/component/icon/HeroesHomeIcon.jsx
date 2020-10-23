@@ -1,4 +1,4 @@
-import {MehOutlined} from "@ant-design/icons";
+import { MehOutlined } from "@ant-design/icons";
 import React from "react";
 
 const HeroesHomeIcon = () => <MehOutlined/>;

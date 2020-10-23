@@ -1,10 +1,16 @@
-import {RightCircleOutlined} from "@ant-design/icons";
-import {Card, Col, Result, Row, Typography} from "antd";
+import { RightCircleOutlined } from "@ant-design/icons";
+import {
+	Card,
+	Col,
+	Result,
+	Row,
+	Typography
+} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {getUserRegisterStatus} from "redux/user/register/selector";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { getUserRegisterStatus } from "redux/user/register/selector";
 import MinimalView from "site/public/component/MinimalView";
 import PublicView from "site/public/component/PublicView";
 import PublicPath from "site/public/router/PublicPath";

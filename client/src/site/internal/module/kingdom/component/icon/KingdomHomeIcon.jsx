@@ -1,4 +1,4 @@
-import {CrownOutlined} from "@ant-design/icons";
+import { CrownOutlined } from "@ant-design/icons";
 import React from "react";
 
 const KingdomHomeIcon = () => <CrownOutlined/>;

@@ -1,6 +1,6 @@
-import {Card} from "antd";
-import React, {createElement} from "react";
-import {withTranslation} from "react-i18next";
+import { Card } from "antd";
+import React, { createElement } from "react";
+import { withTranslation } from "react-i18next";
 
 const CreateView = (
 	{
@@ -11,7 +11,7 @@ const CreateView = (
 	}) => createElement(
 	view,
 	{
-		open: [root],
+		open:     [root],
 		selected: [`${root}/create`],
 	},
 	<Card title={t(`${translation}.create.title`)}>

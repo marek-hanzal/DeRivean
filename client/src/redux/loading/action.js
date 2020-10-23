@@ -1,7 +1,7 @@
-import {createAction} from "redux-actions";
+import miniAction from "utils/action/actions/miniAction";
 
 const
-	onLoading = createAction("ON_LOADING", loading => ({state: loading}));
+	onLoading = miniAction("loading", "state");
 
 export {
 	onLoading,

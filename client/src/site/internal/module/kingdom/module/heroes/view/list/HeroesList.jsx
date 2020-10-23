@@ -1,17 +1,31 @@
-import {LikeOutlined, MessageOutlined, StarOutlined} from "@ant-design/icons";
-import {Avatar, List, Space} from "antd";
+import {
+	LikeOutlined,
+	MessageOutlined,
+	StarOutlined
+} from "@ant-design/icons";
+import {
+	Avatar,
+	List,
+	Space
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
 
-const IconText = ({icon, text}) => (
+const IconText = ({
+					  icon,
+					  text
+				  }) => (
 	<Space>
 		{React.createElement(icon)}
 		{text}
 	</Space>
 );
 
-const HeroesList = ({t, list}) =>
+const HeroesList = ({
+						t,
+						list
+					}) =>
 	<List
 		itemLayout="vertical"
 		size="large"

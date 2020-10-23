@@ -1,7 +1,10 @@
-import {SmileOutlined} from "@ant-design/icons";
-import {Card, Result} from "antd";
+import { SmileOutlined } from "@ant-design/icons";
+import {
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
+import { withTranslation } from "react-i18next";
 import RootView from "site/root/component/RootView";
 import RootPath from "site/root/router/RootPath";
 

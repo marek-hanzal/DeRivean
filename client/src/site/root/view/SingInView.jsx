@@ -1,7 +1,11 @@
-import {Button, Card, Result} from "antd";
+import {
+	Button,
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
+import { withTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import MinimalView from "site/root/component/MinimalView";
 import RootPath from "site/root/router/RootPath";
 

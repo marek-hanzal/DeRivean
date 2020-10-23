@@ -1,6 +1,6 @@
-import {Card} from "antd";
+import { Card } from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
+import { withTranslation } from "react-i18next";
 import InternalView from "site/internal/component/InternalView";
 import KingdomHeroesPath from "site/internal/module/kingdom/module/heroes/router/KingdomHeroesPath";
 

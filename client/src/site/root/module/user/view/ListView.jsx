@@ -1,10 +1,13 @@
 import BaseListView from "component/view/BaseListView";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {onUserPage} from "redux/user/page/action";
-import {getUserPage, isUserPageLoading} from "redux/user/page/selector";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { onUserPage } from "redux/user/page/action";
+import {
+	getUserPage,
+	isUserPageLoading
+} from "redux/user/page/selector";
 import UserPath from "site/root/module/user/UserPath";
 import column from "utils/table/column";
 import columnRender from "utils/table/columnRender";
@@ -23,8 +26,8 @@ const ListView = ({...props}) =>
 
 export default connect(
 	state => ({
-		page: getUserPage(state),
-		items: getUserPage(state).items,
+		page:      getUserPage(state),
+		items:     getUserPage(state).items,
 		isLoading: isUserPageLoading(state),
 	}),
 	dispatch => ({

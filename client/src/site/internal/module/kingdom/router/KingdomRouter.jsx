@@ -1,5 +1,8 @@
 import React from "react";
-import {Route, Switch} from "react-router";
+import {
+	Route,
+	Switch
+} from "react-router";
 import KingdomHeroesPath from "site/internal/module/kingdom/module/heroes/router/KingdomHeroesPath";
 import KingdomHeroesRouter from "site/internal/module/kingdom/module/heroes/router/KingdomHeroesRouter";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";

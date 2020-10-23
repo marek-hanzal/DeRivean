@@ -1,8 +1,11 @@
 import SingOutView from "component/view/SingOutView";
 import React from "react";
-import {connect} from "react-redux";
-import {Route, Switch} from "react-router-dom";
-import {onSessionClose} from "redux/session/action";
+import { connect } from "react-redux";
+import {
+	Route,
+	Switch
+} from "react-router-dom";
+import { onSessionClose } from "redux/session/action";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";
 import KingdomRouter from "site/internal/module/kingdom/router/KingdomRouter";
 import HomeView from "site/internal/view/HomeView";

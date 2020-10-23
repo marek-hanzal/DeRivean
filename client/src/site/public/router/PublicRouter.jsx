@@ -1,5 +1,8 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import {
+	Route,
+	Switch
+} from "react-router-dom";
 import PublicPath from "site/public/router/PublicPath";
 import HomeView from "site/public/view/HomeView";
 import SignUpView from "site/public/view/sign-up/SignUpView";

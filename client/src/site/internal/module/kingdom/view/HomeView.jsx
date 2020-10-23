@@ -1,6 +1,9 @@
-import {Card, Result} from "antd";
+import {
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
+import { withTranslation } from "react-i18next";
 import InternalView from "site/internal/component/InternalView";
 import KingdomHomeIcon from "site/internal/module/kingdom/component/icon/KingdomHomeIcon";
 import KingdomPath from "site/internal/module/kingdom/router/KingdomPath";

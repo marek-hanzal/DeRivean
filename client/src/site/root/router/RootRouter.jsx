@@ -1,8 +1,11 @@
 import SingOutView from "component/view/SingOutView";
 import React from "react";
-import {connect} from "react-redux";
-import {Route, Switch} from "react-router-dom";
-import {onSessionClose} from "redux/session/action";
+import { connect } from "react-redux";
+import {
+	Route,
+	Switch
+} from "react-router-dom";
+import { onSessionClose } from "redux/session/action";
 import InternalPath from "site/internal/router/InternalPath";
 import RootView from "site/root/component/RootView";
 import EntityModule from "site/root/module/entity/EntityModule";
@@ -14,7 +17,10 @@ import HomeView from "site/root/view/HomeView";
 import SingInView from "site/root/view/SingInView";
 import NotFoundView from "view/NotFoundView";
 
-const RootRouter = ({onLogout, translation = "root"}) =>
+const RootRouter = ({
+						onLogout,
+						translation = "root"
+					}) =>
 	<Switch>
 		<Route exact path={RootPath.root} component={HomeView}/>
 		<Route exact path={RootPath.signIn} component={SingInView}/>

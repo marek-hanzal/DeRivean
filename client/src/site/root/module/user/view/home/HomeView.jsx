@@ -1,9 +1,15 @@
-import {Card, Result} from "antd";
+import {
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {onUserFetch} from "redux/user/fetch/action";
-import {getUserFetch, isUserFetchLoading} from "redux/user/fetch/selector";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { onUserFetch } from "redux/user/fetch/action";
+import {
+	getUserFetch,
+	isUserFetchLoading
+} from "redux/user/fetch/selector";
 import RootView from "site/root/component/RootView";
 import UserHomeIcon from "site/root/module/user/component/icon/UserHomeIcon";
 import UserName from "site/root/module/user/view/home/component/UserName";
@@ -32,7 +38,7 @@ class HomeView extends React.PureComponent {
 
 export default connect(
 	state => ({
-		user: getUserFetch(state),
+		user:      getUserFetch(state),
 		isLoading: isUserFetchLoading(state),
 	}),
 	dispatch => ({
