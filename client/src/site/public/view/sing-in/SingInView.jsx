@@ -1,12 +1,12 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
-import WithMenu from "component/view/WithMenu";
 import {withTranslation} from "react-i18next";
+import PublicView from "site/public/site/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 
 const SingInView = ({t}) =>
-	<WithMenu>
+	<PublicView>
 		<Card title={t("public.sign-in.title")}>
 			<Result
 				icon={<SignInIcon/>}
@@ -38,7 +38,7 @@ const SingInView = ({t}) =>
 				</Row>
 			</Result>
 		</Card>
-	</WithMenu>
+	</PublicView>
 ;
 
 export default withTranslation()(SingInView);
