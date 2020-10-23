@@ -3,7 +3,7 @@ import {Button, Card, Result} from "antd";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegisterDismiss} from "redux/user/register/action";
-import {getUserRegisterError} from "redux/user/register/selector";
+import {getUserRegister} from "redux/user/register/selector";
 
 const FailedResult = (
 	{
@@ -15,7 +15,7 @@ const FailedResult = (
 		<Result
 			status="error"
 			title={t("public.sign-up.failed.title")}
-			subTitle={t("raw." + error)}
+			subTitle={t("raw.boom")}
 			extra={[
 				<Button type="primary" key="close" onClick={() => onDismiss()}>
 					{t("public.sign-up.close.title")}
@@ -27,7 +27,7 @@ const FailedResult = (
 
 export default connect(
 	state => ({
-		error: getUserRegisterError(state),
+		error: getUserRegister(state),
 	}),
 	dispatch => ({
 		onDismiss: () => dispatch(onUserRegisterDismiss()),

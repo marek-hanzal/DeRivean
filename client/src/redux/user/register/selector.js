@@ -6,14 +6,14 @@ const isUserRegisterLoading = state => branch(state).loading;
 
 const getUserRegisterStatus = state => branch(state).status;
 
-const getUserRegisterError = state => branch(state).error.data.error;
-
 const getUserRegister = state => branch(state).payload;
+
+const getUserRegisterError = state => branch(state).error;
 
 export {
 	branch as userRegisterBranch,
 	getUserRegisterStatus,
-	getUserRegisterError,
 	isUserRegisterLoading,
 	getUserRegister,
+	getUserRegisterError,
 };

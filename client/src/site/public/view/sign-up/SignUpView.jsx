@@ -5,7 +5,6 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
 import PublicView from "site/public/site/PublicView";
-import FailedResult from "site/public/view/sign-up/FailedResult";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
 
@@ -15,12 +14,6 @@ function resolveStatus(t, status) {
 			return (
 				<PublicView id={"public.sign-up"}>
 					<SucceedResult/>
-				</PublicView>
-			);
-		case "FAILURE":
-			return (
-				<PublicView id={"public.sign-up"}>
-					<FailedResult/>
 				</PublicView>
 			);
 		default:

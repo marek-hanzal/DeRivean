@@ -15,12 +15,12 @@ const
 		dispatch(onLoading(true));
 		dispatch(onUserRegisterRequest(register));
 		return Axios.post(getUserCreateHref(getState()), register)
-			.then(response => {
-				dispatch(onUserRegisterSuccess(response.data));
+			.then(({data}) => {
+				dispatch(onUserRegisterSuccess(data));
 				dispatch(onLoading(false));
 			})
 			.catch(({response}) => {
-				dispatch(onUserRegisterFailure(response));
+				dispatch(onUserRegisterFailure(response.data));
 				dispatch(onLoading(false));
 			});
 	};

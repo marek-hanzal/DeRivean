@@ -1,10 +1,10 @@
 import {Button, Form, Input} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {onUserRegister} from "redux/user/register/action";
-import {getUserRegister} from "redux/user/register/selector";
+import {getUserRegisterError} from "redux/user/register/selector";
+import validationFor from "utils/form/validationFor";
 
 const layout = {
 	labelCol: {span: 8},
@@ -21,17 +21,17 @@ const tailLayout = {
 const SignUpForm = (
 	{
 		t,
-		initials,
 		onFinish,
+		payload,
 	}) =>
 	<Form
 		{...layout}
-		initialValues={initials}
 		onFinish={onFinish}
 		name={"sign-up"}
 	>
 		<Form.Item
 			name="name"
+			{...validationFor("name", payload)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.name.label")}
 			rules={[
@@ -44,6 +44,7 @@ const SignUpForm = (
 		/>
 		<Form.Item
 			name="login"
+			{...validationFor("login", payload)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.login.label")}
 			rules={[
@@ -57,6 +58,7 @@ const SignUpForm = (
 
 		<Form.Item
 			name="password"
+			{...validationFor("password", payload)}
 			labelAlign={"left"}
 			label={t("public.sign-up.form.password.label")}
 			rules={[
@@ -76,7 +78,7 @@ const SignUpForm = (
 
 export default connect(
 	state => ({
-		initials: getUserRegister(state),
+		payload: getUserRegisterError(state),
 	}),
 	dispatch => ({
 		onFinish: values => {

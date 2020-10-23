@@ -33,7 +33,7 @@ fun unauthorized(error: String) = Response(HttpStatusCode.Unauthorized, ErrorRes
 /**
  * send response with Created status code
  */
-fun created(href: Url) = Response(HttpStatusCode.Created, LinkResponse(href))
+fun created(href: Url) = created(LinkResponse(href))
 
 fun created(item: Any) = Response(HttpStatusCode.Created, item)
 
@@ -50,7 +50,9 @@ fun notFound(error: String) = Response(HttpStatusCode.NotFound, ErrorResponse(er
 /**
  * send response with Conflict status code
  */
-fun conflict(error: String) = Response(HttpStatusCode.Conflict, ErrorResponse(error))
+fun conflict(error: String) = conflict(ErrorResponse(error))
+
+fun conflict(any: Any) = Response(HttpStatusCode.Conflict, any)
 
 /**
  * send response with Not Implemented status code
@@ -60,7 +62,9 @@ fun notImplemented(error: String) = Response(HttpStatusCode.NotImplemented, Erro
 /**
  * send response with Internal Server Error status code
  */
-fun internalServerError(error: String) = Response(HttpStatusCode.InternalServerError, ErrorResponse(error))
+fun internalServerError(any: Any) = Response(HttpStatusCode.InternalServerError, any)
+
+fun internalServerError(error: String) = internalServerError(ErrorResponse(error))
 
 /**
  * send response with Accepted status code
