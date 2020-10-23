@@ -1,8 +1,7 @@
 import {Button, Card, Result} from "antd";
-
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router";
 import {onUserRegisterDismiss} from "redux/user/register/action";
 import PublicPath from "site/public/router/PublicPath";
 
@@ -10,19 +9,26 @@ const SucceedResult = (
 	{
 		t,
 		onDismiss,
-	}) =>
-	<Card>
-		<Result
-			status="success"
-			title={t("public.sign-up.succeed.title")}
-			subTitle={t("public.sign-up.succeed.subtitle")}
-			extra={[
-				<Button type="primary" key="continue" onClick={() => onDismiss()}>
-					<Link to={PublicPath.signIn}>{t("public.sign-up.continue.title")}</Link>
-				</Button>
-			]}
-		/>
-	</Card>
+	}) => {
+		const navigate = useNavigate();
+		return (
+			<Card>
+				<Result
+					status="success"
+					title={t("public.sign-up.succeed.title")}
+					subTitle={t("public.sign-up.succeed.subtitle")}
+					extra={[
+						<Button type="primary" key="continue" onClick={() => {
+							onDismiss();
+							navigate("../" + PublicPath.signIn);
+						}}>
+							{t("public.sign-up.continue.title")}
+						</Button>
+					]}
+				/>
+			</Card>
+		);
+	}
 ;
 
 export default connect(

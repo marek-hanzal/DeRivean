@@ -1,14 +1,12 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
-import SelectMenu from "component/menu/SelectMenu";
 import {withTranslation} from "react-i18next";
 import PublicView from "site/public/site/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 
 const SingInView = ({t}) =>
-	<PublicView>
-		<SelectMenu menu={"public.sign-in"}/>
+	<PublicView menu={"public.sign-in"}>
 		<Card title={t("public.sign-in.title")}>
 			<Result
 				icon={<SignInIcon/>}

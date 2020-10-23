@@ -3,7 +3,6 @@ import {Button, Card, Image, Result, Typography} from "antd";
 import icon from "assets/icon-small.png";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
-import SelectMenu from "component/menu/SelectMenu";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import PublicPath from "site/public/router/PublicPath";
@@ -13,8 +12,7 @@ const HomeView = (
 	{
 		t,
 	}) =>
-	<PublicView>
-		<SelectMenu menu={"public.home"}/>
+	<PublicView menu={"public.home"}>
 		<Card>
 			<Result
 				icon={<Image width={128} height={128} src={icon}/>}
