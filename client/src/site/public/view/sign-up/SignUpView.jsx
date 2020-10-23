@@ -11,9 +11,6 @@ import React from "react";
 import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { getUserRegisterStatus } from "redux/user/register/selector";
-import MinimalView from "site/public/component/MinimalView";
-import PublicView from "site/public/component/PublicView";
-import PublicPath from "site/public/router/PublicPath";
 import FailedResult from "site/public/view/sign-up/FailedResult";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
@@ -21,55 +18,42 @@ import SucceedResult from "site/public/view/sign-up/SucceedResult";
 function resolveStatus(t, status) {
 	switch (status) {
 		case "SUCCESS":
-			return (
-				<MinimalView>
-					<SucceedResult/>
-				</MinimalView>
-			);
+			return <SucceedResult/>;
 		case "FAILURE":
-			return (
-				<MinimalView>
-					<FailedResult/>
-				</MinimalView>
-			);
+			return <FailedResult/>;
 		default:
 			return (
-				<PublicView
-					open={[PublicPath.root]}
-					selected={[PublicPath.signUp]}
-				>
-					<Card title={t("public.sign-up.title")}>
-						<Result
-							icon={<SignUpIcon/>}
-							status={"info"}
-							title={t("public.sign-up.content.title")}
-							subTitle={t("public.sign-up.content.subtitle")}
-						>
-							<Row gutter={128} justify={"center"}>
-								<Col span={12}>
-									<Card title={t("public.sign-up.content.form.title")}>
-										<SignUpForm/>
-									</Card>
-								</Col>
-								<Col span={12}>
-									<Typography.Paragraph>
-										<Typography.Text
-											strong
-											style={{fontSize: 16,}}
-										>
-											{t("public.sign-up.content.list.title")}
-										</Typography.Text>
+				<Card title={t("public.sign-up.title")}>
+					<Result
+						icon={<SignUpIcon/>}
+						status={"info"}
+						title={t("public.sign-up.content.title")}
+						subTitle={t("public.sign-up.content.subtitle")}
+					>
+						<Row gutter={128} justify={"center"}>
+							<Col span={12}>
+								<Card title={t("public.sign-up.content.form.title")}>
+									<SignUpForm/>
+								</Card>
+							</Col>
+							<Col span={12}>
+								<Typography.Paragraph>
+									<Typography.Text
+										strong
+										style={{fontSize: 16,}}
+									>
+										{t("public.sign-up.content.list.title")}
+									</Typography.Text>
+								</Typography.Paragraph>
+								{[0, 1, 2, 3, 4].map(index => (
+									<Typography.Paragraph key={index}>
+										<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
 									</Typography.Paragraph>
-									{[0, 1, 2, 3, 4].map(index => (
-										<Typography.Paragraph key={index}>
-											<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
-										</Typography.Paragraph>
-									))}
-								</Col>
-							</Row>
-						</Result>
-					</Card>
-				</PublicView>
+								))}
+							</Col>
+						</Row>
+					</Result>
+				</Card>
 			);
 	}
 }

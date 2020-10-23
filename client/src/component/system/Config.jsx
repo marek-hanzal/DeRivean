@@ -1,13 +1,13 @@
 import React from "react";
-import {connect} from "react-redux";
-import {onClient} from "redux/client/action";
-import {getClientStatus} from "redux/client/selector";
+import { connect } from "react-redux";
+import { onClient } from "redux/client/action";
+import { getClientStatus } from "redux/client/selector";
 import ClientErrorView from "view/ClientErrorView";
 import LoaderView from "view/LoaderView";
 
 class Client extends React.PureComponent {
 	componentDidMount() {
-		this.props.onClient(this.props.href);
+		this.props.onClient(this.props.href || "/client.json");
 	}
 
 	render() {

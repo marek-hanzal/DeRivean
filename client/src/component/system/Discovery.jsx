@@ -1,7 +1,7 @@
 import React from "react";
-import {connect} from "react-redux";
-import {onDiscovery} from "redux/discovery/action";
-import {getDiscoveryStatus} from "redux/discovery/selector";
+import { connect } from "react-redux";
+import { onDiscovery } from "redux/discovery/action";
+import { getDiscoveryStatus } from "redux/discovery/selector";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
 

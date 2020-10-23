@@ -1,4 +1,5 @@
 import { Layout } from "antd";
+import Menu from "component/Menu";
 import React from "react";
 import { connect } from "react-redux";
 import { onMenuCollapse } from "redux/menu/action";
@@ -8,8 +9,7 @@ const Sider = (
 	{
 		isCollapsed,
 		onCollapse,
-		isEnabled,
-	}) => isEnabled ?
+	}) =>
 	<Layout.Sider
 		collapsible
 		collapsed={isCollapsed}
@@ -24,13 +24,12 @@ const Sider = (
 			left:            0,
 		}}
 	>
-		// menu here
-	</Layout.Sider> : null
+		<Menu/>
+	</Layout.Sider>
 ;
 
 export default connect(
 	state => ({
-		isEnabled:   true,
 		isCollapsed: isMenuCollapsed(state),
 	}),
 	dispatch => ({

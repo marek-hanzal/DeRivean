@@ -2,10 +2,11 @@ import {
 	Layout,
 	PageHeader,
 } from "antd";
+import CollapsibleContent from "component/layout/CollapsibleContent";
 import Loading from "component/Loading";
 import ScrollToTop from "component/ScrollToTop";
 import React from "react";
-import CollapsibleContent from "site/root/site/CollapsibleContent";
+import RootRouter from "site/root/router/RootRouter";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
 import Sider from "site/root/site/Sider";
@@ -23,9 +24,9 @@ const RootSite = () =>
 				<Sider/>
 				<CollapsibleContent>
 					<PageHeader>
-						// breadcrumbs
+						breadcrumbs here!
 					</PageHeader>
-					// switch router here?
+					<RootRouter/>
 				</CollapsibleContent>
 			</Layout>
 			<Footer/>

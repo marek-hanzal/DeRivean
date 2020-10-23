@@ -1,9 +1,14 @@
-import {QuestionCircleFilled} from "@ant-design/icons";
-import {Button, Card, Result} from "antd";
+import { QuestionCircleFilled } from "@ant-design/icons";
+import {
+	Button,
+	Card,
+	Result
+} from "antd";
 import React from "react";
-import {withTranslation} from "react-i18next";
-import {withRouter} from "react-router";
-import MinimalView from "site/internal/component/MinimalView";
+import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { onSessionClose } from "redux/session/action";
 
 const SingOutView = (
 	{
@@ -12,22 +17,25 @@ const SingOutView = (
 		history,
 		onLogout,
 	}) =>
-	<MinimalView>
-		<Card>
-			<Result
-				icon={<QuestionCircleFilled/>}
-				title={t(`${translation}.sign-out.title`)}
-				subTitle={t(`${translation}.sign-out.subtitle`)}
-				extra={[
-					<Button type="primary" key="sign-out" onClick={() => onLogout()}>
-						{t(`${translation}.sign-out.button.sign-out`)}
-					</Button>,
-					<Button key="back" onClick={() => history.goBack()}>{t(`${translation}.sign-out.button.back`)}</Button>,
-				]}
-			>
-			</Result>
-		</Card>
-	</MinimalView>
+	<Card>
+		<Result
+			icon={<QuestionCircleFilled/>}
+			title={t(`${translation}.sign-out.title`)}
+			subTitle={t(`${translation}.sign-out.subtitle`)}
+			extra={[
+				<Button type="primary" key="sign-out" onClick={() => onLogout()}>
+					{t(`${translation}.sign-out.button.sign-out`)}
+				</Button>,
+				<Button key="back" onClick={() => history.goBack()}>{t(`${translation}.sign-out.button.back`)}</Button>,
+			]}
+		>
+		</Result>
+	</Card>
 ;
 
-export default withRouter(withTranslation()(SingOutView));
+export default connect(
+	state => ({}),
+	dispatch => ({
+		onLogout: () => dispatch(onSessionClose())
+	}),
+)(withRouter(withTranslation()(SingOutView)));
