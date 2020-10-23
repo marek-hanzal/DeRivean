@@ -1,15 +1,13 @@
-import {onMenuCollapse, onMenuItems, onMenuOpen} from "redux/menu/action";
+import {onMenuCollapse, onMenuSelect} from "redux/menu/action";
 import reducerSimpleActions from "utils/action/reducerSimpleActions";
 
 export default reducerSimpleActions(
 	[
 		onMenuCollapse,
-		onMenuOpen,
-		onMenuItems,
+		onMenuSelect,
 	],
 	{
-		open: [],
-		items: [],
+		item: null,
 		collapse: false
 	}
 );

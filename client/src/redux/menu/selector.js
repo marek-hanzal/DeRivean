@@ -17,23 +17,15 @@ const isMenuCollapsed = state => branch(state).collapse;
 const getMenuOpen = state => branch(state).open;
 
 /**
- * Return current menu items; when changed, main menu should be re-rendered.
+ * Return currently selected menu item.
  *
- * @returns: array
+ * @returns: string
  */
-const getMenuItems = state => branch(state).items;
-
-/**
- * Say, if the menu is available (visible).
- *
- * @returns boolean
- */
-const isMenu = state => branch(state).items !== null;
+const getMenuItem = state => branch(state).item;
 
 export {
 	branch as menuBranch,
 	isMenuCollapsed,
 	getMenuOpen,
-	getMenuItems,
-	isMenu,
+	getMenuItem,
 };

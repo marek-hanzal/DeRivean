@@ -1,17 +1,18 @@
 import {Layout} from "antd";
 import {connect} from "react-redux";
-import {isMenu, isMenuCollapsed} from "redux/menu/selector";
+import {isContentFullsize} from "redux/content/selector";
+import {isMenuCollapsed} from "redux/menu/selector";
 
 const CollapsibleContent = (
 	{
 		isCollapsed,
-		isMenu,
 		children,
+		isFullsize,
 	}) =>
 	<Layout.Content
 		style={{
 			minHeight: "100vh",
-			marginLeft: isMenu ? (isCollapsed ? 80 : 220) : 0,
+			marginLeft: isFullsize ? 0 : (isCollapsed ? 80 : 220),
 		}}
 		children={children}
 	/>
@@ -20,6 +21,6 @@ const CollapsibleContent = (
 export default connect(
 	state => ({
 		isCollapsed: isMenuCollapsed(state),
-		isMenu: isMenu(state),
+		isFullsize: isContentFullsize(state),
 	}),
 )(CollapsibleContent);

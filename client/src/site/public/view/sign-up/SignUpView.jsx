@@ -1,7 +1,7 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-
+import SelectMenu from "component/menu/SelectMenu";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
@@ -19,6 +19,7 @@ function resolveStatus(t, status) {
 		default:
 			return (
 				<PublicView>
+					<SelectMenu menu={"public.sign-up"}/>
 					<Card title={t("public.sign-up.title")}>
 						<Result
 							icon={<SignUpIcon/>}
