@@ -21,7 +21,7 @@ const HomeView = (
 				subTitle={t("public.home.content.subtitle")}
 				extra={[
 					<Button type="primary" key="sign-in">
-						<Link to={PublicPath.signIn}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
+						<Link to={"sign-in"}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
 					</Button>,
 					<Button key="sign-up">
 						<Link to={PublicPath.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>

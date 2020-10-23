@@ -8,10 +8,11 @@ import NotFoundView from "view/NotFoundView";
 
 const PublicRouter = () =>
 	<Routes>
-		<Route path={PublicPath.root} element={<HomeView/>}/>
-		<Route path={PublicPath.signUp} element={<SignUpView/>}/>
-		<Route path={PublicPath.signIn} element={<SingInView/>}/>
-		<Route path={PublicPath.signOut} element={<SingOutView/>}/>
+		<Route path={PublicPath.root} element={<HomeView/>}>
+			<Route path={PublicPath.signUp} element={<SignUpView/>}/>
+			<Route path={PublicPath.signIn} element={<SingInView/>}/>
+			<Route path={PublicPath.signOut} element={<SingOutView/>}/>
+		</Route>
 		<Route element={<NotFoundView/>}/>
 	</Routes>
 ;

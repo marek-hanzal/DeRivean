@@ -6,6 +6,7 @@ import ScrollToTop from "component/ScrollToTop";
 import PublicRouter from "site/public/router/PublicRouter";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
+import PublicMenu from "site/public/site/PublicMenu";
 
 const PublicSite = () =>
 	<Loading>
@@ -17,7 +18,9 @@ const PublicSite = () =>
 				padding: "0 50px",
 				marginTop: 64
 			}}>
-				<Sider/>
+				<Sider>
+					<PublicMenu/>
+				</Sider>
 				<CollapsibleContent>
 					<PageHeader>
 						breadcrumbs here!

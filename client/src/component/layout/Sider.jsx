@@ -1,5 +1,4 @@
 import {Layout} from "antd";
-import Menu from "component/Menu";
 import {connect} from "react-redux";
 import {onMenuCollapse} from "redux/menu/action";
 import {isMenuCollapsed} from "redux/menu/selector";
@@ -8,6 +7,7 @@ const Sider = (
 	{
 		isCollapsed,
 		onCollapse,
+		children,
 	}) =>
 	<Layout.Sider
 		collapsible
@@ -22,9 +22,8 @@ const Sider = (
 			backgroundColor: "rgb(240, 242, 245)",
 			left: 0,
 		}}
-	>
-		<Menu/>
-	</Layout.Sider>
+		children={children}
+	/>
 ;
 
 export default connect(
