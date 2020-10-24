@@ -42,4 +42,11 @@ const UserMenu = () =>
 	/>
 ;
 
-export default UserMenu;
+const UserMenuRoute = () => route(UserPath.route.root, <UserMenu/>);
+
+const UserMenuItem = () => menuItem(UserPath.link.dashboard(), "root.user.dashboard", <UserDashboardIcon/>);
+
+export {
+	UserMenuRoute,
+	UserMenuItem,
+};

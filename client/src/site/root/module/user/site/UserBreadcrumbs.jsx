@@ -38,4 +38,8 @@ const UserBreadcrumbs = () =>
 	/>
 ;
 
-export default UserBreadcrumbs;
+const UserBreadcrumbRoute = () => route(UserPath.route.root, <UserBreadcrumbs/>);
+
+export {
+	UserBreadcrumbRoute,
+};

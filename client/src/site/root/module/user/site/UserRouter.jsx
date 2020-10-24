@@ -19,4 +19,8 @@ const UserRouter = () =>
 	/>
 ;
 
-export default UserRouter;
+const UserRoute = () => route(UserPath.route.root, <UserRouter/>);
+
+export {
+	UserRoute,
+};
