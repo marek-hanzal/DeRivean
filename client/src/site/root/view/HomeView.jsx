@@ -1,7 +1,7 @@
 import {SmileOutlined} from "@ant-design/icons";
 import {Card, Result} from "antd";
 import {withTranslation} from "react-i18next";
-import RootView from "site/root/site/RootView";
+import RootView from "site/root/view/RootView";
 
 const HomeView = ({t}) =>
 	<RootView

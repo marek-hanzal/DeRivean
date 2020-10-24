@@ -1,15 +1,15 @@
 import {Layout, PageHeader,} from "antd";
 import CollapsibleContent from "component/layout/CollapsibleContent";
 import Sider from "component/layout/Sider";
-import Loading from "component/Loading";
+import Loader from "component/Loader";
 import ScrollToTop from "component/ScrollToTop";
 import RootRouter from "site/root/router/RootRouter";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
 import RootMenu from "site/root/site/RootMenu";
 
-const RootSite = () =>
-	<Loading>
+const Site = () =>
+	<Loader>
 		<Layout>
 			<ScrollToTop/>
 			<Header/>
@@ -28,7 +28,7 @@ const RootSite = () =>
 				</CollapsibleContent>
 			</Layout>
 		</Layout>
-	</Loading>
+	</Loader>
 ;
 
-export default RootSite;
+export default Site;

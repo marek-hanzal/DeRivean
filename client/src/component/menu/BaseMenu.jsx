@@ -10,24 +10,19 @@ const BaseMenu = (
 		open = [],
 		selected = [],
 		items = [],
-	}) => {
-	return (
-		<Menu
-			mode="inline"
-			selectable={true}
-			defaultOpenKeys={open}
-			selectedKeys={selected || []}
-			style={{height: "100vh"}}
-		>
-			{items.map((item, index) => {
-				return item === "-" ? <Menu.Divider key={index}/> :
-					<Menu.Item key={item.key} icon={item.icon}>
-						<Link to={item.href}>{t(`${item.key}.menu`)}</Link>
-					</Menu.Item>;
-			})}
-		</Menu>
-		);
-	}
+	}) =>
+	<Menu
+		mode="inline"
+		selectable={true}
+		defaultOpenKeys={open}
+		selectedKeys={selected || []}
+		style={{height: "100vh"}}
+	>
+		{items.map((item, index) => item === "-" ? <Menu.Divider key={index}/> :
+			<Menu.Item key={item.key || index} icon={item.icon}>
+				<Link to={item.href}>{t(`${item.key}.menu`)}</Link>
+			</Menu.Item>)}
+	</Menu>
 ;
 
 export default connect(

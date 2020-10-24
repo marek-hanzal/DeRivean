@@ -1,15 +1,16 @@
 import {Layout, PageHeader} from "antd";
 import CollapsibleContent from "component/layout/CollapsibleContent";
 import Sider from "component/layout/Sider";
-import Loading from "component/Loading";
+import Loader from "component/Loader";
 import ScrollToTop from "component/ScrollToTop";
+import Breadcrumbs from "site/public/site/Breadcrumbs";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
 import Menu from "site/public/site/Menu";
 import Router from "site/public/site/Router";
 
 const Site = () =>
-	<Loading>
+	<Loader>
 		<Layout>
 			<ScrollToTop/>
 			<Header/>
@@ -21,14 +22,14 @@ const Site = () =>
 				<Sider children={<Menu/>}/>
 				<CollapsibleContent>
 					<PageHeader>
-						breadcrumbs here!
+						<Breadcrumbs/>
 					</PageHeader>
 					<Router/>
 					<Footer/>
 				</CollapsibleContent>
 			</Layout>
 		</Layout>
-	</Loading>
+	</Loader>
 ;
 
 export default Site;

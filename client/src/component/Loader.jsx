@@ -3,7 +3,7 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {isLoading} from "redux/loading/selector";
 
-const Loading = (
+const Loader = (
 	{
 		t,
 		isLoading,
@@ -15,4 +15,4 @@ export default connect(
 	state => ({
 		isLoading: isLoading(state),
 	}),
-)(withTranslation()(Loading));
+)(withTranslation()(Loader));
