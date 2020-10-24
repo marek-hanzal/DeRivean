@@ -2,6 +2,8 @@ import BaseBreadcrumbs from "component/breadcrumbs/BaseBreadcrumbs";
 import HomeIcon from "component/icon/HomeIcon";
 import {Route, Routes} from "react-router";
 import PublicPath from "site/public/site/PublicPath";
+import BlogBreadcrumbs from "site/root/module/blog/site/BlogBreadcrumbs";
+import BlogPath from "site/root/module/blog/site/BlogPath";
 import UserBreadcrumbs from "site/root/module/user/site/UserBreadcrumbs";
 import UserPath from "site/root/module/user/site/UserPath";
 import RootPath from "site/root/site/RootPath";
@@ -19,6 +21,7 @@ const Breadcrumbs = () =>
 	<Routes>
 		<Route path={RootPath.root}>
 			<Route path={UserPath.root + "/*"} element={<UserBreadcrumbs/>}/>
+			<Route path={BlogPath.root + "/*"} element={<BlogBreadcrumbs/>}/>
 			<Route path={"/"} element={<HomeBreadcrumbs/>}/>
 		</Route>
 	</Routes>

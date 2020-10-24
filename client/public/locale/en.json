@@ -217,10 +217,14 @@
 		"blog": {
 			"dashboard": {
 				"menu": "Blog",
-				"title": "Blog Dashboard"
+				"title": "Blog Dashboard",
+				"breadcrumb": "Blog"
 			},
 			"create": {
-				"menu": "Create Post"
+				"title": "New post",
+				"subtitle": "Write something interesting!",
+				"menu": "Create Post",
+				"breadcrumb": "Create Post"
 			}
 		},
 		"user": {
