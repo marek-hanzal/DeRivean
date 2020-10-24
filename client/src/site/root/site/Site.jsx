@@ -5,7 +5,6 @@ import BaseLayout from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
-import PublicPath from "site/public/site/PublicPath";
 import {BlogBreadcrumbRoute} from "site/root/module/blog/site/Breadcrumbs";
 import {BlogMenuItem, BlogMenuRoute} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
@@ -54,7 +53,7 @@ const Site = () =>
 
 					route("/", <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbIconItem(RootPath.root, <HomeIcon/>),
 						]}
 					/>),
 				]}

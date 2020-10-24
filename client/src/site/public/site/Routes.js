@@ -1,8 +1,8 @@
-const PublicPath = {
+const Routes = {
 	root: "/",
 	signUp: "sign-up",
 	signIn: "sign-in",
 	signOut: "sign-out",
 };
 
-export default PublicPath;
+export default Routes;

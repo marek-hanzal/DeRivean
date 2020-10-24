@@ -5,7 +5,7 @@ import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PublicPath from "site/public/site/PublicPath";
+import Routes from "site/public/site/Routes";
 import PublicView from "site/public/view/PublicView";
 
 const HomeView = (
@@ -24,7 +24,7 @@ const HomeView = (
 						<Link to={"sign-in"}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
 					</Button>,
 					<Button key="sign-up">
-						<Link to={PublicPath.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
+						<Link to={Routes.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
 					</Button>,
 				]}
 			>

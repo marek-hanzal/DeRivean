@@ -3,7 +3,7 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {useNavigate} from "react-router";
 import {onUserRegisterDismiss} from "redux/user/register/action";
-import PublicPath from "site/public/site/PublicPath";
+import Routes from "site/public/site/Routes";
 
 const SucceedResult = (
 	{
@@ -20,7 +20,7 @@ const SucceedResult = (
 					extra={[
 						<Button type="primary" key="continue" onClick={() => {
 							onDismiss();
-							navigate("../" + PublicPath.signIn);
+							navigate("../" + Routes.signIn);
 						}}>
 							{t("public.sign-up.continue.title")}
 						</Button>

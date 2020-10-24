@@ -7,7 +7,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
-import PublicPath from "site/public/site/PublicPath";
+import Routes from "site/public/site/Routes";
 import HomeView from "site/public/view/HomeView";
 import SignUpView from "site/public/view/sign-up/SignUpView";
 import SingOutView from "site/public/view/SignOutView";
@@ -31,10 +31,10 @@ const Site = () =>
 				routes={[
 					route("*", <BaseMenu
 						items={[
-							menuItem(PublicPath.root, "public.home", <HomeIcon/>),
+							menuItem(Routes.root, "public.home", <HomeIcon/>),
 							menuDivider(),
-							menuItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
-							menuItem(PublicPath.signIn, "public.sign-in", <SignInIcon/>),
+							menuItem(Routes.signUp, "public.sign-up", <SignUpIcon/>),
+							menuItem(Routes.signIn, "public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 				]}
@@ -43,21 +43,21 @@ const Site = () =>
 		breadcrumbs={
 			<BaseRoutes
 				routes={[
-					route(PublicPath.signUp, <BaseBreadcrumbs
+					route(Routes.signUp, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
 						]}
 					/>),
-					route(PublicPath.signIn, <BaseBreadcrumbs
+					route(Routes.signIn, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 					route("/", <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.root, <HomeIcon/>),
 						]}
 					/>),
 				]}
@@ -66,9 +66,9 @@ const Site = () =>
 		router={
 			<BaseRoutes
 				routes={[
-					route(PublicPath.signUp, <SignUpView/>),
-					route(PublicPath.signIn, <SingInView/>),
-					route(PublicPath.signOut, <SingOutView/>),
+					route(Routes.signUp, <SignUpView/>),
+					route(Routes.signIn, <SingInView/>),
+					route(Routes.signOut, <SingOutView/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}
