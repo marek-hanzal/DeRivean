@@ -13,16 +13,16 @@ import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
 
-const UserMenu = () =>
+const Menu = () =>
 	<BaseRoutes
 		routes={[
 			route(Routes.route.context, <BaseMenu
 				items={[
 					menuItem(RootPath.root, "root.home", <HomeIcon/>),
-					menuItem("../" + Routes.relative.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
-					menuItem(Routes.relative.context(), "root.user.context", <ContextIcon/>),
+					menuItem("../" + Routes.relative.dashboard, "root.user.dashboard", <UserDashboardIcon/>),
+					menuItem(Routes.relative.context, "root.user.context", <ContextIcon/>),
 					menuDivider(),
-					menuItem(Routes.relative.kingdom(), "root.user.kingdom", <KingdomIcon/>),
+					menuItem(Routes.relative.kingdom, "root.user.kingdom", <KingdomIcon/>),
 					menuDivider(),
 					menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
 				]}
@@ -42,7 +42,7 @@ const UserMenu = () =>
 	/>
 ;
 
-const UserMenuRoute = () => route(Routes.route.root, <UserMenu/>);
+const UserMenuRoute = () => route(Routes.route.root, <Menu/>);
 
 const UserMenuItem = () => menuItem(Routes.absolute.dashboard, "root.user.dashboard", <UserDashboardIcon/>);
 

@@ -7,7 +7,7 @@ import ListView from "site/root/module/user/view/list/ListView";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
-const UserRouter = () =>
+const Router = () =>
 	<BaseRoutes
 		routes={[
 			route(Routes.route.dashboard, <DashboardView/>),
@@ -19,7 +19,7 @@ const UserRouter = () =>
 	/>
 ;
 
-const UserRoute = () => route(Routes.route.root, <UserRouter/>);
+const UserRoute = () => route(Routes.route.root, <Router/>);
 
 export {
 	UserRoute,

@@ -6,14 +6,12 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import PublicPath from "site/public/site/PublicPath";
-import BlogIcon from "site/root/module/blog/component/icon/BlogIcon";
-import BlogBreadcrumbs from "site/root/module/blog/site/BlogBreadcrumbs";
-import BlogMenu from "site/root/module/blog/site/BlogMenu";
-import BlogPath from "site/root/module/blog/site/BlogPath";
-import BlogRouter from "site/root/module/blog/site/BlogRouter";
-import {UserBreadcrumbRoute} from "site/root/module/user/site/UserBreadcrumbs";
-import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/UserMenu";
-import {UserRoute} from "site/root/module/user/site/UserRouter";
+import {BlogBreadcrumbRoute} from "site/root/module/blog/site/Breadcrumbs";
+import {BlogMenuItem, BlogMenuRoute} from "site/root/module/blog/site/Menu";
+import {BlogRoute} from "site/root/module/blog/site/Router";
+import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
+import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
+import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
 import RootPath from "site/root/site/RootPath";
@@ -32,13 +30,15 @@ const Site = () =>
 			<BaseRoutes
 				routes={[
 					UserMenuRoute(),
-					route(BlogPath.root + "/*", <BlogMenu/>),
+					BlogMenuRoute(),
 					route("/", <BaseMenu
 						items={[
 							menuItem(RootPath.root, "root.home", <HomeIcon/>),
 							menuDivider(),
+
 							UserMenuItem(),
-							menuItem(BlogPath.link.dashboard(), "root.blog.dashboard", <BlogIcon/>),
+							BlogMenuItem(),
+
 							menuDivider(),
 							menuItem(RootPath.signOut, "root.sign-out", <SignOutIcon/>),
 						]}
@@ -50,7 +50,8 @@ const Site = () =>
 			<BaseRoutes
 				routes={[
 					UserBreadcrumbRoute(),
-					route(BlogPath.root + "/*", <BlogBreadcrumbs/>),
+					BlogBreadcrumbRoute(),
+
 					route("/", <BaseBreadcrumbs
 						items={[
 							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
@@ -63,7 +64,8 @@ const Site = () =>
 			<BaseRoutes
 				routes={[
 					UserRoute(),
-					route(BlogPath.root + "/*", <BlogRouter/>),
+					BlogRoute(),
+
 					route(RootPath.signIn, <SingInView/>),
 					route(RootPath.signOut, <SingOutView id={"root"}/>),
 					route("/", <HomeView/>),

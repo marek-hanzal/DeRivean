@@ -15,7 +15,7 @@ const ListView = ({...props}) =>
 		id={"root.user"}
 		{...props}
 		columns={[
-			columnRender("id", (text, record) => <Link to={Routes.relative.context(record.id)}>{text}</Link>),
+			columnRender("id", (text, record) => <Link to={Routes.link.context(record.id)}>{text}</Link>),
 			column("name"),
 			column("token"),
 			column("site"),

@@ -11,7 +11,7 @@ import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
 import route from "utils/route/route";
 
-const UserBreadcrumbs = () =>
+const Breadcrumbs = () =>
 	<BaseRoutes
 		routes={[
 			route(Routes.route.dashboard, <BaseBreadcrumbs
@@ -23,14 +23,14 @@ const UserBreadcrumbs = () =>
 			route(Routes.route.create, <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(RootPath.root, <HomeIcon/>),
-					breadcrumbItem(Routes.relative.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
+					breadcrumbItem(Routes.relative.dashboard, "root.user.dashboard", <UserDashboardIcon/>),
 					breadcrumbCurrentItem("root.user.create", <CreateIcon/>),
 				]}
 			/>),
 			route(Routes.route.list, <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(RootPath.root, <HomeIcon/>),
-					breadcrumbItem(Routes.relative.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
+					breadcrumbItem(Routes.relative.dashboard, "root.user.dashboard", <UserDashboardIcon/>),
 					breadcrumbCurrentItem("root.user.list", <ListIcon/>),
 				]}
 			/>),
@@ -38,7 +38,7 @@ const UserBreadcrumbs = () =>
 	/>
 ;
 
-const UserBreadcrumbRoute = () => route(Routes.route.root, <UserBreadcrumbs/>);
+const UserBreadcrumbRoute = () => route(Routes.route.root, <Breadcrumbs/>);
 
 export {
 	UserBreadcrumbRoute,
