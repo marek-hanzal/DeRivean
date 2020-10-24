@@ -45,19 +45,19 @@ const Site = () =>
 				routes={[
 					route(Routes.route.signUp, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.relative.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
 						]}
 					/>),
 					route(Routes.route.signIn, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.relative.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 					route("/", <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.relative.root, <HomeIcon/>),
 						]}
 					/>),
 				]}
