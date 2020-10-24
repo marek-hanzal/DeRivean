@@ -4,7 +4,7 @@ import {onMenuSelect} from "redux/menu/action";
 
 class SelectMenu extends Component {
 	componentDidMount() {
-		this.props.onMenuSelect(this.props.menu);
+		setTimeout(() => this.props.onMenuSelect(this.props.menu), 0);
 	}
 
 	render() {

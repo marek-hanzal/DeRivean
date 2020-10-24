@@ -16,7 +16,6 @@ const DashboardMenu = () =>
 			menuItem(UserPath.link.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
 			menuDivider(),
 			menuItem(UserPath.link.create(), "root.user.create", <CreateIcon/>),
-			// ...
 			menuDivider(),
 			menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
 		]}
