@@ -1,5 +1,5 @@
 import BaseRoutes from "component/route/BaseRoutes";
-import UserPath from "site/root/module/user/site/UserPath";
+import Routes from "site/root/module/user/site/Routes";
 import ContextView from "site/root/module/user/view/context/ContextView";
 import CreateView from "site/root/module/user/view/create/CreateView";
 import DashboardView from "site/root/module/user/view/dashboard/DashboardView";
@@ -10,16 +10,16 @@ import NotFoundView from "view/NotFoundView";
 const UserRouter = () =>
 	<BaseRoutes
 		routes={[
-			route(UserPath.route.dashboard, <DashboardView/>),
-			route(UserPath.route.create, <CreateView/>),
-			route(UserPath.route.list, <ListView/>),
-			route(UserPath.route.context, <ContextView/>),
+			route(Routes.route.dashboard, <DashboardView/>),
+			route(Routes.route.create, <CreateView/>),
+			route(Routes.route.list, <ListView/>),
+			route(Routes.route.context, <ContextView/>),
 			route("*", <NotFoundView/>),
 		]}
 	/>
 ;
 
-const UserRoute = () => route(UserPath.route.root, <UserRouter/>);
+const UserRoute = () => route(Routes.route.root, <UserRouter/>);
 
 export {
 	UserRoute,

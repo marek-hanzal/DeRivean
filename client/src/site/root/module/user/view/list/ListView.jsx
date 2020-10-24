@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {onUserPage} from "redux/user/page/action";
 import {getUserPage, isUserPageLoading} from "redux/user/page/selector";
-import UserPath from "site/root/module/user/site/UserPath";
+import Routes from "site/root/module/user/site/Routes";
 import UserView from "site/root/module/user/view/UserView";
 import column from "utils/table/column";
 import columnRender from "utils/table/columnRender";
@@ -15,7 +15,7 @@ const ListView = ({...props}) =>
 		id={"root.user"}
 		{...props}
 		columns={[
-			columnRender("id", (text, record) => <Link to={UserPath.relative.context(record.id)}>{text}</Link>),
+			columnRender("id", (text, record) => <Link to={Routes.relative.context(record.id)}>{text}</Link>),
 			column("name"),
 			column("token"),
 			column("site"),

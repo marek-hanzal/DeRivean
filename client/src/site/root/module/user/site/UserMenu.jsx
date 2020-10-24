@@ -7,7 +7,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
-import UserPath from "site/root/module/user/site/UserPath";
+import Routes from "site/root/module/user/site/Routes";
 import RootPath from "site/root/site/RootPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
@@ -16,13 +16,13 @@ import route from "utils/route/route";
 const UserMenu = () =>
 	<BaseRoutes
 		routes={[
-			route(UserPath.route.context, <BaseMenu
+			route(Routes.route.context, <BaseMenu
 				items={[
 					menuItem(RootPath.root, "root.home", <HomeIcon/>),
-					menuItem("../" + UserPath.relative.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
-					menuItem(UserPath.relative.context(), "root.user.context", <ContextIcon/>),
+					menuItem("../" + Routes.relative.dashboard(), "root.user.dashboard", <UserDashboardIcon/>),
+					menuItem(Routes.relative.context(), "root.user.context", <ContextIcon/>),
 					menuDivider(),
-					menuItem(UserPath.relative.kingdom(), "root.user.kingdom", <KingdomIcon/>),
+					menuItem(Routes.relative.kingdom(), "root.user.kingdom", <KingdomIcon/>),
 					menuDivider(),
 					menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
 				]}
@@ -30,10 +30,10 @@ const UserMenu = () =>
 			route("*", <BaseMenu
 				items={[
 					menuItem(RootPath.root, "root.home", <HomeIcon/>),
-					menuItem(UserPath.route.dashboard, "root.user.dashboard", <UserDashboardIcon/>),
+					menuItem(Routes.route.dashboard, "root.user.dashboard", <UserDashboardIcon/>),
 					menuDivider(),
-					menuItem(UserPath.route.create, "root.user.create", <CreateIcon/>),
-					menuItem(UserPath.route.list, "root.user.list", <ListIcon/>),
+					menuItem(Routes.route.create, "root.user.create", <CreateIcon/>),
+					menuItem(Routes.route.list, "root.user.list", <ListIcon/>),
 					menuDivider(),
 					menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
 				]}
@@ -42,9 +42,9 @@ const UserMenu = () =>
 	/>
 ;
 
-const UserMenuRoute = () => route(UserPath.route.root, <UserMenu/>);
+const UserMenuRoute = () => route(Routes.route.root, <UserMenu/>);
 
-const UserMenuItem = () => menuItem(UserPath.link.dashboard(), "root.user.dashboard", <UserDashboardIcon/>);
+const UserMenuItem = () => menuItem(Routes.absolute.dashboard, "root.user.dashboard", <UserDashboardIcon/>);
 
 export {
 	UserMenuRoute,

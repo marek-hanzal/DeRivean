@@ -1,5 +1,3 @@
-import RootPath from "site/root/site/RootPath";
-
 const
 	root = "user",
 	dashboard = "dashboard",
@@ -8,7 +6,7 @@ const
 	context = "context",
 	kingdom = "kingdom";
 
-const UserPath = {
+const Routes = {
 	route: {
 		root: root + "/*",
 		dashboard: dashboard,
@@ -17,10 +15,8 @@ const UserPath = {
 		context: ":uuid/" + context,
 		kingdom: ":uuid/" + kingdom,
 	},
-	link: {
-		dashboard: () => `${RootPath.root}/${root}/${dashboard}`,
-		create: () => `${RootPath.root}/${root}/${create}`,
-		list: () => `${RootPath.root}/${root}/${list}`,
+	absolute: {
+		dashboard: `${root}/${dashboard}`,
 	},
 	relative: {
 		dashboard: () => "../" + dashboard,
@@ -29,4 +25,4 @@ const UserPath = {
 	}
 };
 
-export default UserPath;
+export default Routes;
