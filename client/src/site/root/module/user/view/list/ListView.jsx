@@ -1,10 +1,9 @@
 import BaseListView from "component/view/BaseListView";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import {onUserPage} from "redux/user/page/action";
 import {getUserPage, isUserPageLoading} from "redux/user/page/selector";
-import Routes from "site/root/module/user/site/Routes";
+import UserContextLink from "site/root/module/user-context/component/UserContextLink";
 import UserView from "site/root/module/user/view/UserView";
 import column from "utils/table/column";
 import columnRender from "utils/table/columnRender";
@@ -15,7 +14,7 @@ const ListView = ({...props}) =>
 		id={"root.user"}
 		{...props}
 		columns={[
-			columnRender("id", (text, record) => <Link to={Routes.link.context(record.id)}>{text}</Link>),
+			columnRender("id", (text, record) => <UserContextLink uuid={record.id}>{text}</UserContextLink>),
 			column("name"),
 			column("token"),
 			column("site"),

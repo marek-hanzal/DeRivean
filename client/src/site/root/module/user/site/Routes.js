@@ -2,9 +2,7 @@ const
 	root = "user",
 	dashboard = "dashboard",
 	create = "create",
-	list = "list",
-	context = "context",
-	kingdom = "kingdom";
+	list = "list";
 
 const Routes = {
 	route: {
@@ -12,20 +10,14 @@ const Routes = {
 		dashboard,
 		create,
 		list,
-		context: ":uuid/" + context,
-		kingdom: ":uuid/" + kingdom,
 	},
 	absolute: {
 		dashboard: `${root}/${dashboard}`,
 	},
 	relative: {
 		dashboard: "../" + dashboard,
-		context: "../" + context,
-		kingdom: "../" + kingdom,
+		dashboardUp: "../../" + dashboard,
 	},
-	link: {
-		context: uuid => "../" + uuid + "/" + context,
-	}
 };
 
 export default Routes;

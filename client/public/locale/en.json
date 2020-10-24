@@ -258,6 +258,12 @@
 						"column": "Site"
 					}
 				}
+			},
+			"context": {
+				"menu": "User's Context",
+				"kingdom": {
+					"menu": "Kingdoms"
+				}
 			}
 		},
 		"entity": {
