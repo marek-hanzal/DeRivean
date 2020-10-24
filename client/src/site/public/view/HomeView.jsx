@@ -5,8 +5,8 @@ import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PublicPath from "site/public/router/PublicPath";
-import PublicView from "site/public/site/PublicView";
+import PublicPath from "site/public/site/PublicPath";
+import PublicView from "site/public/view/PublicView";
 
 const HomeView = (
 	{

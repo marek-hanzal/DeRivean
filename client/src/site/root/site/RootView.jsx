@@ -1,5 +1,6 @@
 import FullsizeContent from "component/layout/FullsizeContent";
 import SelectMenu from "component/menu/SelectMenu";
+import ScrollToTop from "component/ScrollToTop";
 import {Helmet} from "react-helmet";
 import {withTranslation} from "react-i18next";
 
@@ -32,6 +33,7 @@ const RootView = (
 		children,
 	}) =>
 	<>
+		<ScrollToTop/>
 		<Helmet title={t(`${title}.title`)}/>
 		<FullsizeContent fullsize={fullsize} reset={reset}/>
 		<SelectMenu menu={menu}/>

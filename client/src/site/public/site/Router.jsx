@@ -1,12 +1,12 @@
 import {Route, Routes} from "react-router-dom";
-import PublicPath from "site/public/router/PublicPath";
+import PublicPath from "site/public/site/PublicPath";
 import HomeView from "site/public/view/HomeView";
 import SignUpView from "site/public/view/sign-up/SignUpView";
 import SingOutView from "site/public/view/SignOutView";
 import SingInView from "site/public/view/sing-in/SingInView";
 import NotFoundView from "view/NotFoundView";
 
-const PublicRouter = () =>
+const Router = () =>
 	<Routes>
 		<Route path={PublicPath.root}>
 			<Route path={PublicPath.signUp} element={<SignUpView/>}/>
@@ -18,4 +18,4 @@ const PublicRouter = () =>
 	</Routes>
 ;
 
-export default PublicRouter;
+export default Router;

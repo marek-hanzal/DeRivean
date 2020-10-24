@@ -3,12 +3,12 @@ import CollapsibleContent from "component/layout/CollapsibleContent";
 import Sider from "component/layout/Sider";
 import Loading from "component/Loading";
 import ScrollToTop from "component/ScrollToTop";
-import PublicRouter from "site/public/router/PublicRouter";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
-import PublicMenu from "site/public/site/PublicMenu";
+import Menu from "site/public/site/Menu";
+import Router from "site/public/site/Router";
 
-const PublicSite = () =>
+const Site = () =>
 	<Loading>
 		<Layout>
 			<ScrollToTop/>
@@ -18,12 +18,12 @@ const PublicSite = () =>
 				padding: "0 50px",
 				marginTop: 64
 			}}>
-				<Sider children={<PublicMenu/>}/>
+				<Sider children={<Menu/>}/>
 				<CollapsibleContent>
 					<PageHeader>
 						breadcrumbs here!
 					</PageHeader>
-					<PublicRouter/>
+					<Router/>
 					<Footer/>
 				</CollapsibleContent>
 			</Layout>
@@ -31,4 +31,4 @@ const PublicSite = () =>
 	</Loading>
 ;
 
-export default PublicSite;
+export default Site;

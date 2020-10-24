@@ -2,8 +2,8 @@ import {Button, Card, Result} from "antd";
 import FullsizeContent from "component/layout/FullsizeContent";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PublicPath from "site/public/router/PublicPath";
-import PublicView from "site/public/site/PublicView";
+import PublicPath from "site/public/site/PublicPath";
+import PublicView from "site/public/view/PublicView";
 
 const SingOutView = (
 	{

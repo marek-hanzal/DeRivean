@@ -4,7 +4,7 @@ import Session from "component/system/Session";
 import {Suspense} from "react";
 import {Helmet} from "react-helmet";
 import {BrowserRouter} from "react-router-dom";
-import PublicSite from "site/public/site/PublicSite";
+import {default as PublicSite} from "site/public/site/Site";
 import RootSite from "site/root/site/RootSite";
 import LoaderView from "./view/LoaderView";
 

@@ -1,12 +1,10 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-import FullsizeContent from "component/layout/FullsizeContent";
-import ScrollToTop from "component/ScrollToTop";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {getUserRegisterStatus} from "redux/user/register/selector";
-import PublicView from "site/public/site/PublicView";
+import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
 
@@ -14,9 +12,7 @@ function resolveStatus(t, status) {
 	switch (status) {
 		case "SUCCESS":
 			return (
-				<PublicView id={"public.sign-up"}>
-					<ScrollToTop/>
-					<FullsizeContent fullsize={true} reset={true}/>
+				<PublicView id={"public.sign-up"} fullsize={true}>
 					<SucceedResult/>
 				</PublicView>
 			);

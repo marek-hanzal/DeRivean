@@ -3,7 +3,7 @@ import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {useNavigate} from "react-router";
 import {onUserRegisterDismiss} from "redux/user/register/action";
-import PublicPath from "site/public/router/PublicPath";
+import PublicPath from "site/public/site/PublicPath";
 
 const SucceedResult = (
 	{

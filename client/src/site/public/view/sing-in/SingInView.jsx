@@ -2,7 +2,7 @@ import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
 import {withTranslation} from "react-i18next";
-import PublicView from "site/public/site/PublicView";
+import PublicView from "site/public/view/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 
 const SingInView = ({t}) =>

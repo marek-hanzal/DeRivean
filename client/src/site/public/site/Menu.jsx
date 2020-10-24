@@ -3,7 +3,7 @@ import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import {Route, Routes} from "react-router-dom";
-import PublicPath from "site/public/router/PublicPath";
+import PublicPath from "site/public/site/PublicPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 
@@ -18,10 +18,10 @@ const HomeMenu = () =>
 	/>
 ;
 
-const PublicMenu = () =>
+const Menu = () =>
 	<Routes>
 		<Route path={PublicPath.root + "/*"} element={<HomeMenu/>}/>
 	</Routes>
 ;
 
-export default PublicMenu;
+export default Menu;
