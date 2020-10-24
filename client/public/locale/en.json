@@ -214,6 +214,15 @@
 				"title": "Continue"
 			}
 		},
+		"blog": {
+			"dashboard": {
+				"menu": "Blog",
+				"title": "Blog Dashboard"
+			},
+			"create": {
+				"menu": "Create Post"
+			}
+		},
 		"user": {
 			"dashboard": {
 				"title": "Users Dashboard",

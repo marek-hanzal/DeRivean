@@ -1,6 +1,7 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
 import FullsizeContent from "component/layout/FullsizeContent";
+import SelectMenu from "component/menu/SelectMenu";
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {useNavigate} from "react-router";
@@ -16,6 +17,7 @@ const SingOutView = (
 		return (
 			<Card>
 				<FullsizeContent fullsize={true} reset={true}/>
+				<SelectMenu menu={`${translation}.sign-out`}/>
 				<Result
 					icon={<QuestionCircleFilled/>}
 					title={t(`${translation}.sign-out.title`)}
