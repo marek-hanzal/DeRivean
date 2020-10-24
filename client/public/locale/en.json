@@ -217,11 +217,13 @@
 		"user": {
 			"dashboard": {
 				"title": "Users Dashboard",
+				"subtitle": "User management module",
 				"menu": "Users",
 				"breadcrumb": "Users"
 			},
 			"create": {
 				"title": "Create User",
+				"subtitle": "Hey, create a new pal to play with!",
 				"menu": "Create User",
 				"breadcrumb": "Create User"
 			},

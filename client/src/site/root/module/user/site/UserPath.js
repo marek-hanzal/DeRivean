@@ -1,3 +1,5 @@
+import RootPath from "site/root/site/RootPath";
+
 const UserPath = {
 	root: "user",
 	dashboard: "dashboard",
@@ -6,7 +8,8 @@ const UserPath = {
 };
 
 UserPath.link = {
-	dashboard: (root) => `${root.trimLeft("/")}/${UserPath.root}/${UserPath.dashboard}`,
+	dashboard: () => `${RootPath.root}/${UserPath.root}/${UserPath.dashboard}`,
+	create: () => `${RootPath.root}/${UserPath.root}/${UserPath.create}`,
 };
 
 export default UserPath;

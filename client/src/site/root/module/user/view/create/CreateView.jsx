@@ -1,31 +1,23 @@
-import {UserOutlined} from "@ant-design/icons";
-import {Button, Card, Col, Input, Result, Row} from "antd";
+import {Button} from "antd";
 import CreateIcon from "component/icon/CreateIcon";
+import BaseCreateView from "component/view/BaseCreateView";
 import {withTranslation} from "react-i18next";
+import UserView from "site/root/module/user/view/UserView";
 
 const CreateView = (
 	{
 		t,
-		root,
-		translation,
-		view,
 	}) =>
-	<Card title={t(`${translation}.create.title`)}>
-		<Result
-			icon={<CreateIcon/>}
-			subTitle={
-				<Row justify={"center"}>
-					<Col span={6}>
-						<Input addonBefore={"[user name]"} size={"large"} allowClear prefix={<UserOutlined/>}/>
-					</Col>
-				</Row>
-			}>
-			<div>
-				... rest of fields
-			</div>
-			<Button type={"primary"}>[Submit]</Button>
-		</Result>
-	</Card>
+	<BaseCreateView
+		base={UserView}
+		id={"root.user"}
+		icon={<CreateIcon/>}
+	>
+		<div>
+			... rest of fields
+		</div>
+		<Button type={"primary"}>[Submit]</Button>
+	</BaseCreateView>
 ;
 
 export default withTranslation()(CreateView);
