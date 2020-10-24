@@ -24,9 +24,9 @@ const PublicSite = () =>
 						breadcrumbs here!
 					</PageHeader>
 					<PublicRouter/>
+					<Footer/>
 				</CollapsibleContent>
 			</Layout>
-			<Footer/>
 		</Layout>
 	</Loading>
 ;

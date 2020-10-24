@@ -1,6 +1,6 @@
 import HomeIcon from "component/icon/HomeIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
-import Menu from "component/menu/Menu";
+import BaseMenu from "component/menu/BaseMenu";
 import {Route, Routes} from "react-router-dom";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
 import UserPath from "site/root/module/user/router/UserPath";
@@ -9,7 +9,7 @@ import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 
 const HomeMenu = () =>
-	<Menu
+	<BaseMenu
 		items={[
 			menuItem(RootPath.root, "root.home", <HomeIcon/>),
 			menuDivider(),

@@ -24,9 +24,9 @@ const RootSite = () =>
 						breadcrumbs here!
 					</PageHeader>
 					<RootRouter/>
+					<Footer/>
 				</CollapsibleContent>
 			</Layout>
-			<Footer/>
 		</Layout>
 	</Loading>
 ;

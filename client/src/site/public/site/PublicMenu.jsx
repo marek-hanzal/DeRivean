@@ -1,14 +1,14 @@
 import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
-import Menu from "component/menu/Menu";
+import BaseMenu from "component/menu/BaseMenu";
 import {Route, Routes} from "react-router-dom";
 import PublicPath from "site/public/router/PublicPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 
 const HomeMenu = () =>
-	<Menu
+	<BaseMenu
 		items={[
 			menuItem(PublicPath.root, "public.home", <HomeIcon/>),
 			menuDivider(),

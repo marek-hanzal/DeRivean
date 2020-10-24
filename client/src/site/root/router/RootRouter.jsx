@@ -8,8 +8,8 @@ import NotFoundView from "view/NotFoundView";
 const RootRouter = () =>
 	<Routes>
 		<Route path={RootPath.root}>
-			<Route path={"sign-in"} element={<SingInView/>}/>
-			<Route path={"sign-out"} element={<SingOutView translation={"root"}/>}/>
+			<Route path={RootPath.signIn} element={<SingInView/>}/>
+			<Route path={RootPath.signOut} element={<SingOutView translation={"root"}/>}/>
 			<Route element={<HomeView/>}/>
 		</Route>
 		<Route path={"*"} element={<NotFoundView/>}/>
