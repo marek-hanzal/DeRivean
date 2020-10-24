@@ -1,23 +1,23 @@
 import BaseRoutes from "component/route/BaseRoutes";
-import Routes from "site/root/module/user/site/Routes";
 import CreateView from "site/root/module/user/view/create/CreateView";
 import DashboardView from "site/root/module/user/view/dashboard/DashboardView";
 import ListView from "site/root/module/user/view/list/ListView";
+import Routes from "site/Routes";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
 const Router = () =>
 	<BaseRoutes
 		routes={[
-			route(Routes.route.dashboard, <DashboardView/>),
-			route(Routes.route.create, <CreateView/>),
-			route(Routes.route.list, <ListView/>),
+			route(Routes.root.user.dashboard.match(), <DashboardView/>),
+			route(Routes.root.user.create.match(), <CreateView/>),
+			route(Routes.root.user.list.match(), <ListView/>),
 			route("*", <NotFoundView/>),
 		]}
 	/>
 ;
 
-const UserRoute = () => route(Routes.route.root, <Router/>);
+const UserRoute = () => route(Routes.root.user.match(), <Router/>);
 
 export {
 	UserRoute,

@@ -15,9 +15,9 @@ import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
 import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
-import RootPath from "site/root/site/RootPath";
 import HomeView from "site/root/view/HomeView";
 import SingInView from "site/root/view/SingInView";
+import Routes from "site/Routes";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
@@ -36,14 +36,14 @@ const Site = () =>
 
 					route("/", <BaseMenu
 						items={[
-							menuItem(RootPath.root, "root.home", <HomeIcon/>),
+							menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 							menuDivider(),
 
 							UserMenuItem(),
 							BlogMenuItem(),
 
 							menuDivider(),
-							menuItem(RootPath.signOut, "root.sign-out", <SignOutIcon/>),
+							menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 						]}
 					/>)
 				]}
@@ -58,7 +58,7 @@ const Site = () =>
 
 					route("/", <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(RootPath.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						]}
 					/>),
 				]}
@@ -71,8 +71,8 @@ const Site = () =>
 					UserContextRoute(),
 					BlogRoute(),
 
-					route(RootPath.signIn, <SingInView/>),
-					route(RootPath.signOut, <SingOutView id={"root"}/>),
+					route(Routes.root.signIn.link(), <SingInView/>),
+					route(Routes.root.signOut.link(), <SingOutView id={"root"}/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}
