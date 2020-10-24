@@ -2,7 +2,7 @@ import {Avatar, Layout} from "antd";
 import Menu from "antd/lib/menu";
 import icon from "assets/icon.png";
 import {Link} from "react-router-dom";
-import RootPath from "site/root/router/RootPath";
+import RootPath from "site/root/site/RootPath";
 
 const Header = () =>
 	<Layout.Header style={{

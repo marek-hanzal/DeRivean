@@ -4,7 +4,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import {Route, Routes} from "react-router-dom";
 import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
 import UserPath from "site/root/module/user/router/UserPath";
-import RootPath from "site/root/router/RootPath";
+import RootPath from "site/root/site/RootPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 
@@ -20,10 +20,10 @@ const HomeMenu = () =>
 	/>
 ;
 
-const RootMenu = () =>
+const Menu = () =>
 	<Routes>
 		<Route path={RootPath.root + "/*"} element={<HomeMenu/>}/>
 	</Routes>
 ;
 
-export default RootMenu;
+export default Menu;

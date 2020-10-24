@@ -1,7 +1,7 @@
 import {Button, Card, Result} from "antd";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import RootPath from "site/root/router/RootPath";
+import RootPath from "site/root/site/RootPath";
 import RootView from "site/root/view/RootView";
 
 const SingInView = ({t}) =>

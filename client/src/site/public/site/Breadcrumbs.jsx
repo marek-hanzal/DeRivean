@@ -5,12 +5,12 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import {Route, Routes} from "react-router-dom";
 import PublicPath from "site/public/site/PublicPath";
 import breadcrumbCurrentItem from "utils/breadcrumbs/breadcrumbCurrentItem";
-import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
+import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 
 const HomeBreadcrumbs = () =>
 	<BaseBreadcrumbs
 		items={[
-			breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
+			breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
 		]}
 	/>
 ;
@@ -18,7 +18,7 @@ const HomeBreadcrumbs = () =>
 const SignUpBreadcrumbs = () =>
 	<BaseBreadcrumbs
 		items={[
-			breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
+			breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
 			breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
 		]}
 	/>
@@ -27,7 +27,7 @@ const SignUpBreadcrumbs = () =>
 const SignInBreadcrumbs = () =>
 	<BaseBreadcrumbs
 		items={[
-			breadcrumbSimpleItem(PublicPath.root, <HomeIcon/>),
+			breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
 			breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
 		]}
 	/>

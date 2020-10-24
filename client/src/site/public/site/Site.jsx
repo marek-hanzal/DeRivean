@@ -1,35 +1,22 @@
-import {Layout, PageHeader} from "antd";
-import CollapsibleContent from "component/layout/CollapsibleContent";
-import Sider from "component/layout/Sider";
-import Loader from "component/Loader";
-import ScrollToTop from "component/ScrollToTop";
+import BaseLayout from "component/layout/BaseLayout";
 import Breadcrumbs from "site/public/site/Breadcrumbs";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
 import Menu from "site/public/site/Menu";
 import Router from "site/public/site/Router";
 
+/**
+ * Site could be maybe abstracted too, but it's here to prevent moving internal site stuff
+ * to root level of the application (thus we can have Menu instead of Menu used somewhere around App).
+ */
 const Site = () =>
-	<Loader>
-		<Layout>
-			<ScrollToTop/>
-			<Header/>
-			<Layout style={{
-				minHeight: "100vh",
-				padding: "0 50px",
-				marginTop: 64
-			}}>
-				<Sider children={<Menu/>}/>
-				<CollapsibleContent>
-					<PageHeader>
-						<Breadcrumbs/>
-					</PageHeader>
-					<Router/>
-					<Footer/>
-				</CollapsibleContent>
-			</Layout>
-		</Layout>
-	</Loader>
+	<BaseLayout
+		header={<Header/>}
+		menu={<Menu/>}
+		breadcrumbs={<Breadcrumbs/>}
+		router={<Router/>}
+		footer={<Footer/>}
+	/>
 ;
 
 export default Site;
