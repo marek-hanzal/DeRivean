@@ -1,10 +1,10 @@
-import ContextIcon from "component/icon/ContextIcon";
 import HomeIcon from "component/icon/HomeIcon";
+import ListIcon from "component/icon/ListIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
+import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
 import Routes from "site/Routes";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
@@ -16,10 +16,10 @@ const Menu = () =>
 			route("*", <BaseMenu
 				items={[
 					menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
-					menuItem("../../user/dashboard", "root.user.dashboard [resolve relative link]", <UserDashboardIcon/>),
-					menuItem(Routes.root.userContext.dashboard.link(), "root.user.context.dashboard", <ContextIcon/>),
+					menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
+					menuItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
 					menuDivider(),
-					menuItem(Routes.root.userContext.kingdom.link(), "root.user.context.kingdom", <KingdomIcon/>),
+					menuItem(Routes.root.userContext.kingdom.link(), "root.userContext.kingdom", <KingdomIcon/>),
 					menuDivider(),
 					menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 				]}

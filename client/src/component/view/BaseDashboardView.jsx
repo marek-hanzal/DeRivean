@@ -2,7 +2,7 @@ import {Card, Result} from "antd";
 import {createElement} from "react";
 import {withTranslation} from "react-i18next";
 
-const BaseDashboardView = ({t, id, icon, base, children, ...props}) =>
+const BaseDashboardView = ({t, id, icon, base, title = null, children, ...props}) =>
 	createElement(
 		base,
 		{
@@ -12,7 +12,7 @@ const BaseDashboardView = ({t, id, icon, base, children, ...props}) =>
 		<Card title={t(`${id}.dashboard.title`)}>
 			<Result
 				status={"info"}
-				title={t(`${id}.dashboard.title`)}
+				title={title || t(`${id}.dashboard.title`)}
 				subTitle={t(`${id}.dashboard.subtitle`)}
 				icon={icon}
 				children={children}

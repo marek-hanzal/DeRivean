@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.5.96",
+	"version": "0.5.97",
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
@@ -22,7 +22,7 @@
 		"react-redux": "^7.2.1",
 		"react-router": "^6.0.0-beta.0",
 		"react-router-dom": "^6.0.0-beta.0",
-		"react-scripts": "^4.0.0-next.117",
+		"react-scripts": "^4.0.0",
 		"history": "^5.0.0",
 		"redux": "^4.0.5",
 		"redux-actions": "^2.6.5",
@@ -34,17 +34,20 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"test": "react-scripts test"
 	},
 	"eslintConfig": {
 		"extends": [
 			"react-app",
 			"react-app/jest"
 		],
+		"plugins": [
+			"react-hooks"
+		],
 		"rules": {
 			"react/jsx-uses-react": "off",
-			"react/react-in-jsx-scope": "off"
+			"react/react-in-jsx-scope": "off",
+			"react-hooks/exhaustive-deps": "warn"
 		}
 	},
 	"browserslist": {

@@ -258,12 +258,16 @@
 						"column": "Site"
 					}
 				}
+			}
+		},
+		"userContext": {
+			"dashboard": {
+				"menu": "Dashboard",
+				"title": "Dashboard"
 			},
-			"context": {
-				"menu": "User's Context",
-				"kingdom": {
-					"menu": "Kingdoms"
-				}
+			"menu": "User's Context",
+			"kingdom": {
+				"menu": "Kingdoms"
 			}
 		},
 		"entity": {
