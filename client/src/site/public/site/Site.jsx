@@ -8,11 +8,16 @@ import BaseRoutes from "component/route/BaseRoutes";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
 import PublicPath from "site/public/site/PublicPath";
-import Router from "site/public/site/Router";
+import HomeView from "site/public/view/HomeView";
+import SignUpView from "site/public/view/sign-up/SignUpView";
+import SingOutView from "site/public/view/SignOutView";
+import SingInView from "site/public/view/sing-in/SingInView";
 import breadcrumbCurrentItem from "utils/breadcrumbs/breadcrumbCurrentItem";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
+import route from "utils/route/route";
+import NotFoundView from "view/NotFoundView";
 
 /**
  * Site could be maybe abstracted too, but it's here to prevent moving internal site stuff
@@ -23,46 +28,52 @@ const Site = () =>
 		header={<Header/>}
 		menu={
 			<BaseRoutes
-				routes={{
-					"*":
-						<BaseMenu
-							items={[
-								menuItem(PublicPath.root, "public.home", <HomeIcon/>),
-								menuDivider(),
-								menuItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
-								menuItem(PublicPath.signIn, "public.sign-in", <SignInIcon/>),
-							]}
-						/>
-				}}
+				routes={[
+					route("*", <BaseMenu
+						items={[
+							menuItem(PublicPath.root, "public.home", <HomeIcon/>),
+							menuDivider(),
+							menuItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
+							menuItem(PublicPath.signIn, "public.sign-in", <SignInIcon/>),
+						]}
+					/>),
+				]}
 			/>
 		}
 		breadcrumbs={
 			<BaseRoutes
-				routes={{
-					[PublicPath.signUp]:
-						<BaseBreadcrumbs
-							items={[
-								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
-								breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
-							]}
-						/>,
-					[PublicPath.signIn]:
-						<BaseBreadcrumbs
-							items={[
-								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
-								breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
-							]}
-						/>,
-					"/":
-						<BaseBreadcrumbs
-							items={[
-								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
-							]}
-						/>
-				}}
+				routes={[
+					route(PublicPath.signUp, <BaseBreadcrumbs
+						items={[
+							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
+						]}
+					/>),
+					route(PublicPath.signIn, <BaseBreadcrumbs
+						items={[
+							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
+						]}
+					/>),
+					route("/", <BaseBreadcrumbs
+						items={[
+							breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+						]}
+					/>),
+				]}
 			/>
 		}
-		router={<Router/>}
+		router={
+			<BaseRoutes
+				routes={[
+					route(PublicPath.signUp, <SignUpView/>),
+					route(PublicPath.signIn, <SingInView/>),
+					route(PublicPath.signOut, <SingOutView/>),
+					route("/", <HomeView/>),
+					route("*", <NotFoundView/>),
+				]}
+			/>
+		}
 		footer={<Footer/>}
 	/>
 ;

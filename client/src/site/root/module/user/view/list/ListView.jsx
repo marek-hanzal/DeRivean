@@ -1,5 +1,4 @@
 import BaseListView from "component/view/BaseListView";
-
 import {withTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
@@ -16,7 +15,7 @@ const ListView = ({...props}) =>
 		id={"root.user"}
 		{...props}
 		columns={[
-			columnRender("id", (text, record) => <Link to={"../" + UserPath.home(record.id)}>{text}</Link>),
+			columnRender("id", (text, record) => <Link to={UserPath.relative.context(record.id)}>{text}</Link>),
 			column("name"),
 			column("token"),
 			column("site"),

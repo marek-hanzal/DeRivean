@@ -8,26 +8,25 @@ import RootPath from "site/root/site/RootPath";
 import breadcrumbCurrentItem from "utils/breadcrumbs/breadcrumbCurrentItem";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
+import route from "utils/route/route";
 
 const BlogBreadcrumbs = () =>
 	<BaseRoutes
-		routes={{
-			[BlogPath.dashboard]:
-				<BaseBreadcrumbs
-					items={[
-						breadcrumbIconItem(RootPath.root, <HomeIcon/>),
-						breadcrumbCurrentItem("root.blog.dashboard", <BlogIcon/>),
-					]}
-				/>,
-			[BlogPath.create]:
-				<BaseBreadcrumbs
-					items={[
-						breadcrumbIconItem(RootPath.root, <HomeIcon/>),
-						breadcrumbItem("../" + BlogPath.dashboard, "root.blog.dashboard", <BlogIcon/>),
-						breadcrumbCurrentItem("root.blog.create", <CreateIcon/>),
-					]}
-				/>,
-		}}
+		routes={[
+			route(BlogPath.dashboard, <BaseBreadcrumbs
+				items={[
+					breadcrumbIconItem(RootPath.root, <HomeIcon/>),
+					breadcrumbCurrentItem("root.blog.dashboard", <BlogIcon/>),
+				]}
+			/>),
+			route(BlogPath.create, <BaseBreadcrumbs
+				items={[
+					breadcrumbIconItem(RootPath.root, <HomeIcon/>),
+					breadcrumbItem("../" + BlogPath.dashboard, "root.blog.dashboard", <BlogIcon/>),
+					breadcrumbCurrentItem("root.blog.create", <CreateIcon/>),
+				]}
+			/>),
+		]}
 	/>
 ;
 

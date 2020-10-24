@@ -1,17 +1,32 @@
 import RootPath from "site/root/site/RootPath";
 
-const UserPath = {
-	root: "user",
-	dashboard: "dashboard",
-	create: "create",
-	list: "list",
-	home: id => id + "/home",
-};
+const
+	root = "user",
+	dashboard = "dashboard",
+	create = "create",
+	list = "list",
+	context = "context",
+	kingdom = "kingdom";
 
-UserPath.link = {
-	dashboard: () => `${RootPath.root}/${UserPath.root}/${UserPath.dashboard}`,
-	create: () => `${RootPath.root}/${UserPath.root}/${UserPath.create}`,
-	list: () => `${RootPath.root}/${UserPath.root}/${UserPath.list}`,
+const UserPath = {
+	route: {
+		root: root + "/*",
+		dashboard: dashboard,
+		create: create,
+		list: list,
+		context: ":uuid/" + context,
+		kingdom: ":uuid/" + kingdom,
+	},
+	link: {
+		dashboard: () => `${RootPath.root}/${root}/${dashboard}`,
+		create: () => `${RootPath.root}/${root}/${create}`,
+		list: () => `${RootPath.root}/${root}/${list}`,
+	},
+	relative: {
+		dashboard: () => "../" + dashboard,
+		context: (uuid = null) => "../" + ((uuid ? uuid + "/" : "") + context),
+		kingdom: () => "../" + kingdom,
+	}
 };
 
 export default UserPath;

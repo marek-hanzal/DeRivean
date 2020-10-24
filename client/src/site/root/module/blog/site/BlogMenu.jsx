@@ -8,22 +8,22 @@ import BlogPath from "site/root/module/blog/site/BlogPath";
 import RootPath from "site/root/site/RootPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
+import route from "utils/route/route";
 
 const BlogMenu = () =>
 	<BaseRoutes
-		routes={{
-			"*":
-				<BaseMenu
-					items={[
-						menuItem(RootPath.root, "root.home", <HomeIcon/>),
-						menuItem(BlogPath.link.dashboard(), "root.blog.dashboard", <BlogIcon/>),
-						menuDivider(),
-						menuItem(BlogPath.link.create(), "root.blog.create", <CreateIcon/>),
-						menuDivider(),
-						menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
-					]}
-				/>,
-		}}
+		routes={[
+			route("*", <BaseMenu
+				items={[
+					menuItem(RootPath.root, "root.home", <HomeIcon/>),
+					menuItem(BlogPath.link.dashboard(), "root.blog.dashboard", <BlogIcon/>),
+					menuDivider(),
+					menuItem(BlogPath.link.create(), "root.blog.create", <CreateIcon/>),
+					menuDivider(),
+					menuItem(RootPath.link.signOut(), "root.sign-out", <SignOutIcon/>),
+				]}
+			/>),
+		]}
 	/>
 ;
 
