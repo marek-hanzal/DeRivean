@@ -1,5 +1,7 @@
 import SingOutView from "component/view/SingOutView";
 import {Route, Routes} from "react-router";
+import UserPath from "site/root/module/user/site/UserPath";
+import UserRouter from "site/root/module/user/site/UserRouter";
 import RootPath from "site/root/site/RootPath";
 import HomeView from "site/root/view/HomeView";
 import SingInView from "site/root/view/SingInView";
@@ -10,7 +12,8 @@ const Router = () =>
 		<Route path={RootPath.root}>
 			<Route path={RootPath.signIn} element={<SingInView/>}/>
 			<Route path={RootPath.signOut} element={<SingOutView translation={"root"}/>}/>
-			<Route element={<HomeView/>}/>
+			<Route path={UserPath.root + "/*"} element={<UserRouter/>}/>
+			<Route path={"/"} element={<HomeView/>}/>
 		</Route>
 		<Route path={"*"} element={<NotFoundView/>}/>
 	</Routes>
