@@ -10,23 +10,23 @@ import {onSessionClose} from "redux/session/action";
 const SingOutView = (
 	{
 		t,
-		translation,
+		id,
 		onLogout,
 	}) => {
 		const navigate = useNavigate();
 		return (
 			<Card>
 				<FullsizeContent fullsize={true} reset={true}/>
-				<SelectMenu menu={`${translation}.sign-out`}/>
+				<SelectMenu menu={`${id}.sign-out`}/>
 				<Result
 					icon={<QuestionCircleFilled/>}
-					title={t(`${translation}.sign-out.title`)}
-					subTitle={t(`${translation}.sign-out.subtitle`)}
+					title={t(`${id}.sign-out.title`)}
+					subTitle={t(`${id}.sign-out.subtitle`)}
 					extra={[
 						<Button type="primary" key="sign-out" onClick={() => onLogout()}>
-							{t(`${translation}.sign-out.button.sign-out`)}
+							{t(`${id}.sign-out.button.sign-out`)}
 						</Button>,
-						<Button key="back" onClick={() => navigate(-1)}>{t(`${translation}.sign-out.button.back`)}</Button>,
+						<Button key="back" onClick={() => navigate(-1)}>{t(`${id}.sign-out.button.back`)}</Button>,
 					]}
 				>
 				</Result>

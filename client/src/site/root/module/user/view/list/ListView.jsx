@@ -11,17 +11,17 @@ import column from "utils/table/column";
 import columnRender from "utils/table/columnRender";
 
 const ListView = ({...props}) =>
-	<UserView>
-		<BaseListView
-			{...props}
-			columns={[
-				columnRender("id", (text, record) => <Link to={UserPath.home(record.id)}>{text}</Link>),
-				column("name"),
-				column("token"),
-				column("site"),
-			]}
-		/>
-	</UserView>
+	<BaseListView
+		base={UserView}
+		id={"root.user"}
+		{...props}
+		columns={[
+			columnRender("id", (text, record) => <Link to={"../" + UserPath.home(record.id)}>{text}</Link>),
+			column("name"),
+			column("token"),
+			column("site"),
+		]}
+	/>
 ;
 
 export default connect(

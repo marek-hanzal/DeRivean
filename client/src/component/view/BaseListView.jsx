@@ -1,30 +1,29 @@
 import {Card} from "antd";
-import Table from "component/Table";
+import BaseTable from "component/table/BaseTable";
 import {createElement} from "react";
 import {withTranslation} from "react-i18next";
 
 const BaseListView = (
 	{
 		t,
-		root,
-		translation,
-		view,
-		columns,
+		base,
+		id,
 		page,
 		onPage,
+		columns,
 		...props
 	}) => createElement(
-	view,
+	base,
 	{
-		open: [root],
-		selected: [`${root}/list`],
+		id: `${id}.list`,
+		...props
 	},
-	<Card title={t(`${translation}.list.title`)}>
-		<Table
+	<Card title={t(`${id}.list.title`)}>
+		<BaseTable
 			page={page}
 			onPage={onPage}
 			{...props}
-			translation={`${translation}.list.table`}
+			id={`${id}.list.table`}
 			columns={columns}
 		/>
 	</Card>

@@ -1,9 +1,18 @@
+import BaseBreadcrumbs from "component/breadcrumbs/BaseBreadcrumbs";
+import HomeIcon from "component/icon/HomeIcon";
+import SignInIcon from "component/icon/SignInIcon";
+import SignUpIcon from "component/icon/SignUpIcon";
 import BaseLayout from "component/layout/BaseLayout";
-import Breadcrumbs from "site/public/site/Breadcrumbs";
+import BaseMenu from "component/menu/BaseMenu";
+import BaseRoutes from "component/route/BaseRoutes";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
-import Menu from "site/public/site/Menu";
+import PublicPath from "site/public/site/PublicPath";
 import Router from "site/public/site/Router";
+import breadcrumbCurrentItem from "utils/breadcrumbs/breadcrumbCurrentItem";
+import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
+import menuDivider from "utils/menu/menuDivider";
+import menuItem from "utils/menu/menuItem";
 
 /**
  * Site could be maybe abstracted too, but it's here to prevent moving internal site stuff
@@ -12,8 +21,47 @@ import Router from "site/public/site/Router";
 const Site = () =>
 	<BaseLayout
 		header={<Header/>}
-		menu={<Menu/>}
-		breadcrumbs={<Breadcrumbs/>}
+		menu={
+			<BaseRoutes
+				routes={{
+					"*":
+						<BaseMenu
+							items={[
+								menuItem(PublicPath.root, "public.home", <HomeIcon/>),
+								menuDivider(),
+								menuItem(PublicPath.signUp, "public.sign-up", <SignUpIcon/>),
+								menuItem(PublicPath.signIn, "public.sign-in", <SignInIcon/>),
+							]}
+						/>
+				}}
+			/>
+		}
+		breadcrumbs={
+			<BaseRoutes
+				routes={{
+					[PublicPath.signUp]:
+						<BaseBreadcrumbs
+							items={[
+								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+								breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
+							]}
+						/>,
+					[PublicPath.signIn]:
+						<BaseBreadcrumbs
+							items={[
+								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+								breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
+							]}
+						/>,
+					"/":
+						<BaseBreadcrumbs
+							items={[
+								breadcrumbIconItem(PublicPath.root, <HomeIcon/>),
+							]}
+						/>
+				}}
+			/>
+		}
 		router={<Router/>}
 		footer={<Footer/>}
 	/>

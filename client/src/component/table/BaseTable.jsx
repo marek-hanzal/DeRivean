@@ -1,8 +1,8 @@
-import {Table as AntdTable} from "antd";
+import {Table} from "antd";
 import {Component} from "react";
 import {withTranslation} from "react-i18next";
 
-class Table extends Component {
+class BaseTable extends Component {
 	componentDidMount() {
 		/**
 		 * Fetch initial page and get overall paging data.
@@ -13,7 +13,7 @@ class Table extends Component {
 	render() {
 		const {
 			t,
-			translation,
+			id,
 			page,
 			onPage,
 			items,
@@ -22,7 +22,7 @@ class Table extends Component {
 		} = this.props;
 
 		return (
-			<AntdTable
+			<Table
 				dataSource={items}
 				rowKey={record => record.id}
 				loading={{
@@ -36,10 +36,10 @@ class Table extends Component {
 					showQuickJumper: true,
 					onChange: (current, size) => onPage(current - 1, size),
 				}}
-				children={columns.map(item => <AntdTable.Column render={item.render} title={t(`${translation}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
+				children={columns.map(item => <Table.Column key={item.title || item.name} render={item.render} title={t(`${id}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
 			/>
 		);
 	}
 }
 
-export default withTranslation()(Table);
+export default withTranslation()(BaseTable);

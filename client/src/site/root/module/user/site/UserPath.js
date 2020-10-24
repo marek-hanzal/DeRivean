@@ -5,11 +5,13 @@ const UserPath = {
 	dashboard: "dashboard",
 	create: "create",
 	list: "list",
+	home: id => id + "/home",
 };
 
 UserPath.link = {
 	dashboard: () => `${RootPath.root}/${UserPath.root}/${UserPath.dashboard}`,
 	create: () => `${RootPath.root}/${UserPath.root}/${UserPath.create}`,
+	list: () => `${RootPath.root}/${UserPath.root}/${UserPath.list}`,
 };
 
 export default UserPath;

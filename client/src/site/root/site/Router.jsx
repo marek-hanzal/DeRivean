@@ -1,5 +1,5 @@
+import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
-import {Route, Routes} from "react-router";
 import BlogPath from "site/root/module/blog/site/BlogPath";
 import BlogRouter from "site/root/module/blog/site/BlogRouter";
 import UserPath from "site/root/module/user/site/UserPath";
@@ -10,16 +10,16 @@ import SingInView from "site/root/view/SingInView";
 import NotFoundView from "view/NotFoundView";
 
 const Router = () =>
-	<Routes>
-		<Route path={RootPath.root}>
-			<Route path={RootPath.signIn} element={<SingInView/>}/>
-			<Route path={RootPath.signOut} element={<SingOutView translation={"root"}/>}/>
-			<Route path={UserPath.root + "/*"} element={<UserRouter/>}/>
-			<Route path={BlogPath.root + "/*"} element={<BlogRouter/>}/>
-			<Route path={"/"} element={<HomeView/>}/>
-		</Route>
-		<Route path={"*"} element={<NotFoundView/>}/>
-	</Routes>
+	<BaseRoutes
+		routes={{
+			[RootPath.signIn]: <SingInView/>,
+			[RootPath.signOut]: <SingOutView id={"root"}/>,
+			[UserPath.root + "/*"]: <UserRouter/>,
+			[BlogPath.root + "/*"]: <BlogRouter/>,
+			"/": <HomeView/>,
+			"*": <NotFoundView/>,
+		}}
+	/>
 ;
 
 export default Router;
