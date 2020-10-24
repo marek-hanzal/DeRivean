@@ -1,11 +1,14 @@
 import {Button, Card, Result} from "antd";
-import WithMenu from "component/view/WithMenu";
 import {withTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import RootPath from "site/root/router/RootPath";
+import RootView from "site/root/site/RootView";
 
 const SingInView = ({t}) =>
-	<WithMenu menu={null}>
+	<RootView
+		id={"root.sign-in"}
+		fullsize={true}
+	>
 		<Card>
 			<Result
 				status="success"
@@ -18,7 +21,7 @@ const SingInView = ({t}) =>
 				]}
 			/>
 		</Card>
-	</WithMenu>
+	</RootView>
 ;
 
 export default withTranslation()(SingInView);

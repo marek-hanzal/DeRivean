@@ -1,7 +1,4 @@
 {
-	"raw": {
-		"User with the given name already exists": "User with the given name already exists."
-	},
 	"error": {
 		"discovery": {
 			"title": "Discovery Error",
@@ -134,7 +131,7 @@
 			}
 		}
 	},
-	"internal": {
+	"game": {
 		"home": {
 			"title": "Internal Home",
 			"link": "Home",
@@ -208,6 +205,7 @@
 			}
 		},
 		"sign-in": {
+			"title": "Signed-in",
 			"succeed": {
 				"title": "Welcome back to the Root!",
 				"subtitle": "Be careful here, dude, it's quite dangerous 'round here!"

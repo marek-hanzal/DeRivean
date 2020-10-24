@@ -1,21 +1,23 @@
-import {Routes} from "react-router";
+import SingOutView from "component/view/SingOutView";
+import {Route, Routes} from "react-router";
+import RootPath from "site/root/router/RootPath";
+import HomeView from "site/root/view/HomeView";
+import SingInView from "site/root/view/SingInView";
+import NotFoundView from "view/NotFoundView";
 
 const RootRouter = () =>
 	<Routes>
-		{/*<Route path={"/*"}>*/}
-		{/*	<Routes>*/}
-		{/*		<Route path={"sign-in"} element={SingInView}/>*/}
-		{/*		<Route path={"sign-out"} element={() => <SingOutView translation={"root"}/>}/>*/}
-		{/*		<Route element={HomeView}/>*/}
-		{/*	</Routes>*/}
-		{/*	<Route component={NotFoundView}/>*/}
-		{/*</Route>*/}
+		<Route path={RootPath.root}>
+			<Route path={"sign-in"} element={<SingInView/>}/>
+			<Route path={"sign-out"} element={() => <SingOutView translation={"root"}/>}/>
+			<Route element={<HomeView/>}/>
+		</Route>
 
 		{/*<Route path={UserPath.root} element={UserRouter}/>*/}
 		{/*<Route path={RootPath.signIn} element={SingInView}/>*/}
 		{/*<Route path={RootPath.signOut} element={}/>*/}
 		{/*<Route path={RootPath.root} element={HomeView}/>*/}
-
+		<Route path={"*"} element={<NotFoundView/>}/>
 	</Routes>
 ;
 

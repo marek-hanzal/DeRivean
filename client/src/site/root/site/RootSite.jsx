@@ -17,7 +17,9 @@ const RootSite = () =>
 				padding: "0 50px",
 				marginTop: 64
 			}}>
-				<Sider/>
+				<Sider>
+					[root menu should be here!]
+				</Sider>
 				<CollapsibleContent>
 					<PageHeader>
 						breadcrumbs here!

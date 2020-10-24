@@ -1,11 +1,12 @@
 import {SmileOutlined} from "@ant-design/icons";
 import {Card, Result} from "antd";
-import WithMenu from "component/view/WithMenu";
 import {withTranslation} from "react-i18next";
-import RootMenu from "site/root/site/RootMenu";
+import RootView from "site/root/site/RootView";
 
 const HomeView = ({t}) =>
-	<WithMenu menu={RootMenu()}>
+	<RootView
+		id={"root.home"}
+	>
 		<Card title={t("root.home.title")}>
 			<Result
 				icon={<SmileOutlined/>}
@@ -14,6 +15,6 @@ const HomeView = ({t}) =>
 				subTitle={t("root.home.content.subtitle")}
 			/>
 		</Card>
-	</WithMenu>
+	</RootView>
 ;
 export default withTranslation()(HomeView);
