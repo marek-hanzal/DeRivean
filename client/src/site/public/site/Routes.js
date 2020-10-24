@@ -1,8 +1,20 @@
+const
+	root = "/",
+	signUp = "sign-up",
+	signIn = "sign-in",
+	signOut = "sign-out";
+
 const Routes = {
-	root: "/",
-	signUp: "sign-up",
-	signIn: "sign-in",
-	signOut: "sign-out",
+	route: {
+		root: root + "/*",
+		signUp,
+		signIn,
+		signOut,
+	},
+	relative: {
+		root,
+		signIn: "../" + signIn,
+	}
 };
 
 export default Routes;

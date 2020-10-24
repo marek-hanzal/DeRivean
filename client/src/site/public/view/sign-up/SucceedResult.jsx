@@ -20,7 +20,7 @@ const SucceedResult = (
 					extra={[
 						<Button type="primary" key="continue" onClick={() => {
 							onDismiss();
-							navigate("../" + Routes.signIn);
+							navigate(Routes.relative.signIn);
 						}}>
 							{t("public.sign-up.continue.title")}
 						</Button>

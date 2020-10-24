@@ -31,10 +31,10 @@ const Site = () =>
 				routes={[
 					route("*", <BaseMenu
 						items={[
-							menuItem(Routes.root, "public.home", <HomeIcon/>),
+							menuItem(Routes.relative.root, "public.home", <HomeIcon/>),
 							menuDivider(),
-							menuItem(Routes.signUp, "public.sign-up", <SignUpIcon/>),
-							menuItem(Routes.signIn, "public.sign-in", <SignInIcon/>),
+							menuItem(Routes.route.signUp, "public.sign-up", <SignUpIcon/>),
+							menuItem(Routes.route.signIn, "public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 				]}
@@ -43,21 +43,21 @@ const Site = () =>
 		breadcrumbs={
 			<BaseRoutes
 				routes={[
-					route(Routes.signUp, <BaseBreadcrumbs
+					route(Routes.route.signUp, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-up", <SignUpIcon/>),
 						]}
 					/>),
-					route(Routes.signIn, <BaseBreadcrumbs
+					route(Routes.route.signIn, <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
 							breadcrumbCurrentItem("public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 					route("/", <BaseBreadcrumbs
 						items={[
-							breadcrumbIconItem(Routes.root, <HomeIcon/>),
+							breadcrumbIconItem(Routes.route.root, <HomeIcon/>),
 						]}
 					/>),
 				]}
@@ -66,9 +66,9 @@ const Site = () =>
 		router={
 			<BaseRoutes
 				routes={[
-					route(Routes.signUp, <SignUpView/>),
-					route(Routes.signIn, <SingInView/>),
-					route(Routes.signOut, <SingOutView/>),
+					route(Routes.route.signUp, <SignUpView/>),
+					route(Routes.route.signIn, <SingInView/>),
+					route(Routes.route.signOut, <SingOutView/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}

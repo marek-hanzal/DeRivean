@@ -12,7 +12,7 @@ const Header = () =>
 		padding: "0"
 	}}>
 		<Menu theme="dark" mode="horizontal" selectable={false}>
-			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.root}>DeRivean</Link></Menu.Item>
+			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.route.root}>DeRivean</Link></Menu.Item>
 		</Menu>
 	</Layout.Header>
 ;

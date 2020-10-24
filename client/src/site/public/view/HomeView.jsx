@@ -24,7 +24,7 @@ const HomeView = (
 						<Link to={"sign-in"}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
 					</Button>,
 					<Button key="sign-up">
-						<Link to={Routes.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
+						<Link to={Routes.route.signUp}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
 					</Button>,
 				]}
 			>
