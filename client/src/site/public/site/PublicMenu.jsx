@@ -7,7 +7,7 @@ import PublicPath from "site/public/router/PublicPath";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 
-const RootMenu = () =>
+const HomeMenu = () =>
 	<Menu
 		items={[
 			menuItem(PublicPath.root, "public.home", <HomeIcon/>),
@@ -20,8 +20,7 @@ const RootMenu = () =>
 
 const PublicMenu = () =>
 	<Routes>
-		<Route path={PublicPath.root + "/*"} element={<RootMenu/>}>
-		</Route>
+		<Route path={PublicPath.root + "/*"} element={<HomeMenu/>}/>
 	</Routes>
 ;
 

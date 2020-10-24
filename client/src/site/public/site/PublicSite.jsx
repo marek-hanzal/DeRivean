@@ -18,9 +18,7 @@ const PublicSite = () =>
 				padding: "0 50px",
 				marginTop: 64
 			}}>
-				<Sider>
-					<PublicMenu/>
-				</Sider>
+				<Sider children={<PublicMenu/>}/>
 				<CollapsibleContent>
 					<PageHeader>
 						breadcrumbs here!

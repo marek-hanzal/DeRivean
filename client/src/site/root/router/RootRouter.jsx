@@ -9,14 +9,9 @@ const RootRouter = () =>
 	<Routes>
 		<Route path={RootPath.root}>
 			<Route path={"sign-in"} element={<SingInView/>}/>
-			<Route path={"sign-out"} element={() => <SingOutView translation={"root"}/>}/>
+			<Route path={"sign-out"} element={<SingOutView translation={"root"}/>}/>
 			<Route element={<HomeView/>}/>
 		</Route>
-
-		{/*<Route path={UserPath.root} element={UserRouter}/>*/}
-		{/*<Route path={RootPath.signIn} element={SingInView}/>*/}
-		{/*<Route path={RootPath.signOut} element={}/>*/}
-		{/*<Route path={RootPath.root} element={HomeView}/>*/}
 		<Route path={"*"} element={<NotFoundView/>}/>
 	</Routes>
 ;

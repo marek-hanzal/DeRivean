@@ -6,6 +6,7 @@ import ScrollToTop from "component/ScrollToTop";
 import RootRouter from "site/root/router/RootRouter";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
+import RootMenu from "site/root/site/RootMenu";
 
 const RootSite = () =>
 	<Loading>
@@ -17,9 +18,7 @@ const RootSite = () =>
 				padding: "0 50px",
 				marginTop: 64
 			}}>
-				<Sider>
-					[root menu should be here!]
-				</Sider>
+				<Sider children={<RootMenu/>}/>
 				<CollapsibleContent>
 					<PageHeader>
 						breadcrumbs here!
