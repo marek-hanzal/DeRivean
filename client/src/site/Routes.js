@@ -5,6 +5,18 @@ function resolveUuid(param, path) {
 }
 
 const Routes = {
+	public: {
+		match: () => "/",
+		link: () => "/",
+		signUp: {
+			match: () => "sign-up/*",
+			link: () => "/sign-up",
+		},
+		signIn: {
+			match: () => "sign-in/*",
+			link: () => "/sign-in",
+		},
+	},
 	root: {
 		match: () => "/",
 		link: () => "/",

@@ -2,7 +2,7 @@ import {Avatar, Layout} from "antd";
 import Menu from "antd/lib/menu";
 import icon from "assets/icon.png";
 import {Link} from "react-router-dom";
-import Routes from "site/public/site/Routes";
+import Routes from "site/Routes";
 
 const Header = () =>
 	<Layout.Header style={{
@@ -12,7 +12,7 @@ const Header = () =>
 		padding: "0"
 	}}>
 		<Menu theme="dark" mode="horizontal" selectable={false}>
-			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.route.root}>DeRivean</Link></Menu.Item>
+			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.public.link()}>DeRivean</Link></Menu.Item>
 		</Menu>
 	</Layout.Header>
 ;

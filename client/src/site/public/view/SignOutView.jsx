@@ -2,8 +2,8 @@ import {Button, Card, Result} from "antd";
 import FullsizeContent from "component/layout/FullsizeContent";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import Routes from "site/public/site/Routes";
 import PublicView from "site/public/view/PublicView";
+import Routes from "site/Routes";
 
 const SingOutView = () => {
 	const {t} = useTranslation();
@@ -17,7 +17,7 @@ const SingOutView = () => {
 					subTitle={t("public.sign-out.succeed.subtitle")}
 					extra={[
 						<Button type="primary" key="continue">
-							<Link to={Routes.relative.root}>{t("public.sign-out.continue.title")}</Link>
+							<Link to={Routes.public.link()}>{t("public.sign-out.continue.title")}</Link>
 						</Button>
 					]}
 				/>

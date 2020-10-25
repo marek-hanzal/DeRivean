@@ -3,12 +3,12 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
 import {onUserRegisterDismiss} from "redux/user/register/action";
-import Routes from "site/public/site/Routes";
+import Routes from "site/Routes";
 
 const SucceedResult = () => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {t} = useTranslation();
-	const dispatch = useDispatch();
 	return (
 		<Card>
 			<Result
@@ -18,7 +18,7 @@ const SucceedResult = () => {
 				extra={[
 					<Button type="primary" key="continue" onClick={() => {
 						dispatch(onUserRegisterDismiss());
-						navigate(Routes.relative.signIn);
+						navigate(Routes.public.signIn.link());
 					}}>
 						{t("public.sign-up.continue.title")}
 					</Button>
