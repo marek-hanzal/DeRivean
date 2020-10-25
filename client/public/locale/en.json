@@ -268,7 +268,16 @@
 			},
 			"kingdom": {
 				"menu": "Kingdoms",
-				"title": "Kingdoms"
+				"title": "Kingdoms",
+				"dashboard": {
+					"menu": "Kingdom Dashboard"
+				},
+				"create": {
+					"menu": "Create Kingdom"
+				},
+				"list": {
+					"menu": "Kingdom List"
+				}
 			}
 		},
 		"entity": {
