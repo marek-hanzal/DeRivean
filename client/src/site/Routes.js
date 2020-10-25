@@ -68,15 +68,15 @@ const Routes = {
 				match: () => "kingdom/*",
 				link: resolveUuid("user", "/user-context/:user/kingdom"),
 				dashboard: {
-					match: () => "kingdom/dashboard/*",
+					match: () => "dashboard/*",
 					link: resolveUuid("user", "/user-context/:user/kingdom/dashboard"),
 				},
 				create: {
-					match: () => "kingdom/create",
+					match: () => "create",
 					link: resolveUuid("user", "/user-context/:user/kingdom/create"),
 				},
 				list: {
-					match: () => "kingdom/list",
+					match: () => "list",
 					link: resolveUuid("user", "/user-context/:user/kingdom/list"),
 				},
 			},

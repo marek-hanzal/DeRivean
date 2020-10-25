@@ -1,6 +1,7 @@
 import ScrollToTop from "component/ScrollToTop";
 import useFullsizeContent from "hook/useFullsizeContent";
-import useSelectMenu from "hook/useSelectMenu";
+import useMenuOpen from "hook/useMenuOpen";
+import useMenuSelect from "hook/useMenuSelect";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
 
@@ -26,13 +27,15 @@ const RootView = (
 		 * Title translation ID, defaults to common ID
 		 */
 		title = id,
+		open,
 		/**
 		 * Hey, React dude! - you already know this :)
 		 */
 		children,
 	}) => {
 	const {t} = useTranslation();
-	useSelectMenu(menu);
+	useMenuSelect(menu);
+	useMenuOpen(open);
 	useFullsizeContent(fullsize, reset);
 	return (
 		<>

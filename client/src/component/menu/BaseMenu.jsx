@@ -1,25 +1,30 @@
 import {Menu} from "antd";
 import {useTranslation} from "react-i18next";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {generatePath, useParams} from "react-router";
 import {Link} from "react-router-dom";
-import {getMenuItem} from "redux/menu/selector";
+import {onMenuOpen} from "redux/menu/action";
+import {getMenuOpen, getMenuSelect} from "redux/menu/selector";
 
 const BaseMenu = ({items = []}) => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
-	const selected = useSelector(getMenuItem);
+	const select = useSelector(getMenuSelect);
+	const open = useSelector(getMenuOpen);
 	return (
 		<Menu
 			mode="inline"
 			selectable={true}
-			selectedKeys={selected || []}
+			selectedKeys={select}
+			openKeys={open}
 			style={{height: "100vh"}}
+			onOpenChange={([_, open]) => dispatch(onMenuOpen([open]))}
 		>
 			{items.map((item, index) => {
 				if (item.group) {
 					return (
-						<Menu.SubMenu key={index} title={t(`${item.group}.menu`)} icon={item.icon}>
+						<Menu.SubMenu key={item.group} title={t(`${item.group}.menu`)} icon={item.icon}>
 							{item.items.map((groupItem, groupIndex) => {
 								const href = generatePath(groupItem.href || "", params);
 								const key = groupItem.key || groupIndex;

@@ -1,6 +1,6 @@
 import ScrollToTop from "component/ScrollToTop";
 import useFullsizeContent from "hook/useFullsizeContent";
-import useSelectMenu from "hook/useSelectMenu";
+import useMenuSelect from "hook/useMenuSelect";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
 
@@ -14,7 +14,7 @@ const PublicView = (
 		children,
 	}) => {
 	const {t} = useTranslation();
-	useSelectMenu(menu);
+	useMenuSelect(menu);
 	useFullsizeContent(fullsize, reset);
 	return (
 		<>

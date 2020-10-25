@@ -9,23 +9,22 @@ const branch = state => state.menu;
 const isMenuCollapsed = state => branch(state).collapse;
 
 /**
- * return an array of opened menu items
- *
- * @param state
- * @returns {string[]}
- */
-const getMenuOpen = state => branch(state).open;
-
-/**
  * Return currently selected menu item.
  *
  * @returns: string
  */
-const getMenuItem = state => branch(state).item;
+const getMenuSelect = state => branch(state).select;
+
+/**
+ * Return currently opened menu item (submenu)
+ *
+ * @return string
+ */
+const getMenuOpen = state => branch(state).open;
 
 export {
 	branch as menuBranch,
 	isMenuCollapsed,
+	getMenuSelect,
 	getMenuOpen,
-	getMenuItem,
 };

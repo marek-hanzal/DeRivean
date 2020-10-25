@@ -2,11 +2,11 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {onMenuSelect} from "redux/menu/action";
 
-const useSelectMenu = (menu) => {
+const useMenuSelect = select => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(onMenuSelect(menu));
-	}, [dispatch, menu]);
+		dispatch(onMenuSelect([select]));
+	}, [dispatch, select]);
 };
 
-export default useSelectMenu;
+export default useMenuSelect;

@@ -1,7 +1,7 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
 import useFullsizeContent from "hook/useFullsizeContent";
-import useSelectMenu from "hook/useSelectMenu";
+import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
@@ -11,7 +11,7 @@ const SingOutView = ({id}) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {t} = useTranslation();
-	useSelectMenu(`${id}.sign-out`);
+	useMenuSelect(`${id}.sign-out`);
 	useFullsizeContent(true);
 	return (
 		<Card>
