@@ -11,7 +11,8 @@ const BaseLayout = (
 		breadcrumbs,
 		footer,
 	}
-	) =>
+) => {
+	return (
 		<Loader>
 			<Layout>
 				{header}
@@ -29,6 +30,7 @@ const BaseLayout = (
 				</Layout>
 			</Layout>
 		</Loader>
-;
+	);
+};
 
 export default BaseLayout;

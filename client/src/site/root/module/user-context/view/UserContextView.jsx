@@ -1,10 +1,11 @@
-import FetchUser from "site/root/module/user-context/component/FetchUser";
+import useFetchUser from "site/root/module/user-context/hook/useFetchUser";
 import RootView from "site/root/view/RootView";
 
-const UserContextView = props =>
-	<FetchUser>
+const UserContextView = props => {
+	useFetchUser();
+	return (
 		<RootView {...props}/>
-	</FetchUser>
-;
+	);
+};
 
 export default UserContextView;

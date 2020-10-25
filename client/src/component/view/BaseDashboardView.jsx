@@ -1,9 +1,10 @@
 import {Card, Result} from "antd";
 import {createElement} from "react";
-import {withTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 
-const BaseDashboardView = ({t, id, icon, base, title = null, children, ...props}) =>
-	createElement(
+const BaseDashboardView = ({id, icon, base, title = null, children, ...props}) => {
+	const {t} = useTranslation();
+	return createElement(
 		base,
 		{
 			id: `${id}.dashboard`,
@@ -18,7 +19,7 @@ const BaseDashboardView = ({t, id, icon, base, title = null, children, ...props}
 				children={children}
 			/>
 		</Card>
-	)
-;
+	);
+};
 
-export default withTranslation()(BaseDashboardView);
+export default BaseDashboardView;

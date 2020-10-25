@@ -1,5 +1,4 @@
 import {Button, Card, Result} from "antd";
-import FullsizeContent from "component/layout/FullsizeContent";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import PublicView from "site/public/view/PublicView";
@@ -8,8 +7,10 @@ import Routes from "site/Routes";
 const SingOutView = () => {
 	const {t} = useTranslation();
 	return (
-		<PublicView id={"public.sign-out"}>
-			<FullsizeContent fullsize={true} reset={true}/>
+		<PublicView
+			id={"public.sign-out"}
+			fullsize={true}
+		>
 			<Card>
 				<Result
 					status="success"

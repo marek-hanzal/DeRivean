@@ -17,7 +17,7 @@ const SignUpView = () => {
 	useEffect(() => {
 		dispatch(onUserRegisterDismiss());
 		return () => dispatch(onUserRegisterDismiss());
-	}, []);
+	}, [dispatch]);
 	switch (status) {
 		case "SUCCESS":
 			return (

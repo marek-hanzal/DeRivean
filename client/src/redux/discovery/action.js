@@ -1,5 +1,4 @@
 import Axios from "axios";
-import {getDiscoveryHref} from "redux/client/selector";
 import {onLoading} from "redux/loading/action";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
@@ -9,10 +8,10 @@ const
 	onDiscoveryRequest = requestAction("discovery"),
 	onDiscoverySuccess = successAction("discovery"),
 	onDiscoveryFailure = failureAction("discovery"),
-	onDiscovery = () => (dispatch, getState) => {
+	onDiscovery = href => dispatch => {
 		dispatch(onLoading(true));
 		dispatch(onDiscoveryRequest());
-		return Axios.get(getDiscoveryHref(getState()))
+		return Axios.get(href)
 			.then(({data}) => {
 				dispatch(onDiscoverySuccess(data));
 				dispatch(onLoading(false));

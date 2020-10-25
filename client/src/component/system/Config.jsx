@@ -1,32 +1,22 @@
-import {Component} from "react";
-import {connect} from "react-redux";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {onClient} from "redux/client/action";
 import {getClientStatus} from "redux/client/selector";
 import ClientErrorView from "view/ClientErrorView";
 import LoaderView from "view/LoaderView";
 
-class Client extends Component {
-	componentDidMount() {
-		this.props.onClient(this.props.href || "/client.json");
+const Client = ({children, href = "/client.json"}) => {
+	const dispatch = useDispatch();
+	const status = useSelector(getClientStatus);
+	useEffect(() => dispatch(onClient(href)), [dispatch, href]);
+	switch (status) {
+		case "SUCCESS":
+			return children;
+		case "FAILURE":
+			return <ClientErrorView/>;
+		default:
+			return <LoaderView/>;
 	}
+};
 
-	render() {
-		switch (this.props.status) {
-			case "SUCCESS":
-				return this.props.children;
-			case "FAILURE":
-				return <ClientErrorView/>;
-			default:
-				return <LoaderView/>;
-		}
-	}
-}
-
-export default connect(
-	state => ({
-		status: getClientStatus(state),
-	}),
-	dispatch => ({
-		onClient: href => dispatch(onClient(href)),
-	})
-)(Client);
+export default Client;

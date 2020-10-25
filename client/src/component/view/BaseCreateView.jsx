@@ -1,9 +1,10 @@
 import {Card, Result} from "antd";
 import {createElement} from "react";
-import {withTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 
-const BaseCreateView = ({t, id, icon, base, children, ...props}) =>
-	createElement(
+const BaseCreateView = ({id, icon, base, children, ...props}) => {
+	const {t} = useTranslation();
+	return createElement(
 		base,
 		{
 			id: `${id}.create`,
@@ -18,7 +19,7 @@ const BaseCreateView = ({t, id, icon, base, children, ...props}) =>
 				children={children}
 			/>
 		</Card>
-	)
-;
+	);
+};
 
-export default withTranslation()(BaseCreateView);
+export default BaseCreateView;
