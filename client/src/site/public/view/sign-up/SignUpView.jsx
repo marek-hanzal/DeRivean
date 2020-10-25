@@ -1,16 +1,23 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Card, Col, Result, Row, Typography} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-import {Component} from "react";
-import {withTranslation} from "react-i18next";
-import {connect} from "react-redux";
+import {useEffect} from "react";
+import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
 import {onUserRegisterDismiss} from "redux/user/register/action";
 import {getUserRegisterStatus} from "redux/user/register/selector";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
 
-function resolveStatus(t, status) {
+const SignUpView = () => {
+	const dispatch = useDispatch();
+	const status = useSelector(getUserRegisterStatus);
+	const {t} = useTranslation();
+	useEffect(() => {
+		dispatch(onUserRegisterDismiss());
+		return () => dispatch(onUserRegisterDismiss());
+	}, []);
 	switch (status) {
 		case "SUCCESS":
 			return (
@@ -55,28 +62,6 @@ function resolveStatus(t, status) {
 				</PublicView>
 			);
 	}
-}
+};
 
-class SignUpView extends Component {
-	componentDidMount() {
-		this.props.onDismiss();
-	}
-
-	componentWillUnmount() {
-		this.props.onDismiss();
-	}
-
-	render() {
-		const {t, status} = this.props;
-		return resolveStatus(t, status);
-	}
-}
-
-export default connect(
-	state => ({
-		status: getUserRegisterStatus(state),
-	}),
-	dispatch => ({
-		onDismiss: () => dispatch(onUserRegisterDismiss()),
-	}),
-)(withTranslation()(SignUpView));
+export default SignUpView;

@@ -34,7 +34,7 @@ const Site = () =>
 							menuItem(Routes.public.link(), "public.home", <HomeIcon/>),
 							menuDivider(),
 							menuItem(Routes.public.signUp.link(), "public.sign-up", <SignUpIcon/>),
-							menuItem(Routes.route.signIn.link(), "public.sign-in", <SignInIcon/>),
+							menuItem(Routes.public.signIn.link(), "public.sign-in", <SignInIcon/>),
 						]}
 					/>),
 				]}

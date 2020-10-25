@@ -16,6 +16,10 @@ const Routes = {
 			match: () => "sign-in/*",
 			link: () => "/sign-in",
 		},
+		signOut: {
+			match: () => "sign-out/*",
+			link: () => "/sign-out",
+		},
 	},
 	root: {
 		match: () => "/",
