@@ -7,6 +7,7 @@ const BaseListView = (
 	{
 		base,
 		id,
+		open = id,
 		page,
 		onPage,
 		columns,
@@ -18,6 +19,7 @@ const BaseListView = (
 			base,
 			{
 				id: `${id}.list`,
+				open,
 				...props
 			},
 			<Card title={t(`${id}.list.title`)}>

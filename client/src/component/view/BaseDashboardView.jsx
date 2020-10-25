@@ -2,12 +2,22 @@ import {Card, Result} from "antd";
 import {createElement} from "react";
 import {useTranslation} from "react-i18next";
 
-const BaseDashboardView = ({id, icon, base, title = null, children, ...props}) => {
+const BaseDashboardView = (
+	{
+		id,
+		open = id,
+		icon,
+		base,
+		title = null,
+		children,
+		...props
+	}) => {
 	const {t} = useTranslation();
 	return createElement(
 		base,
 		{
 			id: `${id}.dashboard`,
+			open,
 			...props
 		},
 		<Card title={t(`${id}.dashboard.title`)}>

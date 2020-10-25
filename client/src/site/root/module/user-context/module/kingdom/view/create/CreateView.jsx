@@ -6,7 +6,6 @@ const CreateView = () => {
 		<BaseCreateView
 			base={KingdomView}
 			id={"root.userContext.kingdom"}
-			open={"root.userContext.kingdom"}
 		/>
 	);
 };
