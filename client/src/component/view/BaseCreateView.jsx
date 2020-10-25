@@ -1,4 +1,5 @@
 import {Card, Result} from "antd";
+import CreateIcon from "component/icon/CreateIcon";
 import {createElement} from "react";
 import {useTranslation} from "react-i18next";
 
@@ -6,8 +7,9 @@ const BaseCreateView = (
 	{
 		id,
 		open = id,
-		icon,
+		icon = <CreateIcon/>,
 		base,
+		subTitle,
 		children,
 		...props
 	}) => {
@@ -23,7 +25,7 @@ const BaseCreateView = (
 			<Result
 				status={"info"}
 				title={t(`${id}.create.title`)}
-				subTitle={t(`${id}.create.subtitle`)}
+				subTitle={subTitle || t(`${id}.create.subtitle`)}
 				icon={icon}
 				children={children}
 			/>

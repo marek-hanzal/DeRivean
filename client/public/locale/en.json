@@ -270,13 +270,18 @@
 				"menu": "Kingdoms",
 				"title": "Kingdoms",
 				"dashboard": {
-					"menu": "Kingdom Dashboard"
+					"menu": "Kingdom Dashboard",
+					"title": "Kingdom Dashboard",
+					"subtitle": "Everything interesting about Kingdoms of selected User."
 				},
 				"create": {
-					"menu": "Create Kingdom"
+					"menu": "Create Kingdom",
+					"title": "Create Kingdom",
+					"subtitle": "Create a new Kingdom for the selected User!"
 				},
 				"list": {
-					"menu": "Kingdom List"
+					"menu": "Kingdom List",
+					"title": "Kingdom List"
 				}
 			}
 		},

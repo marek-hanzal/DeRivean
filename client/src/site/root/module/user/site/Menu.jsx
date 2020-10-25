@@ -18,8 +18,8 @@ const Menu = () =>
 					menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 					menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <UserDashboardIcon/>),
 					menuDivider(),
-					menuItem(Routes.root.user.create.link(), "root.user.create", <CreateIcon/>),
 					menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
+					menuItem(Routes.root.user.create.link(), "root.user.create", <CreateIcon/>),
 					menuDivider(),
 					menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 				]}

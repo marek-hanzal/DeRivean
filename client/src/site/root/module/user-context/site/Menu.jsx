@@ -24,8 +24,8 @@ const Menu = () =>
 					menuDivider(),
 					menuGroup("root.userContext.kingdom", <KingdomIcon/>, [
 						menuItem(Routes.root.userContext.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <DashboardIcon/>),
-						menuItem(Routes.root.userContext.kingdom.create.link(), "root.userContext.kingdom.create", <CreateIcon/>),
 						menuItem(Routes.root.userContext.kingdom.list.link(), "root.userContext.kingdom.list", <ListIcon/>),
+						menuItem(Routes.root.userContext.kingdom.create.link(), "root.userContext.kingdom.create", <CreateIcon/>),
 					]),
 					menuDivider(),
 					menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
