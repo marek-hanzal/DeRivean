@@ -261,13 +261,14 @@
 			}
 		},
 		"userContext": {
+			"menu": "User's Context",
 			"dashboard": {
 				"menu": "Dashboard",
 				"title": "Dashboard"
 			},
-			"menu": "User's Context",
 			"kingdom": {
-				"menu": "Kingdoms"
+				"menu": "Kingdoms",
+				"title": "Kingdoms"
 			}
 		},
 		"entity": {
