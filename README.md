@@ -1,5 +1,7 @@
 # DeRivean
 
+![Docker](https://github.com/marek-hanzal/DeRivean/workflows/Docker/badge.svg)
+
 Legacy of DeRivean as the game (server) engine.
 
 ## Welcome!
