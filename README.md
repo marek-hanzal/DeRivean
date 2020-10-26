@@ -1,6 +1,6 @@
 # DeRivean
 
-![Docker](https://github.com/marek-hanzal/DeRivean/workflows/Docker/badge.svg)
+![Build](https://github.com/marek-hanzal/DeRivean/workflows/Build/badge.svg)
 
 Legacy of DeRivean as the game (server) engine.
 
