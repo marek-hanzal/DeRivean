@@ -297,9 +297,12 @@
 					"table": {
 						"add": "Add Attribute",
 						"attribute-hint": "_Attributes defines how internal calculation works. Also sets initial values for various pieces of the Kingdom._",
+						"save": "Save",
+						"cancel": "Cancel",
 						"delete": "Delete",
 						"edit": "Edit",
-						"deleteConfirm": "Delete selected Attribute?"
+						"cancel-confirm": "Cancel attribute editation?",
+						"delete-confirm": "Delete selected Attribute?"
 					}
 				},
 				"list": {

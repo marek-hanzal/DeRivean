@@ -1,6 +1,7 @@
 import {RightCircleOutlined} from "@ant-design/icons";
 import {Button, Col, Form, Popconfirm, Result, Row, Table, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
+import CancelIcon from "component/icon/CancelIcon";
 import CreateItemIcon from "component/icon/CreateItemIcon";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
@@ -27,22 +28,43 @@ const CreateView = () => {
 	]);
 
 	const columns = [
-		{title: "Attribute", dataIndex: "name", key: "name"},
-		{title: "Value", dataIndex: "value", key: "value", width: 120},
+		{
+			title: "Attribute",
+			dataIndex: "name",
+			key: "name",
+		},
+		{
+			title: "Value",
+			dataIndex: "value",
+			key: "value",
+			width: 120,
+		},
 		{
 			title: "Action",
 			key: "action",
 			width: 200,
 			render: (text, record) => (
 				record.editable ?
-					"editable" :
 					<Row justify={"space-around"}>
-						<Col sm={24} lg={10}>
+						<Col span={10}>
+							<Button type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onSaveRow(record)}>{t(longId + ".table.save")}</Button>
+						</Col>
+						<Col span={10}>
+							<Popconfirm
+								title={t(longId + ".table.cancel-confirm")}
+								onConfirm={() => onCancelRow(record.uuid)}
+							>
+								<Button type={"danger"} size={"small"} icon={<CancelIcon/>}>{t(longId + ".table.cancel")}</Button>
+							</Popconfirm>
+						</Col>
+					</Row> :
+					<Row justify={"space-around"}>
+						<Col span={10}>
 							<Button ghost type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onEditRow(record.uuid)}>{t(longId + ".table.edit")}</Button>
 						</Col>
-						<Col sm={24} lg={10}>
+						<Col span={10}>
 							<Popconfirm
-								title={t(longId + ".table.deleteConfirm")}
+								title={t(longId + ".table.delete-confirm")}
 								onConfirm={() => onDeleteRow(record.uuid)}
 							>
 								<Button ghost type={"danger"} size={"small"} icon={<DeleteItemIcon/>}>{t(longId + ".table.delete")}</Button>
@@ -58,8 +80,19 @@ const CreateView = () => {
 	};
 
 	const onEditRow = uuid => {
-		alert("wwooo");
-		return false;
+		const data = [...attributeList];
+		data.filter(item => item.uuid === uuid).map(item => item.editable = true);
+		setAttributeList(data);
+	};
+
+	const onSaveRow = row => {
+		console.log("save", row);
+	};
+
+	const onCancelRow = uuid => {
+		const data = [...attributeList];
+		data.filter(item => item.uuid === uuid).map(item => item.editable = false);
+		setAttributeList(data);
 	};
 
 	const onCreateRow = () => {
@@ -126,6 +159,7 @@ const CreateView = () => {
 						<Result
 							icon={<></>}
 							title={t(longId + ".list.title")}
+							style={{paddingTop: 0}}
 						>
 							{numberRange(4).map(index => (
 								<Typography.Paragraph key={index}>
