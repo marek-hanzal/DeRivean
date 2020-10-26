@@ -17,11 +17,11 @@ const longId = id + ".create";
 const CreateView = () => {
 	const {t} = useTranslation();
 	const [attributeList, setAttributeList] = useState([
-		{key: 1, name: t("resource.gold"), value: 100, description: "Current value of gold available."},
-		{key: 3, name: t("resource.stone"), value: 260, description: "Current value of stone available."},
-		{key: 5, name: t("resource.wood"), value: 320, description: "Current value of wood available."},
-		{key: 7, name: t("resource.food"), value: 500, description: "Current value of food available."},
-		{key: 9, name: t("max-heroes"), value: 8, description: "Limit number of Heroes a Kingdom could possess."},
+		{uuid: uuid4(), name: t("resource.gold"), value: 100, description: "Current value of gold available."},
+		{uuid: uuid4(), name: t("resource.stone"), value: 260, description: "Current value of stone available."},
+		{uuid: uuid4(), name: t("resource.wood"), value: 320, description: "Current value of wood available."},
+		{uuid: uuid4(), name: t("resource.food"), value: 500, description: "Current value of food available."},
+		{uuid: uuid4(), name: t("max-heroes"), value: 8, description: "Limit number of Heroes a Kingdom could possess."},
 	]);
 
 	const columns = [
@@ -34,7 +34,7 @@ const CreateView = () => {
 			render: (text, record) => (
 				<Popconfirm
 					title={t(longId + ".table.deleteConfirm")}
-					onConfirm={() => onDeleteRow(record.key)}
+					onConfirm={() => onDeleteRow(record.uuid)}
 				>
 					<Button icon={<DeleteItemIcon/>}>{t(longId + ".table.delete")}</Button>
 				</Popconfirm>
@@ -42,13 +42,13 @@ const CreateView = () => {
 		}
 	];
 
-	const onDeleteRow = (id) => {
-		setAttributeList(attributeList.filter(item => item.key !== id));
+	const onDeleteRow = uuid => {
+		setAttributeList(attributeList.filter(item => item.uuid !== uuid));
 	};
 
 	const onCreateRow = () => {
 		setAttributeList([...attributeList, {
-			key: uuid4(),
+			uuid: uuid4(),
 			name: "some-attribute" + uuid4(),
 			value: Math.random() * 100,
 			description: "[Description of the things]",
@@ -68,6 +68,7 @@ const CreateView = () => {
 							<Col span={24}>
 								<Button icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
 								<Table
+									rowKey={"uuid"}
 									size={"small"}
 									pagination={false}
 									columns={columns}
