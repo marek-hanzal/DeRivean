@@ -1,11 +1,10 @@
 import {RightCircleOutlined} from "@ant-design/icons";
-import {Button, Col, Form, Popconfirm, Result, Row, Table, Typography} from "antd";
+import {Button, Col, Form, InputNumber, Result, Row, Table, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
-import CancelIcon from "component/icon/CancelIcon";
 import CreateItemIcon from "component/icon/CreateItemIcon";
-import DeleteItemIcon from "component/icon/DeleteItemIcon";
-import EditIcon from "component/icon/EditIcon";
 import Markdown from "component/Markdown";
+import CommonRowActions from "component/table/CommonRowActions";
+import EditableCell from "component/table/EditableCell";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -27,6 +26,26 @@ const CreateView = () => {
 		{uuid: uuid4(), name: t("max-heroes"), value: 8, description: "Limit number of Heroes a Kingdom could possess."},
 	]);
 
+	const onCreateRow = () => {
+		setAttributeList([...attributeList, {
+			uuid: uuid4(),
+			name: null,
+			value: null,
+			description: null,
+			editable: true,
+		}]);
+	};
+
+	const onSaveRow = row => {
+		console.log("save", row);
+	};
+
+	const onChangeRow = (uuid, change) => {
+		const data = [...attributeList];
+		data.filter(item => item.uuid === uuid).map(item => Object.assign(item, change));
+		setAttributeList(data);
+	};
+
 	const columns = [
 		{
 			title: "Attribute",
@@ -37,73 +56,28 @@ const CreateView = () => {
 			title: "Value",
 			dataIndex: "value",
 			key: "value",
-			width: 120,
+			width: 160,
+			render: (text, record) => (
+				<EditableCell
+					record={record}
+					value={() => record.value}
+					editor={() => <InputNumber value={record.value} size={"small"} min={0} step={0.1} onChange={value => onChangeRow(record.uuid, {value})}/>}
+				/>
+			)
 		},
 		{
 			title: "Action",
 			key: "action",
 			width: 200,
-			render: (text, record) => (
-				record.editable ?
-					<Row justify={"space-around"}>
-						<Col span={10}>
-							<Button type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onSaveRow(record)}>{t(longId + ".table.save")}</Button>
-						</Col>
-						<Col span={10}>
-							<Popconfirm
-								title={t(longId + ".table.cancel-confirm")}
-								onConfirm={() => onCancelRow(record.uuid)}
-							>
-								<Button type={"danger"} size={"small"} icon={<CancelIcon/>}>{t(longId + ".table.cancel")}</Button>
-							</Popconfirm>
-						</Col>
-					</Row> :
-					<Row justify={"space-around"}>
-						<Col span={10}>
-							<Button ghost type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onEditRow(record.uuid)}>{t(longId + ".table.edit")}</Button>
-						</Col>
-						<Col span={10}>
-							<Popconfirm
-								title={t(longId + ".table.delete-confirm")}
-								onConfirm={() => onDeleteRow(record.uuid)}
-							>
-								<Button ghost type={"danger"} size={"small"} icon={<DeleteItemIcon/>}>{t(longId + ".table.delete")}</Button>
-							</Popconfirm>
-						</Col>
-					</Row>
-			)
+			render: (text, record) => <CommonRowActions
+				itemList={attributeList}
+				setItemList={setAttributeList}
+				id={longId}
+				record={record}
+				onSaveRow={onSaveRow}
+			/>
 		}
 	];
-
-	const onDeleteRow = uuid => {
-		setAttributeList(attributeList.filter(item => item.uuid !== uuid));
-	};
-
-	const onEditRow = uuid => {
-		const data = [...attributeList];
-		data.filter(item => item.uuid === uuid).map(item => item.editable = true);
-		setAttributeList(data);
-	};
-
-	const onSaveRow = row => {
-		console.log("save", row);
-	};
-
-	const onCancelRow = uuid => {
-		const data = [...attributeList];
-		data.filter(item => item.uuid === uuid).map(item => item.editable = false);
-		setAttributeList(data);
-	};
-
-	const onCreateRow = () => {
-		setAttributeList([...attributeList, {
-			uuid: uuid4(),
-			name: null,
-			value: null,
-			description: null,
-			editable: true,
-		}]);
-	};
 
 	return (
 		<Form name={"kingdom"}>
@@ -148,9 +122,8 @@ const CreateView = () => {
 										type="primary"
 										size={"large"}
 										htmlType="submit"
-									>
-										{t(longId + ".form.button.label")}
-									</Button>
+										children={t(longId + ".form.button.label")}
+									/>
 								</Form.Item>
 							</Col>
 						</Row>
