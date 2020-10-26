@@ -293,6 +293,11 @@
 						"item-1": "You can create and define buildings withing a Kingdom.",
 						"item-2": "Heroes starts within Kingdom too.",
 						"item-3": "To create a Kingdom other players will start with, use *template* for the Kingdom name"
+					},
+					"table": {
+						"add": "Add Attribute",
+						"delete": "Delete",
+						"deleteConfirm": "Delete selected Attribute?"
 					}
 				},
 				"list": {
