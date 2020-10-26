@@ -1,16 +1,9 @@
-import {RightCircleOutlined} from "@ant-design/icons";
-import {Button, Col, Form, InputNumber, Result, Row, Table, Typography} from "antd";
-import SubtitleNameField from "component/form/SubtitleNameField";
-import CreateItemIcon from "component/icon/CreateItemIcon";
-import Markdown from "component/Markdown";
+import {MinusCircleOutlined, PlusOutlined} from "@ant-design/icons";
+import {Button, Form, Input, InputNumber} from "antd";
 import CommonRowActions from "component/table/CommonRowActions";
 import EditableCell from "component/table/EditableCell";
-import BaseCreateView from "component/view/BaseCreateView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
-import numberRange from "utils/numberRange";
 import {v4 as uuid4} from "uuid";
 
 const id = "root.userContext.kingdom";
@@ -51,6 +44,9 @@ const CreateView = () => {
 			title: "Attribute",
 			dataIndex: "name",
 			key: "name",
+			render: (text, record) => (
+				null
+			)
 		},
 		{
 			title: "Value",
@@ -79,71 +75,147 @@ const CreateView = () => {
 		}
 	];
 
+	const formItemLayout = {
+		labelCol: {
+			xs: {span: 24},
+			sm: {span: 4},
+		},
+		wrapperCol: {
+			xs: {span: 24},
+			sm: {span: 20},
+		},
+	};
+	const formItemLayoutWithOutLabel = {
+		wrapperCol: {
+			xs: {span: 24, offset: 0},
+			sm: {span: 20, offset: 4},
+		},
+	};
+
 	return (
-		<Form name={"kingdom"}>
-			<BaseCreateView
-				base={KingdomView}
-				id={id}
-				subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
+		<Form name="dynamic_form_item" {...formItemLayoutWithOutLabel} onFinish={values => console.log(values)}>
+			<Form.List
+				name="names"
+				rules={[
+					{
+						validator: async (_, names) => {
+							if (!names || names.length < 2) {
+								return Promise.reject(new Error("At least 2 passengers"));
+							}
+						},
+					},
+				]}
 			>
-				<Row justify={"space-around"}>
-					<Col xs={24} xl={12}>
-						<Row>
-							<Col span={24}>
-								<Row>
-									<Col span={24}>
-										<Button ghost type={"primary"} icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
-									</Col>
-								</Row>
-								<Row>
-									<Col span={24}>
-										<Table
-											rowKey={"uuid"}
-											size={"small"}
-											pagination={false}
-											columns={columns}
-											expandedRowRender={record => <p>{record.description}</p>}
-											dataSource={attributeList}
-										/>
-									</Col>
-								</Row>
-							</Col>
-						</Row>
-						<hr/>
-						<Row>
-							<Col>
-								<Markdown children={t(longId + ".table.attribute-hint")}/>
-							</Col>
-						</Row>
-						<Row justify={"space-around"}>
-							<Col>
-								<Form.Item>
-									<Button
-										type="primary"
-										size={"large"}
-										htmlType="submit"
-										children={t(longId + ".form.button.label")}
-									/>
+				{(fields, {add, remove}, {errors}) => (
+					<>
+						{fields.map((field, index) => (
+							<Form.Item
+								{...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+								label={index === 0 ? "Passengers" : ""}
+								required={false}
+								key={field.key}
+							>
+								<Form.Item
+									{...field}
+									validateTrigger={["onChange", "onBlur"]}
+									rules={[
+										{
+											required: true,
+											whitespace: true,
+											message: "Please input passenger's name or delete this field.",
+										},
+									]}
+									noStyle
+								>
+									<Input placeholder="passenger name" style={{width: "60%"}}/>
 								</Form.Item>
-							</Col>
-						</Row>
-					</Col>
-					<Col xs={24} xl={12}>
-						<Result
-							icon={<></>}
-							title={t(longId + ".list.title")}
-							style={{paddingTop: 0}}
-						>
-							{numberRange(4).map(index => (
-								<Typography.Paragraph key={index}>
-									<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t(longId + ".list.item-" + index)}
-								</Typography.Paragraph>
-							))}
-						</Result>
-					</Col>
-				</Row>
-			</BaseCreateView>
+								<MinusCircleOutlined
+									className="dynamic-delete-button"
+									onClick={() => remove(field.name)}
+								/>
+							</Form.Item>
+						))}
+						<Form.Item>
+							<Button
+								type="dashed"
+								onClick={() => add()}
+								style={{width: "60%"}}
+								icon={<PlusOutlined/>}
+							>
+								Add field
+							</Button>
+							<Button
+								type="dashed"
+								onClick={() => {
+									add("The head item", 0);
+								}}
+								style={{width: "60%", marginTop: "20px"}}
+								icon={<PlusOutlined/>}
+							>
+								Add field at head
+							</Button>
+							<Form.ErrorList errors={errors}/>
+						</Form.Item>
+					</>
+				)}
+			</Form.List>
+			<Form.Item>
+				<Button type="primary" htmlType="submit">
+					Submit
+				</Button>
+			</Form.Item>
 		</Form>
+
+
+
+
+		// <Form name={"kingdom"} onFinish={values => console.log("Received values of form:", values)} autoComplete="off">
+		// 	<BaseCreateView
+		// 		base={KingdomView}
+		// 		id={id}
+		// 		subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
+		// 	>
+		// 		<Row justify={"space-around"}>
+		// 			<Col xs={24} xl={12}>
+		// 				<Row>
+		// 					<Col span={24}>
+		// 					</Col>
+		// 				</Row>
+		// 				<hr/>
+		// 				<Row>
+		// 					<Col>
+		// 						<Markdown children={t(longId + ".table.attribute-hint")}/>
+		// 					</Col>
+		// 				</Row>
+		// 				<Row justify={"space-around"}>
+		// 					<Col>
+		// 						<Form.Item>
+		// 							<Button
+		// 								type="primary"
+		// 								size={"large"}
+		// 								htmlType="submit"
+		// 								children={t(longId + ".form.button.label")}
+		// 							/>
+		// 						</Form.Item>
+		// 					</Col>
+		// 				</Row>
+		// 			</Col>
+		// 			<Col xs={24} xl={12}>
+		// 				<Result
+		// 					icon={<></>}
+		// 					title={t(longId + ".list.title")}
+		// 					style={{paddingTop: 0}}
+		// 				>
+		// 					{numberRange(4).map(index => (
+		// 						<Typography.Paragraph key={index}>
+		// 							<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t(longId + ".list.item-" + index)}
+		// 						</Typography.Paragraph>
+		// 					))}
+		// 				</Result>
+		// 			</Col>
+		// 		</Row>
+		// 	</BaseCreateView>
+		// </Form>
 	);
 };
 
