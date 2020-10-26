@@ -9,6 +9,7 @@ import {getUserRegisterStatus} from "redux/user/register/selector";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
+import numberRange from "utils/numberRange";
 
 const SignUpView = () => {
 	const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const SignUpView = () => {
 											{t("public.sign-up.content.list.title")}
 										</Typography.Text>
 									</Typography.Paragraph>
-									{[0, 1, 2, 3, 4].map(index => (
+									{numberRange(5).map(index => (
 										<Typography.Paragraph key={index}>
 											<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
 										</Typography.Paragraph>

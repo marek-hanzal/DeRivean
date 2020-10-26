@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import {onUserLoginDismiss} from "redux/user/login/action";
 import PublicView from "site/public/view/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
+import numberRange from "utils/numberRange";
 
 const SingInView = () => {
 	const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const SingInView = () => {
 									{t("public.sign-in.content.list.title")}
 								</Typography.Text>
 							</Typography.Paragraph>
-							{[0, 1, 2, 3].map(index => (
+							{numberRange(4).map(index => (
 								<Typography.Paragraph key={index}>
 									<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-in.content.list.item-" + index)}
 								</Typography.Paragraph>

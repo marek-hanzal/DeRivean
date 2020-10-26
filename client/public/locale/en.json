@@ -270,17 +270,33 @@
 				"menu": "Kingdoms",
 				"title": "Kingdoms",
 				"dashboard": {
-					"menu": "Kingdom Dashboard",
+					"menu": "Dashboard",
 					"title": "Kingdom Dashboard",
 					"subtitle": "Everything interesting about Kingdoms of selected User."
 				},
 				"create": {
-					"menu": "Create Kingdom",
+					"menu": "Create",
 					"title": "Create Kingdom",
-					"subtitle": "Create a new Kingdom for the selected User!"
+					"subtitle": "Create a new Kingdom for the selected User!",
+					"form": {
+						"name": {
+							"label": "Kingdom name",
+							"required": "Please choose some Epic Kingdom name!"
+						},
+						"button": {
+							"label": "Create!"
+						}
+					},
+					"list": {
+						"title": "Something about Kingdoms:",
+						"item-0": "Kingdom is the root place, where everything happens.",
+						"item-1": "You can create and define buildings withing a Kingdom.",
+						"item-2": "Heroes starts within Kingdom too.",
+						"item-3": "To create a Kingdom other players will start with, use *template* for the Kingdom name"
+					}
 				},
 				"list": {
-					"menu": "Kingdom List",
+					"menu": "List",
 					"title": "Kingdom List"
 				}
 			}
