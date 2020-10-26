@@ -4,6 +4,7 @@ import SubtitleNameField from "component/form/SubtitleNameField";
 import CreateItemIcon from "component/icon/CreateItemIcon";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
+import Markdown from "component/Markdown";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -36,10 +37,10 @@ const CreateView = () => {
 				record.editable ?
 					"editable" :
 					<Row justify={"space-around"}>
-						<Col span={10}>
+						<Col sm={24} lg={10}>
 							<Button ghost type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onEditRow(record.uuid)}>{t(longId + ".table.edit")}</Button>
 						</Col>
-						<Col span={10}>
+						<Col sm={24} lg={10}>
 							<Popconfirm
 								title={t(longId + ".table.deleteConfirm")}
 								onConfirm={() => onDeleteRow(record.uuid)}
@@ -78,24 +79,37 @@ const CreateView = () => {
 				id={id}
 				subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
 			>
-				<Row>
-					<Col span={12}>
+				<Row justify={"space-around"}>
+					<Col xs={24} xl={12}>
 						<Row>
 							<Col span={24}>
-								<Button ghost type={"primary"} icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
-								<Table
-									rowKey={"uuid"}
-									size={"small"}
-									pagination={false}
-									columns={columns}
-									expandedRowRender={record => <p>{record.description}</p>}
-									dataSource={attributeList}
-								/>
+								<Row>
+									<Col span={24}>
+										<Button ghost type={"primary"} icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
+									</Col>
+								</Row>
+								<Row>
+									<Col span={24}>
+										<Table
+											rowKey={"uuid"}
+											size={"small"}
+											pagination={false}
+											columns={columns}
+											expandedRowRender={record => <p>{record.description}</p>}
+											dataSource={attributeList}
+										/>
+									</Col>
+								</Row>
 							</Col>
 						</Row>
-						<Row>&nbsp;</Row>
-						<Row justify={"space-around"} align={"middle"}>
-							<Col span={6}>
+						<hr/>
+						<Row>
+							<Col>
+								<Markdown children={t(longId + ".table.attribute-hint")}/>
+							</Col>
+						</Row>
+						<Row justify={"space-around"}>
+							<Col>
 								<Form.Item>
 									<Button
 										type="primary"
@@ -108,7 +122,7 @@ const CreateView = () => {
 							</Col>
 						</Row>
 					</Col>
-					<Col span={12}>
+					<Col xs={24} xl={12}>
 						<Result
 							icon={<></>}
 							title={t(longId + ".list.title")}
