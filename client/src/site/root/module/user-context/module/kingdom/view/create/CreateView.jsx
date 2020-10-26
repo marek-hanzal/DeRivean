@@ -3,6 +3,7 @@ import {Button, Col, Form, Popconfirm, Result, Row, Table, Typography} from "ant
 import SubtitleNameField from "component/form/SubtitleNameField";
 import CreateItemIcon from "component/icon/CreateItemIcon";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import EditIcon from "component/icon/EditIcon";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -30,14 +31,23 @@ const CreateView = () => {
 		{
 			title: "Action",
 			key: "action",
-			width: 120,
+			width: 200,
 			render: (text, record) => (
-				<Popconfirm
-					title={t(longId + ".table.deleteConfirm")}
-					onConfirm={() => onDeleteRow(record.uuid)}
-				>
-					<Button icon={<DeleteItemIcon/>}>{t(longId + ".table.delete")}</Button>
-				</Popconfirm>
+				record.editable ?
+					"editable" :
+					<Row justify={"space-around"}>
+						<Col span={10}>
+							<Button ghost type={"primary"} size={"small"} icon={<EditIcon/>} onClick={() => onEditRow(record.uuid)}>{t(longId + ".table.edit")}</Button>
+						</Col>
+						<Col span={10}>
+							<Popconfirm
+								title={t(longId + ".table.deleteConfirm")}
+								onConfirm={() => onDeleteRow(record.uuid)}
+							>
+								<Button ghost type={"danger"} size={"small"} icon={<DeleteItemIcon/>}>{t(longId + ".table.delete")}</Button>
+							</Popconfirm>
+						</Col>
+					</Row>
 			)
 		}
 	];
@@ -46,12 +56,18 @@ const CreateView = () => {
 		setAttributeList(attributeList.filter(item => item.uuid !== uuid));
 	};
 
+	const onEditRow = uuid => {
+		alert("wwooo");
+		return false;
+	};
+
 	const onCreateRow = () => {
 		setAttributeList([...attributeList, {
 			uuid: uuid4(),
-			name: "some-attribute" + uuid4(),
-			value: Math.random() * 100,
-			description: "[Description of the things]",
+			name: null,
+			value: null,
+			description: null,
+			editable: true,
 		}]);
 	};
 
@@ -66,7 +82,7 @@ const CreateView = () => {
 					<Col span={12}>
 						<Row>
 							<Col span={24}>
-								<Button icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
+								<Button ghost type={"primary"} icon={<CreateItemIcon/>} onClick={() => onCreateRow()}>{t(longId + ".table.add")}</Button>
 								<Table
 									rowKey={"uuid"}
 									size={"small"}
@@ -83,6 +99,7 @@ const CreateView = () => {
 								<Form.Item>
 									<Button
 										type="primary"
+										size={"large"}
 										htmlType="submit"
 									>
 										{t(longId + ".form.button.label")}

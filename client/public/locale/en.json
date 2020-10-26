@@ -297,6 +297,7 @@
 					"table": {
 						"add": "Add Attribute",
 						"delete": "Delete",
+						"edit": "Edit",
 						"deleteConfirm": "Delete selected Attribute?"
 					}
 				},

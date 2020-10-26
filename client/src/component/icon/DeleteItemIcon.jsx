@@ -1,5 +1,5 @@
-import {MinusCircleOutlined} from "@ant-design/icons";
+import {DeleteOutlined} from "@ant-design/icons";
 
-const DeleteItemIcon = (props) => <MinusCircleOutlined {...props}/>;
+const DeleteItemIcon = (props) => <DeleteOutlined {...props}/>;
 
 export default DeleteItemIcon;
