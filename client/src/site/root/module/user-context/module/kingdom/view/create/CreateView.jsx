@@ -1,5 +1,5 @@
 import {PlusOutlined, RightCircleOutlined} from "@ant-design/icons";
-import {Button, Card, Cascader, Col, Divider, Form, InputNumber, Result, Row, Typography} from "antd";
+import {Button, Card, Cascader, Col, Divider, Form, Input, InputNumber, List, Result, Row, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import BaseCreateView from "component/view/BaseCreateView";
@@ -65,16 +65,17 @@ const CreateView = () => {
 										name="attributes"
 									>
 										{(fields, {add, remove}, {errors}) => (
-											<>
+											<List>
 												{fields.map(field => (
-													<Row key={field.key} justify={"space-around"} style={{alignItems: "baseline"}}>
-														<Col span={14}>
+													<List.Item key={field.key}>
+														<Input.Group style={{display: "flex", alignItems: "center"}}>
 															<Form.Item
 																{...field}
 																label={t(longId + ".form.attribute.name.label")}
 																name={[field.name, "name"]}
 																fieldKey={[field.fieldKey, "name"]}
 																rules={[{required: true, message: t(longId + ".form.attribute.name.required")}]}
+																noStyle
 															>
 																<Cascader
 																	options={cascader}
@@ -83,22 +84,21 @@ const CreateView = () => {
 																	showSearch={{filter: (inputValue, path) => path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1)}}
 																/>
 															</Form.Item>
-														</Col>
-														<Col span={6}>
 															<Form.Item
 																{...field}
 																label={t(longId + ".form.attribute.value.label")}
 																name={[field.name, "value"]}
 																fieldKey={[field.fieldKey, "value"]}
 																rules={[{required: true, message: t(longId + ".form.attribute.value.required")}]}
+																noStyle
 															>
 																<InputNumber step={10} placeholder={t(longId + ".form.attribute.value.hint")}/>
 															</Form.Item>
-														</Col>
-														<Col>
-															<DeleteItemIcon onClick={() => remove(field.name)}/>
-														</Col>
-													</Row>
+														</Input.Group>
+														<Button type={"danger"} ghost shape={"circle"} onClick={() => remove(field.name)}>
+															<DeleteItemIcon/>
+														</Button>
+													</List.Item>
 												))}
 												<Button
 													type="dashed"
@@ -108,7 +108,7 @@ const CreateView = () => {
 													style={{width: "100%"}}
 												/>
 												<Form.ErrorList errors={errors}/>
-											</>
+											</List>
 										)}
 									</Form.List>
 								</Card>
