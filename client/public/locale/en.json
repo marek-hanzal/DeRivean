@@ -283,6 +283,22 @@
 							"label": "Kingdom name",
 							"required": "Please choose some Epic Kingdom name!"
 						},
+						"attribute": {
+							"title": "Kingdom Attributes",
+							"name": {
+								"label": "Attribute",
+								"required": "Attribute is required!",
+								"hint": "Attribute"
+							},
+							"value": {
+								"label": "Value",
+								"required": "Attribute value is required!",
+								"hint": "Value"
+							},
+							"add": {
+								"label": "Attribute"
+							}
+						},
 						"button": {
 							"label": "Create!"
 						}
@@ -293,16 +309,6 @@
 						"item-1": "You can create and define buildings withing a Kingdom.",
 						"item-2": "Heroes starts within Kingdom too.",
 						"item-3": "To create a Kingdom other players will start with, use *template* for the Kingdom name"
-					},
-					"table": {
-						"add": "Add Attribute",
-						"attribute-hint": "_Attributes defines how internal calculation works. Also sets initial values for various pieces of the Kingdom._",
-						"save": "Save",
-						"cancel": "Cancel",
-						"delete": "Delete",
-						"edit": "Edit",
-						"cancel-confirm": "Cancel attribute editation?",
-						"delete-confirm": "Delete selected Attribute?"
 					}
 				},
 				"list": {
