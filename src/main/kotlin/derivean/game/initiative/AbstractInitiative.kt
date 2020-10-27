@@ -9,6 +9,6 @@ abstract class AbstractInitiative : IInitiative {
 	override fun onInitiative(entity: Entity) = entity.attributes.set(0.0.currentInitiative())
 
 	override fun onInitiatives(formations: Formations) = formations.entities { entity, _ ->
-		entity.attributes.set(CommonAttributes.ATTRIBUTE_CURRENT_INITIATIVE to CommonAttributes.ATTRIBUTE_ROUND_INITIATIVE)
+		entity.attributes.set(CommonAttributes.CURRENT_INITIATIVE to CommonAttributes.ROUND_INITIATIVE)
 	}
 }
