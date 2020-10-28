@@ -49,12 +49,14 @@ const DiscoveryRedux = {
 				create: state => DiscoveryRedux.selector.index(state)["public.user.register"].link,
 				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.user.fetch"].link.replace("{id}", uuid),
 				page: (state, page) => DiscoveryRedux.selector.index(state)["root.user.page"].link.replace("{page}", page),
+				kingdom: {
+					page: (state, user, page) => DiscoveryRedux.selector.index(state)["root.user.kingdom.page"].link.replace("{page}", page).replace("{user}", user),
+				}
 			},
 			kingdom: {
 				attributes: state => DiscoveryRedux.selector.index(state)["root.kingdom.attributes"].link,
 				create: state => DiscoveryRedux.selector.index(state)["root.kingdom.create"].link,
 				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.kingdom.fetch"].link.replace("{id}", uuid),
-				page: (state, page) => DiscoveryRedux.selector.index(state)["root.kingdom.page"].link.replace("{page}", page),
 			},
 		},
 	},

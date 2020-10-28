@@ -10,15 +10,15 @@ class LoginEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val userLoginMapper: UserLoginMapper by container.lazy()
 
 	override fun install(routing: Routing) {
-		discovery {
-			this.namespace = "public"
-			this.name = "login"
-			this.group = "user"
-			this.description = "Login user"
-			this.link = "/api/public/user/login"
-		}
-		routing.post("/api/public/user/login") {
-			resolve(call, userLoginMapper)
+		"/api/public/user/login".let { url ->
+			discovery {
+				this.name = "public.user.login"
+				this.link = url
+				this.description = "Login user"
+			}
+			routing.post(url) {
+				resolve(call, userLoginMapper)
+			}
 		}
 	}
 }

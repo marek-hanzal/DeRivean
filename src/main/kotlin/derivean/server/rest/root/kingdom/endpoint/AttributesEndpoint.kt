@@ -10,15 +10,15 @@ import io.ktor.routing.*
 
 class AttributesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	override fun install(routing: Routing) {
-		discovery {
-			name = "attributes"
-			group = "kingdom"
-			namespace = "root"
-			link = "/api/root/kingdom/attributes"
-			description = "Return available list of Attributes usable by a Kingdom."
-		}
-		routing.get("/api/root/kingdom/attributes") {
-			call.resolve(ok(KingdomAttributes.export()))
+		"/api/root/kingdom/attributes".let { url ->
+			discovery {
+				name = "root.kingdom.attributes"
+				link = url
+				description = "Return available list of Attributes usable by a Kingdom."
+			}
+			routing.get(url) {
+				call.resolve(ok(KingdomAttributes.export()))
+			}
 		}
 	}
 }

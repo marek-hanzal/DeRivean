@@ -12,8 +12,8 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 
 	override fun install(routing: Routing) = fetch(
 		routing,
-		"root",
-		"user",
+		"/api/root/user",
+		"root.user",
 		userFetchMapper,
 		userRepository,
 	)

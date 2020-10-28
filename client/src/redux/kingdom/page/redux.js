@@ -12,10 +12,10 @@ const KingdomPageRedux = {
 	request: requestAction("kingdom.page", defaultPage),
 	success: successAction("kingdom.page"),
 	failure: failureAction("kingdom.page"),
-	fetch: function (page, size = 100) {
+	fetch: function (user, page, size = 100) {
 		return (dispatch, getState) => {
 			dispatch(this.request());
-			return Server.get(buildUrl(DiscoveryRedux.selector.root.kingdom.page(getState(), page), {queryParams: {limit: size.toString()}}))
+			return Server.get(buildUrl(DiscoveryRedux.selector.root.user.kingdom.page(getState(), user, page), {queryParams: {limit: size.toString()}}))
 				.then(({data}) => {
 					dispatch(this.success(data));
 				})

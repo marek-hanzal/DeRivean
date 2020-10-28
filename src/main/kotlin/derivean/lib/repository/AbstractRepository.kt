@@ -18,9 +18,9 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(val entity: Ent
 
 	override fun total() = entity.table.slice(entity.table.id).selectAll().count()
 
-	override fun page(page: Int, limit: Int, block: (T) -> Unit) {
-		entity.all().limit(limit, (page * limit).toLong()).forEach { block(it) }
-	}
+	override fun page(page: Int, limit: Int, block: (T) -> Unit) = entity.all().limit(limit, (page * limit).toLong()).forEach { block(it) }
 
 	override fun find(uuid: UUID) = entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")
+
+	override fun table() = table
 }

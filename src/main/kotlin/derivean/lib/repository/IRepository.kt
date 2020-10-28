@@ -1,6 +1,7 @@
 package derivean.lib.repository
 
 import org.jetbrains.exposed.dao.UUIDEntity
+import org.jetbrains.exposed.dao.id.UUIDTable
 import java.util.*
 
 interface IRepository<T : UUIDEntity> {
@@ -23,4 +24,6 @@ interface IRepository<T : UUIDEntity> {
 	 * Return just UUIDs of the given entity page.
 	 */
 	fun page(page: Int, limit: Int, block: (T) -> Unit)
+
+	fun table(): UUIDTable
 }

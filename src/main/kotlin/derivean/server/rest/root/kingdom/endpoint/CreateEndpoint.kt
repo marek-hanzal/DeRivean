@@ -12,11 +12,9 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	override fun install(routing: Routing) {
 		"/api/root/kingdom/create".let { url ->
 			discovery {
-				name = "create"
-				group = "kingdom"
-				namespace = "root"
-				description = "Creates a new Kingdom"
+				name = "root.kingdom.create"
 				link = url
+				description = "Creates a new Kingdom"
 			}
 			routing.post(url) {
 				resolve(call, kingdomCreateMapper)

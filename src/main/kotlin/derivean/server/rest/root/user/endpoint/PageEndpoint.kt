@@ -12,8 +12,8 @@ class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 
 	override fun install(routing: Routing) = page(
 		routing,
-		"root",
-		userRepository.table.tableName,
+		"/api/root/user",
+		"root.user",
 		userRepository,
 		userFetchMapper,
 	)

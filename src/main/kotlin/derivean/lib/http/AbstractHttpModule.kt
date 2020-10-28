@@ -15,4 +15,10 @@ abstract class AbstractHttpModule(container: IContainer) : AbstractService(conta
 			container.create(endpoint).install(routing)
 		}
 	}
+
+	fun modules(routing: Routing, vararg modules: KClass<out IHttpModule>) {
+		modules.forEach {
+			container.create(it).install(routing)
+		}
+	}
 }

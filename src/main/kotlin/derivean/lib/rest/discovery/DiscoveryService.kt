@@ -12,7 +12,7 @@ class DiscoveryService(container: IContainer) : AbstractService(container), IDis
 	 * Register a new named discovery path.
 	 */
 	override fun register(block: Link.Builder.() -> Unit) = Link.build(linkGenerator, block).also {
-		discovery["${it.namespace}.${it.group}.${it.name}"] = it
+		discovery[it.name] = it
 	}
 
 	override fun discovery() = discovery.toMap()

@@ -6,7 +6,7 @@ import derivean.server.rest.public.user.endpoint.LoginEndpoint
 import derivean.server.rest.public.user.endpoint.RegisterEndpoint
 import io.ktor.routing.*
 
-class PublicUserHttpModule(container: IContainer) : AbstractHttpModule(container) {
+class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		install(
 			routing,
