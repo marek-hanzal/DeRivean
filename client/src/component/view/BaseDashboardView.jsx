@@ -9,6 +9,7 @@ const BaseDashboardView = (
 		icon,
 		base,
 		title = null,
+		subTitle = null,
 		children,
 		...props
 	}) => {
@@ -24,7 +25,7 @@ const BaseDashboardView = (
 			<Result
 				status={"info"}
 				title={title || t(`${id}.dashboard.title`)}
-				subTitle={t(`${id}.dashboard.subtitle`)}
+				subTitle={subTitle || t(`${id}.dashboard.subtitle`)}
 				icon={icon}
 				children={children}
 			/>

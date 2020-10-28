@@ -15,9 +15,7 @@ const KingdomAttributesRedux = {
 			dispatch(this.request());
 			return Server.get(DiscoveryRedux.selector.root.kingdom.attributes(getState()))
 				.then(({data}) => {
-					setTimeout(() => {
-						dispatch(this.success(data));
-					}, 2200);
+					dispatch(this.success(data));
 				})
 				.catch(({response}) => {
 					dispatch(this.failure(response));

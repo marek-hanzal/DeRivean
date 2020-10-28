@@ -7,9 +7,9 @@ import Routes from "site/Routes";
 const Header = () =>
 	<Layout.Header style={{
 		position: "fixed",
-		zIndex: 1,
+		zIndex: 100,
 		width: "100%",
-		padding: "0"
+		padding: 0,
 	}}>
 		<Menu theme="dark" mode="horizontal" selectable={false}>
 			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.root.link()}>DeRivean</Link></Menu.Item>

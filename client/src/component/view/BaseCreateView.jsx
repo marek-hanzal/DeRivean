@@ -1,4 +1,4 @@
-import {Card, Result, Spin} from "antd";
+import {Card, Result} from "antd";
 import CreateIcon from "component/icon/CreateIcon";
 import {createElement} from "react";
 import {useTranslation} from "react-i18next";
@@ -10,7 +10,6 @@ const BaseCreateView = (
 		icon = <CreateIcon/>,
 		base,
 		subTitle,
-		isLoading,
 		children,
 		...props
 	}) => {
@@ -22,17 +21,15 @@ const BaseCreateView = (
 			open,
 			...props
 		},
-		<Spin spinning={isLoading}>
-			<Card title={t(`${id}.create.title`)}>
-				<Result
-					status={"info"}
-					title={t(`${id}.create.title`)}
-					subTitle={subTitle || t(`${id}.create.subtitle`)}
-					icon={icon}
-					children={children}
-				/>
-			</Card>
-		</Spin>
+		<Card title={t(`${id}.create.title`)}>
+			<Result
+				status={"info"}
+				title={t(`${id}.create.title`)}
+				subTitle={subTitle || t(`${id}.create.subtitle`)}
+				icon={icon}
+				children={children}
+			/>
+		</Card>
 	);
 };
 

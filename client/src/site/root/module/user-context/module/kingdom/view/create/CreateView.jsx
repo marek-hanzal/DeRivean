@@ -38,8 +38,8 @@ const CreateView = () => {
 		>
 			<BaseCreateView
 				base={KingdomView}
+				loading={isLoading}
 				id={id}
-				isLoading={isLoading}
 				icon={<KingdomIcon/>}
 				subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
 			>
