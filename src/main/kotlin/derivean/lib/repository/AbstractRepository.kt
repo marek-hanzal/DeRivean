@@ -9,7 +9,11 @@ import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.selectAll
 import java.util.*
 
-abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(val entity: EntityClass<UUID, T>, val table: U, container: IContainer) : AbstractService(container), IRepository<T> {
+abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
+	val entity: EntityClass<UUID, T>,
+	val table: U,
+	container: IContainer,
+) : AbstractService(container), IRepository<T> {
 	protected val storage: IStorage by container.lazy()
 
 	fun create(block: T.() -> Unit) = entity.new { block(this) }

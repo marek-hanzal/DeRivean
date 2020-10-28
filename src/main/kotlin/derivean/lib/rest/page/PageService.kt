@@ -3,6 +3,7 @@ package derivean.lib.rest.page
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.IMapper
+import derivean.lib.repository.IRelationRepository
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.badRequest
 import derivean.lib.rest.resolve
@@ -10,16 +11,29 @@ import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.response.*
 import org.jetbrains.exposed.dao.UUIDEntity
+import java.util.*
 import kotlin.math.floor
 
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 
 	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
+		page(call, { repository.total() }, mapper) { page, limit, block ->
+			repository.page(page, limit, block)
+		}
+	}
+
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) {
+		page(call, { repository.total(relation) }, mapper) { page, limit, block ->
+			repository.page(relation, page, limit, block)
+		}
+	}
+
+	suspend fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Int, Int, (T) -> Unit) -> Unit) {
 		try {
 			call.respond(storage.read {
 				PageIndex.build {
-					this.total = repository.total()
+					this.total = total()
 					this.size = limit(call)
 					try {
 						val page = call.parameters["page"]?.toInt() ?: 0
@@ -34,11 +48,11 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 							if (limit > 100) {
 								throw InvalidLimitException("Limit cannot be higher than 100")
 							}
-							val pages = floor(repository.total().toDouble() / limit.toDouble()).toInt()
+							val pages = floor(this.total.toDouble() / limit.toDouble()).toInt()
 							if (page > pages) {
 								throw InvalidPageException("Out of range: page [$page] cannot be higher than [$pages]")
 							}
-							repository.page(page, limit) { entity ->
+							block(page, limit) { entity ->
 								items.add(mapper.map(entity))
 							}
 						} catch (e: NumberFormatException) {

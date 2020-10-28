@@ -2,6 +2,7 @@ package derivean.lib.rest.page
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.IMapper
+import derivean.lib.repository.IRelationRepository
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.AbstractEndpoint
 import derivean.lib.rest.badRequest
@@ -27,6 +28,25 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 		routing.get("$url/page/{page}") {
 			handle(call) {
 				pageService.page(call, repository, mapper)
+			}
+		}
+	}
+
+	fun <T : UUIDEntity> page(routing: Routing, relation: String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) {
+		discovery {
+			this.name = "$name.page"
+			this.link = "$url/page/{page}"
+			this.description = "Retrieve given page of [${repository.table().tableName}]."
+		}
+		routing.get("$url/page") {
+			call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
+		}
+		routing.get("$url/page/{page}") {
+			if (!call.parameters.contains(relation)) {
+				call.resolve(badRequest("Missing relation parameter [$relation] in route [$url]! This is probably a server bug!"))
+			}
+			handle(call) {
+				pageService.page(call, call.parameters[relation]!!, repository, mapper)
 			}
 		}
 	}
