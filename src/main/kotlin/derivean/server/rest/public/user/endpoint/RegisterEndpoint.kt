@@ -1,22 +1,23 @@
-package derivean.server.user.rest
+package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractActionEndpoint
-import derivean.server.user.rest.mapper.UserCreateMapper
+import derivean.server.rest.public.mapper.UserCreateMapper
 import io.ktor.application.*
 import io.ktor.routing.*
 
-class UserCreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
+class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val userCreateMapper: UserCreateMapper by container.lazy()
 
 	override fun install(routing: Routing) {
 		discovery {
+			this.namespace = "public"
 			this.name = "create"
 			this.group = "user"
 			this.description = "Create a new User"
-			this.link = "/api/user/create"
+			this.link = "/api/public/user/register"
 		}
-		routing.post("/api/user/create") {
+		routing.post("/api/public/user/register") {
 			resolve(call, userCreateMapper)
 		}
 	}

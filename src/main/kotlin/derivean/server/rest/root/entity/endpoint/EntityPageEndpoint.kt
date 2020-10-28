@@ -1,9 +1,9 @@
-package derivean.server.entity.rest
+package derivean.server.rest.root.entity.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.page.AbstractPageEndpoint
 import derivean.server.entity.EntityRepository
-import derivean.server.entity.rest.mapper.EntityFetchMapper
+import derivean.server.rest.root.mapper.EntityFetchMapper
 import io.ktor.routing.*
 
 class EntityPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
@@ -12,6 +12,7 @@ class EntityPageEndpoint(container: IContainer) : AbstractPageEndpoint(container
 
 	override fun install(routing: Routing) = page(
 		routing,
+		"root",
 		"entity",
 		entityRepository,
 		entityFetchMapper,

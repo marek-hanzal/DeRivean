@@ -36,9 +36,9 @@ data class ValidationResponse(
 	data class Validation(val status: String, val message: String)
 }
 
-data class Response(val code: HttpStatusCode, val response: Any? = null)
+data class Response<T>(val code: HttpStatusCode, val response: T? = null)
 
-suspend fun ApplicationCall.resolve(response: Response) = if (response.response !== null) respond(response.code, response.response) else respond(response.code)
+suspend fun <T> ApplicationCall.resolve(response: Response<T>) = if (response.response !== null) respond(response.code, response.response) else respond(response.code)
 
 /**
  * send response with Bad Request status code
@@ -48,7 +48,7 @@ fun badRequest(error: String) = Response(HttpStatusCode.BadRequest, ErrorRespons
 /**
  * send response with Forbidden status code
  */
-fun forbidden(any: Any) = Response(HttpStatusCode.Forbidden, any)
+fun <T> forbidden(response: T) = Response(HttpStatusCode.Forbidden, response)
 
 fun forbidden(error: String) = forbidden(ErrorResponse(error))
 
@@ -62,12 +62,12 @@ fun unauthorized(error: String) = Response(HttpStatusCode.Unauthorized, ErrorRes
  */
 fun created(href: Url) = created(LinkResponse(href))
 
-fun created(item: Any) = Response(HttpStatusCode.Created, item)
+fun <T> created(response: T) = Response(HttpStatusCode.Created, response)
 
 /**
  * send response with No Content status code
  */
-fun noContent() = Response(HttpStatusCode.NoContent)
+fun noContent() = Response<Nothing>(HttpStatusCode.NoContent)
 
 /**
  * send response with Not Found status code
@@ -79,7 +79,7 @@ fun notFound(error: String) = Response(HttpStatusCode.NotFound, ErrorResponse(er
  */
 fun conflict(error: String) = conflict(ErrorResponse(error))
 
-fun conflict(any: Any) = Response(HttpStatusCode.Conflict, any)
+fun <T> conflict(response: T) = Response(HttpStatusCode.Conflict, response)
 
 /**
  * send response with Not Implemented status code
@@ -89,7 +89,7 @@ fun notImplemented(error: String) = Response(HttpStatusCode.NotImplemented, Erro
 /**
  * send response with Internal Server Error status code
  */
-fun internalServerError(any: Any) = Response(HttpStatusCode.InternalServerError, any)
+fun <T> internalServerError(response: T) = Response(HttpStatusCode.InternalServerError, response)
 
 fun internalServerError(error: String) = internalServerError(ErrorResponse(error))
 
@@ -98,11 +98,11 @@ fun internalServerError(error: String) = internalServerError(ErrorResponse(error
  */
 fun accepted(message: String) = Response(HttpStatusCode.Accepted, MessageResponse(message))
 
-fun ok(response: Any) = Response(HttpStatusCode.OK, response)
+fun <T> ok(response: T) = Response(HttpStatusCode.OK, response)
 
 /**
  * send response with Accepted status code
  */
-fun accepted() = Response(HttpStatusCode.Accepted)
+fun accepted() = Response<Nothing>(HttpStatusCode.Accepted)
 
 fun discovery(discovery: Discovery) = Response(HttpStatusCode.OK, discovery)

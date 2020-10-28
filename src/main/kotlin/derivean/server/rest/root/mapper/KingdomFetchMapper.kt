@@ -1,4 +1,4 @@
-package derivean.server.kingdom.rest.mapper
+package derivean.server.rest.root.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper

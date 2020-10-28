@@ -1,4 +1,4 @@
-package derivean.server.user.rest.mapper
+package derivean.server.rest.public.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
@@ -6,13 +6,13 @@ import derivean.lib.rest.*
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 
-class UserLoginMapper(container: IContainer) : AbstractActionMapper<UserLoginMapper.UserLogin, Response>(container) {
+class UserLoginMapper(container: IContainer) : AbstractActionMapper<UserLoginMapper.Request, Response<out Any>>(container) {
 	private val authenticatorService: AuthenticatorService by container.lazy()
 
-	override fun resolve(item: UserLogin) = try {
+	override fun resolve(item: Request) = try {
 		ok(storage.transaction {
 			authenticatorService.authenticate(item.login, item.password).let {
-				User(it.login, it.name, it.token!!, it.site)
+				Response(it.login, it.name, it.token!!, it.site)
 			}
 		})
 	} catch (e: UserException) {
@@ -32,8 +32,8 @@ class UserLoginMapper(container: IContainer) : AbstractActionMapper<UserLoginMap
 		})
 	}
 
-	data class UserLogin(val login: String, val password: String)
-	data class User(
+	data class Request(val login: String, val password: String)
+	data class Response(
 		val login: String,
 		val name: String,
 		val token: String,

@@ -1,12 +1,12 @@
-package derivean.server.user.rest.mapper
+package derivean.server.rest.public.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.server.user.entities.User
 
-class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMapper.Fetch>(container) {
-	override fun map(item: User) = Fetch.build {
+class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMapper.Response>(container) {
+	override fun map(item: User) = Response.build {
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login
@@ -14,7 +14,7 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 		this.site = item.site
 	}
 
-	data class Fetch(
+	data class Response(
 		val id: String,
 		val name: String,
 		val login: String,
@@ -32,7 +32,7 @@ class UserFetchMapper(container: IContainer) : AbstractMapper<User, UserFetchMap
 			var token: String? = null
 			lateinit var site: String
 
-			fun build() = Fetch(
+			fun build() = Response(
 				id.toString(),
 				name,
 				login,

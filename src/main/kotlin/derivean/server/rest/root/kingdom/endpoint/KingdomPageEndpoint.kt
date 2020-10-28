@@ -1,9 +1,9 @@
-package derivean.server.kingdom.rest
+package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.page.AbstractPageEndpoint
 import derivean.server.kingdom.KingdomRepository
-import derivean.server.kingdom.rest.mapper.KingdomFetchMapper
+import derivean.server.rest.root.mapper.KingdomFetchMapper
 import io.ktor.routing.*
 
 class KingdomPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
@@ -12,6 +12,7 @@ class KingdomPageEndpoint(container: IContainer) : AbstractPageEndpoint(containe
 
 	override fun install(routing: Routing) = page(
 		routing,
+		"root",
 		"kingdom",
 		kingdomRepository,
 		kingdomFetchMapper,

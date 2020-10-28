@@ -1,4 +1,4 @@
-package derivean.server.entity.rest.mapper
+package derivean.server.rest.root.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.ILinkGenerator

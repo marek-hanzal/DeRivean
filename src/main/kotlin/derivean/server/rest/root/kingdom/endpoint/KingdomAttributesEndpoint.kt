@@ -1,4 +1,4 @@
-package derivean.server.kingdom.rest
+package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.game.kingom.KingdomAttributes
 import derivean.lib.container.IContainer
@@ -13,6 +13,7 @@ class KingdomAttributesEndpoint(container: IContainer) : AbstractEndpoint(contai
 		discovery {
 			name = "attributes"
 			group = "kingdom"
+			namespace = "root"
 			link = "/api/root/kingdom/attributes"
 			description = "Return available list of Attributes usable by a Kingdom."
 		}

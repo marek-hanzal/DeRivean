@@ -1,9 +1,9 @@
-package derivean.server.entity.rest
+package derivean.server.rest.root.entity.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractFetchEndpoint
 import derivean.server.entity.EntityRepository
-import derivean.server.entity.rest.mapper.EntityFetchMapper
+import derivean.server.rest.root.mapper.EntityFetchMapper
 import io.ktor.routing.*
 
 class EntityFetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -12,6 +12,7 @@ class EntityFetchEndpoint(container: IContainer) : AbstractFetchEndpoint(contain
 
 	override fun install(routing: Routing) = fetch(
 		routing,
+		"root",
 		"entity",
 		entityFetchMapper,
 		entityRepository,

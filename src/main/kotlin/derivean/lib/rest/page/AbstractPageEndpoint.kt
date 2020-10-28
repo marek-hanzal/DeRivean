@@ -15,18 +15,21 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 	val storage: IStorage by container.lazy()
 	val pageService: IPageService by container.lazy()
 
-	fun <T : UUIDEntity> page(routing: Routing, target: String, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
-		discovery {
-			this.group = target
-			this.name = "page"
-			this.link = "/api/$target/page/{page}"
-			this.description = "Retrieve given page of [$target]."
-		}
-		routing.get("/api/$target/page") {
-			call.resolve(badRequest("Missing page parameter in url: [/api/$target/page/{page}]."))
-		}
-		routing.get("/api/$target/page/{page}") {
-			pageService.page(call, repository, mapper)
+	fun <T : UUIDEntity> page(routing: Routing, namespace: String, target: String, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
+		"/api/$namespace/$target/page".let { url ->
+			discovery {
+				this.namespace = namespace
+				this.group = target
+				this.name = "page"
+				this.link = "$url/{page}"
+				this.description = "Retrieve given page of [$target]."
+			}
+			routing.get(url) {
+				call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
+			}
+			routing.get("$url/{page}") {
+				pageService.page(call, repository, mapper)
+			}
 		}
 	}
 }

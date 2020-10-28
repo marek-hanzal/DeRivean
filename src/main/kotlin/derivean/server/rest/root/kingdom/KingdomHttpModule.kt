@@ -1,10 +1,10 @@
-package derivean.server.kingdom
+package derivean.server.rest.root.kingdom
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.server.kingdom.rest.KingdomAttributesEndpoint
-import derivean.server.kingdom.rest.KingdomFetchEndpoint
-import derivean.server.kingdom.rest.KingdomPageEndpoint
+import derivean.server.rest.root.kingdom.endpoint.KingdomAttributesEndpoint
+import derivean.server.rest.root.kingdom.endpoint.KingdomFetchEndpoint
+import derivean.server.rest.root.kingdom.endpoint.KingdomPageEndpoint
 import io.ktor.routing.*
 
 class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
