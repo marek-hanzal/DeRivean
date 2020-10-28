@@ -5,7 +5,7 @@ import MenuRedux from "redux/menu/redux";
 const useMenuSelect = select => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(MenuRedux.select([select]));
+		setTimeout(() => dispatch(MenuRedux.select([select])), 0);
 	}, [dispatch, select]);
 };
 
