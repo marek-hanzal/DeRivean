@@ -5,7 +5,7 @@ import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import {onSessionClose} from "redux/session/action";
+import SessionRedux from "redux/session/redux";
 
 const SingOutView = ({id}) => {
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const SingOutView = ({id}) => {
 				title={t(`${id}.sign-out.title`)}
 				subTitle={t(`${id}.sign-out.subtitle`)}
 				extra={[
-					<Button type="primary" key="sign-out" onClick={() => dispatch(onSessionClose())}>
+					<Button type="primary" key="sign-out" onClick={() => dispatch(SessionRedux.close())}>
 						{t(`${id}.sign-out.button.sign-out`)}
 					</Button>,
 					<Button key="back" onClick={() => navigate(-1)}>{t(`${id}.sign-out.button.back`)}</Button>,

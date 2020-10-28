@@ -3,21 +3,20 @@ import {Button, Col, Form, Input, Row} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector, useStore} from "react-redux";
-import {onSessionOpen} from "redux/session/action";
-import {onUserLogin, onUserLoginDismiss} from "redux/user/login/action";
-import {getUserLoginError, getUserLoginUser} from "redux/user/login/selector";
+import SessionRedux from "redux/session/redux";
+import UserLoginRedux from "redux/user/login/redux";
 import validationFor from "utils/form/validationFor";
 
 const SignInForm = () => {
 	const {t} = useTranslation();
-	const payload = useSelector(getUserLoginError);
+	const errors = useSelector(UserLoginRedux.selector.getError);
 	const dispatch = useDispatch();
 	const store = useStore();
 	return (
 		<Form
 			wrapperCol={{span: 24}}
-			onFinish={values => dispatch(onUserLogin(values)).then(() => {
-				dispatch(onSessionOpen(getUserLoginUser(store.getState())));
+			onFinish={values => dispatch(UserLoginRedux.login(values)).then(() => {
+				dispatch(SessionRedux.open(UserLoginRedux.selector.getPayload(store.getState())));
 			}, () => null)}
 			name={"sign-in"}
 		>
@@ -25,7 +24,7 @@ const SignInForm = () => {
 				<Col span={24}>
 					<Form.Item
 						name="login"
-						{...validationFor("login", payload, t)}
+						{...validationFor("login", errors, t)}
 						rules={[
 							{
 								required: true,
@@ -40,7 +39,7 @@ const SignInForm = () => {
 				<Col span={24}>
 					<Form.Item
 						name="password"
-						{...validationFor("password", payload, t)}
+						{...validationFor("password", errors, t)}
 						rules={[
 							{
 								required: true,
@@ -53,11 +52,9 @@ const SignInForm = () => {
 			</Row>
 			<Row justify={"center"}>
 				<Col>
-					<Form.Item>
-						<Button type="primary" htmlType="submit" icon={<SignInIcon/>} onClick={() => dispatch(onUserLoginDismiss())}>
-							{t("public.sign-in.form.submit.label")}
-						</Button>
-					</Form.Item>
+					<Button type="primary" htmlType="submit" icon={<SignInIcon/>} onClick={() => dispatch(UserLoginRedux.dismiss())}>
+						{t("public.sign-in.form.submit.label")}
+					</Button>
 				</Col>
 			</Row>
 		</Form>

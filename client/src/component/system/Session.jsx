@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
-import {getSession} from "redux/session/selector";
+import SessionRedux from "redux/session/redux";
 
 const Session = ({sites}) => {
-	const session = useSelector(getSession);
+	const session = useSelector(SessionRedux.selector.getSession);
 	return sites[session.user ? session.user.site : "public"];
 };
 

@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {onMenuOpen} from "redux/menu/action";
+import MenuRedux from "redux/menu/redux";
 
 const useMenuOpen = open => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (open) {
-			dispatch(onMenuOpen([open]));
+			dispatch(MenuRedux.open([open]));
 		}
 	}, [dispatch, open]);
 };

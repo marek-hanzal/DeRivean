@@ -5,8 +5,8 @@ import BaseCreateView from "component/view/BaseCreateView";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import KingdomAttributesAction from "redux/kingdom/attributes/action";
-import Loading from "redux/loading/action";
+import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
+import LoadingRedux from "redux/loading/redux";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
@@ -20,7 +20,7 @@ const CreateView = () => {
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
 	useEffect(() => {
-		dispatch(KingdomAttributesAction.fetch());
+		dispatch(KingdomAttributesRedux.fetch());
 	}, []);
 
 	return (
@@ -29,9 +29,9 @@ const CreateView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={values => {
-				dispatch(Loading.start());
+				dispatch(LoadingRedux.start());
 				console.log("Received values of form:", values);
-				setTimeout(() => dispatch(Loading.finish()), 1200);
+				setTimeout(() => dispatch(LoadingRedux.finish()), 1200);
 			}}
 		>
 			<BaseCreateView

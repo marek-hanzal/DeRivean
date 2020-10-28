@@ -4,8 +4,7 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {onUserRegisterDismiss} from "redux/user/register/action";
-import {getUserRegisterStatus} from "redux/user/register/selector";
+import UserRegisterRedux from "redux/user/register/redux";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
@@ -13,11 +12,11 @@ import numberRange from "utils/numberRange";
 
 const SignUpView = () => {
 	const dispatch = useDispatch();
-	const status = useSelector(getUserRegisterStatus);
+	const status = useSelector(UserRegisterRedux.selector.getStatus);
 	const {t} = useTranslation();
 	useEffect(() => {
-		dispatch(onUserRegisterDismiss());
-		return () => dispatch(onUserRegisterDismiss());
+		dispatch(UserRegisterRedux.dismiss());
+		return () => dispatch(UserRegisterRedux.dismiss());
 	}, [dispatch]);
 	switch (status) {
 		case "SUCCESS":

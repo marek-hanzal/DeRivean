@@ -3,23 +3,22 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {generatePath, useParams} from "react-router";
 import {Link} from "react-router-dom";
-import {onMenuOpen} from "redux/menu/action";
-import {getMenuOpen, getMenuSelect} from "redux/menu/selector";
+import MenuRedux from "redux/menu/redux";
 
 const BaseMenu = ({items = []}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
-	const select = useSelector(getMenuSelect);
-	const open = useSelector(getMenuOpen);
+	const selected = useSelector(MenuRedux.selector.getSelected);
+	const opened = useSelector(MenuRedux.selector.getOpened);
 	return (
 		<Menu
 			mode="inline"
 			selectable={true}
-			selectedKeys={select}
-			openKeys={open}
+			selectedKeys={selected}
+			openKeys={opened}
 			style={{height: "100vh"}}
-			onOpenChange={([_, open]) => dispatch(onMenuOpen([open]))}
+			onOpenChange={([_, open]) => dispatch(MenuRedux.open([open]))}
 		>
 			{items.map((item, index) => {
 				if (item.group) {

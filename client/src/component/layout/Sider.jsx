@@ -1,20 +1,19 @@
 import {Layout} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {isContentFullsize} from "redux/content/selector";
-import {onMenuCollapse} from "redux/menu/action";
-import {isMenuCollapsed} from "redux/menu/selector";
+import ContentRedux from "redux/content/redux";
+import MenuRedux from "redux/menu/redux";
 
 const Sider = ({children}) => {
 	const dispatch = useDispatch();
-	const isCollapsed = useSelector(isMenuCollapsed);
-	const isFullsize = useSelector(isContentFullsize);
+	const isCollapsed = useSelector(MenuRedux.selector.isCollapsed);
+	const isFullsize = useSelector(ContentRedux.selector.isFullsize);
 	return (
 		isFullsize ? null :
 			<Layout.Sider
 				collapsible
 				collapsed={isCollapsed}
 				defaultCollapsed={isCollapsed}
-				onCollapse={isCollapsed => dispatch(onMenuCollapse(isCollapsed))}
+				onCollapse={isCollapsed => dispatch(MenuRedux.collapse(isCollapsed))}
 				width={220}
 				style={{
 					overflow: "auto",

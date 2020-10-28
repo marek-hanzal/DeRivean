@@ -2,8 +2,7 @@ import {Button, Form, Input} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {onUserRegister, onUserRegisterDismiss} from "redux/user/register/action";
-import {getUserRegisterError} from "redux/user/register/selector";
+import UserRegisterRedux from "redux/user/register/redux";
 import validationFor from "utils/form/validationFor";
 
 const layout = {
@@ -20,19 +19,19 @@ const tailLayout = {
 
 const SignUpForm = () => {
 	const {t} = useTranslation();
-	const payload = useSelector(getUserRegisterError);
+	const errors = useSelector(UserRegisterRedux.selector.getError);
 	const dispatch = useDispatch();
 	return (
 		<Form
 			{...layout}
 			onFinish={values => {
-				dispatch(onUserRegister(values));
+				dispatch(UserRegisterRedux.register(values));
 			}}
 			name={"sign-up"}
 		>
 			<Form.Item
 				name="name"
-				{...validationFor("name", payload, t)}
+				{...validationFor("name", errors, t)}
 				labelAlign={"left"}
 				label={t("public.sign-up.form.name.label")}
 				rules={[
@@ -45,7 +44,7 @@ const SignUpForm = () => {
 			/>
 			<Form.Item
 				name="login"
-				{...validationFor("login", payload, t)}
+				{...validationFor("login", errors, t)}
 				labelAlign={"left"}
 				label={t("public.sign-up.form.login.label")}
 				rules={[
@@ -59,7 +58,7 @@ const SignUpForm = () => {
 
 			<Form.Item
 				name="password"
-				{...validationFor("password", payload, t)}
+				{...validationFor("password", errors, t)}
 				labelAlign={"left"}
 				label={t("public.sign-up.form.password.label")}
 				rules={[
@@ -72,7 +71,7 @@ const SignUpForm = () => {
 			/>
 
 			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" icon={<SignUpIcon/>} onClick={() => dispatch(onUserRegisterDismiss())}>{t("public.sign-up.form.submit.label")}</Button>
+				<Button type="primary" htmlType="submit" icon={<SignUpIcon/>} onClick={() => dispatch(UserRegisterRedux.dismiss())}>{t("public.sign-up.form.submit.label")}</Button>
 			</Form.Item>
 		</Form>
 	);

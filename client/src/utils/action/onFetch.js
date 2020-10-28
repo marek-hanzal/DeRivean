@@ -1,17 +1,17 @@
-import Loading from "redux/loading/action";
+import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 
 const onFetch = (href, onRequest, onSuccess, onFailure) => dispatch => {
-	dispatch(Loading.start());
+	dispatch(LoadingRedux.start());
 	dispatch(onRequest());
 	return Server.get(href)
 		.then(({data}) => {
 			dispatch(onSuccess(data));
-			dispatch(Loading.finish());
+			dispatch(LoadingRedux.finish());
 		})
 		.catch(({response}) => {
 			dispatch(onFailure(response));
-			dispatch(Loading.finish());
+			dispatch(LoadingRedux.finish());
 		});
 };
 

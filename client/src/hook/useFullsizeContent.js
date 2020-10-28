@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {onContentFullsize} from "redux/content/action";
+import ContentRedux from "redux/content/redux";
 
 const useFullsizeContent = (fullsize, reset = true) => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(onContentFullsize(fullsize));
-		return () => reset ? dispatch(onContentFullsize(false)) : null;
+		dispatch(ContentRedux.setFullsize(fullsize));
+		return () => reset ? dispatch(ContentRedux.setFullsize(false)) : null;
 	}, [dispatch, fullsize, reset]);
 };
 

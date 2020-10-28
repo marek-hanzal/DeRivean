@@ -1,12 +1,12 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
 import {useSelector} from "react-redux";
-import {getUserFetch} from "redux/user/fetch/selector";
+import UserFetchRedux from "redux/user/fetch/redux";
 import UserAvatar from "site/root/module/user-context/component/UserAvatar";
 import UserName from "site/root/module/user-context/component/UserName";
 import UserContextView from "site/root/module/user-context/view/UserContextView";
 
 const DashboardView = () => {
-	const user = useSelector(getUserFetch);
+	const user = useSelector(UserFetchRedux.selector.getPayload);
 	return (
 		<BaseDashboardView
 			base={UserContextView}

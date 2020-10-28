@@ -1,22 +1,22 @@
 import {combineReducers} from "redux";
-import client from "./client/reducer";
-import content from "./content/reducer";
-import discovery from "./discovery/reducer";
-import entity from "./entity/reducer";
-import kingdom from "./kingdom/reducer";
-import loading from "./loading/reducer";
-import menu from "./menu/reducer";
-import session from "./session/reducer";
-import user from "./user/reducer";
+import ClientRedux from "redux/client/redux";
+import ContentRedux from "redux/content/redux";
+import DiscoveryRedux from "redux/discovery/redux";
+import EntityRedux from "redux/entity/redux";
+import KingdomRedux from "redux/kingdom/redux";
+import LoadingRedux from "redux/loading/redux";
+import MenuRedux from "redux/menu/redux";
+import SessionRedux from "redux/session/redux";
+import UserRedux from "redux/user/redux";
 
 export default combineReducers({
-	client,
-	content,
-	discovery,
-	entity,
-	kingdom,
-	loading,
-	menu,
-	session,
-	user,
+	client: ClientRedux.reducer(),
+	content: ContentRedux.reducer(),
+	discovery: DiscoveryRedux.reducer(),
+	entity: EntityRedux.reducer(),
+	kingdom: KingdomRedux.reducer(),
+	loading: LoadingRedux.reducer(),
+	menu: MenuRedux.reducer(),
+	session: SessionRedux.reducer(),
+	user: UserRedux.reducer(),
 });
