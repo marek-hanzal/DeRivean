@@ -1,6 +1,6 @@
 import Axios from "axios";
 import DiscoverySelector from "redux/discovery/selector";
-import {onLoading} from "redux/loading/action";
+import Loading from "redux/loading/action";
 import dismissAction from "utils/action/actions/dismissAction";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
@@ -12,16 +12,16 @@ const
 	onUserLoginFailure = failureAction("user.login"),
 	onUserLoginDismiss = dismissAction("user.login"),
 	onUserLogin = login => (dispatch, getState) => {
-		dispatch(onLoading(true));
+		dispatch(Loading.start());
 		dispatch(onUserLoginRequest());
 		return Axios.post(DiscoverySelector.public.user.login(getState()), login)
 			.then(({data}) => {
 				dispatch(onUserLoginSuccess(data));
-				dispatch(onLoading(false));
+				dispatch(Loading.finish());
 			})
 			.catch(({response}) => {
 				dispatch(onUserLoginFailure(response.data));
-				dispatch(onLoading(false));
+				dispatch(Loading.finish());
 				return Promise.reject();
 			});
 	};

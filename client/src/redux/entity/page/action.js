@@ -1,6 +1,6 @@
-import Axios from "axios";
 import buildUrl from "build-url";
 import DiscoverySelector from "redux/discovery/selector";
+import {Server} from "server";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
 import successAction from "utils/action/actions/successAction";
@@ -12,7 +12,7 @@ const
 	onEntityPageFailure = failureAction("entity.page"),
 	onEntityPage = (page, size = 100) => (dispatch, getState) => {
 		dispatch(onEntityPageRequest());
-		return Axios.get(buildUrl(DiscoverySelector.root.entity.page(getState(), page), {queryParams: {limit: size,}}))
+		return Server.get(buildUrl(DiscoverySelector.root.entity.page(getState(), page), {queryParams: {limit: size,}}))
 			.then(({data}) => {
 				dispatch(onEntityPageSuccess(data));
 			})

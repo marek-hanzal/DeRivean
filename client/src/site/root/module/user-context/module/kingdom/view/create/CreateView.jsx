@@ -2,9 +2,11 @@ import {RightCircleOutlined} from "@ant-design/icons";
 import {Button, Card, Col, Divider, Form, Result, Row, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import BaseCreateView from "component/view/BaseCreateView";
+import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {onLoading} from "redux/loading/action";
+import KingdomAttributesAction from "redux/kingdom/attributes/action";
+import Loading from "redux/loading/action";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
@@ -17,6 +19,9 @@ const CreateView = () => {
 	const dispatch = useDispatch();
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
+	useEffect(() => {
+		dispatch(KingdomAttributesAction.fetch());
+	}, []);
 
 	return (
 		<Form
@@ -24,9 +29,9 @@ const CreateView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={values => {
-				dispatch(onLoading(true));
+				dispatch(Loading.start());
 				console.log("Received values of form:", values);
-				setTimeout(() => dispatch(onLoading(false)), 1200);
+				setTimeout(() => dispatch(Loading.finish()), 1200);
 			}}
 		>
 			<BaseCreateView
