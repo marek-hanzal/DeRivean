@@ -4,7 +4,7 @@ import SubtitleNameField from "component/form/SubtitleNameField";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
 import LoadingRedux from "redux/loading/redux";
 import AttributeFields from "site/root/component/AttributeFields";
@@ -21,7 +21,9 @@ const CreateView = () => {
 	const {t} = useTranslation();
 	useEffect(() => {
 		dispatch(KingdomAttributesRedux.fetch());
-	}, []);
+	}, [dispatch]);
+
+	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
 
 	return (
 		<Form
@@ -37,6 +39,7 @@ const CreateView = () => {
 			<BaseCreateView
 				base={KingdomView}
 				id={id}
+				isLoading={isLoading}
 				icon={<KingdomIcon/>}
 				subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
 			>

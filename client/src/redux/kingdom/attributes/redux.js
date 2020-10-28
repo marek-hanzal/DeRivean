@@ -1,6 +1,5 @@
 import DiscoveryRedux from "redux/discovery/redux";
 import KingdomRedux from "redux/kingdom/redux";
-import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
@@ -14,12 +13,10 @@ const KingdomAttributesRedux = {
 	fetch: function () {
 		return (dispatch, getState) => {
 			dispatch(this.request());
-			dispatch(LoadingRedux.start());
 			return Server.get(DiscoveryRedux.selector.root.kingdom.attributes(getState()))
 				.then(({data}) => {
 					setTimeout(() => {
 						dispatch(this.success(data));
-						dispatch(LoadingRedux.finish());
 					}, 2200);
 				})
 				.catch(({response}) => {
@@ -36,6 +33,7 @@ const KingdomAttributesRedux = {
 	},
 	selector: {
 		branch: state => KingdomRedux.selector.branch(state).attributes,
+		isLoading: state => KingdomAttributesRedux.selector.branch(state).loading,
 	},
 };
 
