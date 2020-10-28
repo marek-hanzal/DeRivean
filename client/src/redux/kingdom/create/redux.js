@@ -5,6 +5,7 @@ import {Server} from "server";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
 import successAction from "utils/action/actions/successAction";
+import reducerActions from "utils/action/reducerActions";
 
 const KingdomCreateRedux = {
 	request: requestAction("kingdom.create"),
@@ -26,6 +27,11 @@ const KingdomCreateRedux = {
 		};
 	},
 	reducer: function () {
+		return reducerActions([
+			this.request,
+			this.success,
+			this.failure,
+		]);
 	},
 	selector: {
 		branch: state => KingdomRedux.selector.branch(state),

@@ -1,15 +1,24 @@
 import BaseListView from "component/view/BaseListView";
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import KingdomPageRedux from "redux/kingdom/page/redux";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
-import defaultPage from "utils/page";
+import Routes from "site/Routes";
 
-const ListView = () => {
+const ListView = (props) => {
+	const dispatch = useDispatch();
 	return (
 		<BaseListView
 			base={KingdomView}
 			id={"root.userContext.kingdom"}
-			page={defaultPage}
-			onPage={() => {
-			}}
+			page={useSelector(KingdomPageRedux.selector.getPayload)}
+			onPage={(page, size = 100) => dispatch(KingdomPageRedux.fetch(page, size))}
+			isLoading={useSelector(KingdomPageRedux.selector.isLoading)}
+			{...props}
+			columns={[
+				{title: "id", width: 380, render: (text, record) => <Link to={Routes.root.kingdomContext.dashboard.link(record.id)}>{text}</Link>},
+				{title: "name"},
+			]}
 		/>
 	);
 };

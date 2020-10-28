@@ -324,7 +324,15 @@
 				},
 				"list": {
 					"menu": "List",
-					"title": "Kingdom List"
+					"title": "Kingdom List",
+					"table": {
+						"id": {
+							"column": "UUID"
+						},
+						"name": {
+							"column": "Name"
+						}
+					}
 				}
 			}
 		},

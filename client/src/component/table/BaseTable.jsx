@@ -7,7 +7,7 @@ const BaseTable = (
 		id,
 		page,
 		onPage,
-		items,
+		items = page.items,
 		isLoading,
 		columns = [],
 	}) => {
@@ -33,7 +33,8 @@ const BaseTable = (
 				showQuickJumper: true,
 				onChange: (current, size) => onPage(current - 1, size),
 			}}
-			children={columns.map(item => <Table.Column key={item.title || item.name} render={item.render} title={t(`${id}.${item.title || item.name}.column`)} dataIndex={item.name}/>)}
+			columns={columns.map(item => ({...item, dataIndex: item.title, key: item.title, title: t(`${id}.${item.title}.column`)}))}
+			// children={columns.map(item => <Table.Column key={item.title || item.name} render={item.render} title={} dataIndex={item.name}/>)}
 		/>
 	);
 };

@@ -58,6 +58,13 @@ const Routes = {
 				link: () => "/user/list",
 			},
 		},
+		kingdomContext: {
+			match: () => "/kingdom-context/:kingdom/*",
+			dashboard: {
+				match: () => "dashboard/*",
+				link: resolveUuid("kingdom", "/kingdom-context/:kingdom/dashboard"),
+			}
+		},
 		userContext: {
 			match: () => "/user-context/:user/*",
 			dashboard: {
