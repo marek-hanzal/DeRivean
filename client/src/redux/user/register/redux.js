@@ -1,7 +1,7 @@
-import Axios from "axios";
 import DiscoveryRedux from "redux/discovery/redux";
 import LoadingRedux from "redux/loading/redux";
 import UserRedux from "redux/user/redux";
+import {Server} from "server";
 import dismissAction from "utils/action/actions/dismissAction";
 import failureAction from "utils/action/actions/failureAction";
 import requestAction from "utils/action/actions/requestAction";
@@ -17,7 +17,7 @@ const UserRegisterRedux = {
 		return (dispatch, getState) => {
 			dispatch(LoadingRedux.start());
 			dispatch(this.request(register));
-			return Axios.post(DiscoveryRedux.selector.public.user.register(getState()), register)
+			return Server.post(DiscoveryRedux.selector.public.user.register(getState()), register)
 				.then(({data}) => {
 					dispatch(this.success(data));
 					dispatch(LoadingRedux.finish());

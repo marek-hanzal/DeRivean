@@ -6,7 +6,7 @@ import derivean.server.entity.EntityRepository
 import derivean.server.rest.root.mapper.EntityFetchMapper
 import io.ktor.routing.*
 
-class EntityPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
+class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 	private val entityRepository: EntityRepository by container.lazy()
 	private val entityFetchMapper: EntityFetchMapper by container.lazy()
 

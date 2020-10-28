@@ -5,10 +5,11 @@ import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.EntityUUID
 import derivean.server.entity.entities.Entity
-import derivean.server.entity.entities.EntityAttribute
 import derivean.server.entity.entities.EntityTable
 
 class EntityRepository(container: IContainer) : AbstractRepository<Entity, EntityTable>(Entity, EntityTable, container) {
+	private val entityAttributeRepository: EntityAttributeRepository by container.lazy()
+
 	/**
 	 * Replace Entity's attributes by the new ones.
 	 */
@@ -18,7 +19,7 @@ class EntityRepository(container: IContainer) : AbstractRepository<Entity, Entit
 				it.delete()
 			}
 			for (attribute in attributes) {
-				EntityAttribute.new {
+				entityAttributeRepository.create {
 					this.entity = entity
 					this.name = attribute.first
 					this.value = attribute.second

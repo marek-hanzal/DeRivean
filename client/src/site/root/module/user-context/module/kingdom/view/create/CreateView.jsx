@@ -6,7 +6,8 @@ import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
-import LoadingRedux from "redux/loading/redux";
+import KingdomCreateRedux from "redux/kingdom/create/redux";
+import UserFetchRedux from "redux/user/fetch/redux";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
@@ -23,18 +24,16 @@ const CreateView = () => {
 		dispatch(KingdomAttributesRedux.fetch());
 	}, [dispatch]);
 
+	const user = useSelector(UserFetchRedux.selector.getPayload);
 	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
+	const attributes = useSelector(KingdomAttributesRedux.selector.getPayload);
 
 	return (
 		<Form
 			form={form}
 			name={"kingdom"}
 			autoComplete="off"
-			onFinish={values => {
-				dispatch(LoadingRedux.start());
-				console.log("Received values of form:", values);
-				setTimeout(() => dispatch(LoadingRedux.finish()), 1200);
-			}}
+			onFinish={kingdom => dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}}))}
 		>
 			<BaseCreateView
 				base={KingdomView}
@@ -48,7 +47,7 @@ const CreateView = () => {
 						<Row>
 							<Col span={24}>
 								<Card title={t(longId + ".form.attribute.title")}>
-									<AttributeFields translation={longId}/>
+									<AttributeFields translation={longId} attributes={attributes}/>
 								</Card>
 							</Col>
 						</Row>

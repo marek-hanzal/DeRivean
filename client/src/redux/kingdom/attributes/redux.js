@@ -32,6 +32,7 @@ const KingdomAttributesRedux = {
 	selector: {
 		branch: state => KingdomRedux.selector.branch(state).attributes,
 		isLoading: state => KingdomAttributesRedux.selector.branch(state).loading,
+		getPayload: state => KingdomAttributesRedux.selector.branch(state).payload,
 	},
 };
 

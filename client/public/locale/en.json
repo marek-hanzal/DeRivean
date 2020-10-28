@@ -18,7 +18,15 @@
 		"homepage": "Go to Homepage",
 		"spinner": "Making some hard magick to make things work!",
 		"yes": "Yep!",
-		"no": "Nope!"
+		"no": "Nope!",
+		"attribute": {
+			"resource": {
+				"wood": "Wood",
+				"stone": "Stone",
+				"gold": "Gold",
+				"food": "Food"
+			}
+		}
 	},
 	"public": {
 		"home": {

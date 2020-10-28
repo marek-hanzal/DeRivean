@@ -2,18 +2,20 @@ package derivean.server.rest.root.kingdom
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.server.rest.root.kingdom.endpoint.KingdomAttributesEndpoint
-import derivean.server.rest.root.kingdom.endpoint.KingdomFetchEndpoint
-import derivean.server.rest.root.kingdom.endpoint.KingdomPageEndpoint
+import derivean.server.rest.root.kingdom.endpoint.AttributesEndpoint
+import derivean.server.rest.root.kingdom.endpoint.CreateEndpoint
+import derivean.server.rest.root.kingdom.endpoint.FetchEndpoint
+import derivean.server.rest.root.kingdom.endpoint.PageEndpoint
 import io.ktor.routing.*
 
 class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		install(
 			routing,
-			KingdomFetchEndpoint::class,
-			KingdomPageEndpoint::class,
-			KingdomAttributesEndpoint::class,
+			CreateEndpoint::class,
+			FetchEndpoint::class,
+			PageEndpoint::class,
+			AttributesEndpoint::class,
 		)
 	}
 }

@@ -1,46 +1,10 @@
 import {PlusOutlined} from "@ant-design/icons";
-import {Button, Cascader, Form, Input, InputNumber, List, Popconfirm} from "antd";
+import {Button, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import {useTranslation} from "react-i18next";
 
-const cascader = [
-	{
-		label: "Resources",
-		value: "resources",
-		children: [
-			{
-				label: "Gold",
-				value: "gold",
-			},
-			{
-				label: "Stone",
-				value: "stone",
-			},
-			{
-				label: "Wood",
-				value: "wood",
-			},
-			{
-				label: "Food",
-				value: "food",
-			},
-		],
-	},
-	{
-		label: "Other",
-		value: "other",
-		children: [
-			{
-				label: "Maximum Heroes",
-				value: "max-heroes",
-			}
-		]
-	}
-];
-
-const AttributeFields = ({translation}) => {
+const AttributeFields = ({translation, attributes}) => {
 	const {t} = useTranslation();
-
 	return (
 		<Form.List
 			name="attributes"
@@ -58,12 +22,11 @@ const AttributeFields = ({translation}) => {
 									rules={[{required: true, message: t(translation + ".form.attribute.name.required")}]}
 									style={{width: "60%", marginBottom: 0}}
 								>
-									<Cascader
-										options={cascader}
+									<Select
+										showSearch
+										allowClear
 										placeholder={t(translation + ".form.attribute.name.hint")}
-										expandTrigger={"hover"}
-										showSearch={{filter: (inputValue, path) => path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1)}}
-
+										options={(attributes || []).map(item => ({label: t("common.attribute." + item), value: item}))}
 									/>
 								</Form.Item>
 								<Form.Item

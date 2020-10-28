@@ -6,7 +6,7 @@ import derivean.server.kingdom.KingdomRepository
 import derivean.server.rest.root.mapper.KingdomFetchMapper
 import io.ktor.routing.*
 
-class KingdomPageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
+class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 	private val kingdomFetchMapper: KingdomFetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 

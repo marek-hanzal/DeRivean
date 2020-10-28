@@ -8,7 +8,7 @@ import derivean.lib.rest.resolve
 import io.ktor.application.*
 import io.ktor.routing.*
 
-class KingdomAttributesEndpoint(container: IContainer) : AbstractEndpoint(container) {
+class AttributesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	override fun install(routing: Routing) {
 		discovery {
 			name = "attributes"

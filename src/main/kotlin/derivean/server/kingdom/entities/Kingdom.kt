@@ -10,4 +10,5 @@ class Kingdom(id: EntityUUID) : UUIDEntity(id) {
 
 	var user by User referencedOn KingdomTable.user
 	var name by KingdomTable.name
+	val attributes by KingdomAttribute referrersOn KingdomAttributeTable.kingdom
 }
