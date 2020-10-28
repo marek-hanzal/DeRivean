@@ -12,9 +12,9 @@ class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container
 	override fun install(routing: Routing) {
 		discovery {
 			this.namespace = "public"
-			this.name = "create"
+			this.name = "register"
 			this.group = "user"
-			this.description = "Create a new User"
+			this.description = "Register a new User"
 			this.link = "/api/public/user/register"
 		}
 		routing.post("/api/public/user/register") {
