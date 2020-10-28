@@ -8,6 +8,8 @@ import SingOutView from "component/view/SingOutView";
 import {BlogBreadcrumbRoute} from "site/root/module/blog/site/Breadcrumbs";
 import {BlogMenuItem, BlogMenuRoute} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
+import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
+import {KingdomContextRoute} from "site/root/module/kingdom-context/site/Router";
 import {UserContextMenuRoute} from "site/root/module/user-context/site/Menu";
 import {UserContextRoute} from "site/root/module/user-context/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
@@ -32,6 +34,7 @@ const Site = () =>
 				routes={[
 					UserMenuRoute(),
 					UserContextMenuRoute(),
+					KingdomContextMenuRoute(),
 					BlogMenuRoute(),
 
 					route("/", <BaseMenu
@@ -69,6 +72,7 @@ const Site = () =>
 				routes={[
 					UserRoute(),
 					UserContextRoute(),
+					KingdomContextRoute(),
 					BlogRoute(),
 
 					route(Routes.root.signIn.link(), <SingInView/>),

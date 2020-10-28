@@ -5,8 +5,8 @@ import ListIcon from "component/icon/ListIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
+import KingdomContextIcon from "site/root/module/kingdom-context/component/icon/KingdomContextIcon";
+import HeroIcon from "site/root/module/kingdom-context/module/hero/component/icon/HeroIcon";
 import Routes from "site/Routes";
 import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
@@ -20,13 +20,12 @@ const Menu = () => {
 				route("*", <BaseMenu
 					items={[
 						menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
-						menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
-						menuItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
+						menuItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomContextIcon/>),
 						menuDivider(),
-						menuGroup("root.userContext.kingdom", <KingdomIcon/>, [
-							menuItem(Routes.root.userContext.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <DashboardIcon/>),
-							menuItem(Routes.root.userContext.kingdom.list.link(), "root.userContext.kingdom.list", <ListIcon/>),
-							menuItem(Routes.root.userContext.kingdom.create.link(), "root.userContext.kingdom.create", <CreateIcon/>),
+						menuGroup("root.kingdomContext.hero", <HeroIcon/>, [
+							menuItem(Routes.root.kingdomContext.hero.dashboard.link(), "root.kingdomContext.hero.dashboard", <DashboardIcon/>),
+							menuItem(Routes.root.kingdomContext.hero.list.link(), "root.kingdomContext.hero.list", <ListIcon/>),
+							menuItem(Routes.root.kingdomContext.hero.create.link(), "root.kingdomContext.hero.create", <CreateIcon/>),
 						]),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
@@ -37,8 +36,8 @@ const Menu = () => {
 	);
 };
 
-const UserContextMenuRoute = () => route(Routes.root.userContext.match(), <Menu/>);
+const KingdomContextMenuRoute = () => route(Routes.root.kingdomContext.match(), <Menu/>);
 
 export {
-	UserContextMenuRoute,
+	KingdomContextMenuRoute,
 };

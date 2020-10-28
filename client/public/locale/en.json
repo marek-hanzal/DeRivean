@@ -336,6 +336,28 @@
 				}
 			}
 		},
+		"kingdomContext": {
+			"dashboard": {
+				"menu": "Dashboard",
+				"title": "Everything about the Kingdom"
+			},
+			"hero": {
+				"menu": "Heroes",
+				"dashboard": {
+					"menu": "Dashboard",
+					"title": "Heroes Dashboard",
+					"subtitle": "Something about all Heroes in the Kingdom."
+				},
+				"list": {
+					"menu": "List",
+					"title": "Heroes of Kingdom"
+				},
+				"create": {
+					"menu": "Create",
+					"title": "Create a new Hero"
+				}
+			}
+		},
 		"entity": {
 			"menu": "Entities",
 			"dashboard": {
