@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {getUserCreateHref} from "redux/discovery/selector";
+import DiscoverySelector from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
 import dismissAction from "utils/action/actions/dismissAction";
 import failureAction from "utils/action/actions/failureAction";
@@ -14,7 +14,7 @@ const
 	onUserRegister = register => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onUserRegisterRequest(register));
-		return Axios.post(getUserCreateHref(getState()), register)
+		return Axios.post(DiscoverySelector.public.user.register(getState()), register)
 			.then(({data}) => {
 				dispatch(onUserRegisterSuccess(data));
 				dispatch(onLoading(false));

@@ -2,13 +2,13 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getDiscoveryHref} from "redux/client/selector";
 import {onDiscovery} from "redux/discovery/action";
-import {getDiscoveryStatus} from "redux/discovery/selector";
+import DiscoverySelector from "redux/discovery/selector";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
 
 const Discovery = ({children}) => {
 	const dispatch = useDispatch();
-	const status = useSelector(getDiscoveryStatus);
+	const status = useSelector(DiscoverySelector.status);
 	const href = useSelector(getDiscoveryHref);
 	useEffect(() => dispatch(onDiscovery(href)), [dispatch, href]);
 	switch (status) {

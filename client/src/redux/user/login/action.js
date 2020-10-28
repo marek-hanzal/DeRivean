@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {getUserLoginHref} from "redux/discovery/selector";
+import DiscoverySelector from "redux/discovery/selector";
 import {onLoading} from "redux/loading/action";
 import dismissAction from "utils/action/actions/dismissAction";
 import failureAction from "utils/action/actions/failureAction";
@@ -14,7 +14,7 @@ const
 	onUserLogin = login => (dispatch, getState) => {
 		dispatch(onLoading(true));
 		dispatch(onUserLoginRequest());
-		return Axios.post(getUserLoginHref(getState()), login)
+		return Axios.post(DiscoverySelector.public.user.login(getState()), login)
 			.then(({data}) => {
 				dispatch(onUserLoginSuccess(data));
 				dispatch(onLoading(false));
