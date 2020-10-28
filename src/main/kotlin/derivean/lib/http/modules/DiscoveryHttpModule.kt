@@ -26,6 +26,8 @@ class DiscoveryHttpModule(container: IContainer) : AbstractHttpModule(container)
 
 class DiscoveryMapper(container: IContainer) : AbstractMapper<Map<String, Link>, Response<out Any>>(container) {
 	override fun map(item: Map<String, Link>): Response<out Any> {
-		return ok(item.toSortedMap())
+		return ok(item.toSortedMap().map { it.key to DiscoveryLink(it.value.link, it.value.description) }.toMap())
 	}
+
+	data class DiscoveryLink(val link: String, val description: String)
 }
