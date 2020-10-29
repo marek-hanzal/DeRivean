@@ -49,6 +49,7 @@ const DiscoveryRedux = {
 			kingdom: {
 				attributes: state => DiscoveryRedux.selector.index(state)["root.kingdom.attributes"].link,
 				create: state => DiscoveryRedux.selector.index(state)["root.kingdom.create"].link,
+				update: (state, uuid) => DiscoveryRedux.selector.index(state)["root.kingdom.update"].link.replace("{id}", uuid),
 				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.kingdom.fetch"].link.replace("{id}", uuid),
 			},
 		},

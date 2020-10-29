@@ -1,9 +1,9 @@
 import {Col, Row} from "antd";
 
-const Centered = ({children}) => {
+const Centered = ({children, span = null}) => {
 	return (
 		<Row justify={"center"}>
-			<Col>
+			<Col span={span}>
 				{children}
 			</Col>
 		</Row>
