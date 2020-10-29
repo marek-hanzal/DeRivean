@@ -5,12 +5,15 @@ import BaseCreateView from "component/view/BaseCreateView";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
+import {useLocation, useNavigate} from "react-router";
 import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
 import KingdomCreateRedux from "redux/kingdom/create/redux";
+import SessionRedux from "redux/session/redux";
 import UserFetchRedux from "redux/user/fetch/redux";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
+import Routes from "site/Routes";
 import numberRange from "utils/numberRange";
 
 const id = "root.userContext.kingdom";
@@ -18,6 +21,9 @@ const longId = id + ".create";
 
 const CreateView = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
 	useEffect(() => {
@@ -34,7 +40,14 @@ const CreateView = () => {
 			form={form}
 			name={"kingdom"}
 			autoComplete="off"
-			onFinish={kingdom => dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}}))}
+			onFinish={kingdom => {
+				dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
+					history.push(location.pathname + "/../list");
+					dispatch(SessionRedux.history(history));
+					navigate(Routes.root.kingdomContext.dashboard.link(kingdom.id));
+				}, () => {
+				});
+			}}
 		>
 			<BaseCreateView
 				base={KingdomView}

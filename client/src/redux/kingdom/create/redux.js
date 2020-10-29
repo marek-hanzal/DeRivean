@@ -19,10 +19,12 @@ const KingdomCreateRedux = {
 				.then(({data}) => {
 					dispatch(this.success(data));
 					dispatch(LoadingRedux.finish());
+					return Promise.resolve(data);
 				})
 				.catch(({response}) => {
 					dispatch(this.failure(response.data));
 					dispatch(LoadingRedux.finish());
+					return Promise.reject(response.data);
 				});
 		};
 	},
