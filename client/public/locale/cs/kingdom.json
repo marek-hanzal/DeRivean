@@ -1,0 +1,37 @@
+{
+	"form": {
+		"name": {
+			"label": "Jméno království",
+			"required": "Vymysli si prosím nějaké jméno království!"
+		},
+		"submit": {
+			"label": "Vytvořit království!"
+		},
+		"cancel": {
+			"label": "Zrušit"
+		},
+		"edit": {
+			"label": "Editovat",
+			"cancelConfirm": "Přeješ si zrušit editaci? Všechny změny budou ztraceny!",
+			"submit": {
+				"label": "Uložit změny!"
+			}
+		},
+		"attribute": {
+			"title": "Atributy království",
+			"empty": "Nejsou dostupné žádné atributy :(!",
+			"name": {
+				"hint": "Jméno atributu",
+				"required": "Prosím vyber atribut!"
+			},
+			"value": {
+				"hint": "Hodnota atributu",
+				"required": "Vyplň prosím hodnotu atributu!"
+			},
+			"add": {
+				"label": "Přidat atribut"
+			},
+			"deleteConfirm": "Smazat atribut?"
+		}
+	}
+}

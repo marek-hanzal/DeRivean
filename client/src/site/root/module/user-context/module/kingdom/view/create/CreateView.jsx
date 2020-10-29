@@ -58,7 +58,7 @@ const CreateView = () => {
 				id={id}
 				icon={<KingdomIcon/>}
 				title={
-					<Centered span={6}>
+					<Centered span={12}>
 						<Form.Item
 							{...validationFor("name", errors, t)}
 							name={"name"}

@@ -1,6 +1,5 @@
-import {Button, Divider, Form, Input, message, Popconfirm, Space} from "antd";
+import {Button, Divider, Form, Input, message, Space} from "antd";
 import BulletCard from "component/BulletCard";
-import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import LoaderIcon from "component/icon/LoaderIcon";
 import SubmitIcon from "component/icon/SubmitIcon";
@@ -38,7 +37,9 @@ const DashboardView = () => {
 
 	useKingdomFetch(null, (data) => {
 		setKingdom(data);
+		console.log("before", form.isFieldsTouched());
 		form.setFieldsValue(data);
+		console.log("after", form.isFieldsTouched());
 	});
 
 	return (
@@ -62,7 +63,7 @@ const DashboardView = () => {
 				open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
 				icon={kingdom ? <KingdomContextIcon/> : <LoaderIcon spin/>}
 				title={
-					<Centered span={6}>
+					<Centered span={12}>
 						<Form.Item
 							{...validationFor("name", errors, t)}
 							name={"name"}
@@ -92,17 +93,23 @@ const DashboardView = () => {
 									/>
 								)}
 							</Form.Item>
-							<Popconfirm
-								okText={t("common:yes")}
-								cancelText={t("common:no")}
-								title={t("kingdom:form.edit.cancelConfirm")}
-								onConfirm={() => {
-									setEdit(false);
-									form.setFieldsValue(kingdom);
-								}}
-							>
-								<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t("kingdom:form.cancel.label")}</Button>
-							</Popconfirm>
+							<Form.Item shouldUpdate={true} noStyle>
+								{() => (
+									console.log(form.isFieldsTouched(["name"], true))
+									// form.isFieldsTouched(['name'], true) ?
+									// 	<Popconfirm
+									// 		okText={t('common:yes')}
+									// 		cancelText={t('common:no')}
+									// 		title={t('kingdom:form.edit.cancelConfirm')}
+									// 		onConfirm={() => {
+									// 			setEdit(false);
+									// 			form.setFieldsValue(kingdom);
+									// 		}}
+									// 		children={<Button type={'danger'} ghost icon={<DeleteItemIcon/>}>{t('kingdom:form.cancel.label')}</Button>}
+									// 	/> :
+									// 	<Button type={'danger'} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t('kingdom:form.cancel.label')}</Button>
+								)}
+							</Form.Item>
 						</Space> :
 						<Button type={"primary"} ghost size={"large"} disabled={!kingdom} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t("kingdom:form.edit.label")}</Button>
 				}
