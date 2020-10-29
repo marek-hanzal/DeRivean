@@ -1,5 +1,5 @@
 import {PlusOutlined} from "@ant-design/icons";
-import {Button, Card, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
+import {Button, Card, Col, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Row, Select} from "antd";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import {useTranslation} from "react-i18next";
 
@@ -7,11 +7,11 @@ const AttributeFieldEditor = ({translation, values, editor = true, attributes}) 
 	const {t} = useTranslation();
 	return (
 		<Card title={t(translation + ".form.attribute.title")}>
-			{values ?
-				<Form.List
-					name="attributes"
-				>
-					{(fields, {add, remove}) => (
+			<Form.List
+				name="attributes"
+			>
+				{(fields, {add, remove}) => (
+					fields.length ?
 						<List>
 							{fields.map(field => (
 								<List.Item key={field.key}>
@@ -59,21 +59,41 @@ const AttributeFieldEditor = ({translation, values, editor = true, attributes}) 
 							))}
 							{
 								editor ? (
-									<List.Item>
-										<Button
-											type="dashed"
-											onClick={() => add()}
-											icon={<PlusOutlined/>}
-											children={t(translation + ".form.attribute.add.label")}
-											style={{width: "100%"}}
-										/>
-									</List.Item>
+									<Row justify={"center"}>
+										<Col>
+											<List.Item>
+												<Button
+													type="primary"
+													ghost
+													onClick={() => add()}
+													icon={<PlusOutlined/>}
+													children={t(translation + ".form.attribute.add.label")}
+												/>
+											</List.Item>
+										</Col>
+									</Row>
 								) : null
 							}
-						</List>
-					)}
-				</Form.List> :
-				<Empty/>}
+						</List> :
+						<Empty
+							image={Empty.PRESENTED_IMAGE_SIMPLE}
+							description={t(translation + ".form.attribute.empty")}
+						>
+							{editor ? (
+								<>
+									<Divider type={"horizontal"}/>
+									<Button
+										type="primary"
+										ghost
+										onClick={() => add()}
+										icon={<PlusOutlined/>}
+										children={t(translation + ".form.attribute.add.label")}
+									/>
+								</>
+							) : null}
+						</Empty>
+				)}
+			</Form.List>
 		</Card>
 	);
 };
