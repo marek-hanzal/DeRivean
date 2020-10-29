@@ -1,6 +1,9 @@
 import {Button, Col, Divider, Form, message, Popconfirm, Row, Space} from "antd";
 import BulletCard from "component/BulletCard";
 import SubtitleNameField from "component/form/SubtitleNameField";
+import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import EditIcon from "component/icon/EditIcon";
+import SubmitIcon from "component/icon/SubmitIcon";
 import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
 import {useState} from "react";
@@ -53,17 +56,17 @@ const DashboardView = () => {
 				subTitle={
 					edit ?
 						<Space split={<Divider type={"vertical"}/>}>
-							<Button type={"primary"} htmlType={"submit"} size={"large"}>{t("kingdom:form.edit.submit.label")}</Button>
+							<Button type={"primary"} htmlType={"submit"} size={"large"} icon={<SubmitIcon/>}>{t("kingdom:form.edit.submit.label")}</Button>
 							<Popconfirm
 								okText={t("common:yes")}
 								cancelText={t("common:no")}
 								title={t("kingdom:form.edit.cancelConfirm")}
 								onConfirm={() => setEdit(false)}
 							>
-								<Button type={"danger"} ghost size={"large"}>{t("kingdom:form.cancel.label")}</Button>
+								<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t("kingdom:form.cancel.label")}</Button>
 							</Popconfirm>
 						</Space> :
-						<Button type={"primary"} ghost size={"large"} onClick={() => setEdit(true)}>{t("kingdom:form.edit.label")}</Button>
+						<Button type={"primary"} ghost size={"large"} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t("kingdom:form.edit.label")}</Button>
 				}
 			>
 				<DualSection
