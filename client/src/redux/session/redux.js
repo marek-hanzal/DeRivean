@@ -4,15 +4,18 @@ import reducerSimpleActions from "utils/action/reducerSimpleActions";
 const SessionRedux = {
 	open: miniAction("session.open", "user"),
 	close: miniAction("session.close", "user", {site: "public"}),
+	history: miniAction("session.history", "history", []),
 	reducer: function () {
 		return reducerSimpleActions([
 			this.open,
 			this.close,
-		], {user: {site: "public"}});
+			this.history,
+		], {history: [], user: {site: "public"}});
 	},
 	selector: {
 		branch: state => state.session,
-		getSession: state => SessionRedux.selector.branch(state),
+		getUser: state => SessionRedux.selector.branch(state).user,
+		getHistory: state => SessionRedux.selector.branch(state).history,
 	},
 };
 

@@ -281,8 +281,9 @@
 		"userContext": {
 			"menu": "User's Context",
 			"dashboard": {
-				"menu": "Dashboard",
-				"title": "Dashboard"
+				"menu": "User",
+				"title": "User",
+				"breadcrumb": "User"
 			},
 			"kingdom": {
 				"menu": "Kingdoms",
@@ -332,7 +333,7 @@
 				},
 				"list": {
 					"menu": "List",
-					"title": "Kingdom List",
+					"title": "Kingdoms",
 					"table": {
 						"id": {
 							"column": "UUID"
@@ -346,8 +347,8 @@
 		},
 		"kingdomContext": {
 			"dashboard": {
-				"menu": "Dashboard",
-				"title": "Everything about the Kingdom"
+				"menu": "Kingdom",
+				"title": "Kingdom"
 			},
 			"hero": {
 				"menu": "Heroes",

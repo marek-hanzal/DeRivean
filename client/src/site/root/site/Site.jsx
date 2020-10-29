@@ -10,6 +10,7 @@ import {BlogMenuItem} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
 import {KingdomContextRoute} from "site/root/module/kingdom-context/site/Router";
+import {UserContextBreadcrumbRoute} from "site/root/module/user-context/site/Breadcrumbs";
 import {UserContextMenuRoute} from "site/root/module/user-context/site/Menu";
 import {UserContextRoute} from "site/root/module/user-context/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
@@ -56,7 +57,7 @@ const Site = () =>
 			<BaseRoutes
 				routes={[
 					UserBreadcrumbRoute(),
-					// UserContextBreadcrumbRoute(),
+					UserContextBreadcrumbRoute(),
 					BlogBreadcrumbRoute(),
 
 					route("/", <BaseBreadcrumbs
