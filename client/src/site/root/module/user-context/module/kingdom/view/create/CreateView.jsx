@@ -1,5 +1,5 @@
 import {RightCircleOutlined} from "@ant-design/icons";
-import {Button, Card, Col, Divider, Form, Result, Row, Typography} from "antd";
+import {Button, Card, Col, Divider, Form, message, Result, Row, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useEffect} from "react";
@@ -42,10 +42,12 @@ const CreateView = () => {
 			autoComplete="off"
 			onFinish={kingdom => {
 				dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
-					history.push(location.pathname + "/../list");
+					history.push(location.pathname);
 					dispatch(SessionRedux.history(history));
 					navigate(Routes.root.kingdomContext.dashboard.link(kingdom.id));
+					message.success(t(longId + ".message.success"));
 				}, () => {
+					message.error(t(longId + ".message.error"));
 				});
 			}}
 		>

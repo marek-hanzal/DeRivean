@@ -299,6 +299,10 @@
 					"title": "New Kingdom",
 					"breadcrumb": "Create",
 					"subtitle": "Create a new Kingdom for the selected User!",
+					"message": {
+						"success": "You created a new Kingdom, yahoo!",
+						"error": "Kingdom creation failed, please check the form."
+					},
 					"form": {
 						"name": {
 							"label": "Kingdom name",
