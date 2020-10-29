@@ -1,6 +1,7 @@
 import {PlusOutlined} from "@ant-design/icons";
-import {Button, Card, Col, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Row, Select} from "antd";
+import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 
 const AttributeFieldEditor = ({translation, values, editor = true, attributes}) => {
@@ -59,19 +60,17 @@ const AttributeFieldEditor = ({translation, values, editor = true, attributes}) 
 							))}
 							{
 								editor ? (
-									<Row justify={"center"}>
-										<Col>
-											<List.Item>
-												<Button
-													type="primary"
-													ghost
-													onClick={() => add()}
-													icon={<PlusOutlined/>}
-													children={t(translation + ".form.attribute.add.label")}
-												/>
-											</List.Item>
-										</Col>
-									</Row>
+									<Centered>
+										<List.Item>
+											<Button
+												type="primary"
+												ghost
+												onClick={() => add()}
+												icon={<PlusOutlined/>}
+												children={t(translation + ".form.attribute.add.label")}
+											/>
+										</List.Item>
+									</Centered>
 								) : null
 							}
 						</List> :

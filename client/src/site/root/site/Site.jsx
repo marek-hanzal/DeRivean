@@ -28,65 +28,67 @@ import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
-const Site = () =>
-	<BaseLayout
-		header={<Header/>}
-		menu={
-			<BaseRoutes
-				routes={[
-					UserContextMenuRoute(),
-					KingdomContextMenuRoute(),
+const Site = () => {
+	return (
+		<BaseLayout
+			header={<Header/>}
+			menu={
+				<BaseRoutes
+					routes={[
+						UserContextMenuRoute(),
+						KingdomContextMenuRoute(),
 
-					route("*", <BaseMenu
-						items={[
-							menuDivider(),
-							menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
-							menuDivider(),
+						route("*", <BaseMenu
+							items={[
+								menuDivider(),
+								menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
+								menuDivider(),
 
-							UserMenuItem(),
-							menuDivider(),
-							BlogMenuItem(),
+								UserMenuItem(),
+								menuDivider(),
+								BlogMenuItem(),
 
-							menuDivider(),
-							menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
-						]}
-					/>)
-				]}
-			/>
-		}
-		breadcrumbs={
-			<BaseRoutes
-				routes={[
-					UserBreadcrumbRoute(),
-					UserContextBreadcrumbRoute(),
-					KingdomContextBreadcrumbRoute(),
-					BlogBreadcrumbRoute(),
+								menuDivider(),
+								menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+							]}
+						/>)
+					]}
+				/>
+			}
+			breadcrumbs={
+				<BaseRoutes
+					routes={[
+						UserBreadcrumbRoute(),
+						UserContextBreadcrumbRoute(),
+						KingdomContextBreadcrumbRoute(),
+						BlogBreadcrumbRoute(),
 
-					route("/", <BaseBreadcrumbs
-						items={[
-							breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						]}
-					/>),
-				]}
-			/>
-		}
-		router={
-			<BaseRoutes
-				routes={[
-					UserRoute(),
-					UserContextRoute(),
-					KingdomContextRoute(),
-					BlogRoute(),
+						route("/", <BaseBreadcrumbs
+							items={[
+								breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
+							]}
+						/>),
+					]}
+				/>
+			}
+			router={
+				<BaseRoutes
+					routes={[
+						UserRoute(),
+						UserContextRoute(),
+						KingdomContextRoute(),
+						BlogRoute(),
 
-					route(Routes.root.signIn.link(), <SingInView/>),
-					route(Routes.root.signOut.link(), <SingOutView id={"root"}/>),
-					route("/", <HomeView/>),
-					route("*", <NotFoundView/>),
-				]}
-			/>
-		}
-		footer={<Footer/>}
-	/>
-;
+						route(Routes.root.signIn.link(), <SingInView/>),
+						route(Routes.root.signOut.link(), <SingOutView id={"root"}/>),
+						route("/", <HomeView/>),
+						route("*", <NotFoundView/>),
+					]}
+				/>
+			}
+			footer={<Footer/>}
+		/>
+	);
+};
 
 export default Site;
