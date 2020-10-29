@@ -21,7 +21,7 @@ const KingdomCreateRedux = {
 					dispatch(LoadingRedux.finish());
 				})
 				.catch(({response}) => {
-					dispatch(this.failure(response));
+					dispatch(this.failure(response.data));
 					dispatch(LoadingRedux.finish());
 				});
 		};
@@ -34,7 +34,11 @@ const KingdomCreateRedux = {
 		]);
 	},
 	selector: {
-		branch: state => KingdomRedux.selector.branch(state),
+		branch: state => KingdomRedux.selector.branch(state).create,
+		isLoading: state => KingdomCreateRedux.selector.branch(state).loading,
+		getStatus: state => KingdomCreateRedux.selector.branch(state).status,
+		getError: state => KingdomCreateRedux.selector.branch(state).error,
+		getPayload: state => KingdomCreateRedux.selector.branch(state).payload,
 	}
 };
 

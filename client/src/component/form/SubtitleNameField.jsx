@@ -1,7 +1,8 @@
 import {Col, Form, Input, Row} from "antd";
 import {useTranslation} from "react-i18next";
+import validationFor from "utils/form/validationFor";
 
-const SubtitleNameField = ({name, label, required, icon, ...props}) => {
+const SubtitleNameField = ({name, errors = null, label, required, icon, ...props}) => {
 	const {t} = useTranslation();
 
 	return (
@@ -9,6 +10,7 @@ const SubtitleNameField = ({name, label, required, icon, ...props}) => {
 			<Col span={6}>
 				<Form.Item
 					{...props}
+					{...validationFor(name, errors, t)}
 					name={name}
 					rules={[
 						{

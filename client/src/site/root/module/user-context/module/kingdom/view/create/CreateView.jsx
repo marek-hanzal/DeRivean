@@ -27,6 +27,7 @@ const CreateView = () => {
 	const user = useSelector(UserFetchRedux.selector.getPayload);
 	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
 	const attributes = useSelector(KingdomAttributesRedux.selector.getPayload);
+	const errors = useSelector(KingdomCreateRedux.selector.getError);
 
 	return (
 		<Form
@@ -40,7 +41,7 @@ const CreateView = () => {
 				loading={isLoading}
 				id={id}
 				icon={<KingdomIcon/>}
-				subTitle={<SubtitleNameField name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
+				subTitle={<SubtitleNameField errors={errors} name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
 			>
 				<Row justify={"space-around"}>
 					<Col xs={24} xl={12}>

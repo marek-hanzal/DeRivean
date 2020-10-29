@@ -7,7 +7,7 @@ import derivean.server.auth.AuthenticatorService
 import derivean.server.user.UserRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
-class UserCreateMapper(container: IContainer) : AbstractActionMapper<UserCreateMapper.Request, Response<out Any>>(container) {
+class UserRegisterMapper(container: IContainer) : AbstractActionMapper<UserRegisterMapper.Request, Response<out Any>>(container) {
 	private val userRepository: UserRepository by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val userFetchMapper: UserFetchMapper by container.lazy()

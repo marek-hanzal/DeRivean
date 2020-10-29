@@ -2,8 +2,7 @@ package derivean.server.rest.root.mapper
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.Response
-import derivean.lib.rest.created
+import derivean.lib.rest.*
 import derivean.server.kingdom.KingdomRepository
 import derivean.server.user.UserRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
@@ -19,22 +18,27 @@ class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomC
 				this.name = item.name
 				this.user = userRepository.find(item.user)
 			}.also { kingdom ->
-				kingdomRepository.attributes(kingdom.id, *item.attributes.distinctBy { it.attribute }.map { it.attribute to it.value }.toTypedArray())
+				kingdomRepository.attributes(kingdom.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
 			}
 		}))
 	} catch (e: ExposedSQLException) {
 		when {
+			e.message?.contains("kingdom_name_unique") == true -> {
+				conflict(ValidationResponse.build {
+					message = "Cannot create Kingdom!"
+					validation("name", "error", "Kingdom with the given name already exists.")
+				})
+			}
 			else -> {
 				throw e
 			}
 		}
+	} catch (e: Throwable) {
+		internalServerError(ValidationResponse.build {
+			message = "Some ugly internal server error happened!"
+		})
 	}
-//	catch (e: Throwable) {
-//		internalServerError(ValidationResponse.build {
-//			message = "Some ugly internal server error happened!"
-//		})
-//	}
 
-	data class Request(val user: String, val name: String, val attributes: List<Attribute>)
+	data class Request(val user: String, val name: String, val attributes: List<Attribute>?)
 	data class Attribute(val attribute: String, val value: Double)
 }
