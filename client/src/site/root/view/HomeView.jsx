@@ -8,6 +8,7 @@ const HomeView = () => {
 	return (
 		<RootView
 			id={"root.home"}
+			open={["root.blog", "root.user"]}
 		>
 			<Card title={t("root.home.title")}>
 				<Result

@@ -11,6 +11,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={UserContextView}
 			id={"root.userContext"}
+			open={["root.userContext.kingdom"]}
 			icon={<UserAvatar user={user} size={64}/>}
 			title={<UserName user={user}/>}
 		>

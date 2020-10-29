@@ -6,7 +6,7 @@ const useMenuOpen = open => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (open) {
-			dispatch(MenuRedux.open([open]));
+			dispatch(MenuRedux.open(open));
 		}
 	}, [dispatch, open]);
 };

@@ -7,7 +7,7 @@ const BaseListView = (
 	{
 		base,
 		id,
-		open = id,
+		open = [id],
 		page,
 		onPage,
 		columns,

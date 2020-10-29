@@ -6,14 +6,14 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import {BlogBreadcrumbRoute} from "site/root/module/blog/site/Breadcrumbs";
-import {BlogMenuItem, BlogMenuRoute} from "site/root/module/blog/site/Menu";
+import {BlogMenuItem} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
 import {KingdomContextRoute} from "site/root/module/kingdom-context/site/Router";
 import {UserContextMenuRoute} from "site/root/module/user-context/site/Menu";
 import {UserContextRoute} from "site/root/module/user-context/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
-import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
+import {UserMenuItem} from "site/root/module/user/site/Menu";
 import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
@@ -32,17 +32,16 @@ const Site = () =>
 		menu={
 			<BaseRoutes
 				routes={[
-					UserMenuRoute(),
 					UserContextMenuRoute(),
 					KingdomContextMenuRoute(),
-					BlogMenuRoute(),
 
-					route("/", <BaseMenu
+					route("*", <BaseMenu
 						items={[
 							menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 							menuDivider(),
 
 							UserMenuItem(),
+							menuDivider(),
 							BlogMenuItem(),
 
 							menuDivider(),

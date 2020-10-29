@@ -19,6 +19,9 @@
 		"spinner": "Making some hard magick to make things work!",
 		"yes": "Yep!",
 		"no": "Nope!",
+		"back": {
+			"menu": "Back"
+		},
 		"attribute": {
 			"resource": {
 				"wood": "Wood",
@@ -225,34 +228,39 @@
 			}
 		},
 		"blog": {
+			"menu": "Blog",
 			"dashboard": {
-				"menu": "Blog",
+				"menu": "Dashboard",
 				"title": "Blog Dashboard",
 				"breadcrumb": "Blog"
 			},
 			"create": {
 				"title": "New post",
 				"subtitle": "Write something interesting!",
-				"menu": "Create Post",
+				"menu": "New Post",
 				"breadcrumb": "Create Post"
+			},
+			"list": {
+				"menu": "List"
 			}
 		},
 		"user": {
+			"menu": "Users",
 			"dashboard": {
 				"title": "Users Dashboard",
 				"subtitle": "User management module",
-				"menu": "Users",
+				"menu": "Dashboard",
 				"breadcrumb": "Users"
 			},
 			"create": {
 				"title": "Create User",
 				"subtitle": "Hey, create a new pal to play with!",
-				"menu": "Create User",
+				"menu": "Create",
 				"breadcrumb": "Create User"
 			},
 			"list": {
 				"title": "User List",
-				"menu": "User List",
+				"menu": "List",
 				"breadcrumb": "User List",
 				"table": {
 					"id": {

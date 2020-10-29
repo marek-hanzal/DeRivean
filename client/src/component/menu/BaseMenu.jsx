@@ -1,14 +1,38 @@
 import {Menu} from "antd";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {generatePath, useParams} from "react-router";
+import {generatePath, useNavigate, useParams} from "react-router";
 import {Link} from "react-router-dom";
 import MenuRedux from "redux/menu/redux";
+
+function RenderItem(item, index) {
+	const {t} = useTranslation();
+	const params = useParams();
+	const navigate = useNavigate();
+	const href = generatePath(item.href || "", params);
+	const key = item.key || index;
+
+	switch (item.href) {
+		case "-":
+			return <Menu.Divider key={index}/>;
+		case "back":
+			return (
+				<Menu.Item key={key} icon={item.icon} onClick={() => navigate(-1)}>
+					{t(`${item.key}.menu`)}
+				</Menu.Item>
+			);
+		default:
+			return (
+				<Menu.Item key={key} icon={item.icon}>
+					<Link to={href}>{t(`${item.key}.menu`)}</Link>
+				</Menu.Item>
+			);
+	}
+}
 
 const BaseMenu = ({items = []}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const params = useParams();
 	const selected = useSelector(MenuRedux.selector.getSelected);
 	const opened = useSelector(MenuRedux.selector.getOpened);
 	return (
@@ -24,25 +48,11 @@ const BaseMenu = ({items = []}) => {
 				if (item.group) {
 					return (
 						<Menu.SubMenu key={item.group} title={t(`${item.group}.menu`)} icon={item.icon}>
-							{item.items.map((groupItem, groupIndex) => {
-								const href = generatePath(groupItem.href || "", params);
-								const key = groupItem.key || groupIndex;
-								return groupItem.href === "-" ? <Menu.Divider key={groupIndex}/> :
-									<Menu.Item key={key} icon={groupItem.icon}>
-										<Link to={href}>{t(`${groupItem.key}.menu`)}</Link>
-									</Menu.Item>;
-							})}
+							{item.items.map((groupItem, groupIndex) => RenderItem(groupItem, groupIndex))}
 						</Menu.SubMenu>
 					);
 				}
-				const href = generatePath(item.href || "", params);
-				const key = item.key || index;
-				return (
-					item.href === "-" ? <Menu.Divider key={index}/> :
-						<Menu.Item key={key} icon={item.icon}>
-							<Link to={href}>{t(`${item.key}.menu`)}</Link>
-						</Menu.Item>
-				);
+				return RenderItem(item, index);
 			})}
 		</Menu>
 	);

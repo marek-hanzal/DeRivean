@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 const BaseCreateView = (
 	{
 		id,
-		open = id,
+		open = [id],
 		icon = <CreateIcon/>,
 		base,
 		subTitle,

@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 const BaseDashboardView = (
 	{
 		id,
-		open = id,
+		open = [id],
 		icon,
 		base,
 		title = null,

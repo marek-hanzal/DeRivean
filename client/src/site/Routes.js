@@ -42,6 +42,10 @@ const Routes = {
 				match: () => "create/*",
 				link: () => "/blog/create",
 			},
+			list: {
+				match: () => "list/*",
+				link: () => "/blog/list",
+			},
 		},
 		user: {
 			match: () => "/user/*",
