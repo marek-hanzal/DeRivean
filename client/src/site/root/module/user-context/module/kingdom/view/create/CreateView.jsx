@@ -1,5 +1,5 @@
-import {RightCircleOutlined} from "@ant-design/icons";
-import {Button, Card, Col, Divider, Form, message, Result, Row, Typography} from "antd";
+import {Button, Col, Divider, Form, message, Row} from "antd";
+import BulletCard from "component/BulletCard";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useTranslation} from "react-i18next";
@@ -8,14 +8,13 @@ import {useLocation, useNavigate} from "react-router";
 import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
 import KingdomCreateRedux from "redux/kingdom/create/redux";
 import SessionRedux from "redux/session/redux";
-import AttributeFields from "site/root/component/AttributeFields";
+import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
 import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
-import numberRange from "utils/numberRange";
 
 const id = "root.userContext.kingdom";
 const longId = id + ".create";
@@ -61,9 +60,7 @@ const CreateView = () => {
 					<Col xs={24} xl={12}>
 						<Row>
 							<Col span={24}>
-								<Card title={t(longId + ".form.attribute.title")}>
-									<AttributeFields translation={longId} attributes={attributes}/>
-								</Card>
+								<AttributeFieldEditor translation={longId} attributes={attributes}/>
 							</Col>
 						</Row>
 						<Divider type="horizontal"/>
@@ -79,17 +76,7 @@ const CreateView = () => {
 						</Row>
 					</Col>
 					<Col xs={24} xl={12}>
-						<Result
-							icon={<></>}
-							title={t(longId + ".list.title")}
-							style={{paddingTop: 0}}
-						>
-							{numberRange(4).map(index => (
-								<Typography.Paragraph key={index}>
-									<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t(longId + ".list.item-" + index)}
-								</Typography.Paragraph>
-							))}
-						</Result>
+						<BulletCard translation={longId} count={4}/>
 					</Col>
 				</Row>
 			</BaseCreateView>
