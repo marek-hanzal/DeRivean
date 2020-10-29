@@ -9,6 +9,7 @@ const BaseCreateView = (
 		open = [id],
 		icon = <CreateIcon/>,
 		base,
+		title,
 		subTitle,
 		children,
 		...props
@@ -24,7 +25,7 @@ const BaseCreateView = (
 		<Card title={t(`${id}.create.title`)}>
 			<Result
 				status={"info"}
-				title={t(`${id}.create.title`)}
+				title={title || t(`${id}.create.title`)}
 				subTitle={subTitle || t(`${id}.create.subtitle`)}
 				icon={icon}
 				children={children}

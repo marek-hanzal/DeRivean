@@ -1,4 +1,4 @@
-import {Button, Col, Divider, Form, Input, message, Row} from "antd";
+import {Button, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
@@ -57,7 +57,7 @@ const CreateView = () => {
 				loading={isLoading}
 				id={id}
 				icon={<KingdomIcon/>}
-				subTitle={
+				title={
 					<Centered span={6}>
 						<Form.Item
 							{...validationFor("name", errors, t)}
@@ -72,30 +72,25 @@ const CreateView = () => {
 						/>
 					</Centered>
 				}
+				subTitle={
+					<Form.Item shouldUpdate={true}>
+						{() => (
+							<Button
+								type="primary"
+								size={"large"}
+								htmlType="submit"
+								disabled={enableSubmit(form, ["name"])}
+								children={t("kingdom:form.submit.label")}
+							/>
+						)}
+					</Form.Item>
+				}
 			>
 				<DualSection
 					left={
-						<>
-							<Row>
-								<Col span={24}>
-									<AttributeFieldEditor translation={longId} attributes={attributes}/>
-								</Col>
-							</Row>
-							<Divider type="horizontal"/>
-							<Centered>
-								<Form.Item shouldUpdate={true}>
-									{() => (
-										<Button
-											type="primary"
-											size={"large"}
-											htmlType="submit"
-											disabled={enableSubmit(form, ["name"])}
-											children={t("kingdom:form.submit.label")}
-										/>
-									)}
-								</Form.Item>
-							</Centered>
-						</>
+						<Centered span={24}>
+							<AttributeFieldEditor translation={longId} attributes={attributes}/>
+						</Centered>
 					}
 					right={<BulletCard translation={longId} count={4}/>}
 				/>
