@@ -259,9 +259,9 @@
 				"breadcrumb": "Create User"
 			},
 			"list": {
-				"title": "User List",
+				"title": "Users",
 				"menu": "List",
-				"breadcrumb": "User List",
+				"breadcrumb": "Users",
 				"table": {
 					"id": {
 						"column": "ID"
