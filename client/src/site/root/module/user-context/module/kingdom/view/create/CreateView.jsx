@@ -1,6 +1,5 @@
-import {Button, Col, Divider, Form, message, Row} from "antd";
+import {Button, Col, Divider, Form, Input, message, Row} from "antd";
 import BulletCard from "component/BulletCard";
-import SubtitleNameField from "component/form/SubtitleNameField";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
@@ -18,6 +17,7 @@ import KingdomView from "site/root/module/user-context/module/kingdom/view/Kingd
 import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
 import enableSubmit from "utils/form/enableSubmit";
+import validationFor from "utils/form/validationFor";
 
 const id = "root.userContext.kingdom";
 const longId = id + ".create";
@@ -28,7 +28,7 @@ const CreateView = () => {
 	const location = useLocation();
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
-	const {t} = useTranslation();
+	const {t} = useTranslation(["kingdom"]);
 	useKingdomAttributes();
 
 	const user = useUserSelector();
@@ -57,7 +57,21 @@ const CreateView = () => {
 				loading={isLoading}
 				id={id}
 				icon={<KingdomIcon/>}
-				subTitle={<SubtitleNameField errors={errors} name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
+				subTitle={
+					<Centered span={6}>
+						<Form.Item
+							{...validationFor("name", errors, t)}
+							name={"name"}
+							rules={[
+								{
+									required: true,
+									message: t("kingdom:form.name.required"),
+								}
+							]}
+							children={<Input addonBefore={t("kingdom:form.name.label")} suffix={<KingdomIcon/>}/>}
+						/>
+					</Centered>
+				}
 			>
 				<DualSection
 					left={
@@ -75,8 +89,8 @@ const CreateView = () => {
 											type="primary"
 											size={"large"}
 											htmlType="submit"
-											children={t(longId + ".form.button.label")}
 											disabled={enableSubmit(form, ["name"])}
+											children={t("kingdom:form.submit.label")}
 										/>
 									)}
 								</Form.Item>

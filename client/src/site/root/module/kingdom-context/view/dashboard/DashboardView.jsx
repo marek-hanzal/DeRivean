@@ -1,11 +1,12 @@
-import {Button, Col, Divider, Form, Row} from "antd";
+import {Button, Col, Form, message, Row} from "antd";
 import BulletCard from "component/BulletCard";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router";
 import KingdomUpdateRedux from "redux/kingdom/update/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import KingdomContextIcon from "site/root/module/kingdom-context/component/icon/KingdomContextIcon";
@@ -22,6 +23,8 @@ const DashboardView = () => {
 	const {t} = useTranslation(["kingdom"]);
 	const [edit, setEdit] = useState(false);
 	const [form] = Form.useForm();
+	const params = useParams();
+	const dispatch = useDispatch();
 	const kingdom = useKingdomSelector();
 	const attributes = useKingdomAttributesSelector();
 	const errors = useSelector(KingdomUpdateRedux.selector.getError);
@@ -33,14 +36,11 @@ const DashboardView = () => {
 			autoComplete="off"
 			onFinish={kingdom => {
 				console.log("update kingdom", kingdom);
-				// dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
-				// 	history.push(location.pathname);
-				// 	dispatch(SessionRedux.history(history));
-				// 	navigate(Routes.root.kingdomContext.dashboard.link(kingdom.id));
-				// 	message.success(t(longId + ".message.success"));
-				// }, () => {
-				// 	message.error(t(longId + ".message.error"));
-				// });
+				dispatch(KingdomUpdateRedux.update(kingdom, params.kingdom)).then(_ => {
+					message.success(t("kingdom:update.success"));
+				}, () => {
+					message.error(t("kingdom:update.error"));
+				});
 			}}
 		>
 			<BaseDashboardView
@@ -48,34 +48,20 @@ const DashboardView = () => {
 				id={"root.kingdomContext"}
 				open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
 				icon={<KingdomContextIcon/>}
-				// title={<DeferredInput label={"root.kingdomContext.dashboard.view.name"} item={kingdom} name={"name"}/>}
 				title={<SubtitleNameField errors={errors} name={"name"} label={"kingdom:form.name.label"} required={"kingdom:form.name.required"} icon={<KingdomIcon/>}/>}
-				subTitle={<Button type={"primary"} ghost onClick={() => setEdit(!edit)}>{t(longId + ".edit")}</Button>}
+				subTitle={
+					edit ?
+						<Button type={"primary"} ghost size={"large"} onClick={() => setEdit(true)}>{t("kingdom:form.edit.label")}</Button> :
+						<Button type={"primary"} htmlType={"submit"} size={"large"} onClick={() => setEdit(false)}>{t("kingdom:form.edit.submit.label")}</Button>
+				}
 			>
 				<DualSection
 					left={
-						<>
-							<Row>
-								<Col span={24}>
-									<AttributeFieldEditor editor={edit} translation={longId} attributes={attributes}/>
-								</Col>
-							</Row>
-							{edit ? (
-								<>
-									<Divider type="horizontal"/>
-									<Row justify={"space-around"}>
-										<Col>
-											<Button
-												type="primary"
-												size={"large"}
-												htmlType="submit"
-												children={t(longId + ".form.button.label")}
-											/>
-										</Col>
-									</Row>
-								</>
-							) : null}
-						</>}
+						<Row>
+							<Col span={24}>
+								<AttributeFieldEditor editor={edit} translation={longId} attributes={attributes}/>
+							</Col>
+						</Row>}
 					right={<BulletCard translation={longId} count={4}/>}
 				/>
 			</BaseDashboardView>

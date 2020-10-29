@@ -3,6 +3,15 @@
 		"name": {
 			"label": "Kingdom name",
 			"required": "Kingdom name is required, please choose some!"
+		},
+		"submit": {
+			"label": "Create Kingdom!"
+		},
+		"edit": {
+			"label": "Toggle Edit",
+			"submit": {
+				"label": "Save changes!"
+			}
 		}
 	}
 }
