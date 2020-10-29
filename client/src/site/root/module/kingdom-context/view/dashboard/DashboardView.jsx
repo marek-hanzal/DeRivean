@@ -1,5 +1,6 @@
-import {Button, Divider, Form, Input, message, Space} from "antd";
+import {Button, Divider, Form, Input, message, Popconfirm, Space} from "antd";
 import BulletCard from "component/BulletCard";
+import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import LoaderIcon from "component/icon/LoaderIcon";
 import SubmitIcon from "component/icon/SubmitIcon";
@@ -19,6 +20,7 @@ import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
 import enableSubmit from "utils/form/enableSubmit";
+import setValues from "utils/form/setValues";
 import validationFor from "utils/form/validationFor";
 
 const id = "root.kingdomContext";
@@ -37,9 +39,7 @@ const DashboardView = () => {
 
 	useKingdomFetch(null, (data) => {
 		setKingdom(data);
-		console.log("before", form.isFieldsTouched());
-		form.setFieldsValue(data);
-		console.log("after", form.isFieldsTouched());
+		setValues(form, data);
 	});
 
 	return (
@@ -73,41 +73,39 @@ const DashboardView = () => {
 									message: t("kingdom:form.name.required"),
 								}
 							]}
-						>
-							<Input disabled={!edit} addonBefore={t("kingdom:form.name.label")} suffix={<KingdomIcon/>}/>
-						</Form.Item>
+							children={<Input disabled={!edit} addonBefore={t("kingdom:form.name.label")} suffix={<KingdomIcon/>}/>}
+						/>
 					</Centered>
 				}
 				subTitle={
 					edit ?
 						<Space split={<Divider type={"vertical"}/>}>
-							<Form.Item shouldUpdate={true} noStyle>
+							<Form.Item shouldUpdate noStyle>
 								{() => (
 									<Button
 										type={"primary"}
 										size={"large"}
 										htmlType={"submit"}
 										icon={<SubmitIcon/>}
-										disabled={enableSubmit(form, ["name"])}
+										disabled={enableSubmit(form, false)}
 										children={t("kingdom:form.edit.submit.label")}
 									/>
 								)}
 							</Form.Item>
-							<Form.Item shouldUpdate={true} noStyle>
+							<Form.Item shouldUpdate noStyle>
 								{() => (
-									console.log(form.isFieldsTouched(["name"], true))
-									// form.isFieldsTouched(['name'], true) ?
-									// 	<Popconfirm
-									// 		okText={t('common:yes')}
-									// 		cancelText={t('common:no')}
-									// 		title={t('kingdom:form.edit.cancelConfirm')}
-									// 		onConfirm={() => {
-									// 			setEdit(false);
-									// 			form.setFieldsValue(kingdom);
-									// 		}}
-									// 		children={<Button type={'danger'} ghost icon={<DeleteItemIcon/>}>{t('kingdom:form.cancel.label')}</Button>}
-									// 	/> :
-									// 	<Button type={'danger'} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t('kingdom:form.cancel.label')}</Button>
+									form.isFieldsTouched() ?
+										<Popconfirm
+											okText={t("common:yes")}
+											cancelText={t("common:no")}
+											title={t("kingdom:form.edit.cancelConfirm")}
+											onConfirm={() => {
+												setEdit(false);
+												setValues(form, kingdom);
+											}}
+											children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t("kingdom:form.cancel.label")}</Button>}
+										/> :
+										<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t("kingdom:form.cancel.label")}</Button>
 								)}
 							</Form.Item>
 						</Space> :
