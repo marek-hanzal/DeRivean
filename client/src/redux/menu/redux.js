@@ -5,17 +5,20 @@ const MenuRedux = {
 	collapse: miniAction("menu.collapse", "collapsed"),
 	select: miniAction("menu.select", "selected"),
 	open: miniAction("menu.open", "opened"),
+	history: miniAction("menu.history", "history", []),
 	reducer: function () {
 		return reducerSimpleActions(
 			[
 				this.collapse,
 				this.select,
 				this.open,
+				this.history,
 			],
 			{
 				collapsed: false,
 				selected: [],
-				opened: []
+				opened: [],
+				history: [],
 			}
 		);
 	},
@@ -40,6 +43,7 @@ const MenuRedux = {
 		 * @return string
 		 */
 		getOpened: state => MenuRedux.selector.branch(state).opened,
+		getHistory: state => MenuRedux.selector.branch(state).history,
 	},
 };
 

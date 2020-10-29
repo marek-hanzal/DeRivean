@@ -7,8 +7,10 @@ import MenuRedux from "redux/menu/redux";
 
 function RenderItem(item, index) {
 	const {t} = useTranslation();
+	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
+	const history = useSelector(MenuRedux.selector.getHistory);
 	const href = generatePath(item.href || "", params);
 	const key = item.key || index;
 
@@ -17,7 +19,10 @@ function RenderItem(item, index) {
 			return <Menu.Divider key={index}/>;
 		case "back":
 			return (
-				<Menu.Item key={key} icon={item.icon} onClick={() => navigate(-1)}>
+				<Menu.Item key={key} icon={item.icon} onClick={() => {
+					navigate(history.pop() || -1);
+					dispatch(MenuRedux.history(history));
+				}}>
 					{t(`${item.key}.menu`)}
 				</Menu.Item>
 			);

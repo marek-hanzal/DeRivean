@@ -3,6 +3,7 @@ import {v4 as uuid4} from "uuid";
 
 const MirageServer = ({environment = "development"} = {}) => createServer({
 	environment,
+	logging: false,
 
 	serializers: {
 		application: RestSerializer,

@@ -31,6 +31,7 @@ const Site = () =>
 				routes={[
 					route("*", <BaseMenu
 						items={[
+							menuDivider(),
 							menuItem(Routes.public.link(), "public.home", <HomeIcon/>),
 							menuDivider(),
 							menuItem(Routes.public.signUp.link(), "public.sign-up", <SignUpIcon/>),

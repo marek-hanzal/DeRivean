@@ -13,7 +13,6 @@ const Router = () => {
 				route(Routes.root.kingdomContext.hero.dashboard.match(), <DashboardView/>),
 				route(Routes.root.kingdomContext.hero.list.match(), <ListView/>),
 				route(Routes.root.kingdomContext.hero.create.match(), <CreateView/>),
-				HeroRoute(),
 				route("*", <NotFoundView/>),
 			]}
 		/>

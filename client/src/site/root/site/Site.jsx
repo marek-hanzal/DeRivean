@@ -37,6 +37,7 @@ const Site = () =>
 
 					route("*", <BaseMenu
 						items={[
+							menuDivider(),
 							menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 							menuDivider(),
 
