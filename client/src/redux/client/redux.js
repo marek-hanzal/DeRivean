@@ -1,23 +1,12 @@
-import failureAction from "utils/action/actions/failureAction";
-import requestAction from "utils/action/actions/requestAction";
-import successAction from "utils/action/actions/successAction";
+import fetchActions from "utils/action/actions/fetchActions";
+import fetchReducer from "utils/action/fetchReducer";
 import onFetch from "utils/action/onFetch";
-import reducerActions from "utils/action/reducerActions";
+
+const actions = fetchActions("client");
 
 const ClientRedux = {
-	request: requestAction("client"),
-	success: successAction("client"),
-	failure: failureAction("client"),
-	fetch: function (href) {
-		return onFetch(href, this.request, this.success, this.failure);
-	},
-	reducer: function () {
-		return reducerActions([
-			this.request,
-			this.success,
-			this.failure,
-		]);
-	},
+	fetch: href => onFetch(href, actions),
+	reducer: () => fetchReducer(actions),
 	selector: {
 		branch: state => state.client,
 		getStatus: state => ClientRedux.selector.branch(state).status,

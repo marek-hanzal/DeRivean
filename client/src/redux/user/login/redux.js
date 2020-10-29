@@ -3,47 +3,37 @@ import LoadingRedux from "redux/loading/redux";
 import UserRedux from "redux/user/redux";
 import {Server} from "server";
 import dismissAction from "utils/action/actions/dismissAction";
-import failureAction from "utils/action/actions/failureAction";
-import requestAction from "utils/action/actions/requestAction";
-import successAction from "utils/action/actions/successAction";
-import reducerActions from "utils/action/reducerActions";
+import fetchActions from "utils/action/actions/fetchActions";
+import fetchReducer from "utils/action/fetchReducer";
+import fetchSelector from "utils/action/fetchSelector";
+
+const actions = fetchActions("user.login");
 
 const UserLoginRedux = {
-	request: requestAction("user.login"),
-	success: successAction("user.login"),
-	failure: failureAction("user.login"),
 	dismiss: dismissAction("user.login"),
 	login: function (login) {
 		return (dispatch, getState) => {
 			dispatch(LoadingRedux.start());
-			dispatch(this.request());
+			dispatch(actions.request());
 			return Server.post(DiscoveryRedux.selector.public.user.login(getState()), login)
 				.then(({data}) => {
-					dispatch(this.success(data));
+					dispatch(actions.success(data));
 					dispatch(LoadingRedux.finish());
+					return Promise.resolve(data);
 				})
 				.catch(({response}) => {
-					dispatch(this.failure(response.data));
+					dispatch(actions.failure(response.data));
 					dispatch(LoadingRedux.finish());
 					return Promise.reject();
 				});
 		};
 	},
 	reducer: function () {
-		return reducerActions([
-			this.request,
-			this.success,
-			this.failure,
+		return fetchReducer(actions, [
 			this.dismiss,
 		]);
 	},
-	selector: {
-		branch: state => UserRedux.selector.branch(state).login,
-		isLoading: state => UserLoginRedux.selector.branch(state).loading,
-		getStatus: state => UserLoginRedux.selector.branch(state).status,
-		getError: state => UserLoginRedux.selector.branch(state).error,
-		getPayload: state => UserLoginRedux.selector.branch(state).payload,
-	},
+	selector: fetchSelector(state => UserRedux.selector.branch(state).login),
 };
 
 export default UserLoginRedux;

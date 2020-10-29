@@ -1,36 +1,29 @@
 import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
-import failureAction from "utils/action/actions/failureAction";
-import requestAction from "utils/action/actions/requestAction";
-import successAction from "utils/action/actions/successAction";
-import reducerActions from "utils/action/reducerActions";
+import fetchActions from "utils/action/actions/fetchActions";
+import fetchReducer from "utils/action/fetchReducer";
+
+const actions = fetchActions("discovery");
 
 const DiscoveryRedux = {
-	request: requestAction("discovery"),
-	success: successAction("discovery"),
-	failure: failureAction("discovery"),
 	fetch: function (href) {
 		return dispatch => {
 			dispatch(LoadingRedux.start());
-			dispatch(this.request());
+			dispatch(actions.request());
 			return Server.get(href)
 				.then(({data}) => {
-					dispatch(this.success(data));
+					dispatch(actions.success(data));
 					dispatch(LoadingRedux.finish());
+					return Promise.resolve(data);
 				})
 				.catch(error => {
-					dispatch(this.failure({...error}));
+					dispatch(actions.failure({...error}));
 					dispatch(LoadingRedux.finish());
+					return Promise.reject(error);
 				});
 		};
 	},
-	reducer: function () {
-		return reducerActions([
-			this.request,
-			this.success,
-			this.failure,
-		]);
-	},
+	reducer: () => fetchReducer(actions),
 	selector: {
 		branch: state => state.discovery,
 		status: state => DiscoveryRedux.selector.branch(state).status,
