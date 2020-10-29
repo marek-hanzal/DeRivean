@@ -1,6 +1,8 @@
 import {Button, Col, Divider, Form, message, Row} from "antd";
 import BulletCard from "component/BulletCard";
 import SubtitleNameField from "component/form/SubtitleNameField";
+import Centered from "component/layout/Centered";
+import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -57,16 +59,16 @@ const CreateView = () => {
 				icon={<KingdomIcon/>}
 				subTitle={<SubtitleNameField errors={errors} name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
 			>
-				<Row justify={"space-around"}>
-					<Col xs={24} xl={12}>
-						<Row>
-							<Col span={24}>
-								<AttributeFieldEditor translation={longId} attributes={attributes}/>
-							</Col>
-						</Row>
-						<Divider type="horizontal"/>
-						<Row justify={"space-around"}>
-							<Col>
+				<DualSection
+					left={
+						<>
+							<Row>
+								<Col span={24}>
+									<AttributeFieldEditor translation={longId} attributes={attributes}/>
+								</Col>
+							</Row>
+							<Divider type="horizontal"/>
+							<Centered>
 								<Form.Item shouldUpdate={true}>
 									{() => (
 										<Button
@@ -78,13 +80,11 @@ const CreateView = () => {
 										/>
 									)}
 								</Form.Item>
-							</Col>
-						</Row>
-					</Col>
-					<Col xs={24} xl={12}>
-						<BulletCard translation={longId} count={4}/>
-					</Col>
-				</Row>
+							</Centered>
+						</>
+					}
+					right={<BulletCard translation={longId} count={4}/>}
+				/>
 			</BaseCreateView>
 		</Form>
 	);
