@@ -1,5 +1,5 @@
-import {FormOutlined} from "@ant-design/icons";
+import {EditTwoTone} from "@ant-design/icons";
 
-const CreateIcon = () => <FormOutlined/>;
+const CreateIcon = () => <EditTwoTone twoToneColor={"#55a200"}/>;
 
 export default CreateIcon;

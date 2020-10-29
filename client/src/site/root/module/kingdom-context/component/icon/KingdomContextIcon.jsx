@@ -1,5 +1,5 @@
-import {CrownOutlined} from "@ant-design/icons";
+import {CrownTwoTone} from "@ant-design/icons";
 
-const KingdomContextIcon = (props) => <CrownOutlined {...props}/>;
+const KingdomContextIcon = (props) => <CrownTwoTone twoToneColor={"#e3781d"} {...props}/>;
 
 export default KingdomContextIcon;

@@ -1,5 +1,5 @@
-import {HomeOutlined} from "@ant-design/icons";
+import {BankTwoTone} from "@ant-design/icons";
 
-const BuildingIcon = (props) => <HomeOutlined {...props}/>;
+const BuildingIcon = (props) => <BankTwoTone twoToneColor={"#73a50c"} {...props}/>;
 
 export default BuildingIcon;

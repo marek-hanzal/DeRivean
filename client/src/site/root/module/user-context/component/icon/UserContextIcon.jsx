@@ -1,5 +1,5 @@
-import {MehOutlined} from "@ant-design/icons";
+import {MehTwoTone} from "@ant-design/icons";
 
-const UserContextIcon = () => <MehOutlined/>;
+const UserContextIcon = () => <MehTwoTone/>;
 
 export default UserContextIcon;

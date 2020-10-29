@@ -1,5 +1,5 @@
-import {UnorderedListOutlined} from "@ant-design/icons";
+import {DatabaseTwoTone} from "@ant-design/icons";
 
-const ListIcon = () => <UnorderedListOutlined/>;
+const ListIcon = () => <DatabaseTwoTone twoToneColor={"#00efc6"}/>;
 
 export default ListIcon;

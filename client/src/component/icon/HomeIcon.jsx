@@ -1,5 +1,5 @@
-import {HomeOutlined} from "@ant-design/icons";
+import {HomeTwoTone} from "@ant-design/icons";
 
-const HomeIcon = () => <HomeOutlined/>;
+const HomeIcon = () => <HomeTwoTone twoToneColor={"#2d5af8"}/>;
 
 export default HomeIcon;

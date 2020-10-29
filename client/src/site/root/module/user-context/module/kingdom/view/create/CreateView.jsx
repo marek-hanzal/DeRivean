@@ -2,17 +2,17 @@ import {RightCircleOutlined} from "@ant-design/icons";
 import {Button, Card, Col, Divider, Form, message, Result, Row, Typography} from "antd";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import BaseCreateView from "component/view/BaseCreateView";
-import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate} from "react-router";
 import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
 import KingdomCreateRedux from "redux/kingdom/create/redux";
 import SessionRedux from "redux/session/redux";
-import UserFetchRedux from "redux/user/fetch/redux";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
+import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
+import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
 import numberRange from "utils/numberRange";
 
@@ -26,11 +26,9 @@ const CreateView = () => {
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
-	useEffect(() => {
-		dispatch(KingdomAttributesRedux.fetch());
-	}, [dispatch]);
+	useKingdomAttributes();
 
-	const user = useSelector(UserFetchRedux.selector.getPayload);
+	const user = useUserSelector();
 	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
 	const attributes = useSelector(KingdomAttributesRedux.selector.getPayload);
 	const errors = useSelector(KingdomCreateRedux.selector.getError);

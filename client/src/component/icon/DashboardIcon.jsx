@@ -1,5 +1,5 @@
-import {FundOutlined} from "@ant-design/icons";
+import {PictureTwoTone} from "@ant-design/icons";
 
-const DashboardIcon = () => <FundOutlined/>;
+const DashboardIcon = () => <PictureTwoTone twoToneColor={"#d40085"}/>;
 
 export default DashboardIcon;
