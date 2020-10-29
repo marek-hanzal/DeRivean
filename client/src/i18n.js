@@ -11,8 +11,7 @@ i18n
 	.init({
 		fallbackLng: "en",
 		backend: {
-			// loadPath: buildUrl("/locale/{{lng}}/{{ns}}.json", {
-			loadPath: buildUrl("/locale/{{lng}}.json", {
+			loadPath: buildUrl("/locale/{{lng}}/{{ns}}.json", {
 				queryParams: {
 					version: process.env.REACT_APP_VERSION,
 				}
