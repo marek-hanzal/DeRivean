@@ -1,4 +1,4 @@
-import {Button, Col, Form, message, Row} from "antd";
+import {Button, Col, Divider, Form, message, Popconfirm, Row, Space} from "antd";
 import BulletCard from "component/BulletCard";
 import SubtitleNameField from "component/form/SubtitleNameField";
 import DualSection from "component/layout/DualSection";
@@ -20,7 +20,7 @@ const id = "root.kingdomContext";
 const longId = id + ".dashboard";
 
 const DashboardView = () => {
-	const {t} = useTranslation(["kingdom"]);
+	const {t} = useTranslation(["kingdom", "common"]);
 	const [edit, setEdit] = useState(false);
 	const [form] = Form.useForm();
 	const params = useParams();
@@ -35,6 +35,7 @@ const DashboardView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={kingdom => {
+				setEdit(false);
 				console.log("update kingdom", kingdom);
 				dispatch(KingdomUpdateRedux.update(kingdom, params.kingdom)).then(_ => {
 					message.success(t("kingdom:update.success"));
@@ -51,8 +52,18 @@ const DashboardView = () => {
 				title={<SubtitleNameField errors={errors} name={"name"} label={"kingdom:form.name.label"} required={"kingdom:form.name.required"} icon={<KingdomIcon/>}/>}
 				subTitle={
 					edit ?
-						<Button type={"primary"} ghost size={"large"} onClick={() => setEdit(true)}>{t("kingdom:form.edit.label")}</Button> :
-						<Button type={"primary"} htmlType={"submit"} size={"large"} onClick={() => setEdit(false)}>{t("kingdom:form.edit.submit.label")}</Button>
+						<Space split={<Divider type={"vertical"}/>}>
+							<Button type={"primary"} htmlType={"submit"} size={"large"}>{t("kingdom:form.edit.submit.label")}</Button>
+							<Popconfirm
+								okText={t("common:yes")}
+								cancelText={t("common:no")}
+								title={t("kingdom:form.edit.cancelConfirm")}
+								onConfirm={() => setEdit(false)}
+							>
+								<Button type={"danger"} ghost size={"large"}>{t("kingdom:form.cancel.label")}</Button>
+							</Popconfirm>
+						</Space> :
+						<Button type={"primary"} ghost size={"large"} onClick={() => setEdit(true)}>{t("kingdom:form.edit.label")}</Button>
 				}
 			>
 				<DualSection

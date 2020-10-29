@@ -7,8 +7,12 @@
 		"submit": {
 			"label": "Create Kingdom!"
 		},
+		"cancel": {
+			"label": "Cancel"
+		},
 		"edit": {
-			"label": "Toggle Edit",
+			"label": "Edit",
+			"cancelConfirm": "Do you want to cancel editation? All changes will be lost!",
 			"submit": {
 				"label": "Save changes!"
 			}
