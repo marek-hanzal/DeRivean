@@ -13,14 +13,16 @@ class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomC
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
 	override fun resolve(item: Request) = try {
-		created(kingdomFetchMapper.map(storage.write {
-			kingdomRepository.create {
-				this.name = item.name
-				this.user = userRepository.find(item.user)
-			}.also { kingdom ->
-				kingdomRepository.attributes(kingdom.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
-			}
-		}))
+		created(storage.write {
+			kingdomFetchMapper.map(
+				kingdomRepository.create {
+					this.name = item.name
+					this.user = userRepository.find(item.user)
+				}.also { kingdom ->
+					kingdomRepository.attributes(kingdom.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
+				}
+			)
+		})
 	} catch (e: ExposedSQLException) {
 		when {
 			e.message?.contains("kingdom_name_unique") == true -> {
@@ -34,6 +36,7 @@ class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomC
 			}
 		}
 	} catch (e: Throwable) {
+		logger.error(e.message, e)
 		internalServerError(ValidationResponse.build {
 			message = "Some ugly internal server error happened!"
 		})

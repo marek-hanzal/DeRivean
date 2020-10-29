@@ -1,6 +1,5 @@
 package derivean.server.rest.root.mapper
 
-import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
@@ -36,4 +35,6 @@ class KingdomFetchMapper(container: IContainer) : AbstractMapper<Kingdom, Kingdo
 			)
 		}
 	}
+
+	data class Attribute(val attribute: String, val value: Double)
 }
