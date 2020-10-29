@@ -19,7 +19,7 @@ const id = "root.kingdomContext";
 const longId = id + ".dashboard";
 
 const DashboardView = () => {
-	const {t} = useTranslation();
+	const {t} = useTranslation(["kingdom"]);
 	const [edit, setEdit] = useState(false);
 	const [form] = Form.useForm();
 	const kingdom = useKingdomSelector();
@@ -31,7 +31,6 @@ const DashboardView = () => {
 			form={form}
 			name={"kingdom"}
 			autoComplete="off"
-			initialValues={kingdom}
 			onFinish={kingdom => {
 				console.log("update kingdom", kingdom);
 				// dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
@@ -50,7 +49,7 @@ const DashboardView = () => {
 				open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
 				icon={<KingdomContextIcon/>}
 				// title={<DeferredInput label={"root.kingdomContext.dashboard.view.name"} item={kingdom} name={"name"}/>}
-				title={<SubtitleNameField errors={errors} name={"name"} label={longId + ".form.name.label"} required={longId + ".form.name.required"} icon={<KingdomIcon/>}/>}
+				title={<SubtitleNameField errors={errors} name={"name"} label={"kingdom:form.name.label"} required={"kingdom:form.name.required"} icon={<KingdomIcon/>}/>}
 				subTitle={<Button type={"primary"} ghost onClick={() => setEdit(!edit)}>{t(longId + ".edit")}</Button>}
 			>
 				<DualSection

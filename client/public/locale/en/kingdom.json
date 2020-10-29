@@ -1,0 +1,8 @@
+{
+	"form": {
+		"name": {
+			"label": "Kingdom name",
+			"required": "Kingdom name is required, please choose some!"
+		}
+	}
+}

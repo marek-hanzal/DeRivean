@@ -1,29 +1,21 @@
 import {Button, Form, Input} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
+import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import UserRegisterRedux from "redux/user/register/redux";
+import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
-
-const layout = {
-	labelCol: {span: 8},
-	wrapperCol: {span: 16},
-};
-
-const tailLayout = {
-	wrapperCol: {
-		offset: 10,
-		span: layout.wrapperCol.span
-	},
-};
 
 const SignUpForm = () => {
 	const {t} = useTranslation();
+	const [form] = Form.useForm();
 	const errors = useSelector(UserRegisterRedux.selector.getError);
 	const dispatch = useDispatch();
 	return (
 		<Form
-			{...layout}
+			labelCol={{span: 6}}
+			form={form}
 			onFinish={values => {
 				dispatch(UserRegisterRedux.register(values));
 			}}
@@ -55,7 +47,6 @@ const SignUpForm = () => {
 				]}
 				children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
 			/>
-
 			<Form.Item
 				name="password"
 				{...validationFor("password", errors, t)}
@@ -69,10 +60,20 @@ const SignUpForm = () => {
 				]}
 				children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
 			/>
-
-			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" icon={<SignUpIcon/>} onClick={() => dispatch(UserRegisterRedux.dismiss())}>{t("public.sign-up.form.submit.label")}</Button>
-			</Form.Item>
+			<Centered>
+				<Form.Item shouldUpdate={true}>
+					{() => (
+						<Button
+							type="primary"
+							htmlType="submit"
+							icon={<SignUpIcon/>}
+							onClick={() => dispatch(UserRegisterRedux.dismiss())}
+							disabled={enableSubmit(form, ["name", "login", "password"])}
+							children={t("public.sign-up.form.submit.label")}
+						/>
+					)}
+				</Form.Item>
+			</Centered>
 		</Form>
 	);
 };

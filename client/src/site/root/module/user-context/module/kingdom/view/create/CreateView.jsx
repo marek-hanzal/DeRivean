@@ -15,6 +15,7 @@ import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingd
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
 import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
+import enableSubmit from "utils/form/enableSubmit";
 
 const id = "root.userContext.kingdom";
 const longId = id + ".create";
@@ -66,12 +67,17 @@ const CreateView = () => {
 						<Divider type="horizontal"/>
 						<Row justify={"space-around"}>
 							<Col>
-								<Button
-									type="primary"
-									size={"large"}
-									htmlType="submit"
-									children={t(longId + ".form.button.label")}
-								/>
+								<Form.Item shouldUpdate={true}>
+									{() => (
+										<Button
+											type="primary"
+											size={"large"}
+											htmlType="submit"
+											children={t(longId + ".form.button.label")}
+											disabled={enableSubmit(form, ["name"])}
+										/>
+									)}
+								</Form.Item>
 							</Col>
 						</Row>
 					</Col>
