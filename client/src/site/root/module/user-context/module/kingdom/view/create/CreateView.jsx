@@ -11,6 +11,7 @@ import SessionRedux from "redux/session/redux";
 import AttributeFields from "site/root/component/AttributeFields";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
+import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
 import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
@@ -30,7 +31,7 @@ const CreateView = () => {
 
 	const user = useUserSelector();
 	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
-	const attributes = useSelector(KingdomAttributesRedux.selector.getPayload);
+	const attributes = useKingdomAttributesSelector();
 	const errors = useSelector(KingdomCreateRedux.selector.getError);
 
 	return (

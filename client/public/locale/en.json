@@ -283,7 +283,10 @@
 			"dashboard": {
 				"menu": "User",
 				"title": "User",
-				"breadcrumb": "User"
+				"breadcrumb": "User",
+				"view": {
+					"name": "User name"
+				}
 			},
 			"kingdom": {
 				"menu": "Kingdoms",
@@ -356,7 +359,10 @@
 			"dashboard": {
 				"menu": "Kingdom",
 				"title": "Kingdom",
-				"breadcrumb": "Kingdom"
+				"breadcrumb": "Kingdom",
+				"view": {
+					"name": "Kingdom name"
+				}
 			},
 			"hero": {
 				"menu": "Heroes",

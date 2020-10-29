@@ -8,10 +8,14 @@ import RootView from "site/root/view/RootView";
 const UserContextView = ({loading = false, ...props}) => {
 	useUserFetch();
 	const {t} = useTranslation();
+	/**
+	 * Keeping this just to think if whole page loading is better than just in place loaders.
+	 */
+		// eslint-disable-next-line no-unused-vars
 	const isLoading = useSelector(UserFetchRedux.selector.isLoading) || loading;
 
 	return (
-		<Spin spinning={isLoading} delay={100} tip={t("common.spinner")}>
+		<Spin spinning={false} delay={100} tip={t("common.spinner")}>
 			<RootView {...props}/>
 		</Spin>
 	);
