@@ -80,7 +80,7 @@ const DashboardView = () => {
 				subTitle={
 					edit ?
 						<Space split={<Divider type={"vertical"}/>}>
-							<Form.Item shouldUpdate={true}>
+							<Form.Item shouldUpdate={true} noStyle>
 								{() => (
 									<Button
 										type={"primary"}
@@ -110,7 +110,7 @@ const DashboardView = () => {
 				<DualSection
 					left={
 						<Centered span={24}>
-							<AttributeFieldEditor edit={edit} translation={longId} attributes={attributes}/>
+							<AttributeFieldEditor edit={edit} translation={"kingdom"} attributes={attributes}/>
 						</Centered>
 					}
 					right={<BulletCard translation={longId} count={4}/>}

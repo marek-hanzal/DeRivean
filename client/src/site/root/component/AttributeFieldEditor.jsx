@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 const AttributeFieldEditor = ({translation, values, edit = true, attributes}) => {
 	const {t} = useTranslation(["common"]);
 	return (
-		<Card title={t(translation + ".form.attribute.title")}>
+		<Card title={t(translation + ":form.attribute.title")}>
 			<Form.List
 				name="attributes"
 			>
@@ -22,13 +22,13 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 											key={field.key + ".attribute"}
 											name={[field.name, "attribute"]}
 											fieldKey={[field.fieldKey, "attribute"]}
-											rules={[{required: true, message: t(translation + ".form.attribute.name.required")}]}
+											rules={[{required: true, message: t(translation + ":form.attribute.name.required")}]}
 											style={{width: "60%", marginBottom: 0}}
 										>
 											<Select
 												showSearch
 												allowClear
-												placeholder={t(translation + ".form.attribute.name.hint")}
+												placeholder={t(translation + ":form.attribute.name.hint")}
 												options={(attributes || []).map(item => ({label: t("common.attribute." + item), value: item}))}
 												disabled={!edit}
 											/>
@@ -38,12 +38,12 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 											key={field.key + ".value"}
 											name={[field.name, "value"]}
 											fieldKey={[field.fieldKey, "value"]}
-											rules={[{required: true, message: t(translation + ".form.attribute.value.required")}]}
+											rules={[{required: true, message: t(translation + ":form.attribute.value.required")}]}
 											style={{width: "35%", marginBottom: 0}}
 										>
 											<InputNumber
 												step={10}
-												placeholder={t(translation + ".form.attribute.value.hint")}
+												placeholder={t(translation + ":form.attribute.value.hint")}
 												style={{width: "100%"}}
 												disabled={!edit}
 											/>
@@ -54,7 +54,7 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 											okText={t("common:yes")}
 											cancelText={t("common:no")}
 											icon={<DeleteItemIcon/>}
-											title={t(translation + ".form.attribute.deleteConfirm")}
+											title={t(translation + ":form.attribute.deleteConfirm")}
 											onConfirm={() => remove(field.name)}
 										>
 											<Button style={{alignSelf: "start", marginTop: 4}} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
@@ -70,7 +70,7 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 												ghost
 												onClick={() => add()}
 												icon={<PlusOutlined/>}
-												children={t(translation + ".form.attribute.add.label")}
+												children={t(translation + ":form.attribute.add.label")}
 											/>
 										</List.Item>
 									</Centered>
@@ -79,7 +79,7 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 						</List> :
 						<Empty
 							image={Empty.PRESENTED_IMAGE_SIMPLE}
-							description={t(translation + ".form.attribute.empty")}
+							description={t(translation + ":form.attribute.empty")}
 						>
 							{edit ? (
 								<>
@@ -89,7 +89,7 @@ const AttributeFieldEditor = ({translation, values, edit = true, attributes}) =>
 										ghost
 										onClick={() => add()}
 										icon={<PlusOutlined/>}
-										children={t(translation + ".form.attribute.add.label")}
+										children={t(translation + ":form.attribute.add.label")}
 									/>
 								</>
 							) : null}

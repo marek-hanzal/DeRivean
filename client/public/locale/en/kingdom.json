@@ -16,6 +16,21 @@
 			"submit": {
 				"label": "Save changes!"
 			}
+		},
+		"attribute": {
+			"title": "Kingdom attributes",
+			"name": {
+				"hint": "Attribute name",
+				"required": "Please select attribute!"
+			},
+			"value": {
+				"hint": "Attribute value",
+				"required": "Please fill in value of the attribute!"
+			},
+			"add": {
+				"label": "Attribute"
+			},
+			"deleteConfirm": "Delete attribute?"
 		}
 	}
 }
