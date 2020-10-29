@@ -7,7 +7,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={KingdomContextView}
 			id={"root.kingdomContext"}
-			open={"root.kingdomContext.hero"}
+			open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
 			// icon={}
 			title={".... CREATE KINGDOM COMPONENTS ..."}
 		>

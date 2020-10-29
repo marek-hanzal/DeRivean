@@ -70,7 +70,6 @@ const Routes = {
 			},
 			hero: {
 				match: () => "hero/*",
-				link: resolveUuid("kingdom", "/kingdom-context/:kingdom/kingdom"),
 				dashboard: {
 					match: () => "dashboard/*",
 					link: resolveUuid("kingdom", "/kingdom-context/:kingdom/hero/dashboard"),
@@ -82,6 +81,21 @@ const Routes = {
 				list: {
 					match: () => "list",
 					link: resolveUuid("kingdom", "/kingdom-context/:kingdom/hero/list"),
+				},
+			},
+			building: {
+				match: () => "building/*",
+				dashboard: {
+					match: () => "dashboard/*",
+					link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/dashboard"),
+				},
+				create: {
+					match: () => "create",
+					link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/create"),
+				},
+				list: {
+					match: () => "list",
+					link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/list"),
 				},
 			}
 		},

@@ -2,6 +2,7 @@ import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import KingdomContextIcon from "site/root/module/kingdom-context/component/icon/KingdomContextIcon";
+import {BuildingMenuItem} from "site/root/module/kingdom-context/module/building/site/Menu";
 import {HeroMenuItem} from "site/root/module/kingdom-context/module/hero/site/Menu";
 import Routes from "site/Routes";
 import menuBack from "utils/menu/menuBack";
@@ -21,6 +22,8 @@ const Menu = () => {
 						menuItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomContextIcon/>),
 						menuDivider(),
 						HeroMenuItem(),
+						menuDivider(),
+						BuildingMenuItem(),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}

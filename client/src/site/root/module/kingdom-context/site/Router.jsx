@@ -1,4 +1,5 @@
 import BaseRoutes from "component/route/BaseRoutes";
+import {BuildingRoute} from "site/root/module/kingdom-context/module/building/site/Router";
 import {HeroRoute} from "site/root/module/kingdom-context/module/hero/site/Router";
 import DashboardView from "site/root/module/kingdom-context/view/dashboard/DashboardView";
 import Routes from "site/Routes";
@@ -11,6 +12,7 @@ const Router = () => {
 			routes={[
 				route(Routes.root.kingdomContext.dashboard.match(), <DashboardView/>),
 				HeroRoute(),
+				BuildingRoute(),
 				route("*", <NotFoundView/>),
 			]}
 		/>

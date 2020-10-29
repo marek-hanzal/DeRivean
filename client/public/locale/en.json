@@ -365,6 +365,22 @@
 					"menu": "Create",
 					"title": "Create a new Hero"
 				}
+			},
+			"building": {
+				"menu": "Buildings",
+				"dashboard": {
+					"menu": "Dashboard",
+					"title": "Buildings Dashboard",
+					"subtitle": "Overview of all buildings in the Kingdom"
+				},
+				"list": {
+					"menu": "List",
+					"title": "Buildings in Kingdom"
+				},
+				"create": {
+					"menu": "Create",
+					"title": "Create a new Building"
+				}
 			}
 		},
 		"entity": {
