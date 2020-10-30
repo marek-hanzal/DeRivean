@@ -1,5 +1,5 @@
 import BaseCreateView from "component/view/BaseCreateView";
-import BuildingView from "site/root/module/kingdom-context/module/building/view/BuildingView";
+import BuildingView from "site/root/module/building/view/BuildingView";
 
 const CreateView = () => {
 	return (

@@ -1,5 +1,5 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import BuildingView from "site/root/module/kingdom-context/module/building/view/BuildingView";
+import BuildingView from "site/root/module/building/view/BuildingView";
 
 const DashboardView = () => {
 	return (

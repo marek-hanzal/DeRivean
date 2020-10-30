@@ -1,6 +1,6 @@
 import BaseRoutes from "component/route/BaseRoutes";
+import {BuildingRoute} from "site/root/module/building/site/Router";
 import {HeroRoute} from "site/root/module/hero/site/Router";
-import {BuildingRoute} from "site/root/module/kingdom-context/module/building/site/Router";
 import DashboardView from "site/root/module/kingdom-context/view/dashboard/DashboardView";
 import Routes from "site/Routes";
 import route from "utils/route/route";

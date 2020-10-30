@@ -1,7 +1,7 @@
 import RootView from "site/root/view/RootView";
 
-const HeroView = (props) => {
+const BuildingView = (props) => {
 	return (<RootView {...props}/>);
 };
 
-export default HeroView;
+export default BuildingView;
