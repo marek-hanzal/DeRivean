@@ -11,11 +11,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import KingdomUpdateRedux from "redux/kingdom/update/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
-import useKingdomFetch from "site/root/module/kingdom-context/hook/useKingdomFetch";
 import KingdomContextView from "site/root/module/kingdom-context/view/KingdomContextView";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
+import useKingdomFetch from "site/root/module/kingdom/hook/useKingdomFetch";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
@@ -39,7 +39,7 @@ const DashboardView = () => {
 	/**
 	 * Fetch initial kingdom data.
 	 */
-	useKingdomFetch(null, (data) => {
+	useKingdomFetch(params.kingdom, (data) => {
 		/**
 		 * Set internal state.
 		 */
