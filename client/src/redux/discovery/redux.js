@@ -53,6 +53,12 @@ const DiscoveryRedux = {
 				update: state => DiscoveryRedux.selector.index(state)["root.kingdom.update"].link,
 				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.kingdom.fetch"].link.replace("{id}", uuid),
 			},
+			building: {
+				attributes: state => DiscoveryRedux.selector.index(state)["root.building.attributes"].link,
+				create: state => DiscoveryRedux.selector.index(state)["root.building.create"].link,
+				update: state => DiscoveryRedux.selector.index(state)["root.building.update"].link,
+				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.building.fetch"].link.replace("{id}", uuid),
+			},
 		},
 	},
 };

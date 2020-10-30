@@ -2,7 +2,9 @@
 	"common": {
 		"back": {
 			"menu": "Back"
-		}
+		},
+		"yes": "Yep!",
+		"no": "Nope!"
 	},
 	"root": {
 		"sign-out": {
@@ -62,7 +64,12 @@
 				"menu": "Dashboard"
 			},
 			"create": {
-				"menu": "Create"
+				"menu": "Create",
+				"form": {
+					"cancel": {
+						"label": "Cancel"
+					}
+				}
 			},
 			"list": {
 				"menu": "List",

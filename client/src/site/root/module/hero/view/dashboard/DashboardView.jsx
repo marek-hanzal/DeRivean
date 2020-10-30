@@ -1,4 +1,5 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
+import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import HeroView from "site/root/module/hero/view/HeroView";
 
 const DashboardView = () => {
@@ -6,8 +7,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={HeroView}
 			id={"root.hero"}
-			// icon={}
-			title={".... CREATE HERO COMPONENTS ..."}
+			icon={<HeroIcon/>}
 		>
 		</BaseDashboardView>
 	);
