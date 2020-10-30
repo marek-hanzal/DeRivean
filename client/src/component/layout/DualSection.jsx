@@ -1,4 +1,5 @@
 import {Col, Row} from "antd";
+import PropTypes from "prop-types";
 
 const DualSection = ({left, right}) => {
 	return (
@@ -11,6 +12,11 @@ const DualSection = ({left, right}) => {
 			</Col>
 		</Row>
 	);
+};
+
+DualSection.propTypes = {
+	left: PropTypes.node.isRequired,
+	right: PropTypes.node.isRequired,
 };
 
 export default DualSection;
