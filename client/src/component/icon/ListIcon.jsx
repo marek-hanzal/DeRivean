@@ -1,5 +1,5 @@
-import {DatabaseTwoTone} from "@ant-design/icons";
+import {DatabaseOutlined} from "@ant-design/icons";
 
-const ListIcon = () => <DatabaseTwoTone twoToneColor={"#00efc6"}/>;
+const ListIcon = (props) => <DatabaseOutlined {...props}/>;
 
 export default ListIcon;

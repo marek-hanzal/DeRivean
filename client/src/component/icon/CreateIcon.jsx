@@ -1,5 +1,5 @@
-import {EditTwoTone} from "@ant-design/icons";
+import {EditOutlined} from "@ant-design/icons";
 
-const CreateIcon = () => <EditTwoTone twoToneColor={"#55a200"}/>;
+const CreateIcon = (props) => <EditOutlined {...props}/>;
 
 export default CreateIcon;

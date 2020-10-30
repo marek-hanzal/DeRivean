@@ -1,5 +1,5 @@
 import {FormOutlined} from "@ant-design/icons";
 
-const SignUpIcon = () => <FormOutlined/>;
+const SignUpIcon = (props) => <FormOutlined {...props}/>;
 
 export default SignUpIcon;

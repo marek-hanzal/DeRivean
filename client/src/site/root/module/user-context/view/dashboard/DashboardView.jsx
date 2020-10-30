@@ -1,6 +1,8 @@
 import {Form, Input, message} from "antd";
+import BulletCard from "component/BulletCard";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
+import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -59,7 +61,12 @@ const DashboardView = () => {
 						/>
 					</Centered>
 				}
-			/>
+			>
+				<DualSection
+					left={<h1>rest of edit form here</h1>}
+					right={<BulletCard translation={"user:dashboard."} count={4}/>}
+				/>
+			</BaseDashboardView>
 		</Form>
 	);
 };
