@@ -9,11 +9,11 @@ import fetchSelector from "utils/action/fetchSelector";
 const actions = fetchActions("kingdom.create");
 
 const KingdomUpdateRedux = {
-	update: function (kingdom, uuid) {
+	update: function (kingdom) {
 		return (dispatch, getState) => {
 			dispatch(LoadingRedux.start());
 			dispatch(actions.request());
-			return Server.post(DiscoveryRedux.selector.root.kingdom.update(getState(), uuid), kingdom)
+			return Server.post(DiscoveryRedux.selector.root.kingdom.update(getState()), kingdom)
 				.then(({data}) => {
 					dispatch(actions.success(data));
 					dispatch(LoadingRedux.finish());

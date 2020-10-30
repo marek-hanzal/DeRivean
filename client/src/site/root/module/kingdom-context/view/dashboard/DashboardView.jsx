@@ -48,8 +48,7 @@ const DashboardView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={kingdom => {
-				console.log("update kingdom", kingdom);
-				dispatch(KingdomUpdateRedux.update(kingdom, params.kingdom)).then(_ => {
+				dispatch(KingdomUpdateRedux.update({...kingdom, id: params.kingdom})).then(_ => {
 					message.success(t("kingdom:update.success"));
 					setEdit(false);
 				}, () => {

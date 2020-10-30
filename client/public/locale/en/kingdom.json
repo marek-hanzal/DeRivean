@@ -1,4 +1,8 @@
 {
+	"update": {
+		"success": "Kingdom updated!",
+		"error": "Cannot update Kingdom :("
+	},
 	"form": {
 		"name": {
 			"label": "Kingdom name",

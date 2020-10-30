@@ -1,4 +1,8 @@
 {
+	"update": {
+		"success": "Království aktualizováno!",
+		"error": "Království se nepodařilo aktualizovat :("
+	},
 	"form": {
 		"name": {
 			"label": "Jméno království",

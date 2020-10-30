@@ -5,6 +5,7 @@ import derivean.lib.http.AbstractHttpModule
 import derivean.server.rest.root.kingdom.endpoint.AttributesEndpoint
 import derivean.server.rest.root.kingdom.endpoint.CreateEndpoint
 import derivean.server.rest.root.kingdom.endpoint.FetchEndpoint
+import derivean.server.rest.root.kingdom.endpoint.UpdateEndpoint
 import io.ktor.routing.*
 
 class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
@@ -12,6 +13,7 @@ class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			CreateEndpoint::class,
+			UpdateEndpoint::class,
 			FetchEndpoint::class,
 			AttributesEndpoint::class,
 		)
