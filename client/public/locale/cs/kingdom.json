@@ -3,6 +3,24 @@
 		"success": "Království aktualizováno!",
 		"error": "Království se nepodařilo aktualizovat :("
 	},
+	"dashboard": {
+		"list": {
+			"title": "Přehled království",
+			"item-0": "Zde se nachází rozcestník a všechny informace o vybraném království",
+			"item-1": "Přístup je ke všem relevantním entitám jako jsou hrdinové, budovy a další",
+			"item-2": "Přepnutím do editace je možné upravit parametry království",
+			"item-3": "Jelikož se jedná o nastavení herních pravidel, buď opatrný s volbami!"
+		}
+	},
+	"create": {
+		"list": {
+			"title": "Něco o královstvích",
+			"item-0": "Království je výchozí místo, kde se všechno odehrává",
+			"item-1": "V rámci království je možné nadefinovat budovy",
+			"item-2": "Hrdinové se rodí na úrovni království též",
+			"item-3": "Pokud chceš založit výchozí království (šablonu), pojmenuj jej *template*"
+		}
+	},
 	"attribute": {
 		"resource": {
 			"food": "Jídlo",

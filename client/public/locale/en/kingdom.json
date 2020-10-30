@@ -3,6 +3,24 @@
 		"success": "Kingdom updated!",
 		"error": "Cannot update Kingdom :("
 	},
+	"dashboard": {
+		"list": {
+			"title": "Kingdom Overview",
+			"item-0": "This is general overview of the given Kingdom",
+			"item-1": "From here you have access to all related entities such as Heroes, Buildings and so on",
+			"item-2": "Switch this page to an Edit mode to change Kingdom parameters",
+			"item-3": "Because you are creating rules, be careful with all attributes set!"
+		}
+	},
+	"create": {
+		"list": {
+			"title": "Something about Kingdoms",
+			"item-0": "Kingdom is the root place, where everything happens.",
+			"item-1": "You can create and define buildings withing a Kingdom.",
+			"item-2": "Heroes starts within Kingdom too.",
+			"item-3": "To create a Kingdom other players will start with, use *template* for the Kingdom name"
+		}
+	},
 	"attribute": {
 		"resource": {
 			"food": "Food",

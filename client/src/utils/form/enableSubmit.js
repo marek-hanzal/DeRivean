@@ -1,6 +1,6 @@
 import checkForErrors from "utils/form/checkForErrors";
 
-const enableSubmit = (form, fields, all = true) => {
+const enableSubmit = (form, fields) => {
 	return !form.isFieldsTouched(fields) || checkForErrors(form);
 };
 

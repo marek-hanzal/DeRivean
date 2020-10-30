@@ -1,9 +1,9 @@
-import {Button, Divider, Form, Input, message, Popconfirm, Space} from "antd";
+import {Button, Divider, Form, Input, message, Space} from "antd";
 import BulletCard from "component/BulletCard";
-import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import CancelEditButton from "component/form/CancelEditButton";
+import SubmitButton from "component/form/SubmitButton";
 import EditIcon from "component/icon/EditIcon";
-import LoaderIcon from "component/icon/LoaderIcon";
-import SubmitIcon from "component/icon/SubmitIcon";
+import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
@@ -13,13 +13,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import KingdomUpdateRedux from "redux/kingdom/update/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
-import KingdomContextIcon from "site/root/module/kingdom-context/component/icon/KingdomContextIcon";
 import useKingdomFetch from "site/root/module/kingdom-context/hook/useKingdomFetch";
 import KingdomContextView from "site/root/module/kingdom-context/view/KingdomContextView";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
-import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
@@ -27,18 +25,33 @@ const id = "root.kingdomContext";
 const longId = id + ".dashboard";
 
 const DashboardView = () => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation(["kingdom", "common"]);
+	/**
+	 * Edit mode toggle.
+	 */
 	const [edit, setEdit] = useState(false);
+	/**
+	 * Default (initial) kingdom values
+	 */
 	const [kingdom, setKingdom] = useState();
 	const [form] = Form.useForm();
 	const params = useParams();
-	const dispatch = useDispatch();
 	const attributes = useKingdomAttributesSelector();
 	const errors = useSelector(KingdomUpdateRedux.selector.getError);
 	useKingdomAttributes();
 
+	/**
+	 * Fetch initial kingdom data.
+	 */
 	useKingdomFetch(null, (data) => {
+		/**
+		 * Set internal state.
+		 */
 		setKingdom(data);
+		/**
+		 * Set form values wile maintaining untouched field state.
+		 */
 		values(form, data);
 	});
 
@@ -60,7 +73,7 @@ const DashboardView = () => {
 				base={KingdomContextView}
 				id={"root.kingdomContext"}
 				open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
-				icon={kingdom ? <KingdomContextIcon/> : <LoaderIcon spin/>}
+				icon={<Spinner enable={kingdom}/>}
 				title={
 					<Centered span={12}>
 						<Form.Item
@@ -79,34 +92,8 @@ const DashboardView = () => {
 				subTitle={
 					edit ?
 						<Space split={<Divider type={"vertical"}/>}>
-							<Form.Item shouldUpdate noStyle>
-								{() => (
-									<Button
-										type={"primary"}
-										size={"large"}
-										htmlType={"submit"}
-										icon={<SubmitIcon/>}
-										disabled={enableSubmit(form, false)}
-										children={t("kingdom:form.edit.submit.label")}
-									/>
-								)}
-							</Form.Item>
-							<Form.Item shouldUpdate noStyle>
-								{() => (
-									form.isFieldsTouched() ?
-										<Popconfirm
-											okText={t("common:yes")}
-											cancelText={t("common:no")}
-											title={t("kingdom:form.edit.cancelConfirm")}
-											onConfirm={() => {
-												setEdit(false);
-												values(form, kingdom);
-											}}
-											children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t("kingdom:form.cancel.label")}</Button>}
-										/> :
-										<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t("kingdom:form.cancel.label")}</Button>
-								)}
-							</Form.Item>
+							<SubmitButton form={form} title={"kingdom:form.edit.submit.label"}/>
+							<CancelEditButton form={form} setEdit={setEdit} translation={"kingdom"} initials={kingdom}/>
 						</Space> :
 						<Button type={"primary"} ghost size={"large"} disabled={!kingdom} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t("kingdom:form.edit.label")}</Button>
 				}
@@ -117,7 +104,7 @@ const DashboardView = () => {
 							<AttributeFieldEditor edit={edit} translation={"kingdom"} attributes={attributes}/>
 						</Centered>
 					}
-					right={<BulletCard translation={longId} count={4}/>}
+					right={<BulletCard translation={"kingdom:dashboard."} count={4}/>}
 				/>
 			</BaseDashboardView>
 		</Form>

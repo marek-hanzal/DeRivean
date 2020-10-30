@@ -89,10 +89,10 @@ const CreateView = () => {
 				<DualSection
 					left={
 						<Centered span={24}>
-							<AttributeFieldEditor translation={longId} attributes={attributes}/>
+							<AttributeFieldEditor edit={true} translation={"kingdom"} attributes={attributes}/>
 						</Centered>
 					}
-					right={<BulletCard translation={longId} count={4}/>}
+					right={<BulletCard translation={"kingdom:create."} count={4}/>}
 				/>
 			</BaseCreateView>
 		</Form>
