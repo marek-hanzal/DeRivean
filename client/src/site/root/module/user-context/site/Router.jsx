@@ -1,5 +1,5 @@
 import BaseRoutes from "component/route/BaseRoutes";
-import {KingdomRoute} from "site/root/module/user-context/module/kingdom/site/Router";
+import {KingdomRoute} from "site/root/module/kingdom/site/Router";
 import DashboardView from "site/root/module/user-context/view/dashboard/DashboardView";
 import Routes from "site/Routes";
 import route from "utils/route/route";

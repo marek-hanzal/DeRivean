@@ -3,7 +3,7 @@ import BaseListView from "component/view/BaseListView";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import KingdomPageRedux from "redux/kingdom/page/redux";
-import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
+import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import Routes from "site/Routes";
 
 const ListView = (props) => {
