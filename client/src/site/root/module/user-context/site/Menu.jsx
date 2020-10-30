@@ -2,7 +2,7 @@ import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
-import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
+import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
 import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
@@ -18,7 +18,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
+						menuItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserIcon/>),
 						menuDivider(),
 						KingdomMenuItem(),
 						menuDivider(),

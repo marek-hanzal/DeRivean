@@ -39,15 +39,15 @@ const DashboardView = () => {
 	/**
 	 * Fetch initial kingdom data.
 	 */
-	useKingdomFetch(params.kingdom, (data) => {
+	useKingdomFetch(params.kingdom, (kingdom) => {
 		/**
 		 * Set internal state.
 		 */
-		setKingdom(data);
+		setKingdom(kingdom);
 		/**
 		 * Set form values wile maintaining untouched field state.
 		 */
-		values(form, data);
+		values(form, kingdom);
 	});
 
 	return (
@@ -55,8 +55,8 @@ const DashboardView = () => {
 			form={form}
 			name={"kingdom"}
 			autoComplete="off"
-			onFinish={kingdom => {
-				dispatch(KingdomUpdateRedux.update({...kingdom, id: params.kingdom})).then(_ => {
+			onFinish={values => {
+				dispatch(KingdomUpdateRedux.update({...values, id: params.kingdom})).then(_ => {
 					message.success(t("kingdom:update.success"));
 					setEdit(false);
 				}, () => {
@@ -68,7 +68,7 @@ const DashboardView = () => {
 				base={KingdomContextView}
 				id={"root.kingdomContext"}
 				open={["root.hero", "root.building"]}
-				icon={<Spinner enable={kingdom}/>}
+				icon={<Spinner icon={<KingdomIcon/>} enable={kingdom}/>}
 				title={
 					<Centered span={12}>
 						<Form.Item

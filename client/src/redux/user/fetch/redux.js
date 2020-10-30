@@ -14,9 +14,11 @@ const UserFetchRedux = {
 			return Server.get(DiscoveryRedux.selector.root.user.fetch(getState(), uuid))
 				.then(({data}) => {
 					dispatch(actions.success(data));
+					return Promise.resolve(data);
 				})
 				.catch(({response}) => {
-					dispatch(actions.failure(response));
+					dispatch(actions.failure(response.data));
+					return Promise.reject(response.data);
 				});
 		};
 	},

@@ -6,7 +6,7 @@ import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
 
-const actions = fetchActions("kingdom.create");
+const actions = fetchActions("kingdom.update");
 
 const KingdomUpdateRedux = {
 	update: function (kingdom) {

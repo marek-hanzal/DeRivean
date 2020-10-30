@@ -1,29 +1,33 @@
 import DiscoveryRedux from "redux/discovery/redux";
-import KingdomRedux from "redux/kingdom/redux";
+import UserRedux from "redux/kingdom/redux";
+import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
 
-const actions = fetchActions("kingdom.fetch");
+const actions = fetchActions("user.update");
 
-const KingdomFetchRedux = {
-	fetch: function (uuid) {
+const UserUpdateRedux = {
+	update: function (user) {
 		return (dispatch, getState) => {
+			dispatch(LoadingRedux.start());
 			dispatch(actions.request());
-			return Server.get(DiscoveryRedux.selector.root.kingdom.fetch(getState(), uuid))
+			return Server.post(DiscoveryRedux.selector.root.user.update(getState()), user)
 				.then(({data}) => {
 					dispatch(actions.success(data));
+					dispatch(LoadingRedux.finish());
 					return Promise.resolve(data);
 				})
 				.catch(({response}) => {
 					dispatch(actions.failure(response.data));
+					dispatch(LoadingRedux.finish());
 					return Promise.reject(response.data);
 				});
 		};
 	},
 	reducer: () => fetchReducer(actions),
-	selector: fetchSelector(state => KingdomRedux.selector.branch(state).fetch)
+	selector: fetchSelector(state => UserRedux.selector.branch(state).update)
 };
 
-export default KingdomFetchRedux;
+export default UserUpdateRedux;

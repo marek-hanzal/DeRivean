@@ -6,7 +6,7 @@ import ListIcon from "component/icon/ListIcon";
 import BaseRoutes from "component/route/BaseRoutes";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
+import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
@@ -20,7 +20,7 @@ const Breadcrumb = () => {
 				route(Routes.root.building.dashboard.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbSimpleItem("root.building.dashboard", <DashboardIcon/>),
@@ -29,7 +29,7 @@ const Breadcrumb = () => {
 				route(Routes.root.building.create.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
@@ -39,7 +39,7 @@ const Breadcrumb = () => {
 				route(Routes.root.building.list.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),

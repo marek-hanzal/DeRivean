@@ -1,5 +1,5 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import UserDashboardIcon from "site/root/module/user/component/icon/UserDashboardIcon";
+import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserView from "site/root/module/user/view/UserView";
 
 const DashboardView = () => {
@@ -7,7 +7,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={UserView}
 			id={"root.user"}
-			icon={<UserDashboardIcon/>}
+			icon={<UserIcon/>}
 		>
 			<h1>some content here</h1>
 		</BaseDashboardView>

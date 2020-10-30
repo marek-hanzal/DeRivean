@@ -1,12 +1,11 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {useParams} from "react-router-dom";
 import UserFetchRedux from "redux/user/fetch/redux";
 
-const useUserFetch = (uuid = null) => {
+const useUserFetch = (uuid, then = () => ({})) => {
 	const dispatch = useDispatch();
-	const params = useParams();
-	useEffect(() => dispatch(UserFetchRedux.fetch(uuid || params.user)), [dispatch, params.user, uuid]);
+	// eslint-disable-next-line
+	useEffect(() => dispatch(UserFetchRedux.fetch(uuid)).then(then), [dispatch, uuid]);
 };
 
 export default useUserFetch;

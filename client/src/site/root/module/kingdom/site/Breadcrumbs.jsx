@@ -4,7 +4,7 @@ import HomeIcon from "component/icon/HomeIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseRoutes from "component/route/BaseRoutes";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
+import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
 import breadcrumbItem from "utils/breadcrumbs/breadcrumbItem";
@@ -18,14 +18,14 @@ const Breadcrumbs = () => {
 				route(Routes.root.kingdom.dashboard.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserIcon/>),
 						breadcrumbSimpleItem("root.kingdom.dashboard", <KingdomIcon/>),
 					]}
 				/>),
 				route(Routes.root.kingdom.create.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserIcon/>),
 						breadcrumbItem(Routes.root.kingdom.dashboard.link(), "root.kingdom.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.kingdom.create", <CreateIcon/>),
 					]}
@@ -33,7 +33,7 @@ const Breadcrumbs = () => {
 				route(Routes.root.kingdom.list.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
+						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserIcon/>),
 						breadcrumbItem(Routes.root.kingdom.dashboard.link(), "root.kingdom.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.kingdom.list", <ListIcon/>),
 					]}

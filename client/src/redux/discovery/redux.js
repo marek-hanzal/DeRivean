@@ -39,7 +39,8 @@ const DiscoveryRedux = {
 				page: (state, page) => DiscoveryRedux.selector.index(state)["root.entity.page"].link.replace("{page}", page),
 			},
 			user: {
-				create: state => DiscoveryRedux.selector.index(state)["public.user.register"].link,
+				create: state => DiscoveryRedux.selector.index(state)["root.user.create"].link,
+				update: state => DiscoveryRedux.selector.index(state)["root.user.update"].link,
 				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.user.fetch"].link.replace("{id}", uuid),
 				page: (state, page) => DiscoveryRedux.selector.index(state)["root.user.page"].link.replace("{page}", page),
 				kingdom: {

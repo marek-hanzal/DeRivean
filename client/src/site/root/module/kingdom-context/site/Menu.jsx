@@ -3,7 +3,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import {BuildingMenuItem} from "site/root/module/building/site/Menu";
 import {HeroMenuItem} from "site/root/module/hero/site/Menu";
-import KingdomContextIcon from "site/root/module/kingdom-context/component/icon/KingdomContextIcon";
+import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
 import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
@@ -19,7 +19,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomContextIcon/>),
+						menuItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						menuDivider(),
 						HeroMenuItem(),
 						menuDivider(),
