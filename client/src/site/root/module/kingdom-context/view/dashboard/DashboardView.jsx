@@ -1,8 +1,6 @@
-import {Button, Divider, Form, Input, message, Space} from "antd";
+import {Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
-import CancelEditButton from "component/form/CancelEditButton";
-import SubmitButton from "component/form/SubmitButton";
-import EditIcon from "component/icon/EditIcon";
+import EditSubmitButtons from "component/form/EditSubmitButtons";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
@@ -89,14 +87,7 @@ const DashboardView = () => {
 						/>
 					</Centered>
 				}
-				subTitle={
-					edit ?
-						<Space split={<Divider type={"vertical"}/>}>
-							<SubmitButton form={form} title={"kingdom:form.edit.submit.label"}/>
-							<CancelEditButton form={form} setEdit={setEdit} translation={"kingdom"} initials={kingdom}/>
-						</Space> :
-						<Button type={"primary"} ghost size={"large"} disabled={!kingdom} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t("kingdom:form.edit.label")}</Button>
-				}
+				subTitle={<EditSubmitButtons initials={kingdom} edit={edit} setEdit={setEdit} form={form} translation={"kingdom"}/>}
 			>
 				<DualSection
 					left={
