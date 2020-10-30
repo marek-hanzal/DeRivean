@@ -4,7 +4,7 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import HomeIcon from "component/icon/HomeIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseRoutes from "component/route/BaseRoutes";
-import HeroIcon from "site/root/module/kingdom-context/module/hero/component/icon/HeroIcon";
+import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import UserContextIcon from "site/root/module/user-context/component/icon/UserContextIcon";
 import Routes from "site/Routes";

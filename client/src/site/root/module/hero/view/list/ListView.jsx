@@ -1,5 +1,5 @@
 import BaseListView from "component/view/BaseListView";
-import HeroView from "site/root/module/kingdom-context/module/hero/view/HeroView";
+import HeroView from "site/root/module/hero/view/HeroView";
 import defaultPage from "utils/page";
 
 const ListView = () => {

@@ -1,5 +1,5 @@
 import BaseCreateView from "component/view/BaseCreateView";
-import HeroView from "site/root/module/kingdom-context/module/hero/view/HeroView";
+import HeroView from "site/root/module/hero/view/HeroView";
 
 const CreateView = () => {
 	return (
