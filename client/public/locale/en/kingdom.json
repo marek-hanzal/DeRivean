@@ -3,6 +3,14 @@
 		"success": "Kingdom updated!",
 		"error": "Cannot update Kingdom :("
 	},
+	"attribute": {
+		"resource": {
+			"food": "Food",
+			"wood": "Wood",
+			"stone": "Stone",
+			"gold": "Gold"
+		}
+	},
 	"form": {
 		"name": {
 			"label": "Kingdom name",

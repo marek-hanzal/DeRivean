@@ -3,6 +3,14 @@
 		"success": "Království aktualizováno!",
 		"error": "Království se nepodařilo aktualizovat :("
 	},
+	"attribute": {
+		"resource": {
+			"food": "Jídlo",
+			"wood": "Dřevo",
+			"stone": "Kamení",
+			"gold": "Zlato"
+		}
+	},
 	"form": {
 		"name": {
 			"label": "Jméno království",
