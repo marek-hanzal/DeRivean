@@ -67,7 +67,7 @@ const DashboardView = () => {
 			<BaseDashboardView
 				base={KingdomContextView}
 				id={"root.kingdomContext"}
-				open={["root.kingdomContext.hero", "root.kingdomContext.building"]}
+				open={["root.hero", "root.building"]}
 				icon={<Spinner enable={kingdom}/>}
 				title={
 					<Centered span={12}>

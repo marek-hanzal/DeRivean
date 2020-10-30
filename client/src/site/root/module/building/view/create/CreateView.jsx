@@ -5,7 +5,7 @@ const CreateView = () => {
 	return (
 		<BaseCreateView
 			base={BuildingView}
-			id={"root.kingdomContext.building"}
+			id={"root.building"}
 		/>
 	);
 };

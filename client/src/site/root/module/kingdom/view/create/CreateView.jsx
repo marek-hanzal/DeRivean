@@ -19,7 +19,7 @@ import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
 import validationFor from "utils/form/validationFor";
 
-const id = "root.userContext.kingdom";
+const id = "root.kingdom";
 const longId = id + ".create";
 
 const CreateView = () => {

@@ -5,7 +5,7 @@ const DashboardView = () => {
 	return (
 		<BaseDashboardView
 			base={HeroView}
-			id={"root.kingdomContext.hero"}
+			id={"root.hero"}
 			// icon={}
 			title={".... CREATE HERO COMPONENTS ..."}
 		>

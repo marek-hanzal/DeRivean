@@ -5,7 +5,7 @@ import defaultPage from "utils/page";
 const ListView = () => {
 	return (
 		<BaseListView
-			id={"root.kingdomContext.hero"}
+			id={"root.hero"}
 			base={HeroView}
 			page={defaultPage}
 			onPage={() => ({})}

@@ -6,7 +6,7 @@ const DashboardView = () => {
 	return (
 		<BaseDashboardView
 			base={KingdomView}
-			id={"root.userContext.kingdom"}
+			id={"root.kingdom"}
 			icon={<KingdomIcon/>}
 		>
 			<h1>Kingdom dashboard</h1>

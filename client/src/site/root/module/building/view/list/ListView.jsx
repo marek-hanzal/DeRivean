@@ -6,7 +6,7 @@ const ListView = () => {
 	return (
 		<BaseListView
 			base={BuildingView}
-			id={"root.kingdomContext.building"}
+			id={"root.building"}
 			page={defaultPage}
 			onPage={() => ({})}
 			items={[]}

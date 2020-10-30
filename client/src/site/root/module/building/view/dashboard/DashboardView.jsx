@@ -5,7 +5,7 @@ const DashboardView = () => {
 	return (
 		<BaseDashboardView
 			base={BuildingView}
-			id={"root.kingdomContext.building"}
+			id={"root.building"}
 		/>
 	);
 };

@@ -22,8 +22,8 @@ const Breadcrumb = () => {
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero", <HeroIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero.dashboard", <DashboardIcon/>),
+						breadcrumbSimpleItem("root.hero", <HeroIcon/>),
+						breadcrumbSimpleItem("root.hero.dashboard", <DashboardIcon/>),
 					]}
 				/>),
 				route(Routes.root.hero.create.match(), <BaseBreadcrumbs
@@ -31,9 +31,9 @@ const Breadcrumb = () => {
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero", <HeroIcon/>),
-						breadcrumbItem(Routes.root.hero.dashboard.link(), "root.kingdomContext.hero.dashboard", <DashboardIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero.create", <CreateIcon/>),
+						breadcrumbSimpleItem("root.hero", <HeroIcon/>),
+						breadcrumbItem(Routes.root.hero.dashboard.link(), "root.hero.dashboard", <DashboardIcon/>),
+						breadcrumbSimpleItem("root.hero.create", <CreateIcon/>),
 					]}
 				/>),
 				route(Routes.root.hero.list.match(), <BaseBreadcrumbs
@@ -41,9 +41,9 @@ const Breadcrumb = () => {
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero", <HeroIcon/>),
-						breadcrumbItem(Routes.root.hero.dashboard.link(), "root.kingdomContext.hero.dashboard", <DashboardIcon/>),
-						breadcrumbSimpleItem("root.kingdomContext.hero.list", <ListIcon/>),
+						breadcrumbSimpleItem("root.hero", <HeroIcon/>),
+						breadcrumbItem(Routes.root.hero.dashboard.link(), "root.hero.dashboard", <DashboardIcon/>),
+						breadcrumbSimpleItem("root.hero.list", <ListIcon/>),
 					]}
 				/>),
 			]}

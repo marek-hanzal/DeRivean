@@ -12,7 +12,7 @@ const ListView = (props) => {
 	return (
 		<BaseListView
 			base={KingdomView}
-			id={"root.userContext.kingdom"}
+			id={"root.kingdom"}
 			page={useSelector(KingdomPageRedux.selector.getPayload)}
 			onPage={(page, size = 100) => dispatch(KingdomPageRedux.fetch(params.user, page, size))}
 			isLoading={useSelector(KingdomPageRedux.selector.isLoading)}

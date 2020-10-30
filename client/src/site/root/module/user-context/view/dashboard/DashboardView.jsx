@@ -10,7 +10,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={UserContextView}
 			id={"root.userContext"}
-			open={["root.userContext.kingdom"]}
+			open={["root.kingdom"]}
 			icon={<UserAvatar user={user} size={64}/>}
 			title={<DeferredInput item={user} name={"name"} label={"root.userContext.dashboard.view.name"}/>}
 		>

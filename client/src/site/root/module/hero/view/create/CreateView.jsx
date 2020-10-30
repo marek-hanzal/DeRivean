@@ -4,7 +4,7 @@ import HeroView from "site/root/module/hero/view/HeroView";
 const CreateView = () => {
 	return (
 		<BaseCreateView
-			id={"root.kingdomContext.hero"}
+			id={"root.hero"}
 			base={HeroView}
 		>
 		</BaseCreateView>
