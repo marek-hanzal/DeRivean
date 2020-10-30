@@ -5,15 +5,13 @@ const magic = (form, fields, name = []) => {
 	let keys = [];
 	for (const [key, value] of Object.entries(fields)) {
 		const current = [].concat(name, [key]);
+		keys = keys.concat([current]);
 		if (isArray(value)) {
-			keys = keys.concat([current]);
 			for (let i = 0; i < value.length; i++) {
 				keys = keys.concat(magic(form, value[i], [].concat(current, [i])));
 			}
 		} else if (isObject(value)) {
 			keys = keys.concat(magic(form, value, current));
-		} else {
-			keys = keys.concat([current]);
 		}
 	}
 	return keys;
