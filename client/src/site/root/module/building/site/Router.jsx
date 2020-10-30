@@ -10,16 +10,16 @@ const Router = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.kingdomContext.building.dashboard.match(), <DashboardView/>),
-				route(Routes.root.kingdomContext.building.create.match(), <CreateView/>),
-				route(Routes.root.kingdomContext.building.list.match(), <ListView/>),
+				route(Routes.root.building.dashboard.match(), <DashboardView/>),
+				route(Routes.root.building.create.match(), <CreateView/>),
+				route(Routes.root.building.list.match(), <ListView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>
 	);
 };
 
-const BuildingRoute = () => route(Routes.root.kingdomContext.building.match(), <Router/>);
+const BuildingRoute = () => route(Routes.root.building.match(), <Router/>);
 
 export {
 	BuildingRoute,

@@ -7,9 +7,9 @@ import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
 
 const KingdomMenuItem = () => menuGroup("root.userContext.kingdom", <KingdomIcon/>, [
-	menuItem(Routes.root.userContext.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.userContext.kingdom.create.link(), "root.userContext.kingdom.create", <CreateIcon/>),
-	menuItem(Routes.root.userContext.kingdom.list.link(), "root.userContext.kingdom.list", <ListIcon/>),
+	menuItem(Routes.root.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <DashboardIcon/>),
+	menuItem(Routes.root.kingdom.create.link(), "root.userContext.kingdom.create", <CreateIcon/>),
+	menuItem(Routes.root.kingdom.list.link(), "root.userContext.kingdom.list", <ListIcon/>),
 ]);
 
 export {

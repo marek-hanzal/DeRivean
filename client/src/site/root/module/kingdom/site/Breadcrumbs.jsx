@@ -15,26 +15,26 @@ const Breadcrumbs = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.userContext.kingdom.dashboard.match(), <BaseBreadcrumbs
+				route(Routes.root.kingdom.dashboard.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
 						breadcrumbSimpleItem("root.userContext.kingdom.dashboard", <KingdomIcon/>),
 					]}
 				/>),
-				route(Routes.root.userContext.kingdom.create.match(), <BaseBreadcrumbs
+				route(Routes.root.kingdom.create.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
-						breadcrumbItem(Routes.root.userContext.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.userContext.kingdom.create", <CreateIcon/>),
 					]}
 				/>),
-				route(Routes.root.userContext.kingdom.list.match(), <BaseBreadcrumbs
+				route(Routes.root.kingdom.list.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserContextIcon/>),
-						breadcrumbItem(Routes.root.userContext.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.dashboard.link(), "root.userContext.kingdom.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.userContext.kingdom.list", <ListIcon/>),
 					]}
 				/>),
@@ -43,7 +43,7 @@ const Breadcrumbs = () => {
 	);
 };
 
-const KingdomBreadcrumbRoute = () => route(Routes.root.userContext.kingdom.match(), <Breadcrumbs/>);
+const KingdomBreadcrumbRoute = () => route(Routes.root.kingdom.match(), <Breadcrumbs/>);
 
 export {
 	KingdomBreadcrumbRoute,

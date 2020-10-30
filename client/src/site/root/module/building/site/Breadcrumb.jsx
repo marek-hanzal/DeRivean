@@ -17,7 +17,7 @@ const Breadcrumb = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.kingdomContext.building.dashboard.match(), <BaseBreadcrumbs
+				route(Routes.root.building.dashboard.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
@@ -26,23 +26,23 @@ const Breadcrumb = () => {
 						breadcrumbSimpleItem("root.kingdomContext.building.dashboard", <DashboardIcon/>),
 					]}
 				/>),
-				route(Routes.root.kingdomContext.building.create.match(), <BaseBreadcrumbs
+				route(Routes.root.building.create.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.kingdomContext.building", <BuildingIcon/>),
-						breadcrumbItem(Routes.root.kingdomContext.building.dashboard.link(), "root.kingdomContext.building.dashboard", <DashboardIcon/>),
+						breadcrumbItem(Routes.root.building.dashboard.link(), "root.kingdomContext.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.kingdomContext.building.create", <CreateIcon/>),
 					]}
 				/>),
-				route(Routes.root.kingdomContext.building.list.match(), <BaseBreadcrumbs
+				route(Routes.root.building.list.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserContextIcon/>),
 						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.kingdomContext.building", <BuildingIcon/>),
-						breadcrumbItem(Routes.root.kingdomContext.building.dashboard.link(), "root.kingdomContext.building.dashboard", <DashboardIcon/>),
+						breadcrumbItem(Routes.root.building.dashboard.link(), "root.kingdomContext.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.kingdomContext.building.list", <ListIcon/>),
 					]}
 				/>),
@@ -51,7 +51,7 @@ const Breadcrumb = () => {
 	);
 };
 
-const BuildingBreadcrumbRoute = () => route(Routes.root.kingdomContext.building.match(), <Breadcrumb/>);
+const BuildingBreadcrumbRoute = () => route(Routes.root.building.match(), <Breadcrumb/>);
 
 export {
 	BuildingBreadcrumbRoute,

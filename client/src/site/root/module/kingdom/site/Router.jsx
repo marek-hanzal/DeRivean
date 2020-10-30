@@ -9,15 +9,15 @@ import NotFoundView from "view/NotFoundView";
 const Router = () =>
 	<BaseRoutes
 		routes={[
-			route(Routes.root.userContext.kingdom.dashboard.match(), <DashboardView/>),
-			route(Routes.root.userContext.kingdom.create.match(), <CreateView/>),
-			route(Routes.root.userContext.kingdom.list.match(), <ListView/>),
+			route(Routes.root.kingdom.dashboard.match(), <DashboardView/>),
+			route(Routes.root.kingdom.create.match(), <CreateView/>),
+			route(Routes.root.kingdom.list.match(), <ListView/>),
 			route("*", <NotFoundView/>),
 		]}
 	/>
 ;
 
-const KingdomRoute = () => route(Routes.root.userContext.kingdom.match(), <Router/>);
+const KingdomRoute = () => route(Routes.root.kingdom.match(), <Router/>);
 
 export {
 	KingdomRoute,

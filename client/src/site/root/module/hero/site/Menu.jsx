@@ -7,9 +7,9 @@ import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
 
 const HeroMenuItem = () => menuGroup("root.kingdomContext.hero", <HeroIcon/>, [
-	menuItem(Routes.root.kingdomContext.hero.dashboard.link(), "root.kingdomContext.hero.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.kingdomContext.hero.create.link(), "root.kingdomContext.hero.create", <CreateIcon/>),
-	menuItem(Routes.root.kingdomContext.hero.list.link(), "root.kingdomContext.hero.list", <ListIcon/>),
+	menuItem(Routes.root.hero.dashboard.link(), "root.kingdomContext.hero.dashboard", <DashboardIcon/>),
+	menuItem(Routes.root.hero.create.link(), "root.kingdomContext.hero.create", <CreateIcon/>),
+	menuItem(Routes.root.hero.list.link(), "root.kingdomContext.hero.list", <ListIcon/>),
 ]);
 
 export {

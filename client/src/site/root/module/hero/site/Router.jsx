@@ -10,16 +10,16 @@ const Router = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.kingdomContext.hero.dashboard.match(), <DashboardView/>),
-				route(Routes.root.kingdomContext.hero.list.match(), <ListView/>),
-				route(Routes.root.kingdomContext.hero.create.match(), <CreateView/>),
+				route(Routes.root.hero.dashboard.match(), <DashboardView/>),
+				route(Routes.root.hero.list.match(), <ListView/>),
+				route(Routes.root.hero.create.match(), <CreateView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>
 	);
 };
 
-const HeroRoute = () => route(Routes.root.kingdomContext.hero.match(), <Router/>);
+const HeroRoute = () => route(Routes.root.hero.match(), <Router/>);
 
 export {
 	HeroRoute,
