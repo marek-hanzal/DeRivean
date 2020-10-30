@@ -4,7 +4,7 @@ import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 
-const AttributeFieldEditor = ({translation, values, edit = true, attributes}) => {
+const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 	const {t} = useTranslation(["common"]);
 	return (
 		<Card title={t(translation + ":form.attribute.title")}>

@@ -20,8 +20,8 @@ import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
 import enableSubmit from "utils/form/enableSubmit";
-import setValues from "utils/form/setValues";
 import validationFor from "utils/form/validationFor";
+import values from "utils/form/values";
 
 const id = "root.kingdomContext";
 const longId = id + ".dashboard";
@@ -39,7 +39,7 @@ const DashboardView = () => {
 
 	useKingdomFetch(null, (data) => {
 		setKingdom(data);
-		setValues(form, data);
+		values(form, data);
 	});
 
 	return (
@@ -101,7 +101,7 @@ const DashboardView = () => {
 											title={t("kingdom:form.edit.cancelConfirm")}
 											onConfirm={() => {
 												setEdit(false);
-												setValues(form, kingdom);
+												values(form, kingdom);
 											}}
 											children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t("kingdom:form.cancel.label")}</Button>}
 										/> :
