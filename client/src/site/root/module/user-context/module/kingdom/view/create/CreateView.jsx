@@ -1,5 +1,6 @@
-import {Button, Form, Input, message} from "antd";
+import {Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
+import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
@@ -16,7 +17,6 @@ import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingd
 import KingdomView from "site/root/module/user-context/module/kingdom/view/KingdomView";
 import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
-import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const id = "root.userContext.kingdom";
@@ -72,19 +72,7 @@ const CreateView = () => {
 						/>
 					</Centered>
 				}
-				subTitle={
-					<Form.Item shouldUpdate={true}>
-						{() => (
-							<Button
-								type="primary"
-								size={"large"}
-								htmlType="submit"
-								disabled={enableSubmit(form, ["name"])}
-								children={t("kingdom:form.submit.label")}
-							/>
-						)}
-					</Form.Item>
-				}
+				subTitle={<CreateSubmitButtons form={form} translation={"kingdom"}/>}
 			>
 				<DualSection
 					left={

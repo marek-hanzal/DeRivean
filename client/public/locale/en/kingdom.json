@@ -13,6 +13,39 @@
 		}
 	},
 	"create": {
+		"form": {
+			"name": {
+				"label": "Kingdom name",
+				"required": "Please choose some Epic Kingdom name!"
+			},
+			"submit": {
+				"label": "Create Kingdom!"
+			},
+			"cancel": {
+				"label": "Cancel"
+			},
+			"attribute": {
+				"title": "Kingdom Attributes",
+				"empty": "There are no attributes!",
+				"deleteConfirm": "Do you want to remove selected Attribute?",
+				"name": {
+					"label": "Attribute",
+					"required": "Attribute is required!",
+					"hint": "Attribute"
+				},
+				"value": {
+					"label": "Value",
+					"required": "Attribute value is required!",
+					"hint": "Value"
+				},
+				"add": {
+					"label": "Attribute"
+				}
+			},
+			"button": {
+				"label": "Create!"
+			}
+		},
 		"list": {
 			"title": "Something about Kingdoms",
 			"item-0": "Kingdom is the root place, where everything happens.",

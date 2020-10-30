@@ -1,5 +1,5 @@
-import {SmileTwoTone} from "@ant-design/icons";
+import {SmileOutlined} from "@ant-design/icons";
 
-const SubmitIcon = (props) => <SmileTwoTone {...props}/>;
+const SubmitIcon = (props) => <SmileOutlined {...props}/>;
 
 export default SubmitIcon;

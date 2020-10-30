@@ -19,9 +19,6 @@ import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingd
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
-const id = "root.kingdomContext";
-const longId = id + ".dashboard";
-
 const DashboardView = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation(["kingdom", "common"]);

@@ -1,5 +1,6 @@
 import {Button, Form} from "antd";
 import SubmitIcon from "component/icon/SubmitIcon";
+import PropTypes from "prop-types";
 import {useTranslation} from "react-i18next";
 import enableSubmit from "utils/form/enableSubmit";
 
@@ -19,6 +20,11 @@ const SubmitButton = ({form, title}) => {
 			)}
 		</Form.Item>
 	);
+};
+
+SubmitButton.propTypes = {
+	form: PropTypes.any.isRequired,
+	title: PropTypes.string,
 };
 
 export default SubmitButton;
