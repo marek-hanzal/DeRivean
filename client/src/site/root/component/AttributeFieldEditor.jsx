@@ -49,16 +49,16 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 											/>
 										</Form.Item>
 									</Input.Group>
-									{edit ?
-										<Popconfirm
-											okText={t("common:yes")}
-											cancelText={t("common:no")}
-											icon={<DeleteItemIcon/>}
-											title={t(translation + ":form.attribute.deleteConfirm")}
-											onConfirm={() => remove(field.name)}
-										>
-											<Button style={{alignSelf: "start", marginTop: 4}} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
-										</Popconfirm> : null}
+									<Popconfirm
+										okText={t("common:yes")}
+										cancelText={t("common:no")}
+										icon={<DeleteItemIcon/>}
+										title={t(translation + ":form.attribute.deleteConfirm")}
+										onConfirm={() => remove(field.name)}
+										disabled={!edit}
+									>
+										<Button disabled={!edit} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
+									</Popconfirm>
 								</List.Item>
 							))}
 							{
