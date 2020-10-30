@@ -1,4 +1,29 @@
 package derivean.server.building
 
-class BuildingRepository {
+import derivean.game.attribute.Attribute
+import derivean.lib.container.IContainer
+import derivean.lib.repository.AbstractRepository
+import derivean.lib.storage.EntityUUID
+import derivean.server.building.entities.Building
+import derivean.server.building.entities.BuildingTable
+
+class BuildingRepository(container: IContainer) : AbstractRepository<Building, BuildingTable>(Building, BuildingTable, container) {
+	private val buildingAttributeRepository: BuildingAttributeRepository by container.lazy()
+
+	fun attributes(id: String, vararg attributes: Attribute) {
+		find(id).let { building ->
+			building.attributes.forEach {
+				it.delete()
+			}
+			for (attribute in attributes) {
+				buildingAttributeRepository.create {
+					this.building = building
+					this.name = attribute.first
+					this.value = attribute.second
+				}
+			}
+		}
+	}
+
+	fun attributes(id: EntityUUID, vararg attributes: Attribute) = attributes(id.toString(), *attributes)
 }

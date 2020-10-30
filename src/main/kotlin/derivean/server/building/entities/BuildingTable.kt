@@ -6,4 +6,5 @@ import org.jetbrains.exposed.sql.ReferenceOption
 
 object BuildingTable : UUIDTable("building") {
 	val kingdom = reference("kingdom", KingdomTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+	val name = varchar("name", 64)
 }

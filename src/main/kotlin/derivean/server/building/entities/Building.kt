@@ -9,4 +9,6 @@ class Building(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<Building>(BuildingTable)
 
 	var kingdom by Kingdom referencedOn BuildingTable.kingdom
+	val attributes by BuildingAttribute referrersOn BuildingAttributeTable.building
+	var name by BuildingTable.name
 }
