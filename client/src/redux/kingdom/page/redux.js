@@ -7,7 +7,7 @@ import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
 import defaultPage from "utils/page";
 
-const actions = fetchActions("kingdom.page", defaultPage);
+const actions = fetchActions("kingdom.page");
 
 const KingdomPageRedux = {
 	fetch: function (user, page, size = 100) {

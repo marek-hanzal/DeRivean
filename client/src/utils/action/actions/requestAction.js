@@ -5,7 +5,7 @@ const requestAction = (name, defaultPayload = null) => createAction(toActionName
 	status: "REQUEST",
 	loading: true,
 	error: null,
-	payload,
+	...(payload ? payload : {}),
 }));
 
 export default requestAction;

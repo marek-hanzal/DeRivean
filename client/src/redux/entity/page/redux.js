@@ -7,7 +7,7 @@ import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
 import defaultPage from "utils/page";
 
-const actions = fetchActions("entity.page", defaultPage);
+const actions = fetchActions("entity.page");
 
 const EntityPageRedux = {
 	fetch: function (page, size = 100) {
