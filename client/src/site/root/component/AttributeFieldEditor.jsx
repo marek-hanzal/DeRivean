@@ -5,7 +5,7 @@ import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 
 const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
-	const {t} = useTranslation(["common"]);
+	const {t} = useTranslation();
 	return (
 		<Card title={t(translation + ":form.attribute.title")}>
 			<Form.List

@@ -7,7 +7,7 @@ const CancelCreateButton = (
 		form,
 		translation,
 	}) => {
-	const {t} = useTranslation([translation]);
+	const {t} = useTranslation();
 
 	return (
 		<Form.Item shouldUpdate noStyle>

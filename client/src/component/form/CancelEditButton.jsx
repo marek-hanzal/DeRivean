@@ -10,7 +10,7 @@ const CancelEditButton = (
 		setEdit,
 		translation,
 	}) => {
-	const {t} = useTranslation([translation]);
+	const {t} = useTranslation();
 
 	return (
 		<Form.Item shouldUpdate noStyle>

@@ -1,0 +1,150 @@
+{
+	"common": {
+		"back": {
+			"menu": "Back"
+		}
+	},
+	"root": {
+		"sign-out": {
+			"menu": "Sign out!",
+			"title": "Sign out?",
+			"subtitle": "Do you really want to leave administration?",
+			"button": {
+				"sign-out": "Leave!",
+				"back": "Return!"
+			}
+		},
+		"home": {
+			"menu": "Home"
+		},
+		"user": {
+			"menu": "Users",
+			"dashboard": {
+				"menu": "Dashboard",
+				"breadcrumb": "Users",
+				"title": "Dashboard"
+			},
+			"create": {
+				"menu": "Create",
+				"breadcrumb": "Create",
+				"title": "Create"
+			},
+			"list": {
+				"menu": "List",
+				"breadcrumb": "List",
+				"title": "List",
+				"table": {
+					"id": {
+						"column": "ID"
+					},
+					"name": {
+						"column": "Name"
+					},
+					"token": {
+						"column": "Token"
+					},
+					"site": {
+						"column": "Site"
+					}
+				}
+			}
+		},
+		"userContext": {
+			"dashboard": {
+				"menu": "User",
+				"breadcrumb": "User",
+				"title": "User"
+			}
+		},
+		"kingdom": {
+			"menu": "Kingdom",
+			"dashboard": {
+				"menu": "Dashboard"
+			},
+			"create": {
+				"menu": "Create"
+			},
+			"list": {
+				"menu": "List",
+				"table": {
+					"id": {
+						"column": "UUID"
+					},
+					"name": {
+						"column": "Name"
+					}
+				}
+			}
+		},
+		"kingdomContext": {
+			"dashboard": {
+				"menu": "Kingdom",
+				"title": "Kingdom",
+				"breadcrumb": "Kingdom",
+				"view": {
+					"name": "Kingdom name"
+				},
+				"form": {
+					"attribute": {
+						"title": "Kingdom attributes"
+					}
+				}
+			}
+		},
+		"hero": {
+			"menu": "Heroes",
+			"breadcrumb": "Hero",
+			"dashboard": {
+				"menu": "Dashboard",
+				"title": "Heroes Dashboard",
+				"subtitle": "Something about all Heroes in the Kingdom.",
+				"breadcrumb": "Dashboard"
+			},
+			"list": {
+				"menu": "List",
+				"title": "Heroes of Kingdom",
+				"breadcrumb": "Heroes"
+			},
+			"create": {
+				"menu": "Create",
+				"title": "Create a new Hero",
+				"breadcrumb": "Create"
+			}
+		},
+		"building": {
+			"menu": "Buildings",
+			"breadcrumb": "Building",
+			"dashboard": {
+				"menu": "Dashboard",
+				"title": "Buildings Dashboard",
+				"subtitle": "Overview of all buildings in the Kingdom",
+				"breadcrumb": "Dashboard"
+			},
+			"list": {
+				"menu": "List",
+				"title": "Buildings in Kingdom",
+				"breadcrumb": "List"
+			},
+			"create": {
+				"menu": "Create",
+				"title": "Create a new Building",
+				"breadcrumb": "Create"
+			}
+		},
+		"blog": {
+			"menu": "Blog",
+			"dashboard": {
+				"menu": "Dashboard",
+				"breadcrumb": "Blog"
+			},
+			"create": {
+				"menu": "Create",
+				"breadcrumb": "Create"
+			},
+			"list": {
+				"menu": "List",
+				"breadcrumb": "List"
+			}
+		}
+	}
+}

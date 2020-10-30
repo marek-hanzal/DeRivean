@@ -1,5 +1,6 @@
 import {Card, Result} from "antd";
 import CreateIcon from "component/icon/CreateIcon";
+import PropTypes from "prop-types";
 import {createElement} from "react";
 import {useTranslation} from "react-i18next";
 
@@ -32,6 +33,11 @@ const BaseCreateView = (
 			/>
 		</Card>
 	);
+};
+
+BaseCreateView.propTypes = {
+	id: PropTypes.string.isRequired,
+	base: PropTypes.element.isRequired,
 };
 
 export default BaseCreateView;

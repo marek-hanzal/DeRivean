@@ -17,7 +17,7 @@ import values from "utils/form/values";
 
 const DashboardView = () => {
 	const dispatch = useDispatch();
-	const {t} = useTranslation(["user", "common"]);
+	const {t} = useTranslation();
 	const [edit, setEdit] = useState(false);
 	const [user, setUser] = useState();
 	const [form] = Form.useForm();

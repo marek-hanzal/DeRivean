@@ -28,7 +28,7 @@ const CreateView = () => {
 	const location = useLocation();
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
-	const {t} = useTranslation(["kingdom"]);
+	const {t} = useTranslation();
 	useKingdomAttributes();
 
 	const user = useUserSelector();

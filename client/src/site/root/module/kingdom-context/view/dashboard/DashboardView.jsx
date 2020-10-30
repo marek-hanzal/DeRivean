@@ -21,7 +21,7 @@ import values from "utils/form/values";
 
 const DashboardView = () => {
 	const dispatch = useDispatch();
-	const {t} = useTranslation(["kingdom", "common"]);
+	const {t} = useTranslation();
 	/**
 	 * Edit mode toggle.
 	 */
