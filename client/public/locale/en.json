@@ -1,4 +1,18 @@
 {
+	"error": {
+		"discovery": {
+			"title": "Discovery Error",
+			"body": "Cannot make Discovery request, server is probably unavailable."
+		},
+		"client": {
+			"title": "Client Error",
+			"body": "Cannot load Client configuration, server is probably dead."
+		},
+		"not-found": {
+			"title": "Not Found!",
+			"body": "Yay, this page does not exists, really :(."
+		}
+	},
 	"common": {
 		"back": {
 			"menu": "Back"

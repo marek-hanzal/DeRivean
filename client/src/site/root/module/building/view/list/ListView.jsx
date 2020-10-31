@@ -1,16 +1,19 @@
-import BaseListView from "component/view/BaseListView";
+import {Card} from "antd";
+import {useTranslation} from "react-i18next";
+import BuildingList from "site/root/module/building/component/BuildingList";
 import BuildingView from "site/root/module/building/view/BuildingView";
-import defaultPage from "utils/page";
 
 const ListView = () => {
+	const {t} = useTranslation();
 	return (
-		<BaseListView
+		<BuildingView
 			base={BuildingView}
 			id={"root.building"}
-			page={defaultPage}
-			onPage={() => ({})}
-			items={[]}
-		/>
+		>
+			<Card title={t(`building.list.title`)}>
+				<BuildingList/>
+			</Card>
+		</BuildingView>
 	);
 };
 

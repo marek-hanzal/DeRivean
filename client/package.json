@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.5.180",
+	"version": "0.5.181",
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
@@ -24,7 +24,7 @@
 		"react-i18next": "^11.7.3",
 		"react-loadable": "^5.5.0",
 		"react-markdown": "^5.0.2",
-		"react-redux": "^7.2.1",
+		"react-redux": "^7.2.2",
 		"react-router": "^6.0.0-beta.0",
 		"react-router-dom": "^6.0.0-beta.0",
 		"react-scripts": "^4.0.0",
@@ -33,7 +33,7 @@
 		"redux-persist": "^6.0.0",
 		"redux-thunk": "^2.3.0",
 		"remark-gfm": "^1.0.0",
-		"typescript": "^4.0.3",
+		"typescript": "^4.0.5",
 		"uuid": "^8.3.1"
 	},
 	"scripts": {
