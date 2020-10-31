@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
-import CreateFetchDispatch from "utils/redux/CreateFetchDispatch";
-import CreatePageDispatch from "utils/redux/CreatePageDispatch";
-import CreateSimpleDispatch from "utils/redux/CreateSimpleDispatch";
+import CreateActionRedux from "utils/redux/CreateActionRedux";
+import CreateFetchRedux from "utils/redux/CreateFetchRedux";
+import CreatePageRedux from "utils/redux/CreatePageRedux";
 
 function CreateModule(
 	id,
@@ -13,10 +13,10 @@ function CreateModule(
 ) {
 	return {
 		redux: {
-			create: CreateSimpleDispatch(id, "create", createId),
-			update: CreateSimpleDispatch(id, "update", updateId),
-			fetch: CreateFetchDispatch(id, fetchId),
-			page: CreatePageDispatch(id, pageId),
+			create: CreateActionRedux(id, "create", createId),
+			update: CreateActionRedux(id, "update", updateId),
+			fetch: CreateFetchRedux(id, fetchId),
+			page: CreatePageRedux(id, pageId),
 			...extra,
 		},
 		reducer: function () {

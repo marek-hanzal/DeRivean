@@ -1,5 +1,5 @@
+import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreateModule from "utils/redux/CreateModule";
-import CreateSimpleFetchDispatch from "utils/redux/CreateSimpleFetchDispatch";
 
 const BuildingRedux = CreateModule(
 	"building",
@@ -8,7 +8,7 @@ const BuildingRedux = CreateModule(
 	"root.building.fetch",
 	"root.kingdom.building.page",
 	{
-		attributes: CreateSimpleFetchDispatch("building", "attributes", "root.building.attributes"),
+		attributes: CreateLinkRedux("building", "attributes", "root.building.attributes"),
 	},
 );
 

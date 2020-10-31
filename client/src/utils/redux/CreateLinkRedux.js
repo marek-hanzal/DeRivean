@@ -4,14 +4,14 @@ import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
 
-function CreateFetchDispatch(id, link) {
+function CreateLinkRedux(id, action, link) {
 	return {
 		dispatch: {
-			actions: fetchActions(`${id}.fetch`),
-			fetch: function (uuid) {
+			actions: fetchActions(`${id}.${action}`),
+			[action]: function () {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(DiscoveryRedux.selector.fetch(link, getState(), uuid))
+					return Server.get(DiscoveryRedux.selector.link(link, getState()))
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);
@@ -26,8 +26,8 @@ function CreateFetchDispatch(id, link) {
 		reducer: function () {
 			return fetchReducer(this.dispatch.actions);
 		},
-		selector: fetchSelector(state => state[id].fetch),
+		selector: fetchSelector(state => state[id][action])
 	};
 }
 
-export default CreateFetchDispatch;
+export default CreateLinkRedux;

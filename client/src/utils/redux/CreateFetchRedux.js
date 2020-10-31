@@ -1,19 +1,17 @@
-import buildUrl from "build-url";
 import DiscoveryRedux from "redux/discovery/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
-import defaultPage from "utils/page";
 
-function CreatePageDispatch(id, link) {
+function CreateFetchRedux(id, link) {
 	return {
 		dispatch: {
-			actions: fetchActions(`${id}.page`),
-			page: function (page, size, name = null, param = null) {
+			actions: fetchActions(`${id}.fetch`),
+			fetch: function (uuid) {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(buildUrl(DiscoveryRedux.selector.page(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}))
+					return Server.get(DiscoveryRedux.selector.fetch(link, getState(), uuid))
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);
@@ -26,10 +24,10 @@ function CreatePageDispatch(id, link) {
 			},
 		},
 		reducer: function () {
-			return fetchReducer(this.dispatch.actions, [], defaultPage);
+			return fetchReducer(this.dispatch.actions);
 		},
-		selector: fetchSelector(state => state[id].page),
+		selector: fetchSelector(state => state[id].fetch),
 	};
 }
 
-export default CreatePageDispatch;
+export default CreateFetchRedux;

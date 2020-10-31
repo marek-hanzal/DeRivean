@@ -1,5 +1,5 @@
+import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreateModule from "utils/redux/CreateModule";
-import CreateSimpleFetchDispatch from "utils/redux/CreateSimpleFetchDispatch";
 
 const HeroRedux = CreateModule(
 	"hero",
@@ -8,7 +8,7 @@ const HeroRedux = CreateModule(
 	"root.hero.fetch",
 	"root.kingdom.hero.page",
 	{
-		attributes: CreateSimpleFetchDispatch("hero", "attributes", "root.hero.attributes"),
+		attributes: CreateLinkRedux("hero", "attributes", "root.hero.attributes"),
 	},
 );
 

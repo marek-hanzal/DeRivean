@@ -1,38 +1,35 @@
+import buildUrl from "build-url";
 import DiscoveryRedux from "redux/discovery/redux";
-import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 import fetchSelector from "utils/action/fetchSelector";
+import defaultPage from "utils/page";
 
-function CreateSimpleDispatch(id, action, link, extra = {}) {
+function CreatePageRedux(id, link) {
 	return {
 		dispatch: {
-			actions: fetchActions(`${id}.${action}`),
-			[action]: function (data) {
+			actions: fetchActions(`${id}.page`),
+			page: function (page, size, name = null, param = null) {
 				return (dispatch, getState) => {
-					dispatch(LoadingRedux.start());
 					dispatch(this.actions.request());
-					return Server.post(DiscoveryRedux.selector.link(link, getState()), data)
+					return Server.get(buildUrl(DiscoveryRedux.selector.page(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}))
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
-							dispatch(LoadingRedux.finish());
 							return Promise.resolve(data);
 						})
 						.catch(({response}) => {
 							dispatch(this.actions.failure(response.data));
-							dispatch(LoadingRedux.finish());
 							return Promise.reject(response.data);
 						});
 				};
 			},
-			...extra
 		},
 		reducer: function () {
-			return fetchReducer(this.dispatch.actions, Object.values(extra));
+			return fetchReducer(this.dispatch.actions, [], defaultPage);
 		},
-		selector: fetchSelector(state => state[id][action])
+		selector: fetchSelector(state => state[id].page),
 	};
 }
 
-export default CreateSimpleDispatch;
+export default CreatePageRedux;

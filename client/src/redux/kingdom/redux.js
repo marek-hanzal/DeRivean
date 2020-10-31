@@ -1,5 +1,5 @@
+import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreateModule from "utils/redux/CreateModule";
-import CreateSimpleFetchDispatch from "utils/redux/CreateSimpleFetchDispatch";
 
 const KingdomRedux = CreateModule(
 	"kingdom",
@@ -8,7 +8,7 @@ const KingdomRedux = CreateModule(
 	"root.kingdom.fetch",
 	"root.user.kingdom.page",
 	{
-		attributes: CreateSimpleFetchDispatch("kingdom", "attributes", "root.kingdom.attributes"),
+		attributes: CreateLinkRedux("kingdom", "attributes", "root.kingdom.attributes"),
 	},
 );
 
