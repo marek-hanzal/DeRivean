@@ -1,4 +1,4 @@
-package derivean.server.rest.root.mapper
+package derivean.server.rest.root.entity.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.ILinkGenerator
@@ -6,7 +6,7 @@ import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.server.entity.entities.Entity
 
-class EntityFetchMapper(container: IContainer) : AbstractMapper<Entity, EntityFetchMapper.Fetch>(container) {
+class FetchMapper(container: IContainer) : AbstractMapper<Entity, FetchMapper.Fetch>(container) {
 	private val linkGenerator: ILinkGenerator by container.lazy()
 
 	override fun map(item: Entity) = Fetch.build(linkGenerator) {

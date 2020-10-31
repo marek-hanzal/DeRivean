@@ -1,4 +1,4 @@
-package derivean.server.rest.root.mapper
+package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
@@ -8,13 +8,13 @@ import derivean.lib.rest.internalServerError
 import derivean.lib.rest.ok
 import derivean.server.building.BuildingRepository
 
-class BuildingUpdateMapper(container: IContainer) : AbstractActionMapper<BuildingUpdateMapper.Request, Response<out Any>>(container) {
-	private val buildingFetchMapper: BuildingFetchMapper by container.lazy()
+class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
+	private val fetchMapper: FetchMapper by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
 
 	override fun resolve(item: Request): Response<out Any> = try {
 		ok(storage.write {
-			buildingFetchMapper.map(
+			fetchMapper.map(
 				buildingRepository.update(item.id) {
 					this.name = item.name
 					buildingRepository.attributes(item.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())

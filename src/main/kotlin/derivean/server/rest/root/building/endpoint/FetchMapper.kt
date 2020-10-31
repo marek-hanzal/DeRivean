@@ -1,12 +1,12 @@
-package derivean.server.rest.root.mapper
+package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
-import derivean.server.kingdom.entities.Kingdom
+import derivean.server.building.entities.Building
 
-class KingdomFetchMapper(container: IContainer) : AbstractMapper<Kingdom, KingdomFetchMapper.Fetch>(container) {
-	override fun map(item: Kingdom) = Fetch.build {
+class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.Fetch>(container) {
+	override fun map(item: Building) = Fetch.build {
 		this.id = item.id
 		this.name = item.name
 		item.attributes.forEach {

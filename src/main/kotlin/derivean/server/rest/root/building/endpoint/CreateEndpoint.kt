@@ -2,12 +2,11 @@ package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractActionEndpoint
-import derivean.server.rest.root.mapper.BuildingCreateMapper
 import io.ktor.application.*
 import io.ktor.routing.*
 
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
-	private val buildingCreateMapper: BuildingCreateMapper by container.lazy()
+	private val createMapper: CreateMapper by container.lazy()
 
 	override fun install(routing: Routing) {
 		"/api/root/building/create".let { url ->
@@ -17,7 +16,7 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				description = "Creates a new Building"
 			}
 			routing.post(url) {
-				resolve(call, buildingCreateMapper)
+				resolve(call, createMapper)
 			}
 		}
 	}

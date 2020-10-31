@@ -1,4 +1,4 @@
-package derivean.server.rest.root.mapper
+package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
@@ -7,14 +7,14 @@ import derivean.server.building.BuildingRepository
 import derivean.server.kingdom.KingdomRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
-class BuildingCreateMapper(container: IContainer) : AbstractActionMapper<BuildingCreateMapper.Request, Response<out Any>>(container) {
-	private val buildingFetchMapper: BuildingFetchMapper by container.lazy()
+class CreateMapper(container: IContainer) : AbstractActionMapper<CreateMapper.Request, Response<out Any>>(container) {
+	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
 
 	override fun resolve(item: Request) = try {
 		created(storage.write {
-			buildingFetchMapper.map(
+			fetchMapper.map(
 				buildingRepository.create {
 					this.name = item.name
 					this.kingdom = kingdomRepository.find(item.kingdom)

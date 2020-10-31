@@ -1,25 +1,21 @@
-package derivean.server.rest.root.mapper
+package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.kingdom.KingdomRepository
-import derivean.server.user.UserRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
-class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomCreateMapper.Request, Response<out Any>>(container) {
-	private val kingdomFetchMapper: KingdomFetchMapper by container.lazy()
-	private val userRepository: UserRepository by container.lazy()
+class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
+	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
-	override fun resolve(item: Request) = try {
-		created(storage.write {
-			kingdomFetchMapper.map(
-				kingdomRepository.create {
+	override fun resolve(item: Request): Response<out Any> = try {
+		ok(storage.write {
+			fetchMapper.map(
+				kingdomRepository.update(item.id) {
 					this.name = item.name
-					this.user = userRepository.find(item.user)
-				}.also { kingdom ->
-					kingdomRepository.attributes(kingdom.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
+					kingdomRepository.attributes(item.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
 				}
 			)
 		})
@@ -27,7 +23,7 @@ class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomC
 		when {
 			e.message?.contains("kingdom_name_unique") == true -> {
 				conflict(ValidationResponse.build {
-					message = "Cannot create Kingdom!"
+					message = "Cannot update Kingdom!"
 					validation("name", "error", "Kingdom with the given name already exists.")
 				})
 			}
@@ -42,6 +38,6 @@ class KingdomCreateMapper(container: IContainer) : AbstractActionMapper<KingdomC
 		})
 	}
 
-	data class Request(val user: String, val name: String, val attributes: List<Attribute>?)
+	data class Request(val id: String, val name: String, val attributes: List<Attribute>?)
 	data class Attribute(val attribute: String, val value: Double)
 }
