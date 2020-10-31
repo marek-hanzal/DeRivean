@@ -16,7 +16,7 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 ) : AbstractService(container), IRepository<T> {
 	protected val storage: IStorage by container.lazy()
 
-	fun create(block: T.() -> Unit) = entity.new { block(this) }
+	override fun create(block: T.() -> Unit) = entity.new { block(this) }
 
 	override fun delete(uuid: UUID) = storage.write { find(uuid).delete() }
 

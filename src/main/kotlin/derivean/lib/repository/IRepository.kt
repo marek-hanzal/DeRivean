@@ -5,6 +5,8 @@ import org.jetbrains.exposed.dao.id.UUIDTable
 import java.util.*
 
 interface IRepository<T : UUIDEntity> {
+	fun create(block: T.() -> Unit): T
+
 	fun update(uuid: String, block: T.() -> Unit) = find(uuid).also(block)
 
 	fun find(uuid: String) = find(UUID.fromString(uuid))

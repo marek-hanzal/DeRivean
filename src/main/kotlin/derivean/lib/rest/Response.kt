@@ -81,6 +81,11 @@ fun conflict(error: String) = conflict(ErrorResponse(error))
 
 fun <T> conflict(response: T) = Response(HttpStatusCode.Conflict, response)
 
+fun conflictWithUnique(message: String, field: String, hint: String) = conflict(ValidationResponse.build {
+	this.message = message
+	this.validation(field, "error", hint)
+})
+
 /**
  * send response with Not Implemented status code
  */

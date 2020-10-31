@@ -2,38 +2,31 @@ package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractCreateMapper
-import derivean.lib.rest.ValidationResponse
-import derivean.lib.rest.created
-import derivean.lib.rest.internalServerError
+import derivean.lib.rest.Response
+import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
 import derivean.server.user.UserRepository
-import org.jetbrains.exposed.exceptions.ExposedSQLException
+import derivean.server.user.entities.User
 
-class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMapper.Request>(container) {
-	private val userRepository: UserRepository by container.lazy()
+class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMapper.Request, User>(container) {
+	override val repository: UserRepository by container.lazy()
+	override val fetchMapper: FetchMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
-	private val fetchMapper: FetchMapper by container.lazy()
 
-	override fun resolve(item: Request) = try {
-		created(fetchMapper.map(storage.write {
-			userRepository.create {
-				this.name = item.name
-				this.login = item.login
-				this.password = item.password?.let { authenticatorService.encrypt(it) }
-				this.token = item.token
-			}
-		}))
-	} catch (e: ExposedSQLException) {
-		resolveUnique(
-			e.message ?: "",
-			"Cannot register a user", listOf(
-				"login" to "user_login_unique"
-			)
-		) ?: throw e
-	} catch (e: Throwable) {
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
+	override fun map(request: Request, entity: User) {
+		entity.name = request.name
+		entity.login = request.login
+		entity.password = request.password?.let { authenticatorService.encrypt(it) }
+		entity.token = request.token
+	}
+
+	override fun resolveException(message: String): Response<out Any>? {
+		if (message.contains("user_name_unique")) {
+			return conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
+		} else if (message.contains("user_login_unique")) {
+			return conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+		}
+		return null
 	}
 
 	data class Request(
