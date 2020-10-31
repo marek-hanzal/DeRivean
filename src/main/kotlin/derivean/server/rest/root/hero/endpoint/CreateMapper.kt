@@ -3,6 +3,7 @@ package derivean.server.rest.root.hero.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.Response
+import derivean.lib.rest.conflictWithUnique
 import derivean.server.hero.HeroRepository
 import derivean.server.hero.entities.Hero
 import derivean.server.kingdom.KingdomRepository
@@ -22,7 +23,12 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		repository.attributes(entity.id, attributesMapper.map(request.attributes))
 	}
 
-	override fun resolveException(message: String): Response<out Any>? = null
+	override fun resolveException(message: String): Response<out Any>? {
+		if (message.contains("hero_name_unique")) {
+			return conflictWithUnique("Cannot create hero!", "name", "Duplicate hero name!")
+		}
+		return null
+	}
 
 	data class Request(val kingdom: String, val name: String, val attributes: Attributes?)
 }

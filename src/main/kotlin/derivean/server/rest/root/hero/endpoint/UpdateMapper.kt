@@ -2,13 +2,11 @@ package derivean.server.rest.root.hero.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.Response
-import derivean.lib.rest.ValidationResponse
-import derivean.lib.rest.internalServerError
-import derivean.lib.rest.ok
+import derivean.lib.rest.*
 import derivean.server.hero.HeroRepository
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
@@ -24,6 +22,18 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 				}
 			)
 		})
+	} catch (e: ExposedSQLException) {
+		when {
+			e.message?.contains("hero_name_unique") == true -> {
+				conflict(ValidationResponse.build {
+					message = "Cannot update Hero!"
+					validation("name", "error", "Hero with the given name already exists.")
+				})
+			}
+			else -> {
+				throw e
+			}
+		}
 	} catch (e: Throwable) {
 		logger.error(e.message, e)
 		internalServerError(ValidationResponse.build {
