@@ -7,17 +7,20 @@ import derivean.lib.rest.ValidationResponse
 import derivean.lib.rest.internalServerError
 import derivean.lib.rest.ok
 import derivean.server.building.BuildingRepository
+import derivean.server.rest.AttributesMapper
+import derivean.server.rest.common.Attributes
 
 class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
+	private val attributeMapper: AttributesMapper by container.lazy()
 
 	override fun resolve(item: Request): Response<out Any> = try {
 		ok(storage.write {
 			fetchMapper.map(
 				buildingRepository.update(item.id) {
 					this.name = item.name
-					buildingRepository.attributes(item.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
+					buildingRepository.attributes(item.id, attributeMapper.map(item.attributes))
 				}
 			)
 		})
@@ -28,6 +31,5 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		})
 	}
 
-	data class Request(val id: String, val name: String, val attributes: List<Attribute>?)
-	data class Attribute(val attribute: String, val value: Double)
+	data class Request(val id: String, val name: String, val attributes: Attributes?)
 }

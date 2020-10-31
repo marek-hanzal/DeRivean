@@ -57,10 +57,10 @@ const DashboardView = () => {
 			autoComplete="off"
 			onFinish={values => {
 				dispatch(KingdomUpdateRedux.update({...values, id: params.kingdom})).then(_ => {
-					message.success(t("kingdom:update.success"));
+					message.success(t("root.kingdom.update.success"));
 					setEdit(false);
 				}, () => {
-					message.error(t("kingdom:update.error"));
+					message.error(t("root.kingdom.update.error"));
 				});
 			}}
 		>

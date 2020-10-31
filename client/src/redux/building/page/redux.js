@@ -10,10 +10,10 @@ import defaultPage from "utils/page";
 const actions = fetchActions("building.page");
 
 const BuildingPageRedux = {
-	fetch: function (user, page, size = 100) {
+	fetch: function (kingdom, page, size = 100) {
 		return (dispatch, getState) => {
 			dispatch(actions.request());
-			return Server.get(buildUrl(DiscoveryRedux.selector.root.user.building.page(getState(), user, page), {queryParams: {limit: size.toString()}}))
+			return Server.get(buildUrl(DiscoveryRedux.selector.root.kingdom.building.page(getState(), kingdom, page), {queryParams: {limit: size.toString()}}))
 				.then(({data}) => {
 					dispatch(actions.success(data));
 					return Promise.resolve(data);

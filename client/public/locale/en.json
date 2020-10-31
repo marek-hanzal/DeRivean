@@ -85,6 +85,10 @@
 					}
 				}
 			},
+			"update": {
+				"success": "Kingdom updated successfully!",
+				"error": "Cannot updated kingdom!"
+			},
 			"list": {
 				"menu": "List",
 				"table": {

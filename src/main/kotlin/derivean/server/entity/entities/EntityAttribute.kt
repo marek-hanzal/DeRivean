@@ -1,13 +1,13 @@
 package derivean.server.entity.entities
 
 import derivean.lib.storage.EntityUUID
-import org.jetbrains.exposed.dao.UUIDEntity
+import derivean.server.attribute.AttributeEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class EntityAttribute(id: EntityUUID) : UUIDEntity(id) {
+class EntityAttribute(id: EntityUUID) : AttributeEntity<Entity>(id) {
 	companion object : UUIDEntityClass<EntityAttribute>(EntityAttributeTable)
 
-	var entity by Entity referencedOn EntityAttributeTable.entity
-	var name by EntityAttributeTable.name
-	var value by EntityAttributeTable.value
+	override var parent by Entity referencedOn EntityAttributeTable.entity
+	override var name by EntityAttributeTable.name
+	override var value by EntityAttributeTable.value
 }
