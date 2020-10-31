@@ -2,10 +2,7 @@ package derivean.server.rest.root.building
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.server.rest.root.building.endpoint.AttributesEndpoint
-import derivean.server.rest.root.building.endpoint.CreateEndpoint
-import derivean.server.rest.root.building.endpoint.FetchEndpoint
-import derivean.server.rest.root.building.endpoint.UpdateEndpoint
+import derivean.server.rest.root.building.endpoint.*
 import io.ktor.routing.*
 
 class BuildingHttpModule(container: IContainer) : AbstractHttpModule(container) {
@@ -15,6 +12,7 @@ class BuildingHttpModule(container: IContainer) : AbstractHttpModule(container) 
 			CreateEndpoint::class,
 			UpdateEndpoint::class,
 			FetchEndpoint::class,
+			PageEndpoint::class,
 			AttributesEndpoint::class,
 		)
 	}

@@ -1,4 +1,4 @@
-package derivean.server.rest.root.user.kingdom.endpoint
+package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.page.AbstractPageEndpoint
@@ -12,9 +12,9 @@ class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 
 	override fun install(routing: Routing) = page(
 		routing,
-		"user",
-		"/api/root/user/{user}/kingdom",
-		"root.user.kingdom",
+		"kingdom",
+		"/api/root/kingdom/{kingdom}/building",
+		"root.kingdom.building",
 		userKingdomRepository,
 		kingdomFetchMapper,
 	)
