@@ -11,6 +11,9 @@ import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingContextBreadcrumbRoute} from "site/root/module/building-context/site/Breadcrumbs";
 import {BuildingContextMenuRoute} from "site/root/module/building-context/site/Menu";
 import {BuildingContextRoute} from "site/root/module/building-context/site/Router";
+import {HeroContextBreadcrumbRoute} from "site/root/module/hero-context/site/Breadcrumbs";
+import {HeroContextMenuRoute} from "site/root/module/hero-context/site/Menu";
+import {HeroContextRoute} from "site/root/module/hero-context/site/Router";
 import {KingdomContextBreadcrumbRoute} from "site/root/module/kingdom-context/site/Breadcrumbs";
 import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
 import {KingdomContextRoute} from "site/root/module/kingdom-context/site/Router";
@@ -41,6 +44,7 @@ const Site = () => {
 						UserContextMenuRoute(),
 						KingdomContextMenuRoute(),
 						BuildingContextMenuRoute(),
+						HeroContextMenuRoute(),
 
 						route("*", <BaseMenu
 							items={[
@@ -66,6 +70,7 @@ const Site = () => {
 						UserContextBreadcrumbRoute(),
 						KingdomContextBreadcrumbRoute(),
 						BuildingContextBreadcrumbRoute(),
+						HeroContextBreadcrumbRoute(),
 						BlogBreadcrumbRoute(),
 
 						route("/", <BaseBreadcrumbs
@@ -83,6 +88,7 @@ const Site = () => {
 						UserContextRoute(),
 						KingdomContextRoute(),
 						BuildingContextRoute(),
+						HeroContextRoute(),
 						BlogRoute(),
 
 						route(Routes.root.signIn.link(), <SingInView/>),

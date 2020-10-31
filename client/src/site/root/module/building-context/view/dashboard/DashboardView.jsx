@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import BuildingRedux from "redux/building/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
-import BuildingContextView from "site/root/module/building-context/view/KingdomContextView";
+import BuildingContextView from "site/root/module/building-context/view/BuildingContextView";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import useBuildingAttributes from "site/root/module/building/hook/useBuildingAttributes";
 import useBuildingFetch from "site/root/module/building/hook/useBuildingFetch";
