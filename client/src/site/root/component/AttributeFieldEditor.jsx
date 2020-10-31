@@ -29,7 +29,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 												showSearch
 												allowClear
 												placeholder={t(translation + ".form.attribute.name.hint")}
-												options={(attributes || []).map(item => ({label: t(translation + ".attribute." + item), value: item}))}
+												options={(attributes || []).map(item => ({label: t(item), value: item}))}
 												disabled={!edit}
 											/>
 										</Form.Item>
