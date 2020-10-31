@@ -1,4 +1,4 @@
-package derivean.server.rest.public.mapper
+package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
@@ -7,13 +7,13 @@ import derivean.server.auth.AuthenticatorService
 import derivean.server.user.UserRepository
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
-class UserRegisterMapper(container: IContainer) : AbstractActionMapper<UserRegisterMapper.Request, Response<out Any>>(container) {
+class RegisterMapper(container: IContainer) : AbstractActionMapper<RegisterMapper.Request, Response<out Any>>(container) {
 	private val userRepository: UserRepository by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
-	private val userFetchMapper: UserFetchMapper by container.lazy()
+	private val fetchMapper: FetchMapper by container.lazy()
 
 	override fun resolve(item: Request) = try {
-		created(userFetchMapper.map(storage.write {
+		created(fetchMapper.map(storage.write {
 			userRepository.create {
 				this.name = item.name
 				this.login = item.login

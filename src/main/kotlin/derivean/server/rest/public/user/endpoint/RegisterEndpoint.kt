@@ -2,12 +2,11 @@ package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractActionEndpoint
-import derivean.server.rest.public.mapper.UserRegisterMapper
 import io.ktor.application.*
 import io.ktor.routing.*
 
 class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
-	private val userRegisterMapper: UserRegisterMapper by container.lazy()
+	private val registerMapper: RegisterMapper by container.lazy()
 
 	override fun install(routing: Routing) {
 		"/api/public/user/register".let { url ->
@@ -17,7 +16,7 @@ class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container
 				this.description = "Register a new User"
 			}
 			routing.post(url) {
-				resolve(call, userRegisterMapper)
+				resolve(call, registerMapper)
 			}
 		}
 	}

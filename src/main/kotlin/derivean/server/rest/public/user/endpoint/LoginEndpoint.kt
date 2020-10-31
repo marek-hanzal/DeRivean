@@ -2,12 +2,11 @@ package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractActionEndpoint
-import derivean.server.rest.public.mapper.UserLoginMapper
 import io.ktor.application.*
 import io.ktor.routing.*
 
 class LoginEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
-	private val userLoginMapper: UserLoginMapper by container.lazy()
+	private val loginMapper: LoginMapper by container.lazy()
 
 	override fun install(routing: Routing) {
 		"/api/public/user/login".let { url ->
@@ -17,7 +16,7 @@ class LoginEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 				this.description = "Login user"
 			}
 			routing.post(url) {
-				resolve(call, userLoginMapper)
+				resolve(call, loginMapper)
 			}
 		}
 	}
