@@ -26,7 +26,10 @@ const CancelEditButton = (
 						}}
 						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel.label")}</Button>}
 					/> :
-					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t(translation + ".form.cancel.label")}</Button>
+					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => {
+						setEdit(false);
+						values(form, initials);
+					}}>{t(translation + ".form.cancel.label")}</Button>
 			)}
 		</Form.Item>
 	);

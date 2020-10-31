@@ -19,7 +19,7 @@ const magic = (form, fields, name = []) => {
 
 const values = (form, data) => {
 	form.setFieldsValue(data);
-	form.setFields(magic(form, data).map(name => ({name, touched: false})));
+	form.setFields(magic(form, data).map(name => ({name, errors: [], validating: false, touched: false})));
 };
 
 export default values;

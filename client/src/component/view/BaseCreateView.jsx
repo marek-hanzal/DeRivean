@@ -37,7 +37,7 @@ const BaseCreateView = (
 
 BaseCreateView.propTypes = {
 	id: PropTypes.string.isRequired,
-	base: PropTypes.element.isRequired,
+	base: PropTypes.any.isRequired,
 };
 
 export default BaseCreateView;

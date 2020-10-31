@@ -4,6 +4,7 @@ import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router";
@@ -29,7 +30,7 @@ const CreateView = () => {
 	const params = useParams();
 	const isLoading = useSelector(KingdomRedux.redux.attributes.selector.isLoading);
 	const attributes = useKingdomAttributesSelector();
-	const errors = useSelector(KingdomRedux.redux.create.selector.getError);
+	const [errors, setErrors] = useState();
 	useKingdomAttributes();
 
 	return (
@@ -43,7 +44,8 @@ const CreateView = () => {
 					dispatch(SessionRedux.history(history));
 					navigate(Routes.root.kingdomContext.dashboard.link(entity.id));
 					message.success(t(id + ".create.message.success"));
-				}, () => {
+				}, (error) => {
+					setErrors(error);
 					message.error(t(id + ".create.message.error"));
 				});
 			}}
