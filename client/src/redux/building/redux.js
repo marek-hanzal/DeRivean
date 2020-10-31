@@ -1,7 +1,7 @@
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateModule from "utils/redux/CreateModule";
+import CreateRedux from "utils/redux/CreateRedux";
 
-const BuildingRedux = CreateModule(
+const BuildingRedux = CreateRedux(
 	"building",
 	"root.building.create",
 	"root.building.update",

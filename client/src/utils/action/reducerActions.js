@@ -1,5 +1,10 @@
 import {handleActions} from "redux-actions";
-import defaultState from "utils/action/defaultState";
+
+const defaultState = (payload = null) => ({
+	status: null,
+	loading: false,
+	payload,
+});
 
 const reducerActions = (actions, payload = null) => handleActions(actions.reduce((map, item) => ({...map, [item]: (state, {payload}) => ({...state, ...payload})}), {}), defaultState(payload));
 

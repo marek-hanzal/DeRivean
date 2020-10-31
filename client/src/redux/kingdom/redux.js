@@ -1,7 +1,7 @@
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateModule from "utils/redux/CreateModule";
+import CreateRedux from "utils/redux/CreateRedux";
 
-const KingdomRedux = CreateModule(
+const KingdomRedux = CreateRedux(
 	"kingdom",
 	"root.kingdom.create",
 	"root.kingdom.update",

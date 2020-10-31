@@ -3,7 +3,7 @@ import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreatePageRedux from "utils/redux/CreatePageRedux";
 
-function CreateModule(
+function CreateRedux(
 	id,
 	createId,
 	updateId,
@@ -25,4 +25,4 @@ function CreateModule(
 	};
 }
 
-export default CreateModule;
+export default CreateRedux;

@@ -1,8 +1,8 @@
 import dismissAction from "utils/action/actions/dismissAction";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
-import CreateModule from "utils/redux/CreateModule";
+import CreateRedux from "utils/redux/CreateRedux";
 
-const UserRedux = CreateModule(
+const UserRedux = CreateRedux(
 	"user",
 	"root.user.create",
 	"root.user.update",

@@ -8,10 +8,12 @@ const onFetch = (href, actions) => dispatch => {
 		.then(({data}) => {
 			dispatch(actions.success(data));
 			dispatch(LoadingRedux.finish());
+			return Promise.resolve(data);
 		})
 		.catch(({response}) => {
 			dispatch(actions.failure(response.data));
 			dispatch(LoadingRedux.finish());
+			return Promise.reject(response.data);
 		});
 };
 
