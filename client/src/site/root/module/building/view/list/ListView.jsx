@@ -9,6 +9,7 @@ const ListView = () => {
 		<BuildingView
 			base={BuildingView}
 			id={"root.building"}
+			menu={"root.building.list"}
 		>
 			<Card title={t(`building.list.title`)}>
 				<BuildingList/>

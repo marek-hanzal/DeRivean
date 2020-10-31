@@ -16,7 +16,8 @@ const BuildingList = () => {
 			id={`root.building.list.table`}
 			isLoading={isLoading}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.building.dashboard.link(record.id)} text={"BUILDING-CONTEXT LINK"}/>}
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.buildingContext.dashboard.link(record.id)} text={text}/>},
+				{title: "name"},
 			]}
 		/>
 	);

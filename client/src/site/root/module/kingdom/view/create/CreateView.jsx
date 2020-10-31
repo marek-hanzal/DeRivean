@@ -6,7 +6,7 @@ import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {useLocation, useNavigate} from "react-router";
+import {useLocation, useNavigate, useParams} from "react-router";
 import KingdomRedux from "redux/kingdom/redux";
 import SessionRedux from "redux/session/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
@@ -14,12 +14,10 @@ import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import useKingdomAttributes from "site/root/module/kingdom/hook/useKingdomAttributes";
 import useKingdomAttributesSelector from "site/root/module/kingdom/hook/useKingdomAttributesSelector";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
-import useUserSelector from "site/root/module/user/hook/useUserSelector";
 import Routes from "site/Routes";
 import validationFor from "utils/form/validationFor";
 
 const id = "root.kingdom";
-const longId = id + ".create";
 
 const CreateView = () => {
 	const dispatch = useDispatch();
@@ -28,26 +26,25 @@ const CreateView = () => {
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
-	useKingdomAttributes();
-
-	const user = useUserSelector();
+	const params = useParams();
 	const isLoading = useSelector(KingdomRedux.redux.attributes.selector.isLoading);
 	const attributes = useKingdomAttributesSelector();
 	const errors = useSelector(KingdomRedux.redux.create.selector.getError);
+	useKingdomAttributes();
 
 	return (
 		<Form
 			form={form}
 			name={"kingdom"}
 			autoComplete="off"
-			onFinish={kingdom => {
-				dispatch(KingdomRedux.redux.create.dispatch.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
+			onFinish={values => {
+				dispatch(KingdomRedux.redux.create.dispatch.create({...values, ...{user: params.user}})).then(entity => {
 					history.push(location.pathname);
 					dispatch(SessionRedux.history(history));
-					navigate(Routes.root.kingdomContext.dashboard.link(kingdom.id));
-					message.success(t(longId + ".message.success"));
+					navigate(Routes.root.kingdomContext.dashboard.link(entity.id));
+					message.success(t(id + ".create.message.success"));
 				}, () => {
-					message.error(t(longId + ".message.error"));
+					message.error(t(id + ".create.message.error"));
 				});
 			}}
 		>
@@ -64,22 +61,22 @@ const CreateView = () => {
 							rules={[
 								{
 									required: true,
-									message: t("kingdom:form.name.required"),
+									message: t(id + ".form.name.required"),
 								}
 							]}
-							children={<Input addonBefore={t("kingdom:form.name.label")} suffix={<KingdomIcon/>}/>}
+							children={<Input addonBefore={t(id + ".form.name.label")} suffix={<KingdomIcon/>}/>}
 						/>
 					</Centered>
 				}
-				subTitle={<CreateSubmitButtons form={form} translation={"kingdom"}/>}
+				subTitle={<CreateSubmitButtons form={form} translation={id}/>}
 			>
 				<DualSection
 					left={
 						<Centered span={24}>
-							<AttributeFieldEditor edit={true} translation={"kingdom"} attributes={attributes}/>
+							<AttributeFieldEditor edit={true} translation={id} attributes={attributes}/>
 						</Centered>
 					}
-					right={<BulletCard translation={"kingdom:create."} count={4}/>}
+					right={<BulletCard translation={id + ".create"} count={4}/>}
 				/>
 			</BaseCreateView>
 		</Form>

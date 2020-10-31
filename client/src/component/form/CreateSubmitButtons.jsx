@@ -10,7 +10,7 @@ const CreateSubmitButtons = (
 	}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
-			<SubmitButton form={form} title={translation + ":create.form.submit.label"}/>
+			<SubmitButton form={form} title={translation + ".create.form.submit.label"}/>
 			<CancelCreateButton form={form} translation={translation}/>
 		</Space>
 	);
