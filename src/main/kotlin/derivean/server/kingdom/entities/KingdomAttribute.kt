@@ -1,13 +1,13 @@
 package derivean.server.kingdom.entities
 
 import derivean.lib.storage.EntityUUID
-import org.jetbrains.exposed.dao.UUIDEntity
+import derivean.server.attribute.AttributeEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class KingdomAttribute(id: EntityUUID) : UUIDEntity(id) {
+class KingdomAttribute(id: EntityUUID) : AttributeEntity<Kingdom>(id) {
 	companion object : UUIDEntityClass<KingdomAttribute>(KingdomAttributeTable)
 
-	var kingdom by Kingdom referencedOn KingdomAttributeTable.kingdom
-	var name by KingdomAttributeTable.name
-	var value by KingdomAttributeTable.value
+	override var parent by Kingdom referencedOn KingdomAttributeTable.kingdom
+	override var name by KingdomAttributeTable.name
+	override var value by KingdomAttributeTable.value
 }
