@@ -70,7 +70,9 @@ const CreateView = () => {
 						/>
 					</Centered>
 				}
-				subTitle={<CreateSubmitButtons form={form} translation={id}/>}
+				subTitle={<CreateSubmitButtons onCancel={() => {
+					setErrors(null);
+				}} form={form} translation={id}/>}
 			>
 				<DualSection
 					left={

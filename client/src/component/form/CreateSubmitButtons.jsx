@@ -7,11 +7,12 @@ const CreateSubmitButtons = (
 	{
 		form,
 		translation,
+		onCancel = () => ({}),
 	}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
 			<SubmitButton form={form} title={translation + ".create.form.submit.label"}/>
-			<CancelCreateButton form={form} translation={translation}/>
+			<CancelCreateButton onCancel={onCancel} form={form} translation={translation}/>
 		</Space>
 	);
 };

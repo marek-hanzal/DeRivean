@@ -6,6 +6,7 @@ const CancelCreateButton = (
 	{
 		form,
 		translation,
+		onCancel = () => ({}),
 	}) => {
 	const {t} = useTranslation();
 
@@ -17,10 +18,16 @@ const CancelCreateButton = (
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
 						title={t(translation + ".create.form.cancelConfirm")}
-						onConfirm={() => form.resetFields()}
+						onConfirm={() => {
+							form.resetFields();
+							onCancel();
+						}}
 						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel.label")}</Button>}
 					/> :
-					<Button type={"danger"} disabled={!form.isFieldsTouched()} ghost icon={<DeleteItemIcon/>} onClick={() => form.resetFields()}>{t(translation + ".form.cancel.label")}</Button>
+					<Button type={"danger"} disabled={!form.isFieldsTouched()} ghost icon={<DeleteItemIcon/>} onClick={() => {
+						form.resetFields();
+						onCancel();
+					}}>{t(translation + ".form.cancel.label")}</Button>
 			)}
 		</Form.Item>
 	);
