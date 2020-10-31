@@ -25,5 +25,5 @@ class BuildingRepository(container: IContainer) : AbstractAttributeRepository<Bu
 		}
 	}
 
-	fun attributes(id: EntityUUID, vararg attributes: Attribute) = attributes(id.toString(), *attributes)
+	fun attributes(id: EntityUUID, attributes: Array<Attribute>) = attributes(id.toString(), *attributes)
 }

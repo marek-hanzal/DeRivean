@@ -25,5 +25,5 @@ class KingdomRepository(container: IContainer) : AbstractRepository<Kingdom, Kin
 		}
 	}
 
-	fun attributes(id: EntityUUID, vararg attributes: Attribute) = attributes(id.toString(), *attributes)
+	fun attributes(id: EntityUUID, attributes: Array<Attribute>) = attributes(id.toString(), *attributes)
 }

@@ -5,12 +5,15 @@ import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.building.BuildingRepository
 import derivean.server.kingdom.KingdomRepository
+import derivean.server.rest.AttributesMapper
+import derivean.server.rest.common.Attributes
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 class CreateMapper(container: IContainer) : AbstractActionMapper<CreateMapper.Request, Response<out Any>>(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
+	private val attributesMapper: AttributesMapper by container.lazy()
 
 	override fun resolve(item: Request) = try {
 		created(storage.write {
@@ -19,7 +22,7 @@ class CreateMapper(container: IContainer) : AbstractActionMapper<CreateMapper.Re
 					this.name = item.name
 					this.kingdom = kingdomRepository.find(item.kingdom)
 				}.also { building ->
-					buildingRepository.attributes(building.id, *item.attributes?.distinctBy { it.attribute }?.map { it.attribute to it.value }?.toTypedArray() ?: arrayOf())
+					buildingRepository.attributes(building.id, attributesMapper.map(item.attributes))
 				}
 			)
 		})
@@ -42,6 +45,5 @@ class CreateMapper(container: IContainer) : AbstractActionMapper<CreateMapper.Re
 		})
 	}
 
-	data class Request(val kingdom: String, val name: String, val attributes: List<Attribute>?)
-	data class Attribute(val attribute: String, val value: Double)
+	data class Request(val kingdom: String, val name: String, val attributes: Attributes?)
 }
