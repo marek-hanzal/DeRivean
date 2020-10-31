@@ -24,10 +24,10 @@ const CreateView = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
+	const params = useParams();
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
-	const params = useParams();
 	const isLoading = useSelector(KingdomRedux.redux.attributes.selector.isLoading);
 	const attributes = useKingdomAttributesSelector();
 	const [errors, setErrors] = useState();
