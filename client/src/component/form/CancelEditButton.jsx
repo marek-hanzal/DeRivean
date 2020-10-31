@@ -17,16 +17,16 @@ const CancelEditButton = (
 			{() => (
 				form.isFieldsTouched() ?
 					<Popconfirm
-						okText={t("common:yes")}
-						cancelText={t("common:no")}
-						title={t(translation + ":form.edit.cancelConfirm")}
+						okText={t("common.yes")}
+						cancelText={t("common.no")}
+						title={t(translation + ".form.edit.cancelConfirm")}
 						onConfirm={() => {
 							setEdit(false);
 							values(form, initials);
 						}}
-						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ":form.cancel.label")}</Button>}
+						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel.label")}</Button>}
 					/> :
-					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t(translation + ":form.cancel.label")}</Button>
+					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => setEdit(false)}>{t(translation + ".form.cancel.label")}</Button>
 			)}
 		</Form.Item>
 	);

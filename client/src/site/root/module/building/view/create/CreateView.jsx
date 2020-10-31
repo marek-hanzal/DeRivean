@@ -60,10 +60,10 @@ const CreateView = () => {
 							rules={[
 								{
 									required: true,
-									message: t(id + ".create.form.name.required"),
+									message: t(id + ".form.name.required"),
 								}
 							]}
-							children={<Input addonBefore={t(id + ".create.form.name.label")} suffix={<BuildingIcon/>}/>}
+							children={<Input addonBefore={t(id + ".form.name.label")} suffix={<BuildingIcon/>}/>}
 						/>
 					</Centered>
 				}

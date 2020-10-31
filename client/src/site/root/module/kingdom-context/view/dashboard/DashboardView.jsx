@@ -22,13 +22,7 @@ import values from "utils/form/values";
 const DashboardView = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	/**
-	 * Edit mode toggle.
-	 */
 	const [edit, setEdit] = useState(false);
-	/**
-	 * Default (initial) kingdom values
-	 */
 	const [kingdom, setKingdom] = useState();
 	const [form] = Form.useForm();
 	const params = useParams();
@@ -36,17 +30,8 @@ const DashboardView = () => {
 	const errors = useSelector(KingdomRedux.redux.update.selector.getError);
 	useKingdomAttributes();
 
-	/**
-	 * Fetch initial kingdom data.
-	 */
-	useKingdomFetch(params.kingdom, (kingdom) => {
-		/**
-		 * Set internal state.
-		 */
+	useKingdomFetch(params.kingdom, kingdom => {
 		setKingdom(kingdom);
-		/**
-		 * Set form values wile maintaining untouched field state.
-		 */
 		values(form, kingdom);
 	});
 
@@ -77,22 +62,22 @@ const DashboardView = () => {
 							rules={[
 								{
 									required: true,
-									message: t("kingdom:form.name.required"),
+									message: t("root.kingdom.form.name.required"),
 								}
 							]}
-							children={<Input disabled={!edit} addonBefore={t("kingdom:form.name.label")} suffix={<KingdomIcon/>}/>}
+							children={<Input disabled={!edit} addonBefore={t("root.kingdom.form.name.label")} suffix={<KingdomIcon/>}/>}
 						/>
 					</Centered>
 				}
-				subTitle={<EditSubmitButtons initials={kingdom} edit={edit} setEdit={setEdit} form={form} translation={"kingdom"}/>}
+				subTitle={<EditSubmitButtons initials={kingdom} edit={edit} setEdit={setEdit} form={form} translation={"root.kingdom.dashboard"}/>}
 			>
 				<DualSection
 					left={
 						<Centered span={24}>
-							<AttributeFieldEditor edit={edit} translation={"kingdom"} attributes={attributes}/>
+							<AttributeFieldEditor edit={edit} translation={"root.kingdom"} attributes={attributes}/>
 						</Centered>
 					}
-					right={<BulletCard translation={"kingdom:dashboard."} count={4}/>}
+					right={<BulletCard translation={"root.kingdom.dashboard"} count={4}/>}
 				/>
 			</BaseDashboardView>
 		</Form>

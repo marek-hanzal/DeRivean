@@ -77,8 +77,28 @@
 		},
 		"kingdom": {
 			"menu": "Kingdom",
+			"attribute": {
+				"resource": {
+					"wood": "Wood",
+					"food": "Food",
+					"stone": "Stone",
+					"gold": "Gold"
+				}
+			},
 			"dashboard": {
-				"menu": "Dashboard"
+				"menu": "Dashboard",
+				"form": {
+					"cancel": {
+						"label": "Cancel"
+					},
+					"edit": {
+						"cancelConfirm": "Changes will be lost, continue?",
+						"label": "Edit!",
+						"submit": {
+							"label": "Save changes!"
+						}
+					}
+				}
 			},
 			"create": {
 				"menu": "Create",
@@ -101,6 +121,17 @@
 					"name": {
 						"column": "Name"
 					}
+				}
+			},
+			"form": {
+				"attribute": {
+					"title": "Kingdom attributes",
+					"add": {
+						"label": "Attribute"
+					}
+				},
+				"name": {
+					"label": "Kingdom name"
 				}
 			}
 		},
@@ -174,6 +205,20 @@
 					"add": {
 						"label": "Attribute"
 					}
+				},
+				"cancelConfirm": "All changes will be lost, continue?",
+				"name": {
+					"label": "Name of building"
+				},
+				"cancel": {
+					"label": "Cancel!"
+				},
+				"edit": {
+					"label": "Edit",
+					"cancelConfirm": "All changes will be lost, continue?",
+					"submit": {
+						"label": "Save changes"
+					}
 				}
 			},
 			"create": {
@@ -181,15 +226,8 @@
 				"title": "Create a new Building",
 				"breadcrumb": "Create",
 				"form": {
-					"cancelConfirm": "All changes will be lost, continue?",
-					"name": {
-						"label": "Name of building"
-					},
 					"submit": {
 						"label": "Create!"
-					},
-					"cancel": {
-						"label": "Cancel!"
 					}
 				},
 				"list": {
@@ -197,6 +235,12 @@
 					"item-0": "Buildings are producing resources and making effects over heroes and kingdom",
 					"item-1": "All production values are per hour"
 				}
+			}
+		},
+		"buildingContext": {
+			"dashboard": {
+				"title": "Building Overview",
+				"breadcrumb": "Building"
 			}
 		},
 		"blog": {

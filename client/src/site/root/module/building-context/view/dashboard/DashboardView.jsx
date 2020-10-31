@@ -29,7 +29,7 @@ const DashboardView = () => {
 	const errors = useSelector(BuildingRedux.redux.update.selector.getError);
 	useBuildingAttributes();
 
-	useBuildingFetch(params.building, (building) => {
+	useBuildingFetch(params.building, building => {
 		setBuilding(building);
 		values(form, building);
 	});
@@ -68,15 +68,15 @@ const DashboardView = () => {
 						/>
 					</Centered>
 				}
-				subTitle={<EditSubmitButtons initials={building} edit={edit} setEdit={setEdit} form={form} translation={"building"}/>}
+				subTitle={<EditSubmitButtons initials={building} edit={edit} setEdit={setEdit} form={form} translation={"root.building"}/>}
 			>
 				<DualSection
 					left={
 						<Centered span={24}>
-							<AttributeFieldEditor edit={edit} translation={"building"} attributes={attributes}/>
+							<AttributeFieldEditor edit={edit} translation={"root.building"} attributes={attributes}/>
 						</Centered>
 					}
-					right={<BulletCard translation={"root.building.dashboard."} count={4}/>}
+					right={<BulletCard translation={"root.building.dashboard"} count={4}/>}
 				/>
 			</BaseDashboardView>
 		</Form>
