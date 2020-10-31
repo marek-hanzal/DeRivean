@@ -92,6 +92,13 @@ const Routes = {
 				link: resolveUuid("building", "/building-context/:building/dashboard"),
 			},
 		},
+		heroContext: {
+			match: () => "/hero-context/:hero/*",
+			dashboard: {
+				match: () => "dashboard/*",
+				link: resolveUuid("hero", "/hero-context/:hero/dashboard"),
+			},
+		},
 		hero: {
 			match: () => "hero/*",
 			dashboard: {

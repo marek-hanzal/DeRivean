@@ -1,5 +1,4 @@
 import {Card} from "antd";
-import BaseTable from "component/table/BaseTable";
 import {createElement} from "react";
 import {useTranslation} from "react-i18next";
 
@@ -8,9 +7,7 @@ const BaseListView = (
 		base,
 		id,
 		open = [id],
-		page,
-		onPage,
-		columns,
+		children,
 		...props
 	}) => {
 	const {t} = useTranslation();
@@ -23,13 +20,7 @@ const BaseListView = (
 				...props
 			},
 			<Card title={t(`${id}.list.title`)}>
-				<BaseTable
-					page={page}
-					onPage={onPage}
-					{...props}
-					id={`${id}.list.table`}
-					columns={columns}
-				/>
+				{children}
 			</Card>
 		)
 	);
