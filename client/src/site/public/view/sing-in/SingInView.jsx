@@ -4,7 +4,7 @@ import SignInIcon from "component/icon/SignInIcon";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import UserLoginRedux from "redux/user/login/redux";
+import UserRedux from "redux/user/redux";
 import PublicView from "site/public/view/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 import numberRange from "utils/numberRange";
@@ -13,8 +13,8 @@ const SingInView = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	useEffect(() => {
-		dispatch(UserLoginRedux.dismiss());
-		return () => dispatch(UserLoginRedux.dismiss());
+		dispatch(UserRedux.redux.login.dispatch.dismiss());
+		return () => dispatch(UserRedux.redux.login.dispatch.dismiss());
 	});
 	return (
 		<PublicView id={"public.sign-in"}>

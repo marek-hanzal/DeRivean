@@ -3,21 +3,21 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import UserRegisterRedux from "redux/user/register/redux";
+import UserRedux from "redux/user/redux";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignUpForm = () => {
 	const {t} = useTranslation();
 	const [form] = Form.useForm();
-	const errors = useSelector(UserRegisterRedux.selector.getError);
+	const errors = useSelector(UserRedux.redux.register.selector.getError);
 	const dispatch = useDispatch();
 	return (
 		<Form
 			labelCol={{span: 6}}
 			form={form}
 			onFinish={values => {
-				dispatch(UserRegisterRedux.register(values));
+				dispatch(UserRedux.redux.register.dispatch.register(values));
 			}}
 			name={"sign-up"}
 		>
@@ -67,7 +67,7 @@ const SignUpForm = () => {
 							type="primary"
 							htmlType="submit"
 							icon={<SignUpIcon/>}
-							onClick={() => dispatch(UserRegisterRedux.dismiss())}
+							onClick={() => dispatch(UserRedux.redux.register.dispatch.dismiss())}
 							disabled={enableSubmit(form, ["name", "login", "password"])}
 							children={t("public.sign-up.form.submit.label")}
 						/>

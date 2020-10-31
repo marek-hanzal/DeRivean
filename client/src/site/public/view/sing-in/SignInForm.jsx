@@ -5,21 +5,21 @@ import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector, useStore} from "react-redux";
 import SessionRedux from "redux/session/redux";
-import UserLoginRedux from "redux/user/login/redux";
+import UserRedux from "redux/user/redux";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignInForm = () => {
 	const {t} = useTranslation();
-	const errors = useSelector(UserLoginRedux.selector.getError);
+	const errors = useSelector(UserRedux.redux.login.selector.getError);
 	const dispatch = useDispatch();
 	const store = useStore();
 	const [form] = Form.useForm();
 	return (
 		<Form
 			form={form}
-			onFinish={values => dispatch(UserLoginRedux.login(values)).then(() => {
-				dispatch(SessionRedux.open(UserLoginRedux.selector.getPayload(store.getState())));
+			onFinish={values => dispatch(UserRedux.redux.login.dispatch.login(values)).then(() => {
+				dispatch(SessionRedux.open(UserRedux.redux.login.selector.getPayload(store.getState())));
 			}, () => null)}
 			name={"sign-in"}
 		>
@@ -53,7 +53,7 @@ const SignInForm = () => {
 							type="primary"
 							htmlType="submit"
 							icon={<SignInIcon/>}
-							onClick={() => dispatch(UserLoginRedux.dismiss())}
+							onClick={() => dispatch(UserRedux.redux.login.dispatch.dismiss())}
 							disabled={enableSubmit(form, ["login", "password"])}
 							children={t("public.sign-in.form.submit.label")}
 						/>

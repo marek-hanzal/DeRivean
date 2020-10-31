@@ -1,11 +1,11 @@
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
+import KingdomRedux from "redux/kingdom/redux";
 
 const useKingdomAttributes = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(KingdomAttributesRedux.fetch());
+		dispatch(KingdomRedux.redux.attributes.dispatch.attributes());
 	}, [dispatch]);
 };
 

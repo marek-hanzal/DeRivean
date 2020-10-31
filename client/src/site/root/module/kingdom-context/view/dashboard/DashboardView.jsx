@@ -9,7 +9,7 @@ import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import KingdomUpdateRedux from "redux/kingdom/update/redux";
+import KingdomRedux from "redux/kingdom/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import KingdomContextView from "site/root/module/kingdom-context/view/KingdomContextView";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
@@ -33,7 +33,7 @@ const DashboardView = () => {
 	const [form] = Form.useForm();
 	const params = useParams();
 	const attributes = useKingdomAttributesSelector();
-	const errors = useSelector(KingdomUpdateRedux.selector.getError);
+	const errors = useSelector(KingdomRedux.redux.update.selector.getError);
 	useKingdomAttributes();
 
 	/**
@@ -56,7 +56,7 @@ const DashboardView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={values => {
-				dispatch(KingdomUpdateRedux.update({...values, id: params.kingdom})).then(_ => {
+				dispatch(KingdomRedux.redux.update.dispatch.update({...values, id: params.kingdom})).then(_ => {
 					message.success(t("root.kingdom.update.success"));
 					setEdit(false);
 				}, () => {

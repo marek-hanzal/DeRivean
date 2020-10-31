@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
-import UserFetchRedux from "redux/user/fetch/redux";
+import UserRedux from "redux/user/redux";
 
-const useUserSelector = () => useSelector(UserFetchRedux.selector.getPayload);
+const useUserSelector = () => useSelector(UserRedux.redux.fetch.selector.getPayload);
 
 export default useUserSelector;

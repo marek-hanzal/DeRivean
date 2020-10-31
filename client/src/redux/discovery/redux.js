@@ -28,40 +28,14 @@ const DiscoveryRedux = {
 		branch: state => state.discovery,
 		status: state => DiscoveryRedux.selector.branch(state).status,
 		index: state => DiscoveryRedux.selector.branch(state).payload,
-		public: {
-			user: {
-				register: state => DiscoveryRedux.selector.index(state)["public.user.register"].link,
-				login: state => DiscoveryRedux.selector.index(state)["public.user.login"].link,
-			},
+		link: function (id, state) {
+			return this.index(state)[id].link;
 		},
-		root: {
-			entity: {
-				page: (state, page) => DiscoveryRedux.selector.index(state)["root.entity.page"].link.replace("{page}", page),
-			},
-			user: {
-				create: state => DiscoveryRedux.selector.index(state)["root.user.create"].link,
-				update: state => DiscoveryRedux.selector.index(state)["root.user.update"].link,
-				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.user.fetch"].link.replace("{id}", uuid),
-				page: (state, page) => DiscoveryRedux.selector.index(state)["root.user.page"].link.replace("{page}", page),
-				kingdom: {
-					page: (state, user, page) => DiscoveryRedux.selector.index(state)["root.user.kingdom.page"].link.replace("{user}", user).replace("{page}", page),
-				}
-			},
-			kingdom: {
-				attributes: state => DiscoveryRedux.selector.index(state)["root.kingdom.attributes"].link,
-				create: state => DiscoveryRedux.selector.index(state)["root.kingdom.create"].link,
-				update: state => DiscoveryRedux.selector.index(state)["root.kingdom.update"].link,
-				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.kingdom.fetch"].link.replace("{id}", uuid),
-				building: {
-					page: (state, kingdom, page) => DiscoveryRedux.selector.index(state)["root.kingdom.building.page"].link.replace("{kingdom}", kingdom).replace("{page}", page),
-				}
-			},
-			building: {
-				attributes: state => DiscoveryRedux.selector.index(state)["root.building.attributes"].link,
-				create: state => DiscoveryRedux.selector.index(state)["root.building.create"].link,
-				update: state => DiscoveryRedux.selector.index(state)["root.building.update"].link,
-				fetch: (state, uuid) => DiscoveryRedux.selector.index(state)["root.building.fetch"].link.replace("{id}", uuid),
-			},
+		fetch: function (id, state, uuid) {
+			return this.link(id, state).replace("{id}", uuid);
+		},
+		page: function (id, state, page, name = null, param = null) {
+			return name ? this.link(id, state).replace("{" + name + "}", param).replace("{page}", page) : this.link(id, state).replace("{page}", page);
 		},
 	},
 };

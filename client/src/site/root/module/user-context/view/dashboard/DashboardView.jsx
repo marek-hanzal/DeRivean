@@ -8,7 +8,7 @@ import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import UserUpdateRedux from "redux/user/update/redux";
+import UserRedux from "redux/user/redux";
 import UserContextView from "site/root/module/user-context/view/UserContextView";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import useUserFetch from "site/root/module/user/hook/useUserFetch";
@@ -22,7 +22,7 @@ const DashboardView = () => {
 	const [user, setUser] = useState();
 	const [form] = Form.useForm();
 	const params = useParams();
-	const errors = useSelector(UserUpdateRedux.selector.getError);
+	const errors = useSelector(UserRedux.redux.update.selector.getError);
 	useUserFetch(params.user, (user) => {
 		setUser(user);
 		values(form, user);
@@ -33,7 +33,7 @@ const DashboardView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={values => {
-				dispatch(UserUpdateRedux.update({...values, id: params.user})).then(_ => {
+				dispatch(UserRedux.redux.update.dispatch.update({...values, id: params.user})).then(_ => {
 					message.success(t("user:update.success"));
 					setEdit(false);
 				}, () => {

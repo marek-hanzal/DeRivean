@@ -34,7 +34,6 @@ const BaseTable = (
 				onChange: (current, size) => onPage(current - 1, size),
 			}}
 			columns={columns.map(item => ({...item, dataIndex: item.title, key: item.title, title: t(`${id}.${item.title}.column`)}))}
-			// children={columns.map(item => <Table.Column key={item.title || item.name} render={item.render} title={} dataIndex={item.name}/>)}
 		/>
 	);
 };

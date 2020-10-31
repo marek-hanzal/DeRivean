@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
-import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
+import KingdomRedux from "redux/kingdom/redux";
 
-const useKingdomAttributesSelector = () => useSelector(KingdomAttributesRedux.selector.getPayload);
+const useKingdomAttributesSelector = () => useSelector(KingdomRedux.redux.attributes.selector.getPayload);
 
 export default useKingdomAttributesSelector;

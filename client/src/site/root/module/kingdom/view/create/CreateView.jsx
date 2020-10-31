@@ -7,8 +7,7 @@ import BaseCreateView from "component/view/BaseCreateView";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate} from "react-router";
-import KingdomAttributesRedux from "redux/kingdom/attributes/redux";
-import KingdomCreateRedux from "redux/kingdom/create/redux";
+import KingdomRedux from "redux/kingdom/redux";
 import SessionRedux from "redux/session/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
@@ -32,9 +31,9 @@ const CreateView = () => {
 	useKingdomAttributes();
 
 	const user = useUserSelector();
-	const isLoading = useSelector(KingdomAttributesRedux.selector.isLoading);
+	const isLoading = useSelector(KingdomRedux.redux.attributes.selector.isLoading);
 	const attributes = useKingdomAttributesSelector();
-	const errors = useSelector(KingdomCreateRedux.selector.getError);
+	const errors = useSelector(KingdomRedux.redux.create.selector.getError);
 
 	return (
 		<Form
@@ -42,7 +41,7 @@ const CreateView = () => {
 			name={"kingdom"}
 			autoComplete="off"
 			onFinish={kingdom => {
-				dispatch(KingdomCreateRedux.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
+				dispatch(KingdomRedux.redux.create.dispatch.create({...kingdom, ...{user: user.id}})).then((kingdom) => {
 					history.push(location.pathname);
 					dispatch(SessionRedux.history(history));
 					navigate(Routes.root.kingdomContext.dashboard.link(kingdom.id));
