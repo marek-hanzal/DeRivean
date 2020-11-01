@@ -1,7 +1,7 @@
 import BuildingRedux from "redux/building/redux";
-import CreateViewWithAttributes from "site/root/component/CreateViewWithAttributes";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import BuildingView from "site/root/module/building/view/BuildingView";
+import CreateViewWithAttributes from "site/root/view/CreateViewWithAttributes";
 import Routes from "site/Routes";
 
 const CreateView = () => {

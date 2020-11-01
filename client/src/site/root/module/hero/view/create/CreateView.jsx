@@ -1,7 +1,7 @@
 import HeroRedux from "redux/hero/redux";
-import CreateViewWithAttributes from "site/root/component/CreateViewWithAttributes";
 import BuildingView from "site/root/module/building/view/BuildingView";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import CreateViewWithAttributes from "site/root/view/CreateViewWithAttributes";
 import Routes from "site/Routes";
 
 const CreateView = () => {

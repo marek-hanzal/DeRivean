@@ -1,7 +1,7 @@
 import KingdomRedux from "redux/kingdom/redux";
-import CreateViewWithAttributes from "site/root/component/CreateViewWithAttributes";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
+import CreateViewWithAttributes from "site/root/view/CreateViewWithAttributes";
 import Routes from "site/Routes";
 
 const CreateView = () => {
