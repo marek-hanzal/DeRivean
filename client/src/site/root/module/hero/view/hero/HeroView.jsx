@@ -1,10 +1,10 @@
 import HeroRedux from "redux/hero/redux";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const HeroView = () => {
 	return (
-		<DashboardViewWithAttributes
+		<EditViewWithAttributes
 			id={"root.heroContext"}
 			formName={"hero"}
 			redux={HeroRedux}

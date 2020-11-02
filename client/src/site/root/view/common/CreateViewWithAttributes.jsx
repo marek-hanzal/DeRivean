@@ -4,6 +4,7 @@ import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
+import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -88,6 +89,16 @@ const CreateViewWithAttributes = (
 			</BaseCreateView>
 		</Form>
 	);
+};
+
+CreateViewWithAttributes.propTypes = {
+	id: PropTypes.string.isRequired,
+	base: PropTypes.element.isRequired,
+	formName: PropTypes.string.isRequired,
+	redux: PropTypes.object.isRequired,
+	icon: PropTypes.element,
+	param: PropTypes.string.isRequired,
+	dashboardLink: PropTypes.func.isRequired,
 };
 
 export default CreateViewWithAttributes;

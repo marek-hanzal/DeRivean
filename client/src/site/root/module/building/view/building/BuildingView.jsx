@@ -1,10 +1,10 @@
 import BuildingRedux from "redux/building/redux";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const BuildingView = () => {
 	return (
-		<DashboardViewWithAttributes
+		<EditViewWithAttributes
 			id={"root.buildingContext"}
 			formName={"building"}
 			redux={BuildingRedux}

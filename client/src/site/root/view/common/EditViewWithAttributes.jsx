@@ -1,10 +1,12 @@
 import {Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
+import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
+import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -14,7 +16,7 @@ import RootView from "site/root/view/RootView";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
-const DashboardViewWithAttributes = (
+const EditViewWithAttributes = (
 	{
 		id,
 		formName,
@@ -22,7 +24,7 @@ const DashboardViewWithAttributes = (
 		param,
 		open,
 		menu,
-		icon,
+		icon = <EditIcon/>,
 	}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
@@ -91,4 +93,14 @@ const DashboardViewWithAttributes = (
 	);
 };
 
-export default DashboardViewWithAttributes;
+EditViewWithAttributes.propTypes = {
+	id: PropTypes.string.isRequired,
+	formName: PropTypes.string.isRequired,
+	redux: PropTypes.object.isRequired,
+	param: PropTypes.string.isRequired,
+	open: PropTypes.string.isRequired,
+	menu: PropTypes.string,
+	icon: PropTypes.element,
+};
+
+export default EditViewWithAttributes;
