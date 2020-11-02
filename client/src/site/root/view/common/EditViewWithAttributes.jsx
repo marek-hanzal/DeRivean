@@ -1,4 +1,4 @@
-import {Form, Input, message} from "antd";
+import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
 import EditIcon from "component/icon/EditIcon";
@@ -63,8 +63,10 @@ const EditViewWithAttributes = (
 				open={open}
 				menu={menu}
 				icon={<Spinner icon={icon} enable={data}/>}
-				title={
+				title={<EditSubmitButtons initials={data} edit={edit} setEdit={setEdit} form={form} translation={id}/>}
+				subTitle={
 					<Centered span={12}>
+						<Divider type={"horizontal"}/>
 						<Form.Item
 							{...validationFor("name", errors, t)}
 							name={"name"}
@@ -78,7 +80,6 @@ const EditViewWithAttributes = (
 						/>
 					</Centered>
 				}
-				subTitle={<EditSubmitButtons initials={data} edit={edit} setEdit={setEdit} form={form} translation={id}/>}
 			>
 				<DualSection
 					left={

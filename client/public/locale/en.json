@@ -274,6 +274,9 @@
 		"kingdom": {
 			"menu": "Kingdom",
 			"breadcrumb": "Kingdom",
+			"kingdom": {
+				"breadcrumb": "Kingdom"
+			},
 			"attribute": {
 				"resource": {
 					"wood": "Wood",
@@ -346,6 +349,7 @@
 				"attribute": {
 					"title": "Hero attributes",
 					"empty": "There are not attributes",
+					"deleteConfirm": "Delete attribute?",
 					"add": "Attribute"
 				},
 				"name": {
@@ -376,7 +380,10 @@
 			"create": {
 				"menu": "Create",
 				"title": "Create a new Hero",
-				"breadcrumb": "Create"
+				"breadcrumb": "Create",
+				"form": {
+					"submit": "Create hero!"
+				}
 			},
 			"edit": {
 				"form": {
@@ -417,23 +424,17 @@
 					"value": {
 						"hint": "Value"
 					},
-					"add": {
-						"label": "Attribute"
-					}
+					"add": "Attribute"
 				},
 				"cancelConfirm": "All changes will be lost, continue?",
 				"name": {
 					"label": "Name of building"
 				},
-				"cancel": {
-					"label": "Cancel!"
-				},
+				"cancel": "Cancel!",
 				"edit": {
 					"label": "Edit",
 					"cancelConfirm": "All changes will be lost, continue?",
-					"submit": {
-						"label": "Save changes"
-					}
+					"submit": "Save changes"
 				}
 			},
 			"create": {
@@ -441,9 +442,7 @@
 				"title": "Create a new Building",
 				"breadcrumb": "Create",
 				"form": {
-					"submit": {
-						"label": "Create!"
-					}
+					"submit": "Create!"
 				},
 				"list": {
 					"title": "Buildings",
