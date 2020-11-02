@@ -4,10 +4,14 @@ import derivean.lib.container.IContainer
 import derivean.lib.rest.AbstractEndpoint
 import derivean.lib.rest.ok
 import derivean.lib.rest.resolve
+import derivean.server.server.ValidationError
+import derivean.server.server.ValidationService
 import io.ktor.application.*
 import io.ktor.routing.*
 
 class ValidationEndpoint(container: IContainer) : AbstractEndpoint(container) {
+	private val validationService: ValidationService by container.lazy()
+
 	override fun install(routing: Routing) {
 		"/api/root/server/validation".let { url ->
 			discovery {
@@ -19,10 +23,8 @@ class ValidationEndpoint(container: IContainer) : AbstractEndpoint(container) {
 				call.resolve(
 					ok(
 						Response(
-							false, listOf(
-//								Error("create-template-kingdom", "Missing template kingdom.", "create-template-kingdom"),
-//								Error("create-template-user", "Missing template user.", "create-template-user"),
-							)
+							validationService.isLockdown(),
+							validationService.validate(),
 						)
 					)
 				)
@@ -30,6 +32,5 @@ class ValidationEndpoint(container: IContainer) : AbstractEndpoint(container) {
 		}
 	}
 
-	data class Response(val lockdown: Boolean, val errors: List<Error>)
-	data class Error(val id: String, val text: String, val action: String)
+	data class Response(val lockdown: Boolean, val errors: List<ValidationError>)
 }
