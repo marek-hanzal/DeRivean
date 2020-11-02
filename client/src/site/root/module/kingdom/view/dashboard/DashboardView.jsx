@@ -7,6 +7,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={RootView}
 			id={"root.kingdom"}
+			menu={"root.kingdom.dashboard"}
 			icon={<KingdomIcon/>}
 		>
 			<h1>Kingdom dashboard</h1>

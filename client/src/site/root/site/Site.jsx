@@ -13,7 +13,7 @@ import {BuildingContextRoute} from "site/root/module/building-context/site/Route
 import {HeroContextBreadcrumbRoute} from "site/root/module/hero-context/site/Breadcrumbs";
 import {HeroContextMenuRoute} from "site/root/module/hero-context/site/Menu";
 import {HeroContextRoute} from "site/root/module/hero-context/site/Router";
-import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
+import {KingdomMenuRoute} from "site/root/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/root/module/kingdom/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
 import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
@@ -38,7 +38,7 @@ const Site = () => {
 				<BaseRoutes
 					routes={[
 						UserMenuRoute(),
-						KingdomContextMenuRoute(),
+						KingdomMenuRoute(),
 						BuildingContextMenuRoute(),
 						HeroContextMenuRoute(),
 						route("*", <BaseMenu

@@ -67,19 +67,19 @@ const Routes = {
             },
         },
         kingdom: {
-            match: () => "/user/:user/kingdom/*",
-            link: resolveUuid("user", "/user/:user/kingdom"),
+            match: () => "/user/@/:user/kingdom/*",
+            link: resolveUuid("user", "/user/@/:user/kingdom"),
             dashboard: {
                 match: () => "dashboard/*",
-                link: resolveUuid("user", "/user/:user/kingdom/dashboard"),
+                link: resolveUuid("user", "/user/@/:user/kingdom/dashboard"),
             },
             create: {
                 match: () => "create",
-                link: resolveUuid("user", "/user/:user/kingdom/create"),
+                link: resolveUuid("user", "/user/@/:user/kingdom/create"),
             },
             list: {
                 match: () => "list",
-                link: resolveUuid("user", "/user/:user/kingdom/list"),
+                link: resolveUuid("user", "/user/@/:user/kingdom/list"),
             },
             context: {
                 match: () => "/kingdom-context/:kingdom/*",

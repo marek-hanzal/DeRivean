@@ -25,7 +25,7 @@ const Menu = () => {
 						menuDivider(),
 						menuItem(Routes.root.user.user.link(), "root.user", <UserIcon/>),
 						menuDivider(),
-						KingdomMenuItem(),
+						KingdomMenuItem(true),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}
@@ -39,7 +39,7 @@ const Menu = () => {
 						menuDivider(),
 						menuLogout(),
 					]}
-				/>)
+				/>),
 			]}
 		/>
 	);

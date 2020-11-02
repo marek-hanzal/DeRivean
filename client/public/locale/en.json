@@ -42,7 +42,7 @@
 			}
 		},
 		"user": {
-			"menu": "Users",
+			"menu": "User",
 			"dashboard": {
 				"menu": "Dashboard",
 				"breadcrumb": "Users",
