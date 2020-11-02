@@ -1,9 +1,9 @@
 import dismissAction from "utils/action/actions/dismissAction";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
+import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateRedux from "utils/redux/CreateRedux";
 
-const UserRedux = CreateRedux(
+const UserRedux = CreateCommonRedux(
 	"user",
 	"root.user.create",
 	"root.user.update",

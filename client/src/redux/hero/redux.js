@@ -1,7 +1,7 @@
+import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateRedux from "utils/redux/CreateRedux";
 
-const HeroRedux = CreateRedux(
+const HeroRedux = CreateCommonRedux(
 	"hero",
 	"root.hero.create",
 	"root.hero.update",

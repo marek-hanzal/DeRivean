@@ -22,7 +22,7 @@ import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
 import menuLogout from "site/root/utils/menu/menuLogout";
-import HomeView from "site/root/view/HomeView";
+import HomeView from "site/root/view/home/HomeView";
 import SingInView from "site/root/view/SingInView";
 import Routes from "site/Routes";
 import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";

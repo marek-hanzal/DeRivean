@@ -42,7 +42,14 @@
 			"menu": "Home",
 			"content": {
 				"title": "Game Server Administration",
-				"subtitle": "This is the place where all the dark magic happens!"
+				"subtitle": "This is the place where all the dark magic happens!",
+				"error": {
+					"title": "Game Server is Unhealthy!",
+					"subtitle": "Please check server errors!",
+					"list": {
+						"title": "Following errors prevents game to run smoothly."
+					}
+				}
 			}
 		},
 		"user": {

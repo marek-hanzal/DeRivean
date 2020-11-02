@@ -1,7 +1,7 @@
+import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateRedux from "utils/redux/CreateRedux";
 
-const KingdomRedux = CreateRedux(
+const KingdomRedux = CreateCommonRedux(
 	"kingdom",
 	"root.kingdom.create",
 	"root.kingdom.update",

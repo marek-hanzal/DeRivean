@@ -1,7 +1,7 @@
+import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
-import CreateRedux from "utils/redux/CreateRedux";
 
-const BuildingRedux = CreateRedux(
+const BuildingRedux = CreateCommonRedux(
 	"building",
 	"root.building.create",
 	"root.building.update",

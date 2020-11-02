@@ -7,6 +7,7 @@ import HeroRedux from "redux/hero/redux";
 import KingdomRedux from "redux/kingdom/redux";
 import LoadingRedux from "redux/loading/redux";
 import MenuRedux from "redux/menu/redux";
+import ServerRedux from "redux/server/redux";
 import SessionRedux from "redux/session/redux";
 import UserRedux from "redux/user/redux";
 
@@ -20,5 +21,6 @@ export default combineReducers({
 	loading: LoadingRedux.reducer(),
 	menu: MenuRedux.reducer(),
 	session: SessionRedux.reducer(),
+	server: ServerRedux.reducer(),
 	user: UserRedux.reducer(),
 });
