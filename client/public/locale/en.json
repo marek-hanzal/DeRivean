@@ -23,6 +23,118 @@
 		"homepage": "Go to Homepage",
 		"spinner": "Making some hard magick to make things work!"
 	},
+	"public": {
+		"home": {
+			"title": "Welcome to DeRivean!",
+			"menu": "Home",
+			"content": {
+				"title": "Welcome to DeRivean!",
+				"subtitle": "You're welcome to look around and start playing!",
+				"list": {
+					"title": "DeRivean is simple game, where you will:",
+					"item-0": "Create your own heroes and take them to battle.",
+					"item-1": "Gain experience in quite different way and build you kingdom.",
+					"item-2": "Fight other players, pass stages and become most powerful king over here!"
+				}
+			},
+			"sign-in": {
+				"title": "Sign-in!"
+			},
+			"sign-up": {
+				"title": "Sign-up!"
+			}
+		},
+		"sign-up": {
+			"menu": "Sign-up",
+			"breadcrumb": "Sign-up",
+			"title": "Sign-up",
+			"content": {
+				"title": "Sign-up to join World of DeRivean",
+				"subtitle": "Just type a few things and start playing!",
+				"form": {
+					"title": "Registration"
+				},
+				"list": {
+					"title": "This is a RPG game, where you will:",
+					"item-0": "Create your own heroes",
+					"item-1": "Build up a Kingdom of Yours",
+					"item-2": "Gain resources, XP, level up Heroes, merge them",
+					"item-3": "Fight for becoming the greatest King over here",
+					"item-4": "...and a lot more awaits for you!"
+				}
+			},
+			"form": {
+				"name": {
+					"label": "Player name",
+					"required": "Please pick some nice name for you!"
+				},
+				"login": {
+					"label": "Login",
+					"required": "Please fill some login - for example your email address or just nick."
+				},
+				"password": {
+					"label": "Password",
+					"required": "Some super secret of you is needed!"
+				},
+				"submit": {
+					"label": "Sing-up"
+				}
+			},
+			"succeed": {
+				"title": "Welcome to the World of DeRivean!",
+				"subtitle": "Now you can continue to your account and start playing!"
+			},
+			"failed": {
+				"title": "Registration failed!"
+			},
+			"close": {
+				"title": "Close"
+			},
+			"continue": {
+				"title": "Continue"
+			}
+		},
+		"sign-in": {
+			"menu": "Sing-in",
+			"breadcrumb": "Sing-in",
+			"title": "Login",
+			"content": {
+				"title": "Welcome back, brave Hero!",
+				"subtitle": "Login and look around, what's new!",
+				"form": {
+					"title": "Open a magic gate by your password!"
+				},
+				"list": {
+					"title": "Check, what's new in your Kingdom",
+					"item-0": "Don't forget to claim your resources",
+					"item-1": "Look for some new battles",
+					"item-2": "See Store for new equipment",
+					"item-3": "Level up your Heroes and Buddies"
+				}
+			},
+			"form": {
+				"login": {
+					"label": "Login",
+					"required": "We cannot make login request without... login!"
+				},
+				"password": {
+					"label": "Password",
+					"required": "Please, give us your deepest secret!"
+				},
+				"submit": {
+					"label": "Login!"
+				}
+			}
+		},
+		"sign-out": {
+			"title": "See you soon!",
+			"succeed": {
+				"title": "You are logged out!",
+				"subtitle": "We will miss you, so see you soon!"
+			},
+			"continue": "Continue"
+		}
+	},
 	"root": {
 		"site": {
 			"game": "Game",

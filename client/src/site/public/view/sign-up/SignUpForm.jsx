@@ -24,41 +24,35 @@ const SignUpForm = () => {
 			<Form.Item
 				name="name"
 				{...validationFor("name", errors, t)}
-				labelAlign={"left"}
-				label={t("public.sign-up.form.name.label")}
 				rules={[
 					{
 						required: true,
 						message: t("public.sign-up.form.name.required")
 					}
 				]}
-				children={<Input placeholder={t("public.sign-up.form.name.label")}/>}
+				children={<Input addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.name.label")}</div>}/>}
 			/>
 			<Form.Item
 				name="login"
 				{...validationFor("login", errors, t)}
-				labelAlign={"left"}
-				label={t("public.sign-up.form.login.label")}
 				rules={[
 					{
 						required: true,
 						message: t("public.sign-up.form.login.required")
 					}
 				]}
-				children={<Input placeholder={t("public.sign-up.form.login.label")}/>}
+				children={<Input addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.login.label")}</div>}/>}
 			/>
 			<Form.Item
 				name="password"
 				{...validationFor("password", errors, t)}
-				labelAlign={"left"}
-				label={t("public.sign-up.form.password.label")}
 				rules={[
 					{
 						required: true,
 						message: t("public.sign-up.form.password.required")
 					}
 				]}
-				children={<Input.Password placeholder={t("public.sign-up.form.password.label")}/>}
+				children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.password.label")}</div>}/>}
 			/>
 			<Centered>
 				<Form.Item shouldUpdate={true}>

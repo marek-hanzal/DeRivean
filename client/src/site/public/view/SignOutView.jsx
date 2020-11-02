@@ -18,7 +18,7 @@ const SingOutView = () => {
 					subTitle={t("public.sign-out.succeed.subtitle")}
 					extra={[
 						<Button type="primary" key="continue">
-							<Link to={Routes.public.link()}>{t("public.sign-out.continue.title")}</Link>
+							<Link to={Routes.public.link()}>{t("public.sign-out.continue")}</Link>
 						</Button>
 					]}
 				/>

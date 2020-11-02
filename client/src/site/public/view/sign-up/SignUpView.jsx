@@ -16,7 +16,7 @@ const SignUpView = () => {
 	const {t} = useTranslation();
 	useEffect(() => {
 		dispatch(UserRedux.redux.register.dispatch.dismiss());
-		return () => dispatch(UserRedux.register.dispatch.dismiss());
+		return () => dispatch(UserRedux.redux.register.dispatch.dismiss());
 	}, [dispatch]);
 	switch (status) {
 		case "SUCCESS":
