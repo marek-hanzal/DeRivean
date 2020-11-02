@@ -105,6 +105,8 @@ fun accepted(message: String) = Response(HttpStatusCode.Accepted, MessageRespons
 
 fun <T> ok(response: T) = Response(HttpStatusCode.OK, response)
 
+fun ok() = Response(HttpStatusCode.OK, Unit)
+
 /**
  * send response with Accepted status code
  */

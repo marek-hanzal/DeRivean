@@ -8,6 +8,7 @@ class BuildingAttributes {
 		const val PRODUCTION_WOOD = "production.wood"
 		const val PRODUCTION_FOOD = "production.food"
 		const val PRODUCTION_GOLD = "production.gold"
+		const val XP = "xp"
 
 		fun export(): List<String> = Companion::class.memberProperties.map { it.get(this).toString() }
 	}
