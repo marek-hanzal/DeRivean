@@ -230,7 +230,7 @@
 					},
 					"site": {
 						"label": "Site",
-						"help": "Assign an user to desired site."
+						"help": "Assign an user to the desired site."
 					}
 				},
 				"list": {
@@ -258,6 +258,9 @@
 					},
 					"name": {
 						"column": "Name"
+					},
+					"login": {
+						"column": "Login"
 					},
 					"token": {
 						"column": "Token"

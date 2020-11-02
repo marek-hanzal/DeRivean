@@ -16,6 +16,7 @@ const UserList = () => {
 			columns={[
 				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.user.user.link(record.id)} text={text}/>},
 				{title: "name", width: 220},
+				{title: "login", width: 220},
 				{title: "token", width: 380},
 				{title: "site"},
 			]}

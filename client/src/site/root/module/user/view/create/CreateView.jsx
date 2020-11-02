@@ -23,7 +23,7 @@ const CreateView = () => {
 			formName={"user"}
 			param={"user"}
 			redux={UserRedux}
-			dashboardLink={Routes.root.user.dashboard.link}
+			dashboardLink={Routes.root.user.user.link}
 			errors={errors}
 			setErrors={setErrors}
 			initials={{
