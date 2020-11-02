@@ -61,28 +61,25 @@ const Routes = {
                 match: () => "list/*",
                 link: () => "/user/list",
             },
-            context: {
-                match: () => "/user-c/:user/*",
-                user: {
-                    match: () => "user/*",
-                    link: resolveUuid("user", "/user-c/:user/user")
-                },
+            user: {
+                match: () => ":user/*",
+                link: resolveUuid("user", "/user/:user")
             },
         },
         kingdom: {
-            match: () => "/user-context/:user/kingdom/*",
-            link: resolveUuid("user", "/user-context/:user/kingdom"),
+            match: () => "/user/:user/kingdom/*",
+            link: resolveUuid("user", "/user/:user/kingdom"),
             dashboard: {
                 match: () => "dashboard/*",
-                link: resolveUuid("user", "/user-context/:user/kingdom/dashboard"),
+                link: resolveUuid("user", "/user/:user/kingdom/dashboard"),
             },
             create: {
                 match: () => "create",
-                link: resolveUuid("user", "/user-context/:user/kingdom/create"),
+                link: resolveUuid("user", "/user/:user/kingdom/create"),
             },
             list: {
                 match: () => "list",
-                link: resolveUuid("user", "/user-context/:user/kingdom/list"),
+                link: resolveUuid("user", "/user/:user/kingdom/list"),
             },
             context: {
                 match: () => "/kingdom-context/:kingdom/*",

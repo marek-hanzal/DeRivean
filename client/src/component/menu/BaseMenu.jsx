@@ -15,6 +15,8 @@ function RenderItem(item, index) {
 	const href = generatePath(item.href || "", params);
 	const key = item.key || index;
 
+	console.log("params", params);
+
 	switch (item.href) {
 		case "-":
 			return <Menu.Divider key={index}/>;

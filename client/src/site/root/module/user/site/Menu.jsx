@@ -1,10 +1,38 @@
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
+import SignOutIcon from "component/icon/SignOutIcon";
+import BaseMenu from "component/menu/BaseMenu";
+import BaseRoutes from "component/route/BaseRoutes";
+import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
+import menuBack from "utils/menu/menuBack";
+import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
+import route from "utils/route/route";
+
+const Menu = () => {
+	return (
+		<BaseRoutes
+			routes={[
+				route("*", <BaseMenu
+					items={[
+						menuDivider(),
+						menuBack(),
+						menuDivider(),
+						menuItem(Routes.root.user.user.link(), "root.userContext.dashboard", <UserIcon/>),
+						menuDivider(),
+						KingdomMenuItem(),
+						menuDivider(),
+						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+					]}
+				/>)
+			]}
+		/>
+	);
+};
 
 const UserMenuItem = () => menuGroup("root.user", <UserIcon/>, [
 	menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <DashboardIcon/>),
@@ -12,6 +40,9 @@ const UserMenuItem = () => menuGroup("root.user", <UserIcon/>, [
 	menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
 ]);
 
+const UserMenuRoute = () => route(Routes.root.user.user.match(), <Menu/>);
+
 export {
+	UserMenuRoute,
 	UserMenuItem,
 };
