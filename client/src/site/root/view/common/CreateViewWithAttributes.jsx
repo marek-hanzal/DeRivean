@@ -113,7 +113,7 @@ CreateViewWithAttributes.propTypes = {
 	icon: PropTypes.element,
 	param: PropTypes.string.isRequired,
 	dashboardLink: PropTypes.func.isRequired,
-	enableSubmit: PropTypes.any.isRequired,
+	enableSubmit: PropTypes.any,
 };
 
 export default CreateViewWithAttributes;

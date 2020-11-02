@@ -18,6 +18,7 @@ const CreateView = () => {
 			dashboardLink={Routes.root.kingdom.kingdom.link}
 			errors={error}
 			setErrors={setError}
+			enableSubmit={true}
 		/>
 	);
 };

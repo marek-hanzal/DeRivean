@@ -7,7 +7,7 @@ import Routes from "site/Routes";
 const Header = () =>
 	<Layout.Header style={{
 		position: "fixed",
-		zIndex: 5000,
+		zIndex: 1009,
 		width: "100%",
 		padding: 0,
 	}}>

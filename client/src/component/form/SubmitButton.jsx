@@ -20,7 +20,7 @@ const SubmitButton = (
 					htmlType={"submit"}
 					icon={<SubmitIcon/>}
 					disabled={!(enable && !enableSubmit(form, false))}
-					children={t(title || "common:submit.label")}
+					children={t(title || "common.submit")}
 				/>
 			)}
 		</Form.Item>

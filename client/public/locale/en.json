@@ -137,8 +137,9 @@
 	},
 	"root": {
 		"site": {
+			"null": "No site",
 			"game": "Game",
-			"root": "Root (admin)"
+			"root": "Root"
 		},
 		"server": {
 			"error": {
@@ -234,7 +235,7 @@
 					},
 					"site": {
 						"label": "Site",
-						"help": "Assign an user to the desired site."
+						"required": "Please assign the user to the desired site."
 					}
 				},
 				"list": {

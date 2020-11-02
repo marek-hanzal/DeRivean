@@ -18,6 +18,7 @@ const CreateView = () => {
 			dashboardLink={Routes.root.hero.hero.link}
 			errors={errors}
 			setErrors={setErrors}
+			enableSubmit={true}
 		/>
 	);
 };

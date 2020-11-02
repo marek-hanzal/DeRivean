@@ -22,9 +22,6 @@ const CreateView = () => {
 			setSites(sites.sites);
 		});
 	}, [dispatch]);
-
-	console.log("site", sites);
-
 	return (
 		<CreateViewWithAttributes
 			base={RootView}
@@ -60,17 +57,10 @@ const CreateView = () => {
 					{...validationFor("site", errors, t)}
 					name={"site"}
 					label={t("root.user.create.form.site.label")}
-					help={t("root.user.create.form.site.help")}
-					rules={[
-						{
-							required: true,
-							message: t("root.user.create.form.site.required"),
-						}
-					]}
 					children={
 						sites ?
 							<Radio.Group>
-								{sites.map(site => <Radio.Button key={site} value={site} children={t("root.site." + site)}/>)}
+								{sites.map(site => <Radio.Button key={site || "null"} value={site || undefined} children={t("root.site." + site)}/>)}
 							</Radio.Group> :
 							<Skeleton.Input style={{width: "240px"}} active/>
 					}

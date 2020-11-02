@@ -11,6 +11,7 @@ const BuildingView = () => {
 			param={"building"}
 			open={[]}
 			icon={<BuildingIcon/>}
+			enableSubmit={true}
 		/>
 	);
 };

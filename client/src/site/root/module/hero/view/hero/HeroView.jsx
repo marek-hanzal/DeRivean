@@ -11,6 +11,7 @@ const HeroView = () => {
 			param={"hero"}
 			open={[]}
 			icon={<HeroIcon/>}
+			enableSubmit={true}
 		/>
 	);
 };

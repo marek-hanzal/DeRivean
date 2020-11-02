@@ -4,6 +4,7 @@ import SubmitButton from "component/form/SubmitButton";
 import EditIcon from "component/icon/EditIcon";
 import PropTypes from "prop-types";
 import {useTranslation} from "react-i18next";
+import values from "utils/form/values";
 
 const EditSubmitButtons = (
 	{
@@ -12,16 +13,20 @@ const EditSubmitButtons = (
 		setEdit,
 		initials,
 		translation,
+		enableSubmit,
 	}) => {
 	const {t} = useTranslation();
 
 	return (
 		edit ?
 			<Space split={<Divider type={"vertical"}/>}>
-				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
+				<SubmitButton enable={enableSubmit} form={form} title={translation + ".edit.form.submit"}/>
 				<CancelEditButton form={form} setEdit={setEdit} translation={translation} initials={initials}/>
 			</Space> :
-			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
+			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => {
+				setEdit(true);
+				values(form, initials);
+			}} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 
@@ -31,6 +36,7 @@ EditSubmitButtons.propTypes = {
 	setEdit: PropTypes.func.isRequired,
 	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
+	enableSubmit: PropTypes.any.isRequired,
 };
 
 export default EditSubmitButtons;

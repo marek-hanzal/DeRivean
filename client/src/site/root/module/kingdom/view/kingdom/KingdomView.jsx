@@ -12,6 +12,7 @@ const KingdomView = () => {
 			menu={"root.kingdom"}
 			open={["root.hero", "root.building"]}
 			icon={<KingdomIcon/>}
+			enableSubmit={true}
 		/>
 	);
 };

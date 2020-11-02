@@ -24,6 +24,7 @@ const EditViewWithAttributes = (
 		param,
 		open,
 		menu,
+		enableSubmit,
 		icon = <EditIcon/>,
 	}) => {
 	const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const EditViewWithAttributes = (
 				dispatch(redux.redux.update.dispatch.update({...values, id: params[param]})).then(_ => {
 					message.success(t(id + ".update.success"));
 					setEdit(false);
+					setData(values);
 				}, () => {
 					message.error(t(id + ".update.error"));
 				});
@@ -63,7 +65,7 @@ const EditViewWithAttributes = (
 				open={open}
 				menu={menu}
 				icon={<Spinner icon={icon} enable={data}/>}
-				title={<EditSubmitButtons initials={data} edit={edit} setEdit={setEdit} form={form} translation={id}/>}
+				title={<EditSubmitButtons enableSubmit={enableSubmit} initials={data} edit={edit} setEdit={setEdit} form={form} translation={id}/>}
 				subTitle={
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
@@ -99,7 +101,8 @@ EditViewWithAttributes.propTypes = {
 	formName: PropTypes.string.isRequired,
 	redux: PropTypes.object.isRequired,
 	param: PropTypes.string.isRequired,
-	open: PropTypes.string.isRequired,
+	open: PropTypes.any.isRequired,
+	enableSubmit: PropTypes.any.isRequired,
 	menu: PropTypes.string,
 	icon: PropTypes.element,
 };

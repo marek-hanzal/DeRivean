@@ -11,6 +11,7 @@ const UserView = () => {
 			param={"user"}
 			open={["root.kingdom"]}
 			icon={<UserIcon/>}
+			enableSubmit={true}
 		/>
 	);
 };
