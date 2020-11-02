@@ -1,6 +1,5 @@
 import BaseBreadcrumbs from "component/breadcrumbs/BaseBreadcrumbs";
 import HomeIcon from "component/icon/HomeIcon";
-import SignOutIcon from "component/icon/SignOutIcon";
 import BaseLayout from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
@@ -21,6 +20,7 @@ import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
 import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
+import menuLogout from "site/root/utils/menu/menuLogout";
 import HomeView from "site/root/view/HomeView";
 import SingInView from "site/root/view/SingInView";
 import Routes from "site/Routes";
@@ -52,7 +52,7 @@ const Site = () => {
 								BlogMenuItem(),
 
 								menuDivider(),
-								menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+								menuLogout(),
 							]}
 						/>)
 					]}

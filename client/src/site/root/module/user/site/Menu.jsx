@@ -6,6 +6,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import menuLogout from "site/root/utils/menu/menuLogout";
 import Routes from "site/Routes";
 import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
@@ -17,7 +18,7 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route("*", <BaseMenu
+				route(Routes.root.user.user.match(), <BaseMenu
 					items={[
 						menuDivider(),
 						menuBack(),
@@ -27,6 +28,16 @@ const Menu = () => {
 						KingdomMenuItem(),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+					]}
+				/>),
+				route("*", <BaseMenu
+					items={[
+						menuDivider(),
+						menuBack(),
+						menuDivider(),
+						UserMenuItem(),
+						menuDivider(),
+						menuLogout(),
 					]}
 				/>)
 			]}
@@ -40,7 +51,7 @@ const UserMenuItem = () => menuGroup("root.user", <UserIcon/>, [
 	menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
 ]);
 
-const UserMenuRoute = () => route(Routes.root.user.user.match(), <Menu/>);
+const UserMenuRoute = () => route(Routes.root.user.match(), <Menu/>);
 
 export {
 	UserMenuRoute,
