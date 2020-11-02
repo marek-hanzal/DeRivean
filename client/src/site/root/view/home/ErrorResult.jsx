@@ -19,7 +19,7 @@ const ErrorResult = ({validation}) => {
 							<Alert
 								message={t("server.error." + error.text)}
 								description={error.action ? <Button type={"link"} children={t("server.error.action." + error.action)}/> : t("server.error.action-unavailable")}
-								type="error"
+								type="warning"
 								showIcon
 								style={{width: "100%"}}
 							/>
