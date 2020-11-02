@@ -5,6 +5,7 @@ const BuildingRedux = CreateCommonRedux(
 	"building",
 	"root.building.create",
 	"root.building.update",
+	"root.building.delete",
 	"root.building.fetch",
 	"root.kingdom.building.page",
 	{

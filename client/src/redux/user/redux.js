@@ -7,6 +7,7 @@ const UserRedux = CreateCommonRedux(
 	"user",
 	"root.user.create",
 	"root.user.update",
+	"root.user.delete",
 	"root.user.fetch",
 	"root.user.page",
 	{

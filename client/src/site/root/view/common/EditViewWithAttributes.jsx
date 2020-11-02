@@ -1,6 +1,7 @@
-import {Divider, Form, Input, message} from "antd";
+import {Button, Divider, Form, Input, message, Popconfirm, Space} from "antd";
 import BulletCard from "component/BulletCard";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
+import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
@@ -10,7 +11,8 @@ import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
+import SessionRedux from "redux/session/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import RootView from "site/root/view/RootView";
 import validationFor from "utils/form/validationFor";
@@ -35,10 +37,19 @@ const EditViewWithAttributes = (
 	const params = useParams();
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const errors = useSelector(redux.redux.update.selector.getError);
+	const navigate = useNavigate();
+	const history = useSelector(SessionRedux.selector.getHistory);
 
+	/**
+	 * Fetch attributes from redux.
+	 */
 	useEffect(() => {
 		dispatch(redux.redux.attributes.dispatch.attributes());
 	}, [dispatch, redux.redux.attributes.dispatch]);
+
+	/**
+	 * Fetch current data from redux.
+	 */
 	useEffect(() => dispatch(redux.redux.fetch.dispatch.fetch(params[param])).then(data => {
 		setData(data);
 		values(form, data);
@@ -65,7 +76,36 @@ const EditViewWithAttributes = (
 				open={open}
 				menu={menu}
 				icon={<Spinner icon={icon} enable={data}/>}
-				title={<EditSubmitButtons enableSubmit={enableSubmit} initials={data} edit={edit} setEdit={setEdit} form={form} translation={id}/>}
+				title={
+					<>
+						<Space split={<Divider type={"vertical"}/>}>
+							<EditSubmitButtons
+								enableSubmit={enableSubmit}
+								initials={data}
+								edit={edit}
+								setEdit={setEdit}
+								form={form}
+								translation={id}
+							/>
+							<Popconfirm
+								okText={t("common.yes")}
+								cancelText={t("common.no")}
+								title={t(id + ".edit.form.deleteConfirm")}
+								onConfirm={() => {
+									dispatch(redux.redux.delete.dispatch.delete({id: params[param]})).then(_ => {
+										message.success(t(id + ".delete.success"));
+										navigate(history.pop() || -1);
+										dispatch(SessionRedux.history(history));
+									}, () => {
+										message.error(t(id + ".delete.error"));
+									});
+								}}
+							>
+								<Button type={"danger"} ghost icon={<DeleteItemIcon/>} children={t(id + ".edit.form.delete")}/>
+							</Popconfirm>
+						</Space>
+					</>
+				}
 				subTitle={
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>

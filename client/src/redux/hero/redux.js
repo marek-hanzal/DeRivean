@@ -5,6 +5,7 @@ const HeroRedux = CreateCommonRedux(
 	"hero",
 	"root.hero.create",
 	"root.hero.update",
+	"root.hero.delete",
 	"root.hero.fetch",
 	"root.kingdom.hero.page",
 	{

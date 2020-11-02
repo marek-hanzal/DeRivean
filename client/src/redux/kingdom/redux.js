@@ -5,6 +5,7 @@ const KingdomRedux = CreateCommonRedux(
 	"kingdom",
 	"root.kingdom.create",
 	"root.kingdom.update",
+	"root.kingdom.delete",
 	"root.kingdom.fetch",
 	"root.user.kingdom.page",
 	{

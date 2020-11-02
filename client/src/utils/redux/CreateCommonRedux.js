@@ -7,6 +7,7 @@ function CreateCommonRedux(
 	id,
 	createId,
 	updateId,
+	deleteId,
 	fetchId,
 	pageId,
 	extra = {},
@@ -15,6 +16,7 @@ function CreateCommonRedux(
 		{
 			create: CreateActionRedux(id, "create", createId),
 			update: CreateActionRedux(id, "update", updateId),
+			delete: CreateActionRedux(id, "delete", deleteId),
 			fetch: CreateFetchRedux(id, fetchId),
 			page: CreatePageRedux(id, pageId),
 			...extra,
