@@ -1,11 +1,11 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import UserView from "site/root/module/user/view/UserView";
+import RootView from "site/root/view/RootView";
 
 const DashboardView = () => {
 	return (
 		<BaseDashboardView
-			base={UserView}
+			base={RootView}
 			id={"root.user"}
 			icon={<UserIcon/>}
 		>

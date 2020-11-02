@@ -14,9 +14,8 @@ import {BuildingContextRoute} from "site/root/module/building-context/site/Route
 import {HeroContextBreadcrumbRoute} from "site/root/module/hero-context/site/Breadcrumbs";
 import {HeroContextMenuRoute} from "site/root/module/hero-context/site/Menu";
 import {HeroContextRoute} from "site/root/module/hero-context/site/Router";
-import {KingdomContextBreadcrumbRoute} from "site/root/module/kingdom-context/site/Breadcrumbs";
 import {KingdomContextMenuRoute} from "site/root/module/kingdom-context/site/Menu";
-import {KingdomContextRoute} from "site/root/module/kingdom-context/site/Router";
+import {KingdomRoute} from "site/root/module/kingdom/site/Router";
 import {UserContextBreadcrumbRoute} from "site/root/module/user-context/site/Breadcrumbs";
 import {UserContextMenuRoute} from "site/root/module/user-context/site/Menu";
 import {UserContextRoute} from "site/root/module/user-context/site/Router";
@@ -68,7 +67,6 @@ const Site = () => {
 					routes={[
 						UserBreadcrumbRoute(),
 						UserContextBreadcrumbRoute(),
-						KingdomContextBreadcrumbRoute(),
 						BuildingContextBreadcrumbRoute(),
 						HeroContextBreadcrumbRoute(),
 						BlogBreadcrumbRoute(),
@@ -85,8 +83,8 @@ const Site = () => {
 				<BaseRoutes
 					routes={[
 						UserRoute(),
+						KingdomRoute(),
 						UserContextRoute(),
-						KingdomContextRoute(),
 						BuildingContextRoute(),
 						HeroContextRoute(),
 						BlogRoute(),

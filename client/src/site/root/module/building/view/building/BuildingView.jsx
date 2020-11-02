@@ -1,13 +1,13 @@
 import BuildingRedux from "redux/building/redux";
-import BuildingContextView from "site/root/module/building-context/view/BuildingContextView";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+import RootView from "site/root/view/RootView";
 
-const DashboardView = () => {
+const BuildingView = () => {
 	return (
 		<DashboardViewWithAttributes
 			id={"root.buildingContext"}
-			base={BuildingContextView}
+			base={RootView}
 			formName={"building"}
 			redux={BuildingRedux}
 			param={"building"}
@@ -17,4 +17,4 @@ const DashboardView = () => {
 	);
 };
 
-export default DashboardView;
+export default BuildingView;

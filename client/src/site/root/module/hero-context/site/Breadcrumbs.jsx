@@ -13,11 +13,11 @@ const Breadcrumbs = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.heroContext.dashboard.match(), <BaseBreadcrumbs
+				route(Routes.root.hero.context.hero.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbSimpleItem("root.heroContext.dashboard", <HeroIcon/>),
+						breadcrumbSimpleItem("root.hero.context.hero", <HeroIcon/>),
 					]}
 				/>),
 			]}
@@ -25,7 +25,7 @@ const Breadcrumbs = () => {
 	);
 };
 
-const HeroContextBreadcrumbRoute = () => route(Routes.root.heroContext.match(), <Breadcrumbs/>);
+const HeroContextBreadcrumbRoute = () => route(Routes.root.hero.context.match(), <Breadcrumbs/>);
 
 export {
 	HeroContextBreadcrumbRoute,

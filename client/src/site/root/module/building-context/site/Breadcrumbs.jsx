@@ -13,7 +13,7 @@ const Breadcrumbs = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.buildingContext.dashboard.match(), <BaseBreadcrumbs
+				route(Routes.root.building.context.building.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
@@ -25,7 +25,7 @@ const Breadcrumbs = () => {
 	);
 };
 
-const BuildingContextBreadcrumbRoute = () => route(Routes.root.buildingContext.match(), <Breadcrumbs/>);
+const BuildingContextBreadcrumbRoute = () => route(Routes.root.building.context.match(), <Breadcrumbs/>);
 
 export {
 	BuildingContextBreadcrumbRoute,

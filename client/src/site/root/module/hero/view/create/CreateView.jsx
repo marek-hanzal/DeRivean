@@ -1,19 +1,19 @@
 import HeroRedux from "redux/hero/redux";
-import BuildingView from "site/root/module/building/view/BuildingView";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import CreateViewWithAttributes from "site/root/view/CreateViewWithAttributes";
+import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
 const CreateView = () => {
 	return (
 		<CreateViewWithAttributes
+			base={RootView}
 			id={"root.hero"}
-			base={BuildingView}
 			formName={"hero"}
 			redux={HeroRedux}
 			icon={<HeroIcon/>}
 			param={"kingdom"}
-			dashboardLink={Routes.root.heroContext.dashboard.link}
+			dashboardLink={Routes.root.hero.context.hero.link}
 		/>
 	);
 };

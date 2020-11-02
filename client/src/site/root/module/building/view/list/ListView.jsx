@@ -1,20 +1,16 @@
-import {Card} from "antd";
-import {useTranslation} from "react-i18next";
+import BaseListView from "component/view/BaseListView";
 import BuildingList from "site/root/module/building/component/BuildingList";
-import BuildingView from "site/root/module/building/view/BuildingView";
+import RootView from "site/root/view/RootView";
 
 const ListView = () => {
-	const {t} = useTranslation();
 	return (
-		<BuildingView
-			base={BuildingView}
+		<BaseListView
+			base={RootView}
 			id={"root.building"}
 			menu={"root.building.list"}
 		>
-			<Card title={t(`building.list.title`)}>
-				<BuildingList/>
-			</Card>
-		</BuildingView>
+			<BuildingList/>
+		</BaseListView>
 	);
 };
 

@@ -1,11 +1,11 @@
 import BaseListView from "component/view/BaseListView";
 import KingdomList from "site/root/module/kingdom/component/KingdomList";
-import KingdomView from "site/root/module/kingdom/view/KingdomView";
+import RootView from "site/root/view/RootView";
 
 const ListView = () => {
 	return (
 		<BaseListView
-			base={KingdomView}
+			base={RootView}
 			id={"root.kingdom"}
 		>
 			<KingdomList/>

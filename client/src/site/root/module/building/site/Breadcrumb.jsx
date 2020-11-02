@@ -21,7 +21,7 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.context.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbSimpleItem("root.building.dashboard", <DashboardIcon/>),
 					]}
@@ -30,7 +30,7 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.context.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.building.create", <CreateIcon/>),
@@ -40,7 +40,7 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.context.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.building.list", <ListIcon/>),

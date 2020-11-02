@@ -1,13 +1,13 @@
 import HeroRedux from "redux/hero/redux";
-import HeroContextView from "site/root/module/hero-context/view/HeroContextView";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+import RootView from "site/root/view/RootView";
 
-const DashboardView = () => {
+const HeroView = () => {
 	return (
 		<DashboardViewWithAttributes
+			base={RootView}
 			id={"root.heroContext"}
-			base={HeroContextView}
 			formName={"hero"}
 			redux={HeroRedux}
 			param={"hero"}
@@ -17,4 +17,4 @@ const DashboardView = () => {
 	);
 };
 
-export default DashboardView;
+export default HeroView;

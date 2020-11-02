@@ -1,13 +1,13 @@
 import KingdomRedux from "redux/kingdom/redux";
-import KingdomContextView from "site/root/module/kingdom-context/view/KingdomContextView";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+import RootView from "site/root/view/RootView";
 
-const DashboardView = () => {
+const KingdomView = () => {
 	return (
 		<DashboardViewWithAttributes
 			id={"root.kingdomContext"}
-			base={KingdomContextView}
+			base={RootView}
 			formName={"kingdom"}
 			redux={KingdomRedux}
 			param={"kingdom"}
@@ -17,4 +17,4 @@ const DashboardView = () => {
 	);
 };
 
-export default DashboardView;
+export default KingdomView;

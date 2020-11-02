@@ -11,7 +11,7 @@ import route from "utils/route/route";
 const Breadcrumbs = () =>
 	<BaseRoutes
 		routes={[
-			route(Routes.root.userContext.dashboard.match(), <BaseBreadcrumbs
+			route(Routes.root.user.context.user.match(), <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 					breadcrumbSimpleItem("root.userContext.dashboard", <UserIcon/>),
@@ -22,7 +22,7 @@ const Breadcrumbs = () =>
 	/>
 ;
 
-const UserContextBreadcrumbRoute = () => route(Routes.root.userContext.match(), <Breadcrumbs/>);
+const UserContextBreadcrumbRoute = () => route(Routes.root.user.context.match(), <Breadcrumbs/>);
 
 export {
 	UserContextBreadcrumbRoute,

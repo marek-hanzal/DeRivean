@@ -16,7 +16,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						// menuDivider(),
-						// menuItem(Routes.root.heroContext.dashboard.link(), "root.heroContext.dashboard", <HeroIcon/>),
+						// menuItem(Routes.root.hero.context.hero.link(), "root.hero.context.hero", <HeroIcon/>),
 						// menuDivider(),
 						// HeroMenuItem(),
 						// menuDivider(),
@@ -29,7 +29,7 @@ const Menu = () => {
 	);
 };
 
-const HeroContextMenuRoute = () => route(Routes.root.heroContext.match(), <Menu/>);
+const HeroContextMenuRoute = () => route(Routes.root.hero.context.match(), <Menu/>);
 
 export {
 	HeroContextMenuRoute,

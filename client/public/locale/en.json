@@ -34,7 +34,12 @@
 			}
 		},
 		"home": {
-			"menu": "Home"
+			"title": "Game Server Administration",
+			"menu": "Home",
+			"content": {
+				"title": "Game Server Administration",
+				"subtitle": "This is the place where all the dark magic happens!"
+			}
 		},
 		"user": {
 			"menu": "Users",

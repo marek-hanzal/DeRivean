@@ -29,7 +29,7 @@ const Menu = () => {
 	);
 };
 
-const BuildingContextMenuRoute = () => route(Routes.root.buildingContext.match(), <Menu/>);
+const BuildingContextMenuRoute = () => route(Routes.root.building.context.match(), <Menu/>);
 
 export {
 	BuildingContextMenuRoute,

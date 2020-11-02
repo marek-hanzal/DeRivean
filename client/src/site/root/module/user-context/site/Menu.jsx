@@ -18,7 +18,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.userContext.dashboard.link(), "root.userContext.dashboard", <UserIcon/>),
+						menuItem(Routes.root.user.context.user.link(), "root.userContext.dashboard", <UserIcon/>),
 						menuDivider(),
 						KingdomMenuItem(),
 						menuDivider(),
@@ -30,7 +30,7 @@ const Menu = () => {
 	);
 };
 
-const UserContextMenuRoute = () => route(Routes.root.userContext.match(), <Menu/>);
+const UserContextMenuRoute = () => route(Routes.root.user.context.match(), <Menu/>);
 
 export {
 	UserContextMenuRoute,

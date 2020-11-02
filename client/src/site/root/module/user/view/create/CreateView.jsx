@@ -1,12 +1,12 @@
 import {Button} from "antd";
 import BaseCreateView from "component/view/BaseCreateView";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import UserView from "site/root/module/user/view/UserView";
+import RootView from "site/root/view/RootView";
 
 const CreateView = () => {
 		return (
 			<BaseCreateView
-				base={UserView}
+				base={RootView}
 				id={"root.user"}
 				icon={<UserIcon/>}
 			>

@@ -19,7 +19,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.kingdomContext.dashboard.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						menuItem(Routes.root.kingdom.context.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						menuDivider(),
 						HeroMenuItem(),
 						menuDivider(),
@@ -33,7 +33,7 @@ const Menu = () => {
 	);
 };
 
-const KingdomContextMenuRoute = () => route(Routes.root.kingdomContext.match(), <Menu/>);
+const KingdomContextMenuRoute = () => route(Routes.root.kingdom.context.match(), <Menu/>);
 
 export {
 	KingdomContextMenuRoute,

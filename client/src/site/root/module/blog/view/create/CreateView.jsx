@@ -1,12 +1,12 @@
 import BaseCreateView from "component/view/BaseCreateView";
 import BlogIcon from "site/root/module/blog/component/icon/BlogIcon";
-import BlogView from "site/root/module/blog/view/BlogView";
+import RootView from "site/root/view/RootView";
 
 const CreateView = () =>
 	<BaseCreateView
+		base={RootView}
 		id={"root.blog"}
 		icon={<BlogIcon/>}
-		base={BlogView}
 	/>
 ;
 

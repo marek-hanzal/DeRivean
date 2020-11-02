@@ -14,7 +14,7 @@ const UserList = () => {
 			id={`root.user.list.table`}
 			isLoading={isLoading}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.userContext.dashboard.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.user.context.user.link(record.id)} text={text}/>},
 				{title: "name", width: 220},
 				{title: "token", width: 380},
 				{title: "site"},
