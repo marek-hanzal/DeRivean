@@ -251,12 +251,20 @@
 			},
 			"edit": {
 				"form": {
+					"title": "Registration",
 					"cancelConfirm": "All changes will be lost, continue?",
 					"edit": "Edit!",
 					"submit": "Save changes!",
 					"delete": "Delete!",
-					"deleteConfirm": "Delete user? This is quite brutal actions which cannot be reverted! All related data will be deleted (kingdoms, heroes, ...)."
+					"deleteConfirm": "Delete user? This is quite brutal actions which cannot be reverted! All related data will be deleted (kingdoms, heroes, ...).",
+					"login": {
+						"label": "Login name",
+						"required": "Please fill login name!"
+					}
 				}
+			},
+			"update": {
+				"success": "User updated!"
 			},
 			"delete": {
 				"success": "User has been removed!"

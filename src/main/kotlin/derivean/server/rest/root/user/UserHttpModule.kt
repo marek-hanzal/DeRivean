@@ -10,6 +10,7 @@ class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			CreateEndpoint::class,
+			UpdateEndpoint::class,
 			FetchEndpoint::class,
 			PageEndpoint::class,
 			DeleteEndpoint::class,

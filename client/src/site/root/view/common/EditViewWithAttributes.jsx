@@ -25,6 +25,7 @@ const EditViewWithAttributes = (
 		open,
 		menu,
 		enableSubmit,
+		children,
 		icon = <EditIcon/>,
 	}) => {
 	const dispatch = useDispatch();
@@ -104,6 +105,7 @@ const EditViewWithAttributes = (
 				<DualSection
 					left={
 						<Centered span={24}>
+							{children}
 							<AttributeFieldEditor edit={edit} translation={id} attributes={attributes}/>
 						</Centered>
 					}
