@@ -13,6 +13,7 @@ class u2020_10_21(container: IContainer) : AbstractUpgrade(container) {
 		storage.transaction {
 			SchemaUtils.create(
 				UpgradeUserTable,
+				UpgradeUserAttributeTable,
 				UpgradeKingdomTable,
 				UpgradeKingdomAttributeTable,
 				UpgradeBuildingTable,

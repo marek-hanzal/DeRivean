@@ -1,12 +1,13 @@
 package derivean.server.user.entities
 
 import derivean.lib.storage.EntityUUID
-import org.jetbrains.exposed.dao.UUIDEntity
+import derivean.server.attribute.EntityWithAttributes
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class User(id: EntityUUID) : UUIDEntity(id) {
+class User(id: EntityUUID) : EntityWithAttributes(id) {
 	companion object : UUIDEntityClass<User>(UserTable)
 
+	override val attributes by UserAttribute referrersOn UserAttributeTable.user
 	var name by UserTable.name
 	var login by UserTable.login
 	var password by UserTable.password
