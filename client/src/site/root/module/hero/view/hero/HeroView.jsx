@@ -5,7 +5,7 @@ import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes
 const HeroView = () => {
 	return (
 		<EditViewWithAttributes
-			id={"root.heroContext"}
+			id={"root.hero"}
 			formName={"hero"}
 			redux={HeroRedux}
 			param={"hero"}

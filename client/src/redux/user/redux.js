@@ -1,5 +1,6 @@
 import dismissAction from "utils/action/actions/dismissAction";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
+import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreateRedux from "utils/redux/CreateRedux";
 
 const UserRedux = CreateRedux(
@@ -15,7 +16,7 @@ const UserRedux = CreateRedux(
 		login: CreateActionRedux("user", "login", "public.user.login", {
 			dismiss: dismissAction("user.login"),
 		}),
-		attributes: CreateActionRedux("user", "attributes", "root.user.attributes"),
+		attributes: CreateLinkRedux("user", "attributes", "root.user.attributes"),
 	},
 );
 

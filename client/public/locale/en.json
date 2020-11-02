@@ -24,6 +24,10 @@
 		"spinner": "Making some hard magick to make things work!"
 	},
 	"root": {
+		"site": {
+			"game": "Game",
+			"root": "Root (admin)"
+		},
 		"sign-out": {
 			"menu": "Sign out!",
 			"title": "Sign out?",
@@ -43,15 +47,69 @@
 		},
 		"user": {
 			"menu": "User",
+			"breadcrumb": "User",
+			"title": "Users Dashboard",
+			"subtitle": "Overview of all users on the server.",
 			"dashboard": {
 				"menu": "Dashboard",
-				"breadcrumb": "Users",
+				"breadcrumb": "Dashboard",
 				"title": "Dashboard"
+			},
+			"form": {
+				"name": {
+					"label": "User name",
+					"required": "Please choose user name!"
+				},
+				"cancel": "Cancel!",
+				"attribute": {
+					"title": "User attributes",
+					"empty": "There are no attributes!",
+					"add": "Attribute",
+					"deleteConfirm": "Delete attribute?",
+					"name": {
+						"hint": "Choose an attribute",
+						"required": "Please choose an attribute!"
+					},
+					"value": {
+						"hint": "Value",
+						"required": "Attribute value is required!"
+					}
+				}
 			},
 			"create": {
 				"menu": "Create",
 				"breadcrumb": "Create",
-				"title": "Create"
+				"title": "Create user",
+				"form": {
+					"title": "Registration",
+					"submit": "Create user!",
+					"cancelConfirm": "All changes will be lost, continue?",
+					"login": {
+						"label": "Login name",
+						"required": "Please fill login name!"
+					},
+					"password": {
+						"label": "Password"
+					},
+					"site": {
+						"label": "Site",
+						"help": "Assign an user to desired site."
+					}
+				},
+				"list": {
+					"title": "Users",
+					"item-0": "User represents human being",
+					"item-1": "When an user is created, it could have different access",
+					"item-2": "This application has three sections - public, game and root",
+					"item-3": "Players should be assigned to [game] section"
+				}
+			},
+			"edit": {
+				"form": {
+					"cancelConfirm": "All changes will be lost, continue?",
+					"edit": "Edit!",
+					"submit": "Save changes!"
+				}
 			},
 			"list": {
 				"menu": "List",
@@ -73,15 +131,9 @@
 				}
 			}
 		},
-		"userContext": {
-			"dashboard": {
-				"menu": "User",
-				"breadcrumb": "User",
-				"title": "User"
-			}
-		},
 		"kingdom": {
 			"menu": "Kingdom",
+			"breadcrumb": "Kingdom",
 			"attribute": {
 				"resource": {
 					"wood": "Wood",
@@ -92,6 +144,7 @@
 			},
 			"dashboard": {
 				"menu": "Dashboard",
+				"breadcrumb": "Dashboard",
 				"form": {
 					"cancel": {
 						"label": "Cancel"
@@ -107,10 +160,11 @@
 			},
 			"create": {
 				"menu": "Create",
+				"title": "Create new Kingdom",
+				"breadcrumb": "Create",
 				"form": {
-					"cancel": {
-						"label": "Cancel"
-					}
+					"submit": "Create!",
+					"cancelConfirm": "Changes will be lost, continue?"
 				}
 			},
 			"update": {
@@ -119,6 +173,8 @@
 			},
 			"list": {
 				"menu": "List",
+				"breadcrumb": "List",
+				"title": "Kingdom list",
 				"table": {
 					"id": {
 						"column": "UUID"
@@ -131,33 +187,33 @@
 			"form": {
 				"attribute": {
 					"title": "Kingdom attributes",
-					"add": {
-						"label": "Attribute"
-					}
+					"add": "Attribute",
+					"empty": "There are no attributes"
 				},
+				"cancel": "Cancel",
 				"name": {
-					"label": "Kingdom name"
-				}
-			}
-		},
-		"kingdomContext": {
-			"dashboard": {
-				"menu": "Kingdom",
-				"title": "Kingdom",
-				"breadcrumb": "Kingdom",
-				"view": {
-					"name": "Kingdom name"
-				},
-				"form": {
-					"attribute": {
-						"title": "Kingdom attributes"
-					}
+					"label": "Kingdom name",
+					"required": "Please choose some epic Kingdom name!"
 				}
 			}
 		},
 		"hero": {
 			"menu": "Heroes",
+			"title": "Heroes of Kingdom",
+			"subtitle": "This is administration of all Heroes in current kingdom.",
 			"breadcrumb": "Hero",
+			"form": {
+				"attribute": {
+					"title": "Hero attributes",
+					"empty": "There are not attributes",
+					"add": "Attribute"
+				},
+				"name": {
+					"label": "Name",
+					"required": "Please choose some nice hero name!"
+				},
+				"cancel": "Cancel!"
+			},
 			"dashboard": {
 				"menu": "Dashboard",
 				"title": "Heroes Dashboard",
@@ -167,12 +223,26 @@
 			"list": {
 				"menu": "List",
 				"title": "Heroes of Kingdom",
-				"breadcrumb": "Heroes"
+				"breadcrumb": "Heroes",
+				"table": {
+					"id": {
+						"column": "UUID"
+					},
+					"name": {
+						"column": "Name"
+					}
+				}
 			},
 			"create": {
 				"menu": "Create",
 				"title": "Create a new Hero",
 				"breadcrumb": "Create"
+			},
+			"edit": {
+				"form": {
+					"edit": "Edit!",
+					"submit": "Save changes!"
+				}
 			}
 		},
 		"building": {
@@ -240,12 +310,6 @@
 					"item-0": "Buildings are producing resources and making effects over heroes and kingdom",
 					"item-1": "All production values are per hour"
 				}
-			}
-		},
-		"buildingContext": {
-			"dashboard": {
-				"title": "Building Overview",
-				"breadcrumb": "Building"
 			}
 		},
 		"blog": {

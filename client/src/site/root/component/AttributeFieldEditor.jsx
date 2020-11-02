@@ -70,7 +70,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 												ghost
 												onClick={() => add()}
 												icon={<PlusOutlined/>}
-												children={t(translation + ".form.attribute.add.label")}
+												children={t(translation + ".form.attribute.add")}
 											/>
 										</List.Item>
 									</Centered>
@@ -89,7 +89,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 										ghost
 										onClick={() => add()}
 										icon={<PlusOutlined/>}
-										children={t(translation + ".form.attribute.add.label")}
+										children={t(translation + ".form.attribute.add")}
 									/>
 								</>
 							) : null}

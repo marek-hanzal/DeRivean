@@ -5,7 +5,7 @@ import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router";
@@ -22,6 +22,10 @@ const CreateViewWithAttributes = (
 		icon,
 		param,
 		dashboardLink,
+		children,
+		errors,
+		setErrors,
+		initials,
 	}) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -30,7 +34,6 @@ const CreateViewWithAttributes = (
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
-	const [errors, setErrors] = useState();
 	const isLoading = useSelector(redux.redux.attributes.selector.isLoading);
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	useEffect(() => {
@@ -41,6 +44,7 @@ const CreateViewWithAttributes = (
 		<Form
 			form={form}
 			name={formName}
+			initialValues={initials}
 			autoComplete="off"
 			onFinish={values => {
 				dispatch(redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
@@ -81,6 +85,7 @@ const CreateViewWithAttributes = (
 				<DualSection
 					left={
 						<Centered span={24}>
+							{children}
 							<AttributeFieldEditor edit={true} translation={id} attributes={attributes}/>
 						</Centered>
 					}
@@ -93,7 +98,7 @@ const CreateViewWithAttributes = (
 
 CreateViewWithAttributes.propTypes = {
 	id: PropTypes.string.isRequired,
-	base: PropTypes.element.isRequired,
+	base: PropTypes.func.isRequired,
 	formName: PropTypes.string.isRequired,
 	redux: PropTypes.object.isRequired,
 	icon: PropTypes.element,

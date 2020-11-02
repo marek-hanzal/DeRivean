@@ -19,17 +19,17 @@ const CancelEditButton = (
 					<Popconfirm
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
-						title={t(translation + ".form.edit.cancelConfirm")}
+						title={t(translation + ".edit.form.cancelConfirm")}
 						onConfirm={() => {
 							setEdit(false);
 							values(form, initials);
 						}}
-						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel.label")}</Button>}
+						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => {
 						setEdit(false);
 						values(form, initials);
-					}}>{t(translation + ".form.cancel.label")}</Button>
+					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>
 	);

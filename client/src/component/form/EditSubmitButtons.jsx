@@ -18,10 +18,10 @@ const EditSubmitButtons = (
 	return (
 		edit ?
 			<Space split={<Divider type={"vertical"}/>}>
-				<SubmitButton form={form} title={translation + ".form.edit.submit.label"}/>
+				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
 				<CancelEditButton form={form} setEdit={setEdit} translation={translation} initials={initials}/>
 			</Space> :
-			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t(translation + ".form.edit.label")}</Button>
+			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => setEdit(true)} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 

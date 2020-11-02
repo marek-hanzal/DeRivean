@@ -1,5 +1,6 @@
 import BaseBreadcrumbs from "component/breadcrumbs/BaseBreadcrumbs";
 import CreateIcon from "component/icon/CreateIcon";
+import DashboardIcon from "component/icon/DashboardIcon";
 import HomeIcon from "component/icon/HomeIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseRoutes from "component/route/BaseRoutes";
@@ -16,7 +17,8 @@ const Breadcrumbs = () =>
 			route(Routes.root.user.dashboard.match(), <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-					breadcrumbSimpleItem("root.user.dashboard", <UserIcon/>),
+					breadcrumbSimpleItem("root.user", <UserIcon/>),
+					breadcrumbSimpleItem("root.user.dashboard", <DashboardIcon/>),
 				]}
 			/>),
 			route(Routes.root.user.create.match(), <BaseBreadcrumbs
@@ -36,7 +38,7 @@ const Breadcrumbs = () =>
 			route(Routes.root.user.user.match(), <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
-					breadcrumbSimpleItem("root.userContext.dashboard", <UserIcon/>),
+					breadcrumbSimpleItem("root.user.dashboard", <UserIcon/>),
 				]}
 			/>),
 		]}

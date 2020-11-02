@@ -22,12 +22,12 @@ const CancelCreateButton = (
 							form.resetFields();
 							onCancel();
 						}}
-						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel.label")}</Button>}
+						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"danger"} disabled={!form.isFieldsTouched()} ghost icon={<DeleteItemIcon/>} onClick={() => {
 						form.resetFields();
 						onCancel();
-					}}>{t(translation + ".form.cancel.label")}</Button>
+					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>
 	);

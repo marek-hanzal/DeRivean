@@ -5,7 +5,7 @@ import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes
 const BuildingView = () => {
 	return (
 		<EditViewWithAttributes
-			id={"root.buildingContext"}
+			id={"root.building"}
 			formName={"building"}
 			redux={BuildingRedux}
 			param={"building"}
