@@ -35,6 +35,6 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		val name: String,
 		val password: String?,
 		val token: String?,
-		val site: String,
+		val site: String?,
 	)
 }

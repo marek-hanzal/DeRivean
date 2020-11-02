@@ -3,6 +3,7 @@ package derivean.server.rest.public.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
+import derivean.lib.user.LockedUserException
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 
@@ -12,8 +13,16 @@ class LoginMapper(container: IContainer) : AbstractActionMapper<LoginMapper.Requ
 	override fun resolve(item: Request) = try {
 		ok(storage.transaction {
 			authenticatorService.authenticate(item.login, item.password).let {
-				Response(it.login, it.name, it.token!!, it.site)
+				if (it.site == null) {
+					throw LockedUserException("User has no site assigned, thus login is prohibited!")
+				}
+				Response(it.login, it.name, it.token!!, it.site!!)
 			}
+		})
+	} catch (e: LockedUserException) {
+		forbidden(ValidationResponse.build {
+			message = "Login failed!"
+			validation("login", "error", "Your account is locked")
 		})
 	} catch (e: UserException) {
 		forbidden(ValidationResponse.build {

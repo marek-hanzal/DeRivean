@@ -19,7 +19,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 		val name: String,
 		val login: String,
 		val token: String?,
-		val site: String,
+		val site: String?,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -30,7 +30,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 			lateinit var name: String
 			lateinit var login: String
 			var token: String? = null
-			lateinit var site: String
+			var site: String? = null
 
 			fun build() = Response(
 				id.toString(),

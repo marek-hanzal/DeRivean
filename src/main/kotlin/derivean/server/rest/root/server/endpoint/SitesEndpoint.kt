@@ -20,6 +20,7 @@ class SitesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 					ok(
 						Response(
 							"game", listOf(
+								null,
 								// public is not listed as public is generally available
 								"game",
 								"root",
@@ -31,5 +32,5 @@ class SitesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 		}
 	}
 
-	data class Response(val defaultSite: String, val sites: List<String>)
+	data class Response(val defaultSite: String, val sites: List<String?>)
 }
