@@ -10,13 +10,13 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
+import RootView from "site/root/view/RootView";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
 const DashboardViewWithAttributes = (
 	{
 		id,
-		base,
 		formName,
 		redux,
 		param,
@@ -41,7 +41,6 @@ const DashboardViewWithAttributes = (
 	}), [dispatch, form, param, params, redux.redux.fetch.dispatch]);
 
 	return (
-
 		<Form
 			form={form}
 			name={formName}
@@ -56,7 +55,7 @@ const DashboardViewWithAttributes = (
 			}}
 		>
 			<BaseDashboardView
-				base={base}
+				base={RootView}
 				id={id}
 				open={open}
 				icon={<Spinner icon={icon} enable={data}/>}

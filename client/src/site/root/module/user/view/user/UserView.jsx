@@ -1,6 +1,17 @@
+import UserRedux from "redux/user/redux";
+import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttributes";
+
 const UserView = () => {
 	return (
-		<h1>use classic dashboard with attributes or whatever</h1>
+		<DashboardViewWithAttributes
+			id={"root.user"}
+			formName={"user"}
+			redux={UserRedux}
+			param={"user"}
+			open={["root.kingdom"]}
+			icon={<UserIcon/>}
+		/>
 	);
 };
 
