@@ -143,7 +143,7 @@
 		"server": {
 			"error": {
 				"Missing template user!": "Template user is required for new user registration!",
-				"Missing template kingdom!": "Template kingdom is required for new kingdom creation (from players point of view)!",
+				"Missing template kingdom!": "Template kingdom is required for new kingdom creation (from player's point of view)!",
 				"action": {
 					"create-template-user": "Fix this error",
 					"create-template-kingdom": "Fix this error"
@@ -179,6 +179,10 @@
 					"list": {
 						"title": "Following errors prevents game to run smoothly."
 					}
+				},
+				"loader": {
+					"title": "Fetching server health status",
+					"subtitle": "Waaait for it....!"
 				}
 			}
 		},
@@ -274,6 +278,7 @@
 		"kingdom": {
 			"menu": "Kingdom",
 			"breadcrumb": "Kingdom",
+			"title": "Kingdom",
 			"kingdom": {
 				"breadcrumb": "Kingdom"
 			},
@@ -313,6 +318,12 @@
 			"update": {
 				"success": "Kingdom updated successfully!",
 				"error": "Cannot updated kingdom!"
+			},
+			"edit": {
+				"form": {
+					"edit": "Edit!",
+					"submit": "Save changes!"
+				}
 			},
 			"list": {
 				"menu": "List",

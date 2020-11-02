@@ -7,11 +7,12 @@ const CreateSubmitButtons = (
 	{
 		form,
 		translation,
+		enableSubmit,
 		onCancel = () => ({}),
 	}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
-			<SubmitButton form={form} title={translation + ".create.form.submit"}/>
+			<SubmitButton enable={enableSubmit} form={form} title={translation + ".create.form.submit"}/>
 			<CancelCreateButton onCancel={onCancel} form={form} translation={translation}/>
 		</Space>
 	);
@@ -20,6 +21,7 @@ const CreateSubmitButtons = (
 CreateSubmitButtons.propTypes = {
 	form: PropTypes.any.isRequired,
 	translation: PropTypes.string.isRequired,
+	enableSubmit: PropTypes.any,
 };
 
 export default CreateSubmitButtons;

@@ -26,6 +26,7 @@ const CreateViewWithAttributes = (
 		errors,
 		setErrors,
 		initials,
+		enableSubmit,
 	}) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -63,9 +64,16 @@ const CreateViewWithAttributes = (
 				loading={isLoading}
 				id={id}
 				icon={icon}
-				title={<CreateSubmitButtons onCancel={() => {
-					setErrors(null);
-				}} form={form} translation={id}/>}
+				title={
+					<CreateSubmitButtons
+						enableSubmit={enableSubmit}
+						onCancel={() => {
+							setErrors(null);
+						}}
+						form={form}
+						translation={id}
+					/>
+				}
 				subTitle={
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
@@ -105,6 +113,7 @@ CreateViewWithAttributes.propTypes = {
 	icon: PropTypes.element,
 	param: PropTypes.string.isRequired,
 	dashboardLink: PropTypes.func.isRequired,
+	enableSubmit: PropTypes.any.isRequired,
 };
 
 export default CreateViewWithAttributes;

@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 import {useTranslation} from "react-i18next";
 import enableSubmit from "utils/form/enableSubmit";
 
-const SubmitButton = ({form, title}) => {
+const SubmitButton = (
+	{
+		form,
+		title,
+		enable,
+	}) => {
 	const {t} = useTranslation();
 	return (
 		<Form.Item shouldUpdate noStyle>
@@ -14,7 +19,7 @@ const SubmitButton = ({form, title}) => {
 					size={"large"}
 					htmlType={"submit"}
 					icon={<SubmitIcon/>}
-					disabled={enableSubmit(form, false)}
+					disabled={!(enable && !enableSubmit(form, false))}
 					children={t(title || "common:submit.label")}
 				/>
 			)}
@@ -25,6 +30,7 @@ const SubmitButton = ({form, title}) => {
 SubmitButton.propTypes = {
 	form: PropTypes.any.isRequired,
 	title: PropTypes.string,
+	enable: PropTypes.any,
 };
 
 export default SubmitButton;

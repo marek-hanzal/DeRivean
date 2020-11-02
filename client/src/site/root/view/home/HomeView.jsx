@@ -4,13 +4,14 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import ServerRedux from "redux/server/redux";
 import ErrorResult from "site/root/view/home/ErrorResult";
+import LoaderResult from "site/root/view/home/LoaderResult";
 import SuccessResult from "site/root/view/home/SuccessResult";
 import RootView from "site/root/view/RootView";
 
 const HomeView = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const [validation, setValidation] = useState({lockdown: false, errors: []});
+	const [validation, setValidation] = useState();
 
 	useEffect(() => {
 		dispatch(ServerRedux.redux.validate.dispatch.validate()).then(validation => {
@@ -24,7 +25,11 @@ const HomeView = () => {
 			open={["root.blog", "root.user"]}
 		>
 			<Card title={t("root.home.title")}>
-				{validation.errors.length ? <ErrorResult validation={validation}/> : <SuccessResult/>}
+				{
+					validation ?
+						(validation.errors.length ? <ErrorResult validation={validation}/> : <SuccessResult/>) :
+						<LoaderResult/>
+				}
 			</Card>
 		</RootView>
 	);

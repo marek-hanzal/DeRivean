@@ -23,6 +23,8 @@ const CreateView = () => {
 		});
 	}, [dispatch]);
 
+	console.log("site", sites);
+
 	return (
 		<CreateViewWithAttributes
 			base={RootView}
@@ -34,6 +36,7 @@ const CreateView = () => {
 			dashboardLink={Routes.root.user.user.link}
 			errors={errors}
 			setErrors={setErrors}
+			enableSubmit={sites}
 		>
 			<Card title={t("root.user.create.form.title")}>
 				<Form.Item
