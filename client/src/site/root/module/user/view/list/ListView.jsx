@@ -7,6 +7,7 @@ const ListView = () => {
 		<BaseListView
 			base={RootView}
 			id={"root.user"}
+			open={["root.user", "root.blog"]}
 		>
 			<UserList/>
 		</BaseListView>

@@ -62,8 +62,8 @@ const Routes = {
                 link: () => "/user/list",
             },
             user: {
-                match: () => ":user/*",
-                link: resolveUuid("user", "/user/:user")
+                match: () => "@/:user/*",
+                link: resolveUuid("user", "/user/@/:user")
             },
         },
         kingdom: {
