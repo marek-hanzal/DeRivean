@@ -296,6 +296,7 @@
 			"menu": "Kingdom",
 			"breadcrumb": "Kingdom",
 			"title": "Kingdom",
+			"subtitle": "All interesting things about kingdoms of the selected user.",
 			"kingdom": {
 				"breadcrumb": "Kingdom"
 			},
