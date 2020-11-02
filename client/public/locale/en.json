@@ -222,6 +222,9 @@
 				"menu": "Create",
 				"breadcrumb": "Create",
 				"title": "Create user",
+				"message": {
+					"success": "User created!"
+				},
 				"form": {
 					"title": "Registration",
 					"submit": "Create user!",
@@ -250,8 +253,13 @@
 				"form": {
 					"cancelConfirm": "All changes will be lost, continue?",
 					"edit": "Edit!",
-					"submit": "Save changes!"
+					"submit": "Save changes!",
+					"delete": "Delete!",
+					"deleteConfirm": "Delete user? This is quite brutal actions which cannot be reverted! All related data will be deleted (kingdoms, heroes, ...)."
 				}
+			},
+			"delete": {
+				"success": "User has been removed!"
 			},
 			"list": {
 				"menu": "List",
@@ -311,6 +319,9 @@
 				"menu": "Create",
 				"title": "Create new Kingdom",
 				"breadcrumb": "Create",
+				"message": {
+					"success": "Kingdom created!"
+				},
 				"form": {
 					"submit": "Create!",
 					"cancelConfirm": "Changes will be lost, continue?"
@@ -323,8 +334,14 @@
 			"edit": {
 				"form": {
 					"edit": "Edit!",
-					"submit": "Save changes!"
+					"submit": "Save changes!",
+					"delete": "Delete!",
+					"deleteConfirm": "Delete kingdom? This action will remove a lot of things and cannot be reverted!",
+					"cancelConfirm": "All changes will be lost, continue?"
 				}
+			},
+			"delete": {
+				"success": "Kingdom deleted!"
 			},
 			"list": {
 				"menu": "List",
@@ -393,15 +410,25 @@
 				"menu": "Create",
 				"title": "Create a new Hero",
 				"breadcrumb": "Create",
+				"message": {
+					"success": "Hero created!"
+				},
 				"form": {
-					"submit": "Create hero!"
+					"submit": "Create hero!",
+					"cancelConfirm": "All changes will be lost, continue?"
 				}
 			},
 			"edit": {
 				"form": {
 					"edit": "Edit!",
-					"submit": "Save changes!"
+					"submit": "Save changes!",
+					"delete": "Delete!",
+					"deleteConfirm": "Kill this hero? This process is quite painful and cannot be reverted!",
+					"cancelConfirm": "All changes will be lost, continue?"
 				}
+			},
+			"delete": {
+				"success": "Hero successfully killed!"
 			}
 		},
 		"building": {

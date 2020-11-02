@@ -1,7 +1,6 @@
-import {Button, Divider, Form, Input, message, Popconfirm, Space} from "antd";
+import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
-import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
@@ -11,8 +10,7 @@ import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router";
-import SessionRedux from "redux/session/redux";
+import {useParams} from "react-router";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import RootView from "site/root/view/RootView";
 import validationFor from "utils/form/validationFor";
@@ -37,8 +35,6 @@ const EditViewWithAttributes = (
 	const params = useParams();
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const errors = useSelector(redux.redux.update.selector.getError);
-	const navigate = useNavigate();
-	const history = useSelector(SessionRedux.selector.getHistory);
 
 	/**
 	 * Fetch attributes from redux.
@@ -77,34 +73,16 @@ const EditViewWithAttributes = (
 				menu={menu}
 				icon={<Spinner icon={icon} enable={data}/>}
 				title={
-					<>
-						<Space split={<Divider type={"vertical"}/>}>
-							<EditSubmitButtons
-								enableSubmit={enableSubmit}
-								initials={data}
-								edit={edit}
-								setEdit={setEdit}
-								form={form}
-								translation={id}
-							/>
-							<Popconfirm
-								okText={t("common.yes")}
-								cancelText={t("common.no")}
-								title={t(id + ".edit.form.deleteConfirm")}
-								onConfirm={() => {
-									dispatch(redux.redux.delete.dispatch.delete({id: params[param]})).then(_ => {
-										message.success(t(id + ".delete.success"));
-										navigate(history.pop() || -1);
-										dispatch(SessionRedux.history(history));
-									}, () => {
-										message.error(t(id + ".delete.error"));
-									});
-								}}
-							>
-								<Button type={"danger"} ghost icon={<DeleteItemIcon/>} children={t(id + ".edit.form.delete")}/>
-							</Popconfirm>
-						</Space>
-					</>
+					<EditSubmitButtons
+						enableSubmit={enableSubmit}
+						initials={data}
+						edit={edit}
+						setEdit={setEdit}
+						form={form}
+						translation={id}
+						param={param}
+						redux={redux}
+					/>
 				}
 				subTitle={
 					<Centered span={12}>

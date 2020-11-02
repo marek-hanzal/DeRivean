@@ -1,5 +1,5 @@
 import {Button, Form, Popconfirm} from "antd";
-import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import CancelIcon from "component/icon/CancelIcon";
 import {useTranslation} from "react-i18next";
 import values from "utils/form/values";
 
@@ -24,9 +24,9 @@ const CancelEditButton = (
 							setEdit(false);
 							values(form, initials);
 						}}
-						children={<Button type={"danger"} ghost icon={<DeleteItemIcon/>}>{t(translation + ".form.cancel")}</Button>}
+						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
-					<Button type={"danger"} ghost icon={<DeleteItemIcon/>} onClick={() => {
+					<Button type={"dashed"} danger ghost icon={<CancelIcon/>} onClick={() => {
 						setEdit(false);
 						values(form, initials);
 					}}>{t(translation + ".form.cancel")}</Button>
