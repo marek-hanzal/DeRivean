@@ -7,6 +7,7 @@ const DashboardView = () => {
 		<BaseDashboardView
 			base={RootView}
 			id={"root.user"}
+			menu={"root.user.dashboard"}
 			icon={<UserIcon/>}
 		>
 			<h1>some content here</h1>

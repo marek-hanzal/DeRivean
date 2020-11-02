@@ -1,4 +1,5 @@
 import {Menu} from "antd";
+import HistoryLink from "component/table/HistoryLink";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {generatePath, useNavigate, useParams} from "react-router";
@@ -29,7 +30,11 @@ function RenderItem(item, index) {
 		default:
 			return (
 				<Menu.Item key={key} icon={item.icon}>
-					<Link to={href}>{t(`${item.key}.menu`)}</Link>
+					{
+						item.history ?
+							<HistoryLink to={href} text={t(`${item.key}.menu`)}/> :
+							<Link to={href}>{t(`${item.key}.menu`)}</Link>
+					}
 				</Menu.Item>
 			);
 	}

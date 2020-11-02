@@ -47,7 +47,7 @@ const Site = () => {
 								menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 								menuDivider(),
 
-								UserMenuItem(),
+								UserMenuItem(true),
 								menuDivider(),
 								BlogMenuItem(),
 

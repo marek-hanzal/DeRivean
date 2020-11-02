@@ -45,10 +45,10 @@ const Menu = () => {
 	);
 };
 
-const UserMenuItem = () => menuGroup("root.user", <UserIcon/>, [
-	menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.user.create.link(), "root.user.create", <CreateIcon/>),
-	menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>),
+const UserMenuItem = (history = false) => menuGroup("root.user", <UserIcon/>, [
+	menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <DashboardIcon/>, history),
+	menuItem(Routes.root.user.create.link(), "root.user.create", <CreateIcon/>, history),
+	menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>, history),
 ]);
 
 const UserMenuRoute = () => route(Routes.root.user.match(), <Menu/>);

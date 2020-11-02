@@ -3,7 +3,7 @@ import {useLocation} from "react-router";
 import {Link} from "react-router-dom";
 import SessionRedux from "redux/session/redux";
 
-const HistoryLink = ({link, text, ...props}) => {
+const HistoryLink = ({text, ...props}) => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const history = useSelector(SessionRedux.selector.getHistory);
