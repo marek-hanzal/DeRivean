@@ -41,9 +41,9 @@ const Menu = () => {
 						menuDivider(),
 						menuItem(Routes.root.kingdom.kingdom.link(), "root.kingdom", <KingdomIcon/>),
 						menuDivider(),
-						HeroMenuItem(),
+						HeroMenuItem(true),
 						menuDivider(),
-						BuildingMenuItem(),
+						BuildingMenuItem(true),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}

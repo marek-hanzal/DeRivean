@@ -13,7 +13,7 @@ const CreateView = () => {
 			redux={BuildingRedux}
 			icon={<BuildingIcon/>}
 			param={"kingdom"}
-			dashboardLink={Routes.root.buildingContext.dashboard.link}
+			dashboardLink={Routes.root.building.building.link}
 		/>
 	);
 };

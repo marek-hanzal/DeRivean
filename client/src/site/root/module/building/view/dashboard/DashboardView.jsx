@@ -8,6 +8,7 @@ const DashboardView = () => {
 			base={RootView}
 			id={"root.building"}
 			icon={<BuildingIcon/>}
+			menu={"root.building.dashboard"}
 		/>
 	);
 };

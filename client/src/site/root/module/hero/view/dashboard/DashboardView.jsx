@@ -8,6 +8,7 @@ const DashboardView = () => {
 			base={RootView}
 			id={"root.hero"}
 			icon={<HeroIcon/>}
+			menu={"root.hero.dashboard"}
 		>
 		</BaseDashboardView>
 	);

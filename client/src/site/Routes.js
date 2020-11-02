@@ -86,48 +86,42 @@ const Routes = {
             },
         },
         hero: {
-            match: () => "hero/*",
+            match: () => "/hero/*",
             dashboard: {
-                match: () => "dashboard/*",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/hero/dashboard"),
+                match: () => "k/:kingdom/dashboard/*",
+                link: resolveUuid("kingdom", "/hero/k/:kingdom/dashboard"),
             },
             create: {
-                match: () => "create",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/hero/create"),
+                match: () => "k/:kingdom/create/*",
+                link: resolveUuid("kingdom", "/hero/k/:kingdom/create"),
             },
             list: {
-                match: () => "list",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/hero/list"),
+                match: () => "k/:kingdom/list/*",
+                link: resolveUuid("kingdom", "/hero/k/:kingdom/list"),
             },
-            context: {
-                match: () => "/hero-context/:hero/*",
-                hero: {
-                    match: () => "hero/*",
-                    link: resolveUuid("hero", "/hero-context/:hero/hero"),
-                },
-            }
+            hero: {
+                match: () => "h/:hero/*",
+                link: resolveUuid("hero", "/hero/h/:hero"),
+            },
         },
         building: {
-            match: () => "building/*",
+            match: () => "/building/*",
             dashboard: {
-                match: () => "dashboard/*",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/dashboard"),
+                match: () => "k/:kingdom/dashboard/*",
+                link: resolveUuid("kingdom", "/building/k/:kingdom/dashboard"),
             },
             create: {
-                match: () => "create",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/create"),
+                match: () => "k/:kingdom/create/*",
+                link: resolveUuid("kingdom", "/building/k/:kingdom/create"),
             },
             list: {
-                match: () => "list",
-                link: resolveUuid("kingdom", "/kingdom-context/:kingdom/building/list"),
+                match: () => "k/:kingdom/list/*",
+                link: resolveUuid("kingdom", "/building/k/:kingdom/list"),
             },
-            context: {
-                match: () => "/building-context/:building/*",
-                building: {
-                    match: () => "building/*",
-                    link: resolveUuid("building", "/building-context/:building/building"),
-                },
-            }
+            building: {
+                match: () => "b/:building/*",
+                link: resolveUuid("building", "/building/b/:building"),
+            },
         },
     }
 };

@@ -7,12 +7,13 @@ import SingOutView from "component/view/SingOutView";
 import {BlogBreadcrumbRoute} from "site/root/module/blog/site/Breadcrumbs";
 import {BlogMenuItem} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
-import {BuildingContextBreadcrumbRoute} from "site/root/module/building-context/site/Breadcrumbs";
-import {BuildingContextMenuRoute} from "site/root/module/building-context/site/Menu";
-import {BuildingContextRoute} from "site/root/module/building-context/site/Router";
-import {HeroContextBreadcrumbRoute} from "site/root/module/hero-context/site/Breadcrumbs";
-import {HeroContextMenuRoute} from "site/root/module/hero-context/site/Menu";
-import {HeroContextRoute} from "site/root/module/hero-context/site/Router";
+import {BuildingBreadcrumbRoute} from "site/root/module/building/site/Breadcrumb";
+import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
+import {BuildingRoute} from "site/root/module/building/site/Router";
+import {HeroBreadcrumbRoute} from "site/root/module/hero/site/Breadcrumb";
+import {HeroMenuRoute} from "site/root/module/hero/site/Menu";
+import {HeroRoute} from "site/root/module/hero/site/Router";
+import {KingdomBreadcrumbRoute} from "site/root/module/kingdom/site/Breadcrumbs";
 import {KingdomMenuRoute} from "site/root/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/root/module/kingdom/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
@@ -39,8 +40,8 @@ const Site = () => {
 					routes={[
 						UserMenuRoute(),
 						KingdomMenuRoute(),
-						BuildingContextMenuRoute(),
-						HeroContextMenuRoute(),
+						BuildingMenuRoute(),
+						HeroMenuRoute(),
 						route("*", <BaseMenu
 							items={[
 								menuDivider(),
@@ -62,8 +63,9 @@ const Site = () => {
 				<BaseRoutes
 					routes={[
 						UserBreadcrumbRoute(),
-						BuildingContextBreadcrumbRoute(),
-						HeroContextBreadcrumbRoute(),
+						KingdomBreadcrumbRoute(),
+						BuildingBreadcrumbRoute(),
+						HeroBreadcrumbRoute(),
 						BlogBreadcrumbRoute(),
 
 						route("/", <BaseBreadcrumbs
@@ -79,8 +81,8 @@ const Site = () => {
 					routes={[
 						UserRoute(),
 						KingdomRoute(),
-						BuildingContextRoute(),
-						HeroContextRoute(),
+						BuildingRoute(),
+						HeroRoute(),
 						BlogRoute(),
 
 						route(Routes.root.signIn.link(), <SingInView/>),

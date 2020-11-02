@@ -3,8 +3,6 @@ import CreateIcon from "component/icon/CreateIcon";
 import HomeIcon from "component/icon/HomeIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseRoutes from "component/route/BaseRoutes";
-import {BuildingBreadcrumbRoute} from "site/root/module/building/site/Breadcrumb";
-import {HeroBreadcrumbRoute} from "site/root/module/hero/site/Breadcrumb";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
@@ -40,15 +38,13 @@ const Breadcrumbs = () => {
 						breadcrumbSimpleItem("root.kingdom.list", <ListIcon/>),
 					]}
 				/>),
-				route(Routes.root.kingdom.context.kingdom.match(), <BaseBreadcrumbs
+				route(Routes.root.kingdom.kingdom.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
 						breadcrumbSimpleItem("root.kingdomContext.dashboard", <KingdomIcon/>),
 					]}
 				/>),
-				BuildingBreadcrumbRoute(),
-				HeroBreadcrumbRoute(),
 			]}
 		/>
 	);
