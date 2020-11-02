@@ -140,6 +140,24 @@
 			"game": "Game",
 			"root": "Root (admin)"
 		},
+		"server": {
+			"error": {
+				"Missing template user!": "Template user is required for new user registration!",
+				"Missing template kingdom!": "Template kingdom is required for new kingdom creation (from players point of view)!",
+				"action": {
+					"create-template-user": "Fix this error",
+					"create-template-kingdom": "Fix this error"
+				}
+			}
+		},
+		"sign-in": {
+			"title": "Signed-in",
+			"succeed": {
+				"title": "Welcome back to the Root!",
+				"subtitle": "Be careful here, dude, it's quite dangerous 'round here!"
+			},
+			"continue": "Continue!"
+		},
 		"sign-out": {
 			"menu": "Sign out!",
 			"title": "Sign out?",

@@ -80,16 +80,6 @@
 		}
 	},
 	"root": {
-		"sign-in": {
-			"title": "Signed-in",
-			"succeed": {
-				"title": "Welcome back to the Root!",
-				"subtitle": "Be careful here, dude, it's quite dangerous 'round here!"
-			},
-			"continue": {
-				"title": "Continue"
-			}
-		},
 		"blog": {
 			"menu": "Blog",
 			"dashboard": {

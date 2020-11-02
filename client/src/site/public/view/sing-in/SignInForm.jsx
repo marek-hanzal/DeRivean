@@ -1,4 +1,3 @@
-import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {Button, Form, Input} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
 import Centered from "component/layout/Centered";
@@ -24,19 +23,18 @@ const SignInForm = () => {
 			name={"sign-in"}
 		>
 			<Form.Item
-				name="login"
+				name={"login"}
 				{...validationFor("login", errors, t)}
-				labelCol={6}
 				rules={[
 					{
 						required: true,
 						message: t("public.sign-in.form.login.required")
 					}
 				]}
-				children={<Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder={t("public.sign-in.form.login.label")}/>}
+				children={<Input addonBefore={<div style={{width: "120px"}}>{t("public.sign-in.form.login.label")}</div>}/>}
 			/>
 			<Form.Item
-				name="password"
+				name={"password"}
 				{...validationFor("password", errors, t)}
 				rules={[
 					{
@@ -44,7 +42,7 @@ const SignInForm = () => {
 						message: t("public.sign-in.form.password.required")
 					}
 				]}
-				children={<Input.Password prefix={<LockOutlined className="site-form-item-icon"/>} placeholder={t("public.sign-in.form.password.label")}/>}
+				children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t("public.sign-in.form.password.label")}</div>}/>}
 			/>
 			<Centered>
 				<Form.Item shouldUpdate={true}>
