@@ -19,12 +19,12 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.kingdom.context.kingdom.match(), <BaseMenu
+				route(Routes.root.kingdom.kingdom.match(), <BaseMenu
 					items={[
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.kingdom.context.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						menuItem(Routes.root.kingdom.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
 						menuDivider(),
 						HeroMenuItem(),
 						menuDivider(),

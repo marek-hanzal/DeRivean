@@ -62,32 +62,28 @@ const Routes = {
                 link: () => "/user/list",
             },
             user: {
-                match: () => "@/:user/*",
-                link: resolveUuid("user", "/user/@/:user")
+                match: () => "u/:user/*",
+                link: resolveUuid("user", "/user/u/:user")
             },
         },
         kingdom: {
-            match: () => "/user/@/:user/kingdom/*",
-            link: resolveUuid("user", "/user/@/:user/kingdom"),
+            match: () => "/kingdom/*",
             dashboard: {
-                match: () => "dashboard/*",
-                link: resolveUuid("user", "/user/@/:user/kingdom/dashboard"),
+                match: () => "u/:user/dashboard/*",
+                link: resolveUuid("user", "/kingdom/u/:user/kingdom/dashboard"),
             },
             create: {
-                match: () => "create",
-                link: resolveUuid("user", "/user/@/:user/kingdom/create"),
+                match: () => "u/:user/create/*",
+                link: resolveUuid("user", "/kingdom/u/:user/create"),
             },
             list: {
-                match: () => "list",
-                link: resolveUuid("user", "/user/@/:user/kingdom/list"),
+                match: () => "u/:user/list/*",
+                link: resolveUuid("user", "/kingdom/u/:user/kingdom/list"),
             },
-            context: {
-                match: () => "/kingdom-context/:kingdom/*",
-                kingdom: {
-                    match: () => "/kingdom-context/:kingdom/kingdom/*",
-                    link: resolveUuid("kingdom", "/kingdom-context/:kingdom/kingdom"),
-                },
-            }
+            kingdom: {
+                match: () => "k/:kingdom/*",
+                link: resolveUuid("kingdom", "/kingdom/k/:kingdom"),
+            },
         },
         hero: {
             match: () => "hero/*",

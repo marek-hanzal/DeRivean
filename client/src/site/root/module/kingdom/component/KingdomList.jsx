@@ -16,7 +16,7 @@ const KingdomList = () => {
 			id={`root.kingdom.list.table`}
 			isLoading={isLoading}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.kingdom.context.kingdom.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.kingdom.kingdom.link(record.id)} text={text}/>},
 				{title: "name"},
 			]}
 		/>

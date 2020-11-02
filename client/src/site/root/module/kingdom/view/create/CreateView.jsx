@@ -13,7 +13,7 @@ const CreateView = () => {
 			redux={KingdomRedux}
 			icon={<KingdomIcon/>}
 			param={"user"}
-			dashboardLink={Routes.root.kingdom.context.kingdom.link}
+			dashboardLink={Routes.root.kingdom.kingdom.link}
 		/>
 	);
 };
