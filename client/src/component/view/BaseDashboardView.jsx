@@ -6,6 +6,7 @@ const BaseDashboardView = (
 	{
 		id,
 		open = [id],
+		select = [id],
 		icon,
 		base,
 		title = null,
@@ -17,15 +18,15 @@ const BaseDashboardView = (
 	return createElement(
 		base,
 		{
-			id: `${id}.dashboard`,
+			id,
 			open,
 			...props
 		},
-		<Card title={t(`${id}.dashboard.title`)}>
+		<Card title={t(`${id}.title`)}>
 			<Result
 				status={"info"}
-				title={title || t(`${id}.dashboard.title`)}
-				subTitle={subTitle || t(`${id}.dashboard.subtitle`)}
+				title={title || t(`${id}.title`)}
+				subTitle={subTitle || t(`${id}.subtitle`)}
 				icon={icon}
 				children={children}
 			/>

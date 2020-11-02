@@ -23,7 +23,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.user.user.link(), "root.userContext.dashboard", <UserIcon/>),
+						menuItem(Routes.root.user.user.link(), "root.user", <UserIcon/>),
 						menuDivider(),
 						KingdomMenuItem(),
 						menuDivider(),

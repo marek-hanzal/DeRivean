@@ -21,6 +21,7 @@ const DashboardViewWithAttributes = (
 		redux,
 		param,
 		open,
+		menu,
 		icon,
 	}) => {
 	const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const DashboardViewWithAttributes = (
 				base={RootView}
 				id={id}
 				open={open}
+				menu={menu}
 				icon={<Spinner icon={icon} enable={data}/>}
 				title={
 					<Centered span={12}>
