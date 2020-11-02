@@ -2,6 +2,7 @@ package derivean.server.rest.root.server
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
+import derivean.server.rest.root.server.endpoint.SitesEndpoint
 import derivean.server.rest.root.server.endpoint.ValidationEndpoint
 import io.ktor.routing.*
 
@@ -10,6 +11,7 @@ class ServerHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			ValidationEndpoint::class,
+			SitesEndpoint::class,
 		)
 	}
 }
