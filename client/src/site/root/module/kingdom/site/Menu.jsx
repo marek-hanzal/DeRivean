@@ -15,6 +15,21 @@ import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
 
+const DefaultMenu = () => {
+	return (
+		<BaseMenu
+			items={[
+				menuDivider(),
+				menuBack(),
+				menuDivider(),
+				KingdomMenuItem(),
+				menuDivider(),
+				menuLogout(),
+			]}
+		/>
+	);
+};
+
 const Menu = () => {
 	return (
 		<BaseRoutes
@@ -24,7 +39,7 @@ const Menu = () => {
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.kingdom.kingdom.link(), "root.kingdomContext.dashboard", <KingdomIcon/>),
+						menuItem(Routes.root.kingdom.kingdom.link(), "root.kingdom", <KingdomIcon/>),
 						menuDivider(),
 						HeroMenuItem(),
 						menuDivider(),
@@ -33,16 +48,9 @@ const Menu = () => {
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}
 				/>),
-				route("*", <BaseMenu
-					items={[
-						menuDivider(),
-						menuBack(),
-						menuDivider(),
-						KingdomMenuItem(),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
+				route(Routes.root.kingdom.dashboard.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.create.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);

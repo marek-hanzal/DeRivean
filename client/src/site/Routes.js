@@ -70,7 +70,7 @@ const Routes = {
             match: () => "/kingdom/*",
             dashboard: {
                 match: () => "u/:user/dashboard/*",
-                link: resolveUuid("user", "/kingdom/u/:user/kingdom/dashboard"),
+                link: resolveUuid("user", "/kingdom/u/:user/dashboard"),
             },
             create: {
                 match: () => "u/:user/create/*",
@@ -78,7 +78,7 @@ const Routes = {
             },
             list: {
                 match: () => "u/:user/list/*",
-                link: resolveUuid("user", "/kingdom/u/:user/kingdom/list"),
+                link: resolveUuid("user", "/kingdom/u/:user/list"),
             },
             kingdom: {
                 match: () => "k/:kingdom/*",

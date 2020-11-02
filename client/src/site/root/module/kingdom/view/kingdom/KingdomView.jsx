@@ -5,10 +5,11 @@ import DashboardViewWithAttributes from "site/root/view/DashboardViewWithAttribu
 const KingdomView = () => {
 	return (
 		<DashboardViewWithAttributes
-			id={"root.kingdomContext"}
+			id={"root.kingdom"}
 			formName={"kingdom"}
 			redux={KingdomRedux}
 			param={"kingdom"}
+			menu={"root.kingdom"}
 			open={["root.hero", "root.building"]}
 			icon={<KingdomIcon/>}
 		/>
