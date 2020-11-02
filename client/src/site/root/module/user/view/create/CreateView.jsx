@@ -1,7 +1,9 @@
 import {LockOutlined} from "@ant-design/icons";
-import {Card, Divider, Form, Input, Radio} from "antd";
-import {useState} from "react";
+import {Card, Divider, Form, Input, Radio, Skeleton} from "antd";
+import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
+import ServerRedux from "redux/server/redux";
 import UserRedux from "redux/user/redux";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
@@ -10,10 +12,16 @@ import Routes from "site/Routes";
 import validationFor from "utils/form/validationFor";
 
 const CreateView = () => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
+	const [sites, setSites] = useState();
 
-	const sites = ["game", "root"];
+	useEffect(() => {
+		dispatch(ServerRedux.redux.sites.dispatch.sites()).then(sites => {
+			setSites(sites.sites);
+		});
+	}, [dispatch]);
 
 	return (
 		<CreateViewWithAttributes
@@ -26,9 +34,6 @@ const CreateView = () => {
 			dashboardLink={Routes.root.user.user.link}
 			errors={errors}
 			setErrors={setErrors}
-			initials={{
-				site: "game",
-			}}
 		>
 			<Card title={t("root.user.create.form.title")}>
 				<Form.Item
@@ -53,10 +58,18 @@ const CreateView = () => {
 					name={"site"}
 					label={t("root.user.create.form.site.label")}
 					help={t("root.user.create.form.site.help")}
+					rules={[
+						{
+							required: true,
+							message: t("root.user.create.form.site.required"),
+						}
+					]}
 					children={
-						<Radio.Group>
-							{sites.map(site => <Radio.Button value={site} children={t("root.site." + site)}/>)}
-						</Radio.Group>
+						sites ?
+							<Radio.Group>
+								{sites.map(site => <Radio.Button key={site} value={site} children={t("root.site." + site)}/>)}
+							</Radio.Group> :
+							<Skeleton.Input style={{width: "240px"}} active/>
 					}
 				/>
 			</Card>

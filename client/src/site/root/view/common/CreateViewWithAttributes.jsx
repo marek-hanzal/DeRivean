@@ -1,4 +1,4 @@
-import {Form, Input, message} from "antd";
+import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import Centered from "component/layout/Centered";
@@ -63,8 +63,12 @@ const CreateViewWithAttributes = (
 				loading={isLoading}
 				id={id}
 				icon={icon}
-				title={
+				title={<CreateSubmitButtons onCancel={() => {
+					setErrors(null);
+				}} form={form} translation={id}/>}
+				subTitle={
 					<Centered span={12}>
+						<Divider type={"horizontal"}/>
 						<Form.Item
 							{...validationFor("name", errors, t)}
 							name={"name"}
@@ -78,9 +82,6 @@ const CreateViewWithAttributes = (
 						/>
 					</Centered>
 				}
-				subTitle={<CreateSubmitButtons onCancel={() => {
-					setErrors(null);
-				}} form={form} translation={id}/>}
 			>
 				<DualSection
 					left={
