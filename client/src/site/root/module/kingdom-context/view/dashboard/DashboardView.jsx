@@ -11,7 +11,7 @@ const DashboardView = () => {
 			formName={"kingdom"}
 			redux={KingdomRedux}
 			param={"kingdom"}
-			open={[]}
+			open={["root.hero", "root.building"]}
 			icon={<KingdomIcon/>}
 		/>
 	);

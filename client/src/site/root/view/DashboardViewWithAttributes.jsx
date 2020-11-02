@@ -34,11 +34,11 @@ const DashboardViewWithAttributes = (
 
 	useEffect(() => {
 		dispatch(redux.redux.attributes.dispatch.attributes());
-	}, [dispatch]);
+	}, [dispatch, redux.redux.attributes.dispatch]);
 	useEffect(() => dispatch(redux.redux.fetch.dispatch.fetch(params[param])).then(data => {
 		setData(data);
 		values(form, data);
-	}), [dispatch, params[param]]);
+	}), [dispatch, form, param, params, redux.redux.fetch.dispatch]);
 
 	return (
 

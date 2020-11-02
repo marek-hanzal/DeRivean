@@ -34,10 +34,10 @@ const DashboardView = () => {
 			autoComplete="off"
 			onFinish={values => {
 				dispatch(UserRedux.redux.update.dispatch.update({...values, id: params.user})).then(_ => {
-					message.success(t("user:update.success"));
+					message.success(t("root.user.update.success"));
 					setEdit(false);
 				}, () => {
-					message.error(t("user:update.error"));
+					message.error(t("root.user.update.error"));
 				});
 			}}
 		>
@@ -54,17 +54,17 @@ const DashboardView = () => {
 							rules={[
 								{
 									required: true,
-									message: t("user:form.name.required"),
+									message: t("root.user.form.name.required"),
 								}
 							]}
-							children={<Input disabled={!edit} addonBefore={t("user:form.name.label")} suffix={<UserIcon/>}/>}
+							children={<Input disabled={!edit} addonBefore={t("root.user.form.name.label")} suffix={<UserIcon/>}/>}
 						/>
 					</Centered>
 				}
 			>
 				<DualSection
 					left={<h1>rest of edit form here</h1>}
-					right={<BulletCard translation={"user:dashboard."} count={4}/>}
+					right={<BulletCard translation={"root.user.dashboard"} count={4}/>}
 				/>
 			</BaseDashboardView>
 		</Form>

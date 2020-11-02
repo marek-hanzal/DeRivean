@@ -34,7 +34,7 @@ const CreateViewWithAttributes = (
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	useEffect(() => {
 		dispatch(redux.redux.attributes.dispatch.attributes());
-	}, [dispatch]);
+	}, [dispatch, redux.redux.attributes.dispatch]);
 
 	return (
 		<Form
