@@ -6,6 +6,7 @@ import derivean.server.rest.root.building.BuildingHttpModule
 import derivean.server.rest.root.entity.EntityHttpModule
 import derivean.server.rest.root.hero.HeroHttpModule
 import derivean.server.rest.root.kingdom.KingdomHttpModule
+import derivean.server.rest.root.server.ServerHttpModule
 import derivean.server.rest.root.user.UserHttpModule
 import io.ktor.routing.*
 
@@ -18,6 +19,7 @@ class RootHttpModule(container: IContainer) : AbstractHttpModule(container) {
 			HeroHttpModule::class,
 			BuildingHttpModule::class,
 			UserHttpModule::class,
+			ServerHttpModule::class,
 		)
 	}
 }
