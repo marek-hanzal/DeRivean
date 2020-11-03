@@ -2,7 +2,7 @@ import {LockOutlined} from "@ant-design/icons";
 import {Card, Divider, Form, Input, message, Radio, Skeleton} from "antd";
 import EditorContext from "component/form/EditorContext";
 import SearchInput from "component/form/SearchInput";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "redux/server/redux";
 import UserContext from "site/root/module/user/component/UserContext";
@@ -12,7 +12,6 @@ import validationFor from "utils/form/validationFor";
 
 const CreateView = () => {
 	const {t} = useTranslation();
-	const context = useContext(UserContext);
 	const [sites, setSites] = useState();
 	useServerSites(
 		sites => setSites(sites.sites),
