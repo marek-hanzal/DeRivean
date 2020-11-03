@@ -22,5 +22,5 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Re
 	}
 
 	data class Request(val search: String)
-	data class Result(val users: List<FetchMapper.Fetch>)
+	data class Result(val items: List<FetchMapper.Fetch>)
 }

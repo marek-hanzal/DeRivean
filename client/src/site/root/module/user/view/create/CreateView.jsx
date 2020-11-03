@@ -1,31 +1,22 @@
 import {LockOutlined} from "@ant-design/icons";
-import {Card, Divider, Form, Input, message, Radio, Select, Skeleton} from "antd";
+import {Card, Divider, Form, Input, message, Radio, Skeleton} from "antd";
 import EditorContext from "component/form/EditorContext";
-import {useEffect, useState} from "react";
+import SearchInput from "component/form/SearchInput";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
 import {useServerSites} from "redux/server/redux";
-import {UserRedux} from "redux/user/redux";
 import UserContext from "site/root/module/user/component/UserContext";
 import UserView from "site/root/module/user/view/UserView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 import validationFor from "utils/form/validationFor";
 
 const CreateView = () => {
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const [sites, setSites] = useState();
-	const [users, setUsers] = useState([]);
-	const isLoading = useSelector(UserRedux.redux.search.selector.isLoading);
 	useServerSites(
 		sites => setSites(sites.sites),
 		() => message.error(t("root.server.error.cannot-fetch-sites"))
 	);
-	useEffect(() => {
-		dispatch(UserRedux.redux.search.dispatch.search({search: ""})).then(users => {
-			setUsers(users.users.map(user => ({label: user.name, value: user.id})));
-		});
-	}, [dispatch]);
 	return (
 		<UserView>
 			<CreateViewWithAttributes
@@ -74,28 +65,7 @@ const CreateView = () => {
 									name={"template"}
 									help={t("root.user.create.form.template.help")}
 									children={
-										<Select
-											showSearch
-											defaultActiveFirstOption={false}
-											filterOption={false}
-											bordered={false}
-											loading={isLoading}
-											allowClear
-											onSearch={search => {
-												dispatch(UserRedux.redux.search.dispatch.search({search})).then(users => {
-													setUsers(users.users.map(user => ({label: user.name, value: user.id})));
-												});
-											}}
-											onClear={_ => {
-												dispatch(UserRedux.redux.search.dispatch.search({search: ""})).then(users => {
-													setUsers(users.users.map(user => ({label: user.name, value: user.id})));
-												});
-											}
-											}
-											options={users}
-											placeholder={t("root.user.create.form.template.label")}
-										>
-										</Select>
+										<SearchInput placeholder={"create.form.template"} context={UserContext}/>
 									}
 								/>
 							</Card>
