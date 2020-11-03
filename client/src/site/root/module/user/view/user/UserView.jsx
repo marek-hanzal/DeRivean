@@ -32,7 +32,7 @@ const UserView = () => {
 								message: t("root.user.edit.form.login.required"),
 							}
 						]}
-						children={<Input addonBefore={<div style={{width: "120px"}}>{t("root.user.edit.form.login.label")}</div>}/>}
+						children={<Input disabled={!editor} addonBefore={<div style={{width: "120px"}}>{t("root.user.edit.form.login.label")}</div>}/>}
 					/>
 				</Card>
 				<Divider type={"horizontal"}/>
