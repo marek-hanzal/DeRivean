@@ -1,15 +1,16 @@
 import BaseListView from "component/view/BaseListView";
 import KingdomList from "site/root/module/kingdom/component/KingdomList";
-import RootView from "site/root/view/RootView";
+import {BaseKingdomView, KingdomContext} from "site/root/module/kingdom/view/BaseKingdomView";
 
 const ListView = () => {
 	return (
-		<BaseListView
-			base={RootView}
-			id={"root.kingdom"}
-		>
-			<KingdomList/>
-		</BaseListView>
+		<BaseKingdomView>
+			<BaseListView
+				context={KingdomContext}
+			>
+				<KingdomList/>
+			</BaseListView>
+		</BaseKingdomView>
 	);
 };
 

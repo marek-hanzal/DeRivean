@@ -1,15 +1,14 @@
 import BaseListView from "component/view/BaseListView";
 import HeroList from "site/root/module/hero/component/HeroList";
-import RootView from "site/root/view/RootView";
+import {BaseHeroView, HeroContext} from "site/root/module/hero/view/BaseHeroView";
 
 const ListView = () => {
 	return (
-		<BaseListView
-			id={"root.hero"}
-			base={RootView}
-		>
-			<HeroList/>
-		</BaseListView>
+		<BaseHeroView>
+			<BaseListView context={HeroContext}>
+				<HeroList/>
+			</BaseListView>
+		</BaseHeroView>
 	);
 };
 

@@ -1,12 +1,11 @@
-import {Divider, Form, Input, message} from "antd";
+import {Card, Divider, Form, Input, message, Result} from "antd";
 import BulletCard from "component/BulletCard";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
-import BaseCreateView from "component/view/BaseCreateView";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router";
@@ -16,17 +15,13 @@ import validationFor from "utils/form/validationFor";
 
 const CreateViewWithAttributes = (
 	{
-		id,
-		base,
+		context,
 		formName,
-		redux,
-		icon,
 		param,
-		dashboardLink,
 		children,
-		initials,
 		enableSubmit,
 	}) => {
+	context = useContext(context);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -34,7 +29,10 @@ const CreateViewWithAttributes = (
 	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
-	const isLoading = useSelector(redux.redux.attributes.selector.isLoading);
+	const redux = context.redux;
+	const id = context.id;
+	const icon = context.icon;
+	const dashboardLink = context.link.dashboard;
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(true);
@@ -51,7 +49,6 @@ const CreateViewWithAttributes = (
 			<Form
 				form={form}
 				name={formName}
-				initialValues={initials}
 				autoComplete="off"
 				onFinish={values => {
 					dispatch(redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
@@ -65,23 +62,17 @@ const CreateViewWithAttributes = (
 					});
 				}}
 			>
-				<BaseCreateView
-					base={base}
-					loading={isLoading}
-					id={id}
-					icon={icon}
-					title={
-						<CreateSubmitButtons
-							enableSubmit={enableSubmit}
-							onCancel={() => {
-								setErrors(null);
-							}}
-							form={form}
-							translation={id}
-						/>
-					}
-					subTitle={
-						<Centered span={12}>
+				<Card title={t(`${id}.create.title`)}>
+					<Result
+						status={"info"}
+						title={
+							<CreateSubmitButtons
+								enableSubmit={enableSubmit}
+								form={form}
+								translation={id}
+							/>
+						}
+						subTitle={<Centered span={12}>
 							<Divider type={"horizontal"}/>
 							<Form.Item
 								{...validationFor("name", errors, t)}
@@ -94,32 +85,28 @@ const CreateViewWithAttributes = (
 								]}
 								children={<Input addonBefore={t(id + ".form.name.label")} suffix={icon}/>}
 							/>
-						</Centered>
-					}
-				>
-					<DualSection
-						left={
-							<Centered span={24}>
-								{children}
-								<AttributeFieldEditor edit={true} translation={id} attributes={attributes}/>
-							</Centered>
-						}
-						right={<BulletCard translation={id + ".create"} count={4}/>}
-					/>
-				</BaseCreateView>
+						</Centered>}
+						icon={icon}
+					>
+						<DualSection
+							left={
+								<Centered span={24}>
+									{children}
+									<AttributeFieldEditor edit={true} translation={id} attributes={attributes}/>
+								</Centered>
+							}
+							right={<BulletCard translation={id + ".create"} count={4}/>}
+						/>
+					</Result>
+				</Card>
 			</Form>
 		</EditorContext.Provider>
 	);
 };
 
 CreateViewWithAttributes.propTypes = {
-	id: PropTypes.string.isRequired,
-	base: PropTypes.func.isRequired,
 	formName: PropTypes.string.isRequired,
-	redux: PropTypes.object.isRequired,
-	icon: PropTypes.element,
 	param: PropTypes.string.isRequired,
-	dashboardLink: PropTypes.func.isRequired,
 	enableSubmit: PropTypes.any,
 };
 

@@ -1,12 +1,15 @@
 import BaseTable from "component/table/BaseTable";
 import HistoryLink from "component/table/HistoryLink";
+import {useContext} from "react";
 import {UserRedux} from "redux/user/redux";
 import Routes from "site/Routes";
 
-const UserList = () => {
+const UserList = ({context}) => {
+	context = useContext(context);
+	const id = context.id;
 	return (
 		<BaseTable
-			id={`root.user.list.table`}
+			id={`${id}.list.table`}
 			redux={UserRedux}
 			columns={[
 				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.user.user.link(record.id)} text={text}/>},

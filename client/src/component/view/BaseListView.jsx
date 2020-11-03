@@ -1,28 +1,19 @@
 import {Card} from "antd";
-import {createElement} from "react";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 
 const BaseListView = (
 	{
-		base,
-		id,
-		open = [id],
+		context,
 		children,
-		...props
 	}) => {
+	context = useContext(context);
+	const id = context.id;
 	const {t} = useTranslation();
 	return (
-		createElement(
-			base,
-			{
-				id: `${id}.list`,
-				open,
-				...props
-			},
-			<Card title={t(`${id}.list.title`)}>
-				{children}
-			</Card>
-		)
+		<Card title={t(`${id}.list.title`)}>
+			{children}
+		</Card>
 	);
 };
 

@@ -1,17 +1,16 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import RootView from "site/root/view/RootView";
+import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
 
 const DashboardView = () => {
 	return (
-		<BaseDashboardView
-			base={RootView}
-			id={"root.user"}
-			menu={"root.user.dashboard"}
-			icon={<UserIcon/>}
-		>
-			<h1>some content here</h1>
-		</BaseDashboardView>
+		<BaseUserView>
+			<BaseDashboardView
+				context={UserContext}
+				menu={"root.user.dashboard"}
+			>
+				<h1>some content here</h1>
+			</BaseDashboardView>
+		</BaseUserView>
 	);
 };
 

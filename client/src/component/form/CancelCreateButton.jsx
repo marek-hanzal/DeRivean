@@ -1,15 +1,16 @@
 import {Button, Form, Popconfirm} from "antd";
+import EditorContext from "component/form/EditorContext";
 import CancelIcon from "component/icon/CancelIcon";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 
 const CancelCreateButton = (
 	{
 		form,
 		translation,
-		onCancel = () => ({}),
 	}) => {
 	const {t} = useTranslation();
-
+	const editor = useContext(EditorContext);
 	return (
 		<Form.Item shouldUpdate noStyle>
 			{() => (
@@ -20,13 +21,13 @@ const CancelCreateButton = (
 						title={t(translation + ".create.form.cancelConfirm")}
 						onConfirm={() => {
 							form.resetFields();
-							onCancel();
+							editor.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"dashed"} danger disabled={!form.isFieldsTouched()} ghost icon={<CancelIcon/>} onClick={() => {
 						form.resetFields();
-						onCancel();
+						editor.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>

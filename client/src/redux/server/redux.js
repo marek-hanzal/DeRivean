@@ -15,6 +15,7 @@ const useServerSites = (
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(ServerRedux.redux.sites.dispatch.sites()).then(onSuccess, onError);
+		// eslint-disable-next-line
 	}, [dispatch]);
 };
 

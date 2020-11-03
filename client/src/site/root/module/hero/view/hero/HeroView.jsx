@@ -1,18 +1,17 @@
-import {HeroRedux} from "redux/hero/redux";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import {BaseHeroView, HeroContext} from "site/root/module/hero/view/BaseHeroView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const HeroView = () => {
 	return (
-		<EditViewWithAttributes
-			id={"root.hero"}
-			formName={"hero"}
-			redux={HeroRedux}
-			param={"hero"}
-			open={[]}
-			icon={<HeroIcon/>}
-			enableSubmit={true}
-		/>
+		<BaseHeroView>
+			<EditViewWithAttributes
+				context={HeroContext}
+				formName={"hero"}
+				param={"hero"}
+				open={[]}
+				enableSubmit={true}
+			/>
+		</BaseHeroView>
 	);
 };
 

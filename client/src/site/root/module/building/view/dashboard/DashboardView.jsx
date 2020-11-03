@@ -1,15 +1,14 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import RootView from "site/root/view/RootView";
+import {BaseBuildingView, BuildingContext} from "site/root/module/building/view/BaseBuildingView";
 
 const DashboardView = () => {
 	return (
-		<BaseDashboardView
-			base={RootView}
-			id={"root.building"}
-			icon={<BuildingIcon/>}
-			menu={"root.building.dashboard"}
-		/>
+		<BaseBuildingView>
+			<BaseDashboardView
+				context={BuildingContext}
+				menu={"root.building.dashboard"}
+			/>
+		</BaseBuildingView>
 	);
 };
 

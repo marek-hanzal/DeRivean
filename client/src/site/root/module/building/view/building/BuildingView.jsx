@@ -1,18 +1,17 @@
-import {BuildingRedux} from "redux/building/redux";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import {BaseBuildingView, BuildingContext} from "site/root/module/building/view/BaseBuildingView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const BuildingView = () => {
 	return (
-		<EditViewWithAttributes
-			id={"root.building"}
-			formName={"building"}
-			redux={BuildingRedux}
-			param={"building"}
-			open={[]}
-			icon={<BuildingIcon/>}
-			enableSubmit={true}
-		/>
+		<BaseBuildingView>
+			<EditViewWithAttributes
+				context={BuildingContext}
+				formName={"building"}
+				param={"building"}
+				open={[]}
+				enableSubmit={true}
+			/>
+		</BaseBuildingView>
 	);
 };
 
