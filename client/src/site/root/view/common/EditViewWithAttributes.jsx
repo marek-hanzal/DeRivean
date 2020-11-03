@@ -69,6 +69,9 @@ const EditViewWithAttributes = (
 						setErrors(error);
 					});
 				}}
+				onFinishFailed={() => {
+					message.error(t(id + ".update.error"));
+				}}
 			>
 				<Card title={t(`${id}.title`)}>
 					<Result

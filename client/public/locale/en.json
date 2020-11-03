@@ -222,9 +222,8 @@
 				"menu": "Create",
 				"breadcrumb": "Create",
 				"title": "Create user",
-				"message": {
-					"success": "User created!"
-				},
+				"success": "User created!",
+				"error": "Some error occurred, please check form!",
 				"form": {
 					"title": "Registration",
 					"submit": "Create user!",
@@ -328,9 +327,7 @@
 				"menu": "Create",
 				"title": "Create new Kingdom",
 				"breadcrumb": "Create",
-				"message": {
-					"success": "Kingdom created!"
-				},
+				"success": "Kingdom created!",
 				"form": {
 					"submit": "Create!",
 					"cancelConfirm": "Changes will be lost, continue?"
@@ -419,9 +416,7 @@
 				"menu": "Create",
 				"title": "Create a new Hero",
 				"breadcrumb": "Create",
-				"message": {
-					"success": "Hero created!"
-				},
+				"success": "Hero created!",
 				"form": {
 					"submit": "Create hero!",
 					"cancelConfirm": "All changes will be lost, continue?"
@@ -505,9 +500,7 @@
 				"menu": "Create",
 				"title": "Create a new Building",
 				"breadcrumb": "Create",
-				"message": {
-					"success": "Building created!"
-				},
+				"success": "Building created!",
 				"form": {
 					"submit": "Create!"
 				},

@@ -51,16 +51,20 @@ const CreateViewWithAttributes = (
 				form={form}
 				name={context.id}
 				autoComplete="off"
+				scrollToFirstError
 				onFinish={values => {
 					dispatch(redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
-						message.success(t(id + ".create.message.success"));
+						message.success(t(id + ".create.success"));
 						history.push(location.pathname);
 						dispatch(SessionRedux.history(history));
 						navigate(context.link.home(entity.id));
 					}, errors => {
-						message.error(t(id + ".create.message.error"));
+						message.error(t(id + ".create.error"));
 						setErrors(errors);
 					});
+				}}
+				onFinishFailed={_ => {
+					message.error(t(id + ".create.error"));
 				}}
 			>
 				<Card title={t(`${id}.create.title`)}>
