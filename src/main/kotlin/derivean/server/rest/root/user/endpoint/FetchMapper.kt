@@ -6,8 +6,8 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.rest.common.Attribute
 import derivean.server.user.entities.User
 
-class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Response>(container) {
-	override fun map(item: User) = Response.build {
+class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetch>(container) {
+	override fun map(item: User) = Fetch.build {
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login
@@ -18,7 +18,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 		}
 	}
 
-	data class Response(
+	data class Fetch(
 		val id: String,
 		val name: String,
 		val login: String,
@@ -38,7 +38,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 			var site: String? = null
 			val attributes = mutableListOf<Attribute>()
 
-			fun build() = Response(
+			fun build() = Fetch(
 				id.toString(),
 				name,
 				login,

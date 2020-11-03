@@ -15,6 +15,7 @@ class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {
 			PageEndpoint::class,
 			DeleteEndpoint::class,
 			AttributesEndpoint::class,
+			SearchEndpoint::class,
 		)
 	}
 }
