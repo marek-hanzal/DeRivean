@@ -13,11 +13,11 @@ class KingdomRepository(container: IContainer) : AbstractAttributeRepository<Kin
 
 	fun findByName(name: String) = entity.find { table.name eq name }.first()
 
-	fun search(search: String) = try {
+	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.name like "${search}%" or (table.id eq uuid) }.limit(100)
+		entity.find { table.name like "${search}%" or (table.id eq uuid) }.limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.name like "${search}%" }.limit(100)
+		entity.find { table.name like "${search}%" }.limit(limit)
 	}
 
 	fun useTemplate(template: String, target: Kingdom) {

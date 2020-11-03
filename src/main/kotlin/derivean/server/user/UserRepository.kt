@@ -13,11 +13,11 @@ class UserRepository(container: IContainer) : AbstractAttributeRepository<User, 
 
 	fun findByLogin(login: String) = entity.find { table.login eq login }.first()
 
-	fun search(search: String) = try {
+	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.login like "${search}%" or (table.name like "${search}%" or (table.id eq uuid)) }.limit(100)
+		entity.find { table.login like "${search}%" or (table.name like "${search}%" or (table.id eq uuid)) }.limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.login like "${search}%" or (table.name like "${search}%") }.limit(100)
+		entity.find { table.login like "${search}%" or (table.name like "${search}%") }.limit(limit)
 	}
 
 	fun useTemplate(template: String, target: User) {
