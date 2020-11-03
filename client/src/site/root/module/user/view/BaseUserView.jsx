@@ -13,7 +13,7 @@ const BaseUserView = ({children, ...props}) => {
 			id: "root.user",
 			redux: UserRedux,
 			link: {
-				dashboard: Routes.root.user.dashboard.link,
+				dashboard: Routes.root.user.user.link,
 			}
 		}}>
 			<RootView context={UserContext} {...props}>

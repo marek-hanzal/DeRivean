@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.5.236",
+	"version": "0.5.237",
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",

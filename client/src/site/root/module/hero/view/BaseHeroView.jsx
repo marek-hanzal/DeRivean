@@ -13,7 +13,7 @@ const BaseHeroView = ({children, ...props}) => {
 			id: "root.hero",
 			redux: HeroRedux,
 			link: {
-				dashboard: Routes.root.hero.dashboard.link,
+				dashboard: Routes.root.hero.hero.link,
 			}
 		}}>
 			<RootView context={HeroContext} {...props}>

@@ -13,7 +13,7 @@ const BaseKingdomView = ({children, ...props}) => {
 			id: "root.kingdom",
 			redux: KingdomRedux,
 			link: {
-				dashboard: Routes.root.kingdom.dashboard.link,
+				dashboard: Routes.root.kingdom.kingdom.link,
 			}
 		}}>
 			<RootView context={KingdomContext} {...props}>

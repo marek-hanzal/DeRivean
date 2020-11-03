@@ -13,7 +13,7 @@ const BaseBuildingView = ({children, ...props}) => {
 			id: "root.building",
 			redux: BuildingRedux,
 			link: {
-				dashboard: Routes.root.building.dashboard.link,
+				dashboard: Routes.root.building.building.link,
 			}
 		}}>
 			<RootView context={BuildingContext} {...props}>
