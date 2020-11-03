@@ -151,6 +151,11 @@
 				}
 			}
 		},
+		"header": {
+			"search": {
+				"label": "Search everywhere!"
+			}
+		},
 		"sign-in": {
 			"title": "Signed-in",
 			"succeed": {
