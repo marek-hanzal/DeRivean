@@ -4,7 +4,8 @@ import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "redux/server/redux";
-import {UserContext, UserView} from "site/root/module/user/view/UserView";
+import UserContext from "site/root/module/user/component/UserContext";
+import UserView from "site/root/module/user/view/UserView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 import validationFor from "utils/form/validationFor";
 

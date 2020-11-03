@@ -1,4 +1,5 @@
-import {BuildingContext, BuildingView} from "site/root/module/building/view/BuildingView";
+import BuildingContext from "site/root/module/building/component/BuildingContext";
+import BuildingView from "site/root/module/building/view/BuildingView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const HomeView = () => {

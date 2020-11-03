@@ -1,10 +1,8 @@
-import React from "react";
 import {BuildingRedux} from "redux/building/redux";
+import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
-
-const BuildingContext = React.createContext(null);
 
 const BuildingView = ({children, ...props}) => {
 	return (
@@ -23,7 +21,4 @@ const BuildingView = ({children, ...props}) => {
 	);
 };
 
-export {
-	BuildingView,
-	BuildingContext,
-};
+export default BuildingView;

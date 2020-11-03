@@ -1,10 +1,8 @@
-import React from "react";
 import {UserRedux} from "redux/user/redux";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import UserContext from "site/root/module/user/component/UserContext";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
-
-const UserContext = React.createContext(null);
 
 const UserView = ({children, ...props}) => {
 	return (
@@ -23,7 +21,4 @@ const UserView = ({children, ...props}) => {
 	);
 };
 
-export {
-	UserView,
-	UserContext,
-};
+export default UserView;

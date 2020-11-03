@@ -1,4 +1,5 @@
-import {HeroContext, HeroView} from "site/root/module/hero/view/HeroView";
+import HeroContext from "site/root/module/hero/component/HeroContext";
+import HeroView from "site/root/module/hero/view/HeroView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const HomeView = () => {
@@ -6,7 +7,6 @@ const HomeView = () => {
 		<HeroView>
 			<EditViewWithAttributes
 				context={HeroContext}
-				formName={"hero"}
 				param={"hero"}
 				enableSubmit={true}
 			/>

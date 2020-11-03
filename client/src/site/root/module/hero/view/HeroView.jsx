@@ -1,10 +1,8 @@
-import React from "react";
 import {HeroRedux} from "redux/hero/redux";
+import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
-
-const HeroContext = React.createContext(null);
 
 const HeroView = ({children, ...props}) => {
 	return (
@@ -23,7 +21,4 @@ const HeroView = ({children, ...props}) => {
 	);
 };
 
-export {
-	HeroView,
-	HeroContext,
-};
+export default HeroView;

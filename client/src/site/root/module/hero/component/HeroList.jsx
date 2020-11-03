@@ -1,7 +1,7 @@
 import BaseTable from "component/table/BaseTable";
 import HistoryLink from "component/table/HistoryLink";
 import {useContext} from "react";
-import {HeroContext} from "site/root/module/hero/view/HeroView";
+import HeroContext from "site/root/module/hero/component/HeroContext";
 
 const HeroList = () => {
 	const context = useContext(HeroContext);

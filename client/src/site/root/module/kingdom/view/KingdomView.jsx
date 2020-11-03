@@ -1,10 +1,9 @@
 import React from "react";
 import {KingdomRedux} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
+import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
-
-const KingdomContext = React.createContext(null);
 
 const KingdomView = ({children, ...props}) => {
 	return (
@@ -23,7 +22,4 @@ const KingdomView = ({children, ...props}) => {
 	);
 };
 
-export {
-	KingdomView,
-	KingdomContext,
-};
+export default KingdomView;

@@ -1,4 +1,5 @@
-import {KingdomContext, KingdomView} from "site/root/module/kingdom/view/KingdomView";
+import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
+import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 
 const CreateView = () => {

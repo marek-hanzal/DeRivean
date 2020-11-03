@@ -1,5 +1,6 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import {BuildingContext, BuildingView} from "site/root/module/building/view/BuildingView";
+import BuildingContext from "site/root/module/building/component/BuildingContext";
+import BuildingView from "site/root/module/building/view/BuildingView";
 
 const DashboardView = () => {
 	return (

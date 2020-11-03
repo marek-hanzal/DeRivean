@@ -1,16 +1,17 @@
 import BaseTable from "component/table/BaseTable";
 import HistoryLink from "component/table/HistoryLink";
-import {BuildingRedux} from "redux/building/redux";
-import Routes from "site/Routes";
+import {useContext} from "react";
+import BuildingContext from "site/root/module/building/component/BuildingContext";
 
 const BuildingList = () => {
+	const context = useContext(BuildingContext);
 	return (
 		<BaseTable
-			id={`root.building.list.table`}
-			redux={BuildingRedux}
+			id={`${context.id}.list.table`}
+			redux={context.redux}
 			param={"kingdom"}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.building.home.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={context.link.home(record.id)} text={text}/>},
 				{title: "name"},
 			]}
 		/>
