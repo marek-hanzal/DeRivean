@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 
-const SearchInput = ({context, placeholder}) => {
+const SearchInput = ({context, placeholder, ...props}) => {
 	context = useContext(context);
 	const {t} = useTranslation();
 	const dispatch = useDispatch();
@@ -36,6 +36,7 @@ const SearchInput = ({context, placeholder}) => {
 			}
 			options={data}
 			placeholder={t(`${context.id}.${placeholder}.label`)}
+			{...props}
 		/>
 	);
 };
