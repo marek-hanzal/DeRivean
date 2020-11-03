@@ -1,9 +1,11 @@
 import {Button, Divider, message, Popconfirm, Space} from "antd";
 import CancelEditButton from "component/form/CancelEditButton";
+import EditorContext from "component/form/EditorContext";
 import SubmitButton from "component/form/SubmitButton";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import PropTypes from "prop-types";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router";
@@ -12,9 +14,7 @@ import values from "utils/form/values";
 
 const EditSubmitButtons = (
 	{
-		edit,
 		form,
-		setEdit,
 		initials,
 		translation,
 		enableSubmit,
@@ -25,13 +25,17 @@ const EditSubmitButtons = (
 	const params = useParams();
 	const navigate = useNavigate();
 	const history = useSelector(SessionRedux.selector.getHistory);
+	const editor = useContext(EditorContext);
 	const {t} = useTranslation();
+	if (!editor) {
+		throw new Error("Missing Editor Context!");
+	}
 
 	return (
-		edit ?
+		editor.editor ?
 			<Space split={<Divider type={"vertical"}/>}>
 				<SubmitButton enable={enableSubmit} form={form} title={translation + ".edit.form.submit"}/>
-				<CancelEditButton form={form} setEdit={setEdit} translation={translation} initials={initials}/>
+				<CancelEditButton form={form} translation={translation} initials={initials}/>
 				<Popconfirm
 					okText={t("common.yes")}
 					cancelText={t("common.no")}
@@ -50,16 +54,14 @@ const EditSubmitButtons = (
 				</Popconfirm>
 			</Space> :
 			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => {
-				setEdit(true);
+				editor.setEditor(true);
 				values(form, initials);
 			}} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 
 EditSubmitButtons.propTypes = {
-	edit: PropTypes.bool.isRequired,
 	form: PropTypes.any.isRequired,
-	setEdit: PropTypes.func.isRequired,
 	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
 	enableSubmit: PropTypes.any.isRequired,

@@ -1,5 +1,5 @@
 import {Card, Divider, Form, Input} from "antd";
-import FormErrorsContext from "component/form/FormErrorsContext";
+import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {UserRedux} from "redux/user/redux";
@@ -10,8 +10,9 @@ import validationFor from "utils/form/validationFor";
 const UserView = () => {
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
+	const [editor, setEditor] = useState(false);
 	return (
-		<FormErrorsContext.Provider value={{errors, setErrors}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
 			<EditViewWithAttributes
 				id={"root.user"}
 				formName={"user"}
@@ -36,7 +37,7 @@ const UserView = () => {
 				</Card>
 				<Divider type={"horizontal"}/>
 			</EditViewWithAttributes>
-		</FormErrorsContext.Provider>
+		</EditorContext.Provider>
 	);
 };
 

@@ -1,5 +1,5 @@
 import {Button, Form, Popconfirm} from "antd";
-import FormErrorsContext from "component/form/FormErrorsContext";
+import EditorContext from "component/form/EditorContext";
 import CancelIcon from "component/icon/CancelIcon";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -9,11 +9,13 @@ const CancelEditButton = (
 	{
 		form,
 		initials,
-		setEdit,
 		translation,
 	}) => {
 	const {t} = useTranslation();
-	const errors = useContext(FormErrorsContext);
+	const editor = useContext(EditorContext);
+	if (!editor) {
+		throw new Error("Missing Editor Context!");
+	}
 
 	return (
 		<Form.Item shouldUpdate noStyle>
@@ -24,16 +26,16 @@ const CancelEditButton = (
 						cancelText={t("common.no")}
 						title={t(translation + ".edit.form.cancelConfirm")}
 						onConfirm={() => {
-							setEdit(false);
+							editor.setEditor(false);
 							values(form, initials);
-							errors && errors.setErrors(null);
+							editor.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"dashed"} danger ghost icon={<CancelIcon/>} onClick={() => {
-						setEdit(false);
+						editor.setEditor(false);
 						values(form, initials);
-						errors && errors.setErrors(null);
+						editor.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>

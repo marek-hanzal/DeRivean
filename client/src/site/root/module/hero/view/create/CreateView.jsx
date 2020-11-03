@@ -1,3 +1,4 @@
+import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {HeroRedux} from "redux/hero/redux";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
@@ -7,19 +8,20 @@ import Routes from "site/Routes";
 
 const CreateView = () => {
 	const [errors, setErrors] = useState();
+	const [editor, setEditor] = useState(true);
 	return (
-		<CreateViewWithAttributes
-			base={RootView}
-			id={"root.hero"}
-			formName={"hero"}
-			redux={HeroRedux}
-			icon={<HeroIcon/>}
-			param={"kingdom"}
-			dashboardLink={Routes.root.hero.hero.link}
-			errors={errors}
-			setErrors={setErrors}
-			enableSubmit={true}
-		/>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
+			<CreateViewWithAttributes
+				base={RootView}
+				id={"root.hero"}
+				formName={"hero"}
+				redux={HeroRedux}
+				icon={<HeroIcon/>}
+				param={"kingdom"}
+				dashboardLink={Routes.root.hero.hero.link}
+				enableSubmit={true}
+			/>
+		</EditorContext.Provider>
 	);
 };
 

@@ -1,4 +1,4 @@
-import FormErrorsContext from "component/form/FormErrorsContext";
+import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {KingdomRedux} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
@@ -8,8 +8,9 @@ import Routes from "site/Routes";
 
 const CreateView = () => {
 	const [errors, setErrors] = useState();
+	const [editor, setEditor] = useState(true);
 	return (
-		<FormErrorsContext.Provider value={{errors, setErrors}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
 			<CreateViewWithAttributes
 				id={"root.kingdom"}
 				base={RootView}
@@ -20,7 +21,7 @@ const CreateView = () => {
 				dashboardLink={Routes.root.kingdom.kingdom.link}
 				enableSubmit={true}
 			/>
-		</FormErrorsContext.Provider>
+		</EditorContext.Provider>
 	);
 };
 

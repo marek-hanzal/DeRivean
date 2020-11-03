@@ -1,7 +1,7 @@
 import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
+import EditorContext from "component/form/EditorContext";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
-import FormErrorsContext from "component/form/FormErrorsContext";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
@@ -31,13 +31,14 @@ const EditViewWithAttributes = (
 	}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const [edit, setEdit] = useState(false);
 	const [data, setData] = useState();
 	const [form] = Form.useForm();
 	const params = useParams();
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
-	const errors = useContext(FormErrorsContext);
-
+	const editor = useContext(EditorContext);
+	if (!editor) {
+		throw new Error("Missing Editor Context!");
+	}
 	/**
 	 * Fetch attributes from redux.
 	 */
@@ -61,12 +62,12 @@ const EditViewWithAttributes = (
 			onFinish={values => {
 				dispatch(redux.redux.update.dispatch.update({...values, id: params[param]})).then(_ => {
 					message.success(t(id + ".update.success"));
-					setEdit(false);
+					editor.setEditor(false);
 					setData(values);
-					errors.setErrors(null);
+					editor.setErrors(null);
 				}, error => {
 					message.error(t(id + ".update.error"));
-					errors.setErrors(error);
+					editor.setErrors(error);
 				});
 			}}
 		>
@@ -80,8 +81,6 @@ const EditViewWithAttributes = (
 					<EditSubmitButtons
 						enableSubmit={enableSubmit}
 						initials={data}
-						edit={edit}
-						setEdit={setEdit}
 						form={form}
 						translation={id}
 						param={param}
@@ -92,7 +91,7 @@ const EditViewWithAttributes = (
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
 						<Form.Item
-							{...validationFor("name", errors.errors, t)}
+							{...validationFor("name", editor.errors, t)}
 							name={"name"}
 							rules={[
 								{
@@ -100,7 +99,7 @@ const EditViewWithAttributes = (
 									message: t(id + ".form.name.required"),
 								}
 							]}
-							children={<Input disabled={!edit} addonBefore={t(id + ".form.name.label")} suffix={icon}/>}
+							children={<Input disabled={!editor.editor} addonBefore={t(id + ".form.name.label")} suffix={icon}/>}
 						/>
 					</Centered>
 				}
@@ -109,7 +108,7 @@ const EditViewWithAttributes = (
 					left={
 						<Centered span={24}>
 							{children}
-							<AttributeFieldEditor edit={edit} translation={id} attributes={attributes}/>
+							<AttributeFieldEditor edit={editor.editor} translation={id} attributes={attributes}/>
 						</Centered>
 					}
 					right={<BulletCard translation={id + ".dashboard"} count={4}/>}

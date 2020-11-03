@@ -1,3 +1,4 @@
+import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {BuildingRedux} from "redux/building/redux";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
@@ -7,19 +8,20 @@ import Routes from "site/Routes";
 
 const CreateView = () => {
 	const [errors, setErrors] = useState();
+	const [editor, setEditor] = useState(true);
 	return (
-		<CreateViewWithAttributes
-			id={"root.building"}
-			base={RootView}
-			formName={"building"}
-			redux={BuildingRedux}
-			icon={<BuildingIcon/>}
-			param={"kingdom"}
-			dashboardLink={Routes.root.building.building.link}
-			errors={errors}
-			setErrors={setErrors}
-			enableSubmit={true}
-		/>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
+			<CreateViewWithAttributes
+				id={"root.building"}
+				base={RootView}
+				formName={"building"}
+				redux={BuildingRedux}
+				icon={<BuildingIcon/>}
+				param={"kingdom"}
+				dashboardLink={Routes.root.building.building.link}
+				enableSubmit={true}
+			/>
+		</EditorContext.Provider>
 	);
 };
 

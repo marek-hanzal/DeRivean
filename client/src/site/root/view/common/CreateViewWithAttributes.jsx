@@ -1,7 +1,7 @@
 import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
-import FormErrorsContext from "component/form/FormErrorsContext";
+import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
@@ -36,9 +36,9 @@ const CreateViewWithAttributes = (
 	const {t} = useTranslation();
 	const isLoading = useSelector(redux.redux.attributes.selector.isLoading);
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
-	const errors = useContext(FormErrorsContext);
-	if (!errors) {
-		throw new Error(`Missing form error context!`);
+	const editor = useContext(EditorContext);
+	if (!editor) {
+		throw new Error(`Missing editor context!`);
 	}
 	useEffect(() => {
 		dispatch(redux.redux.attributes.dispatch.attributes());
@@ -55,9 +55,9 @@ const CreateViewWithAttributes = (
 					history.push(location.pathname);
 					dispatch(SessionRedux.history(history));
 					navigate(dashboardLink(entity.id));
-				}, (error) => {
-					errors.setErrors(error);
+				}, errors => {
 					message.error(t(id + ".create.message.error"));
+					editor.setErrors(errors);
 				});
 			}}
 		>
@@ -70,7 +70,7 @@ const CreateViewWithAttributes = (
 					<CreateSubmitButtons
 						enableSubmit={enableSubmit}
 						onCancel={() => {
-							errors.setErrors(null);
+							editor.setErrors(null);
 						}}
 						form={form}
 						translation={id}
@@ -80,7 +80,7 @@ const CreateViewWithAttributes = (
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
 						<Form.Item
-							{...validationFor("name", errors.errors, t)}
+							{...validationFor("name", editor.errors, t)}
 							name={"name"}
 							rules={[
 								{
