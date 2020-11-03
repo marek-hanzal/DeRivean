@@ -44,7 +44,8 @@ const useClient = (
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(ClientRedux.fetch(href)).then(onSuccess, onFailure);
-	}, [dispatch, href, onFailure, onSuccess]);
+		// eslint-disable-next-line
+	}, [dispatch, href]);
 };
 
 export {

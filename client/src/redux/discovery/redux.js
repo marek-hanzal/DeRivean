@@ -1,6 +1,5 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectDiscoveryLink} from "redux/client/redux";
+import {useDispatch} from "react-redux";
 import {LoadingRedux} from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
@@ -29,14 +28,14 @@ const DiscoveryRedux = {
 };
 
 const useDiscovery = (
+	client,
 	onSuccess = ({}),
 	onFailure = ({}),
 ) => {
 	const dispatch = useDispatch();
-	const href = useSelector(selectDiscoveryLink);
 	useEffect(() => {
-		dispatch(DiscoveryRedux.fetch(href)).then(onSuccess, onFailure);
-	}, [dispatch, href, onFailure, onSuccess]);
+		dispatch(DiscoveryRedux.fetch(client.discovery)).then(onSuccess, onFailure);
+	}, [dispatch, client]);
 };
 
 function selectLink(id, state) {

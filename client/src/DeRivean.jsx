@@ -1,5 +1,4 @@
-import Client from "component/system/Config";
-import Discovery from "component/system/Discovery";
+import Client from "component/system/Client";
 import Session from "component/system/Session";
 import {Suspense} from "react";
 import {Helmet} from "react-helmet";
@@ -13,13 +12,11 @@ const DeRivean = () =>
 		<Helmet titleTemplate="DeRivean | %s"/>
 		<Suspense fallback={<LoaderView/>}>
 			<Client>
-				<Discovery>
-					<Session sites={{
-						public: <PublicSite/>,
-						// game: <GameRouter/>,
-						root: <RootSite/>,
-					}}/>
-				</Discovery>
+				<Session sites={{
+					public: <PublicSite/>,
+					// game: <GameRouter/>,
+					root: <RootSite/>,
+				}}/>
 			</Client>
 		</Suspense>
 	</BrowserRouter>
