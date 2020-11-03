@@ -4,6 +4,8 @@ import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
+import useMenuOpen from "hook/useMenuOpen";
+import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -36,6 +38,8 @@ const CreateViewWithAttributes = (
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(true);
+	useMenuOpen(id);
+	useMenuSelect(id + ".create");
 
 	/**
 	 * Fetch attributes used in editor.

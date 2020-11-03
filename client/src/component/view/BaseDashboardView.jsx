@@ -1,4 +1,6 @@
 import {Card, Result} from "antd";
+import useMenuOpen from "hook/useMenuOpen";
+import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 
@@ -13,6 +15,8 @@ const BaseDashboardView = (
 	context = useContext(context);
 	const id = context.id;
 	const icon = context.icon;
+	useMenuOpen(id);
+	useMenuSelect(id + ".dashboard");
 	return (
 		<Card title={t(`${id}.title`)}>
 			<Result

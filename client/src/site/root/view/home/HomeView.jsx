@@ -1,4 +1,6 @@
 import {Card} from "antd";
+import useMenuOpen from "hook/useMenuOpen";
+import useMenuSelect from "hook/useMenuSelect";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
@@ -19,11 +21,11 @@ const HomeView = () => {
 		});
 	}, [dispatch]);
 
+	useMenuOpen(["root.blog", "root.user"]);
+	useMenuSelect("root.home");
+
 	return (
-		<RootView
-			id={"root.home"}
-			open={["root.blog", "root.user"]}
-		>
+		<RootView id={"root.home"}>
 			<Card title={t("root.home.title")}>
 				{
 					validation ?

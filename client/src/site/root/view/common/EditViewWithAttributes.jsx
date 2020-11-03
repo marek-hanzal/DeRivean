@@ -5,6 +5,7 @@ import EditSubmitButtons from "component/form/EditSubmitButtons";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
+import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -19,8 +20,6 @@ const EditViewWithAttributes = (
 		context,
 		formName,
 		param,
-		open,
-		menu,
 		enableSubmit,
 		children,
 	}) => {
@@ -36,6 +35,8 @@ const EditViewWithAttributes = (
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(false);
+
+	useMenuSelect(id);
 
 	/**
 	 * Fetch attributes from redux.

@@ -6,7 +6,6 @@ const DashboardView = () => {
 		<BaseUserView>
 			<BaseDashboardView
 				context={UserContext}
-				menu={"root.user.dashboard"}
 			>
 				<h1>some content here</h1>
 			</BaseDashboardView>

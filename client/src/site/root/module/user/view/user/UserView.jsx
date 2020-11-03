@@ -1,5 +1,6 @@
 import {Card, Divider, Form, Input} from "antd";
 import EditorContext from "component/form/EditorContext";
+import useMenuOpen from "hook/useMenuOpen";
 import {useTranslation} from "react-i18next";
 import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
@@ -7,6 +8,9 @@ import validationFor from "utils/form/validationFor";
 
 const UserView = () => {
 	const {t} = useTranslation();
+
+	useMenuOpen(["root.kingdom"]);
+
 	return (
 		<BaseUserView>
 			<EditViewWithAttributes
