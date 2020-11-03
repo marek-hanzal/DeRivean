@@ -1,5 +1,5 @@
 import buildUrl from "build-url";
-import {DiscoveryRedux} from "redux/discovery/redux";
+import {selectPage} from "redux/discovery/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -13,7 +13,7 @@ function CreatePageRedux(id, link) {
 			page: function (page, size, name = null, param = null) {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(buildUrl(DiscoveryRedux.selector.page(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}))
+					return Server.get(buildUrl(selectPage(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}))
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);

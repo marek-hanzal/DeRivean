@@ -7,6 +7,7 @@ import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
 
 const actions = fetchActions("discovery");
+const branch = state => state.discovery;
 
 const DiscoveryRedux = {
 	fetch: href => dispatch => {
@@ -25,20 +26,6 @@ const DiscoveryRedux = {
 			});
 	},
 	reducer: () => fetchReducer(actions),
-	selector: {
-		branch: state => state.discovery,
-		status: state => DiscoveryRedux.selector.branch(state).status,
-		index: state => DiscoveryRedux.selector.branch(state).payload,
-		link: function (id, state) {
-			return this.index(state)[id].link;
-		},
-		fetch: function (id, state, uuid) {
-			return this.link(id, state).replace("{id}", uuid);
-		},
-		page: function (id, state, page, name = null, param = null) {
-			return name ? this.link(id, state).replace("{" + name + "}", param).replace("{page}", page) : this.link(id, state).replace("{page}", page);
-		},
-	},
 };
 
 const useDiscovery = (
@@ -52,7 +39,22 @@ const useDiscovery = (
 	}, [dispatch, href, onFailure, onSuccess]);
 };
 
+function selectLink(id, state) {
+	return branch(state).payload[id].link;
+}
+
+function selectFetch(id, uuid, state) {
+	return selectLink(id, state).replace("{id}", uuid);
+}
+
+function selectPage(id, state, page, name = null, param = null) {
+	return name ? selectLink(id, state).replace("{" + name + "}", param).replace("{page}", page) : selectLink(id, state).replace("{page}", page);
+}
+
 export {
 	DiscoveryRedux,
 	useDiscovery,
+	selectLink,
+	selectFetch,
+	selectPage,
 };

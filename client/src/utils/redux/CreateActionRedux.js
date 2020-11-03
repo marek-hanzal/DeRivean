@@ -1,4 +1,4 @@
-import {DiscoveryRedux} from "redux/discovery/redux";
+import {selectLink} from "redux/discovery/redux";
 import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
@@ -13,7 +13,7 @@ function CreateActionRedux(id, action, link, extra = {}) {
 				return (dispatch, getState) => {
 					dispatch(LoadingRedux.start());
 					dispatch(this.actions.request());
-					return Server.post(DiscoveryRedux.selector.link(link, getState()), data)
+					return Server.post(selectLink(link, getState()), data)
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							dispatch(LoadingRedux.finish());

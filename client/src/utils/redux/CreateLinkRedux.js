@@ -1,4 +1,4 @@
-import {DiscoveryRedux} from "redux/discovery/redux";
+import {selectLink} from "redux/discovery/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -11,7 +11,7 @@ function CreateLinkRedux(id, action, link) {
 			[action]: function () {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(DiscoveryRedux.selector.link(link, getState()))
+					return Server.get(selectLink(link, getState()))
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);
