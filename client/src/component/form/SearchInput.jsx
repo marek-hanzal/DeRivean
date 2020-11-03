@@ -13,6 +13,7 @@ const SearchInput = ({context, placeholder}) => {
 		dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
 			setData(data.items.map(data => ({label: data.name, value: data.id})));
 		});
+		// eslint-disable-next-line
 	}, [dispatch]);
 	return (
 		<Select
