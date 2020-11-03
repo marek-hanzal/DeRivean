@@ -1,17 +1,26 @@
 import {Table} from "antd";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router";
 
 const BaseTable = (
 	{
 		id,
-		page,
-		onPage,
-		items = page.items,
-		isLoading,
+		redux,
+		param = null,
 		columns = [],
 	}) => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
+	const params = useParams();
+	const page = useSelector(redux.redux.page.selector.getPayload);
+	const items = page.items;
+
+	const onPage = (current, size) => {
+		dispatch(redux.redux.page.dispatch.page(current, size, param, param ? params[param] : null));
+	};
+
 	/**
 	 * Without dependency, because onPage is callback which changes overtime (thus forcing re-rendering).
 	 */
@@ -23,7 +32,7 @@ const BaseTable = (
 			dataSource={items}
 			rowKey={record => record.id}
 			loading={{
-				spinning: isLoading,
+				spinning: useSelector(redux.redux.page.selector.isLoading),
 				delay: 100,
 			}}
 			pagination={{
