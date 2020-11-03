@@ -1,7 +1,7 @@
 import {Card, Divider, Form, Input} from "antd";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
-import UserRedux from "redux/user/redux";
+import {UserRedux} from "redux/user/redux";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 import validationFor from "utils/form/validationFor";

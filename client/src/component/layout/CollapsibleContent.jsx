@@ -1,7 +1,7 @@
 import {Layout} from "antd";
 import {useSelector} from "react-redux";
 import {ContentRedux} from "redux/content/redux";
-import MenuRedux from "redux/menu/redux";
+import {MenuRedux} from "redux/menu/redux";
 
 const CollapsibleContent = ({children}) => {
 	const isCollapsed = useSelector(MenuRedux.selector.isCollapsed);

@@ -6,4 +6,6 @@ const ServerRedux = CreateRedux({
 	sites: CreateLinkRedux("server", "sites", "root.server.sites"),
 });
 
-export default ServerRedux;
+export {
+	ServerRedux,
+};

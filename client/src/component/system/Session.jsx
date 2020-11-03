@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import SessionRedux from "redux/session/redux";
+import {SessionRedux} from "redux/session/redux";
 
 const Session = ({sites}) => {
 	const user = useSelector(SessionRedux.selector.getUser);

@@ -43,4 +43,6 @@ const MenuRedux = {
 	},
 };
 
-export default MenuRedux;
+export {
+	MenuRedux,
+};

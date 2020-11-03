@@ -13,4 +13,6 @@ const KingdomRedux = CreateCommonRedux(
 	},
 );
 
-export default KingdomRedux;
+export {
+	KingdomRedux,
+};

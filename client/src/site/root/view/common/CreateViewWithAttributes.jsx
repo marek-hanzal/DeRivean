@@ -9,7 +9,7 @@ import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router";
-import SessionRedux from "redux/session/redux";
+import {SessionRedux} from "redux/session/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import validationFor from "utils/form/validationFor";
 

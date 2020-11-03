@@ -3,7 +3,7 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import UserRedux from "redux/user/redux";
+import {UserRedux} from "redux/user/redux";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 

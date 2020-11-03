@@ -2,7 +2,7 @@ import {Card} from "antd";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import ServerRedux from "redux/server/redux";
+import {ServerRedux} from "redux/server/redux";
 import ErrorResult from "site/root/view/home/ErrorResult";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import SuccessResult from "site/root/view/home/SuccessResult";

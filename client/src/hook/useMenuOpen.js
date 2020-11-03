@@ -1,7 +1,7 @@
 import isArray from "isarray";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import MenuRedux from "redux/menu/redux";
+import {MenuRedux} from "redux/menu/redux";
 
 const useMenuOpen = open => {
 	const dispatch = useDispatch();

@@ -21,4 +21,6 @@ const UserRedux = CreateCommonRedux(
 	},
 );
 
-export default UserRedux;
+export {
+	UserRedux,
+};

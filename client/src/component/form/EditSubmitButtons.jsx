@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router";
-import SessionRedux from "redux/session/redux";
+import {SessionRedux} from "redux/session/redux";
 import values from "utils/form/values";
 
 const EditSubmitButtons = (

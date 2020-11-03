@@ -19,4 +19,6 @@ const SessionRedux = {
 	},
 };
 
-export default SessionRedux;
+export {
+	SessionRedux,
+};

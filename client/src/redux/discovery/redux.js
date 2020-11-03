@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectDiscoveryLink} from "redux/client/redux";
-import LoadingRedux from "redux/loading/redux";
+import {LoadingRedux} from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";

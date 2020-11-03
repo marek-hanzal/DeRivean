@@ -22,4 +22,6 @@ const LoadingRedux = {
 	},
 };
 
-export default LoadingRedux;
+export {
+	LoadingRedux,
+};

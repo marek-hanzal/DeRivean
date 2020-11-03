@@ -5,7 +5,7 @@ import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import SessionRedux from "redux/session/redux";
+import {SessionRedux} from "redux/session/redux";
 
 const SingOutView = ({id}) => {
 	const dispatch = useDispatch();

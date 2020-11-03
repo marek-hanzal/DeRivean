@@ -1,4 +1,4 @@
-import KingdomRedux from "redux/kingdom/redux";
+import {KingdomRedux} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 

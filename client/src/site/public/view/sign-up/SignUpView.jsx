@@ -4,7 +4,7 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import UserRedux from "redux/user/redux";
+import {UserRedux} from "redux/user/redux";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";

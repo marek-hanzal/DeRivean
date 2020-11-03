@@ -4,8 +4,8 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {generatePath, useNavigate, useParams} from "react-router";
 import {Link} from "react-router-dom";
-import MenuRedux from "redux/menu/redux";
-import SessionRedux from "redux/session/redux";
+import {MenuRedux} from "redux/menu/redux";
+import {SessionRedux} from "redux/session/redux";
 
 function RenderItem(item, index) {
 	const {t} = useTranslation();

@@ -2,7 +2,7 @@ import {Button, Card, Result} from "antd";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import UserRedux from "redux/user/redux";
+import {UserRedux} from "redux/user/redux";
 import Routes from "site/Routes";
 
 const SucceedResult = () => {

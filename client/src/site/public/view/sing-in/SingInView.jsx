@@ -4,7 +4,7 @@ import SignInIcon from "component/icon/SignInIcon";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import UserRedux from "redux/user/redux";
+import {UserRedux} from "redux/user/redux";
 import PublicView from "site/public/view/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 import numberRange from "utils/numberRange";
