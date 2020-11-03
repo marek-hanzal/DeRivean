@@ -1,13 +1,14 @@
 import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
+import FormErrorsContext from "component/form/FormErrorsContext";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseDashboardView from "component/view/BaseDashboardView";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
@@ -35,7 +36,7 @@ const EditViewWithAttributes = (
 	const [form] = Form.useForm();
 	const params = useParams();
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
-	const errors = useSelector(redux.redux.update.selector.getError);
+	const errors = useContext(FormErrorsContext);
 
 	/**
 	 * Fetch attributes from redux.
@@ -62,8 +63,10 @@ const EditViewWithAttributes = (
 					message.success(t(id + ".update.success"));
 					setEdit(false);
 					setData(values);
-				}, () => {
+					errors.setErrors(null);
+				}, error => {
 					message.error(t(id + ".update.error"));
+					errors.setErrors(error);
 				});
 			}}
 		>
@@ -89,7 +92,7 @@ const EditViewWithAttributes = (
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
 						<Form.Item
-							{...validationFor("name", errors, t)}
+							{...validationFor("name", errors.errors, t)}
 							name={"name"}
 							rules={[
 								{

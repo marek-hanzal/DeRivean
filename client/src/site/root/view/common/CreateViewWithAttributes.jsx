@@ -1,11 +1,12 @@
 import {Divider, Form, Input, message} from "antd";
 import BulletCard from "component/BulletCard";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
+import FormErrorsContext from "component/form/FormErrorsContext";
 import Centered from "component/layout/Centered";
 import DualSection from "component/layout/DualSection";
 import BaseCreateView from "component/view/BaseCreateView";
 import PropTypes from "prop-types";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router";
@@ -23,8 +24,6 @@ const CreateViewWithAttributes = (
 		param,
 		dashboardLink,
 		children,
-		errors,
-		setErrors,
 		initials,
 		enableSubmit,
 	}) => {
@@ -37,10 +36,13 @@ const CreateViewWithAttributes = (
 	const {t} = useTranslation();
 	const isLoading = useSelector(redux.redux.attributes.selector.isLoading);
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
+	const errors = useContext(FormErrorsContext);
+	if (!errors) {
+		throw new Error(`Missing form error context!`);
+	}
 	useEffect(() => {
 		dispatch(redux.redux.attributes.dispatch.attributes());
 	}, [dispatch, redux.redux.attributes.dispatch]);
-
 	return (
 		<Form
 			form={form}
@@ -54,7 +56,7 @@ const CreateViewWithAttributes = (
 					dispatch(SessionRedux.history(history));
 					navigate(dashboardLink(entity.id));
 				}, (error) => {
-					setErrors(error);
+					errors.setErrors(error);
 					message.error(t(id + ".create.message.error"));
 				});
 			}}
@@ -68,7 +70,7 @@ const CreateViewWithAttributes = (
 					<CreateSubmitButtons
 						enableSubmit={enableSubmit}
 						onCancel={() => {
-							setErrors(null);
+							errors.setErrors(null);
 						}}
 						form={form}
 						translation={id}
@@ -78,7 +80,7 @@ const CreateViewWithAttributes = (
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
 						<Form.Item
-							{...validationFor("name", errors, t)}
+							{...validationFor("name", errors.errors, t)}
 							name={"name"}
 							rules={[
 								{
