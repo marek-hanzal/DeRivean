@@ -1,5 +1,5 @@
 import buildUrl from "build-url";
-import DiscoveryRedux from "redux/discovery/redux";
+import {DiscoveryRedux} from "redux/discovery/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";

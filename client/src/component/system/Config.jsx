@@ -1,17 +1,19 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import ClientRedux from "redux/client/redux";
+import {useState} from "react";
+import {useClient} from "redux/client/redux";
 import ClientErrorView from "view/ClientErrorView";
 import LoaderView from "view/LoaderView";
 
-const Client = ({children, href = "/client.json"}) => {
-	const dispatch = useDispatch();
-	const status = useSelector(ClientRedux.selector.getStatus);
-	useEffect(() => dispatch(ClientRedux.fetch(href)), [dispatch, href]);
+const Client = ({children}) => {
+	const [status, setStatus] = useState();
+	useClient(() => {
+		setStatus(true);
+	}, () => {
+		setStatus(false);
+	});
 	switch (status) {
-		case "SUCCESS":
+		case true:
 			return children;
-		case "FAILURE":
+		case false:
 			return <ClientErrorView/>;
 		default:
 			return <LoaderView/>;

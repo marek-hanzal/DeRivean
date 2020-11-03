@@ -1,19 +1,19 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import ClientRedux from "redux/client/redux";
-import DiscoveryRedux from "redux/discovery/redux";
+import {useState} from "react";
+import {useDiscovery} from "redux/discovery/redux";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
 
 const Discovery = ({children}) => {
-	const dispatch = useDispatch();
-	const status = useSelector(DiscoveryRedux.selector.status);
-	const href = useSelector(ClientRedux.selector.getDiscoveryHref);
-	useEffect(() => dispatch(DiscoveryRedux.fetch(href)), [dispatch, href]);
+	const [status, setStatus] = useState();
+	useDiscovery(() => {
+		setStatus(true);
+	}, () => {
+		setStatus(false);
+	});
 	switch (status) {
-		case "SUCCESS":
+		case true:
 			return children;
-		case "FAILURE":
+		case false:
 			return <DiscoveryErrorView/>;
 		default:
 			return <LoaderView/>;

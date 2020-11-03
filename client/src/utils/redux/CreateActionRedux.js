@@ -1,4 +1,4 @@
-import DiscoveryRedux from "redux/discovery/redux";
+import {DiscoveryRedux} from "redux/discovery/redux";
 import LoadingRedux from "redux/loading/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
