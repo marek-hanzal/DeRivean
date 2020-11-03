@@ -23,6 +23,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		entity.token = request.token
 		entity.site = request.site
 		repository.attributes(entity.id, attributesMapper.map(request.attributes))
+		request.template?.let {
+			repository.useTemplate(it, entity)
+		}
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
@@ -40,6 +43,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		val password: String?,
 		val token: String?,
 		val site: String?,
+		val template: String?,
 		val attributes: Attributes?,
 	)
 }

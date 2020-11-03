@@ -16,10 +16,12 @@ abstract class AbstractAttributeRepository<T : EntityWithAttributes, U : UUIDTab
 ) : AbstractRepository<T, U>(entity, table, container) {
 	abstract val attributeRepository: IRepository<out AttributeEntity<T>>
 
-	fun attributes(id: String, attributes: Array<Attribute>) {
+	fun attributes(id: String, attributes: Array<Attribute>, replace: Boolean = true) {
 		find(id).let { entity ->
-			entity.attributes.forEach {
-				it.delete()
+			if (replace) {
+				entity.attributes.forEach {
+					it.delete()
+				}
 			}
 			for (attribute in attributes) {
 				attributeRepository.create {
@@ -31,5 +33,5 @@ abstract class AbstractAttributeRepository<T : EntityWithAttributes, U : UUIDTab
 		}
 	}
 
-	fun attributes(id: EntityUUID, attributes: Array<Attribute>) = attributes(id.toString(), attributes)
+	fun attributes(id: EntityUUID, attributes: Array<Attribute>, replace: Boolean = true) = attributes(id.toString(), attributes, replace)
 }

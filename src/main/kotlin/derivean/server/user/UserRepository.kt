@@ -1,5 +1,6 @@
 package derivean.server.user
 
+import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.server.attribute.AbstractAttributeRepository
 import derivean.server.user.entities.User
@@ -17,5 +18,9 @@ class UserRepository(container: IContainer) : AbstractAttributeRepository<User, 
 		entity.find { table.login like "${search}%" or (table.name like "${search}%" or (table.id eq uuid)) }.limit(100)
 	} catch (e: IllegalArgumentException) {
 		entity.find { table.login like "${search}%" or (table.name like "${search}%") }.limit(100)
+	}
+
+	fun useTemplate(template: String, target: User) {
+		attributes(target.id, find(template).attributes.map { Attribute(it.name, it.value) }.toTypedArray(), replace = false)
 	}
 }
