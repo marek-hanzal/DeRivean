@@ -23,6 +23,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 					this.login = item.login
 					this.password = item.password?.let { authenticatorService.encrypt(it) } ?: this.password
 					userRepository.attributes(item.id, attributeMapper.map(item.attributes))
+					item.template?.let {
+						userRepository.useTemplate(it, this)
+					}
 				}
 			)
 		})
@@ -56,6 +59,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		val name: String,
 		val login: String,
 		val password: String?,
+		val template: String?,
 		val attributes: Attributes?,
 	)
 }

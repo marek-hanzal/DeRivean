@@ -19,6 +19,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 				kingdomRepository.update(item.id) {
 					this.name = item.name
 					kingdomRepository.attributes(item.id, attributeMapper.map(item.attributes))
+					item.template?.let {
+						kingdomRepository.useTemplate(it, this)
+					}
 				}
 			)
 		})
@@ -41,5 +44,10 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		})
 	}
 
-	data class Request(val id: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val id: String,
+		val name: String,
+		val template: String?,
+		val attributes: Attributes?,
+	)
 }
