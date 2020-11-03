@@ -1,16 +1,13 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import {BaseKingdomView, KingdomContext} from "site/root/module/kingdom/view/BaseKingdomView";
+import {KingdomContext, KingdomView} from "site/root/module/kingdom/view/KingdomView";
 
 const DashboardView = () => {
 	return (
-		<BaseKingdomView>
-			<BaseDashboardView
-				context={KingdomContext}
-				menu={"root.kingdom.dashboard"}
-			>
+		<KingdomView>
+			<BaseDashboardView context={KingdomContext}>
 				<h1>Kingdom dashboard</h1>
 			</BaseDashboardView>
-		</BaseKingdomView>
+		</KingdomView>
 	);
 };
 

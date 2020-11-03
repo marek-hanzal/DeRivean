@@ -2,22 +2,20 @@ import {Card, Divider, Form, Input} from "antd";
 import EditorContext from "component/form/EditorContext";
 import useMenuOpen from "hook/useMenuOpen";
 import {useTranslation} from "react-i18next";
-import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
+import {UserContext, UserView} from "site/root/module/user/view/UserView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 import validationFor from "utils/form/validationFor";
 
-const UserView = () => {
+const HomeView = () => {
 	const {t} = useTranslation();
 
 	useMenuOpen(["root.kingdom"]);
 
 	return (
-		<BaseUserView>
+		<UserView>
 			<EditViewWithAttributes
 				context={UserContext}
-				formName={"user"}
 				param={"user"}
-				open={["root.kingdom"]}
 				enableSubmit={true}
 			>
 				<EditorContext.Consumer>
@@ -41,8 +39,8 @@ const UserView = () => {
 					)}
 				</EditorContext.Consumer>
 			</EditViewWithAttributes>
-		</BaseUserView>
+		</UserView>
 	);
 };
 
-export default UserView;
+export default HomeView;

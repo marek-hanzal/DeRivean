@@ -1,18 +1,17 @@
-import {BaseBuildingView, BuildingContext} from "site/root/module/building/view/BaseBuildingView";
+import {BuildingContext, BuildingView} from "site/root/module/building/view/BuildingView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
-const BuildingView = () => {
+const HomeView = () => {
 	return (
-		<BaseBuildingView>
+		<BuildingView>
 			<EditViewWithAttributes
 				context={BuildingContext}
 				formName={"building"}
 				param={"building"}
-				open={[]}
 				enableSubmit={true}
 			/>
-		</BaseBuildingView>
+		</BuildingView>
 	);
 };
 
-export default BuildingView;
+export default HomeView;

@@ -10,7 +10,7 @@ const BuildingList = () => {
 			redux={BuildingRedux}
 			param={"kingdom"}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.building.building.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.building.home.link(record.id)} text={text}/>},
 				{title: "name"},
 			]}
 		/>

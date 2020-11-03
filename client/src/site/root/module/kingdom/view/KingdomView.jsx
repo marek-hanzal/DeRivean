@@ -6,14 +6,14 @@ import Routes from "site/Routes";
 
 const KingdomContext = React.createContext(null);
 
-const BaseKingdomView = ({children, ...props}) => {
+const KingdomView = ({children, ...props}) => {
 	return (
 		<KingdomContext.Provider value={{
 			icon: <KingdomIcon/>,
 			id: "root.kingdom",
 			redux: KingdomRedux,
 			link: {
-				dashboard: Routes.root.kingdom.kingdom.link,
+				home: Routes.root.kingdom.home.link,
 			}
 		}}>
 			<RootView context={KingdomContext} {...props}>
@@ -24,6 +24,6 @@ const BaseKingdomView = ({children, ...props}) => {
 };
 
 export {
-	BaseKingdomView,
+	KingdomView,
 	KingdomContext,
 };

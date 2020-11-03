@@ -35,7 +35,7 @@ const Breadcrumbs = () =>
 					breadcrumbSimpleItem("root.user.list", <ListIcon/>),
 				]}
 			/>),
-			route(Routes.root.user.user.match(), <BaseBreadcrumbs
+			route(Routes.root.user.home.match(), <BaseBreadcrumbs
 				items={[
 					breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 					breadcrumbSimpleItem("root.user.dashboard", <UserIcon/>),

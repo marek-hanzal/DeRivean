@@ -31,7 +31,7 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.building.building.match(), <BaseMenu
+				route(Routes.root.building.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
 						menuBack(),

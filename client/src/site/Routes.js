@@ -61,7 +61,7 @@ const Routes = {
                 match: () => "list/*",
                 link: () => "/user/list",
             },
-            user: {
+            home: {
                 match: () => "u/:user/*",
                 link: resolveUuid("user", "/user/u/:user")
             },
@@ -80,7 +80,7 @@ const Routes = {
                 match: () => "u/:user/list/*",
                 link: resolveUuid("user", "/kingdom/u/:user/list"),
             },
-            kingdom: {
+            home: {
                 match: () => "k/:kingdom/*",
                 link: resolveUuid("kingdom", "/kingdom/k/:kingdom"),
             },
@@ -99,7 +99,7 @@ const Routes = {
                 match: () => "k/:kingdom/list/*",
                 link: resolveUuid("kingdom", "/hero/k/:kingdom/list"),
             },
-            hero: {
+            home: {
                 match: () => "h/:hero/*",
                 link: resolveUuid("hero", "/hero/h/:hero"),
             },
@@ -118,7 +118,7 @@ const Routes = {
                 match: () => "k/:kingdom/list/*",
                 link: resolveUuid("kingdom", "/building/k/:kingdom/list"),
             },
-            building: {
+            home: {
                 match: () => "b/:building/*",
                 link: resolveUuid("building", "/building/b/:building"),
             },

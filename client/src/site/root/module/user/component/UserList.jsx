@@ -12,7 +12,7 @@ const UserList = ({context}) => {
 			id={`${id}.list.table`}
 			redux={UserRedux}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.user.user.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.user.home.link(record.id)} text={text}/>},
 				{title: "name", width: 220},
 				{title: "login", width: 220},
 				{title: "token", width: 380},

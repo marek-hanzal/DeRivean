@@ -1,18 +1,17 @@
-import {BaseHeroView, HeroContext} from "site/root/module/hero/view/BaseHeroView";
+import {HeroContext, HeroView} from "site/root/module/hero/view/HeroView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
-const HeroView = () => {
+const HomeView = () => {
 	return (
-		<BaseHeroView>
+		<HeroView>
 			<EditViewWithAttributes
 				context={HeroContext}
 				formName={"hero"}
 				param={"hero"}
-				open={[]}
 				enableSubmit={true}
 			/>
-		</BaseHeroView>
+		</HeroView>
 	);
 };
 
-export default HeroView;
+export default HomeView;

@@ -4,7 +4,7 @@ import EditorContext from "component/form/EditorContext";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "redux/server/redux";
-import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
+import {UserContext, UserView} from "site/root/module/user/view/UserView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 import validationFor from "utils/form/validationFor";
 
@@ -16,10 +16,9 @@ const CreateView = () => {
 		() => message.error(t("root.server.error.cannot-fetch-sites"))
 	);
 	return (
-		<BaseUserView>
+		<UserView>
 			<CreateViewWithAttributes
 				context={UserContext}
-				formName={"user"}
 				param={"user"}
 				enableSubmit={sites}
 			>
@@ -62,7 +61,7 @@ const CreateView = () => {
 					)}
 				</EditorContext.Consumer>
 			</CreateViewWithAttributes>
-		</BaseUserView>
+		</UserView>
 	);
 };
 

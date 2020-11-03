@@ -31,7 +31,7 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.hero.hero.match(), <BaseMenu
+				route(Routes.root.hero.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
 						menuBack(),

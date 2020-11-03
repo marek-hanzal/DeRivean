@@ -1,14 +1,14 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import {BaseBuildingView, BuildingContext} from "site/root/module/building/view/BaseBuildingView";
+import {BuildingContext, BuildingView} from "site/root/module/building/view/BuildingView";
 
 const DashboardView = () => {
 	return (
-		<BaseBuildingView>
+		<BuildingView>
 			<BaseDashboardView
 				context={BuildingContext}
 				menu={"root.building.dashboard"}
 			/>
-		</BaseBuildingView>
+		</BuildingView>
 	);
 };
 

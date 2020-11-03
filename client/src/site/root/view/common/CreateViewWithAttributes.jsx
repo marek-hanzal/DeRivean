@@ -18,7 +18,6 @@ import validationFor from "utils/form/validationFor";
 const CreateViewWithAttributes = (
 	{
 		context,
-		formName,
 		param,
 		children,
 		enableSubmit,
@@ -33,8 +32,6 @@ const CreateViewWithAttributes = (
 	const {t} = useTranslation();
 	const redux = context.redux;
 	const id = context.id;
-	const icon = context.icon;
-	const dashboardLink = context.link.dashboard;
 	const attributes = useSelector(redux.redux.attributes.selector.getPayload);
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(true);
@@ -52,14 +49,14 @@ const CreateViewWithAttributes = (
 		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
 			<Form
 				form={form}
-				name={formName}
+				name={context.id}
 				autoComplete="off"
 				onFinish={values => {
 					dispatch(redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
 						message.success(t(id + ".create.message.success"));
 						history.push(location.pathname);
 						dispatch(SessionRedux.history(history));
-						navigate(dashboardLink(entity.id));
+						navigate(context.link.home(entity.id));
 					}, errors => {
 						message.error(t(id + ".create.message.error"));
 						setErrors(errors);
@@ -69,6 +66,7 @@ const CreateViewWithAttributes = (
 				<Card title={t(`${id}.create.title`)}>
 					<Result
 						status={"info"}
+						icon={context.icon}
 						title={
 							<CreateSubmitButtons
 								enableSubmit={enableSubmit}
@@ -87,10 +85,9 @@ const CreateViewWithAttributes = (
 										message: t(id + ".form.name.required"),
 									}
 								]}
-								children={<Input addonBefore={t(id + ".form.name.label")} suffix={icon}/>}
+								children={<Input addonBefore={t(id + ".form.name.label")} suffix={context.icon}/>}
 							/>
 						</Centered>}
-						icon={icon}
 					>
 						<DualSection
 							left={
@@ -109,7 +106,6 @@ const CreateViewWithAttributes = (
 };
 
 CreateViewWithAttributes.propTypes = {
-	formName: PropTypes.string.isRequired,
 	param: PropTypes.string.isRequired,
 	enableSubmit: PropTypes.any,
 };

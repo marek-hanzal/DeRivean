@@ -6,14 +6,14 @@ import Routes from "site/Routes";
 
 const UserContext = React.createContext(null);
 
-const BaseUserView = ({children, ...props}) => {
+const UserView = ({children, ...props}) => {
 	return (
 		<UserContext.Provider value={{
 			icon: <UserIcon/>,
 			id: "root.user",
 			redux: UserRedux,
 			link: {
-				dashboard: Routes.root.user.user.link,
+				home: Routes.root.user.home.link,
 			}
 		}}>
 			<RootView context={UserContext} {...props}>
@@ -24,6 +24,6 @@ const BaseUserView = ({children, ...props}) => {
 };
 
 export {
-	BaseUserView,
+	UserView,
 	UserContext,
 };

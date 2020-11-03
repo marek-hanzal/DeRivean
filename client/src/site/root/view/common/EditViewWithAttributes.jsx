@@ -18,7 +18,6 @@ import values from "utils/form/values";
 const EditViewWithAttributes = (
 	{
 		context,
-		formName,
 		param,
 		enableSubmit,
 		children,
@@ -57,7 +56,7 @@ const EditViewWithAttributes = (
 		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
 			<Form
 				form={form}
-				name={formName}
+				name={context.id}
 				autoComplete="off"
 				onFinish={values => {
 					dispatch(redux.redux.update.dispatch.update({...values, id: params[param]})).then(_ => {
@@ -119,11 +118,8 @@ const EditViewWithAttributes = (
 };
 
 EditViewWithAttributes.propTypes = {
-	formName: PropTypes.string.isRequired,
 	param: PropTypes.string.isRequired,
-	open: PropTypes.any.isRequired,
 	enableSubmit: PropTypes.any.isRequired,
-	menu: PropTypes.string,
 };
 
 export default EditViewWithAttributes;

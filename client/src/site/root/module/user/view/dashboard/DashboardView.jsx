@@ -1,15 +1,13 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
+import {UserContext, UserView} from "site/root/module/user/view/UserView";
 
 const DashboardView = () => {
 	return (
-		<BaseUserView>
-			<BaseDashboardView
-				context={UserContext}
-			>
+		<UserView>
+			<BaseDashboardView context={UserContext}>
 				<h1>some content here</h1>
 			</BaseDashboardView>
-		</BaseUserView>
+		</UserView>
 	);
 };
 

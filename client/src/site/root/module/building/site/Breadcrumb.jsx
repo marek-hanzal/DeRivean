@@ -21,7 +21,7 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdom.kingdom.link(), "root.kingdom.kingdom", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.home.link(), "root.kingdom.home", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbSimpleItem("root.building.dashboard", <DashboardIcon/>),
 					]}
@@ -30,7 +30,7 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdom.kingdom.link(), "root.kingdom.kingdom", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.home.link(), "root.kingdom.home", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.building.create", <CreateIcon/>),
@@ -40,17 +40,17 @@ const Breadcrumb = () => {
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbItem(Routes.root.kingdom.kingdom.link(), "root.kingdom.kingdom", <KingdomIcon/>),
+						breadcrumbItem(Routes.root.kingdom.home.link(), "root.kingdom.home", <KingdomIcon/>),
 						breadcrumbSimpleItem("root.building", <BuildingIcon/>),
 						breadcrumbItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
 						breadcrumbSimpleItem("root.building.list", <ListIcon/>),
 					]}
 				/>),
-				route(Routes.root.building.building.match(), <BaseBreadcrumbs
+				route(Routes.root.building.home.match(), <BaseBreadcrumbs
 					items={[
 						breadcrumbIconItem(Routes.root.link(), <HomeIcon/>),
 						breadcrumbItem(Routes.root.user.list.link(), "root.user.list", <UserIcon/>),
-						breadcrumbSimpleItem("root.building.building", <BuildingIcon/>),
+						breadcrumbSimpleItem("root.building.home", <BuildingIcon/>),
 					]}
 				/>),
 			]}

@@ -1,17 +1,14 @@
 import BaseListView from "component/view/BaseListView";
 import UserList from "site/root/module/user/component/UserList";
-import {BaseUserView, UserContext} from "site/root/module/user/view/BaseUserView";
+import {UserContext, UserView} from "site/root/module/user/view/UserView";
 
 const ListView = () => {
 	return (
-		<BaseUserView>
-			<BaseListView
-				context={UserContext}
-				open={["root.user", "root.blog"]}
-			>
+		<UserView>
+			<BaseListView context={UserContext}>
 				<UserList context={UserContext}/>
 			</BaseListView>
-		</BaseUserView>
+		</UserView>
 	);
 };
 

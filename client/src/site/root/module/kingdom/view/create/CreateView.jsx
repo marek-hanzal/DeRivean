@@ -1,16 +1,15 @@
-import {BaseKingdomView, KingdomContext} from "site/root/module/kingdom/view/BaseKingdomView";
+import {KingdomContext, KingdomView} from "site/root/module/kingdom/view/KingdomView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 
 const CreateView = () => {
 	return (
-		<BaseKingdomView>
+		<KingdomView>
 			<CreateViewWithAttributes
 				context={KingdomContext}
-				formName={"kingdom"}
 				param={"user"}
 				enableSubmit={true}
 			/>
-		</BaseKingdomView>
+		</KingdomView>
 	);
 };
 

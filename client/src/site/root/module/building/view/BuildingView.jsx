@@ -6,14 +6,14 @@ import Routes from "site/Routes";
 
 const BuildingContext = React.createContext(null);
 
-const BaseBuildingView = ({children, ...props}) => {
+const BuildingView = ({children, ...props}) => {
 	return (
 		<BuildingContext.Provider value={{
 			icon: <BuildingIcon/>,
 			id: "root.building",
 			redux: BuildingRedux,
 			link: {
-				dashboard: Routes.root.building.building.link,
+				home: Routes.root.building.home.link,
 			}
 		}}>
 			<RootView context={BuildingContext} {...props}>
@@ -24,6 +24,6 @@ const BaseBuildingView = ({children, ...props}) => {
 };
 
 export {
-	BaseBuildingView,
+	BuildingView,
 	BuildingContext,
 };

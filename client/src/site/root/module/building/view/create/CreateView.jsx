@@ -1,16 +1,16 @@
-import {BaseBuildingView, BuildingContext} from "site/root/module/building/view/BaseBuildingView";
+import {BuildingContext, BuildingView} from "site/root/module/building/view/BuildingView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 
 const CreateView = () => {
 	return (
-		<BaseBuildingView>
+		<BuildingView>
 			<CreateViewWithAttributes
 				context={BuildingContext}
 				formName={"building"}
 				param={"kingdom"}
 				enableSubmit={true}
 			/>
-		</BaseBuildingView>
+		</BuildingView>
 	);
 };
 

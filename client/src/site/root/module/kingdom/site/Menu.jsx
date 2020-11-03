@@ -34,12 +34,12 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.kingdom.kingdom.match(), <BaseMenu
+				route(Routes.root.kingdom.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
 						menuBack(),
 						menuDivider(),
-						menuItem(Routes.root.kingdom.kingdom.link(), "root.kingdom", <KingdomIcon/>),
+						menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <KingdomIcon/>),
 						menuDivider(),
 						HeroMenuItem(true),
 						menuDivider(),

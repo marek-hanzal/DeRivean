@@ -1,16 +1,16 @@
-import {BaseHeroView, HeroContext} from "site/root/module/hero/view/BaseHeroView";
+import {HeroContext, HeroView} from "site/root/module/hero/view/HeroView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 
 const CreateView = () => {
 	return (
-		<BaseHeroView>
+		<HeroView>
 			<CreateViewWithAttributes
 				context={HeroContext}
 				formName={"hero"}
 				param={"kingdom"}
 				enableSubmit={true}
 			/>
-		</BaseHeroView>
+		</HeroView>
 	);
 };
 

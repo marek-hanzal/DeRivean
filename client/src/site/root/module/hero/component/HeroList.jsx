@@ -1,16 +1,17 @@
 import BaseTable from "component/table/BaseTable";
 import HistoryLink from "component/table/HistoryLink";
-import {HeroRedux} from "redux/hero/redux";
-import Routes from "site/Routes";
+import {useContext} from "react";
+import {HeroContext} from "site/root/module/hero/view/HeroView";
 
 const HeroList = () => {
+	const context = useContext(HeroContext);
 	return (
 		<BaseTable
-			id={`root.hero.list.table`}
-			redux={HeroRedux}
+			id={`${context.id}.list.table`}
+			redux={context.redux}
 			param={"kingdom"}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={Routes.root.hero.hero.link(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <HistoryLink to={context.link.home(record.id)} text={text}/>},
 				{title: "name"},
 			]}
 		/>

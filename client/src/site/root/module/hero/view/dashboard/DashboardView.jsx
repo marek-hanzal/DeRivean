@@ -1,15 +1,11 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import {BaseHeroView, HeroContext} from "site/root/module/hero/view/BaseHeroView";
+import {HeroContext, HeroView} from "site/root/module/hero/view/HeroView";
 
 const DashboardView = () => {
 	return (
-		<BaseHeroView>
-			<BaseDashboardView
-				context={HeroContext}
-				menu={"root.hero.dashboard"}
-			>
-			</BaseDashboardView>
-		</BaseHeroView>
+		<HeroView>
+			<BaseDashboardView context={HeroContext}/>
+		</HeroView>
 	);
 };
 

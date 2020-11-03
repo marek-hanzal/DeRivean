@@ -6,14 +6,14 @@ import Routes from "site/Routes";
 
 const HeroContext = React.createContext(null);
 
-const BaseHeroView = ({children, ...props}) => {
+const HeroView = ({children, ...props}) => {
 	return (
 		<HeroContext.Provider value={{
 			icon: <HeroIcon/>,
 			id: "root.hero",
 			redux: HeroRedux,
 			link: {
-				dashboard: Routes.root.hero.hero.link,
+				home: Routes.root.hero.home.link,
 			}
 		}}>
 			<RootView context={HeroContext} {...props}>
@@ -24,6 +24,6 @@ const BaseHeroView = ({children, ...props}) => {
 };
 
 export {
-	BaseHeroView,
+	HeroView,
 	HeroContext,
 };
