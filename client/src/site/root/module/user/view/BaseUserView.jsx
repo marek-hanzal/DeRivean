@@ -16,7 +16,7 @@ const BaseUserView = ({children, ...props}) => {
 				dashboard: Routes.root.user.dashboard.link,
 			}
 		}}>
-			<RootView {...props}>
+			<RootView context={UserContext} {...props}>
 				{children}
 			</RootView>
 		</UserContext.Provider>

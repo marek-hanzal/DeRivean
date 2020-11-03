@@ -16,7 +16,7 @@ const BaseBuildingView = ({children, ...props}) => {
 				dashboard: Routes.root.building.dashboard.link,
 			}
 		}}>
-			<RootView {...props}>
+			<RootView context={BuildingContext} {...props}>
 				{children}
 			</RootView>
 		</BuildingContext.Provider>

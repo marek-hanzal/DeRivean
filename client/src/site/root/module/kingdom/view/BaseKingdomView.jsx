@@ -16,7 +16,7 @@ const BaseKingdomView = ({children, ...props}) => {
 				dashboard: Routes.root.kingdom.dashboard.link,
 			}
 		}}>
-			<RootView {...props}>
+			<RootView context={KingdomContext} {...props}>
 				{children}
 			</RootView>
 		</KingdomContext.Provider>

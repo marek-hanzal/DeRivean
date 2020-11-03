@@ -1,7 +1,7 @@
 import {Card} from "antd";
 import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {ServerRedux} from "redux/server/redux";
@@ -9,6 +9,10 @@ import ErrorResult from "site/root/view/home/ErrorResult";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import SuccessResult from "site/root/view/home/SuccessResult";
 import RootView from "site/root/view/RootView";
+
+const HomeContext = React.createContext({
+	id: "root.home"
+});
 
 const HomeView = () => {
 	const dispatch = useDispatch();
@@ -25,7 +29,7 @@ const HomeView = () => {
 	useMenuSelect("root.home");
 
 	return (
-		<RootView id={"root.home"}>
+		<RootView context={HomeContext} id={"root.home"}>
 			<Card title={t("root.home.title")}>
 				{
 					validation ?
