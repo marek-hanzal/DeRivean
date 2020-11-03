@@ -20,7 +20,7 @@ const SearchInput = ({context, placeholder, ...props}) => {
 			showSearch
 			defaultActiveFirstOption={false}
 			filterOption={false}
-			bordered={false}
+			// bordered={false}
 			loading={isLoading}
 			allowClear
 			onSearch={search => {

@@ -337,7 +337,14 @@
 				"success": "Kingdom created!",
 				"form": {
 					"submit": "Create!",
-					"cancelConfirm": "Changes will be lost, continue?"
+					"cancelConfirm": "Changes will be lost, continue?",
+					"template": {
+						"label": "Template kingdom",
+						"help": "If selected, created kingdom will get attributes from the template."
+					},
+					"misc": {
+						"title": "Others"
+					}
 				}
 			},
 			"update": {
