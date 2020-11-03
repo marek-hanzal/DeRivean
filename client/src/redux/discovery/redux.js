@@ -35,6 +35,7 @@ const useDiscovery = (
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(DiscoveryRedux.fetch(client.discovery)).then(onSuccess, onFailure);
+		// eslint-disable-next-line
 	}, [dispatch, client]);
 };
 
