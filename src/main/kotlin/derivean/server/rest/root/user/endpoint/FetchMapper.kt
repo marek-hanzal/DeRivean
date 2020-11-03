@@ -3,6 +3,7 @@ package derivean.server.rest.root.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
+import derivean.server.rest.common.Attribute
 import derivean.server.user.entities.User
 
 class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Response>(container) {
@@ -12,6 +13,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 		this.login = item.login
 		this.token = item.token
 		this.site = item.site
+		item.attributes.forEach {
+			this.attributes.add(Attribute(it.name, it.value))
+		}
 	}
 
 	data class Response(
@@ -20,6 +24,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 		val login: String,
 		val token: String?,
 		val site: String?,
+		val attributes: List<Attribute>,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -31,6 +36,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 			lateinit var login: String
 			var token: String? = null
 			var site: String? = null
+			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Response(
 				id.toString(),
@@ -38,6 +44,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 				login,
 				token,
 				site,
+				attributes,
 			)
 		}
 	}

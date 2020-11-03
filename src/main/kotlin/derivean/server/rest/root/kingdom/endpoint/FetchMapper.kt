@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.server.kingdom.entities.Kingdom
+import derivean.server.rest.common.Attribute
 
 class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.Fetch>(container) {
 	override fun map(item: Kingdom) = Fetch.build {
@@ -35,6 +36,4 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			)
 		}
 	}
-
-	data class Attribute(val attribute: String, val value: Double)
 }
