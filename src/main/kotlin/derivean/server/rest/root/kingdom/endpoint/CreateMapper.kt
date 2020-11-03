@@ -20,6 +20,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		entity.name = request.name
 		entity.user = userRepository.find(request.user)
 		repository.attributes(entity.id, attributesMapper.map(request.attributes))
+		request.template?.let {
+			repository.useTemplate(it, entity)
+		}
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
@@ -29,5 +32,10 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		return null
 	}
 
-	data class Request(val user: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val user: String,
+		val name: String,
+		val template: String?,
+		val attributes: Attributes?,
+	)
 }
