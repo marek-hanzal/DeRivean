@@ -2,6 +2,7 @@ import dismissAction from "utils/action/actions/dismissAction";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
+import CreatePostRedux from "utils/redux/CreatePostRedux";
 
 const UserRedux = CreateCommonRedux(
 	"user",
@@ -18,6 +19,7 @@ const UserRedux = CreateCommonRedux(
 			dismiss: dismissAction("user.login"),
 		}),
 		attributes: CreateLinkRedux("user", "attributes", "root.user.attributes"),
+		search: CreatePostRedux("user", "search", "root.user.search"),
 	},
 );
 

@@ -1,16 +1,20 @@
 import {Button, Card, Result} from "antd";
+import useFullsizeContent from "hook/useFullsizeContent";
+import React from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
+const SignInContext = React.createContext({
+	id: "root.sign-in"
+});
+
 const SingInView = () => {
 	const {t} = useTranslation();
+	useFullsizeContent(true, true);
 	return (
-		<RootView
-			id={"root.sign-in"}
-			fullsize={true}
-		>
+		<RootView context={SignInContext}>
 			<Card>
 				<Result
 					status={"success"}

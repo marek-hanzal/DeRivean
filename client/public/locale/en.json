@@ -204,7 +204,7 @@
 				},
 				"cancel": "Cancel!",
 				"attribute": {
-					"title": "User attributes",
+					"title": "Attributes",
 					"empty": "There are no attributes!",
 					"add": "Attribute",
 					"deleteConfirm": "Delete attribute?",
@@ -228,6 +228,9 @@
 					"title": "Registration",
 					"submit": "Create user!",
 					"cancelConfirm": "All changes will be lost, continue?",
+					"misc": {
+						"title": "Others"
+					},
 					"login": {
 						"label": "Login name",
 						"required": "Please fill login name!"
@@ -238,6 +241,10 @@
 					"site": {
 						"label": "Site",
 						"required": "Please assign the user to the desired site."
+					},
+					"template": {
+						"label": "Template user",
+						"help": "When selected new user will be based on the selected user."
 					}
 				},
 				"list": {
