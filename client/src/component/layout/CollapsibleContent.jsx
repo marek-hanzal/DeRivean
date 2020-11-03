@@ -1,6 +1,6 @@
 import {Layout} from "antd";
 import {useSelector} from "react-redux";
-import ContentRedux from "redux/content/redux";
+import {ContentRedux} from "redux/content/redux";
 import MenuRedux from "redux/menu/redux";
 
 const CollapsibleContent = ({children}) => {

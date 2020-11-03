@@ -19,4 +19,6 @@ const ContentRedux = {
 	},
 };
 
-export default ContentRedux;
+export {
+	ContentRedux,
+};

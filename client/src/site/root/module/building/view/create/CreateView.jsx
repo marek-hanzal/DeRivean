@@ -1,5 +1,5 @@
 import {useState} from "react";
-import BuildingRedux from "redux/building/redux";
+import {BuildingRedux} from "redux/building/redux";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 import RootView from "site/root/view/RootView";

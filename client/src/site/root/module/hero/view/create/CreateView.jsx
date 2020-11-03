@@ -1,5 +1,5 @@
 import {useState} from "react";
-import HeroRedux from "redux/hero/redux";
+import {HeroRedux} from "redux/hero/redux";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
 import RootView from "site/root/view/RootView";

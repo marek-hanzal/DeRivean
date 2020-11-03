@@ -1,4 +1,4 @@
-import HeroRedux from "redux/hero/redux";
+import {HeroRedux} from "redux/hero/redux";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 

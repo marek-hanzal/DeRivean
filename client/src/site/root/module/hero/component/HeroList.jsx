@@ -2,7 +2,7 @@ import BaseTable from "component/table/BaseTable";
 import HistoryLink from "component/table/HistoryLink";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import HeroRedux from "redux/hero/redux";
+import {HeroRedux} from "redux/hero/redux";
 import Routes from "site/Routes";
 
 const HeroList = () => {

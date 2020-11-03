@@ -13,4 +13,6 @@ const BuildingRedux = CreateCommonRedux(
 	},
 );
 
-export default BuildingRedux;
+export {
+	BuildingRedux,
+};

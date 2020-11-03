@@ -1,4 +1,4 @@
-import BuildingRedux from "redux/building/redux";
+import {BuildingRedux} from "redux/building/redux";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 

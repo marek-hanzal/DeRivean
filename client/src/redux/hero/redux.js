@@ -13,4 +13,6 @@ const HeroRedux = CreateCommonRedux(
 	},
 );
 
-export default HeroRedux;
+export {
+	HeroRedux,
+};
