@@ -27,11 +27,12 @@ const Header = () => {
 			<div style={{width: "50%", margin: "0 auto"}}>
 				<SearchInput
 					size={"large"}
+					bordered={false}
 					style={{width: "100%"}}
 					context={HeaderContext}
 					placeholder={"search"}
-					mapper={data => {
-						console.log(data);
+					onSelect={(_, option) => {
+						console.log("selected", option);
 					}}
 				/>
 			</div>

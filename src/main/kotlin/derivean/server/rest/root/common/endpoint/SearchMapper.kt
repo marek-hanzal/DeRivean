@@ -8,20 +8,16 @@ import derivean.lib.rest.internalServerError
 import derivean.lib.rest.ok
 import derivean.server.kingdom.KingdomRepository
 import derivean.server.user.UserRepository
-import derivean.server.rest.root.kingdom.endpoint.FetchMapper as KingdomFetchMapper
-import derivean.server.rest.root.user.endpoint.FetchMapper as UserFetchMapper
 
 class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Request, Response<out Any>>(container) {
 	private val userRepository: UserRepository by container.lazy()
-	private val userFetchMapper: UserFetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
-	private val kingdomFetchMapper: KingdomFetchMapper by container.lazy()
 
 	override fun resolve(item: Request) = try {
 		ok(storage.read {
 			Result(
-				userRepository.search(item.search).map { userFetchMapper.map(it) },
-				kingdomRepository.search(item.search).map { kingdomFetchMapper.map(it) },
+				userRepository.search(item.search).map { Item(it.id.toString(), "user", it.name) } +
+					kingdomRepository.search(item.search).map { Item(it.id.toString(), "kingdom", it.name) },
 			)
 		})
 	} catch (e: Throwable) {
@@ -36,7 +32,12 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Re
 	)
 
 	data class Result(
-		val users: List<UserFetchMapper.Fetch>,
-		val kingdoms: List<KingdomFetchMapper.Fetch>,
+		val items: List<Item>,
+	)
+
+	data class Item(
+		val id: String,
+		val type: String,
+		val name: String,
 	)
 }
