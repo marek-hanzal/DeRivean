@@ -58,12 +58,13 @@ const EditViewWithAttributes = (
 				form={form}
 				name={context.id}
 				autoComplete="off"
-				onFinish={values => {
-					dispatch(redux.redux.update.dispatch.update({...values, id: params[param]})).then(_ => {
+				onFinish={data => {
+					dispatch(redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {
 						message.success(t(id + ".update.success"));
 						setEditor(false);
-						setData(values);
 						setErrors(null);
+						setData(data);
+						values(form, data);
 					}, error => {
 						message.error(t(id + ".update.error"));
 						setErrors(error);
