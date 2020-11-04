@@ -1,4 +1,5 @@
 import Client from "component/system/Client";
+import Language from "component/system/Language";
 import Session from "component/system/Session";
 import {Suspense} from "react";
 import {Helmet} from "react-helmet";
@@ -12,11 +13,13 @@ const DeRivean = () =>
 		<Helmet titleTemplate="DeRivean | %s"/>
 		<Suspense fallback={<LoaderView/>}>
 			<Client>
-				<Session sites={{
-					public: <PublicSite/>,
-					// game: <GameRouter/>,
-					root: <RootSite/>,
-				}}/>
+				<Language>
+					<Session sites={{
+						public: <PublicSite/>,
+						// game: <GameRouter/>,
+						root: <RootSite/>,
+					}}/>
+				</Language>
 			</Client>
 		</Suspense>
 	</BrowserRouter>
