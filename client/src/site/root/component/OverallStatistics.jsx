@@ -8,7 +8,7 @@ import ModuleIcon from "site/root/component/ModuleIcon";
 const OverallStatistics = (
 	{
 		action,
-		show = ["users", "kingdoms", "buildings", "heroes"]
+		show = ["users", "kingdoms", "buildings", "heroes", "translations"]
 	}) => {
 	const {t} = useTranslation();
 	const dispatch = useDispatch();
