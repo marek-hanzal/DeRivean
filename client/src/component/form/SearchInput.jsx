@@ -40,14 +40,17 @@ const SearchInput = (
 				dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
 					setData(mapper(data));
 				});
-			}
-			}
-			// options={data}
+			}}
+			onChange={_ => {
+				dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
+					setData(mapper(data));
+				});
+			}}
 			placeholder={t(`${context.id}.${placeholder}.label`)}
 			{...props}
 		>
 			{data.map(item => (
-				<Select.Option key={item.id} value={item.id}>
+				<Select.Option key={item.id} value={item.id} item={item}>
 					{render(item)}
 				</Select.Option>
 			))}

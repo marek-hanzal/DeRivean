@@ -21,7 +21,11 @@
 		"no": "Nope!",
 		"refresh": "Refresh",
 		"homepage": "Go to Homepage",
-		"spinner": "Making some hard magick to make things work!"
+		"spinner": "Making some hard magick to make things work!",
+		"view-item": "View",
+		"copy-id": "Copy UUID",
+		"copy-success": "UUID copied into clipboard!",
+		"warped": "You have been warped to search result!"
 	},
 	"public": {
 		"home": {
