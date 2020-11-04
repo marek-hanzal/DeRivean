@@ -21,13 +21,22 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Re
 
 	override fun resolve(item: Request) = try {
 		ok(storage.read {
+			/**
+			 * because this will search everywhere, there should be only a few results
+			 */
 			val limit = 5
+
+			/**
+			 * this will (should) prevent database for failing, but also all text columns
+			 * must be at least 36 chars in length
+			 */
+			val search = item.search.take(36)
 			Result(
-				userRepository.search(item.search, limit).map { Item(it.id.toString(), "user", it.name) } +
-					kingdomRepository.search(item.search, limit).map { Item(it.id.toString(), "kingdom", it.name) } +
-					buildingRepository.search(item.search, limit).map { Item(it.id.toString(), "building", it.name) } +
-					heroRepository.search(item.search, limit).map { Item(it.id.toString(), "hero", it.name) } +
-					translationRepository.search(item.search, limit).map { Item(it.id.toString(), "translation", it.language + ": " + it.label) }
+				userRepository.search(search, limit).map { Item(it.id.toString(), "user", it.name) } +
+					kingdomRepository.search(search, limit).map { Item(it.id.toString(), "kingdom", it.name) } +
+					buildingRepository.search(search, limit).map { Item(it.id.toString(), "building", it.name) } +
+					heroRepository.search(search, limit).map { Item(it.id.toString(), "hero", it.name) } +
+					translationRepository.search(search, limit).map { Item(it.id.toString(), "translation", it.language + ": " + it.label) }
 			)
 		})
 	} catch (e: Throwable) {
