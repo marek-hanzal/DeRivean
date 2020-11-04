@@ -7,6 +7,9 @@ import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
 import {SearchRedux} from "redux/search/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
+import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
 
 const HeaderContext = React.createContext({
@@ -18,23 +21,71 @@ function warpTo(navigate, item, target = "home") {
 	navigate(Routes.root[item.type][target].link(item.id));
 }
 
+const UserToolbar = ({item}) => {
+	const {t} = useTranslation();
+	const navigate = useNavigate();
+	return (
+		<Space split={<Divider type={"vertical"}/>}>
+			<Button size={"small"} type={"dashed"} icon={<KingdomIcon/>} onClick={() => {
+				navigate(Routes.root.kingdom.create.link(item.id));
+			}}>{t("root.toolbar.kingdom.create")}</Button>
+			<Button size={"small"} type={"dashed"} icon={<KingdomIcon/>} onClick={() => {
+				navigate(Routes.root.kingdom.list.link(item.id));
+			}}>{t("root.toolbar.kingdom.list")}</Button>
+		</Space>
+	);
+};
+
+const KingdomToolbar = ({item}) => {
+	const {t} = useTranslation();
+	const navigate = useNavigate();
+	return (
+		<Space split={<Divider type={"vertical"}/>}>
+			<Button size={"small"} type={"dashed"} icon={<BuildingIcon/>} onClick={() => {
+				navigate(Routes.root.building.create.link(item.id));
+			}}>{t("root.toolbar.building.create")}</Button>
+			<Button size={"small"} type={"dashed"} icon={<BuildingIcon/>} onClick={() => {
+				navigate(Routes.root.building.list.link(item.id));
+			}}>{t("root.toolbar.building.list")}</Button>
+			<Button size={"small"} type={"dashed"} icon={<HeroIcon/>} onClick={() => {
+				navigate(Routes.root.hero.create.link(item.id));
+			}}>{t("root.toolbar.hero.create")}</Button>
+			<Button size={"small"} type={"dashed"} icon={<HeroIcon/>} onClick={() => {
+				navigate(Routes.root.hero.list.link(item.id));
+			}}>{t("root.toolbar.hero.list")}</Button>
+		</Space>
+	);
+};
+
+const CustomToolbar = ({item}) => {
+	switch (item.type) {
+		case "user":
+			return <UserToolbar item={item}/>;
+		case "kingdom":
+			return <KingdomToolbar item={item}/>;
+		default:
+			return null;
+	}
+};
+
 const SearchItem = ({item}) => {
 	const {t} = useTranslation();
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>} size={"small"}>
 			<ModuleIcon module={item.type}/>
-			<Button type={"primary"} ghost onClick={() => {
+			<CustomToolbar item={item}/>
+			<Button size={"small"} type={"dashed"} onClick={() => {
 				warpTo(navigate, item, "edit");
 				message.success(t("common.warped"));
 			}} children={t("common.edit-item")}/>
-			<Button type={"dashed"} onClick={e => {
+			<Button size={"small"} type={"dashed"} onClick={e => {
 				copy(item.id, {
 					format: "text/plain",
 					onCopy: () => message.success(t("common.copy-success")),
 				});
 			}} children={t("common.copy-id")}/>
-			<Button type={"link"} ghost onClick={() => {
+			<Button size={"small"} type={"link"} ghost onClick={() => {
 				warpTo(navigate, item);
 				message.success(t("common.warped"));
 			}} children={item.name}/>
@@ -59,7 +110,7 @@ const Header = () => {
 					</Button>
 				</Link>
 			</div>
-			<div style={{width: "50%", margin: "0 auto"}}>
+			<div style={{width: "70%", margin: "0 auto"}}>
 				<SearchInput
 					size={"large"}
 					bordered={false}

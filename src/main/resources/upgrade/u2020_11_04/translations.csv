@@ -197,3 +197,12 @@ c294322c-c3f1-4033-9369-984b1cbf84b7,en,translation,root.building.form.attribute
 d585affd-3847-451a-af51-f4fc9e666b4e,en,translation,root.building.edit.form.delete,Delete!
 8101da9c-1270-4547-ae5c-a6913e225788,en,translation,root.building.form.attribute.deleteConfirm,Delete attribute?
 6c699c24-a91e-4c52-afa9-547d284034f7,en,translation,root.building.edit.form.deleteConfirm,Delete building? This action cannot be reverted!
+5380b067-e72e-4074-8153-ada7a69da364,en,translation,root.toolbar.kingdom.create,Create
+82442b13-0d97-48fc-aafe-bfab40673fa8,en,translation,root.toolbar.building.create,Create
+9fa0bc61-efee-4e51-9ba4-86f4b83d639c,en,translation,root.toolbar.hero.create,Create
+ec3d6835-6218-49e4-ac08-3740bd9e735d,en,translation,root.toolbar.kingdom.list,List
+37dfc17e-2799-4694-943a-b0def64e37ac,en,translation,root.toolbar.hero.list,List
+36a18e20-b73c-4e36-a46c-363ca11faf3a,en,translation,root.toolbar.building.list,List
+282f3fac-18fc-43f5-9c78-860cad8407aa,en,translation,root.building.create.form.submit,Create!
+8b78d221-b317-4e9b-a925-4d5041318412,en,translation,root.hero.create.form.submit,Create!
+0507fb69-9f37-4218-a0f0-4063296d5a20,en,translation,root.building.create.title,Create building!

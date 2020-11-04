@@ -24,7 +24,7 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Re
 			/**
 			 * because this will search everywhere, there should be only a few results
 			 */
-			val limit = 5
+			val limit = 50
 
 			/**
 			 * this will (should) prevent database for failing, but also all text columns
