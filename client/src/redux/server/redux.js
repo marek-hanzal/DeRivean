@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
@@ -13,8 +14,10 @@ const useServerSites = (
 	onError = error => ({}),
 ) => {
 	const dispatch = useDispatch();
+	const cancelToken = axios.CancelToken.source();
 	useEffect(() => {
-		dispatch(ServerRedux.redux.sites.dispatch.sites()).then(onSuccess, onError);
+		dispatch(ServerRedux.redux.sites.dispatch.sites(cancelToken)).then(onSuccess, onError);
+		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [dispatch]);
 };

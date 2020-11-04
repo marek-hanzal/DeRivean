@@ -1,3 +1,4 @@
+import axios from "axios";
 import buildUrl from "build-url";
 import {selectPage} from "redux/discovery/redux";
 import {Server} from "server";
@@ -10,17 +11,22 @@ function CreatePageRedux(id, link) {
 	return {
 		dispatch: {
 			actions: fetchActions(`${id}.page`),
-			page: function (page, size, name = null, param = null) {
+			page: function (page, size, name = null, param = null, cancelToken = null) {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(buildUrl(selectPage(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}))
+					return Server.get(buildUrl(selectPage(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}), {
+						cancelToken: (cancelToken || axios.CancelToken.source()).token,
+					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);
 						})
-						.catch(({response}) => {
-							dispatch(this.actions.failure(response.data));
-							return Promise.reject(response.data);
+						.catch(error => {
+							if (axios.isCancel(error)) {
+								return Promise.reject({cancel: true});
+							}
+							dispatch(this.actions.failure(error.response.data));
+							return Promise.reject(error.response.data);
 						});
 				};
 			},

@@ -13,7 +13,12 @@ const SiteInput = () => {
 	const [sites, setSites] = useState();
 	useServerSites(
 		sites => setSites(sites.sites),
-		() => message.error(t("root.server.error.cannot-fetch-sites"))
+		error => {
+			if (error.cancel) {
+				return;
+			}
+			message.error(t("root.server.error.cannot-fetch-sites"));
+		}
 	);
 	return (
 		<Form.Item

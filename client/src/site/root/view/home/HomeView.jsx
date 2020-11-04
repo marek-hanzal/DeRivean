@@ -1,4 +1,5 @@
 import {Card} from "antd";
+import axios from "axios";
 import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import React, {useEffect, useState} from "react";
@@ -20,9 +21,12 @@ const HomeView = () => {
 	const [validation, setValidation] = useState();
 
 	useEffect(() => {
-		dispatch(ServerRedux.redux.validate.dispatch.validate()).then(validation => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(ServerRedux.redux.validate.dispatch.validate(cancelToken)).then(validation => {
 			setValidation(validation);
+		}, () => {
 		});
+		return () => cancelToken.cancel();
 	}, [dispatch]);
 
 	useMenuOpen(["root.blog", "root.user", "root.translation"]);

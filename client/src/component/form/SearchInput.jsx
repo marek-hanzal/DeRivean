@@ -1,4 +1,5 @@
 import {Select} from "antd";
+import axios from "axios";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -19,9 +20,12 @@ const SearchInput = (
 	mapper = mapper || (data => data.items.map(item => ({label: item.name, value: item.id, ...item})));
 	render = render || (item => item.name);
 	useEffect(() => {
-		dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(context.redux.redux.search.dispatch.search({search: ""}, cancelToken)).then(data => {
 			setData(mapper(data));
+		}, () => {
 		});
+		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [dispatch]);
 	return (

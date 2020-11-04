@@ -1,4 +1,5 @@
 import {Card, Divider, message, Space, Spin, Statistic} from "antd";
+import axios from "axios";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
@@ -14,15 +15,20 @@ const OverallStatistics = (
 	const dispatch = useDispatch();
 	const [data, setData] = useState({users: 0, kingdoms: 0, heroes: 0, buildings: 0});
 	const [loading, setLoading] = useState(true);
-	action = action || (() => StatisticsRedux.redux.statistics.dispatch.statistics());
+	action = action || (cancelToken => StatisticsRedux.redux.statistics.dispatch.statistics(cancelToken));
 	useEffect(() => {
-		dispatch(action()).then(statistics => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(action(cancelToken)).then(statistics => {
 			setData(statistics);
 			setLoading(false);
-		}, () => {
-			message.error(t("root.statistic.fetch-error"));
+		}, error => {
+			if (error.cancel) {
+				return;
+			}
 			setLoading(false);
+			message.error(t("root.statistic.fetch-error"));
 		});
+		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [dispatch, t]);
 	return (

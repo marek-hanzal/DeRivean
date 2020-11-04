@@ -1,3 +1,4 @@
+import axios from "axios";
 import {selectLink} from "redux/discovery/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
@@ -8,17 +9,22 @@ function CreatePostRedux(id, action, link, extra = {}) {
 	return {
 		dispatch: {
 			actions: fetchActions(`${id}.${action}`),
-			[action]: function (data) {
+			[action]: function (data, cancelToken = null) {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.post(selectLink(link, getState()), data)
+					return Server.post(selectLink(link, getState()), data, {
+						cancelToken: (cancelToken || axios.CancelToken.source()).token,
+					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);
 						})
-						.catch(({response}) => {
-							dispatch(this.actions.failure(response.data));
-							return Promise.reject(response.data);
+						.catch(error => {
+							if (axios.isCancel(error)) {
+								return Promise.reject({cancel: true});
+							}
+							dispatch(this.actions.failure(error.response.data));
+							return Promise.reject(error.response.data);
 						});
 				};
 			},
