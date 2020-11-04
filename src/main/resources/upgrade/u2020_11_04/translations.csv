@@ -157,3 +157,32 @@ d95238b3-c0ba-44ed-9b00-ef4c7e5f9b14,en,translation,root.building.dashboard.menu
 2a0573b3-e3da-4d9c-b73b-81f2f8ecc696,en,translation,root.building.create.menu,Create
 481b1b0b-3235-43ad-aeb1-ec95a8b0f57d,en,translation,root.building.list.menu,List
 c951e66b-47e6-4a52-a473-920138a9d4e2,en,translation,root.hero.title,Heroes
+c7bdc6b6-0909-4880-bc7f-2abcf860c5b1,en,translation,root.site.null,No site
+78627715-d7be-449e-a398-a9ae88804d0d,en,translation,root.site.game,Game
+17a843e6-19f4-48f6-9086-b190e17b78a8,en,translation,root.site.root,Root
+372e1754-cdcd-4b3f-9478-4ce635473301,en,translation,root.user.form.misc.title,Others
+ca8c9d07-911c-4a23-be91-d16172298979,en,translation,root.user.form.template.label,Template user
+7393efe5-895b-4cae-bc74-adcb6df40952,en,translation,root.user.form.template.help,Attributes will be copied from the selected template user (if selected).
+fee9791d-a619-4ff3-835e-6b4da3189db9,en,translation,root.user.form.attribute.empty,There are no attributes.
+948dd3f3-2678-43e0-9a9d-38ca83a1fffe,en,translation,root.user.form.attribute.add,Attribute
+4b321100-17ba-4ad8-8bcd-7259c0640cd9,en,translation,root.user.create.list.title,Users
+95c8eedc-aec2-404c-946c-8e28cc2797d2,en,translation,root.user.create.list.item-0,User represents a human being.
+3584c21e-8771-4c6b-97c6-1250d987fce6,en,translation,root.user.create.list.item-1,User could log in into the game (Game site) or as the root administrator (Root site).
+fbe07e48-188f-4b65-a90c-00561e56942a,en,translation,root.user.create.list.item-2,"Gamers have access to the game, thus using game rules defined in this administration."
+cb93ba1a-49cc-4d50-8db6-a7047cf52f80,en,translation,root.user.create.list.item-3,"Root users have full access to the server, thus not able to play the game - they're like Game Masters."
+bbf430bc-5681-496e-bad9-8ef0de14b9a7,en,translation,root.kingdom.edit.form.edit,Edit!
+d14afc33-5ad9-4fcb-9507-4c8e0580ed7a,cs,translation,root.kingdom.edit.form.edit,Editovat!
+42fbff29-35a7-4ee6-a0bc-e7e88a8c7ce6,en,translation,root.kingdom.list.title,Kingdom list
+0d72c273-b155-4530-bde0-9929e5b19a69,en,translation,root.kingdom.list.table.name.column,Name
+daf640f1-230f-4599-a36e-269c7c5e87a0,en,translation,root.kingdom.list.table.id.column,UUID
+40fde508-f76f-453a-a2e6-1b77f0833d38,en,translation,root.kingdom.create.title,Create Kingdom!
+07a2c9a4-5ad6-47be-b74f-67814f17e34f,en,translation,root.kingdom.create.form.submit,Create!
+29c2e23a-3f03-455d-a7d2-6b6e94cd3db7,en,translation,root.kingdom.form.cancel,Cancel!
+b5dd45eb-dba8-4196-8d82-b9ccf29cc709,en,translation,root.kingdom.form.name.label,Name
+7b524887-31fc-4397-8814-b64d72202c6a,en,translation,root.kingdom.create.form.misc.title,Others
+23fea1cd-599b-47b5-955c-8711bad3573c,en,translation,root.kingdom.create.form.template.label,Template
+efebe334-aacd-4cad-8475-ec99a2cf8aa6,en,translation,root.kingdom.create.form.template.help,Use template kingdom to copy default attributes.
+e0a831a1-f143-48cc-9743-1dad139857e1,en,translation,root.kingdom.form.attribute.add,Attribute
+10a0cc5e-c011-4fb6-a33f-6070a3a37b28,en,translation,root.kingdom.form.attribute.title,Attributes
+891f5afc-52cf-478a-a9eb-da5a792ee879,en,translation,root.kingdom.form.attribute.empty,There are no attributes.
+9fc01842-2dcb-4614-8a00-480305719ddf,en,translation,root.kingdom.subtitle,Here you have overview of all kingdoms!
