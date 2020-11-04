@@ -7,6 +7,8 @@ import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
 import {SearchRedux} from "redux/search/redux";
+import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
@@ -19,6 +21,8 @@ const HeaderContext = React.createContext({
 const icons = {
 	user: <UserIcon/>,
 	kingdom: <KingdomIcon/>,
+	hero: <HeroIcon/>,
+	building: <BuildingIcon/>,
 };
 
 function warpTo(navigate, item) {
@@ -47,7 +51,6 @@ const SearchItem = ({item}) => {
 };
 
 const Header = () => {
-	const navigate = useNavigate();
 	const [value, setValue] = useState();
 	return (
 		<Layout.Header style={{
@@ -71,7 +74,6 @@ const Header = () => {
 					value={value}
 					onSelect={(_, node) => {
 						setValue(null);
-						// warpTo(navigate, node.item);
 					}}
 					render={item => <SearchItem item={item}/>}
 				/>
