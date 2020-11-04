@@ -1,8 +1,10 @@
 import {Table} from "antd";
-import {useEffect} from "react";
+import axios from "axios";
+import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
+import defaultPage from "utils/page";
 
 const BaseTable = (
 	{
@@ -14,25 +16,38 @@ const BaseTable = (
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
-	const page = useSelector(redux.redux.page.selector.getPayload);
+	const [page, setPage] = useState(defaultPage);
+	const [loading, setLoading] = useState(true);
 	const items = page.items;
 
-	const onPage = (current, size) => {
-		dispatch(redux.redux.page.dispatch.page(current, size, param, param ? params[param] : null));
+	const onPage = (current, size, cancelToken = null) => {
+		dispatch(redux.redux.page.dispatch.page(current, size, param, param ? params[param] : null, cancelToken)).then(data => {
+			setPage(data);
+			setLoading(false);
+		}, error => {
+			if (error.cancel) {
+				return;
+			}
+			setLoading(false);
+		});
 	};
 
 	/**
 	 * Without dependency, because onPage is callback which changes overtime (thus forcing re-rendering).
 	 */
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(() => onPage(0, 10), []);
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		onPage(0, 10, cancelToken);
+		return () => cancelToken.cancel();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<Table
 			dataSource={items}
 			rowKey={record => record.id}
 			loading={{
-				spinning: useSelector(redux.redux.page.selector.isLoading),
+				spinning: loading,
 				delay: 100,
 			}}
 			pagination={{
