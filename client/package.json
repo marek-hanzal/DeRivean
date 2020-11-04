@@ -1,13 +1,13 @@
 {
 	"name": "derivean",
-	"version": "0.5.249",
+	"version": "0.5.250",
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
 		"@testing-library/jest-dom": "^5.11.5",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
-		"antd": "^4.7.3",
+		"antd": "^4.8.0",
 		"axios": "^0.20.0",
 		"build-url": "^6.0.1",
 		"classnames": "^2.2.6",

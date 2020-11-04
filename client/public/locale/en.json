@@ -145,6 +145,12 @@
 			"game": "Game",
 			"root": "Root"
 		},
+		"statistic": {
+			"users": "Total users",
+			"kingdoms": "Total kingdoms",
+			"heroes": "Total heroes",
+			"buildings": "Total buildings"
+		},
 		"server": {
 			"error": {
 				"Missing template user!": "Template user is required for new user registration!",
