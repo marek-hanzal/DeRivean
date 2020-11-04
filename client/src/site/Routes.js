@@ -89,8 +89,8 @@ const Routes = {
                 link: resolveUuid("translation", "/translation/t/:translation/edit")
             },
             home: {
-                match: () => "t/:translation/home/*",
-                link: resolveUuid("translation", "/translation/t/:translation/home")
+                match: () => "t/:translation/edit/*",
+                link: resolveUuid("translation", "/translation/t/:translation/edit")
             },
             list: {
                 match: () => "list/*",

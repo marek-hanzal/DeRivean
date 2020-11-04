@@ -1,6 +1,5 @@
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
-import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
@@ -24,21 +23,7 @@ const Menu = () => {
 						menuBack(),
 						menuDivider(),
 
-						menuItem(Routes.root.translation.home.link(), "root.translation.home", <TranslationIcon/>),
-						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>, true),
-
-						menuDivider(),
-						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
-					]}
-				/>),
-				route(Routes.root.translation.edit.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuBack(),
-						menuDivider(),
-
-						menuItem(Routes.root.translation.home.link(), "root.translation.home", <TranslationIcon/>),
-						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>, true),
+						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <TranslationIcon/>),
 
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
