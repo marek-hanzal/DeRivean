@@ -22,23 +22,22 @@ const SearchItem = ({item}) => {
 	const {t} = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<Space split={<Divider type={"vertical"}/>}>
+		<Space split={<Divider type={"vertical"}/>} size={"small"}>
 			<ModuleIcon module={item.type}/>
-			<Button type={"primary"} ghost size={"small"} onClick={() => {
-				warpTo(navigate, item);
-				message.success(t("common.warped"));
-			}} children={t("common.view-item")}/>
-			<Button type={"dashed"} size={"small"} onClick={() => {
+			<Button type={"primary"} ghost onClick={() => {
 				warpTo(navigate, item, "edit");
 				message.success(t("common.warped"));
 			}} children={t("common.edit-item")}/>
-			<Button type={"dashed"} size={"small"} onClick={e => {
+			<Button type={"dashed"} onClick={e => {
 				copy(item.id, {
 					format: "text/plain",
 					onCopy: () => message.success(t("common.copy-success")),
 				});
 			}} children={t("common.copy-id")}/>
-			{item.name}
+			<Button type={"link"} ghost onClick={() => {
+				warpTo(navigate, item);
+				message.success(t("common.warped"));
+			}} children={item.name}/>
 		</Space>
 	);
 };

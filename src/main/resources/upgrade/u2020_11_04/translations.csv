@@ -186,3 +186,14 @@ e0a831a1-f143-48cc-9743-1dad139857e1,en,translation,root.kingdom.form.attribute.
 10a0cc5e-c011-4fb6-a33f-6070a3a37b28,en,translation,root.kingdom.form.attribute.title,Attributes
 891f5afc-52cf-478a-a9eb-da5a792ee879,en,translation,root.kingdom.form.attribute.empty,There are no attributes.
 9fc01842-2dcb-4614-8a00-480305719ddf,en,translation,root.kingdom.subtitle,Here you have overview of all kingdoms!
+cc99eb7b-808f-4543-9e0c-4987fa2ef188,en,translation,root.building.edit.form.edit,Edit!
+d4c9b0e4-ff3c-43e3-b3d6-66438db929c4,en,translation,root.building.form.name.label,Name
+2df50285-7348-402c-8ed2-ccdb393e1d11,en,translation,root.building.title,Building
+b988891a-5a95-44b1-80eb-5a49f6d602d7,en,translation,root.building.form.attribute.title,Attributes
+a06f85f6-3285-49da-a281-c6088b016f8d,en,translation,root.building.form.attribute.empty,There are no attributes.
+743a6c93-d10c-4252-af31-7475379ec48a,en,translation,root.building.edit.form.submit,Save changes!
+c294322c-c3f1-4033-9369-984b1cbf84b7,en,translation,root.building.form.attribute.add,Attribute
+3e6d50cd-f141-4dbf-93ff-7787b9bf7059,en,translation,root.building.form.cancel,Cancel!
+d585affd-3847-451a-af51-f4fc9e666b4e,en,translation,root.building.edit.form.delete,Delete!
+8101da9c-1270-4547-ae5c-a6913e225788,en,translation,root.building.form.attribute.deleteConfirm,Delete attribute?
+6c699c24-a91e-4c52-afa9-547d284034f7,en,translation,root.building.edit.form.deleteConfirm,Delete building? This action cannot be reverted!
