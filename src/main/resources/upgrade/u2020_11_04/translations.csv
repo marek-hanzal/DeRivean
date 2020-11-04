@@ -1,47 +1,120 @@
 id,language,namespace,label,text
-ea4a4753-d1f2-4f6e-ae03-948d85451724,en,translation,root.translation.form.label.label,Translation label
-1e2ba024-1033-4f8f-a7d6-40e9a4ea3f2d,en,translation,root.translation.create.menu,Create
-fe9a0891-f524-4f94-bcd8-33f578e613a0,en,translation,root.translation.create.form.submit,Create!
-78a76486-629a-4839-b645-def86e353765,en,translation,common.back.menu,Back
-a9636d43-5036-476b-9a31-344e8ab64b26,en,translation,root.translation.form.cancel,Cancel!
-27a94d86-0b88-4077-ab1e-d3060962fd41,en,translation,root.translation.create.form.language.label,Language
-37eea511-abd3-483b-be7e-82c76f4f8a20,en,translation,root.translation.create.form.namespace.label,Namespace
-42dede22-5549-4b68-b84d-6499eab16644,en,translation,root.translation.create.form.text.label,Text
-bec47305-7332-420e-b526-03e852508e85,en,translation,root.translation.create.title,Create translation
-852ea18b-fbbe-42b1-bd87-15660f344ee8,en,translation,root.translation.title,Translation
-adf9f74d-ed1e-4d70-aad1-301e70b20d7f,en,translation,root.sign-out.menu,Sign out!
-316fcf6c-e7de-4ea6-aa9b-00498f555da0,en,translation,common.view-item,View
-9aac5fab-a371-4ce3-affb-90e74365c9b2,en,translation,root.header.search.label,Search everywhere!
-a72e7ca3-3338-4d58-8458-b057c0869c6e,en,translation,root.translation.create.form.title,Translation
-b9e7acbb-60db-4163-acf7-97ce7155c764,en,translation,root.translation.create.success,Translation created!
-fad92745-91d6-4ace-8299-071ccca2d20d,en,translation,root.translation.dashboard.menu,Dashboard
-048c832f-24ea-4ca6-8887-989f6421dc77,en,translation,root.translation.edit.menu,Edit
-727bb613-7ce1-4506-ba9f-b6c489353357,en,translation,root.translation.list.menu,List
-c0d5b847-6202-49b5-bfc6-e8b1252ea41f,en,translation,common.edit-item,Edit
-cfc1e937-80bc-453c-8983-070e61561e9a,en,translation,common.copy-id,Copy
-83ffb7cd-db7b-4242-a014-494c69f3576b,en,translation,common.copy-success,You have copied the UUID in your clipboard!
-41f183b1-a5a9-47af-95ca-e8a9c1785d70,en,translation,common.yes,Yep!
-f5ac28a7-38f6-4466-9d49-c3cd0435b32a,en,translation,common.no,Nope!
-c8ea9a83-02a8-4b35-9e9b-941204290d22,en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
-e5ec097f-17e2-4fa3-a7b2-1d5e30d11044,en,translation,root.translation.list.title,Translations
-ec467f0a-429b-4126-8231-469e13e75eae,en,translation,root.translation.list.table.id.column,UUID
-57ab33ee-1c04-4786-87d2-1142a32ab535,en,translation,root.translation.list.table.language.column,Language
-bba7bb1a-ff12-4fe9-bd12-3e5d9dfee62d,en,translation,root.translation.list.table.namespace.column,Namespace
-971df6ee-0404-4c2c-a555-9a16ea736f6e,en,translation,root.translation.list.table.label.column,Label
-75919c9e-f9df-48fa-91b6-03ede2940325,en,translation,root.translation.edit.form.edit,Edit!
-3a9c5f8d-309a-47ca-83ed-0ee91ce5c0de,en,translation,root.translation.edit.form.title,Translation
-486c7183-55ab-475a-bd1a-df6378969856,en,translation,common.warped,You have been warped to target!
-1b55b3f6-3094-416c-b6e9-1401c349b719,en,translation,root.home.menu,Home
-e91035a3-10b5-4b6f-8d08-192754f362ab,en,translation,root.user.menu,Users
-38e3f472-ad99-4256-947a-a2065ddfcb4d,en,translation,root.user.dashboard.menu,Dashboard
-792ab9f0-4c6e-45e1-afde-bc2e7e7aaf9e,en,translation,root.user.create.menu,Create
-4f8bf382-6876-47a7-b13f-2d30456f7c7c,en,translation,root.user.list.menu,List
-8e8d2792-820f-4beb-a3f1-036bc9e71fcf,en,translation,root.user.list.title,Users
-d5832cd0-a9e5-4a01-a8e3-b6c2e95f9586,en,translation,root.home.content.title,Welcome to DeRivean Game Server!
-0fc35f15-e5ea-42f1-8606-704fb0a48b8c,en,translation,root.home.title,Server Administration
-62e8712a-5683-4475-bfa1-0b75db8c9c58,en,translation,root.translation.create.list.title,Translations
-bda9a9ab-a9ba-41bb-bcd2-f705bade4436,en,translation,root.translation.home.menu,Translation
-64e1358c-996b-488a-91ae-7ff1696f7396,en,translation,root.translation.menu,Translations
-7a899564-f1d9-4007-b006-89293cdb8ee4,en,translation,root.sign-out.title,Sign out?
-249ef978-d630-49f3-9efe-b9daa59c8f3a,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
-8a9c5cac-e326-4220-8ec1-d7bb155a442b,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
+051b2226-9efb-446a-ba3a-eaa11d222ce8,en,translation,root.translation.form.label.label,Translation label
+04e7c811-7137-44b1-af3c-60616dc6fdba,en,translation,root.translation.create.menu,Create
+989b8a2a-c6f8-4309-92aa-fd4b46290d77,en,translation,root.translation.create.form.submit,Create!
+0ac57714-595b-4ace-915a-c686d00a33ba,en,translation,common.back.menu,Back
+9f89ae31-dfab-4948-af98-a7e1073f996a,en,translation,root.translation.form.cancel,Cancel!
+140793b8-4454-46dd-90d8-6b594988f1d1,en,translation,root.translation.create.form.namespace.label,Namespace
+f520414c-f3f1-4b04-88c6-6dbbe24acf6a,en,translation,root.translation.create.form.text.label,Text
+47b89ab8-2438-4638-ad7f-7398804460e1,en,translation,root.translation.create.title,Create translation
+5497d602-b659-46ba-aaab-ab4aeadb35f5,en,translation,root.translation.title,Translation
+145bfafa-5037-46e1-b8cc-3cec60c3b49e,en,translation,root.sign-out.menu,Sign out!
+1c646048-b62c-4085-aa6d-3c071c541d66,en,translation,common.view-item,View
+edca00d7-231a-498c-b5e4-29f145c2473f,en,translation,root.header.search.label,Search everywhere!
+4c591422-d09d-4d1b-a4d2-924340834ab9,en,translation,root.translation.create.form.title,Translation
+9c717291-39b3-45c2-944a-f68bc12cd8c2,en,translation,root.translation.create.success,Translation created!
+925f67c4-7e4b-42d9-9660-bf9aab0887cd,en,translation,root.translation.dashboard.menu,Dashboard
+a3bd1653-8aed-4420-9ebf-b21a61223f73,en,translation,root.translation.list.menu,List
+71789c6a-717e-4eb9-9833-a6fd918a8aac,en,translation,common.edit-item,Edit
+45ff60c5-00b9-45a5-99a9-bf4f680fd6cd,en,translation,common.copy-id,Copy
+00965beb-c1fc-4da6-927f-3fa85cd2d713,en,translation,common.copy-success,You have copied the UUID in your clipboard!
+2f5647e0-d4cf-4400-b914-fdbae39871c1,en,translation,common.yes,Yep!
+53be497b-cda6-48d4-928a-4a97aa2c64ff,en,translation,common.no,Nope!
+b7506228-8618-4d51-8e31-9f864fa9a80e,en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
+aaac7832-aa39-471d-8acb-012bd5907c04,en,translation,root.translation.list.title,Translations
+99f39492-3058-4294-a60a-1ed8034d8a51,en,translation,root.translation.list.table.id.column,UUID
+6f50241a-e2ba-4eff-a270-6650a02c95d0,en,translation,root.translation.list.table.language.column,Language
+462cca02-9d9f-453d-9ee3-d46d302379ae,en,translation,root.translation.list.table.namespace.column,Namespace
+2853c181-a815-4066-9ee0-e86dd9c88066,en,translation,root.translation.list.table.label.column,Label
+37c320e4-46b8-4e14-b1d2-c3fdc4c15476,en,translation,root.translation.edit.form.edit,Edit!
+dd5beda4-c2ef-4ec3-aec7-975916cd035c,en,translation,root.translation.edit.form.title,Translation
+62809c2e-3532-4725-9c2c-80869aab920a,en,translation,common.warped,You have been warped to target!
+ff90f4d3-b30f-48bb-a044-9f483a882103,en,translation,root.home.menu,Home
+6aefdcc9-7e00-4bd4-9b26-0f15eaca2812,en,translation,root.user.menu,Users
+1853154e-bae0-4016-9da8-f242d4062736,en,translation,root.user.dashboard.menu,Dashboard
+96e08ce8-3754-454a-98d4-95ad6996b03d,en,translation,root.user.create.menu,Create
+8ad519bf-cd53-4545-9aa3-4c74a97a629d,en,translation,root.user.list.menu,List
+939301f3-c68e-4ca3-8e7e-126de9346b5e,en,translation,root.user.list.title,Users
+dcfc8601-0a8d-4e53-bafc-279192213e32,en,translation,root.home.content.title,Welcome to DeRivean Game Server!
+afa01825-6bdc-40d4-baf8-c5b7aca32591,en,translation,root.home.title,Server Administration
+b98ec3b5-46e3-4d86-bd7b-673a010517fb,en,translation,root.translation.create.list.title,Translations
+f86a82e8-bff6-42e0-98f3-c159e969019e,en,translation,root.translation.home.menu,Translation
+ee50dd1d-255c-4ab7-9615-1d7ac46e53de,en,translation,root.translation.menu,Translations
+12271d28-67d2-42ae-b0a8-6411f37a1b06,en,translation,root.sign-out.title,Sign out?
+5813ce26-cf56-487f-82d0-10f191db44fd,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
+2f83d917-1993-4cf1-abb6-91afa4d6b5d7,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
+d59f9871-8939-401b-9b00-791d32764a9f,en,translation,root.translation.edit.menu,Translation
+681836b5-75a2-467d-bb0f-c1f23f00a673,en,translation,root.translation.create.form.text.required,Translation text is required!
+e364c5a9-b863-4222-9e93-b3727dac7cb6,en,translation,root.translation.form.language.label,Language
+870cb76f-38ba-4657-9604-84c39c2c2129,en,translation,root.translation.update.success,Translation updated!
+6a2e4bb2-2782-4b43-99e8-875a1107241d,en,translation,root.translation.form.language.label,Language
+93d764bd-ffdd-48c8-94f0-7dd523e2339b,en,translation,root.translation.create.error,"Cannot create translation, please check form!"
+4b3328dd-d84a-48bd-963a-f30706816eb0,en,translation,root.translation.form.title,Translation
+e6a829bf-46fc-4361-8b60-139acc31b854,en,translation,root.statistic.translations,Translations
+a889aea7-a0ba-4246-a867-1959378a3562,en,translation,root.statistic.heroes,Heroes
+f5c6f11f-8086-4e88-a5a9-58b159c9df68,en,translation,root.statistic.users,Users
+5e4e353a-0984-4742-8f6c-3c8bba8c521e,en,translation,root.statistic.kingdoms,Kingdoms
+da83e23e-e96f-4b1f-b37b-fe5d7cf78db7,en,translation,root.statistic.buildings,Buildings
+28860b68-c96a-4861-b86a-9d7a0900ce64,en,translation,root.home.content.subtitle,This is the place where all the dark magic happens!
+62a15273-3175-4a9c-8f2c-b3b301141386,en,translation,root.blog.menu,Blog
+000d1590-f0fe-4b9c-853a-0a56b9300031,en,translation,root.blog.dashboard.menu,Dashboard
+3ab8c9ae-8a20-48cf-b91d-fc29e0ba3e6b,en,translation,root.blog.create.menu,New Post
+b72d303e-72c3-48b0-a944-6eea090c5746,en,translation,root.blog.list.menu,List
+296518d3-7591-41bd-b729-b02ceb78c76c,en,translation,root.translation.form.text.required,Translation text is required!
+502a553c-920c-46c3-b6ec-f9c30d24eabd,en,translation,root.translation.form.label.required,Translation label is required!
+bb167c81-30a4-460b-ab8e-6ad0be465ed9,en,translation,root.translation.form.language.required,Language is required!
+f600b596-9e55-4fd0-89c6-31653e5b4a5e,en,translation,public.home.menu,Home
+4b4a6265-5194-4d6b-b6b1-2f3752c54d2f,en,translation,public.sign-up.menu,Sign up
+1efce1cb-87ff-43af-be3f-ffb91c055751,en,translation,public.sign-in.menu,Sign in
+da801d61-3f97-426f-ac9e-5be6fea1cb01,en,translation,public.home.sign-in.title,Sign In!
+1615206f-9440-4015-81d0-7bee5fbc0073,en,translation,public.home.sign-up.title,Sign Up!
+1a8d4040-5c5b-443e-8ad5-d4160ca5c356,en,translation,public.home.content.title,Welcome to DeRivean!
+e08a1156-a2d6-4d9a-b7b7-a3b354667f95,en,translation,public.home.content.subtitle,You're welcome to look around and start playing!
+009a57e0-9a8a-405d-a0a8-5d71a5455ce9,en,translation,public.home.content.list.title,"DeRivean is simple game, where you will:"
+a32abd3a-8267-443a-bdb2-8b1e2cc821d1,en,translation,public.home.content.list.item-0,Create your own heroes and take them to battle.
+7a0475bf-4359-4c85-965c-ddbdf26a1474,en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
+129b7b07-6c11-4076-b8aa-d5f66904aa3d,en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
+8943203c-125e-4d5e-b46b-babd35fbc8b3,en,translation,public.sign-up.breadcrumb,Sign Up!
+561ced2b-8c7a-4d1c-93ff-9f388812fcb4,en,translation,public.sign-up.title,Sign Up!
+d58b6187-8eda-48f5-9850-86c938411963,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
+d9d2352b-920e-46a7-9cbf-a44bed523359,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
+f8eedaee-38e4-4d48-9e4a-fed5edfa1c2a,en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
+6ca3df14-f852-4735-8b6a-ba68d52792f1,en,translation,public.sign-up.content.list.item-0,Create your own heroes
+871eb4f4-f326-46f2-b79f-92209f157bd2,en,translation,public.sign-up.content.list.item-1,Build up a Kingdom of Yours
+f1c7e222-a4b7-427b-af8d-ec72b5c7ee4e,en,translation,public.sign-up.content.list.item-2,"Gain resources, XP, level up Heroes, merge them"
+e68a189e-1ea5-4bef-8557-31a6ea985b81,en,translation,public.sign-up.content.list.item-3,Fight for becoming the greatest King over here
+96973a92-73f9-4c7b-a2e1-472f6415d96b,en,translation,public.sign-up.content.list.item-4,...and a lot more awaits for you!
+e73ba109-6215-4801-b3d8-9a7cd23f7bf1,en,translation,public.sign-up.content.form.title,Registration
+38569420-ddbf-4959-9929-6a9f47dcae6a,en,translation,public.sign-up.form.name.label,Name
+8366ea2a-4223-4fc3-9c51-282ad4891ebf,en,translation,public.sign-up.form.login.label,Login
+bb69e2f2-1a50-41a3-bc1d-3fd6d53b2dfa,en,translation,public.sign-up.form.password.label,Password
+8904c773-da0d-49ef-886f-fcdac9212cf5,en,translation,public.sign-up.form.name.required,Please choose some name representing you!
+1dbd6792-58b3-404f-a3f8-6b3d7aff692c,en,translation,public.sign-up.form.login.required,Please choose some login - for example your nick or email address.
+5f8371a2-8870-40ef-8d22-7b0aaabacc27,en,translation,public.sign-up.form.password.required,"We still need everlasting passwords, so please pick some."
+4ce3eee8-4ab8-41bf-988b-c9d6d8c72833,en,translation,public.sign-up.form.submit.label,Sign Up!
+3d4ced95-8de4-4194-82e9-dd2afdd0aa04,en,translation,public.sign-in.breadcrumb,Sign In!
+f0d7f0f9-4d5f-48ad-936e-f89235b71c5e,en,translation,public.sign-in.title,Sign In!
+e54346b4-4607-495f-9bfa-0edab91099ee,en,translation,public.sign-in.content.title,"Welcome back, brave Hero!"
+6aa00b05-abd5-4122-ad3d-c02b85ce29cd,en,translation,public.sign-in.content.subtitle,"Login and look around, what's new!"
+730ba625-e42f-47d8-80fe-0864392fb3c4,en,translation,public.sign-in.content.form.title,Open a magic gate by your password!
+310d3e53-703d-4352-b383-f637b0f36d3b,en,translation,public.sign-in.form.login.label,Login
+72b08b5f-3b91-4443-be70-8935be01fab1,en,translation,public.sign-in.form.password.label,Password
+5e0d5cc1-bfec-4ccf-ba2a-2749ffce5c50,en,translation,public.sign-in.form.login.required,We cannot make login request without... login!
+49de09b3-f9bd-4416-8093-7483ebd766ce,en,translation,public.sign-in.form.password.required,"Please, give us your deepest secret!"
+e682e2a1-5ebc-4e8d-8ff5-2907f926092a,en,translation,public.sign-in.form.submit.label,Login!
+c200404d-6a6f-461f-9a8f-85573fb082e7,en,translation,public.sign-in.content.list.title,"Check, what's new in your Kingdom"
+fe1e4255-d0f0-4fed-b5d9-6d2a23b00f41,en,translation,public.sign-in.content.list.item-0,Don't forget to claim your resources
+2a3ca212-fb2c-49e8-a67f-d3f84b726a31,en,translation,public.sign-in.content.list.item-1,Look for some new battles
+99fe9032-eb8d-4191-bcd0-61bb7eb44b19,en,translation,public.sign-in.content.list.item-2,See Store for new equipment
+8fbc2545-797e-449e-adc1-e99e57e42ef6,en,translation,public.sign-in.content.list.item-3,Level up your Heroes and Buddies
+cc8611cc-5a8e-4ffe-a523-fa1706a9a7f8,en,translation,root.sign-out.button.sign-out,Leave!
+c19e64db-f5d3-4afd-81da-670cf80d0598,en,translation,root.sign-out.button.back,Return!
+737fd7de-5617-479b-a3a0-5e74db38241a,en,translation,root.home.content.loader.title,Fetching server health status
+3888b64b-d40d-410b-899d-820e47e6bc5c,en,translation,root.sign-in.succeed.title,Welcome back to the Root!
+0756bcf6-84ea-4c5d-88dd-5aae49a679fe,en,translation,root.sign-in.succeed.subtitle,"Be careful here, dude, it's quite dangerous 'round here!"
+34fe2fbb-8ad0-4e07-b94e-ff0493576f32,en,translation,root.sign-in.continue,Continue!
+0ef4d832-f595-4bcb-a908-9387404f67bb,en,translation,public.sign-out.succeed.title,You are logged out!
+27ff5b15-cd38-41c5-b093-dbe2c64158f1,en,translation,public.sign-out.succeed.subtitle,"We will miss you, so see you soon!"
+1f6f3c90-110a-4027-a056-7cc96179ef4a,en,translation,public.sign-out.continue,Continue!
+81de7876-97f7-4bfc-a73a-10fe18c7afc2,en,translation,public.sign-out.title,See you soon!
+259b03d6-8828-4216-b218-5c802aa251bc,en,translation,root.sign-in.title,Welcome back!

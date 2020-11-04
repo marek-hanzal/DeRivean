@@ -7,6 +7,7 @@ import derivean.lib.rest.ok
 import derivean.server.building.BuildingRepository
 import derivean.server.hero.HeroRepository
 import derivean.server.kingdom.KingdomRepository
+import derivean.server.translation.TranslationRepository
 import derivean.server.user.UserRepository
 
 class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Response<out Any>>(container) {
@@ -14,6 +15,7 @@ class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Respon
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val heroRepository: HeroRepository by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
+	private val translationRepository: TranslationRepository by container.lazy()
 
 	override fun resolve(item: Unit) = storage.read {
 		ok(
@@ -22,6 +24,7 @@ class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Respon
 				kingdomRepository.total(),
 				heroRepository.total(),
 				buildingRepository.total(),
+				translationRepository.total(),
 			)
 		)
 	}
@@ -31,5 +34,6 @@ class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Respon
 		val kingdoms: Long,
 		val heroes: Long,
 		val buildings: Long,
+		val translations: Long,
 	)
 }
