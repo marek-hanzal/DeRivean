@@ -1,59 +1,23 @@
-import {Card, Divider, Form, Input} from "antd";
-import EditorContext from "component/form/EditorContext";
-import SearchInput from "component/form/SearchInput";
+import {Card, Result} from "antd";
 import useMenuOpen from "hook/useMenuOpen";
+import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import UserContext from "site/root/module/user/component/UserContext";
 import UserView from "site/root/module/user/view/UserView";
-import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
-import validationFor from "utils/form/validationFor";
 
 const HomeView = () => {
 	const {t} = useTranslation();
-
 	useMenuOpen(["root.kingdom"]);
-
+	useMenuSelect(["root.user"]);
 	return (
 		<UserView>
 			<UserContext.Consumer>
 				{({id}) => (
-					<EditViewWithAttributes
-						context={UserContext}
-						param={"user"}
-						enableSubmit={true}
-					>
-						<EditorContext.Consumer>
-							{({errors, editor}) => (
-								<>
-									<Card title={t(`${id}.edit.form.title`)}>
-										<Form.Item
-											{...validationFor("login", errors, t)}
-											name={"login"}
-											rules={[
-												{
-													required: true,
-													message: t(`${id}.edit.form.login.required`),
-												}
-											]}
-											children={<Input disabled={!editor} addonBefore={<div style={{width: "120px"}}>{t(`${id}.edit.form.login.label`)}</div>}/>}
-										/>
-									</Card>
-									<Divider type={"horizontal"}/>
-									<Card title={t(`${id}.create.form.misc.title`)}>
-										<Form.Item
-											{...validationFor("template", errors, t)}
-											name={"template"}
-											help={t(`${id}.create.form.template.help`)}
-											children={
-												<SearchInput disabled={!editor} placeholder={"create.form.template"} context={UserContext}/>
-											}
-										/>
-									</Card>
-									<Divider type={"horizontal"}/>
-								</>
-							)}
-						</EditorContext.Consumer>
-					</EditViewWithAttributes>
+					<Card title={t(`${id}.title`)}>
+						<Result
+							status={"info"}
+						/>
+					</Card>
 				)}
 			</UserContext.Consumer>
 		</UserView>

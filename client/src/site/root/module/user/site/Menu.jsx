@@ -1,5 +1,7 @@
+import AttributeIcon from "component/icon/AttributeIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
@@ -24,8 +26,22 @@ const Menu = () => {
 						menuBack(),
 						menuDivider(),
 						menuItem(Routes.root.user.home.link(), "root.user", <UserIcon/>),
+						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>, true),
 						menuDivider(),
 						KingdomMenuItem(true),
+						menuDivider(),
+						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+					]}
+				/>),
+				route(Routes.root.user.edit.match(), <BaseMenu
+					items={[
+						menuDivider(),
+						menuBack(),
+						menuDivider(),
+						menuItem(Routes.root.user.home.link(), "root.user", <UserIcon/>),
+						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>),
+						menuDivider(),
+						menuItem(Routes.root.user.attributes.link(), "root.user.attributes", <AttributeIcon/>),
 						menuDivider(),
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}

@@ -57,13 +57,21 @@ const Routes = {
                 match: () => "create/*",
                 link: () => "/user/create",
             },
+            edit: {
+                match: () => "u/:user/edit/*",
+                link: resolveUuid("user", "/user/u/:user/edit")
+            },
             list: {
                 match: () => "list/*",
                 link: () => "/user/list",
             },
             home: {
-                match: () => "u/:user/*",
-                link: resolveUuid("user", "/user/u/:user")
+                match: () => "u/:user/home/*",
+                link: resolveUuid("user", "/user/u/:user/home")
+            },
+            attributes: {
+                match: () => "u/:user/attributes/*",
+                link: resolveUuid("user", "/user/u/:user/attributes")
             },
         },
         kingdom: {
@@ -81,8 +89,8 @@ const Routes = {
                 link: resolveUuid("user", "/kingdom/u/:user/list"),
             },
             home: {
-                match: () => "k/:kingdom/*",
-                link: resolveUuid("kingdom", "/kingdom/k/:kingdom"),
+                match: () => "k/:kingdom/home",
+                link: resolveUuid("kingdom", "/kingdom/k/:kingdom/home"),
             },
         },
         hero: {
@@ -100,8 +108,8 @@ const Routes = {
                 link: resolveUuid("kingdom", "/hero/k/:kingdom/list"),
             },
             home: {
-                match: () => "h/:hero/*",
-                link: resolveUuid("hero", "/hero/h/:hero"),
+                match: () => "h/:hero/home",
+                link: resolveUuid("hero", "/hero/h/:hero/home"),
             },
         },
         building: {
@@ -119,8 +127,8 @@ const Routes = {
                 link: resolveUuid("kingdom", "/building/k/:kingdom/list"),
             },
             home: {
-                match: () => "b/:building/*",
-                link: resolveUuid("building", "/building/b/:building"),
+                match: () => "b/:building/home",
+                link: resolveUuid("building", "/building/b/:building/home"),
             },
         },
     }

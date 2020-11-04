@@ -35,7 +35,7 @@ const EditViewWithAttributes = (
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(false);
 
-	useMenuSelect(id);
+	useMenuSelect(id + ".edit");
 
 	/**
 	 * Fetch attributes from redux.
