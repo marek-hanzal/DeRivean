@@ -11,6 +11,12 @@ repositories {
 	jcenter()
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+	kotlinOptions {
+		jvmTarget = JavaVersion.VERSION_11
+	}
+}
+
 sourceSets {
 	main {
 		resources {
@@ -40,6 +46,8 @@ dependencies {
 	implementation "com.h2database:h2:$h2_version"
 	implementation "at.favre.lib:bcrypt:$bcrypt_version"
 	implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinx_serialization_version"
+	implementation "com.github.doyaaaaaken:kotlin-csv-jvm:0.13.0"
+	implementation "com.vhl.blackmo:kotlin-grass-jvm:0.4.1"
 
 	testImplementation "org.jetbrains.kotlin:kotlin-test"
 	testImplementation "org.jetbrains.kotlin:kotlin-test-junit"

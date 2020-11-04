@@ -16,6 +16,7 @@ import derivean.server.upgrade.u2020_10_21.u2020_10_21
 import derivean.server.upgrade.u2020_11_04.u2020_11_04
 import io.github.config4k.extract
 
+@ExperimentalStdlibApi
 object EngineContainer {
 	fun create(block: IContainer.() -> Unit) = ContainerFactory.container().apply {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }

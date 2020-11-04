@@ -11,8 +11,8 @@ const TranslationList = () => {
 			redux={context.redux}
 			columns={[
 				{title: "id", width: 380, render: (text, record) => <HistoryLink to={context.link.home(record.id)} text={text}/>},
-				{title: "language", width: 220},
-				{title: "namespace", width: 220},
+				{title: "language", width: 160},
+				{title: "namespace", width: 160},
 				{title: "label"},
 			]}
 		/>

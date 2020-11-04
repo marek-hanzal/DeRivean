@@ -1,0 +1,47 @@
+id,language,namespace,label,text
+ea4a4753-d1f2-4f6e-ae03-948d85451724,en,translation,root.translation.form.label.label,Translation label
+1e2ba024-1033-4f8f-a7d6-40e9a4ea3f2d,en,translation,root.translation.create.menu,Create
+fe9a0891-f524-4f94-bcd8-33f578e613a0,en,translation,root.translation.create.form.submit,Create!
+78a76486-629a-4839-b645-def86e353765,en,translation,common.back.menu,Back
+a9636d43-5036-476b-9a31-344e8ab64b26,en,translation,root.translation.form.cancel,Cancel!
+27a94d86-0b88-4077-ab1e-d3060962fd41,en,translation,root.translation.create.form.language.label,Language
+37eea511-abd3-483b-be7e-82c76f4f8a20,en,translation,root.translation.create.form.namespace.label,Namespace
+42dede22-5549-4b68-b84d-6499eab16644,en,translation,root.translation.create.form.text.label,Text
+bec47305-7332-420e-b526-03e852508e85,en,translation,root.translation.create.title,Create translation
+852ea18b-fbbe-42b1-bd87-15660f344ee8,en,translation,root.translation.title,Translation
+adf9f74d-ed1e-4d70-aad1-301e70b20d7f,en,translation,root.sign-out.menu,Sign out!
+316fcf6c-e7de-4ea6-aa9b-00498f555da0,en,translation,common.view-item,View
+9aac5fab-a371-4ce3-affb-90e74365c9b2,en,translation,root.header.search.label,Search everywhere!
+a72e7ca3-3338-4d58-8458-b057c0869c6e,en,translation,root.translation.create.form.title,Translation
+b9e7acbb-60db-4163-acf7-97ce7155c764,en,translation,root.translation.create.success,Translation created!
+fad92745-91d6-4ace-8299-071ccca2d20d,en,translation,root.translation.dashboard.menu,Dashboard
+048c832f-24ea-4ca6-8887-989f6421dc77,en,translation,root.translation.edit.menu,Edit
+727bb613-7ce1-4506-ba9f-b6c489353357,en,translation,root.translation.list.menu,List
+c0d5b847-6202-49b5-bfc6-e8b1252ea41f,en,translation,common.edit-item,Edit
+cfc1e937-80bc-453c-8983-070e61561e9a,en,translation,common.copy-id,Copy
+83ffb7cd-db7b-4242-a014-494c69f3576b,en,translation,common.copy-success,You have copied the UUID in your clipboard!
+41f183b1-a5a9-47af-95ca-e8a9c1785d70,en,translation,common.yes,Yep!
+f5ac28a7-38f6-4466-9d49-c3cd0435b32a,en,translation,common.no,Nope!
+c8ea9a83-02a8-4b35-9e9b-941204290d22,en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
+e5ec097f-17e2-4fa3-a7b2-1d5e30d11044,en,translation,root.translation.list.title,Translations
+ec467f0a-429b-4126-8231-469e13e75eae,en,translation,root.translation.list.table.id.column,UUID
+57ab33ee-1c04-4786-87d2-1142a32ab535,en,translation,root.translation.list.table.language.column,Language
+bba7bb1a-ff12-4fe9-bd12-3e5d9dfee62d,en,translation,root.translation.list.table.namespace.column,Namespace
+971df6ee-0404-4c2c-a555-9a16ea736f6e,en,translation,root.translation.list.table.label.column,Label
+75919c9e-f9df-48fa-91b6-03ede2940325,en,translation,root.translation.edit.form.edit,Edit!
+3a9c5f8d-309a-47ca-83ed-0ee91ce5c0de,en,translation,root.translation.edit.form.title,Translation
+486c7183-55ab-475a-bd1a-df6378969856,en,translation,common.warped,You have been warped to target!
+1b55b3f6-3094-416c-b6e9-1401c349b719,en,translation,root.home.menu,Home
+e91035a3-10b5-4b6f-8d08-192754f362ab,en,translation,root.user.menu,Users
+38e3f472-ad99-4256-947a-a2065ddfcb4d,en,translation,root.user.dashboard.menu,Dashboard
+792ab9f0-4c6e-45e1-afde-bc2e7e7aaf9e,en,translation,root.user.create.menu,Create
+4f8bf382-6876-47a7-b13f-2d30456f7c7c,en,translation,root.user.list.menu,List
+8e8d2792-820f-4beb-a3f1-036bc9e71fcf,en,translation,root.user.list.title,Users
+d5832cd0-a9e5-4a01-a8e3-b6c2e95f9586,en,translation,root.home.content.title,Welcome to DeRivean Game Server!
+0fc35f15-e5ea-42f1-8606-704fb0a48b8c,en,translation,root.home.title,Server Administration
+62e8712a-5683-4475-bfa1-0b75db8c9c58,en,translation,root.translation.create.list.title,Translations
+bda9a9ab-a9ba-41bb-bcd2-f705bade4436,en,translation,root.translation.home.menu,Translation
+64e1358c-996b-488a-91ae-7ff1696f7396,en,translation,root.translation.menu,Translations
+7a899564-f1d9-4007-b006-89293cdb8ee4,en,translation,root.sign-out.title,Sign out?
+249ef978-d630-49f3-9efe-b9daa59c8f3a,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
+8a9c5cac-e326-4220-8ec1-d7bb155a442b,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
