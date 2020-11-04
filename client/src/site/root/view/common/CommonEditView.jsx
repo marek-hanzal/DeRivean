@@ -102,7 +102,7 @@ const CommonEditView = (
 									{children}
 								</Centered>
 							}
-							right={<BulletCard translation={currentContext.id + ".dashboard"} count={4}/>}
+							right={<BulletCard translation={currentContext.id + ".edit"} count={4}/>}
 						/>
 					</Result>
 				</Card>

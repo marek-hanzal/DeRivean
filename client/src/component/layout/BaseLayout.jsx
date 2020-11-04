@@ -23,7 +23,8 @@ const BaseLayout = (
 				}}>
 					<Sider children={menu}/>
 					<CollapsibleContent>
-						<PageHeader children={breadcrumbs}/>
+						{/*<PageHeader children={breadcrumbs}/>*/}
+						<PageHeader/>
 						{router}
 						{footer}
 					</CollapsibleContent>

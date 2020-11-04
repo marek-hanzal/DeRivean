@@ -50,6 +50,7 @@ const BaseTable = (
 				spinning: loading,
 				delay: 100,
 			}}
+			size={"small"}
 			pagination={{
 				total: page.total,
 				pageSize: page.size,

@@ -1,5 +1,6 @@
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
@@ -48,9 +49,19 @@ const Menu = () => {
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}
 				/>),
-				route(Routes.root.kingdom.dashboard.match(), <DefaultMenu/>),
-				route(Routes.root.kingdom.create.match(), <DefaultMenu/>),
-				route(Routes.root.kingdom.list.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.edit.match(), <BaseMenu
+					items={[
+						menuDivider(),
+						menuBack(),
+						menuDivider(),
+						menuItem(Routes.root.kingdom.edit.link(), "root.kingdom.edit", <EditIcon/>),
+						menuDivider(),
+						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+					]}
+				/>),
+				route("*", <DefaultMenu/>),
+				// route(Routes.root.kingdom.create.match(), <DefaultMenu/>),
+				// route(Routes.root.kingdom.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
