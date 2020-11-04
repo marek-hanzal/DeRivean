@@ -12,7 +12,7 @@ const Language = ({children}) => {
 	useEffect(() => {
 		dispatch(TranslationRedux.redux.translation.dispatch.translation({languages: i18n.languages})).then(({translations}) => {
 			for (const translation of translations) {
-				i18next.addResource(translation.language, translation.namespace, translation.label, translation.translation);
+				i18next.addResource(translation.language, translation.namespace, translation.label, translation.text);
 			}
 			setStatus(true);
 		}, () => {

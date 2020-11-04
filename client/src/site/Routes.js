@@ -74,6 +74,29 @@ const Routes = {
                 link: resolveUuid("user", "/user/u/:user/attributes")
             },
         },
+        translation: {
+            match: () => "/translation/*",
+            dashboard: {
+                match: () => "dashboard/*",
+                link: () => "/translation/dashboard",
+            },
+            create: {
+                match: () => "create/*",
+                link: () => "/translation/create",
+            },
+            edit: {
+                match: () => "t/:translation/edit/*",
+                link: resolveUuid("translation", "/translation/t/:translation/edit")
+            },
+            home: {
+                match: () => "t/:translation/home/*",
+                link: resolveUuid("translation", "/translation/t/:translation/home")
+            },
+            list: {
+                match: () => "list/*",
+                link: () => "/translation/list",
+            },
+        },
         kingdom: {
             match: () => "/kingdom/*",
             dashboard: {

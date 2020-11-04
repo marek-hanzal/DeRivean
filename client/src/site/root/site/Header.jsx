@@ -14,8 +14,8 @@ const HeaderContext = React.createContext({
 	redux: SearchRedux,
 });
 
-function warpTo(navigate, item) {
-	navigate(Routes.root[item.type].home.link(item.id));
+function warpTo(navigate, item, target = "home") {
+	navigate(Routes.root[item.type][target].link(item.id));
 }
 
 const SearchItem = ({item}) => {
@@ -27,7 +27,11 @@ const SearchItem = ({item}) => {
 			<Button type={"primary"} ghost size={"small"} onClick={() => {
 				warpTo(navigate, item);
 				message.success(t("common.warped"));
-			}}>{t("common.view-item")}</Button>
+			}} children={t("common.view-item")}/>
+			<Button type={"dashed"} size={"small"} onClick={() => {
+				warpTo(navigate, item, "edit");
+				message.success(t("common.warped"));
+			}} children={t("common.edit-item")}/>
 			<Button type={"dashed"} size={"small"} onClick={e => {
 				copy(item.id, {
 					format: "text/plain",

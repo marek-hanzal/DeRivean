@@ -16,6 +16,8 @@ import {HeroRoute} from "site/root/module/hero/site/Router";
 import {KingdomBreadcrumbRoute} from "site/root/module/kingdom/site/Breadcrumbs";
 import {KingdomMenuRoute} from "site/root/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/root/module/kingdom/site/Router";
+import {TranslationMenuItem, TranslationMenuRoute} from "site/root/module/translation/site/Menu";
+import {TranslationRoute} from "site/root/module/translation/site/Router";
 import {UserBreadcrumbRoute} from "site/root/module/user/site/Breadcrumbs";
 import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
 import {UserRoute} from "site/root/module/user/site/Router";
@@ -42,6 +44,7 @@ const Site = () => {
 						KingdomMenuRoute(),
 						BuildingMenuRoute(),
 						HeroMenuRoute(),
+						TranslationMenuRoute(),
 						route("*", <BaseMenu
 							items={[
 								menuDivider(),
@@ -50,7 +53,9 @@ const Site = () => {
 
 								UserMenuItem(true),
 								menuDivider(),
-								BlogMenuItem(),
+								BlogMenuItem(true),
+								menuDivider(),
+								TranslationMenuItem(true),
 
 								menuDivider(),
 								menuLogout(),
@@ -84,6 +89,7 @@ const Site = () => {
 						BuildingRoute(),
 						HeroRoute(),
 						BlogRoute(),
+						TranslationRoute(),
 
 						route(Routes.root.signIn.link(), <SingInView/>),
 						route(Routes.root.signOut.link(), <SingOutView id={"root"}/>),

@@ -11,6 +11,7 @@ import {SearchRedux} from "redux/search/redux";
 import {ServerRedux} from "redux/server/redux";
 import {SessionRedux} from "redux/session/redux";
 import {StatisticsRedux} from "redux/statistics/redux";
+import {TranslationRedux} from "redux/translation/redux";
 import {UserRedux} from "redux/user/redux";
 
 export default combineReducers({
@@ -26,5 +27,6 @@ export default combineReducers({
 	search: SearchRedux.reducer(),
 	server: ServerRedux.reducer(),
 	statistics: StatisticsRedux.reducer(),
+	translation: TranslationRedux.reducer(),
 	user: UserRedux.reducer(),
 });

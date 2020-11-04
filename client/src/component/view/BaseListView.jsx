@@ -10,12 +10,11 @@ const BaseListView = (
 		children,
 	}) => {
 	context = useContext(context);
-	const id = context.id;
 	const {t} = useTranslation();
-	useMenuOpen(id);
-	useMenuSelect(id + ".list");
+	useMenuOpen(context.id);
+	useMenuSelect(context.id + ".list");
 	return (
-		<Card title={t(`${id}.list.title`)}>
+		<Card title={t(`${context.id}.list.title`)}>
 			{children}
 		</Card>
 	);

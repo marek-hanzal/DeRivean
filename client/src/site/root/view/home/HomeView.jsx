@@ -25,7 +25,7 @@ const HomeView = () => {
 		});
 	}, [dispatch]);
 
-	useMenuOpen(["root.blog", "root.user"]);
+	useMenuOpen(["root.blog", "root.user", "root.translation"]);
 	useMenuSelect("root.home");
 
 	return (

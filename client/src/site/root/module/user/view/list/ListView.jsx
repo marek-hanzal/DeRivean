@@ -7,7 +7,7 @@ const ListView = () => {
 	return (
 		<UserView>
 			<BaseListView context={UserContext}>
-				<UserList context={UserContext}/>
+				<UserList/>
 			</BaseListView>
 		</UserView>
 	);
