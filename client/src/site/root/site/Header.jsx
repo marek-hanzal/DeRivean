@@ -1,4 +1,3 @@
-import {QuestionCircleOutlined} from "@ant-design/icons";
 import {Avatar, Button, Divider, Layout, message, Space} from "antd";
 import icon from "assets/icon.png";
 import SearchInput from "component/form/SearchInput";
@@ -7,23 +6,13 @@ import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
 import {SearchRedux} from "redux/search/redux";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import ModuleIcon from "site/root/component/ModuleIcon";
 import Routes from "site/Routes";
 
 const HeaderContext = React.createContext({
 	id: "root.header",
 	redux: SearchRedux,
 });
-
-const icons = {
-	user: <UserIcon/>,
-	kingdom: <KingdomIcon/>,
-	hero: <HeroIcon/>,
-	building: <BuildingIcon/>,
-};
 
 function warpTo(navigate, item) {
 	navigate(Routes.root[item.type].home.link(item.id));
@@ -34,7 +23,7 @@ const SearchItem = ({item}) => {
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
-			{icons[item.type] || <QuestionCircleOutlined/>}
+			<ModuleIcon module={item.type}/>
 			<Button type={"primary"} ghost size={"small"} onClick={() => {
 				warpTo(navigate, item);
 				message.success(t("common.warped"));

@@ -43,8 +43,8 @@ function selectLink(id, state) {
 	return branch(state).payload[id].link;
 }
 
-function selectFetch(id, uuid, state) {
-	return selectLink(id, state).replace("{id}", uuid);
+function selectFetch(id, uuid, state, param = "{id}") {
+	return selectLink(id, state).replace(param, uuid);
 }
 
 function selectPage(id, state, page, name = null, param = null) {

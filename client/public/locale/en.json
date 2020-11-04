@@ -149,7 +149,8 @@
 			"users": "Total users",
 			"kingdoms": "Total kingdoms",
 			"heroes": "Total heroes",
-			"buildings": "Total buildings"
+			"buildings": "Total buildings",
+			"fetch-error": "Cannot load statistics!"
 		},
 		"server": {
 			"error": {
