@@ -9,6 +9,7 @@ import derivean.lib.rest.ok
 import derivean.server.building.BuildingRepository
 import derivean.server.hero.HeroRepository
 import derivean.server.kingdom.KingdomRepository
+import derivean.server.translation.TranslationRepository
 import derivean.server.user.UserRepository
 
 class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Request, Response<out Any>>(container) {
@@ -16,14 +17,17 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Re
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
 	private val heroRepository: HeroRepository by container.lazy()
+	private val translationRepository: TranslationRepository by container.lazy()
 
 	override fun resolve(item: Request) = try {
 		ok(storage.read {
+			val limit = 5
 			Result(
-				userRepository.search(item.search).map { Item(it.id.toString(), "user", it.name) } +
-					kingdomRepository.search(item.search).map { Item(it.id.toString(), "kingdom", it.name) } +
-					buildingRepository.search(item.search).map { Item(it.id.toString(), "building", it.name) } +
-					heroRepository.search(item.search).map { Item(it.id.toString(), "hero", it.name) }
+				userRepository.search(item.search, limit).map { Item(it.id.toString(), "user", it.name) } +
+					kingdomRepository.search(item.search, limit).map { Item(it.id.toString(), "kingdom", it.name) } +
+					buildingRepository.search(item.search, limit).map { Item(it.id.toString(), "building", it.name) } +
+					heroRepository.search(item.search, limit).map { Item(it.id.toString(), "hero", it.name) } +
+					translationRepository.search(item.search, limit).map { Item(it.id.toString(), "translation", it.language + ": " + it.label) }
 			)
 		})
 	} catch (e: Throwable) {

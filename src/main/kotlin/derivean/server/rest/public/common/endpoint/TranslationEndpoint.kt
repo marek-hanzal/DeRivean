@@ -33,7 +33,7 @@ class TranslationMapper(container: IContainer) : AbstractActionMapper<Unit, Resp
 	override fun resolve(item: Unit) = storage.read {
 		ok(
 			Translations(
-				translationRepository.all().map { Translation(it.language, it.namespace, it.label, it.translation) }
+				translationRepository.all().map { Translation(it.language, it.namespace, it.label, it.text) }
 			)
 		)
 	}
@@ -46,6 +46,6 @@ class TranslationMapper(container: IContainer) : AbstractActionMapper<Unit, Resp
 		val language: String,
 		val namespace: String,
 		val label: String,
-		val translation: String,
+		val text: String,
 	)
 }

@@ -10,5 +10,5 @@ class Translation(id: EntityUUID) : UUIDEntity(id) {
 	var language by TranslationTable.language
 	var namespace by TranslationTable.namespace
 	var label by TranslationTable.label
-	var translation by TranslationTable.translation
+	var text by TranslationTable.text
 }

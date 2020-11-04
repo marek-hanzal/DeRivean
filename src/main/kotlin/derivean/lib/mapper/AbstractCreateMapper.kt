@@ -32,5 +32,5 @@ abstract class AbstractCreateMapper<T, E : UUIDEntity>(container: IContainer) : 
 
 	abstract fun map(request: T, entity: E)
 
-	abstract fun resolveException(message: String): Response<out Any>?
+	open fun resolveException(message: String): Response<out Any>? = null
 }
