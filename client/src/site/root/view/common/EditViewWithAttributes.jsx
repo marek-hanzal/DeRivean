@@ -29,7 +29,7 @@ const EditViewWithAttributes = (
 				{({editor}) => (
 					<>
 						{children}
-						<AttributeFieldEditor edit={editor} translation={context.id} attributes={attributes}/>
+						<AttributeFieldEditor edit={editor} translation={currentContext.id} attributes={attributes}/>
 					</>
 				)}
 			</EditorContext.Consumer>

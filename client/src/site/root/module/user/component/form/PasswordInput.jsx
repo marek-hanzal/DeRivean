@@ -14,7 +14,7 @@ const PasswordInput = () => {
 		<Form.Item
 			{...validationFor("password", editorContext.errors, t)}
 			name={"password"}
-			children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t(`${userContext.id}.form.password.label`)}</div>} suffix={<LockOutlined/>}/>}
+			children={<Input.Password disabled={!editorContext.editor} addonBefore={<div style={{width: "120px"}}>{t(`${userContext.id}.form.password.label`)}</div>} suffix={<LockOutlined/>}/>}
 		/>
 	);
 };

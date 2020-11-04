@@ -134,3 +134,9 @@ adb006f4-d8f3-40d1-ad27-a5539e33aec3,en,translation,root.translation.edit.form.s
 f195c21b-98d6-42e5-a3dc-018e4a9e8040,en,translation,root.translation.edit.form.deleteConfirm,Do you want to remove translation?
 014df33b-c24d-4c3b-b3ca-7c85c0b162f3,en,translation,root.translation.edit.form.cancelConfirm,"All changes will be lost, continue?"
 fb1260cb-1647-48f2-9aa4-771d34fa2e08,en,translation,root.user.title,Users
+a92245d5-22da-4988-9ca1-be12c34c637d,en,translation,root.user.edit.form.edit,Edit!
+d458ab4c-dafd-4b91-b18a-b2459013b083,en,translation,root.user.edit.form.submit,Save changes!
+960ec64c-3c88-4a21-b00b-95eae6d496b9,en,translation,root.user.edit.form.delete,Delete!
+4755dcf5-2a0a-4f61-aa9b-5c778d6e5ce2,en,translation,root.user.form.login.label,Login
+3cd2c96b-9f1f-42ad-a891-c03212270af9,en,translation,root.user.form.password.label,Password
+fcec3371-e6b0-4d9d-ab5c-bffaa1d8e04f,en,translation,root.user.form.site.label,Site
