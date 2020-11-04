@@ -1,6 +1,7 @@
 package derivean.server.building
 
 import derivean.lib.container.IContainer
+import derivean.lib.storage.ilike
 import derivean.server.attribute.AbstractAttributeRepository
 import derivean.server.building.entities.Building
 import derivean.server.building.entities.BuildingTable
@@ -12,8 +13,8 @@ class BuildingRepository(container: IContainer) : AbstractAttributeRepository<Bu
 
 	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.name like "%${search}%" or (table.id eq uuid) }.limit(limit)
+		entity.find { table.name ilike "%${search}%" or (table.id eq uuid) }.limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.name like "%${search}%" }.limit(limit)
+		entity.find { table.name ilike "%${search}%" }.limit(limit)
 	}
 }

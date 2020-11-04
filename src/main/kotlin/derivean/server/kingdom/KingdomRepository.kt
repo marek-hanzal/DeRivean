@@ -2,6 +2,7 @@ package derivean.server.kingdom
 
 import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
+import derivean.lib.storage.ilike
 import derivean.server.attribute.AbstractAttributeRepository
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.kingdom.entities.KingdomTable
@@ -15,9 +16,9 @@ class KingdomRepository(container: IContainer) : AbstractAttributeRepository<Kin
 
 	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.name like "%${search}%" or (table.id eq uuid) }.limit(limit)
+		entity.find { table.name ilike "%${search}%" or (table.id eq uuid) }.limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.name like "%${search}%" }.limit(limit)
+		entity.find { table.name ilike "%${search}%" }.limit(limit)
 	}
 
 	fun useTemplate(template: String, target: Kingdom) {
