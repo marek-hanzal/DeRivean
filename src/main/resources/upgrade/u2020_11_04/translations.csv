@@ -29,7 +29,6 @@ f861f4d4-b72b-47e2-b660-2ea76fddcdce,en,translation,root.translation.edit.form.e
 1dc451ad-8942-432b-ab91-9a963ac98ad5,en,translation,root.translation.edit.form.title,Translation
 a64f8706-49bc-46a3-b4eb-c3f2f413c6e4,en,translation,common.warped,You have been warped to target!
 08a83470-e2a7-462d-817b-7787e1c0068b,en,translation,root.home.menu,Home
-75c632b7-4bb0-4241-a5f5-89616cf75591,en,translation,root.user.menu,Users
 debb7d79-86f8-4af5-981f-f00ef4be241b,en,translation,root.user.dashboard.menu,Dashboard
 5d089b67-2287-4438-9ac2-243ad6b3982a,en,translation,root.user.create.menu,Create
 847a7aef-74ec-498f-9399-cd036067ff67,en,translation,root.user.list.menu,List
@@ -74,6 +73,7 @@ f7a0d175-b111-4527-b9de-bd44f7105481,en,translation,public.home.content.list.ite
 94eb00dc-4f0b-4e88-876f-8a5b5a1cc373,en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
 d95a9fce-4d58-4aff-8656-6494990059e9,en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
 7253d0c7-7a61-41e1-96aa-040cdc6fe2c5,en,translation,public.sign-up.breadcrumb,Sign Up!
+75c632b7-4bb0-4241-a5f5-89616cf75591,en,translation,root.user.menu,User
 676a8b12-3d31-498e-a76b-0b921710a3ec,en,translation,public.sign-up.title,Sign Up!
 af1b5890-1bf3-4ee8-9353-0b3fafecae35,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
 edad0f90-68a1-401e-afe1-ba1ac613f10a,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
@@ -140,3 +140,8 @@ d458ab4c-dafd-4b91-b18a-b2459013b083,en,translation,root.user.edit.form.submit,S
 4755dcf5-2a0a-4f61-aa9b-5c778d6e5ce2,en,translation,root.user.form.login.label,Login
 3cd2c96b-9f1f-42ad-a891-c03212270af9,en,translation,root.user.form.password.label,Password
 fcec3371-e6b0-4d9d-ab5c-bffaa1d8e04f,en,translation,root.user.form.site.label,Site
+b832ede9-a045-4d78-8a63-e3e93f9db22c,en,translation,root.user.attributes.menu,Attributes
+343491da-ff2d-4b36-859f-9560486271e6,en,translation,root.kingdom.menu,Kingdoms
+d8dd031f-9f34-4bef-ab7e-74dcb48179ed,en,translation,root.kingdom.dashboard.menu,Dashboard
+8fb5a70b-e00f-4496-bb3a-3efa0abdc840,en,translation,root.kingdom.create.menu,Create
+3d2a9c47-fa0b-4099-8bfd-fb8727eb4aeb,en,translation,root.kingdom.list.menu,List
