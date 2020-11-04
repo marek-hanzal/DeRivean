@@ -1,5 +1,4 @@
-import {Avatar, Layout} from "antd";
-import Menu from "antd/lib/menu";
+import {Avatar, Button, Layout} from "antd";
 import icon from "assets/icon.png";
 import {Link} from "react-router-dom";
 import Routes from "site/Routes";
@@ -9,11 +8,16 @@ const Header = () =>
 		position: "fixed",
 		zIndex: 1,
 		width: "100%",
-		padding: "0"
+		padding: 0,
+		backgroundColor: "#FFF",
 	}}>
-		<Menu theme="dark" mode="horizontal" selectable={false}>
-			<Menu.Item key="derivean" icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}><Link to={Routes.public.link()}>DeRivean</Link></Menu.Item>
-		</Menu>
+		<div style={{float: "left"}}>
+			<Link to={Routes.public.link()}>
+				<Button type={"link"} size={"large"} icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}>
+					DeRivean
+				</Button>
+			</Link>
+		</div>
 	</Layout.Header>
 ;
 

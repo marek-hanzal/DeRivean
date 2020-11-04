@@ -53,9 +53,12 @@ const Header = () => {
 			padding: 0,
 			backgroundColor: "#FFF",
 		}}>
-			<div style={{float: "left", margin: "0 2.2em 0 1em"}}>
-				<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>
-				<Link to={Routes.root.link()}>DeRivean</Link>
+			<div style={{float: "left"}}>
+				<Link to={Routes.root.link()}>
+					<Button type={"link"} size={"large"} icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}>
+						DeRivean
+					</Button>
+				</Link>
 			</div>
 			<div style={{width: "50%", margin: "0 auto"}}>
 				<SearchInput

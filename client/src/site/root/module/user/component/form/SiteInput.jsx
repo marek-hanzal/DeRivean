@@ -19,7 +19,7 @@ const SiteInput = () => {
 		<Form.Item
 			{...validationFor("site", editorContext.errors, t)}
 			name={"site"}
-			label={t(`${userContext.id}.create.form.site.label`)}
+			label={t(`${userContext.id}.form.site.label`)}
 			children={
 				sites ?
 					<Radio.Group>
