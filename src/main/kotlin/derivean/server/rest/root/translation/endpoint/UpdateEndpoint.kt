@@ -33,7 +33,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 			fetchMapper.map(
 				translationRepository.update(item.id) {
 					this.language = item.language
-					this.namespace = item.namespace
+					this.namespace = item.namespace ?: "translation"
 					this.label = item.label
 					this.text = item.text
 				}
@@ -49,7 +49,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 	data class Request(
 		val id: String,
 		val language: String,
-		val namespace: String,
+		val namespace: String?,
 		val label: String,
 		val text: String,
 	)

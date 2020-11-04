@@ -31,14 +31,14 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 
 	override fun map(request: Request, entity: Translation) {
 		entity.language = request.language
-		entity.namespace = request.namespace
+		entity.namespace = request.namespace ?: "translation"
 		entity.label = request.label
 		entity.text = request.text
 	}
 
 	data class Request(
 		val language: String,
-		val namespace: String,
+		val namespace: String?,
 		val label: String,
 		val text: String,
 	)
