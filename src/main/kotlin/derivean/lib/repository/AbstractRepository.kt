@@ -27,4 +27,6 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 	override fun find(uuid: UUID) = entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")
 
 	override fun table() = table
+
+	override fun all() = entity.all()
 }

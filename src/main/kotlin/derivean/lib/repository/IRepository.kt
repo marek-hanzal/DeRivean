@@ -2,6 +2,7 @@ package derivean.lib.repository
 
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.id.UUIDTable
+import org.jetbrains.exposed.sql.SizedIterable
 import java.util.*
 
 interface IRepository<T : UUIDEntity> {
@@ -28,4 +29,6 @@ interface IRepository<T : UUIDEntity> {
 	fun page(page: Int, limit: Int, block: (T) -> Unit)
 
 	fun table(): UUIDTable
+
+	fun all(): SizedIterable<T>
 }

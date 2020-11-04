@@ -13,6 +13,7 @@ import derivean.server.config.EngineConfig
 import derivean.server.rest.public.PublicHttpModule
 import derivean.server.rest.root.RootHttpModule
 import derivean.server.upgrade.u2020_10_21.u2020_10_21
+import derivean.server.upgrade.u2020_11_04.u2020_11_04
 import io.github.config4k.extract
 
 object EngineContainer {
@@ -34,6 +35,7 @@ object EngineContainer {
 //			register(u2020_10_19_04::class)
 //			register(u2020_10_20::class)
 			register(u2020_10_21::class)
+			register(u2020_11_04::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
