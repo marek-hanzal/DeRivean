@@ -11,21 +11,21 @@ const CreateViewWithAttributes = (
 		children,
 		enableSubmit,
 	}) => {
-	context = useContext(context);
+	const currentContext = useContext(context);
 	const dispatch = useDispatch();
-	const attributes = useSelector(context.redux.redux.attributes.selector.getPayload);
+	const attributes = useSelector(currentContext.redux.redux.attributes.selector.getPayload);
 
 	/**
 	 * Fetch attributes used in editor.
 	 */
 	useEffect(() => {
-		dispatch(context.redux.redux.attributes.dispatch.attributes());
-	}, [dispatch, context.redux.redux.attributes.dispatch]);
+		dispatch(currentContext.redux.redux.attributes.dispatch.attributes());
+	}, [dispatch, currentContext.redux.redux.attributes.dispatch]);
 
 	return (
 		<CommonCreateView param={param} context={context} enableSubmit={enableSubmit}>
 			{children}
-			<AttributeFieldEditor edit={true} translation={context.id} attributes={attributes}/>
+			<AttributeFieldEditor edit={true} translation={currentContext.id} attributes={attributes}/>
 		</CommonCreateView>
 	);
 };

@@ -24,7 +24,20 @@ const Menu = () => {
 						menuBack(),
 						menuDivider(),
 
-						menuItem(Routes.root.translation.home.link(), "root.translation", <TranslationIcon/>),
+						menuItem(Routes.root.translation.home.link(), "root.translation.home", <TranslationIcon/>),
+						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>, true),
+
+						menuDivider(),
+						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+					]}
+				/>),
+				route(Routes.root.translation.edit.match(), <BaseMenu
+					items={[
+						menuDivider(),
+						menuBack(),
+						menuDivider(),
+
+						menuItem(Routes.root.translation.home.link(), "root.translation.home", <TranslationIcon/>),
 						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>, true),
 
 						menuDivider(),

@@ -13,8 +13,7 @@ const TranslationList = () => {
 				{title: "id", width: 380, render: (text, record) => <HistoryLink to={context.link.home(record.id)} text={text}/>},
 				{title: "language", width: 220},
 				{title: "namespace", width: 220},
-				{title: "label", width: 380},
-				{title: "translation"},
+				{title: "label"},
 			]}
 		/>
 	);
