@@ -6,7 +6,7 @@ import derivean.lib.rest.resolve
 import io.ktor.application.*
 import io.ktor.routing.*
 
-class StatisticEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
+class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val statisticMapper: StatisticMapper by container.lazy()
 
 	override fun install(routing: Routing) {

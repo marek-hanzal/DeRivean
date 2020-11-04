@@ -17,7 +17,7 @@ class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Respon
 
 	override fun resolve(item: Unit) = storage.read {
 		ok(
-			Statistic(
+			Statistics(
 				userRepository.total(),
 				kingdomRepository.total(),
 				heroRepository.total(),
@@ -26,7 +26,7 @@ class StatisticMapper(container: IContainer) : AbstractActionMapper<Unit, Respon
 		)
 	}
 
-	class Statistic(
+	data class Statistics(
 		val users: Long,
 		val kingdoms: Long,
 		val heroes: Long,

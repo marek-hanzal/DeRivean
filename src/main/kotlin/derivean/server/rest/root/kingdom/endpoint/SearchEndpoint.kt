@@ -1,7 +1,9 @@
 package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.mapper.AbstractActionMapper
+import derivean.lib.rest.*
+import derivean.server.kingdom.KingdomRepository
 import io.ktor.application.*
 import io.ktor.routing.*
 
@@ -20,4 +22,21 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 			}
 		}
 	}
+}
+
+class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Request, Response<out Any>>(container) {
+	private val kingdomRepository: KingdomRepository by container.lazy()
+	private val fetchMapper: FetchMapper by container.lazy()
+
+	override fun resolve(item: Request) = try {
+		ok(Result(storage.read { kingdomRepository.search(item.search).map { fetchMapper.map(it) } }))
+	} catch (e: Throwable) {
+		logger.error(e.message, e)
+		internalServerError(ValidationResponse.build {
+			message = "Some ugly internal server error happened!"
+		})
+	}
+
+	data class Request(val search: String)
+	data class Result(val items: List<FetchMapper.Fetch>)
 }

@@ -3,7 +3,7 @@ package derivean.server.rest.root.common
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
 import derivean.server.rest.root.common.endpoint.SearchEndpoint
-import derivean.server.rest.root.common.endpoint.StatisticEndpoint
+import derivean.server.rest.root.common.endpoint.StatisticsEndpoint
 import io.ktor.routing.*
 
 class CommonHttpModule(container: IContainer) : AbstractHttpModule(container) {
@@ -11,7 +11,7 @@ class CommonHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			SearchEndpoint::class,
-			StatisticEndpoint::class,
+			StatisticsEndpoint::class,
 		)
 	}
 }
