@@ -59,9 +59,9 @@ const Menu = () => {
 						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
 					]}
 				/>),
-				route("*", <DefaultMenu/>),
-				// route(Routes.root.kingdom.create.match(), <DefaultMenu/>),
-				// route(Routes.root.kingdom.list.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.dashboard.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.create.match(), <DefaultMenu/>),
+				route(Routes.root.kingdom.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
