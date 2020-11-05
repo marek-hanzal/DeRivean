@@ -1,13 +1,15 @@
 import {Menu} from "antd";
 import PropTypes from "prop-types";
 import {useTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
+import {generatePath} from "react-router";
+import {Link, useParams} from "react-router-dom";
 
 const MenuItem = (props) => {
 	const {t} = useTranslation();
+	const params = useParams();
 	return (
 		<Menu.Item icon={props.icon} {...props}>
-			<Link to={props.href}>{t(`${props.id}.menu`)}</Link>
+			<Link to={generatePath(props.href, params)}>{t(`${props.id}.menu`)}</Link>
 		</Menu.Item>
 	);
 };
