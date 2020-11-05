@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 const MenuGroup = ({id, icon, ...props}) => {
 	const {t} = useTranslation();
 	return (
-		<Menu.SubMenu title={t(`${id}.menu`)} icon={icon} {...props}/>
+		<Menu.SubMenu key={id} title={t(`${id}.menu`)} icon={icon} {...props}/>
 	);
 };
 

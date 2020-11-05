@@ -6,6 +6,7 @@ const BaseMenu = ({children}) => {
 	const dispatch = useDispatch();
 	const selected = useSelector(MenuRedux.selector.getSelected);
 	const opened = useSelector(MenuRedux.selector.getOpened);
+	console.log(opened);
 	return (
 		<Menu
 			mode="inline"

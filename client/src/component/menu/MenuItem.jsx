@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const MenuItem = ({id, icon, href, ...props}) => {
 	const {t} = useTranslation();
 	return (
-		<Menu.Item icon={icon} {...props}>
+		<Menu.Item key={id} icon={icon} {...props}>
 			<Link to={href}>{t(`${id}.menu`)}</Link>
 		</Menu.Item>
 	);

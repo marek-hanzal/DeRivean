@@ -57,9 +57,9 @@ const Menu = () => {
 	);
 };
 
-const HeroMenuItem = () => {
+const HeroMenuItem = (props) => {
 	return (
-		<MenuGroup id={id} icon={<HeroIcon/>}>
+		<MenuGroup id={id} icon={<HeroIcon/>} {...props}>
 			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
 			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
 			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>

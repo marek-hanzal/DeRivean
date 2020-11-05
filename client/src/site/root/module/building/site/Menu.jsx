@@ -57,9 +57,9 @@ const Menu = () => {
 	);
 };
 
-const BuildingMenuItem = () => {
+const BuildingMenuItem = (props) => {
 	return (
-		<MenuGroup id={id} icon={<BuildingIcon/>}>
+		<MenuGroup id={id} icon={<BuildingIcon/>} {...props}>
 			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
 			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
 			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
