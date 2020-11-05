@@ -3,6 +3,8 @@ package derivean.server.rest.root.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
+import derivean.server.user.UserBuildingRepository
+import derivean.server.user.UserHeroRepository
 import derivean.server.user.UserKingdomRepository
 import io.ktor.application.*
 import io.ktor.routing.*
@@ -27,12 +29,17 @@ class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(contain
 
 class StatisticsMapper(container: IContainer) : AbstractActionMapper<StatisticsMapper.Request, Response<out Any>>(container) {
 	private val userKingdomRepository: UserKingdomRepository by container.lazy()
+	private val userBuildingRepository: UserBuildingRepository by container.lazy()
+	private val userHeroRepository: UserHeroRepository by container.lazy()
 
 	override fun resolve(item: Request) = try {
 		storage.read {
+			val uuid = UUID.fromString(item.user)
 			ok(
 				Statistics(
-					userKingdomRepository.total(UUID.fromString(item.user)),
+					userKingdomRepository.total(uuid),
+					userBuildingRepository.total(uuid),
+					userHeroRepository.total(uuid),
 				)
 			)
 		}
@@ -52,5 +59,7 @@ class StatisticsMapper(container: IContainer) : AbstractActionMapper<StatisticsM
 
 	data class Statistics(
 		val kingdoms: Long,
+		val buildings: Long,
+		val heroes: Long,
 	)
 }

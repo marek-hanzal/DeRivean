@@ -14,7 +14,7 @@ import java.util.*
 abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 	val entity: EntityClass<UUID, T>,
 	val table: U,
-	private val column: Column<EntityUUID>,
+	val column: Column<EntityUUID>,
 	container: IContainer,
 ) : AbstractService(container), IRelationRepository<T> {
 	override fun total(relation: UUID) = entity.table.slice(entity.table.id).selectAll().andWhere { column eq relation }.count()
