@@ -6,7 +6,6 @@ const BaseMenu = ({children}) => {
 	const dispatch = useDispatch();
 	const selected = useSelector(MenuRedux.selector.getSelected);
 	const opened = useSelector(MenuRedux.selector.getOpened);
-	console.log(opened);
 	return (
 		<Menu
 			mode="inline"
@@ -14,7 +13,7 @@ const BaseMenu = ({children}) => {
 			selectedKeys={selected}
 			openKeys={opened}
 			style={{height: "100vh"}}
-			onOpenChange={([_, open]) => dispatch(MenuRedux.open([open]))}
+			onOpenChange={open => dispatch(MenuRedux.open(open))}
 			children={children}
 		/>
 	);
