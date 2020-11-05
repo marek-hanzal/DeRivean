@@ -6,7 +6,7 @@ const UserStatistics = () => {
 	const params = useParams();
 	return <OverallStatistics
 		show={["kingdoms", "buildings", "heroes"]}
-		action={() => UserRedux.redux.statistics.dispatch.fetch(params.user)}
+		action={cancelToken => UserRedux.redux.statistics.dispatch.fetch(params.user, cancelToken)}
 	/>;
 };
 

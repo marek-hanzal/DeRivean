@@ -6,8 +6,9 @@ import useMenuSelect from "hook/useMenuSelect";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router";
-import {useKingdomFetch} from "redux/kingdom/redux";
+import {KingdomRedux, useKingdomFetch} from "redux/kingdom/redux";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
+import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
 const HomeView = () => {
@@ -35,7 +36,9 @@ const HomeView = () => {
 							status={"info"}
 							icon={<Spinner done={!loading} icon={icon}/>}
 							title={<Placeholder data={kingdom} display={kingdom => kingdom.name}/>}
-						/>
+						>
+							<KingdomStatistics action={cancelToken => KingdomRedux.redux.statistics.dispatch.fetch(params.kingdom, cancelToken)}/>
+						</Result>
 					</Card>
 				)}
 			</KingdomContext.Consumer>

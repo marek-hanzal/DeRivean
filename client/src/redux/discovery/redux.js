@@ -40,6 +40,9 @@ const useDiscovery = (
 };
 
 function selectLink(id, state) {
+	if (!branch(state).payload[id]) {
+		throw new Error(`Cannot resolve link from Discovery for linkId [${id}]`);
+	}
 	return branch(state).payload[id].link;
 }
 

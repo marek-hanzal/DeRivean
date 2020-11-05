@@ -3,7 +3,6 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {StatisticsRedux} from "redux/statistics/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
 
 const OverallStatistics = (
@@ -16,7 +15,6 @@ const OverallStatistics = (
 	const dispatch = useDispatch();
 	const [data, setData] = useState({users: 0, kingdoms: 0, heroes: 0, buildings: 0});
 	const [loading, setLoading] = useState(true);
-	action = action || (cancelToken => StatisticsRedux.redux.statistics.dispatch.statistics(cancelToken));
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(action(cancelToken)).then(statistics => {
@@ -31,7 +29,7 @@ const OverallStatistics = (
 		});
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [dispatch, t]);
+	}, [action]);
 	return (
 		<Card style={{textAlign: "center"}}>
 			<Spin spinning={loading}>

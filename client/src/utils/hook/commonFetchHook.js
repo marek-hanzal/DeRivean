@@ -17,7 +17,7 @@ const commonFetchHook = (redux) => {
 			});
 			return () => cancelToken.cancel();
 			// eslint-disable-next-line
-		}, [dispatch, uuid]);
+		}, [uuid]);
 	};
 };
 
