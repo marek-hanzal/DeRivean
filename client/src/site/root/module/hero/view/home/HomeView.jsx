@@ -1,4 +1,4 @@
-import {Button, Card, Result} from "antd";
+import {Button, Card, Divider, Result} from "antd";
 import Spinner from "component/icon/Spinner";
 import Placeholder from "component/Placeholder";
 import useMenuSelect from "hook/useMenuSelect";
@@ -27,16 +27,24 @@ const HomeView = () => {
 	useMenuSelect(["root.hero"]);
 	return (
 		<HeroView>
+			<h1>CREATE HOME VIEW BASED ON HERO VIEW!</h1>
 			<HeroContext.Consumer>
 				{({id, icon, link}) => (
 					<Card title={t(`${id}.title`)}>
 						<Result
 							status={"info"}
 							icon={<Spinner done={!loading} icon={icon}/>}
-							title={<Placeholder data={hero} display={hero => hero.name}/>}
-							subTitle={<Button type={"primary"} ghost onClick={() => {
-								navigate(link.edit(params.hero));
-							}} children={t("root.building.edit.form.edit")}/>}
+							title={
+								<>
+									<Button type={"primary"} ghost onClick={() => {
+										navigate(link.edit(params.hero));
+									}} children={t("root.hero.edit.form.edit")}/>
+									<Divider type={"horizontal"}/>
+								</>
+							}
+							subTitle={
+								<Placeholder data={hero} display={hero => hero.name}/>
+							}
 						/>
 					</Card>
 				)}

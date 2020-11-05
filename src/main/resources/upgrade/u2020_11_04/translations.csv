@@ -224,3 +224,10 @@ cbe1b5e8-7eae-4053-b859-f3c5bbbe61f5,en,translation,root.building.menu,Building
 b392960a-ef15-486e-a7a8-4a99d5d6f896,en,translation,root.kingdom.edit.form.delete,Delete!
 ea8cd062-e816-4dca-98ca-f106d3f93277,en,translation,root.building.edit.menu,Edit
 3f33f144-3754-4341-948e-3ee994c1e456,en,translation,root.hero.edit.menu,Edit
+434bf620-1a3c-4038-9d7c-502bec3ff665,en,translation,root.hero.edit.form.edit,Edit!
+675247b2-6bfb-44b9-9e76-5bf70a7771e5,en,translation,root.hero.edit.form.submit,Save changes!
+21a16450-5655-40f2-9c66-8b6f80c57c05,en,translation,root.hero.edit.form.delete,Delete!
+5dbc1ffa-17b3-49fe-964c-27b32871649c,en,translation,root.hero.edit.form.deleteConfirm,Do you want to kill the selected Hero? This action cannot be taken back!
+cb0d528b-7169-48be-bf56-9c073be2f922,en,translation,root.hero.form.attribute.name.hint,Select Attribute!
+c89fcfe6-a470-4f43-8519-e4540127e372,en,translation,root.hero.form.attribute.value.hint,Value
+43b20221-39dd-4de1-9efe-5c9927f73a0c,en,translation,root.hero.form.attribute.deleteConfirm,Delete selected attribute?
