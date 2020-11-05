@@ -1,7 +1,7 @@
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
-import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
@@ -23,10 +23,12 @@ const Menu = () => {
 						menuBack(),
 						menuDivider(),
 
-						menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <TranslationIcon/>),
+						TranslationMenuItem(false, [
+							menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>),
+						]),
 
 						menuDivider(),
-						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+						menuLogout(),
 					]}
 				/>),
 				route("*", <BaseMenu
@@ -46,11 +48,11 @@ const Menu = () => {
 	);
 };
 
-const TranslationMenuItem = (history = false) => menuGroup("root.translation", <TranslationIcon/>, [
+const TranslationMenuItem = (history = false, extra = []) => menuGroup("root.translation", <TranslationIcon/>, [
 	menuItem(Routes.root.translation.dashboard.link(), "root.translation.dashboard", <DashboardIcon/>, history),
 	menuItem(Routes.root.translation.create.link(), "root.translation.create", <CreateIcon/>, history),
 	menuItem(Routes.root.translation.list.link(), "root.translation.list", <ListIcon/>, history),
-]);
+].concat(extra));
 
 const TranslationMenuRoute = () => route(Routes.root.translation.match(), <Menu/>);
 
