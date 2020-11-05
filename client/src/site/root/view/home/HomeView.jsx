@@ -29,7 +29,7 @@ const HomeView = () => {
 		return () => cancelToken.cancel();
 	}, [dispatch]);
 
-	useMenuOpen(["root.user", "root.blog", "root.translation"]);
+	useMenuOpen(["root.user", "root.blog", "root.translation", "some-key"]);
 	useMenuSelect("root.home");
 
 	return (

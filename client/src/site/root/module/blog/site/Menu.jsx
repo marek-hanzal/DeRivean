@@ -3,20 +3,24 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
+import PropTypes from "prop-types";
 import BlogIcon from "site/root/module/blog/component/icon/BlogIcon";
 import Routes from "site/Routes";
 
-const id = "root.blog";
 const link = Routes.root.blog;
 
-const BlogMenuItem = (props) => {
+const BlogMenuItem = ({key, ...props}) => {
 	return (
-		<MenuGroup id={id} icon={<BlogIcon/>} {...props}>
-			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		<MenuGroup key={key} icon={<BlogIcon/>} {...props}>
+			<MenuItem key={`${key}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${key}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem key={`${key}.list`} href={link.list.link()} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
+};
+
+BlogMenuItem.propTypes = {
+	key: PropTypes.string.isRequired,
 };
 
 export {
