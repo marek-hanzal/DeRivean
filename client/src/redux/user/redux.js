@@ -1,3 +1,6 @@
+import axios from "axios";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
 import dismissAction from "utils/action/actions/dismissAction";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
@@ -25,6 +28,23 @@ const UserRedux = CreateCommonRedux(
 	},
 );
 
+const useUserFetch = (uuid, onSuccess = user => user, onFailure = error => error) => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(UserRedux.redux.fetch.dispatch.fetch(uuid)).then(user => {
+			onSuccess(user);
+		}, error => {
+			if (error.cancel) {
+				return;
+			}
+			onFailure(error);
+		});
+		return () => cancelToken.cancel();
+	}, [dispatch, uuid]);
+};
+
 export {
 	UserRedux,
+	useUserFetch,
 };

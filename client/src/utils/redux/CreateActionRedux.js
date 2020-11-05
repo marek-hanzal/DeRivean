@@ -1,3 +1,4 @@
+import axios from "axios";
 import {selectLink} from "redux/discovery/redux";
 import {LoadingRedux} from "redux/loading/redux";
 import {Server} from "server";
@@ -9,20 +10,25 @@ function CreateActionRedux(id, action, link, extra = {}) {
 	return {
 		dispatch: {
 			actions: fetchActions(`${id}.${action}`),
-			[action]: function (data) {
+			[action]: function (data, cancelToken = null) {
 				return (dispatch, getState) => {
 					dispatch(LoadingRedux.start());
 					dispatch(this.actions.request());
-					return Server.post(selectLink(link, getState()), data)
+					return Server.post(selectLink(link, getState()), data, {
+						cancelToken: (cancelToken || axios.CancelToken.source()).token,
+					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							dispatch(LoadingRedux.finish());
 							return Promise.resolve(data);
 						})
-						.catch(({response}) => {
-							dispatch(this.actions.failure(response.data));
+						.catch(error => {
+							if (axios.isCancel(error)) {
+								return Promise.reject({cancel: true});
+							}
+							dispatch(this.actions.failure(error.response.data));
 							dispatch(LoadingRedux.finish());
-							return Promise.reject(response.data);
+							return Promise.reject(error.response.data);
 						});
 				};
 			},

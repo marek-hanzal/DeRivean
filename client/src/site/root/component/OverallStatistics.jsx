@@ -9,7 +9,8 @@ import ModuleIcon from "site/root/component/ModuleIcon";
 const OverallStatistics = (
 	{
 		action,
-		show = ["users", "kingdoms", "buildings", "heroes", "translations"]
+		show = ["users", "kingdoms", "buildings", "heroes", "translations"],
+		exclude = [],
 	}) => {
 	const {t} = useTranslation();
 	const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const OverallStatistics = (
 		<Card style={{textAlign: "center"}}>
 			<Spin spinning={loading}>
 				<Space size={"large"} split={<Divider type={"vertical"}/>} style={{textAlign: "center"}}>
-					{show.map(item => <Statistic key={item} title={t(`root.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
+					{show.filter(value => !exclude.includes(value)).map(item => <Statistic key={item} title={t(`root.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
 				</Space>
 			</Spin>
 		</Card>

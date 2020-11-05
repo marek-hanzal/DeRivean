@@ -1,8 +1,8 @@
 import LoaderIcon from "component/icon/LoaderIcon";
 import PropTypes from "prop-types";
 
-const Spinner = ({enable, icon}) => {
-	return (enable ? icon : <LoaderIcon spin/>);
+const Spinner = ({done, icon}) => {
+	return (done ? icon : <LoaderIcon spin/>);
 };
 
 Spinner.propTypes = {

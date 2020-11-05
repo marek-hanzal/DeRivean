@@ -94,7 +94,7 @@ const CommonEditView = (
 								/>
 							</Centered>
 						}
-						icon={<Spinner icon={currentContext.icon} enable={data}/>}
+						icon={<Spinner icon={currentContext.icon} done={data}/>}
 					>
 						<DualSection
 							left={
