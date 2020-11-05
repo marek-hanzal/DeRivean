@@ -3,44 +3,47 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import HomeMenuItem from "site/root/component/menu/HomeMenuItem";
+import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
-import menuLogout from "site/root/utils/menu/menuLogout";
-import menuRoot from "site/root/utils/menu/menuRoot";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuGroup from "utils/menu/menuGroup";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
+
+const id = "root.translation";
+const link = Routes.root.translation;
 
 const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.translation.home.match(), <BaseMenu
+				route(link.home.match(), <BaseMenu
 					items={[
-						menuDivider(),
-						menuRoot(),
-						menuDivider(),
+						<MenuDivider/>,
+						<HomeMenuItem/>,
+						<MenuDivider/>,
 
-						TranslationMenuItem([
-							menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>),
-						]),
+						<TranslationMenuItem>
+							<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+						</TranslationMenuItem>,
 
-						menuDivider(),
-						menuLogout(),
+						<MenuDivider/>,
+						<LogoutMenuItem/>,
 					]}
 				/>),
 				route("*", <BaseMenu
 					items={[
-						menuDivider(),
-						menuRoot(),
-						menuDivider(),
+						<MenuDivider/>,
+						<HomeMenuItem/>,
+						<MenuDivider/>,
 
-						TranslationMenuItem(),
+						<TranslationMenuItem/>,
 
-						menuDivider(),
-						menuLogout(),
+						<MenuDivider/>,
+						<LogoutMenuItem/>,
 					]}
 				/>),
 			]}
@@ -48,13 +51,18 @@ const Menu = () => {
 	);
 };
 
-const TranslationMenuItem = (extra = []) => menuGroup("root.translation", <TranslationIcon/>, [
-	menuItem(Routes.root.translation.dashboard.link(), "root.translation.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.translation.create.link(), "root.translation.create", <CreateIcon/>),
-	menuItem(Routes.root.translation.list.link(), "root.translation.list", <ListIcon/>),
-].concat(extra));
+const TranslationMenuItem = ({children, ...props}) => {
+	return (
+		<MenuGroup id={id} icon={<TranslationIcon/>} {...props}>
+			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+			{children}
+		</MenuGroup>
+	);
+};
 
-const TranslationMenuRoute = () => route(Routes.root.translation.match(), <Menu/>);
+const TranslationMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	TranslationMenuItem,

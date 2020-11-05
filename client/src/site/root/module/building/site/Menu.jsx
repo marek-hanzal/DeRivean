@@ -4,27 +4,28 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import menuLogout from "site/root/utils/menu/menuLogout";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuGroup from "utils/menu/menuGroup";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
+
+const id = "root.building";
+const link = Routes.root.building;
 
 const DefaultMenu = () => {
 	return (
-		<BaseMenu
-			items={[
-				menuDivider(),
-				menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <BackIcon/>),
-				menuDivider(),
-				BuildingMenuItem(),
-				menuDivider(),
-				menuLogout(),
-			]}
-		/>
+		<BaseMenu>
+			<MenuDivider/>
+			<MenuItem id={"root.kingdom"} href={Routes.root.kingdom.home.link()} icon={<BackIcon/>}/>
+			<MenuDivider/>
+			<BuildingMenuItem/>
+			<MenuDivider/>
+			<LogoutMenuItem/>
+		</BaseMenu>
 	);
 };
 
@@ -32,41 +33,41 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.building.edit.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.building.home.link(), "root.building", <BackIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.building.edit.link(), "root.building.edit", <EditIcon/>),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route(Routes.root.building.home.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.building.home.link(), "root.building", <BuildingIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.building.edit.link(), "root.building.edit", <EditIcon/>),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route(Routes.root.building.dashboard.match(), <DefaultMenu/>),
-				route(Routes.root.building.create.match(), <DefaultMenu/>),
-				route(Routes.root.building.list.match(), <DefaultMenu/>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={id} href={link.home.link()} icon={<BuildingIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.dashboard.match(), <DefaultMenu/>),
+				route(link.create.match(), <DefaultMenu/>),
+				route(link.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
 };
 
-const BuildingMenuItem = () => menuGroup("root.building", <BuildingIcon/>, [
-	menuItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.building.create.link(), "root.building.create", <CreateIcon/>),
-	menuItem(Routes.root.building.list.link(), "root.building.list", <ListIcon/>),
-]);
+const BuildingMenuItem = () => {
+	return (
+		<MenuGroup id={id} icon={<BuildingIcon/>}>
+			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		</MenuGroup>
+	);
+};
 
-const BuildingMenuRoute = () => route(Routes.root.building.match(), <Menu/>);
+const BuildingMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	BuildingMenuItem,

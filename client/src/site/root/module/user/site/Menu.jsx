@@ -5,68 +5,69 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import HomeMenuItem from "site/root/component/menu/HomeMenuItem";
+import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import menuLogout from "site/root/utils/menu/menuLogout";
-import menuRoot from "site/root/utils/menu/menuRoot";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuGroup from "utils/menu/menuGroup";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
+
+const id = "root.user";
+const link = Routes.root.user;
 
 const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.user.home.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <BackIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.user.home.link(), "root.user", <UserIcon/>),
-						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>, true),
-						menuDivider(),
-						KingdomMenuItem(true),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route(Routes.root.user.edit.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.user.home.link(), "root.user", <BackIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.user.attributes.link(), "root.user.attributes", <AttributeIcon/>),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route("*", <BaseMenu
-					items={[
-						menuDivider(),
-						menuRoot(),
-						menuDivider(),
-						UserMenuItem(),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}`} href={link.home.link()} icon={<UserIcon/>}/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<KingdomMenuItem/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={`${id}`} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.attributes`} href={link.attributes.link()} icon={<AttributeIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route("*", <BaseMenu>
+					<MenuDivider/>
+					<HomeMenuItem/>
+					<MenuDivider/>
+					<UserMenuItem/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
 			]}
 		/>
 	);
 };
 
-const UserMenuItem = (history = false) => menuGroup("root.user", <UserIcon/>, [
-	menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <DashboardIcon/>, history),
-	menuItem(Routes.root.user.create.link(), "root.user.create", <CreateIcon/>, history),
-	menuItem(Routes.root.user.list.link(), "root.user.list", <ListIcon/>, history),
-]);
+const UserMenuItem = (props) => {
+	return (
+		<MenuGroup id={id} icon={<UserIcon/>} {...props}>
+			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		</MenuGroup>
+	);
+};
 
-const UserMenuRoute = () => route(Routes.root.user.match(), <Menu/>);
+const UserMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	UserMenuRoute,

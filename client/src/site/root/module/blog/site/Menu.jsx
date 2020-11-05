@@ -1,16 +1,23 @@
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
+import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BlogIcon from "site/root/module/blog/component/icon/BlogIcon";
 import Routes from "site/Routes";
-import menuGroup from "utils/menu/menuGroup";
-import menuItem from "utils/menu/menuItem";
 
-const BlogMenuItem = () => menuGroup("root.blog", <BlogIcon/>, [
-	menuItem(Routes.root.blog.dashboard.link(), "root.blog.dashboard", <DashboardIcon/>),
-	menuItem(Routes.root.blog.create.link(), "root.blog.create", <CreateIcon/>),
-	menuItem(Routes.root.blog.list.link(), "root.blog.list", <ListIcon/>),
-]);
+const id = "root.blog";
+const link = Routes.root.blog;
+
+const BlogMenuItem = (props) => {
+	return (
+		<MenuGroup id={id} icon={<BlogIcon/>} {...props}>
+			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		</MenuGroup>
+	);
+};
 
 export {
 	BlogMenuItem,

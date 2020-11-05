@@ -3,6 +3,8 @@ import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
 import BaseLayout from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
@@ -11,10 +13,10 @@ import SignUpView from "site/public/view/sign-up/SignUpView";
 import SingOutView from "site/public/view/SignOutView";
 import SingInView from "site/public/view/sing-in/SingInView";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
+
+const link = Routes.public;
 
 /**
  * Site could be maybe abstracted too, but it's here to prevent moving internal site stuff
@@ -26,24 +28,22 @@ const Site = () =>
 		menu={
 			<BaseRoutes
 				routes={[
-					route("*", <BaseMenu
-						items={[
-							menuDivider(),
-							menuItem(Routes.public.link(), "public.home", <HomeIcon/>),
-							menuDivider(),
-							menuItem(Routes.public.signUp.link(), "public.sign-up", <SignUpIcon/>),
-							menuItem(Routes.public.signIn.link(), "public.sign-in", <SignInIcon/>),
-						]}
-					/>),
+					route("*", <BaseMenu>
+						<MenuDivider/>
+						<MenuItem id={"public.home"} href={link.link()} icon={<HomeIcon/>}/>
+						<MenuDivider/>
+						<MenuItem id={"public.sign-up"} href={link.signUp.link()} icon={<SignUpIcon/>}/>
+						<MenuItem id={"public.sign-in"} href={link.signIn.link()} icon={<SignInIcon/>}/>
+					</BaseMenu>),
 				]}
 			/>
 		}
 		router={
 			<BaseRoutes
 				routes={[
-					route(Routes.public.signUp.match(), <SignUpView/>),
-					route(Routes.public.signIn.match(), <SingInView/>),
-					route(Routes.public.signOut.match(), <SingOutView/>),
+					route(link.signUp.match(), <SignUpView/>),
+					route(link.signIn.match(), <SingInView/>),
+					route(link.signOut.match(), <SingOutView/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}

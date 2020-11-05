@@ -4,27 +4,28 @@ import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import menuLogout from "site/root/utils/menu/menuLogout";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuGroup from "utils/menu/menuGroup";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
+
+const id = "root.hero";
+const link = Routes.root.hero;
 
 const DefaultMenu = () => {
 	return (
-		<BaseMenu
-			items={[
-				menuDivider(),
-				menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <BackIcon/>),
-				menuDivider(),
-				HeroMenuItem(),
-				menuDivider(),
-				menuLogout(),
-			]}
-		/>
+		<BaseMenu>
+			<MenuDivider/>
+			<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+			<MenuDivider/>
+			<HeroMenuItem/>
+			<MenuDivider/>
+			<LogoutMenuItem/>
+		</BaseMenu>
 	);
 };
 
@@ -32,41 +33,41 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.hero.home.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.hero.home.link(), "root.hero", <HeroIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route(Routes.root.hero.edit.match(), <BaseMenu
-					items={[
-						menuDivider(),
-						menuItem(Routes.root.hero.home.link(), "root.hero", <BackIcon/>),
-						menuDivider(),
-						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
-						menuDivider(),
-						menuLogout(),
-					]}
-				/>),
-				route(Routes.root.hero.dashboard.match(), <DefaultMenu/>),
-				route(Routes.root.hero.create.match(), <DefaultMenu/>),
-				route(Routes.root.hero.list.match(), <DefaultMenu/>),
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={id} href={link.home.link()} icon={<HeroIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.dashboard.match(), <DefaultMenu/>),
+				route(link.create.match(), <DefaultMenu/>),
+				route(link.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
 };
 
-const HeroMenuItem = (history = false) => menuGroup("root.hero", <HeroIcon/>, [
-	menuItem(Routes.root.hero.dashboard.link(), "root.hero.dashboard", <DashboardIcon/>, history),
-	menuItem(Routes.root.hero.create.link(), "root.hero.create", <CreateIcon/>, history),
-	menuItem(Routes.root.hero.list.link(), "root.hero.list", <ListIcon/>, history),
-]);
+const HeroMenuItem = () => {
+	return (
+		<MenuGroup id={id} icon={<HeroIcon/>}>
+			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		</MenuGroup>
+	);
+};
 
-const HeroMenuRoute = () => route(Routes.root.hero.match(), <Menu/>);
+const HeroMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	HeroMenuItem,

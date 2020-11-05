@@ -1,8 +1,11 @@
 import HomeIcon from "component/icon/HomeIcon";
 import BaseLayout from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
+import MenuDivider from "component/menu/MenuDivider";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
+import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import {BlogMenuItem} from "site/root/module/blog/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
@@ -17,12 +20,9 @@ import {UserMenuItem, UserMenuRoute} from "site/root/module/user/site/Menu";
 import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
-import menuLogout from "site/root/utils/menu/menuLogout";
 import HomeView from "site/root/view/home/HomeView";
 import SingInView from "site/root/view/SingInView";
 import Routes from "site/Routes";
-import menuDivider from "utils/menu/menuDivider";
-import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
@@ -38,22 +38,20 @@ const Site = () => {
 						BuildingMenuRoute(),
 						HeroMenuRoute(),
 						TranslationMenuRoute(),
-						route("*", <BaseMenu
-							items={[
-								menuDivider(),
-								menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
-								menuDivider(),
+						route("*", <BaseMenu>
+							<MenuDivider/>
+							<MenuItem id={"root.home"} href={Routes.root.link()} icon={<HomeIcon/>}/>
+							<MenuDivider/>
 
-								UserMenuItem(),
-								menuDivider(),
-								BlogMenuItem(),
-								menuDivider(),
-								TranslationMenuItem(),
+							<UserMenuItem/>
+							<MenuDivider/>
+							<BlogMenuItem/>
+							<MenuDivider/>
+							<TranslationMenuItem/>
 
-								menuDivider(),
-								menuLogout(),
-							]}
-						/>)
+							<MenuDivider/>
+							<LogoutMenuItem/>
+						</BaseMenu>)
 					]}
 				/>
 			}
