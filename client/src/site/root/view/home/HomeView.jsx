@@ -1,6 +1,5 @@
 import {Card} from "antd";
 import axios from "axios";
-import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -28,10 +27,7 @@ const HomeView = () => {
 		});
 		return () => cancelToken.cancel();
 	}, [dispatch]);
-
-	useMenuOpen(["root.user", "root.blog", "root.translation", "some-key"]);
 	useMenuSelect("root.home");
-
 	return (
 		<RootView context={HomeContext} id={"root.home"}>
 			<Card title={t("root.home.title")}>

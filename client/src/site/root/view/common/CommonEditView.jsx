@@ -3,7 +3,6 @@ import EditorContext from "component/form/EditorContext";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
-import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -29,10 +28,7 @@ const CommonEditView = (
 	const params = useParams();
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(false);
-
-	useMenuOpen(currentContext.id);
 	useMenuSelect(currentContext.id + ".edit");
-
 	/**
 	 * Fetch current data from redux.
 	 */

@@ -1,5 +1,4 @@
 import {Card, Divider} from "antd";
-import useMenuOpen from "hook/useMenuOpen";
 import {useTranslation} from "react-i18next";
 import LoginInput from "site/root/module/user/component/form/LoginInput";
 import PasswordInput from "site/root/module/user/component/form/PasswordInput";
@@ -10,7 +9,6 @@ import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes
 
 const EditView = () => {
 	const {t} = useTranslation();
-	useMenuOpen(["root.kingdom"]);
 	return (
 		<UserView>
 			<UserContext.Consumer>

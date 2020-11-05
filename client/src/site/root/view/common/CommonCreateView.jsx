@@ -2,7 +2,6 @@ import {Card, Divider, Form, Input, message, Result} from "antd";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
-import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext, useState} from "react";
@@ -31,9 +30,7 @@ const CommonCreateView = (
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(true);
-	useMenuOpen(currentContext.id);
 	useMenuSelect(currentContext.id + ".create");
-
 	return (
 		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
 			<Form

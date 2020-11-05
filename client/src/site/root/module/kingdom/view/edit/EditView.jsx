@@ -3,7 +3,6 @@ import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
 
 const EditView = () => {
-	// useMenuOpen(["root.hero", "root.building"]);
 	return (
 		<KingdomView>
 			<EditViewWithAttributes

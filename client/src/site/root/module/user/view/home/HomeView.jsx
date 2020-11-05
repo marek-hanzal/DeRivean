@@ -1,7 +1,6 @@
 import {Card, Result} from "antd";
 import Spinner from "component/icon/Spinner";
 import Placeholder from "component/Placeholder";
-import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -25,9 +24,7 @@ const HomeView = () => {
 			setLoading(false);
 		}
 	);
-	useMenuOpen(["root.kingdom"]);
 	useMenuSelect(["root.user"]);
-
 	return (
 		<UserView>
 			<UserContext.Consumer>
