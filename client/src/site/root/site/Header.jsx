@@ -1,21 +1,12 @@
-import {
-	Avatar,
-	Button,
-	Divider,
-	Layout,
-	message,
-	Space
-} from "antd";
+import {Avatar, Button, Divider, Layout, message, Space} from "antd";
 import icon from "assets/icon.png";
 import SearchInput from "component/form/SearchInput";
+import EditIcon from "component/icon/EditIcon";
 import copy from "copy-to-clipboard";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import {
-	Link,
-	useNavigate
-} from "react-router-dom";
-import { SearchRedux } from "redux/search/redux";
+import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
+import {Link, useNavigate} from "react-router-dom";
+import {SearchRedux} from "redux/search/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
@@ -23,7 +14,7 @@ import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
 
 const HeaderContext = React.createContext({
-	id:    "root.header",
+	id: "root.header",
 	redux: SearchRedux,
 });
 
@@ -32,7 +23,7 @@ function warpTo(navigate, item, target = "home") {
 }
 
 const UserToolbar = ({item}) => {
-	const {t}      = useTranslation();
+	const {t} = useTranslation();
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
@@ -47,7 +38,7 @@ const UserToolbar = ({item}) => {
 };
 
 const KingdomToolbar = ({item}) => {
-	const {t}      = useTranslation();
+	const {t} = useTranslation();
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
@@ -79,7 +70,7 @@ const CustomToolbar = ({item}) => {
 };
 
 const SearchItem = ({item}) => {
-	const {t}      = useTranslation();
+	const {t} = useTranslation();
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>} size={"small"}>
@@ -87,8 +78,7 @@ const SearchItem = ({item}) => {
 				warpTo(navigate, item);
 				message.success(t("common.warped"));
 			}} children={t("common.view-item")}/>
-			<CustomToolbar item={item}/>
-			<Button size={"small"} type={"dashed"} onClick={() => {
+			<Button size={"small"} type={"dashed"} icon={<EditIcon/>} onClick={() => {
 				warpTo(navigate, item, "edit");
 				message.success(t("common.warped"));
 			}} children={t("common.edit-item")}/>
@@ -98,6 +88,7 @@ const SearchItem = ({item}) => {
 					onCopy: () => message.success(t("common.copy-success")),
 				});
 			}} children={t("common.copy-id")}/>
+			<CustomToolbar item={item}/>
 			{item.name}
 		</Space>
 	);
@@ -107,10 +98,10 @@ const Header = () => {
 	const [value, setValue] = useState();
 	return (
 		<Layout.Header style={{
-			position:        "fixed",
-			zIndex:          1009,
-			width:           "100%",
-			padding:         0,
+			position: "fixed",
+			zIndex: 1009,
+			width: "100%",
+			padding: 0,
 			backgroundColor: "#FFF",
 		}}>
 			<div style={{float: "left"}}>
@@ -121,7 +112,7 @@ const Header = () => {
 				</Link>
 			</div>
 			<div style={{
-				width:  "70%",
+				width: "70%",
 				margin: "0 auto"
 			}}>
 				<SearchInput

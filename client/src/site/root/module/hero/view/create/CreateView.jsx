@@ -9,7 +9,9 @@ const CreateView = () => {
 				context={HeroContext}
 				param={"kingdom"}
 				enableSubmit={true}
-			/>
+			>
+				{attributes => attributes}
+			</CreateViewWithAttributes>
 		</HeroView>
 	);
 };

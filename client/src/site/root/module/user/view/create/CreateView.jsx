@@ -19,17 +19,23 @@ const CreateView = () => {
 						param={"user"}
 						enableSubmit={true}
 					>
-						<Card title={t(`${id}.form.title`)}>
-							<LoginInput/>
-							<PasswordInput/>
-							<Divider type={"horizontal"}/>
-							<SiteInput/>
-						</Card>
-						<Divider type={"horizontal"}/>
-						<Card title={t(`${id}.form.misc.title`)}>
-							<TemplateInput/>
-						</Card>
-						<Divider type={"horizontal"}/>
+						{attributes => (
+							<>
+								<Card title={t(`${id}.form.title`)}>
+									<LoginInput/>
+									<PasswordInput/>
+									<Divider type={"horizontal"}/>
+									<SiteInput/>
+								</Card>
+								<Divider type={"horizontal"}/>
+								{attributes}
+								<Divider type={"horizontal"}/>
+								<Card title={t(`${id}.form.misc.title`)}>
+									<TemplateInput/>
+								</Card>
+							</>
+						)}
+
 					</CreateViewWithAttributes>
 				)}
 			</UserContext.Consumer>

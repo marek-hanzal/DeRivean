@@ -10,7 +10,9 @@ const CreateView = () => {
 				formName={"building"}
 				param={"kingdom"}
 				enableSubmit={true}
-			/>
+			>
+				{attributes => attributes}
+			</CreateViewWithAttributes>
 		</BuildingView>
 	);
 };

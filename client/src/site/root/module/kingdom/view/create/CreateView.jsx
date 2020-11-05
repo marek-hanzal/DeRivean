@@ -1,11 +1,9 @@
-import {Card, Divider, Form} from "antd";
-import EditorContext from "component/form/EditorContext";
-import SearchInput from "component/form/SearchInput";
+import {Card, Divider} from "antd";
 import {useTranslation} from "react-i18next";
+import TemplateInput from "site/root/module/kingdom/component/form/TemplateInput";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import CreateViewWithAttributes from "site/root/view/common/CreateViewWithAttributes";
-import validationFor from "utils/form/validationFor";
 
 const CreateView = () => {
 	const {t} = useTranslation();
@@ -18,23 +16,16 @@ const CreateView = () => {
 						param={"user"}
 						enableSubmit={true}
 					>
-						<EditorContext.Consumer>
-							{({errors}) => (
-								<>
-									<Card title={t(`${id}.create.form.misc.title`)}>
-										<Form.Item
-											{...validationFor("template", errors, t)}
-											name={"template"}
-											help={t(`${id}.create.form.template.help`)}
-											children={
-												<SearchInput placeholder={"create.form.template"} context={KingdomContext}/>
-											}
-										/>
-									</Card>
-									<Divider type={"horizontal"}/>
-								</>
-							)}
-						</EditorContext.Consumer>
+						{attributes => (
+							<>
+								{attributes}
+								<Divider type={"horizontal"}/>
+								<Card title={t(`${id}.create.form.misc.title`)}>
+									<TemplateInput/>
+								</Card>
+							</>
+
+						)}
 					</CreateViewWithAttributes>
 				)}
 			</KingdomContext.Consumer>

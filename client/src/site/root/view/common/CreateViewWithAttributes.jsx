@@ -24,14 +24,14 @@ const CreateViewWithAttributes = (
 
 	return (
 		<CommonCreateView param={param} context={context} enableSubmit={enableSubmit}>
-			{children}
-			<AttributeFieldEditor edit={true} translation={currentContext.id} attributes={attributes}/>
+			{children(<AttributeFieldEditor edit={true} translation={currentContext.id} attributes={attributes}/>)}
 		</CommonCreateView>
 	);
 };
 
 CreateViewWithAttributes.propTypes = {
 	param: PropTypes.string.isRequired,
+	children: PropTypes.func.isRequired,
 	enableSubmit: PropTypes.any,
 };
 

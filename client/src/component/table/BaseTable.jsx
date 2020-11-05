@@ -44,6 +44,7 @@ const BaseTable = (
 
 	return (
 		<Table
+			style={{minHeight: "50vh"}}
 			dataSource={items}
 			rowKey={record => record.id}
 			loading={{
