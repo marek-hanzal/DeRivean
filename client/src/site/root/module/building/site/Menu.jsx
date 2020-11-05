@@ -1,13 +1,13 @@
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import menuLogout from "site/root/utils/menu/menuLogout";
 import Routes from "site/Routes";
-import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
@@ -32,10 +32,21 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
+				route(Routes.root.building.edit.match(), <BaseMenu
+					items={[
+						menuDivider(),
+						menuItem(Routes.root.building.home.link(), "root.building", <BackIcon/>),
+						menuDivider(),
+						menuItem(Routes.root.building.edit.link(), "root.building.edit", <EditIcon/>),
+						menuDivider(),
+						menuLogout(),
+					]}
+				/>),
 				route(Routes.root.building.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuItem(Routes.root.building.home.link(), "root.building", <BuildingIcon/>),
+						menuItem(Routes.root.building.edit.link(), "root.building.edit", <EditIcon/>),
 						menuDivider(),
 						menuLogout(),
 					]}
