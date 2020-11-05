@@ -1,4 +1,3 @@
-import BaseBreadcrumbs from "component/breadcrumbs/BaseBreadcrumbs";
 import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
@@ -12,8 +11,6 @@ import SignUpView from "site/public/view/sign-up/SignUpView";
 import SingOutView from "site/public/view/SignOutView";
 import SingInView from "site/public/view/sing-in/SingInView";
 import Routes from "site/Routes";
-import breadcrumbIconItem from "utils/breadcrumbs/breadcrumbIconItem";
-import breadcrumbSimpleItem from "utils/breadcrumbs/breadcrumbSimpleItem";
 import menuDivider from "utils/menu/menuDivider";
 import menuItem from "utils/menu/menuItem";
 import route from "utils/route/route";
@@ -36,29 +33,6 @@ const Site = () =>
 							menuDivider(),
 							menuItem(Routes.public.signUp.link(), "public.sign-up", <SignUpIcon/>),
 							menuItem(Routes.public.signIn.link(), "public.sign-in", <SignInIcon/>),
-						]}
-					/>),
-				]}
-			/>
-		}
-		breadcrumbs={
-			<BaseRoutes
-				routes={[
-					route(Routes.public.signUp.match(), <BaseBreadcrumbs
-						items={[
-							breadcrumbIconItem(Routes.public.link(), <HomeIcon/>),
-							breadcrumbSimpleItem("public.sign-up", <SignUpIcon/>),
-						]}
-					/>),
-					route(Routes.public.signIn.match(), <BaseBreadcrumbs
-						items={[
-							breadcrumbIconItem(Routes.public.link(), <HomeIcon/>),
-							breadcrumbSimpleItem("public.sign-in", <SignInIcon/>),
-						]}
-					/>),
-					route("/", <BaseBreadcrumbs
-						items={[
-							breadcrumbIconItem(Routes.public.link(), <HomeIcon/>),
 						]}
 					/>),
 				]}
