@@ -1,3 +1,4 @@
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
@@ -17,7 +18,7 @@ const DefaultMenu = () => {
 		<BaseMenu
 			items={[
 				menuDivider(),
-				menuBack(),
+				menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <BackIcon/>),
 				menuDivider(),
 				HeroMenuItem(),
 				menuDivider(),

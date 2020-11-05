@@ -1,16 +1,16 @@
 import AttributeIcon from "component/icon/AttributeIcon";
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
-import SignOutIcon from "component/icon/SignOutIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import menuLogout from "site/root/utils/menu/menuLogout";
+import menuRoot from "site/root/utils/menu/menuRoot";
 import Routes from "site/Routes";
-import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
@@ -23,33 +23,32 @@ const Menu = () => {
 				route(Routes.root.user.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuItem(Routes.root.user.dashboard.link(), "root.user.dashboard", <BackIcon/>),
 						menuDivider(),
 						menuItem(Routes.root.user.home.link(), "root.user", <UserIcon/>),
 						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>, true),
 						menuDivider(),
 						KingdomMenuItem(true),
 						menuDivider(),
-						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+						menuLogout(),
 					]}
 				/>),
 				route(Routes.root.user.edit.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuItem(Routes.root.user.home.link(), "root.user", <BackIcon/>),
 						menuDivider(),
-						menuItem(Routes.root.user.home.link(), "root.user", <UserIcon/>),
 						menuItem(Routes.root.user.edit.link(), "root.user.edit", <EditIcon/>),
 						menuDivider(),
 						menuItem(Routes.root.user.attributes.link(), "root.user.attributes", <AttributeIcon/>),
 						menuDivider(),
-						menuItem(Routes.root.signOut.link(), "root.sign-out", <SignOutIcon/>),
+						menuLogout(),
 					]}
 				/>),
 				route("*", <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuRoot(),
 						menuDivider(),
 						UserMenuItem(),
 						menuDivider(),

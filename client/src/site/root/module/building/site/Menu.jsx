@@ -1,3 +1,4 @@
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
@@ -17,7 +18,7 @@ const DefaultMenu = () => {
 		<BaseMenu
 			items={[
 				menuDivider(),
-				menuBack(),
+				menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <BackIcon/>),
 				menuDivider(),
 				BuildingMenuItem(),
 				menuDivider(),
@@ -47,10 +48,10 @@ const Menu = () => {
 	);
 };
 
-const BuildingMenuItem = (history = false) => menuGroup("root.building", <BuildingIcon/>, [
-	menuItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>, history),
-	menuItem(Routes.root.building.create.link(), "root.building.create", <CreateIcon/>, history),
-	menuItem(Routes.root.building.list.link(), "root.building.list", <ListIcon/>, history),
+const BuildingMenuItem = () => menuGroup("root.building", <BuildingIcon/>, [
+	menuItem(Routes.root.building.dashboard.link(), "root.building.dashboard", <DashboardIcon/>),
+	menuItem(Routes.root.building.create.link(), "root.building.create", <CreateIcon/>),
+	menuItem(Routes.root.building.list.link(), "root.building.list", <ListIcon/>),
 ]);
 
 const BuildingMenuRoute = () => route(Routes.root.building.match(), <Menu/>);

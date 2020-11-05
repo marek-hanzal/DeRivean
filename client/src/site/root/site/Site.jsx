@@ -44,11 +44,11 @@ const Site = () => {
 								menuItem(Routes.root.link(), "root.home", <HomeIcon/>),
 								menuDivider(),
 
-								UserMenuItem(true),
+								UserMenuItem(),
 								menuDivider(),
-								BlogMenuItem(true),
+								BlogMenuItem(),
 								menuDivider(),
-								TranslationMenuItem(true),
+								TranslationMenuItem(),
 
 								menuDivider(),
 								menuLogout(),

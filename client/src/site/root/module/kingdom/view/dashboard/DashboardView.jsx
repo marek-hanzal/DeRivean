@@ -10,7 +10,6 @@ const DashboardView = () => {
 	return (
 		<KingdomView>
 			<BaseDashboardView context={KingdomContext}>
-				<h1>Use user's statistics (these are global)</h1>
 				<KingdomStatistics show={["kingdoms", "buildings", "heroes"]} action={cancelToken => UserRedux.redux.statistics.dispatch.fetch(params.user, cancelToken)}/>
 			</BaseDashboardView>
 		</KingdomView>

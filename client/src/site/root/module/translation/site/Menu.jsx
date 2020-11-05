@@ -6,8 +6,8 @@ import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import menuLogout from "site/root/utils/menu/menuLogout";
+import menuRoot from "site/root/utils/menu/menuRoot";
 import Routes from "site/Routes";
-import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
@@ -20,10 +20,10 @@ const Menu = () => {
 				route(Routes.root.translation.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuRoot(),
 						menuDivider(),
 
-						TranslationMenuItem(false, [
+						TranslationMenuItem([
 							menuItem(Routes.root.translation.edit.link(), "root.translation.edit", <EditIcon/>),
 						]),
 
@@ -34,7 +34,7 @@ const Menu = () => {
 				route("*", <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuRoot(),
 						menuDivider(),
 
 						TranslationMenuItem(),
@@ -48,10 +48,10 @@ const Menu = () => {
 	);
 };
 
-const TranslationMenuItem = (history = false, extra = []) => menuGroup("root.translation", <TranslationIcon/>, [
-	menuItem(Routes.root.translation.dashboard.link(), "root.translation.dashboard", <DashboardIcon/>, history),
-	menuItem(Routes.root.translation.create.link(), "root.translation.create", <CreateIcon/>, history),
-	menuItem(Routes.root.translation.list.link(), "root.translation.list", <ListIcon/>, history),
+const TranslationMenuItem = (extra = []) => menuGroup("root.translation", <TranslationIcon/>, [
+	menuItem(Routes.root.translation.dashboard.link(), "root.translation.dashboard", <DashboardIcon/>),
+	menuItem(Routes.root.translation.create.link(), "root.translation.create", <CreateIcon/>),
+	menuItem(Routes.root.translation.list.link(), "root.translation.list", <ListIcon/>),
 ].concat(extra));
 
 const TranslationMenuRoute = () => route(Routes.root.translation.match(), <Menu/>);
