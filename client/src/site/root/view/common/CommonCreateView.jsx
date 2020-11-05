@@ -1,9 +1,7 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
-import BulletCard from "component/BulletCard";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
-import DualSection from "component/layout/DualSection";
 import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
@@ -83,14 +81,8 @@ const CommonCreateView = (
 								children={<Input addonBefore={t(`${currentContext.id}.form.${name}.label`)} suffix={currentContext.icon}/>}
 							/>
 						</Centered>}
-					>
-						<DualSection
-							left={
-								<Centered span={24} children={children}/>
-							}
-							right={<BulletCard translation={`${currentContext.id}.create`} count={4}/>}
-						/>
-					</Result>
+						children={<Centered span={16} children={children}/>}
+					/>
 				</Card>
 			</Form>
 		</EditorContext.Provider>

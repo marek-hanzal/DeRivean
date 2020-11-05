@@ -1,6 +1,7 @@
-import {RightCircleOutlined} from "@ant-design/icons";
-import {Card, Col, Result, Row, Typography} from "antd";
+import {Card, Result} from "antd";
+import BulletCard from "component/BulletCard";
 import SignUpIcon from "component/icon/SignUpIcon";
+import DualSection from "component/layout/DualSection";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,7 +9,6 @@ import {UserRedux} from "redux/user/redux";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 import SucceedResult from "site/public/view/sign-up/SucceedResult";
-import numberRange from "utils/numberRange";
 
 const SignUpView = () => {
 	const dispatch = useDispatch();
@@ -34,30 +34,17 @@ const SignUpView = () => {
 							status={"info"}
 							title={t("public.sign-up.content.title")}
 							subTitle={t("public.sign-up.content.subtitle")}
-						>
-							<Row gutter={128} justify={"center"}>
-								<Col span={12}>
-									<Card title={t("public.sign-up.content.form.title")}>
-										<SignUpForm/>
-									</Card>
-								</Col>
-								<Col span={12}>
-									<Typography.Paragraph>
-										<Typography.Text
-											strong
-											style={{fontSize: 16,}}
-										>
-											{t("public.sign-up.content.list.title")}
-										</Typography.Text>
-									</Typography.Paragraph>
-									{numberRange(5).map(index => (
-										<Typography.Paragraph key={index}>
-											<RightCircleOutlined style={{color: "#1890ff"}}/>&nbsp;{t("public.sign-up.content.list.item-" + index)}
-										</Typography.Paragraph>
-									))}
-								</Col>
-							</Row>
-						</Result>
+							children={
+								<DualSection
+									left={
+										<Card title={t("public.sign-up.content.form.title")}>
+											<SignUpForm/>
+										</Card>
+									}
+									right={<BulletCard translation={"public.sign-up.content"} count={5}/>}
+								/>
+							}
+						/>
 					</Card>
 				</PublicView>
 			);

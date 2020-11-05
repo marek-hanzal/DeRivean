@@ -20,9 +20,9 @@ const SingOutView = ({id}) => {
 				title={t(`${id}.sign-out.title`)}
 				subTitle={t(`${id}.sign-out.subtitle`)}
 				extra={[
-					<Button type="primary" key="sign-out" onClick={() => dispatch(SessionRedux.close())}>
-						{t(`${id}.sign-out.button.sign-out`)}
-					</Button>,
+					<Button type="primary" key="sign-out" onClick={() => {
+						dispatch(SessionRedux.close());
+					}} children={t(`${id}.sign-out.button.sign-out`)}/>,
 					<Button key="back" onClick={() => navigate(-1)}>{t(`${id}.sign-out.button.back`)}</Button>,
 				]}
 			>

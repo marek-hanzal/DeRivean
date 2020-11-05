@@ -1,10 +1,8 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
-import BulletCard from "component/BulletCard";
 import EditorContext from "component/form/EditorContext";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
-import DualSection from "component/layout/DualSection";
 import useMenuOpen from "hook/useMenuOpen";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext, useEffect, useState} from "react";
@@ -95,16 +93,8 @@ const CommonEditView = (
 							</Centered>
 						}
 						icon={<Spinner icon={currentContext.icon} done={data}/>}
-					>
-						<DualSection
-							left={
-								<Centered span={24}>
-									{children}
-								</Centered>
-							}
-							right={<BulletCard translation={currentContext.id + ".edit"} count={4}/>}
-						/>
-					</Result>
+						children={<Centered span={16} children={children}/>}
+					/>
 				</Card>
 			</Form>
 		</EditorContext.Provider>
