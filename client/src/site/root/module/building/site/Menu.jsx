@@ -8,6 +8,7 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import PropTypes from "prop-types";
 import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import Routes from "site/Routes";
@@ -22,9 +23,9 @@ const DefaultMenu = () => {
 			<MenuDivider/>
 			<MenuItem id={"root.kingdom"} href={Routes.root.kingdom.home.link()} icon={<BackIcon/>}/>
 			<MenuDivider/>
-			<BuildingMenuItem/>
+			<BuildingMenuItem key={id} id={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem/>
+			<LogoutMenuItem key={"root.sign-out"} id={"root.sign-out"}/>
 		</BaseMenu>
 	);
 };
@@ -35,19 +36,19 @@ const Menu = () => {
 			routes={[
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home.link()} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root.sign-out"}/>
 				</BaseMenu>),
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem id={id} href={link.home.link()} icon={<BuildingIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home.link()} icon={<BuildingIcon/>}/>
 					<MenuDivider/>
-					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root.sign-out"}/>
 				</BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
@@ -57,14 +58,18 @@ const Menu = () => {
 	);
 };
 
-const BuildingMenuItem = (props) => {
+const BuildingMenuItem = ({id, ...props}) => {
 	return (
 		<MenuGroup id={id} icon={<BuildingIcon/>} {...props}>
-			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
+};
+
+BuildingMenuItem.propTypes = {
+	id: PropTypes.string.isRequired,
 };
 
 const BuildingMenuRoute = () => route(link.match(), <Menu/>);

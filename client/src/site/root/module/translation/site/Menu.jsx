@@ -7,7 +7,6 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import PropTypes from "prop-types";
 import HomeMenuItem from "site/root/component/menu/HomeMenuItem";
 import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
@@ -21,50 +20,42 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(link.home.match(), <BaseMenu
-					items={[
-						<MenuDivider/>,
-						<HomeMenuItem/>,
-						<MenuDivider/>,
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<HomeMenuItem key={"root.home"}/>
+					<MenuDivider/>
 
-						<TranslationMenuItem>
-							<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
-						</TranslationMenuItem>,
+					<TranslationMenuItem key={id}>
+						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					</TranslationMenuItem>,
 
-						<MenuDivider/>,
-						<LogoutMenuItem/>,
-					]}
-				/>),
-				route("*", <BaseMenu
-					items={[
-						<MenuDivider/>,
-						<HomeMenuItem/>,
-						<MenuDivider/>,
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route("*", <BaseMenu>
+					<MenuDivider/>
+					<HomeMenuItem key={"root.home"}/>
+					<MenuDivider/>
 
-						<TranslationMenuItem/>,
+					<TranslationMenuItem key={id}/>
 
-						<MenuDivider/>,
-						<LogoutMenuItem/>,
-					]}
-				/>),
+					<MenuDivider/>
+					<LogoutMenuItem key={"root.sign-out"}/>
+				</BaseMenu>),
 			]}
 		/>
 	);
 };
 
-const TranslationMenuItem = ({key, children, ...props}) => {
+const TranslationMenuItem = ({children, ...props}) => {
 	return (
-		<MenuGroup key={key} icon={<TranslationIcon/>} {...props}>
-			<MenuItem key={`${key}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${key}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem key={`${key}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+		<MenuGroup id={id} icon={<TranslationIcon/>} {...props}>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
 			{children}
 		</MenuGroup>
 	);
-};
-
-TranslationMenuItem.propTypes = {
-	key: PropTypes.string.isRequired,
 };
 
 const TranslationMenuRoute = () => route(link.match(), <Menu/>);
