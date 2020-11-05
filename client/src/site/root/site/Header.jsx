@@ -73,7 +73,10 @@ const SearchItem = ({item}) => {
 	const navigate = useNavigate();
 	return (
 		<Space split={<Divider type={"vertical"}/>} size={"small"}>
-			<ModuleIcon module={item.type}/>
+			<Button size={"small"} type={"dashed"} icon={<ModuleIcon module={item.type}/>} onClick={() => {
+				warpTo(navigate, item);
+				message.success(t("common.warped"));
+			}} children={t("common.view-item")}/>
 			<CustomToolbar item={item}/>
 			<Button size={"small"} type={"dashed"} onClick={() => {
 				warpTo(navigate, item, "edit");
@@ -85,10 +88,7 @@ const SearchItem = ({item}) => {
 					onCopy: () => message.success(t("common.copy-success")),
 				});
 			}} children={t("common.copy-id")}/>
-			<Button size={"small"} type={"link"} ghost onClick={() => {
-				warpTo(navigate, item);
-				message.success(t("common.warped"));
-			}} children={item.name}/>
+			{item.name}
 		</Space>
 	);
 };

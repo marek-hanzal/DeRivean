@@ -1,3 +1,4 @@
+import commonFetchHook from "utils/hook/commonFetchHook";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreatePostRedux from "utils/redux/CreatePostRedux";
@@ -15,6 +16,9 @@ const KingdomRedux = CreateCommonRedux(
 	},
 );
 
+const useKingdomFetch = commonFetchHook(KingdomRedux);
+
 export {
 	KingdomRedux,
+	useKingdomFetch,
 };
