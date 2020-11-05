@@ -3,6 +3,9 @@ package derivean.server.rest.root.translation.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.Response
+import derivean.lib.rest.ValidationResponse
+import derivean.lib.rest.conflict
 import derivean.server.translation.TranslationRepository
 import derivean.server.translation.entities.Translation
 import io.ktor.application.*
@@ -34,6 +37,17 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		entity.namespace = request.namespace ?: "translation"
 		entity.label = request.label
 		entity.text = request.text
+	}
+
+	override fun resolveException(message: String): Response<out Any>? {
+		if (message.contains("translation_unique")) {
+			return conflict(ValidationResponse.build {
+				this.message = "Cannot create Translation!"
+				this.validation("language", "error", "Language or label already exists!")
+				this.validation("label", "error", "Language or label already exists!")
+			})
+		}
+		return null
 	}
 
 	data class Request(

@@ -7,4 +7,8 @@ object UpgradeTranslationTable : UUIDTable("translation") {
 	val namespace = varchar("namespace", 256)
 	val label = varchar("label", 256)
 	val text = text("text")
+
+	init {
+		uniqueIndex("translation_unique", language, namespace, label)
+	}
 }

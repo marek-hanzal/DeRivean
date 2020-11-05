@@ -6,6 +6,7 @@ import derivean.lib.rest.*
 import derivean.server.translation.TranslationRepository
 import io.ktor.application.*
 import io.ktor.routing.*
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val updateMapper: UpdateMapper by container.lazy()
@@ -39,6 +40,19 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 				}
 			)
 		})
+	} catch (e: ExposedSQLException) {
+		when {
+			e.message?.contains("translation_unique") == true -> {
+				conflict(ValidationResponse.build {
+					this.message = "Cannot update Translation!"
+					this.validation("language", "error", "Language or label already exists!")
+					this.validation("label", "error", "Language or label already exists!")
+				})
+			}
+			else -> {
+				throw e
+			}
+		}
 	} catch (e: Throwable) {
 		logger.error(e.message, e)
 		internalServerError(ValidationResponse.build {

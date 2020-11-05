@@ -45,7 +45,6 @@ ab2c3177-e7a1-44c7-9d3a-5ae95440b3f2,en,translation,root.translation.create.list
 7bbdd8cf-f0b8-4620-af98-7325372a539c,en,translation,root.translation.create.form.text.required,Translation text is required!
 0a8040f2-1f68-4341-b5e0-6a6991a7b8e9,en,translation,root.translation.form.language.label,Language
 5c574388-a7bd-42ec-a852-067a57bdeefa,en,translation,root.translation.update.success,Translation updated!
-b9879a20-c080-4e87-bcf2-218c6589c8a1,en,translation,root.translation.form.language.label,Language
 7d464706-863d-4d65-8d34-032add793530,en,translation,root.translation.create.error,"Cannot create translation, please check form!"
 5310fa22-a672-416b-ba78-96099b947162,en,translation,root.translation.form.title,Translation
 57ecf710-08da-4979-a0e9-facc09844da8,en,translation,root.statistic.translations,Translations
