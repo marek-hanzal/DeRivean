@@ -1,3 +1,4 @@
+import commonFetchHook from "utils/hook/commonFetchHook";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 
@@ -13,6 +14,9 @@ const HeroRedux = CreateCommonRedux(
 	},
 );
 
+const useHeroFetch = commonFetchHook(HeroRedux);
+
 export {
 	HeroRedux,
+	useHeroFetch,
 };

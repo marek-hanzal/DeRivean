@@ -1,13 +1,13 @@
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import BaseRoutes from "component/route/BaseRoutes";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import menuLogout from "site/root/utils/menu/menuLogout";
 import Routes from "site/Routes";
-import menuBack from "utils/menu/menuBack";
 import menuDivider from "utils/menu/menuDivider";
 import menuGroup from "utils/menu/menuGroup";
 import menuItem from "utils/menu/menuItem";
@@ -35,7 +35,17 @@ const Menu = () => {
 				route(Routes.root.hero.home.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuBack(),
+						menuItem(Routes.root.hero.home.link(), "root.hero", <HeroIcon/>),
+						menuDivider(),
+						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
+						menuLogout(),
+					]}
+				/>),
+				route(Routes.root.hero.edit.match(), <BaseMenu
+					items={[
+						menuDivider(),
+						menuItem(Routes.root.hero.home.link(), "root.hero", <BackIcon/>),
+						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
 						menuDivider(),
 						menuLogout(),
 					]}
