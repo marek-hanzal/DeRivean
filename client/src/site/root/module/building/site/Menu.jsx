@@ -46,6 +46,7 @@ const Menu = () => {
 					items={[
 						menuDivider(),
 						menuItem(Routes.root.building.home.link(), "root.building", <BuildingIcon/>),
+						menuDivider(),
 						menuItem(Routes.root.building.edit.link(), "root.building.edit", <EditIcon/>),
 						menuDivider(),
 						menuLogout(),

@@ -39,6 +39,8 @@ const Menu = () => {
 						menuDivider(),
 						menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <KingdomIcon/>),
 						menuDivider(),
+						menuItem(Routes.root.kingdom.edit.link(), "root.kingdom.edit", <EditIcon/>),
+						menuDivider(),
 						HeroMenuItem(),
 						menuDivider(),
 						BuildingMenuItem(),
@@ -49,7 +51,7 @@ const Menu = () => {
 				route(Routes.root.kingdom.edit.match(), <BaseMenu
 					items={[
 						menuDivider(),
-						menuItem(Routes.root.user.home.link(), "root.user", <BackIcon/>),
+						menuItem(Routes.root.kingdom.home.link(), "root.kingdom", <BackIcon/>),
 						menuDivider(),
 						menuItem(Routes.root.kingdom.edit.link(), "root.kingdom.edit", <EditIcon/>),
 						menuDivider(),

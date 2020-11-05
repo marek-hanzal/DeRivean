@@ -41,7 +41,6 @@ ab1ee253-f44a-4ec6-8585-9b7c9c5bb06f,en,translation,root.translation.menu,Transl
 49213827-33c3-4a0c-a29f-c02c23052167,en,translation,root.sign-out.title,Sign out?
 aa2cd0b7-7225-47fd-beaa-0460f81ca225,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
 3ee01ed6-2906-4cac-a012-67ba9e5cffb0,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
-3dee7dc7-c63f-49a2-bd90-0ca8afa369d1,en,translation,root.translation.edit.menu,Translation
 d605d771-de90-4696-83a7-c9df4b6d392b,en,translation,root.translation.create.form.text.required,Translation text is required!
 6ccad61e-3588-4191-9753-dae82fc6e55a,en,translation,root.translation.form.language.label,Language
 d386bac2-a3b9-4323-8b14-16e55c246d4d,en,translation,root.translation.update.success,Translation updated!
@@ -71,10 +70,10 @@ afb8b34e-4d8e-4acb-90e0-d7cb85393853,en,translation,public.sign-in.menu,Sign in
 06d562fe-2b5c-4120-995d-be91648dc36b,en,translation,public.home.content.list.item-0,Create your own heroes and take them to battle.
 6f357aef-b1c5-40c4-9514-320dc2d26aee,en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
 35eb75f3-127b-4e1e-add1-01049462d3d9,en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
-a2072c11-72fd-4d56-9f06-ddd5ec0fd6b2,en,translation,public.sign-up.breadcrumb,Sign Up!
 d8551fdb-1b45-4b63-aff7-f0af65240164,en,translation,root.user.menu,User
 ba229c5e-5be3-4213-95c7-c53b7ab995a9,en,translation,public.sign-up.title,Sign Up!
 3353ed32-a1b5-4c72-8d81-6974ae752eaf,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
+3dee7dc7-c63f-49a2-bd90-0ca8afa369d1,en,translation,root.translation.edit.menu,Edit
 3237246c-e3c7-420e-a7d8-96eecb033891,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
 69a4a0b3-e5d5-431a-abe0-084e3557cc81,en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
 16250fb8-0aaf-440b-8119-0b17db25c582,en,translation,public.sign-up.content.list.item-0,Create your own heroes
@@ -90,7 +89,6 @@ af8a0342-d8fd-4c74-bfb9-2fa77741b5ea,en,translation,public.sign-up.form.password
 52efd655-a029-4d63-a03c-7503c0e8ea25,en,translation,public.sign-up.form.login.required,Please choose some login - for example your nick or email address.
 25bc3517-a6ae-41ea-921d-a5da3eb86aec,en,translation,public.sign-up.form.password.required,"We still need everlasting passwords, so please pick some."
 a747a6b1-d3a9-4b46-b8ec-578470546118,en,translation,public.sign-up.form.submit.label,Sign Up!
-4b34b5d3-b3a4-4694-8fa8-314fe10b634c,en,translation,public.sign-in.breadcrumb,Sign In!
 20d52664-2571-4197-b9aa-7cdea708c1d5,en,translation,public.sign-in.title,Sign In!
 8c18a914-01dd-4271-b2aa-0f010f7ba08e,en,translation,public.sign-in.content.title,"Welcome back, brave Hero!"
 fd21bb33-9f72-4b2e-99c9-84f446b31742,en,translation,public.sign-in.content.subtitle,"Login and look around, what's new!"
@@ -140,15 +138,14 @@ fb51254a-ce49-477e-a671-d1bc22cb64f2,en,translation,root.translation.edit.form.c
 879c5723-733e-48af-b16d-d9cf4d851496,en,translation,root.user.form.password.label,Password
 ae833c5a-be69-45df-b6c8-250e7623dd43,en,translation,root.user.form.site.label,Site
 70072afb-e5d0-4d31-9a5c-a13b70bb9d68,en,translation,root.user.attributes.menu,Attributes
-c596d849-fee0-45ef-8ccc-ff0e2d865fd1,en,translation,root.kingdom.menu,Kingdoms
 19135f27-1fbf-42f5-b58f-ed03eccd4c7e,en,translation,root.kingdom.dashboard.menu,Dashboard
 0f49e0da-8828-4fc6-b770-a75bba2e95c2,en,translation,root.kingdom.create.menu,Create
 2771b3a9-89f7-4087-b4a5-87f81a12a980,en,translation,root.kingdom.list.menu,List
 464e35db-3546-4c09-aaf7-a50396c3091b,en,translation,root.user.form.attribute.title,Attributes
 7475d759-dd30-4644-9810-5d0e079b3e97,en,translation,root.kingdom.edit.menu,Edit
 f530919f-09e4-420b-91a3-b45cf80831f7,en,translation,root.kingdom.title,Kingdom Overview
-5d0dc279-9558-46a1-8809-5778ec7e104f,en,translation,root.hero.menu,Heroes
-cbe1b5e8-7eae-4053-b859-f3c5bbbe61f5,en,translation,root.building.menu,Buildings
+5d0dc279-9558-46a1-8809-5778ec7e104f,en,translation,root.hero.menu,Hero
+c596d849-fee0-45ef-8ccc-ff0e2d865fd1,en,translation,root.kingdom.menu,Kingdom
 8dc1452d-c181-461f-89c1-2ba04360feaa,en,translation,root.hero.dashboard.menu,Dasbhoard
 a946b4bb-bf86-46b9-9ce0-9440ad2a8950,en,translation,root.hero.create.menu,Create
 346ca690-b6d6-4f54-9cb2-7501452eaf34,en,translation,root.hero.list.menu,List
@@ -223,4 +220,7 @@ de14bc3f-afde-46d9-8847-7b82004ae2c6,en,translation,root.building.subtitle,Dashb
 9f53a2e0-9d0b-495d-80e7-c59d44b36aa5,en,translation,root.hero.subtitle,Dashboard of all Heroes in the selected Kingdom.
 d8000cc2-8a53-4e4a-99eb-970152346d06,en,translation,root.user.create.title,Create User
 87d63b64-6054-43b7-ad86-1f4ed281c78c,en,translation,root.kingdom.edit.form.submit,Save changes!
+cbe1b5e8-7eae-4053-b859-f3c5bbbe61f5,en,translation,root.building.menu,Building
 b392960a-ef15-486e-a7a8-4a99d5d6f896,en,translation,root.kingdom.edit.form.delete,Delete!
+ea8cd062-e816-4dca-98ca-f106d3f93277,en,translation,root.building.edit.menu,Edit
+3f33f144-3754-4341-948e-3ee994c1e456,en,translation,root.hero.edit.menu,Edit

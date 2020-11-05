@@ -38,6 +38,7 @@ const Menu = () => {
 						menuItem(Routes.root.hero.home.link(), "root.hero", <HeroIcon/>),
 						menuDivider(),
 						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
+						menuDivider(),
 						menuLogout(),
 					]}
 				/>),
@@ -45,6 +46,7 @@ const Menu = () => {
 					items={[
 						menuDivider(),
 						menuItem(Routes.root.hero.home.link(), "root.hero", <BackIcon/>),
+						menuDivider(),
 						menuItem(Routes.root.hero.edit.link(), "root.hero.edit", <EditIcon/>),
 						menuDivider(),
 						menuLogout(),
