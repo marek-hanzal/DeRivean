@@ -13,9 +13,9 @@ const EditView = () => {
 						formName={"building"}
 						param={"building"}
 						defaultEnableSubmit={true}
-					>
-						<AttributeFieldEditor translation={id} redux={redux}/>
-					</CommonEditView>
+						readyCount={1}
+						children={<AttributeFieldEditor translation={id} redux={redux}/>}
+					/>
 				)}
 			</BuildingContext.Consumer>
 		</BuildingView>

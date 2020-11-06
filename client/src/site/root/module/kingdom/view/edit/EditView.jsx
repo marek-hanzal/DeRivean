@@ -12,9 +12,9 @@ const EditView = () => {
 						context={KingdomContext}
 						param={"kingdom"}
 						defaultEnableSubmit={true}
-					>
-						<AttributeFieldEditor translation={id} redux={redux}/>
-					</CommonEditView>
+						readyCount={1}
+						children={<AttributeFieldEditor translation={id} redux={redux}/>}
+					/>
 				)}
 			</KingdomContext.Consumer>
 		</KingdomView>

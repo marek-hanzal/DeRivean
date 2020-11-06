@@ -81,7 +81,8 @@ const CommonEditView = (
 	useMenuSelect(currentContext.id + ".edit");
 	return (
 		<BaseEditor
-			readyCount={readyCount}
+			// +1 because this component is doing Fetch (thus marking ready state)
+			readyCount={(readyCount || 0) + 1}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(data, initials, editor) => {
 				dispatch(currentContext.redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {

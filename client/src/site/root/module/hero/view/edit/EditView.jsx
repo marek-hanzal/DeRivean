@@ -12,9 +12,9 @@ const EditView = () => {
 						context={HeroContext}
 						param={"hero"}
 						defaultEnableSubmit={true}
-					>
-						<AttributeFieldEditor translation={id} redux={redux}/>
-					</CommonEditView>
+						readyCount={1}
+						children={<AttributeFieldEditor translation={id} redux={redux}/>}
+					/>
 				)}
 			</HeroContext.Consumer>
 		</HeroView>
