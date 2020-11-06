@@ -19,7 +19,7 @@ const BaseEditor = (
 	const [ready, setReady] = useState(readyCount || 0);
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	const [form] = Form.useForm();
-	const isReady = () => setReady(prev => prev - 1);
+	const isReady = () => setReady(prev => Math.max(0, prev - 1));
 	return (
 		<Form
 			name={name}

@@ -16,6 +16,7 @@ const CreateView = () => {
 						context={KingdomContext}
 						param={"user"}
 						defaultEnableSubmit={true}
+						readyCount={2}
 					>
 						<AttributeFieldEditor translation={id} redux={redux}/>
 						<Divider type={"horizontal"}/>

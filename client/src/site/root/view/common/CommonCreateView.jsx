@@ -82,7 +82,7 @@ const CommonCreateView = (
 
 CommonCreateView.propTypes = {
 	param: PropTypes.string.isRequired,
-	ready: PropTypes.number,
+	readyCount: PropTypes.number,
 	defaultEnableSubmit: PropTypes.any,
 };
 
