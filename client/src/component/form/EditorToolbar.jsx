@@ -15,7 +15,6 @@ import values from "utils/form/values";
 const EditorToolbar = (
 	{
 		form,
-		initials,
 		translation,
 		param,
 		redux,
@@ -24,17 +23,17 @@ const EditorToolbar = (
 	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
-	const editor = useContext(EditorContext);
+	const editorContext = useContext(EditorContext);
 	const {t} = useTranslation();
 	const cleverLink = useCleverLink(deletedLink || {link: () => ""});
-	if (!editor) {
+	if (!editorContext) {
 		throw new Error("Missing Editor Context!");
 	}
 	return (
-		editor.editor ?
+		editorContext.editor ?
 			<Space split={<Divider type={"vertical"}/>}>
 				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
-				<CancelEditButton form={form} translation={translation} initials={initials}/>
+				<CancelEditButton form={form} translation={translation}/>
 				{deletedLink && redux && param ?
 					<Popconfirm
 						okText={t("common.yes")}
@@ -52,16 +51,15 @@ const EditorToolbar = (
 					/> : null
 				}
 			</Space> :
-			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => {
-				editor.setEditor(true);
-				values(form, initials);
+			<Button type={"primary"} ghost size={"large"} disabled={!editorContext.initials} onClick={() => {
+				editorContext.setEditor(true);
+				values(form, editorContext.initials);
 			}} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 
 EditorToolbar.propTypes = {
 	form: PropTypes.any.isRequired,
-	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
 	param: PropTypes.string,
 	redux: PropTypes.object,

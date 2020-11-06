@@ -8,15 +8,13 @@ import values from "utils/form/values";
 const CancelEditButton = (
 	{
 		form,
-		initials,
 		translation,
 	}) => {
 	const {t} = useTranslation();
-	const editor = useContext(EditorContext);
-	if (!editor) {
+	const editorContext = useContext(EditorContext);
+	if (!editorContext) {
 		throw new Error("Missing Editor Context!");
 	}
-
 	return (
 		<Form.Item shouldUpdate noStyle>
 			{() => (
@@ -26,16 +24,16 @@ const CancelEditButton = (
 						cancelText={t("common.no")}
 						title={t(translation + ".edit.form.cancelConfirm")}
 						onConfirm={() => {
-							editor.setEditor(false);
-							values(form, initials);
-							editor.setErrors(null);
+							editorContext.setEditor(false);
+							values(form, editorContext.initials);
+							editorContext.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"dashed"} danger ghost icon={<CancelIcon/>} onClick={() => {
-						editor.setEditor(false);
-						values(form, initials);
-						editor.setErrors(null);
+						editorContext.setEditor(false);
+						values(form, editorContext.initials);
+						editorContext.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>

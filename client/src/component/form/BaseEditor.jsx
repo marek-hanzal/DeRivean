@@ -10,11 +10,11 @@ const BaseEditor = (
 		translation,
 		param,
 		redux,
-		initials,
 		onFinish,
 		onFinishFailed = () => null,
 	}) => {
 	const [errors, setErrors] = useState();
+	const [initials, setInitials] = useState();
 	const [editor, setEditor] = useState(false);
 	const [enableSubmit, setEnableSubmit] = useState(false);
 	const [form] = Form.useForm();
@@ -32,8 +32,10 @@ const BaseEditor = (
 				setEditor,
 				enableSubmit,
 				setEnableSubmit,
+				initials,
+				setInitials,
 				form,
-				submit: <EditorToolbar form={form} initials={initials} param={param} redux={redux} translation={translation}/>,
+				submit: <EditorToolbar form={form} param={param} redux={redux} translation={translation}/>,
 			}}>
 			</EditorContext.Provider>
 		</Form>
@@ -43,7 +45,6 @@ const BaseEditor = (
 BaseEditor.propTypes = {
 	name: PropTypes.string.isRequired,
 	translation: PropTypes.string.isRequired,
-	initials: PropTypes.any,
 	param: PropTypes.string,
 	redux: PropTypes.object,
 	onFinish: PropTypes.func.isRequired,

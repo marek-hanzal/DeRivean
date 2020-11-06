@@ -24,7 +24,7 @@ const CommonEditView = (
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const [data, setData] = useState();
+	const [initials, setInitials] = useState();
 	const [form] = Form.useForm();
 	const params = useParams();
 	const [errors, setErrors] = useState();
@@ -34,14 +34,14 @@ const CommonEditView = (
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param], cancelToken)).then(data => {
-			setData(data);
+			setInitials(data);
 			values(form, data);
 			setEditor(false);
 		});
 		return () => cancelToken.cancel();
 	}, [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit, initials, setInitials}}>
 			<Form
 				form={form}
 				name={currentContext.id}
@@ -51,7 +51,7 @@ const CommonEditView = (
 						message.success(t(currentContext.id + ".update.success"));
 						setEditor(false);
 						setErrors(null);
-						setData(data);
+						setInitials(data);
 						values(form, data);
 					}, error => {
 						message.error(t(currentContext.id + ".update.error"));
@@ -67,7 +67,7 @@ const CommonEditView = (
 						status={"info"}
 						title={
 							<EditorToolbar
-								initials={data}
+								initials={initials}
 								form={form}
 								translation={currentContext.id}
 								param={param}
@@ -91,7 +91,7 @@ const CommonEditView = (
 								/>
 							</Centered>
 						}
-						icon={<Spinner icon={currentContext.icon} done={data}/>}
+						icon={<Spinner icon={currentContext.icon} done={initials}/>}
 						children={<Centered span={16} children={children}/>}
 					/>
 				</Card>
