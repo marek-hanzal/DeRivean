@@ -19,6 +19,7 @@ const AttributeFieldEditor = ({translation, redux}) => {
 			setAttributes(attributes);
 		});
 		return () => cancelToken.cancel();
+		// eslint-disable-next-line
 	}, [dispatch]);
 	return (
 		<Card title={t(translation + ".form.attribute.title")}>

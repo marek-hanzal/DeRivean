@@ -38,7 +38,7 @@ const AttributesView = () => {
 	return (
 		<UserView>
 			<UserContext.Consumer>
-				{({id}) => (
+				{({id, redux}) => (
 					<Form
 						form={form}
 						onFinish={values => {
@@ -51,14 +51,14 @@ const AttributesView = () => {
 									icon={<Spinner icon={<AttributeIcon/>} done={data}/>}
 									title={
 										<>
-											<EditorToolbar form={form} initials={data} param={"user"} redux={UserRedux} translation={id}/>
+											<EditorToolbar form={form} initials={data} param={"user"} redux={redux} translation={id}/>
 											<Divider type={"horizontal"}/>
 										</>
 									}
 									subTitle={t(`${id}.attributes.subtitle`)}
 									children={
 										<Centered span={16}>
-											<AttributeFieldEditor translation={id} redux={UserRedux}/>
+											<AttributeFieldEditor translation={id} redux={redux}/>
 										</Centered>
 									}
 								/>
