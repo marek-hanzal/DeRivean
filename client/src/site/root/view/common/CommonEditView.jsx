@@ -1,16 +1,67 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
 import axios from "axios";
+import BaseEditor from "component/form/BaseEditor";
 import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import useMenuSelect from "hook/useMenuSelect";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
+
+const Editor = ({currentContext, param, children, name}) => {
+	const {t} = useTranslation();
+	const dispatch = useDispatch();
+	const params = useParams();
+	const editorContext = useContext(EditorContext);
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param], cancelToken)).then(data => {
+			editorContext.setInitials(data);
+			values(editorContext.form, data);
+			editorContext.setEditor(false);
+		});
+		return () => cancelToken.cancel();
+		// eslint-disable-next-line
+	}, [dispatch, param, params]);
+	return (
+		<Card title={t(`${currentContext.id}.title`)}>
+			<Result
+				status={"info"}
+				title={
+					<EditorToolbar
+						translation={currentContext.id}
+						param={param}
+						redux={currentContext.redux}
+						deletedLink={currentContext.link.dashboard}
+					/>
+				}
+				subTitle={
+					<Centered span={12}>
+						<Divider type={"horizontal"}/>
+						<Form.Item
+							{...validationFor(name, editorContext.errors, t)}
+							name={name}
+							rules={[
+								{
+									required: true,
+									message: t(`${currentContext.id}.form.${name}.required`),
+								}
+							]}
+							children={<Input disabled={!editorContext.editor} addonBefore={t(`${currentContext.id}.form.${name}.label`)} suffix={currentContext.icon}/>}
+						/>
+					</Centered>
+				}
+				icon={<Spinner icon={currentContext.icon} done={editorContext.initials}/>}
+				children={<Centered span={16} children={children}/>}
+			/>
+		</Card>
+	);
+};
 
 const CommonEditView = (
 	{
@@ -20,81 +71,33 @@ const CommonEditView = (
 		defaultEnableSubmit,
 		children,
 	}) => {
-	name = name || "name";
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const [initials, setInitials] = useState();
-	const [form] = Form.useForm();
 	const params = useParams();
-	const [errors, setErrors] = useState();
-	const [editor, setEditor] = useState(false);
-	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	useMenuSelect(currentContext.id + ".edit");
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param], cancelToken)).then(data => {
-			setInitials(data);
-			values(form, data);
-			setEditor(false);
-		});
-		return () => cancelToken.cancel();
-	}, [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit, initials, setInitials, form}}>
-			<Form
-				form={form}
-				name={currentContext.id}
-				autoComplete="off"
-				onFinish={data => {
-					dispatch(currentContext.redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {
-						message.success(t(currentContext.id + ".update.success"));
-						setEditor(false);
-						setErrors(null);
-						setInitials(data);
-						values(form, data);
-					}, error => {
-						message.error(t(currentContext.id + ".update.error"));
-						setErrors(error);
-					});
-				}}
-				onFinishFailed={() => {
+		<BaseEditor
+			defaultEnableSubmit={defaultEnableSubmit}
+			onFinish={(data, initials, editor) => {
+				dispatch(currentContext.redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {
+					message.success(t(currentContext.id + ".update.success"));
+					editor.setEditor(false);
+					editor.setErrors(null);
+					editor.setInitials(data);
+					values(editor.form, data);
+				}, error => {
 					message.error(t(currentContext.id + ".update.error"));
-				}}
-			>
-				<Card title={t(`${currentContext.id}.title`)}>
-					<Result
-						status={"info"}
-						title={
-							<EditorToolbar
-								translation={currentContext.id}
-								param={param}
-								redux={currentContext.redux}
-								deletedLink={currentContext.link.dashboard}
-							/>
-						}
-						subTitle={
-							<Centered span={12}>
-								<Divider type={"horizontal"}/>
-								<Form.Item
-									{...validationFor(name, errors, t)}
-									name={name}
-									rules={[
-										{
-											required: true,
-											message: t(`${currentContext.id}.form.${name}.required`),
-										}
-									]}
-									children={<Input disabled={!editor} addonBefore={t(`${currentContext.id}.form.${name}.label`)} suffix={currentContext.icon}/>}
-								/>
-							</Centered>
-						}
-						icon={<Spinner icon={currentContext.icon} done={initials}/>}
-						children={<Centered span={16} children={children}/>}
-					/>
-				</Card>
-			</Form>
-		</EditorContext.Provider>
+					editor.setErrors(error);
+				});
+			}}
+			onFinishFailed={() => {
+				message.error(t(currentContext.id + ".update.error"));
+			}}
+			name={currentContext.id}
+			translation={currentContext.id}
+			children={<Editor name={name || "name"} param={param} currentContext={currentContext} children={children}/>}
+		/>
 	);
 };
 

@@ -25,7 +25,7 @@ const BaseEditor = (
 		<Form
 			name={name}
 			form={form}
-			onFinish={values => onFinish(values, initials, setErrors)}
+			onFinish={values => onFinish(values, initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
 			onFinishFailed={onFinishFailed}
 		>
 			<EditorContext.Provider
