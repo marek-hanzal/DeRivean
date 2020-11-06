@@ -6,9 +6,8 @@ import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
-import {useLocation, useNavigate, useParams} from "react-router";
-import {SessionRedux} from "redux/session/redux";
+import {useDispatch} from "react-redux";
+import {useNavigate, useParams} from "react-router";
 import validationFor from "utils/form/validationFor";
 
 const CommonCreateView = (
@@ -23,9 +22,7 @@ const CommonCreateView = (
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const location = useLocation();
 	const params = useParams();
-	const history = useSelector(SessionRedux.selector.getHistory);
 	const [form] = Form.useForm();
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
@@ -42,8 +39,6 @@ const CommonCreateView = (
 				onFinish={values => {
 					dispatch(currentContext.redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
 						message.success(t(currentContext.id + ".create.success"));
-						history.push(location.pathname);
-						dispatch(SessionRedux.history(history));
 						navigate(currentContext.link.home(entity.id));
 					}, errors => {
 						message.error(t(currentContext.id + ".create.error"));

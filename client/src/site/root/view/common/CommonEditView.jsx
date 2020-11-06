@@ -71,6 +71,7 @@ const CommonEditView = (
 								translation={currentContext.id}
 								param={param}
 								redux={currentContext.redux}
+								deletedLink={currentContext.link.dashboard}
 							/>
 						}
 						subTitle={

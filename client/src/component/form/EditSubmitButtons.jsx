@@ -4,12 +4,12 @@ import EditorContext from "component/form/EditorContext";
 import SubmitButton from "component/form/SubmitButton";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
+import {useCleverLink} from "component/route/CleverLink";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
-import {SessionRedux} from "redux/session/redux";
 import values from "utils/form/values";
 
 const EditSubmitButtons = (
@@ -19,13 +19,14 @@ const EditSubmitButtons = (
 		translation,
 		param,
 		redux,
+		deletedLink,
 	}) => {
 	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
-	const history = useSelector(SessionRedux.selector.getHistory);
 	const editor = useContext(EditorContext);
 	const {t} = useTranslation();
+	const cleverLink = useCleverLink(deletedLink);
 	if (!editor) {
 		throw new Error("Missing Editor Context!");
 	}
@@ -42,15 +43,13 @@ const EditSubmitButtons = (
 					onConfirm={() => {
 						dispatch(redux.redux.delete.dispatch.delete({id: params[param]})).then(_ => {
 							message.success(t(translation + ".delete.success"));
-							navigate(history.pop() || -1);
-							dispatch(SessionRedux.history(history));
+							setTimeout(() => navigate(cleverLink.link), 0);
 						}, () => {
 							message.error(t(translation + ".delete.error"));
 						});
 					}}
-				>
-					<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(translation + ".edit.form.delete")}/>
-				</Popconfirm>
+					children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(translation + ".edit.form.delete")}/>}
+				/>
 			</Space> :
 			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => {
 				editor.setEditor(true);
@@ -65,6 +64,7 @@ EditSubmitButtons.propTypes = {
 	translation: PropTypes.string.isRequired,
 	param: PropTypes.string.isRequired,
 	redux: PropTypes.object.isRequired,
+	deletedLink: PropTypes.object.isRequired,
 };
 
 export default EditSubmitButtons;

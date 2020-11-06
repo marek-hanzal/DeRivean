@@ -1,6 +1,6 @@
 import BaseTable from "component/table/BaseTable";
-import HistoryLink from "component/table/HistoryLink";
 import {useContext} from "react";
+import {Link} from "react-router-dom";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 
 const KingdomList = () => {
@@ -11,7 +11,7 @@ const KingdomList = () => {
 			redux={context.redux}
 			param={"user"}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <HistoryLink to={context.link.home(record.id)} text={text}/>},
+				{title: "id", width: 380, render: (text, record) => <Link to={context.link.home(record.id)} children={text}/>},
 				{title: "name"},
 			]}
 		/>

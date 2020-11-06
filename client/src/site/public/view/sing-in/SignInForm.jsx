@@ -45,7 +45,7 @@ const SignInForm = () => {
 				children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t("public.sign-in.form.password.label")}</div>}/>}
 			/>
 			<Centered>
-				<Form.Item shouldUpdate={true}>
+				<Form.Item shouldUpdate>
 					{() => (
 						<Button
 							type="primary"

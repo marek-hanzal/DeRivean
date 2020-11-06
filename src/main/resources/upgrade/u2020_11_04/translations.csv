@@ -249,3 +249,8 @@ b8311956-e586-4d0a-9e42-83f2cbd49484,en,translation,root.building.create.error,"
 5e05ef15-df78-4854-84be-8995d60a142a,en,translation,root.user.edit.form.deleteConfirm,"Do you want to remove selected user? This action cannot be taken back and a lof of data (kingdoms, heroes, ...) could be lost!"
 69fb945b-aafc-4c46-bae1-d3fbb5a4cbca,en,translation,root.user.delete.success,User removed!
 fdea294a-2272-40f5-bfb0-c62353b01cc0,en,translation,root.user.home.back.menu,Back
+9eeddcda-e950-41f0-b30d-829f59fc3802,en,translation,root.kingdom.edit.form.deleteConfirm,Do you want to remove the Kingdom? A lot of data will be lost and cannot be reverted!
+6f3a0509-43a4-464b-9857-a2246a68744b,en,translation,root.kingdom.delete.success,Kingdom deleted!
+5946a0ed-b329-466b-ad3b-c6c0d966bd24,en,translation,root.kingdom.create.success,Kingdom created!
+fa8ab97f-fea5-4066-ada6-4fb3fcf82a43,en,translation,root.hero.delete.success,Hero deleted!
+0d0513ff-54fc-4b37-8ed0-7c62046f98bd,en,translation,root.building.delete.success,Building deleted!

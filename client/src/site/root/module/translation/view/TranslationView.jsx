@@ -12,6 +12,7 @@ const TranslationView = ({children, ...props}) => {
 			redux: TranslationRedux,
 			link: {
 				home: Routes.root.translation.home.link,
+				dashboard: Routes.root.translation.dashboard,
 			}
 		}}>
 			<RootView context={TranslationContext} {...props}>
