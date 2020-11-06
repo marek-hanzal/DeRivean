@@ -14,7 +14,7 @@ const CreateView = () => {
 					<CreateViewWithAttributes
 						context={KingdomContext}
 						param={"user"}
-						enableSubmit={true}
+						defaultEnableSubmit={true}
 					>
 						{attributes => (
 							<>

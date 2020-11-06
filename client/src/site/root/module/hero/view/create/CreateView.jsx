@@ -8,7 +8,7 @@ const CreateView = () => {
 			<CreateViewWithAttributes
 				context={HeroContext}
 				param={"kingdom"}
-				enableSubmit={true}
+				defaultEnableSubmit={true}
 			>
 				{attributes => attributes}
 			</CreateViewWithAttributes>

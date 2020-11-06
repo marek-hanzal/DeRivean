@@ -12,7 +12,10 @@ const SiteInput = () => {
 	const editorContext = useContext(EditorContext);
 	const [sites, setSites] = useState();
 	useServerSites(
-		sites => setSites(sites.sites),
+		sites => {
+			setSites(sites.sites);
+			editorContext.setEnableSubmit(true);
+		},
 		error => {
 			if (error.cancel) {
 				return;

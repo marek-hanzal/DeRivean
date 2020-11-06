@@ -1,6 +1,8 @@
 import {Button, Form} from "antd";
+import EditorContext from "component/form/EditorContext";
 import SubmitIcon from "component/icon/SubmitIcon";
 import PropTypes from "prop-types";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import enableSubmit from "utils/form/enableSubmit";
 
@@ -8,9 +10,9 @@ const SubmitButton = (
 	{
 		form,
 		title,
-		enable,
 	}) => {
 	const {t} = useTranslation();
+	const editorContext = useContext(EditorContext);
 	return (
 		<Form.Item shouldUpdate noStyle>
 			{() => (
@@ -19,7 +21,7 @@ const SubmitButton = (
 					size={"large"}
 					htmlType={"submit"}
 					icon={<SubmitIcon/>}
-					disabled={!(enable && !enableSubmit(form, false))}
+					disabled={!(editorContext.enableSubmit && !enableSubmit(form, false))}
 					children={t(title || "common.submit")}
 				/>
 			)}

@@ -9,7 +9,7 @@ const EditView = () => {
 				context={BuildingContext}
 				formName={"building"}
 				param={"building"}
-				enableSubmit={true}
+				defaultEnableSubmit={true}
 			/>
 		</BuildingView>
 	);

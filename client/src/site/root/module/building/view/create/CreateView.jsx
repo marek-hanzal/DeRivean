@@ -9,7 +9,7 @@ const CreateView = () => {
 				context={BuildingContext}
 				formName={"building"}
 				param={"kingdom"}
-				enableSubmit={true}
+				defaultEnableSubmit={true}
 			>
 				{attributes => attributes}
 			</CreateViewWithAttributes>

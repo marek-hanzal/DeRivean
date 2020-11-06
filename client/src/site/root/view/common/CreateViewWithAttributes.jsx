@@ -9,7 +9,7 @@ const CreateViewWithAttributes = (
 		context,
 		param,
 		children,
-		enableSubmit,
+		defaultEnableSubmit,
 	}) => {
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const CreateViewWithAttributes = (
 	}, [dispatch, currentContext.redux.redux.attributes.dispatch]);
 
 	return (
-		<CommonCreateView param={param} context={context} enableSubmit={enableSubmit}>
+		<CommonCreateView param={param} context={context} defaultEnableSubmit={defaultEnableSubmit}>
 			{children(<AttributeFieldEditor edit={true} translation={currentContext.id} attributes={attributes}/>)}
 		</CommonCreateView>
 	);
@@ -32,7 +32,7 @@ const CreateViewWithAttributes = (
 CreateViewWithAttributes.propTypes = {
 	param: PropTypes.string.isRequired,
 	children: PropTypes.func.isRequired,
-	enableSubmit: PropTypes.any,
+	defaultEnableSubmit: PropTypes.any,
 };
 
 export default CreateViewWithAttributes;

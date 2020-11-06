@@ -8,7 +8,7 @@ const EditView = () => {
 			<EditViewWithAttributes
 				context={HeroContext}
 				param={"hero"}
-				enableSubmit={true}
+				defaultEnableSubmit={true}
 			/>
 		</HeroView>
 	);

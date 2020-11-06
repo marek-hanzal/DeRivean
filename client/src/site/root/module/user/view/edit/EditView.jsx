@@ -16,7 +16,7 @@ const EditView = () => {
 					<EditViewWithAttributes
 						context={UserContext}
 						param={"user"}
-						enableSubmit={true}
+						defaultEnableSubmit={false}
 					>
 						<Card title={t(`${id}.form.title`)}>
 							<LoginInput/>

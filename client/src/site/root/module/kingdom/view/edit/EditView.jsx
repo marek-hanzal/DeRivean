@@ -8,7 +8,7 @@ const EditView = () => {
 			<EditViewWithAttributes
 				context={KingdomContext}
 				param={"kingdom"}
-				enableSubmit={true}
+				defaultEnableSubmit={true}
 			/>
 		</KingdomView>
 	);

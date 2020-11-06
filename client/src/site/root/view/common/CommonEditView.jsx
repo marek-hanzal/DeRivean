@@ -15,8 +15,8 @@ const CommonEditView = (
 	{
 		context,
 		param,
-		enableSubmit,
 		name,
+		defaultEnableSubmit,
 		children,
 	}) => {
 	name = name || "name";
@@ -28,6 +28,7 @@ const CommonEditView = (
 	const params = useParams();
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(false);
+	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	useMenuSelect(currentContext.id + ".edit");
 	/**
 	 * Fetch current data from redux.
@@ -39,7 +40,7 @@ const CommonEditView = (
 	}), [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
 			<Form
 				form={form}
 				name={currentContext.id}
@@ -65,7 +66,6 @@ const CommonEditView = (
 						status={"info"}
 						title={
 							<EditSubmitButtons
-								enableSubmit={enableSubmit}
 								initials={data}
 								form={form}
 								translation={currentContext.id}

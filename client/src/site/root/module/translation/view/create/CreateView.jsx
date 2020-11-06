@@ -15,7 +15,7 @@ const CreateView = () => {
 					<CommonCreateView
 						context={TranslationContext}
 						param={"translation"}
-						enableSubmit={true}
+						defaultEnableSubmit={true}
 						name={"label"}
 					>
 						<Card title={t(`${id}.form.title`)}>

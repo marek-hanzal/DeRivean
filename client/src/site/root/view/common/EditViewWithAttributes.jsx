@@ -9,7 +9,7 @@ const EditViewWithAttributes = (
 	{
 		context,
 		param,
-		enableSubmit,
+		defaultEnableSubmit,
 		children,
 	}) => {
 	const currentContext = useContext(context);
@@ -24,7 +24,7 @@ const EditViewWithAttributes = (
 	}, [dispatch, currentContext.redux.redux.attributes.dispatch]);
 
 	return (
-		<CommonEditView param={param} context={context} enableSubmit={enableSubmit}>
+		<CommonEditView param={param} context={context} defaultEnableSubmit={defaultEnableSubmit}>
 			<EditorContext.Consumer>
 				{({editor}) => (
 					<>
@@ -39,7 +39,7 @@ const EditViewWithAttributes = (
 
 EditViewWithAttributes.propTypes = {
 	param: PropTypes.string.isRequired,
-	enableSubmit: PropTypes.any.isRequired,
+	defaultEnableSubmit: PropTypes.any.isRequired,
 };
 
 export default EditViewWithAttributes;

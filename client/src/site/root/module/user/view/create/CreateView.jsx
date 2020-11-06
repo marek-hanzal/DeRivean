@@ -17,7 +17,7 @@ const CreateView = () => {
 					<CreateViewWithAttributes
 						context={UserContext}
 						param={"user"}
-						enableSubmit={true}
+						defaultEnableSubmit={true}
 					>
 						{attributes => (
 							<>

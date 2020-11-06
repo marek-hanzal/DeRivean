@@ -17,7 +17,7 @@ const CommonCreateView = (
 		param,
 		children,
 		name,
-		enableSubmit,
+		defaultEnableSubmit,
 	}) => {
 	name = name || "name";
 	const currentContext = useContext(context);
@@ -30,9 +30,10 @@ const CommonCreateView = (
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(true);
+	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	useMenuSelect(currentContext.id + ".create");
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
 			<Form
 				form={form}
 				name={currentContext.id}
@@ -88,7 +89,7 @@ const CommonCreateView = (
 
 CommonCreateView.propTypes = {
 	param: PropTypes.string.isRequired,
-	enableSubmit: PropTypes.any,
+	defaultEnableSubmit: PropTypes.any,
 };
 
 export default CommonCreateView;

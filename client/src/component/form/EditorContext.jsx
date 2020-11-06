@@ -1,10 +1,5 @@
 import React from "react";
 
-const EditorContext = React.createContext({
-	editor: null,
-	setEditor: () => ({}),
-	errors: null,
-	setErrors: null,
-});
+const EditorContext = React.createContext(null);
 
 export default EditorContext;

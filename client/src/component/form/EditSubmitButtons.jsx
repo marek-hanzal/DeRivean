@@ -17,7 +17,6 @@ const EditSubmitButtons = (
 		form,
 		initials,
 		translation,
-		enableSubmit,
 		param,
 		redux,
 	}) => {
@@ -34,7 +33,7 @@ const EditSubmitButtons = (
 	return (
 		editor.editor ?
 			<Space split={<Divider type={"vertical"}/>}>
-				<SubmitButton enable={enableSubmit} form={form} title={translation + ".edit.form.submit"}/>
+				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
 				<CancelEditButton form={form} translation={translation} initials={initials}/>
 				<Popconfirm
 					okText={t("common.yes")}
@@ -64,7 +63,6 @@ EditSubmitButtons.propTypes = {
 	form: PropTypes.any.isRequired,
 	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
-	enableSubmit: PropTypes.any.isRequired,
 	param: PropTypes.string.isRequired,
 	redux: PropTypes.object.isRequired,
 };
