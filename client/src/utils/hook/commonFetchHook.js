@@ -7,8 +7,8 @@ const commonFetchHook = (redux) => {
 		const dispatch = useDispatch();
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
-			dispatch(redux.redux.fetch.dispatch.fetch(uuid)).then(user => {
-				onSuccess(user);
+			dispatch(redux.redux.fetch.dispatch.fetch(uuid)).then(data => {
+				onSuccess(data);
 			}, error => {
 				if (error.cancel) {
 					return;

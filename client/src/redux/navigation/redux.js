@@ -1,6 +1,3 @@
-import isEmpty from "is-empty";
-import omitEmpty from "omit-empty";
-import {useDispatch} from "react-redux";
 import miniAction from "utils/action/actions/miniAction";
 import reducerSimpleActions from "utils/action/reducerSimpleActions";
 
@@ -23,15 +20,6 @@ const NavigationRedux = {
 	}
 };
 
-const useNavigationParams = params => {
-	const dispatch = useDispatch();
-	params = omitEmpty(params);
-	if (!isEmpty(params)) {
-		dispatch(NavigationRedux.params(params));
-	}
-};
-
 export {
 	NavigationRedux,
-	useNavigationParams,
 };

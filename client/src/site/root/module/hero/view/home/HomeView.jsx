@@ -4,12 +4,15 @@ import Placeholder from "component/Placeholder";
 import useMenuSelect from "hook/useMenuSelect";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import {useHeroFetch} from "redux/hero/redux";
+import {NavigationRedux} from "redux/navigation/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroView from "site/root/module/hero/view/HeroView";
 
 const HomeView = () => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
 	const [hero, setHero] = useState();
@@ -20,6 +23,7 @@ const HomeView = () => {
 		hero => {
 			setHero(hero);
 			setLoading(false);
+			dispatch(NavigationRedux.params({kingdom: hero.kingdom}));
 		}, () => {
 			setLoading(false);
 		}

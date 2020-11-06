@@ -20,7 +20,7 @@ const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+			<MenuItem key={"root.kingdom"} id={"root.kingdom"} href={Routes.root.kingdom.home} icon={<BackIcon/>}/>
 			<MenuDivider/>
 			<HeroMenuItem key={id}/>
 			<MenuDivider/>
@@ -34,6 +34,8 @@ const Menu = () => {
 		<BaseRoutes
 			routes={[
 				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={"root.kingdom"} id={"root.kingdom"} href={Routes.root.kingdom.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={id} id={id} href={link.home} icon={<HeroIcon/>}/>
 					<MenuDivider/>

@@ -1,7 +1,9 @@
 package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.mapper.AbstractActionMapper
+import derivean.lib.rest.*
+import derivean.server.building.BuildingRepository
 import io.ktor.application.*
 import io.ktor.routing.*
 
@@ -20,4 +22,20 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 			}
 		}
 	}
+}
+class DeleteMapper(container: IContainer) : AbstractActionMapper<DeleteMapper.Request, Response<out Any>>(container) {
+	private val buildingRepository: BuildingRepository by container.lazy()
+
+	override fun resolve(item: Request) = try {
+		ok(storage.write {
+			buildingRepository.delete(item.id)
+		})
+	} catch (e: Throwable) {
+		logger.error(e.message, e)
+		internalServerError(ValidationResponse.build {
+			message = "Some ugly internal server error happened!"
+		})
+	}
+
+	data class Request(val id: String)
 }

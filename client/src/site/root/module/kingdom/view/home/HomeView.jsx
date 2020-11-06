@@ -4,23 +4,26 @@ import Placeholder from "component/Placeholder";
 import useMenuSelect from "hook/useMenuSelect";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import {KingdomRedux, useKingdomFetch} from "redux/kingdom/redux";
+import {NavigationRedux} from "redux/navigation/redux";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
 const HomeView = () => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
 	const [kingdom, setKingdom] = useState();
 	const [loading, setLoading] = useState(true);
-	// useNavigationParams({user: kingdom.user});
 	useKingdomFetch(
 		params.kingdom,
 		kingdom => {
 			setKingdom(kingdom);
 			setLoading(false);
+			dispatch(NavigationRedux.params({user: kingdom.user}));
 		}, () => {
 			setLoading(false);
 		}
