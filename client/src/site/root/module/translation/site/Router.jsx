@@ -7,20 +7,22 @@ import Routes from "site/Routes";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
+const links = Routes.root.translation;
+
 const Router = () =>
 	<BaseRoutes
 		routes={[
-			route(Routes.root.translation.dashboard.match(), <DashboardView/>),
-			route(Routes.root.translation.create.match(), <CreateView/>),
-			route(Routes.root.translation.edit.match(), <EditView/>),
-			route(Routes.root.translation.list.match(), <ListView/>),
-			route(Routes.root.translation.home.match(), <EditView/>),
+			route(links.dashboard.match(), <DashboardView/>),
+			route(links.create.match(), <CreateView/>),
+			route(links.edit.match(), <EditView/>),
+			route(links.list.match(), <ListView/>),
+			route(links.home.match(), <EditView/>),
 			route("*", <NotFoundView/>),
 		]}
 	/>
 ;
 
-const TranslationRoute = () => route(Routes.root.translation.match(), <Router/>);
+const TranslationRoute = () => route(links.match(), <Router/>);
 
 export {
 	TranslationRoute,

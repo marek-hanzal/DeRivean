@@ -1,11 +1,14 @@
 import {PlusOutlined} from "@ant-design/icons";
 import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
+import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Centered from "component/layout/Centered";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 
-const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
+const AttributeFieldEditor = ({translation, attributes}) => {
 	const {t} = useTranslation();
+	const editorContext = useContext(EditorContext);
 	return (
 		<Card title={t(translation + ".form.attribute.title")}>
 			<Form.List
@@ -30,7 +33,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 												allowClear
 												placeholder={t(translation + ".form.attribute.name.hint")}
 												options={(attributes || []).map(item => ({label: t(item), value: item}))}
-												disabled={!edit}
+												disabled={!editorContext.editor}
 											/>
 										</Form.Item>
 										<Form.Item
@@ -45,7 +48,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 												step={10}
 												placeholder={t(translation + ".form.attribute.value.hint")}
 												style={{width: "100%"}}
-												disabled={!edit}
+												disabled={!editorContext.editor}
 											/>
 										</Form.Item>
 									</Input.Group>
@@ -55,14 +58,14 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 										icon={<DeleteItemIcon/>}
 										title={t(translation + ".form.attribute.deleteConfirm")}
 										onConfirm={() => remove(field.name)}
-										disabled={!edit}
+										disabled={!editorContext.editor}
 									>
-										<Button disabled={!edit} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
+										<Button disabled={!editorContext.editor} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
 									</Popconfirm>
 								</List.Item>
 							))}
 							{
-								edit ? (
+								editorContext.editor ? (
 									<Centered>
 										<List.Item>
 											<Button
@@ -81,7 +84,7 @@ const AttributeFieldEditor = ({translation, edit = true, attributes}) => {
 							image={Empty.PRESENTED_IMAGE_SIMPLE}
 							description={t(translation + ".form.attribute.empty")}
 						>
-							{edit ? (
+							{editorContext.editor ? (
 								<>
 									<Divider type={"horizontal"}/>
 									<Button

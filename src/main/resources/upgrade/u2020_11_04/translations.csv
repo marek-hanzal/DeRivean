@@ -262,3 +262,10 @@ f06301b7-50d9-4b2d-98fa-2dda366593ff,en,translation,root.kingdom.form.name.requi
 66760a32-88cd-4ece-b4ae-c492d5867f45,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
 92efc790-3bd2-4ed1-95f0-c837c8dc0d3d,en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
 cddc9e9a-c7aa-4a0a-bc93-76f099c74189,en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
+150fc09a-8db1-4df6-8739-068447155708,en,translation,root.user.attributes.title,User's Attributes
+cdee997c-db51-4a54-b230-2741f598feca,en,translation,root.user.attributes.subtitle,Editor of attributes for the selected user.
+12aec826-6063-412a-950e-d6d94ec6a0da,en,translation,root.user.form.attribute.name.hint,Select attribute
+4a2eaae9-2b19-41e6-aeee-47e986434eb4,en,translation,root.user.form.attribute.value.hint,Value
+ff145044-909d-4986-ac9a-7ebc7535c32f,en,translation,root.user.form.attribute.name.required,Please pick attribute!
+c66459c5-2e3f-47c4-bd34-4a272b2cda97,en,translation,root.user.form.attribute.value.required,Please fill attribute value!
+a25896d6-dff2-49ac-a5f4-fd429df92c71,en,translation,root.user.update.error,"Cannot update User, please check inputs!"

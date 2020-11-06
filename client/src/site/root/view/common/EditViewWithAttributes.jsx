@@ -1,7 +1,7 @@
-import EditorContext from "component/form/EditorContext";
+import axios from "axios";
 import PropTypes from "prop-types";
-import {useContext, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useContext, useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import CommonEditView from "site/root/view/common/CommonEditView";
 
@@ -14,25 +14,18 @@ const EditViewWithAttributes = (
 	}) => {
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
-	const attributes = useSelector(currentContext.redux.redux.attributes.selector.getPayload);
-
-	/**
-	 * Fetch attributes from redux.
-	 */
+	const [attributes, setAttributes] = useState([]);
 	useEffect(() => {
-		dispatch(currentContext.redux.redux.attributes.dispatch.attributes());
-	}, [dispatch, currentContext.redux.redux.attributes.dispatch]);
-
+		const cancelToken = axios.CancelToken.source();
+		dispatch(currentContext.redux.redux.attributes.dispatch.attributes(cancelToken)).then(data => {
+			setAttributes(data);
+		});
+		return () => cancelToken.cancel();
+	}, [currentContext.redux.redux.attributes.dispatch, dispatch]);
 	return (
 		<CommonEditView param={param} context={context} defaultEnableSubmit={defaultEnableSubmit}>
-			<EditorContext.Consumer>
-				{({editor}) => (
-					<>
-						{children}
-						<AttributeFieldEditor edit={editor} translation={currentContext.id} attributes={attributes}/>
-					</>
-				)}
-			</EditorContext.Consumer>
+			{children}
+			<AttributeFieldEditor translation={currentContext.id} attributes={attributes}/>
 		</CommonEditView>
 	);
 };

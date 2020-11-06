@@ -8,22 +8,24 @@ import Routes from "site/Routes";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
 
+const links = Routes.root.building;
+
 const Router = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(Routes.root.building.dashboard.match(), <DashboardView/>),
-				route(Routes.root.building.create.match(), <CreateView/>),
-				route(Routes.root.building.list.match(), <ListView/>),
-				route(Routes.root.building.home.match(), <HomeView/>),
-				route(Routes.root.building.edit.match(), <EditView/>),
+				route(links.dashboard.match(), <DashboardView/>),
+				route(links.create.match(), <CreateView/>),
+				route(links.list.match(), <ListView/>),
+				route(links.home.match(), <HomeView/>),
+				route(links.edit.match(), <EditView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>
 	);
 };
 
-const BuildingRoute = () => route(Routes.root.building.match(), <Router/>);
+const BuildingRoute = () => route(links.match(), <Router/>);
 
 export {
 	BuildingRoute,

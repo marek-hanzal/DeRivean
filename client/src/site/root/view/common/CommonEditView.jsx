@@ -1,4 +1,5 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
+import axios from "axios";
 import EditorContext from "component/form/EditorContext";
 import EditSubmitButtons from "component/form/EditSubmitButtons";
 import Spinner from "component/icon/Spinner";
@@ -30,15 +31,15 @@ const CommonEditView = (
 	const [editor, setEditor] = useState(false);
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	useMenuSelect(currentContext.id + ".edit");
-	/**
-	 * Fetch current data from redux.
-	 */
-	useEffect(() => dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param])).then(data => {
-		setData(data);
-		values(form, data);
-		setEditor(false);
-	}), [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
-
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param], cancelToken)).then(data => {
+			setData(data);
+			values(form, data);
+			setEditor(false);
+		});
+		return () => cancelToken.cancel();
+	}, [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 	return (
 		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
 			<Form

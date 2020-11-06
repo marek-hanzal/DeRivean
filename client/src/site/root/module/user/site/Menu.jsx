@@ -44,6 +44,16 @@ const Menu = () => {
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"}/>
 				</BaseMenu>),
+				route(link.attributes.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem key={"root.sign-out"}/>
+				</BaseMenu>),
 				route("*", <BaseMenu>
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"}/>
