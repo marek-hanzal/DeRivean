@@ -1,4 +1,5 @@
 import commonFetchHook from "utils/hook/commonFetchHook";
+import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
@@ -20,7 +21,10 @@ const KingdomRedux = CreateCommonRedux(
 
 const useKingdomFetch = commonFetchHook(KingdomRedux);
 
+const dispatchKingdomUpdate = commonUpdateDispatch(KingdomRedux);
+
 export {
 	KingdomRedux,
 	useKingdomFetch,
+	dispatchKingdomUpdate,
 };

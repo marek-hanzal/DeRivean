@@ -3,33 +3,33 @@ import BaseEditor from "component/form/BaseEditor";
 import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {dispatchUserUpdate, useUserFetch} from "redux/user/redux";
+import {dispatchKingdomUpdate, useKingdomFetch} from "redux/kingdom/redux";
 import AttributesEditor from "site/root/component/AttributesEditor";
-import UserContext from "site/root/module/user/component/UserContext";
-import UserView from "site/root/module/user/view/UserView";
+import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
+import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
 const AttributesView = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	useMenuSelect(["root.user.attributes"]);
+	useMenuSelect(["root.kingdom.attributes"]);
 	return (
-		<UserView>
-			<UserContext.Consumer>
+		<KingdomView>
+			<KingdomContext.Consumer>
 				{({id}) => (
 					<BaseEditor
 						readyCount={2}
 						onFinish={(values, initials) => {
-							dispatchUserUpdate(dispatch, {id: initials.id, ...values}, () => {
+							dispatchKingdomUpdate(dispatch, {id: initials.id, ...values}, () => {
 								message.success(t(`${id}.attributes.updated`));
 							});
 						}}
 						name={id}
 						translation={id}
-						children={<AttributesEditor fetch={useUserFetch} context={UserContext}/>}
+						children={<AttributesEditor fetch={useKingdomFetch} context={KingdomContext}/>}
 					/>
 				)}
-			</UserContext.Consumer>
-		</UserView>
+			</KingdomContext.Consumer>
+		</KingdomView>
 	);
 };
 

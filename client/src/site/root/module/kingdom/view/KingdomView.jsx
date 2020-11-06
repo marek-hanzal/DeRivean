@@ -11,6 +11,7 @@ const KingdomView = ({children, ...props}) => {
 			id: "root.kingdom",
 			redux: KingdomRedux,
 			link: Routes.root.kingdom,
+			param: "kingdom",
 		}}>
 			<RootView context={KingdomContext} {...props}>
 				{children}

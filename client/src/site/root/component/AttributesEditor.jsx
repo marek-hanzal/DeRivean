@@ -7,16 +7,15 @@ import Centered from "component/layout/Centered";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router";
-import {useUserFetch} from "redux/user/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import values from "utils/form/values";
 
-const AttributesEditor = ({context}) => {
+const AttributesEditor = ({context, fetch}) => {
 	const {t} = useTranslation();
 	const currentContext = useContext(context);
 	const editorContext = useContext(EditorContext);
 	const params = useParams();
-	useUserFetch(params.user, fetch => {
+	fetch(params[currentContext.param], fetch => {
 		editorContext.setInitials(fetch);
 		values(editorContext.form, fetch);
 		editorContext.setEnableSubmit(true);
@@ -28,7 +27,7 @@ const AttributesEditor = ({context}) => {
 				icon={<Spinner icon={<AttributeIcon/>} done={!editorContext.ready}/>}
 				title={
 					<>
-						<EditorToolbar param={"user"} redux={currentContext.redux} translation={currentContext.id}/>
+						<EditorToolbar param={currentContext.param} redux={currentContext.redux} translation={currentContext.id}/>
 						<Divider type={"horizontal"}/>
 					</>
 				}

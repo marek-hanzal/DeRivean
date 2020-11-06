@@ -119,6 +119,11 @@ const Routes = {
                 link: resolveUuid("kingdom", "/kingdom/k/:kingdom/edit"),
                 params: ["kingdom"],
             },
+            attributes: {
+                match: () => "k/:kingdom/attributes",
+                link: resolveUuid("kingdom", "/kingdom/k/:kingdom/attributes"),
+                params: ["kingdom"],
+            },
             list: {
                 match: () => "u/:user/list/*",
                 link: resolveUuid("user", "/kingdom/u/:user/list"),

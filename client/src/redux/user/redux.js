@@ -1,5 +1,6 @@
 import dismissAction from "utils/action/actions/dismissAction";
 import commonFetchHook from "utils/hook/commonFetchHook";
+import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateFetchRedux from "utils/redux/CreateFetchRedux";
@@ -28,22 +29,7 @@ const UserRedux = CreateCommonRedux(
 
 const useUserFetch = commonFetchHook(UserRedux);
 
-const dispatchUserUpdate = (
-	dispatch,
-	update,
-	onSuccess = data => null,
-	onFailure = error => null,
-) => {
-	dispatch(UserRedux.redux.update.dispatch.update(update)).then(
-		onSuccess,
-		error => {
-			if (error.cancel) {
-				return;
-			}
-			onFailure(error);
-		}
-	);
-};
+const dispatchUserUpdate = commonUpdateDispatch(UserRedux);
 
 export {
 	UserRedux,
