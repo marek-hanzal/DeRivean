@@ -231,3 +231,21 @@ ea8cd062-e816-4dca-98ca-f106d3f93277,en,translation,root.building.edit.menu,Edit
 cb0d528b-7169-48be-bf56-9c073be2f922,en,translation,root.hero.form.attribute.name.hint,Select Attribute!
 c89fcfe6-a470-4f43-8519-e4540127e372,en,translation,root.hero.form.attribute.value.hint,Value
 43b20221-39dd-4de1-9efe-5c9927f73a0c,en,translation,root.hero.form.attribute.deleteConfirm,Delete selected attribute?
+68fdc275-60a9-40a4-93e7-7983f0734f94,en,translation,public.sign-up.succeed.title,Welcome to the World of DeRivean!
+47eb82cb-96a7-4c33-ba3c-5c8ecb8c7e76,en,translation,public.sign-up.succeed.subtitle,Now you can access you account from login page and see what awaits you!
+194d4c8a-d9d6-4cf6-8621-4f4768b99d85,en,translation,public.sign-up.continue.title,Sing In!
+cef22edc-96f0-4b20-9e14-6e64f1045394,en,translation,hero.list.back.menu,Back
+2857b86f-dde3-45c7-8278-ff1a0358b0ee,en,translation,root.building.list.back,Back
+d0db911f-f980-4a2a-9afb-6e2dfd1364ca,en,translation,root.hero.home.back.menu,Back
+24c621ac-6924-4876-b471-cd645088b4fc,en,translation,root.building.home.back.menu,Back
+ed57d8f5-0c1a-49d6-b906-1f0e54c3a0f1,en,translation,root.kingdom.home.back.menu,Back
+a700eab5-378a-468e-b4b7-34d9b377fbd7,en,translation,root.hero.create.success,Hero created!
+70ba21ca-f3f3-41a8-a015-fb7cffaa0fd4,en,translation,root.building.create.success,Building created!
+c6457ae4-751a-45fc-8d14-07340aac3e5d,en,translation,root.hero.create.error,"Cannot create hero, please check inputs."
+b8311956-e586-4d0a-9e42-83f2cbd49484,en,translation,root.building.create.error,"Cannot create the building, please check inputs."
+14583ef5-6d3e-4932-b036-6601f6e21c57,en,translation,root.user.create.form.cancelConfirm,Do you want to cancel changes?
+2e659688-9e99-4ced-8a52-bfe725ccc9d4,en,translation,root.user.create.success,User created!
+4b760c4c-2693-4467-bf2d-69cae6d03122,en,translation,root.user.edit.form.cancelConfirm,Do you want to cancel changes?
+5e05ef15-df78-4854-84be-8995d60a142a,en,translation,root.user.edit.form.deleteConfirm,"Do you want to remove selected user? This action cannot be taken back and a lof of data (kingdoms, heroes, ...) could be lost!"
+69fb945b-aafc-4c46-bae1-d3fbb5a4cbca,en,translation,root.user.delete.success,User removed!
+fdea294a-2272-40f5-bfb0-c62353b01cc0,en,translation,root.user.home.back.menu,Back

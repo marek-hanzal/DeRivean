@@ -43,6 +43,8 @@ const Menu = () => {
 				</BaseMenu>),
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
+					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
+					<MenuDivider/>
 					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
