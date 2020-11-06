@@ -28,7 +28,25 @@ const UserRedux = CreateCommonRedux(
 
 const useUserFetch = commonFetchHook(UserRedux);
 
+const dispatchUserUpdate = (
+	dispatch,
+	update,
+	onSuccess = data => null,
+	onFailure = error => null,
+) => {
+	dispatch(UserRedux.redux.update.dispatch.update(update)).then(
+		onSuccess,
+		error => {
+			if (error.cancel) {
+				return;
+			}
+			onFailure(error);
+		}
+	);
+};
+
 export {
 	UserRedux,
 	useUserFetch,
+	dispatchUserUpdate,
 };
