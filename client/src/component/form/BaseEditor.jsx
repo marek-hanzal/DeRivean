@@ -27,23 +27,24 @@ const BaseEditor = (
 			form={form}
 			onFinish={values => onFinish(values, initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
 			onFinishFailed={onFinishFailed}
-		>
-			<EditorContext.Provider
-				value={{
-					errors,
-					setErrors,
-					editor,
-					setEditor,
-					enableSubmit,
-					setEnableSubmit,
-					initials,
-					setInitials,
-					form,
-					submit: () => <EditorToolbar param={param} redux={redux} translation={translation}/>,
-				}}
-				children={children}
-			/>
-		</Form>
+			children={
+				<EditorContext.Provider
+					value={{
+						errors,
+						setErrors,
+						editor,
+						setEditor,
+						enableSubmit,
+						setEnableSubmit,
+						initials,
+						setInitials,
+						form,
+						submit: () => <EditorToolbar param={param} redux={redux} translation={translation}/>,
+					}}
+					children={children}
+				/>
+			}
+		/>
 	);
 };
 
