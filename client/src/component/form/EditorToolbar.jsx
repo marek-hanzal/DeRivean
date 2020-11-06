@@ -35,7 +35,7 @@ const EditorToolbar = (
 			<Space split={<Divider type={"vertical"}/>}>
 				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
 				<CancelEditButton form={form} translation={translation} initials={initials}/>
-				{deletedLink ?
+				{deletedLink && redux && param ?
 					<Popconfirm
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
@@ -63,8 +63,8 @@ EditorToolbar.propTypes = {
 	form: PropTypes.any.isRequired,
 	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
-	param: PropTypes.string.isRequired,
-	redux: PropTypes.object.isRequired,
+	param: PropTypes.string,
+	redux: PropTypes.object,
 	deletedLink: PropTypes.object,
 };
 
