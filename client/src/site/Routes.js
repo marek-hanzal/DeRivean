@@ -185,6 +185,11 @@ const Routes = {
                 link: resolveUuid("building", "/building/b/:building/edit"),
                 params: ["building"],
             },
+            attributes: {
+                match: () => "b/:building/attributes",
+                link: resolveUuid("building", "/building/b/:building/attributes"),
+                params: ["building"],
+            },
             list: {
                 match: () => "k/:kingdom/list/*",
                 link: resolveUuid("kingdom", "/building/k/:kingdom/list"),

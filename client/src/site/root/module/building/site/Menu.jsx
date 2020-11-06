@@ -1,3 +1,4 @@
+import AttributeIcon from "component/icon/AttributeIcon";
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
@@ -24,7 +25,7 @@ const DefaultMenu = () => {
 			<MenuDivider/>
 			<BuildingMenuItem key={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem key={"root.sign-out"} id={"root.sign-out"}/>
+			<LogoutMenuItem/>
 		</BaseMenu>
 	);
 };
@@ -33,14 +34,6 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				route(link.edit.match(), <BaseMenu>
-					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
-					<MenuDivider/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-					<MenuDivider/>
-					<LogoutMenuItem/>
-				</BaseMenu>),
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
@@ -48,6 +41,26 @@ const Menu = () => {
 					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.attributes.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem/>
 				</BaseMenu>),

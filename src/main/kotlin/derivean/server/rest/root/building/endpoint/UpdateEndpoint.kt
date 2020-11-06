@@ -25,6 +25,7 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 		}
 	}
 }
+
 class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
@@ -34,7 +35,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		ok(storage.write {
 			fetchMapper.map(
 				buildingRepository.update(item.id) {
-					this.name = item.name
+					item.name?.let { this.name = it }
 					buildingRepository.attributes(item.id, attributeMapper.map(item.attributes))
 				}
 			)
@@ -46,5 +47,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		})
 	}
 
-	data class Request(val id: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val id: String,
+		val name: String?,
+		val attributes: Attributes?,
+	)
 }

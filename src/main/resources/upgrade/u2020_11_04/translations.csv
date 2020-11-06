@@ -284,3 +284,9 @@ f594e6a1-c10f-48a1-9923-d48c54332e7b,en,translation,root.user.form.attribute.del
 502d8021-1885-4a38-a532-e58419eb29a9,en,translation,root.hero.attributes.title,Hero Attributes
 05aef85a-fabf-403e-8632-2a2642b5a2a0,en,translation,root.hero.attributes.updated,Attributes updated!
 74559205-a78a-4d75-ba77-26ab4083a0dc,en,translation,root.hero.attributes.subtitle,Here you can manager Hero Attributes!
+1107c4be-3626-401f-bf0e-40333299879b,en,translation,root.building.attributes.menu,Attributes
+f6f1b16c-1126-441c-9dab-146f63704caf,en,translation,root.building.attributes.updated,Attributes updated!
+71bd4dd5-fcf2-4b99-b974-392ad6b1357e,en,translation,root.building.attributes.subtitle,Here you can manage Attributes of selected Building!
+dfacde34-1284-4d48-8fff-41cdfda8403f,en,translation,root.building.attributes.title,Building Attributes
+d4bbd8e2-1bbc-479f-843c-2f486bcc43ca,en,translation,root.building.edit.form.cancelConfirm,"All changes will be lost, continue?"
+02dfecde-d55f-4eda-97f5-6b998105207f,en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"

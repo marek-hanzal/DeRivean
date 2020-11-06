@@ -1,6 +1,7 @@
 import BaseRoutes from "component/route/BaseRoutes";
 import CreateView from "site/root/module/building/view/create/CreateView";
 import DashboardView from "site/root/module/building/view/dashboard/DashboardView";
+import AttributesView from "site/root/module/building/view/edit/AttributesView";
 import EditView from "site/root/module/building/view/edit/EditView";
 import HomeView from "site/root/module/building/view/home/HomeView";
 import ListView from "site/root/module/building/view/list/ListView";
@@ -19,6 +20,7 @@ const Router = () => {
 				route(links.list.match(), <ListView/>),
 				route(links.home.match(), <HomeView/>),
 				route(links.edit.match(), <EditView/>),
+				route(links.attributes.match(), <AttributesView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>

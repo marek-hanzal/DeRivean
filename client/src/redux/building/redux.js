@@ -1,4 +1,5 @@
 import commonFetchHook from "utils/hook/commonFetchHook";
+import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 
@@ -16,7 +17,10 @@ const BuildingRedux = CreateCommonRedux(
 
 const useBuildingFetch = commonFetchHook(BuildingRedux);
 
+const dispatchBuildingUpdate = commonUpdateDispatch(BuildingRedux);
+
 export {
 	BuildingRedux,
 	useBuildingFetch,
+	dispatchBuildingUpdate,
 };

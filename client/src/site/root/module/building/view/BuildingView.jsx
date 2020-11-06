@@ -11,6 +11,7 @@ const BuildingView = ({children, ...props}) => {
 			id: "root.building",
 			redux: BuildingRedux,
 			link: Routes.root.building,
+			param: "building",
 		}}>
 			<RootView context={BuildingContext} {...props}>
 				{children}
