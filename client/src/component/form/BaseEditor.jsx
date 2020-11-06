@@ -7,6 +7,7 @@ import {useState} from "react";
 const BaseEditor = (
 	{
 		name,
+		readyCount,
 		enableEditor = false,
 		defaultEnableSubmit,
 		translation,
@@ -19,8 +20,11 @@ const BaseEditor = (
 	const [errors, setErrors] = useState();
 	const [initials, setInitials] = useState();
 	const [editor, setEditor] = useState(enableEditor);
+	const [ready, setReady] = useState(readyCount || 0);
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	const [form] = Form.useForm();
+	const isReady = () => setReady(prev => prev - 1);
+	console.log("ready", ready);
 	return (
 		<Form
 			name={name}
@@ -38,6 +42,8 @@ const BaseEditor = (
 						setEnableSubmit,
 						initials,
 						setInitials,
+						ready,
+						isReady,
 						form,
 						submit: () => <EditorToolbar param={param} redux={redux} translation={translation}/>,
 					}}
@@ -50,6 +56,7 @@ const BaseEditor = (
 
 BaseEditor.propTypes = {
 	name: PropTypes.string.isRequired,
+	readyCount: PropTypes.number,
 	translation: PropTypes.string.isRequired,
 	param: PropTypes.string,
 	redux: PropTypes.object,

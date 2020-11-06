@@ -17,6 +17,8 @@ const AttributeFieldEditor = ({translation, redux}) => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(redux.redux.attributes.dispatch.attributes(cancelToken)).then(attributes => {
 			setAttributes(attributes);
+			editorContext.isReady();
+		}, () => {
 		});
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line

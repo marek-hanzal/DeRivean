@@ -24,6 +24,8 @@ const Editor = ({currentContext, param, children, name}) => {
 			editorContext.setInitials(data);
 			values(editorContext.form, data);
 			editorContext.setEditor(false);
+			editorContext.isReady();
+		}, () => {
 		});
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -56,7 +58,7 @@ const Editor = ({currentContext, param, children, name}) => {
 						/>
 					</Centered>
 				}
-				icon={<Spinner icon={currentContext.icon} done={editorContext.initials}/>}
+				icon={<Spinner icon={currentContext.icon} done={!editorContext.ready}/>}
 				children={<Centered span={16} children={children}/>}
 			/>
 		</Card>
@@ -66,6 +68,7 @@ const Editor = ({currentContext, param, children, name}) => {
 const CommonEditView = (
 	{
 		context,
+		readyCount,
 		param,
 		name,
 		defaultEnableSubmit,
@@ -78,6 +81,7 @@ const CommonEditView = (
 	useMenuSelect(currentContext.id + ".edit");
 	return (
 		<BaseEditor
+			readyCount={readyCount}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(data, initials, editor) => {
 				dispatch(currentContext.redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {

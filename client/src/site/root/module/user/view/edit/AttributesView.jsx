@@ -24,11 +24,12 @@ const AttributesEditor = ({context}) => {
 		editorContext.setInitials(fetch);
 		values(editorContext.form, fetch);
 		editorContext.setEnableSubmit(true);
+		editorContext.isReady();
 	});
 	return (
 		<Card title={t(`${currentContext.id}.attributes.title`)}>
 			<Result
-				icon={<Spinner icon={<AttributeIcon/>} done={editorContext.initials}/>}
+				icon={<Spinner icon={<AttributeIcon/>} done={!editorContext.ready}/>}
 				title={
 					<>
 						<EditorToolbar param={"user"} redux={currentContext.redux} translation={currentContext.id}/>
@@ -53,6 +54,7 @@ const AttributesView = () => {
 			<UserContext.Consumer>
 				{({id}) => (
 					<BaseEditor
+						readyCount={2}
 						onFinish={(values, initials) => {
 							console.log("submit!", {id: initials.id, ...values});
 						}}

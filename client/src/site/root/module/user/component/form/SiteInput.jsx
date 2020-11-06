@@ -15,6 +15,7 @@ const SiteInput = () => {
 		sites => {
 			setSites(sites.sites);
 			editorContext.setEnableSubmit(true);
+			editorContext.isReady();
 		},
 		error => {
 			if (error.cancel) {

@@ -12,9 +12,9 @@ function CreateFetchRedux(id, link, param = "{id}") {
 			fetch: function (uuid, cancelToken = null) {
 				return (dispatch, getState) => {
 					dispatch(this.actions.request());
-					return Server.get(selectFetch(link, uuid, getState(), param, {
+					return Server.get(selectFetch(link, uuid, getState(), param), {
 						cancelToken: (cancelToken || axios.CancelToken.source()).token,
-					}))
+					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
 							return Promise.resolve(data);

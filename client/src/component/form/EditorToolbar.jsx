@@ -4,6 +4,7 @@ import EditorContext from "component/form/EditorContext";
 import SubmitButton from "component/form/SubmitButton";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
+import Spinner from "component/icon/Spinner";
 import {useCleverLink} from "component/route/CleverLink";
 import PropTypes from "prop-types";
 import {useContext} from "react";
@@ -50,10 +51,10 @@ const EditorToolbar = (
 					/> : null
 				}
 			</Space> :
-			<Button type={"primary"} ghost size={"large"} disabled={!editorContext.initials} onClick={() => {
+			<Button type={"primary"} ghost size={"large"} disabled={editorContext.ready > 0} onClick={() => {
 				editorContext.setEditor(true);
 				values(editorContext.form, editorContext.initials);
-			}} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
+			}} icon={<Spinner done={!editorContext.ready} icon={<EditIcon/>}/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 

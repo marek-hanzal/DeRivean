@@ -17,6 +17,7 @@ const EditView = () => {
 					<CommonEditView
 						context={UserContext}
 						param={"user"}
+						readyCount={3}
 					>
 						<Card title={t(`${id}.form.title`)}>
 							<LoginInput/>
