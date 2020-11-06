@@ -24,7 +24,6 @@ const BaseEditor = (
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	const [form] = Form.useForm();
 	const isReady = () => setReady(prev => prev - 1);
-	console.log("ready", ready);
 	return (
 		<Form
 			name={name}
