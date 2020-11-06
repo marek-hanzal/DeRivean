@@ -35,6 +35,7 @@ const CommonEditView = (
 	useEffect(() => dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param])).then(data => {
 		setData(data);
 		values(form, data);
+		setEditor(false);
 	}), [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 
 	return (

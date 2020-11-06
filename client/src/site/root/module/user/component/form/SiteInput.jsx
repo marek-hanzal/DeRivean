@@ -27,7 +27,7 @@ const SiteInput = () => {
 			label={t(`${userContext.id}.form.site.label`)}
 			children={
 				sites ?
-					<Radio.Group>
+					<Radio.Group disabled={!editorContext.editor}>
 						{sites.map(site => <Radio.Button key={site || "null"} value={site || undefined} children={t("root.site." + site)}/>)}
 					</Radio.Group> :
 					<Skeleton.Input style={{width: "240px"}} active/>
