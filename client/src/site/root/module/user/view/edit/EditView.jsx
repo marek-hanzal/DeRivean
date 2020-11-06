@@ -1,19 +1,20 @@
 import {Card, Divider} from "antd";
 import {useTranslation} from "react-i18next";
+import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import LoginInput from "site/root/module/user/component/form/LoginInput";
 import PasswordInput from "site/root/module/user/component/form/PasswordInput";
 import SiteInput from "site/root/module/user/component/form/SiteInput";
 import UserContext from "site/root/module/user/component/UserContext";
 import UserView from "site/root/module/user/view/UserView";
-import EditViewWithAttributes from "site/root/view/common/EditViewWithAttributes";
+import CommonEditView from "site/root/view/common/CommonEditView";
 
 const EditView = () => {
 	const {t} = useTranslation();
 	return (
 		<UserView>
 			<UserContext.Consumer>
-				{({id}) => (
-					<EditViewWithAttributes
+				{({id, redux}) => (
+					<CommonEditView
 						context={UserContext}
 						param={"user"}
 						defaultEnableSubmit={false}
@@ -25,7 +26,8 @@ const EditView = () => {
 							<SiteInput/>
 						</Card>
 						<Divider type={"horizontal"}/>
-					</EditViewWithAttributes>
+						<AttributeFieldEditor translation={id} redux={redux}/>
+					</CommonEditView>
 				)}
 			</UserContext.Consumer>
 		</UserView>
