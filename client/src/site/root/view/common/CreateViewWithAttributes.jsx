@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import {useContext, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useContext} from "react";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import CommonCreateView from "site/root/view/common/CommonCreateView";
 
@@ -12,14 +11,9 @@ const CreateViewWithAttributes = (
 		defaultEnableSubmit,
 	}) => {
 	const currentContext = useContext(context);
-	const dispatch = useDispatch();
-	const attributes = useSelector(currentContext.redux.redux.attributes.selector.getPayload);
-	useEffect(() => {
-		dispatch(currentContext.redux.redux.attributes.dispatch.attributes());
-	}, [dispatch, currentContext.redux.redux.attributes.dispatch]);
 	return (
 		<CommonCreateView param={param} context={context} defaultEnableSubmit={defaultEnableSubmit}>
-			{children(<AttributeFieldEditor translation={currentContext.id} attributes={attributes}/>)}
+			{children(<AttributeFieldEditor translation={currentContext.id} redux={currentContext.redux}/>)}
 		</CommonCreateView>
 	);
 };

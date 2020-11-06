@@ -1,14 +1,25 @@
 import {PlusOutlined} from "@ant-design/icons";
 import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
+import axios from "axios";
 import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Centered from "component/layout/Centered";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
 
-const AttributeFieldEditor = ({translation, attributes}) => {
+const AttributeFieldEditor = ({translation, redux}) => {
+	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
+	const [attributes, setAttributes] = useState([]);
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		dispatch(redux.redux.attributes.dispatch.attributes(cancelToken)).then(attributes => {
+			setAttributes(attributes);
+		});
+		return () => cancelToken.cancel();
+	}, [dispatch]);
 	return (
 		<Card title={t(translation + ".form.attribute.title")}>
 			<Form.List

@@ -24,22 +24,13 @@ const AttributesView = () => {
 	const [errors, setErrors] = useState();
 	const [editor, setEditor] = useState(false);
 	const [enableSubmit, setEnableSubmit] = useState(false);
-	const [attributes, setAttributes] = useState([]);
 	const [form] = Form.useForm();
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(UserRedux.redux.attributes.dispatch.attributes(cancelToken)).then(attributes => {
-			setAttributes(attributes);
-			setEnableSubmit(data);
-		});
-		return () => cancelToken.cancel();
-	}, [data, dispatch]);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(UserRedux.redux.fetch.dispatch.fetch(params.user, cancelToken)).then(fetch => {
 			setData(fetch);
 			values(form, fetch);
-			setEnableSubmit(attributes);
+			setEnableSubmit(true);
 		});
 		return () => cancelToken.cancel();
 	}, [dispatch, form, params.user]);
@@ -57,7 +48,7 @@ const AttributesView = () => {
 						<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
 							<Card title={t(`${id}.attributes.title`)}>
 								<Result
-									icon={<Spinner icon={<AttributeIcon/>} done={data && attributes}/>}
+									icon={<Spinner icon={<AttributeIcon/>} done={data}/>}
 									title={
 										<>
 											<EditorToolbar form={form} initials={data} param={"user"} redux={UserRedux} translation={id}/>
@@ -67,7 +58,7 @@ const AttributesView = () => {
 									subTitle={t(`${id}.attributes.subtitle`)}
 									children={
 										<Centered span={16}>
-											<AttributeFieldEditor translation={id} attributes={attributes}/>
+											<AttributeFieldEditor translation={id} redux={UserRedux}/>
 										</Centered>
 									}
 								/>
