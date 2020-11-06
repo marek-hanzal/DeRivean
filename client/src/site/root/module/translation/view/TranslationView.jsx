@@ -10,10 +10,7 @@ const TranslationView = ({children, ...props}) => {
 			icon: <TranslationIcon/>,
 			id: "root.translation",
 			redux: TranslationRedux,
-			link: {
-				home: Routes.root.translation.home,
-				dashboard: Routes.root.translation.dashboard,
-			}
+			link: Routes.root.translation,
 		}}>
 			<RootView context={TranslationContext} {...props}>
 				{children}

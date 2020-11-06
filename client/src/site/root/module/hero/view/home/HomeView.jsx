@@ -41,7 +41,7 @@ const HomeView = () => {
 							title={
 								<>
 									<Button type={"primary"} ghost onClick={() => {
-										navigate(link.edit(params.hero));
+										navigate(link.edit.link(params.hero));
 									}} children={t("root.hero.edit.form.edit")}/>
 									<Divider type={"horizontal"}/>
 								</>

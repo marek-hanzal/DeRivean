@@ -10,10 +10,7 @@ const BuildingView = ({children, ...props}) => {
 			icon: <BuildingIcon/>,
 			id: "root.building",
 			redux: BuildingRedux,
-			link: {
-				home: Routes.root.building.home,
-				dashboard: Routes.root.building.dashboard,
-			}
+			link: Routes.root.building,
 		}}>
 			<RootView context={BuildingContext} {...props}>
 				{children}

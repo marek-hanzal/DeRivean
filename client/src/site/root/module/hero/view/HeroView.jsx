@@ -10,10 +10,7 @@ const HeroView = ({children, ...props}) => {
 			icon: <HeroIcon/>,
 			id: "root.hero",
 			redux: HeroRedux,
-			link: {
-				home: Routes.root.hero.home,
-				dashboard: Routes.root.hero.dashboard,
-			}
+			link: Routes.root.hero,
 		}}>
 			<RootView context={HeroContext} {...props}>
 				{children}

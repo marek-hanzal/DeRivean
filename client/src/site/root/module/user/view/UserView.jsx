@@ -10,10 +10,7 @@ const UserView = ({children, ...props}) => {
 			icon: <UserIcon/>,
 			id: "root.user",
 			redux: UserRedux,
-			link: {
-				home: Routes.root.user.home,
-				dashboard: Routes.root.user.dashboard,
-			}
+			link: Routes.root.user,
 		}}>
 			<RootView context={UserContext} {...props}>
 				{children}
