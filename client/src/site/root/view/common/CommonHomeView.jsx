@@ -1,4 +1,5 @@
 import {Button, Card, Divider, Result} from "antd";
+import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Placeholder from "component/Placeholder";
 import useMenuSelect from "hook/useMenuSelect";
@@ -35,7 +36,7 @@ const ContextView = ({context, fetch, navigation, param, menu, children}) => {
 				icon={<Spinner done={!loading} icon={currentContext.icon}/>}
 				title={
 					<>
-						<Button type={"primary"} ghost onClick={() => {
+						<Button type={"primary"} size={"large"} icon={<EditIcon/>} ghost onClick={() => {
 							navigate(currentContext.link.edit.link(params[param]));
 						}} children={t("root.hero.edit.form.edit")}/>
 						<Divider type={"horizontal"}/>

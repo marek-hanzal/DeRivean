@@ -116,6 +116,8 @@ const Header = () => {
 				margin: "0 auto"
 			}}>
 				<SearchInput
+					listHeight={368}
+					showArrow={false}
 					size={"large"}
 					bordered={false}
 					style={{width: "100%"}}

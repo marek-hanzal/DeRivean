@@ -254,3 +254,11 @@ fdea294a-2272-40f5-bfb0-c62353b01cc0,en,translation,root.user.home.back.menu,Bac
 5946a0ed-b329-466b-ad3b-c6c0d966bd24,en,translation,root.kingdom.create.success,Kingdom created!
 fa8ab97f-fea5-4066-ada6-4fb3fcf82a43,en,translation,root.hero.delete.success,Hero deleted!
 0d0513ff-54fc-4b37-8ed0-7c62046f98bd,en,translation,root.building.delete.success,Building deleted!
+c4a7befa-64d9-41d6-9661-3c860a7c71cf,en,translation,root.kingdom.form.attribute.name.hint,Select attribute
+335826af-c79d-4e20-aeb9-7fa7a45d1475,en,translation,root.kingdom.form.attribute.value.hint,Value
+de856ce6-e34a-4f1f-b9fa-d5e8c4b10c21,en,translation,root.kingdom.form.attribute.name.required,Please pick some attribute!
+bf117bdc-f593-45f1-be8a-128244877938,en,translation,root.kingdom.form.attribute.value.required,Please specify value!
+f06301b7-50d9-4b2d-98fa-2dda366593ff,en,translation,root.kingdom.form.name.required,Please choose some epic kingdom name!
+66760a32-88cd-4ece-b4ae-c492d5867f45,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
+92efc790-3bd2-4ed1-95f0-c837c8dc0d3d,en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
+cddc9e9a-c7aa-4a0a-bc93-76f099c74189,en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
