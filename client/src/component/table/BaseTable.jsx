@@ -1,5 +1,6 @@
-import {Table} from "antd";
+import {List} from "antd";
 import axios from "axios";
+import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
@@ -8,10 +9,9 @@ import defaultPage from "utils/page";
 
 const BaseTable = (
 	{
-		id,
 		redux,
 		param = null,
-		columns = [],
+		children,
 	}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
@@ -43,7 +43,7 @@ const BaseTable = (
 	}, []);
 
 	return (
-		<Table
+		<List
 			style={{minHeight: "50vh"}}
 			dataSource={items}
 			rowKey={record => record.id}
@@ -51,7 +51,8 @@ const BaseTable = (
 				spinning: loading,
 				delay: 100,
 			}}
-			size={"small"}
+			itemLayout={"horizontal"}
+			size={"large"}
 			pagination={{
 				total: page.total,
 				pageSize: page.size,
@@ -59,9 +60,14 @@ const BaseTable = (
 				showQuickJumper: true,
 				onChange: (current, size) => onPage(current - 1, size),
 			}}
-			columns={columns.map(item => ({...item, dataIndex: item.title, key: item.title, title: t(`${id}.${item.title}.column`)}))}
+			renderItem={children}
 		/>
 	);
+};
+
+BaseTable.propTypes = {
+	children: PropTypes.func.isRequired,
+	redux: PropTypes.object.isRequired,
 };
 
 export default BaseTable;
