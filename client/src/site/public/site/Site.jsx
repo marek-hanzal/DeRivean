@@ -18,10 +18,6 @@ import NotFoundView from "view/NotFoundView";
 
 const link = Routes.public;
 
-/**
- * Site could be maybe abstracted too, but it's here to prevent moving internal site stuff
- * to root level of the application (thus we can have Menu instead of Menu used somewhere around App).
- */
 const Site = () =>
 	<BaseLayout
 		header={<Header/>}
@@ -30,10 +26,10 @@ const Site = () =>
 				routes={[
 					route("*", <BaseMenu>
 						<MenuDivider/>
-						<MenuItem id={"public.home"} href={link.link()} icon={<HomeIcon/>}/>
+						<MenuItem key={"public.home"} id={"public.home"} href={link} icon={<HomeIcon/>}/>
 						<MenuDivider/>
-						<MenuItem id={"public.sign-up"} href={link.signUp.link()} icon={<SignUpIcon/>}/>
-						<MenuItem id={"public.sign-in"} href={link.signIn.link()} icon={<SignInIcon/>}/>
+						<MenuItem key={"public.sign-up"} id={"public.sign-up"} href={link.signUp} icon={<SignUpIcon/>}/>
+						<MenuItem key={"public.sign-in"} id={"public.sign-in"} href={link.signIn} icon={<SignInIcon/>}/>
 					</BaseMenu>),
 				]}
 			/>
