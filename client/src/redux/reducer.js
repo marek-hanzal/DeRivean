@@ -7,6 +7,7 @@ import {HeroRedux} from "redux/hero/redux";
 import {KingdomRedux} from "redux/kingdom/redux";
 import {LoadingRedux} from "redux/loading/redux";
 import {MenuRedux} from "redux/menu/redux";
+import {NavigationRedux} from "redux/navigation/redux";
 import {SearchRedux} from "redux/search/redux";
 import {ServerRedux} from "redux/server/redux";
 import {SessionRedux} from "redux/session/redux";
@@ -23,6 +24,7 @@ export default combineReducers({
 	hero: HeroRedux.reducer(),
 	loading: LoadingRedux.reducer(),
 	menu: MenuRedux.reducer(),
+	navigation: NavigationRedux.reducer(),
 	session: SessionRedux.reducer(),
 	search: SearchRedux.reducer(),
 	server: ServerRedux.reducer(),

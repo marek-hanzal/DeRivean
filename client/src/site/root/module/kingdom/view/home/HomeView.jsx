@@ -15,6 +15,7 @@ const HomeView = () => {
 	const params = useParams();
 	const [kingdom, setKingdom] = useState();
 	const [loading, setLoading] = useState(true);
+	// useNavigationParams({user: kingdom.user});
 	useKingdomFetch(
 		params.kingdom,
 		kingdom => {

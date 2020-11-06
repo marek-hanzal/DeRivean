@@ -25,6 +25,7 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.Fetch>(container) {
 	override fun map(item: Kingdom) = Fetch.build {
 		this.id = item.id
+		this.user = item.user.id
 		this.name = item.name
 		item.attributes.forEach {
 			this.attributes.add(Attribute(it.name, it.value))
@@ -33,6 +34,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 
 	data class Fetch(
 		val id: String,
+		val user: String,
 		val name: String,
 		val attributes: List<Attribute>,
 	) {
@@ -42,11 +44,13 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 
 		class Builder {
 			lateinit var id: EntityUUID
+			lateinit var user: EntityUUID
 			lateinit var name: String
 			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Fetch(
 				id.toString(),
+				user.toString(),
 				name,
 				attributes,
 			)
