@@ -25,10 +25,10 @@ const Menu = () => {
 			routes={[
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard.link()} icon={<BackIcon/>}/>
+					<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home.link()} icon={<UserIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home} icon={<UserIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<KingdomMenuItem key={"root.kingdom"}/>
 					<MenuDivider/>
@@ -36,11 +36,11 @@ const Menu = () => {
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes.link()} icon={<AttributeIcon/>}/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"}/>
 				</BaseMenu>),
@@ -60,9 +60,9 @@ const Menu = () => {
 const UserMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} icon={<UserIcon/>} {...props}>
-			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
 };

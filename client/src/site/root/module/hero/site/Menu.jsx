@@ -20,9 +20,9 @@ const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+			<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 			<MenuDivider/>
-			<HeroMenuItem/>
+			<HeroMenuItem key={id}/>
 			<MenuDivider/>
 			<LogoutMenuItem/>
 		</BaseMenu>
@@ -35,17 +35,17 @@ const Menu = () => {
 			routes={[
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem id={id} href={link.home.link()} icon={<HeroIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home} icon={<HeroIcon/>}/>
 					<MenuDivider/>
-					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem id={id} href={link.home.link()} icon={<BackIcon/>}/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem/>
 				</BaseMenu>),
@@ -60,9 +60,9 @@ const Menu = () => {
 const HeroMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} icon={<HeroIcon/>} {...props}>
-			<MenuItem id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
 };

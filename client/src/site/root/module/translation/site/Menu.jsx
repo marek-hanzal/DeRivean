@@ -26,7 +26,7 @@ const Menu = () => {
 					<MenuDivider/>
 
 					<TranslationMenuItem key={id}>
-						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit.link()} icon={<EditIcon/>}/>
+						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					</TranslationMenuItem>,
 
 					<MenuDivider/>
@@ -50,9 +50,9 @@ const Menu = () => {
 const TranslationMenuItem = ({children, ...props}) => {
 	return (
 		<MenuGroup id={id} icon={<TranslationIcon/>} {...props}>
-			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard.link()} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create.link()} icon={<CreateIcon/>}/>
-			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list.link()} icon={<ListIcon/>}/>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 			{children}
 		</MenuGroup>
 	);

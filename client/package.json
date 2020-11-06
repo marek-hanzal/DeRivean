@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.5.287",
+	"version": "0.5.288",
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
@@ -8,6 +8,7 @@
 		"@testing-library/react": "^11.1.1",
 		"@testing-library/user-event": "^12.2.0",
 		"antd": "^4.8.0",
+		"arr-diff": "^4.0.0",
 		"axios": "^0.21.0",
 		"build-url": "^6.0.1",
 		"classnames": "^2.2.6",

@@ -4,7 +4,7 @@ import Routes from "site/Routes";
 
 const HomeMenuItem = (props) => {
 	return (
-		<MenuItem id={"root.home"} href={Routes.root.link()} icon={<BackIcon/>} {...props}/>
+		<MenuItem id={"root.home"} href={Routes.root} icon={<BackIcon/>} {...props}/>
 	);
 };
 

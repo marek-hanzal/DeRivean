@@ -4,7 +4,7 @@ import Routes from "site/Routes";
 
 const LogoutMenuItem = (props) => {
 	return (
-		<MenuItem id={"root.sign-out"} href={Routes.root.signOut.link()} icon={<SignOutIcon/>} {...props}/>
+		<MenuItem id={"root.sign-out"} href={Routes.root.signOut} icon={<SignOutIcon/>} {...props}/>
 	);
 };
 

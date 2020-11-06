@@ -39,7 +39,7 @@ const Site = () => {
 						TranslationMenuRoute(),
 						route("*", <BaseMenu>
 							<MenuDivider/>
-							<MenuItem key={"root.home"} id={"root.home"} href={Routes.root.link()} icon={<HomeIcon/>}/>
+							<MenuItem key={"root.home"} id={"root.home"} href={Routes.root} icon={<HomeIcon/>}/>
 							<MenuDivider/>
 
 							<UserMenuItem key={"root.user"}/>
