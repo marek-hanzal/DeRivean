@@ -19,6 +19,8 @@ const CreateView = () => {
 						context={UserContext}
 						param={"user"}
 						defaultEnableSubmit={true}
+						// site, template and attributes
+						readyCount={3}
 					>
 						<Card title={t(`${id}.form.title`)}>
 							<LoginInput/>

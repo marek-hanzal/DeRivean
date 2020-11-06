@@ -3,6 +3,7 @@ import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm
 import axios from "axios";
 import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
+import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -12,7 +13,7 @@ const AttributeFieldEditor = ({translation, redux}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
-	const [attributes, setAttributes] = useState([]);
+	const [attributes, setAttributes] = useState();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(redux.redux.attributes.dispatch.attributes(cancelToken)).then(attributes => {
@@ -86,7 +87,8 @@ const AttributeFieldEditor = ({translation, redux}) => {
 												type="primary"
 												ghost
 												onClick={() => add()}
-												icon={<PlusOutlined/>}
+												disabled={!attributes}
+												icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
 												children={t(translation + ".form.attribute.add")}
 											/>
 										</List.Item>
@@ -105,7 +107,8 @@ const AttributeFieldEditor = ({translation, redux}) => {
 										type="primary"
 										ghost
 										onClick={() => add()}
-										icon={<PlusOutlined/>}
+										disabled={!attributes}
+										icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
 										children={t(translation + ".form.attribute.add")}
 									/>
 								</>

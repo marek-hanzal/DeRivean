@@ -1,5 +1,6 @@
 import {Button, Form} from "antd";
 import EditorContext from "component/form/EditorContext";
+import Spinner from "component/icon/Spinner";
 import SubmitIcon from "component/icon/SubmitIcon";
 import PropTypes from "prop-types";
 import {useContext} from "react";
@@ -19,8 +20,8 @@ const SubmitButton = (
 					type={"primary"}
 					size={"large"}
 					htmlType={"submit"}
-					icon={<SubmitIcon/>}
-					disabled={!(editorContext.enableSubmit && !enableSubmit(editorContext.form, false))}
+					icon={<Spinner done={!editorContext.ready} icon={<SubmitIcon/>}/>}
+					disabled={!(!editorContext.ready && editorContext.enableSubmit && !enableSubmit(editorContext.form, false))}
 					children={t(title || "common.submit")}
 				/>
 			)}

@@ -1,17 +1,10 @@
-import { Select } from "antd";
+import {Select} from "antd";
 import axios from "axios";
-import {
-	useContext,
-	useEffect,
-	useRef,
-	useState
-} from "react";
-import { GlobalHotKeys } from "react-hotkeys";
-import { useTranslation } from "react-i18next";
-import {
-	useDispatch,
-	useSelector
-} from "react-redux";
+import EditorContext from "component/form/EditorContext";
+import {useContext, useEffect, useRef, useState} from "react";
+import {GlobalHotKeys} from "react-hotkeys";
+import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
 
 const SearchInput = (
 	{
@@ -22,21 +15,25 @@ const SearchInput = (
 		hotkey,
 		...props
 	}) => {
-	context               = useContext(context);
-	const {t}             = useTranslation();
-	const ref             = useRef();
-	const dispatch        = useDispatch();
+	context = useContext(context);
+	const {t} = useTranslation();
+	const ref = useRef();
+	const dispatch = useDispatch();
 	const [data, setData] = useState([]);
-	const isLoading       = useSelector(context.redux.redux.search.selector.isLoading);
-	mapper                = mapper || (data => data.items.map(item => ({
+	const isLoading = useSelector(context.redux.redux.search.selector.isLoading);
+	const editorContext = useContext(EditorContext);
+	mapper = mapper || (data => data.items.map(item => ({
 		label: item.name,
 		value: item.id, ...item
 	})));
-	render                = render || (item => item.name);
+	render = render || (item => item.name);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		dispatch(context.redux.redux.search.dispatch.search({search: ""}, cancelToken)).then(data => {
 			setData(mapper(data));
+			if (editorContext) {
+				editorContext.isReady();
+			}
 		}, () => {
 		});
 		return () => cancelToken.cancel();

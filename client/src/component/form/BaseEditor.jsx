@@ -1,6 +1,5 @@
 import {Form} from "antd";
 import EditorContext from "component/form/EditorContext";
-import EditorToolbar from "component/form/EditorToolbar";
 import PropTypes from "prop-types";
 import {useState} from "react";
 
@@ -10,9 +9,6 @@ const BaseEditor = (
 		readyCount,
 		enableEditor = false,
 		defaultEnableSubmit,
-		translation,
-		param,
-		redux,
 		onFinish,
 		onFinishFailed = () => null,
 		children,
@@ -44,7 +40,6 @@ const BaseEditor = (
 						ready,
 						isReady,
 						form,
-						submit: () => <EditorToolbar param={param} redux={redux} translation={translation}/>,
 					}}
 					children={children}
 				/>

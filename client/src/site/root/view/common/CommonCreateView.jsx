@@ -16,6 +16,7 @@ const CommonCreateView = (
 		context,
 		param,
 		children,
+		readyCount,
 		name,
 		defaultEnableSubmit,
 	}) => {
@@ -29,6 +30,7 @@ const CommonCreateView = (
 	return (
 		<BaseEditor
 			enableEditor={true}
+			readyCount={readyCount}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(values, initials, setErrors) => {
 				dispatch(currentContext.redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
@@ -80,6 +82,7 @@ const CommonCreateView = (
 
 CommonCreateView.propTypes = {
 	param: PropTypes.string.isRequired,
+	ready: PropTypes.number,
 	defaultEnableSubmit: PropTypes.any,
 };
 

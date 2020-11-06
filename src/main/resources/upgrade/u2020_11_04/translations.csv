@@ -234,6 +234,7 @@ c89fcfe6-a470-4f43-8519-e4540127e372,en,translation,root.hero.form.attribute.val
 68fdc275-60a9-40a4-93e7-7983f0734f94,en,translation,public.sign-up.succeed.title,Welcome to the World of DeRivean!
 47eb82cb-96a7-4c33-ba3c-5c8ecb8c7e76,en,translation,public.sign-up.succeed.subtitle,Now you can access you account from login page and see what awaits you!
 194d4c8a-d9d6-4cf6-8621-4f4768b99d85,en,translation,public.sign-up.continue.title,Sing In!
+323390b5-23e2-4d07-b4a4-e165f82d51e5,en,translation,root.user.form.login.required,"User login is a bit required field, so please fill one!"
 cef22edc-96f0-4b20-9e14-6e64f1045394,en,translation,hero.list.back.menu,Back
 2857b86f-dde3-45c7-8278-ff1a0358b0ee,en,translation,root.building.list.back,Back
 d0db911f-f980-4a2a-9afb-6e2dfd1364ca,en,translation,root.hero.home.back.menu,Back
@@ -262,7 +263,6 @@ f06301b7-50d9-4b2d-98fa-2dda366593ff,en,translation,root.kingdom.form.name.requi
 66760a32-88cd-4ece-b4ae-c492d5867f45,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
 92efc790-3bd2-4ed1-95f0-c837c8dc0d3d,en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
 cddc9e9a-c7aa-4a0a-bc93-76f099c74189,en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
-150fc09a-8db1-4df6-8739-068447155708,en,translation,root.user.attributes.title,User's Attributes
 cdee997c-db51-4a54-b230-2741f598feca,en,translation,root.user.attributes.subtitle,Editor of attributes for the selected user.
 12aec826-6063-412a-950e-d6d94ec6a0da,en,translation,root.user.form.attribute.name.hint,Select attribute
 4a2eaae9-2b19-41e6-aeee-47e986434eb4,en,translation,root.user.form.attribute.value.hint,Value
@@ -271,3 +271,6 @@ c66459c5-2e3f-47c4-bd34-4a272b2cda97,en,translation,root.user.form.attribute.val
 a25896d6-dff2-49ac-a5f4-fd429df92c71,en,translation,root.user.update.error,"Cannot update User, please check inputs!"
 8b65eb5e-7ede-4fe9-9c91-0fd7d99675c5,en,translation,root.user.attributes.submit,Save changes!
 f594e6a1-c10f-48a1-9923-d48c54332e7b,en,translation,root.user.form.attribute.deleteConfirm,Delete attribute?
+5186bc6f-b7e2-4c45-a996-5c9a55356e72,en,translation,root.user.form.name.required,Please pick some nice user name!
+150fc09a-8db1-4df6-8739-068447155708,en,translation,root.user.attributes.title,User's Attributes
+647c4bd4-01b4-404f-a4b1-59b4171f7d37,en,translation,root.user.create.error,Cannot create User!
