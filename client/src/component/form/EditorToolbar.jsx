@@ -12,7 +12,7 @@ import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import values from "utils/form/values";
 
-const EditSubmitButtons = (
+const EditorToolbar = (
 	{
 		form,
 		initials,
@@ -26,7 +26,7 @@ const EditSubmitButtons = (
 	const navigate = useNavigate();
 	const editor = useContext(EditorContext);
 	const {t} = useTranslation();
-	const cleverLink = useCleverLink(deletedLink);
+	const cleverLink = useCleverLink(deletedLink || {link: () => ""});
 	if (!editor) {
 		throw new Error("Missing Editor Context!");
 	}
@@ -36,20 +36,22 @@ const EditSubmitButtons = (
 			<Space split={<Divider type={"vertical"}/>}>
 				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
 				<CancelEditButton form={form} translation={translation} initials={initials}/>
-				<Popconfirm
-					okText={t("common.yes")}
-					cancelText={t("common.no")}
-					title={t(translation + ".edit.form.deleteConfirm")}
-					onConfirm={() => {
-						dispatch(redux.redux.delete.dispatch.delete({id: params[param]})).then(_ => {
-							message.success(t(translation + ".delete.success"));
-							setTimeout(() => navigate(cleverLink.link), 0);
-						}, () => {
-							message.error(t(translation + ".delete.error"));
-						});
-					}}
-					children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(translation + ".edit.form.delete")}/>}
-				/>
+				{deletedLink ?
+					<Popconfirm
+						okText={t("common.yes")}
+						cancelText={t("common.no")}
+						title={t(translation + ".edit.form.deleteConfirm")}
+						onConfirm={() => {
+							dispatch(redux.redux.delete.dispatch.delete({id: params[param]})).then(_ => {
+								message.success(t(translation + ".delete.success"));
+								setTimeout(() => navigate(cleverLink.link), 0);
+							}, () => {
+								message.error(t(translation + ".delete.error"));
+							});
+						}}
+						children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(translation + ".edit.form.delete")}/>}
+					/> : null
+				}
 			</Space> :
 			<Button type={"primary"} ghost size={"large"} disabled={!initials} onClick={() => {
 				editor.setEditor(true);
@@ -58,13 +60,13 @@ const EditSubmitButtons = (
 	);
 };
 
-EditSubmitButtons.propTypes = {
+EditorToolbar.propTypes = {
 	form: PropTypes.any.isRequired,
 	initials: PropTypes.object,
 	translation: PropTypes.string.isRequired,
 	param: PropTypes.string.isRequired,
 	redux: PropTypes.object.isRequired,
-	deletedLink: PropTypes.object.isRequired,
+	deletedLink: PropTypes.object,
 };
 
-export default EditSubmitButtons;
+export default EditorToolbar;

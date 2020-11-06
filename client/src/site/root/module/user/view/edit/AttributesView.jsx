@@ -1,9 +1,9 @@
-import {Button, Card, Divider, Form, Result} from "antd";
+import {Card, Divider, Form, Result} from "antd";
 import axios from "axios";
 import EditorContext from "component/form/EditorContext";
+import EditorToolbar from "component/form/EditorToolbar";
 import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
-import SubmitIcon from "component/icon/SubmitIcon";
 import Centered from "component/layout/Centered";
 import useMenuSelect from "hook/useMenuSelect";
 import {useEffect, useState} from "react";
@@ -22,7 +22,7 @@ const AttributesView = () => {
 	const params = useParams();
 	const [data, setData] = useState();
 	const [errors, setErrors] = useState();
-	const [editor, setEditor] = useState(true);
+	const [editor, setEditor] = useState(false);
 	const [enableSubmit, setEnableSubmit] = useState(false);
 	const [attributes, setAttributes] = useState([]);
 	const [form] = Form.useForm();
@@ -60,7 +60,7 @@ const AttributesView = () => {
 									icon={<Spinner icon={<AttributeIcon/>} done={data && attributes}/>}
 									title={
 										<>
-											<Button disabled={!enableSubmit} size={"large"} type={"primary"} ghost htmlType={"submit"} icon={<SubmitIcon/>} children={t(`${id}.attributes.submit`)}/>
+											<EditorToolbar form={form} initials={data} param={"user"} redux={UserRedux} translation={id}/>
 											<Divider type={"horizontal"}/>
 										</>
 									}
