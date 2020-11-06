@@ -276,3 +276,7 @@ f594e6a1-c10f-48a1-9923-d48c54332e7b,en,translation,root.user.form.attribute.del
 647c4bd4-01b4-404f-a4b1-59b4171f7d37,en,translation,root.user.create.error,Cannot create User!
 2a0528cf-f97d-4f2b-bd43-2be0137a4175,en,translation,root.user.attributes.updated,Attributes updated!
 4b872581-2544-4e24-aacc-014d4d6f1221,en,translation,root.user.update.success,User updated!
+5168c29a-50cd-4e69-958f-02ada0dbd572,en,translation,root.kingdom.attributes.menu,Attributes
+0888c584-f636-48c1-924d-3bcd605ca43c,en,translation,root.kingdom.attributes.title,Kingdom Attributes
+2d6c949e-bb76-4956-8a9f-25f126000d83,en,translation,root.kingdom.attributes.subtitle,Here you can edit attributes of the selected Kingdom!
+971fa406-42e1-409b-ada3-78e0a34be0eb,en,translation,root.kingdom.attributes.updated,Kingdom Attributes updated!
