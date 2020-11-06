@@ -30,7 +30,6 @@ const EditorToolbar = (
 	if (!editor) {
 		throw new Error("Missing Editor Context!");
 	}
-
 	return (
 		editor.editor ?
 			<Space split={<Divider type={"vertical"}/>}>

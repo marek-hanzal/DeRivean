@@ -51,7 +51,7 @@ const AttributesView = () => {
 					<Form
 						form={form}
 						onFinish={values => {
-							console.log("submit!", values);
+							console.log("submit!", {id: data.id, ...values});
 						}}
 					>
 						<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>

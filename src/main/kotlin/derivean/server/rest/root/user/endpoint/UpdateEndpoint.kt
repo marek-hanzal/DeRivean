@@ -38,13 +38,10 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		ok(storage.write {
 			fetchMapper.map(
 				userRepository.update(item.id) {
-					this.name = item.name
-					this.login = item.login
-					this.password = item.password?.let { authenticatorService.encrypt(it) } ?: this.password
+					item.name?.let { this.name = it }
+					item.login?.let { this.login = it }
+					item.password?.let { this.password = authenticatorService.encrypt(it) }
 					userRepository.attributes(item.id, attributeMapper.map(item.attributes))
-					item.template?.let {
-						userRepository.useTemplate(it, this)
-					}
 				}
 			)
 		})
@@ -75,10 +72,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 
 	data class Request(
 		val id: String,
-		val name: String,
-		val login: String,
+		val name: String?,
+		val login: String?,
 		val password: String?,
-		val template: String?,
 		val attributes: Attributes?,
 	)
 }

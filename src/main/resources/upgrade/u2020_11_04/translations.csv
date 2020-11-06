@@ -269,3 +269,5 @@ cdee997c-db51-4a54-b230-2741f598feca,en,translation,root.user.attributes.subtitl
 ff145044-909d-4986-ac9a-7ebc7535c32f,en,translation,root.user.form.attribute.name.required,Please pick attribute!
 c66459c5-2e3f-47c4-bd34-4a272b2cda97,en,translation,root.user.form.attribute.value.required,Please fill attribute value!
 a25896d6-dff2-49ac-a5f4-fd429df92c71,en,translation,root.user.update.error,"Cannot update User, please check inputs!"
+8b65eb5e-7ede-4fe9-9c91-0fd7d99675c5,en,translation,root.user.attributes.submit,Save changes!
+f594e6a1-c10f-48a1-9923-d48c54332e7b,en,translation,root.user.form.attribute.deleteConfirm,Delete attribute?
