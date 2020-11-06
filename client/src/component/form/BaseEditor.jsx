@@ -12,6 +12,7 @@ const BaseEditor = (
 		redux,
 		onFinish,
 		onFinishFailed = () => null,
+		children,
 	}) => {
 	const [errors, setErrors] = useState();
 	const [initials, setInitials] = useState();
@@ -22,22 +23,24 @@ const BaseEditor = (
 		<Form
 			name={name}
 			form={form}
-			onFinish={onFinish}
+			onFinish={values => onFinish(values, initials)}
 			onFinishFailed={onFinishFailed}
 		>
-			<EditorContext.Provider value={{
-				errors,
-				setErrors,
-				editor,
-				setEditor,
-				enableSubmit,
-				setEnableSubmit,
-				initials,
-				setInitials,
-				form,
-				submit: <EditorToolbar form={form} param={param} redux={redux} translation={translation}/>,
-			}}>
-			</EditorContext.Provider>
+			<EditorContext.Provider
+				value={{
+					errors,
+					setErrors,
+					editor,
+					setEditor,
+					enableSubmit,
+					setEnableSubmit,
+					initials,
+					setInitials,
+					form,
+					submit: () => <EditorToolbar param={param} redux={redux} translation={translation}/>,
+				}}
+				children={children}
+			/>
 		</Form>
 	);
 };

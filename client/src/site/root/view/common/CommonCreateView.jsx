@@ -30,7 +30,7 @@ const CommonCreateView = (
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	useMenuSelect(currentContext.id + ".create");
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit, form}}>
 			<Form
 				form={form}
 				name={currentContext.id}

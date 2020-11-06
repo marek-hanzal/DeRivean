@@ -41,7 +41,7 @@ const CommonEditView = (
 		return () => cancelToken.cancel();
 	}, [dispatch, form, param, params, currentContext.redux.redux.fetch.dispatch]);
 	return (
-		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit, initials, setInitials}}>
+		<EditorContext.Provider value={{errors, setErrors, editor, setEditor, enableSubmit, setEnableSubmit, initials, setInitials, form}}>
 			<Form
 				form={form}
 				name={currentContext.id}
@@ -67,8 +67,6 @@ const CommonEditView = (
 						status={"info"}
 						title={
 							<EditorToolbar
-								initials={initials}
-								form={form}
 								translation={currentContext.id}
 								param={param}
 								redux={currentContext.redux}

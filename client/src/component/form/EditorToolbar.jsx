@@ -14,7 +14,6 @@ import values from "utils/form/values";
 
 const EditorToolbar = (
 	{
-		form,
 		translation,
 		param,
 		redux,
@@ -32,8 +31,8 @@ const EditorToolbar = (
 	return (
 		editorContext.editor ?
 			<Space split={<Divider type={"vertical"}/>}>
-				<SubmitButton form={form} title={translation + ".edit.form.submit"}/>
-				<CancelEditButton form={form} translation={translation}/>
+				<SubmitButton title={translation + ".edit.form.submit"}/>
+				<CancelEditButton translation={translation}/>
 				{deletedLink && redux && param ?
 					<Popconfirm
 						okText={t("common.yes")}
@@ -53,13 +52,12 @@ const EditorToolbar = (
 			</Space> :
 			<Button type={"primary"} ghost size={"large"} disabled={!editorContext.initials} onClick={() => {
 				editorContext.setEditor(true);
-				values(form, editorContext.initials);
+				values(editorContext.form, editorContext.initials);
 			}} icon={<EditIcon/>}>{t(translation + ".edit.form.edit")}</Button>
 	);
 };
 
 EditorToolbar.propTypes = {
-	form: PropTypes.any.isRequired,
 	translation: PropTypes.string.isRequired,
 	param: PropTypes.string,
 	redux: PropTypes.object,

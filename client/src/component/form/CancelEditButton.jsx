@@ -7,7 +7,6 @@ import values from "utils/form/values";
 
 const CancelEditButton = (
 	{
-		form,
 		translation,
 	}) => {
 	const {t} = useTranslation();
@@ -18,21 +17,21 @@ const CancelEditButton = (
 	return (
 		<Form.Item shouldUpdate noStyle>
 			{() => (
-				form.isFieldsTouched() ?
+				editorContext.form.isFieldsTouched() ?
 					<Popconfirm
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
 						title={t(translation + ".edit.form.cancelConfirm")}
 						onConfirm={() => {
 							editorContext.setEditor(false);
-							values(form, editorContext.initials);
+							values(editorContext.form, editorContext.initials);
 							editorContext.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"dashed"} danger ghost icon={<CancelIcon/>} onClick={() => {
 						editorContext.setEditor(false);
-						values(form, editorContext.initials);
+						values(editorContext.form, editorContext.initials);
 						editorContext.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}

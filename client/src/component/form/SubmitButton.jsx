@@ -8,7 +8,6 @@ import enableSubmit from "utils/form/enableSubmit";
 
 const SubmitButton = (
 	{
-		form,
 		title,
 	}) => {
 	const {t} = useTranslation();
@@ -21,7 +20,7 @@ const SubmitButton = (
 					size={"large"}
 					htmlType={"submit"}
 					icon={<SubmitIcon/>}
-					disabled={!(editorContext.enableSubmit && !enableSubmit(form, false))}
+					disabled={!(editorContext.enableSubmit && !enableSubmit(editorContext.form, false))}
 					children={t(title || "common.submit")}
 				/>
 			)}
@@ -30,7 +29,6 @@ const SubmitButton = (
 };
 
 SubmitButton.propTypes = {
-	form: PropTypes.any.isRequired,
 	title: PropTypes.string,
 	enable: PropTypes.any,
 };
