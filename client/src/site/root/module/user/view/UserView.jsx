@@ -11,7 +11,7 @@ const UserView = ({children, ...props}) => {
 			id: "root.user",
 			redux: UserRedux,
 			link: {
-				home: Routes.root.user.home.link,
+				home: Routes.root.user.home,
 				dashboard: Routes.root.user.dashboard,
 			}
 		}}>

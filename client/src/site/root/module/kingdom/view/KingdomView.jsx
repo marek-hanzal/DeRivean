@@ -11,7 +11,7 @@ const KingdomView = ({children, ...props}) => {
 			id: "root.kingdom",
 			redux: KingdomRedux,
 			link: {
-				home: Routes.root.kingdom.home.link,
+				home: Routes.root.kingdom.home,
 				dashboard: Routes.root.kingdom.dashboard,
 			}
 		}}>

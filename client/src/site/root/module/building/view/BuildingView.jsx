@@ -11,8 +11,7 @@ const BuildingView = ({children, ...props}) => {
 			id: "root.building",
 			redux: BuildingRedux,
 			link: {
-				home: Routes.root.building.home.link,
-				edit: Routes.root.building.edit.link,
+				home: Routes.root.building.home,
 				dashboard: Routes.root.building.dashboard,
 			}
 		}}>

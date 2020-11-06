@@ -11,8 +11,7 @@ const HeroView = ({children, ...props}) => {
 			id: "root.hero",
 			redux: HeroRedux,
 			link: {
-				home: Routes.root.hero.home.link,
-				edit: Routes.root.hero.edit.link,
+				home: Routes.root.hero.home,
 				dashboard: Routes.root.hero.dashboard,
 			}
 		}}>

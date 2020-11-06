@@ -39,7 +39,7 @@ const CommonCreateView = (
 				onFinish={values => {
 					dispatch(currentContext.redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
 						message.success(t(currentContext.id + ".create.success"));
-						navigate(currentContext.link.home(entity.id));
+						navigate(currentContext.link.home.link(entity.id));
 					}, errors => {
 						message.error(t(currentContext.id + ".create.error"));
 						setErrors(errors);

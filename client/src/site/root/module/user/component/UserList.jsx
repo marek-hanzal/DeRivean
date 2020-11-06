@@ -10,7 +10,7 @@ const UserList = () => {
 			id={`${context.id}.list.table`}
 			redux={context.redux}
 			columns={[
-				{title: "id", width: 380, render: (text, record) => <Link to={context.link.home(record.id)} children={text}/>},
+				{title: "id", width: 380, render: (text, record) => <Link to={context.link.home.link(record.id)} children={text}/>},
 				{title: "name", width: 220},
 				{title: "login", width: 220},
 				{title: "token", width: 380},
