@@ -7,6 +7,8 @@ import {useState} from "react";
 const BaseEditor = (
 	{
 		name,
+		enableEditor = false,
+		defaultEnableSubmit,
 		translation,
 		param,
 		redux,
@@ -16,14 +18,14 @@ const BaseEditor = (
 	}) => {
 	const [errors, setErrors] = useState();
 	const [initials, setInitials] = useState();
-	const [editor, setEditor] = useState(false);
-	const [enableSubmit, setEnableSubmit] = useState(false);
+	const [editor, setEditor] = useState(enableEditor);
+	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	const [form] = Form.useForm();
 	return (
 		<Form
 			name={name}
 			form={form}
-			onFinish={values => onFinish(values, initials)}
+			onFinish={values => onFinish(values, initials, setErrors)}
 			onFinishFailed={onFinishFailed}
 		>
 			<EditorContext.Provider

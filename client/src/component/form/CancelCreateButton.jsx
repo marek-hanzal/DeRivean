@@ -6,28 +6,27 @@ import {useTranslation} from "react-i18next";
 
 const CancelCreateButton = (
 	{
-		form,
 		translation,
 	}) => {
 	const {t} = useTranslation();
-	const editor = useContext(EditorContext);
+	const editorContext = useContext(EditorContext);
 	return (
 		<Form.Item shouldUpdate noStyle>
 			{() => (
-				form.isFieldsTouched() ?
+				editorContext.form.isFieldsTouched() ?
 					<Popconfirm
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
 						title={t(translation + ".create.form.cancelConfirm")}
 						onConfirm={() => {
-							form.resetFields();
-							editor.setErrors(null);
+							editorContext.form.resetFields();
+							editorContext.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
-					<Button type={"dashed"} danger disabled={!form.isFieldsTouched()} ghost icon={<CancelIcon/>} onClick={() => {
-						form.resetFields();
-						editor.setErrors(null);
+					<Button type={"dashed"} danger disabled={!editorContext.form.isFieldsTouched()} ghost icon={<CancelIcon/>} onClick={() => {
+						editorContext.form.resetFields();
+						editorContext.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}
 		</Form.Item>
