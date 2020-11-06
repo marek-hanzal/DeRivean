@@ -152,6 +152,11 @@ const Routes = {
                 link: resolveUuid("hero", "/hero/h/:hero/edit"),
                 params: ["hero"],
             },
+            attributes: {
+                match: () => "h/:hero/attributes",
+                link: resolveUuid("hero", "/hero/h/:hero/attributes"),
+                params: ["hero"],
+            },
             list: {
                 match: () => "k/:kingdom/list/*",
                 link: resolveUuid("kingdom", "/hero/k/:kingdom/list"),

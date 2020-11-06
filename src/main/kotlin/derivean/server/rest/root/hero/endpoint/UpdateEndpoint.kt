@@ -36,7 +36,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		ok(storage.write {
 			fetchMapper.map(
 				heroRepository.update(item.id) {
-					this.name = item.name
+					item.name?.let { this.name = it }
 					heroRepository.attributes(item.id, attributeMapper.map(item.attributes))
 				}
 			)
@@ -60,5 +60,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Re
 		})
 	}
 
-	data class Request(val id: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val id: String,
+		val name: String?,
+		val attributes: Attributes?,
+	)
 }

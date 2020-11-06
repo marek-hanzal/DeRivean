@@ -1,6 +1,7 @@
 import BaseRoutes from "component/route/BaseRoutes";
 import CreateView from "site/root/module/hero/view/create/CreateView";
 import DashboardView from "site/root/module/hero/view/dashboard/DashboardView";
+import AttributesView from "site/root/module/hero/view/edit/AttributesView";
 import EditView from "site/root/module/hero/view/edit/EditView";
 import HomeView from "site/root/module/hero/view/home/HomeView";
 import ListView from "site/root/module/hero/view/list/ListView";
@@ -19,6 +20,7 @@ const Router = () => {
 				route(links.create.match(), <CreateView/>),
 				route(links.home.match(), <HomeView/>),
 				route(links.edit.match(), <EditView/>),
+				route(links.attributes.match(), <AttributesView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>

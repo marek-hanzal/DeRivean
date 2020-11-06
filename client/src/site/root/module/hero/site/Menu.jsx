@@ -1,3 +1,4 @@
+import AttributeIcon from "component/icon/AttributeIcon";
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
@@ -48,6 +49,18 @@ const Menu = () => {
 					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem/>
+				</BaseMenu>),
+				route(link.attributes.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem/>
 				</BaseMenu>),

@@ -280,3 +280,7 @@ f594e6a1-c10f-48a1-9923-d48c54332e7b,en,translation,root.user.form.attribute.del
 0888c584-f636-48c1-924d-3bcd605ca43c,en,translation,root.kingdom.attributes.title,Kingdom Attributes
 2d6c949e-bb76-4956-8a9f-25f126000d83,en,translation,root.kingdom.attributes.subtitle,Here you can edit attributes of the selected Kingdom!
 971fa406-42e1-409b-ada3-78e0a34be0eb,en,translation,root.kingdom.attributes.updated,Kingdom Attributes updated!
+9e9d8e6a-bf9b-47ed-8136-d28c0553cb33,en,translation,root.hero.attributes.menu,Attributes
+502d8021-1885-4a38-a532-e58419eb29a9,en,translation,root.hero.attributes.title,Hero Attributes
+05aef85a-fabf-403e-8632-2a2642b5a2a0,en,translation,root.hero.attributes.updated,Attributes updated!
+74559205-a78a-4d75-ba77-26ab4083a0dc,en,translation,root.hero.attributes.subtitle,Here you can manager Hero Attributes!
