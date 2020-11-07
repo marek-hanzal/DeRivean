@@ -290,3 +290,8 @@ f6f1b16c-1126-441c-9dab-146f63704caf,en,translation,root.building.attributes.upd
 dfacde34-1284-4d48-8fff-41cdfda8403f,en,translation,root.building.attributes.title,Building Attributes
 d4bbd8e2-1bbc-479f-843c-2f486bcc43ca,en,translation,root.building.edit.form.cancelConfirm,"All changes will be lost, continue?"
 02dfecde-d55f-4eda-97f5-6b998105207f,en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"
+10a4bf35-b2cf-4610-b797-28426f68e38d,en,translation,root.user.list.login,Login
+4a328c83-c0aa-4205-ade0-9d923bf85dd3,en,translation,root.user.list.token,Token
+f080898c-4c48-4deb-a807-49fa588a394f,en,translation,root.user.list.kingdom-hint,Click to see kingdom list.
+3ca0eab8-6bb3-4f4f-9a08-8bcd5bbf3a35,en,translation,root.user.list.edit,Edit!
+18a94bc5-2ce8-4b08-8131-33b6d3d98f5e,en,translation,root.user.list.empty-token,Empty token
