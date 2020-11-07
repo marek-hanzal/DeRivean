@@ -1,6 +1,5 @@
 import axios from "axios";
 import {selectLink} from "redux/discovery/redux";
-import {SessionRedux} from "redux/session/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -15,7 +14,6 @@ function CreateLinkRedux(id, action, link) {
 					dispatch(this.actions.request());
 					return Server.get(selectLink(link, getState()), {
 						cancelToken: (cancelToken || axios.CancelToken.source()).token,
-						headers: {Authorization: `Bearer ${SessionRedux.selector.getUser(getState()).token}`}
 					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));

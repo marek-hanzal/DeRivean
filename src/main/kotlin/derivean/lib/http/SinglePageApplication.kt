@@ -82,7 +82,7 @@ class SinglePageApplication(private val configuration: Configuration) {
 
 	data class Configuration(
 		var route: String = "",
-		var path: String = "",
+		var path: String = "client",
 		var defaultPage: String = "index.html",
 		var ignoreIfContains: Regex? = null
 	) {
