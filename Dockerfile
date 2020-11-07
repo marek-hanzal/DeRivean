@@ -3,7 +3,6 @@ FROM node as node
 WORKDIR /opt/app
 
 ADD client .
-ADD .git .
 
 RUN npm i && npm run build
 

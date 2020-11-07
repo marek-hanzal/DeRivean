@@ -44,7 +44,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "REACT_APP_HASH=$(git rev-parse --short HEAD) react-scripts build",
+		"build": "REACT_APP_HASH=$VERSION react-scripts build",
 		"test": "react-scripts test"
 	},
 	"eslintConfig": {
