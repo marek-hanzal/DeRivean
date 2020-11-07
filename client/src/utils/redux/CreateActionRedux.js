@@ -1,6 +1,7 @@
 import axios from "axios";
 import {selectLink} from "redux/discovery/redux";
 import {LoadingRedux} from "redux/loading/redux";
+import {SessionRedux} from "redux/session/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -16,6 +17,7 @@ function CreateActionRedux(id, action, link, extra = {}) {
 					dispatch(this.actions.request());
 					return Server.post(selectLink(link, getState()), data, {
 						cancelToken: (cancelToken || axios.CancelToken.source()).token,
+						headers: {Authorization: `Bearer ${SessionRedux.selector.getUser(getState()).token}`}
 					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
