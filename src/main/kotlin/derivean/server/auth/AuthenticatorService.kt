@@ -6,6 +6,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.user.UnknownUserException
 import derivean.lib.user.UserException
 import derivean.server.user.UserRepository
+import java.util.*
 
 class AuthenticatorService(container: IContainer) : AbstractService(container) {
 	private val userRepository: UserRepository by container.lazy()
@@ -22,6 +23,7 @@ class AuthenticatorService(container: IContainer) : AbstractService(container) {
 			if (!verify(password, it.password!!)) {
 				throw UserException("Invalid password")
 			}
+			it.ticket = UUID.randomUUID()
 		}
 	} catch (e: NoSuchElementException) {
 		throw UnknownUserException("Requested unknown login [$login].", e)

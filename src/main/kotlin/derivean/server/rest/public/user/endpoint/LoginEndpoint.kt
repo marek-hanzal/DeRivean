@@ -1,7 +1,7 @@
 package derivean.server.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.http.HttpServer
+import derivean.lib.http.ticket
 import derivean.lib.rest.*
 import derivean.lib.storage.IStorage
 import derivean.lib.user.LockedUserException
@@ -10,7 +10,6 @@ import derivean.server.auth.AuthenticatorService
 import io.ktor.application.*
 import io.ktor.request.*
 import io.ktor.routing.*
-import io.ktor.sessions.*
 import io.ktor.util.*
 
 @KtorExperimentalAPI
@@ -29,12 +28,19 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 				handle(call) {
 					call.receive<Request>().let {
 						call.resolve(try {
-							storage.read {
+							/**
+							 * Write, because authenticator service will generate a new ticket
+							 */
+							storage.write {
 								authenticatorService.authenticate(it.login, it.password).let { user ->
 									if (user.site == null) {
 										throw LockedUserException("User has no site assigned, thus login is prohibited!")
 									}
-									call.sessions.set(HttpServer.UserSession(user.id.toString()))
+									/**
+									 * AuthenticatorService should be responsible for generating ticket for the User; later it could (should?) be
+									 * some other service.
+									 */
+									call.ticket(user.ticket!!)
 									ok(Response(user.login, user.name, user.site!!))
 								}
 							}

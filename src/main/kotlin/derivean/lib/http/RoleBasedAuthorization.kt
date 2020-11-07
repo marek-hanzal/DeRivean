@@ -22,8 +22,8 @@ class RoleBasedAuthorization(config: Configuration) {
 	class Configuration {
 		internal var getRoles: (Principal) -> Set<Role> = { emptySet() }
 
-		fun getRoles(gr: (Principal) -> Set<Role>) {
-			getRoles = gr
+		fun getRoles(block: (Principal) -> Set<Role>) {
+			getRoles = block
 		}
 	}
 

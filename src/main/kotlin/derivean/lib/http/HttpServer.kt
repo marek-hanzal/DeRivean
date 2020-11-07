@@ -16,6 +16,7 @@ import io.ktor.sessions.*
 import io.ktor.util.*
 import kotlinx.coroutines.delay
 import mu.KotlinLogging
+import java.util.*
 import kotlin.random.Random
 import kotlin.reflect.KClass
 
@@ -47,7 +48,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			install(ConditionalHeaders)
 			install(PartialContent)
 			install(RoleBasedAuthorization) {
-				getRoles { (it as UserSession).roles }
+				getRoles { TODO("Get roles from service (by ticket)") }
 			}
 			install(Compression) {
 				gzip()
@@ -61,17 +62,23 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 				}
 			}
 			install(Sessions) {
-				cookie<UserSession>("user", SessionStorageMemory()) {
+				cookie<SessionTicket>("bobobo") {
 					/**
 					 * Prevent Google to take over the whole world and decline this cookie!
 					 */
-					cookie.extensions["SameSite"] = "None"
+//					cookie.extensions["SameSite"] = "None"
+//					cookie.maxAgeInSeconds = 10
+					this.serializer = object : SessionSerializer<SessionTicket> {
+						override fun deserialize(text: String) = SessionTicket(text)
+
+						override fun serialize(session: SessionTicket) = session.id
+					}
 				}
 			}
 			install(Authentication) {
-				session<UserSession> {
-					validate { userSession: UserSession ->
-						userSession
+				session<SessionTicket> {
+					validate { sessionTicket: SessionTicket ->
+						sessionTicket
 					}
 					challenge {
 						call.resolve(Response(HttpStatusCode.Unauthorized, "You cannot access this endpoint, I'm sorry about that."))
@@ -106,10 +113,12 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 		server.start(wait = true)
 	}
 
-	data class UserSession(
+	data class SessionTicket(
 		val id: String,
-		val roles: Set<String> = emptySet(),
 	) : Principal {
 		override fun toString() = id
 	}
 }
+
+@KtorExperimentalAPI
+fun ApplicationCall.ticket(ticket: UUID) = this.sessions.set(HttpServer.SessionTicket(ticket.toString()))
