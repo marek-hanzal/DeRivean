@@ -12,7 +12,6 @@ class u2020_10_19_04(container: IContainer) : AbstractUpgrade(container) {
 	override fun upgrade() {
 		storage.transaction {
 			userRepository.findByLogin("root").let {
-				it.site = "root"
 				it.password = authenticatorService.encrypt("root")
 			}
 		}

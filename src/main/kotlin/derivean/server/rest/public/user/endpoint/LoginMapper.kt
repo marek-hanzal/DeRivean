@@ -13,10 +13,7 @@ class LoginMapper(container: IContainer) : AbstractActionMapper<LoginMapper.Requ
 	override fun resolve(item: Request) = try {
 		ok(storage.transaction {
 			authenticatorService.authenticate(item.login, item.password).let {
-				if (it.site == null) {
-					throw LockedUserException("User has no site assigned, thus login is prohibited!")
-				}
-				Response(it.login, it.name, it.token!!, it.site!!)
+				Response(it.login, it.name)
 			}
 		})
 	} catch (e: LockedUserException) {
@@ -45,7 +42,5 @@ class LoginMapper(container: IContainer) : AbstractActionMapper<LoginMapper.Requ
 	data class Response(
 		val login: String,
 		val name: String,
-		val token: String,
-		val site: String,
 	)
 }

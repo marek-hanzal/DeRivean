@@ -9,9 +9,8 @@ class UpgradeUser(id: EntityUUID) : EntityWithAttributes(id) {
 
 	override val attributes by UpgradeUserAttribute referrersOn UpgradeUserAttributeTable.user
 	val kingdoms by UpgradeKingdom referrersOn UpgradeKingdomTable.user
+
 	var name by UpgradeUserTable.name
 	var login by UpgradeUserTable.login
 	var password by UpgradeUserTable.password
-	var token by UpgradeUserTable.token
-	var site by UpgradeUserTable.site
 }
