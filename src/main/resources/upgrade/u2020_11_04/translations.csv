@@ -303,3 +303,45 @@ c3237f95-16db-452e-9324-ae46deb8de8e,en,translation,root.kingdom.list.edit-attri
 dca5a2fd-368a-45c3-a2ac-8f21fa04a1de,en,translation,root.user.list.no-site,Without site (disabled)
 322f383e-e6a9-4b7e-a4ba-e94dddb5f47b,en,translation,root.user.list.site,Site
 b0c0f0cb-91ff-40fd-ad7d-15562e4ec04f,en,translation,root.user.list.edit-attributes,Edit Attributes!
+ddd78922-ece0-42c3-843e-15ae430dd21f,en,translation,root.hero.list.edit,Edit!
+1cf0e859-632f-464f-81bd-ac26851d60e1,en,translation,root.hero.list.edit-attributes,Edit Attributes!
+30e53322-fdda-49bf-9857-5b58ffd80d55,en,translation,root.building.list.edit-attributes,Edit Attributes!
+36dfa2f8-bf4c-4864-9c9a-4b6ca53b9ece,en,translation,root.building.list.edit,Edit!
+a5cb803c-e70c-4dd8-af62-82e5298d2f63,en,translation,root.translation.list.edit,Edit!
+a2635e07-f93f-4d71-9f57-70f56f5f7b26,en,translation,root.translation.list.language,Language
+aa8e1a1f-7972-4e03-8399-f1ced379b2d1,en,translation,root.translation.list.label,Label
+b0185bd1-85cd-45c8-ad87-588f2696c061,cs,translation,root.home.content.title,Vítej v administraci herního serveru DeRivean!
+e9dede9e-10bc-443f-8e6c-bffd08195a1d,cs,translation,root.home.content.subtitle,"Tady se odehrává veškerá magie, buď tedy obezřetný!"
+c8872d15-60f4-4aa0-b78c-5e3045c86f5d,cs,translation,root.translation.create.menu,Vytvořit
+aade9848-78c9-4b01-a9ba-3c2933d8032e,cs,translation,root.translation.list.menu,Seznam
+1d029ac8-f902-4ed2-8372-21c7950d0aba,cs,translation,root.translation.edit.menu,Editace
+210053be-304b-40a9-a5e3-6d6ad094f5da,cs,translation,root.translation.edit.form.edit,Editovat!
+3b2f4fed-26d0-4c32-b15b-f6df1c551a9e,cs,translation,root.translation.dashboard.menu,Nástěnka
+27e96dbb-c9b2-4d75-ba74-866e484bd918,cs,translation,root.translation.menu,Překlady
+81d1a855-c68d-4dea-88a6-5d852ff3d3b3,cs,translation,root.translation.create.form.submit,Vytvořit!
+4956ef01-9d46-4881-8341-8f638d78d617,cs,translation,root.translation.form.cancel,Zrušit!
+2b874bba-1ada-4e18-ab6f-74d4d02b3f93,cs,translation,root.translation.edit.form.submit,Uložit!
+846920dd-c42c-4c4f-8838-2b405db076f1,cs,translation,root.translation.edit.form.delete,Smazat!
+a7d4a93a-95bc-4590-a217-2771645b7704,cs,translation,root.translation.edit.form.deleteConfirm,Opravdu si přeješ smazat tento překlad?
+57da47cf-7551-4557-b770-e7b0a5422550,cs,translation,common.no,Ne
+c6180595-2ced-45c4-8669-674c57615bc2,cs,translation,common.yes,Ano!
+9e6a88f2-b8ab-4ace-91ad-41be4bdae899,cs,translation,root.home.menu,Domů
+4bdc616d-8484-4abc-bd58-daed0e016906,cs,translation,root.sign-out.menu,Odhlásit se!
+1d432c50-7ff7-4885-b87a-9364a11969c1,cs,translation,root.user.menu,Uživatelé
+28da0b33-3999-47e8-aae3-63e0ec608896,cs,translation,root.header.search.label,Hledátko!
+8813e716-d7d3-4616-bf5f-21d3f988bd43,cs,translation,root.statistic.users,Uživatelé
+164ef948-8d0f-45a8-8d92-b0b35ab9641c,cs,translation,root.statistic.kingdoms,Království
+d1a74e53-f42b-4149-9131-1b0943ec2005,cs,translation,root.statistic.buildings,Budovy
+a25d7779-56a7-4d7e-9bf4-8c19ccd4ae54,cs,translation,root.statistic.heroes,Hrdinové
+04260389-72d7-4f86-8b26-0dc721d7d340,cs,translation,root.statistic.translations,Překlady
+c6782bab-e565-4ec9-9e75-b984b6282366,cs,translation,root.user.dashboard.menu,Nástěnka
+62c6af27-8541-4dd1-855b-8b11ed6bcb93,cs,translation,root.user.create.menu,Vytvořit
+10a3ed9c-e5d9-4844-9a27-0bc158e8d286,cs,translation,root.user.list.menu,Seznam
+de0e06cf-a107-4fb6-bb72-8a7f55c504ae,cs,translation,common.view-item,Náhled
+c0108a24-0afb-4ab5-b7d5-53d46a7e7316,cs,translation,common.edit-item,Editovat
+06e4220f-815e-44be-aaf8-ec3355ffa3c7,cs,translation,common.copy-id,Kopírovat ID
+aec86075-8b74-4678-9d80-dbe78e308b68,cs,translation,root.translation.form.label.label,Klíč překladu
+4f761cae-0e53-422f-8fb3-1258af548be3,cs,translation,root.translation.form.language.label,Kód jazyka
+78823e9d-3936-4255-8c71-5bae3741e796,cs,translation,root.translation.create.title,Tvorba překladu
+86487a62-f7d1-48ce-9020-220629ecc3e7,cs,translation,root.translation.title,Překlad
+f6b9bd4c-38cb-4788-b042-d48e512d261e,cs,translation,root.translation.list.title,Seznam překladů

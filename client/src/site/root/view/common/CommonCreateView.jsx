@@ -3,6 +3,7 @@ import BaseEditor from "component/form/BaseEditor";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
+import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext} from "react";
@@ -32,13 +33,13 @@ const CommonCreateView = (
 			enableEditor={true}
 			readyCount={readyCount}
 			defaultEnableSubmit={defaultEnableSubmit}
-			onFinish={(values, initials, setErrors) => {
+			onFinish={(values, initials, editor) => {
 				dispatch(currentContext.redux.redux.create.dispatch.create({...values, ...{[param]: params[param]}})).then(entity => {
 					message.success(t(currentContext.id + ".create.success"));
 					navigate(currentContext.link.home.link(entity.id));
 				}, errors => {
 					message.error(t(currentContext.id + ".create.error"));
-					setErrors(errors);
+					editor.setErrors(errors);
 				});
 			}}
 			onFinishFailed={() => {
@@ -49,7 +50,7 @@ const CommonCreateView = (
 			children={
 				<EditorContext.Consumer>
 					{({errors}) => (
-						<Card title={t(`${currentContext.id}.create.title`)}>
+						<Card title={<><BackLink/>{t(`${currentContext.id}.create.title`)}</>}>
 							<Result
 								status={"info"}
 								icon={currentContext.icon}

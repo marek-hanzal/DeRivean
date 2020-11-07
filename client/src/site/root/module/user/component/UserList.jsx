@@ -10,9 +10,8 @@ import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
 import Routes from "site/Routes";
 
-const UserListItem = ({item}) => {
+const UserListItem = ({item, context}) => {
 	const {t} = useTranslation();
-	const context = useContext(UserContext);
 	return (
 		<List.Item actions={[
 			<Link to={context.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(context.id + ".list.edit")}/></Link>,
@@ -24,7 +23,7 @@ const UserListItem = ({item}) => {
 				title={<Link to={context.link.home.link(item.id)}>{item.name}</Link>}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
-						<Link to={Routes.root.user.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
+						<Link to={context.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
 						<Link to={Routes.root.kingdom.create.link(item.id)}><Button icon={<KingdomIcon/>} type={"link"} size={"small"}>{t(context.id + ".list.create-kingdom")}</Button></Link>
 						<div>{t(context.id + ".list.login")} <strong>{item.login}</strong></div>
 						<div>{t(context.id + ".list.site")} <strong>{item.site || t(context.id + ".list.no-site")}</strong></div>
@@ -43,9 +42,8 @@ const UserList = () => {
 	const context = useContext(UserContext);
 	return (
 		<BaseTable
-			id={`${context.id}.list.table`}
 			redux={context.redux}
-			children={item => <UserListItem item={item} key={item.id}/>}
+			children={item => <UserListItem context={context} item={item} key={item.id}/>}
 		/>
 	);
 };

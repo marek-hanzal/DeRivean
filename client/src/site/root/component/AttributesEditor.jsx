@@ -4,6 +4,7 @@ import EditorToolbar from "component/form/EditorToolbar";
 import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
+import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router";
@@ -22,7 +23,7 @@ const AttributesEditor = ({context, fetch}) => {
 		editorContext.isReady();
 	});
 	return (
-		<Card title={t(`${currentContext.id}.attributes.title`)}>
+		<Card title={<><BackLink/>{t(`${currentContext.id}.attributes.title`)}</>}>
 			<Result
 				icon={<Spinner icon={<AttributeIcon/>} done={!editorContext.ready}/>}
 				title={

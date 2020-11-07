@@ -5,6 +5,7 @@ import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
+import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext, useEffect} from "react";
 import {useTranslation} from "react-i18next";
@@ -31,7 +32,7 @@ const Editor = ({currentContext, param, children, name}) => {
 		// eslint-disable-next-line
 	}, [dispatch, param, params]);
 	return (
-		<Card title={t(`${currentContext.id}.title`)}>
+		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>
 			<Result
 				status={"info"}
 				title={

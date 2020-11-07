@@ -1,4 +1,5 @@
 import {Card, Result} from "antd";
+import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -12,16 +13,14 @@ const BaseDashboardView = (
 	}) => {
 	const {t} = useTranslation();
 	context = useContext(context);
-	const id = context.id;
-	const icon = context.icon;
-	useMenuSelect(id + ".dashboard");
+	useMenuSelect(context.id + ".dashboard");
 	return (
-		<Card title={t(`${id}.title`)}>
+		<Card title={<><BackLink/>{t(`${context.id}.title`)}</>}>
 			<Result
 				status={"info"}
-				title={title || t(`${id}.title`)}
-				subTitle={subTitle || t(`${id}.subtitle`)}
-				icon={icon}
+				title={title || t(`${context.id}.title`)}
+				subTitle={subTitle || t(`${context.id}.subtitle`)}
+				icon={context.icon}
 				children={children}
 			/>
 		</Card>

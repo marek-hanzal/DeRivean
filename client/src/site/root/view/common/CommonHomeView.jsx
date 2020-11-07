@@ -2,6 +2,7 @@ import {Button, Card, Divider, Result} from "antd";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import Placeholder from "component/Placeholder";
+import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {createElement, useContext, useState} from "react";
@@ -30,7 +31,7 @@ const ContextView = ({context, fetch, navigation, param, menu, children}) => {
 		}
 	);
 	return (
-		<Card title={t(`${currentContext.id}.title`)}>
+		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>
 			<Result
 				status={"info"}
 				icon={<Spinner done={!loading} icon={currentContext.icon}/>}
