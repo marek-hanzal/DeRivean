@@ -7,6 +7,7 @@ import derivean.server.user.UserBuildingRepository
 import derivean.server.user.UserHeroRepository
 import derivean.server.user.UserKingdomRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 import java.util.*
 
@@ -20,8 +21,10 @@ class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(contain
 				this.name = "root.user.statistics"
 				this.description = "Various interesting statistics on the user"
 			}
-			routing.get(url) {
-				call.resolve(statisticMapper.resolve(StatisticsMapper.Request(call.parameters["user"]!!)))
+			routing.authenticate {
+				get(url) {
+					call.resolve(statisticMapper.resolve(StatisticsMapper.Request(call.parameters["user"]!!)))
+				}
 			}
 		}
 	}

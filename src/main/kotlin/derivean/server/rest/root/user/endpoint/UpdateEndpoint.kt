@@ -8,6 +8,7 @@ import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
 import derivean.server.user.UserRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
@@ -21,8 +22,10 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Update an User"
 			}
-			routing.post(url) {
-				resolve(call, updateMapper)
+			routing.authenticate {
+				post(url) {
+					resolve(call, updateMapper)
+				}
 			}
 		}
 	}

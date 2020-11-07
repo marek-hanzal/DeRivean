@@ -11,6 +11,7 @@ import derivean.server.rest.common.Attributes
 import derivean.server.user.UserRepository
 import derivean.server.user.entities.User
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -23,8 +24,10 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				this.link = url
 				this.description = "Create a new User"
 			}
-			routing.post(url) {
-				resolve(call, createMapper)
+			routing.authenticate {
+				post(url) {
+					resolve(call, createMapper)
+				}
 			}
 		}
 	}

@@ -9,6 +9,7 @@ import derivean.lib.rest.badRequest
 import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 import org.jetbrains.exposed.dao.UUIDEntity
 
@@ -22,12 +23,14 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 			this.link = "$url/page/{page}"
 			this.description = "Retrieve given page of [${repository.table().tableName}]."
 		}
-		routing.get("$url/page") {
-			call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
-		}
-		routing.get("$url/page/{page}") {
-			handle(call) {
-				pageService.page(call, repository, mapper)
+		routing.authenticate {
+			get("$url/page") {
+				call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
+			}
+			get("$url/page/{page}") {
+				handle(call) {
+					pageService.page(call, repository, mapper)
+				}
 			}
 		}
 	}

@@ -12,6 +12,7 @@
       <env name="DATABASE_URL" value="jdbc:postgresql://localhost:5432/derivean" />
       <env name="DATABASE_USER" value="postgres" />
       <env name="DATABASE_PASSWORD" value="1234" />
+      <env name="HTTP_HOST" value="http://localhost:3000" />
     </envs>
     <method v="2">
       <option name="Make" enabled="true" />
