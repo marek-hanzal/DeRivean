@@ -61,7 +61,12 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 				}
 			}
 			install(Sessions) {
-				cookie<UserSession>("user", SessionStorageMemory())
+				cookie<UserSession>("user", SessionStorageMemory()) {
+					/**
+					 * Prevent Google to take over the whole world and decline this cookie!
+					 */
+					cookie.extensions["SameSite"] = "None"
+				}
 			}
 			install(Authentication) {
 				session<UserSession> {

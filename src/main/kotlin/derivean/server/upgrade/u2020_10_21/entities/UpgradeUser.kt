@@ -13,4 +13,5 @@ class UpgradeUser(id: EntityUUID) : EntityWithAttributes(id) {
 	var name by UpgradeUserTable.name
 	var login by UpgradeUserTable.login
 	var password by UpgradeUserTable.password
+	var site by UpgradeUserTable.site
 }

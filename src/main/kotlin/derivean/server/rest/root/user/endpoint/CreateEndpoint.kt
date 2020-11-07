@@ -42,6 +42,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 	override fun map(request: Request, entity: User) {
 		entity.name = request.name
 		entity.login = request.login
+		entity.site = request.site
 		entity.password = request.password?.let { authenticatorService.encrypt(it) }
 		repository.attributes(entity.id, attributesMapper.map(request.attributes))
 		request.template?.let {
@@ -59,8 +60,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 	}
 
 	data class Request(
-		val login: String,
 		val name: String,
+		val login: String,
+		val site: String?,
 		val password: String?,
 		val template: String?,
 		val attributes: Attributes?,

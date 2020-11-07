@@ -10,12 +10,14 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login
+		this.site = item.site!!
 	}
 
 	data class Response(
 		val id: String,
 		val name: String,
 		val login: String,
+		val site: String,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -25,11 +27,13 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Resp
 			lateinit var id: EntityUUID
 			lateinit var name: String
 			lateinit var login: String
+			lateinit var site: String
 
 			fun build() = Response(
 				id.toString(),
 				name,
 				login,
+				site,
 			)
 		}
 	}
