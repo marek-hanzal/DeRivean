@@ -5,6 +5,7 @@ import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.user.UserRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 
 class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -17,8 +18,10 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				this.description = "Search for user(s) filtered by an expression."
 				this.link = url
 			}
-			routing.post(url) {
-				resolve(call, searchMapper)
+			routing.authenticate {
+				post(url) {
+					resolve(call, searchMapper)
+				}
 			}
 		}
 	}

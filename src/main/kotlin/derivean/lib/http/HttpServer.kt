@@ -60,6 +60,9 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			}
 			install(Authentication) {
 				session<UserSession> {
+					validate { userSession: UserSession ->
+						userSession
+					}
 					challenge {
 						call.resolve(unauthorized("You cannot access this endpoint, I'm sorry about that."))
 					}
@@ -69,7 +72,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			 * Slow server emulation
 			 */
 			intercept(ApplicationCallPipeline.Features) {
-				delay(Random.nextLong(30, 2500))
+				delay(Random.nextLong(30, 280))
 			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
@@ -95,5 +98,5 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 
 	data class UserSession(
 		val id: String,
-	)
+	) : Principal
 }

@@ -5,6 +5,7 @@ import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.user.UserRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 
 class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -17,8 +18,10 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Delete an User"
 			}
-			routing.post(url) {
-				resolve(call, deleteMapper)
+			routing.authenticate {
+				post(url) {
+					resolve(call, deleteMapper)
+				}
 			}
 		}
 	}
