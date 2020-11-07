@@ -16,4 +16,5 @@ class User(id: EntityUUID) : EntityWithAttributes(id) {
 	var login by UserTable.login
 	var password by UserTable.password
 	var site by UserTable.site
+	var ticket by UserTable.ticket
 }

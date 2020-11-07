@@ -7,4 +7,5 @@ object UserTable : UUIDTable("user") {
 	val login = varchar("login", 128).uniqueIndex()
 	val password = varchar("password", 128).nullable()
 	val site = varchar("site", 128).nullable()
+	val ticket = uuid("ticket").nullable()
 }
