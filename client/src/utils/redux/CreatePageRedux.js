@@ -1,7 +1,6 @@
 import axios from "axios";
 import buildUrl from "build-url";
 import {selectPage} from "redux/discovery/redux";
-import {SessionRedux} from "redux/session/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -17,7 +16,6 @@ function CreatePageRedux(id, link) {
 					dispatch(this.actions.request());
 					return Server.get(buildUrl(selectPage(link, getState(), page, name, param), {queryParams: {limit: size.toString()}}), {
 						cancelToken: (cancelToken || axios.CancelToken.source()).token,
-						headers: {Authorization: `Bearer ${SessionRedux.selector.getUser(getState()).token}`}
 					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));

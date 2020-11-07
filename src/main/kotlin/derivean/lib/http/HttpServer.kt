@@ -34,9 +34,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 				method(HttpMethod.Patch)
 				anyHost()
 			}
-			install(SinglePageApplication) {
-				path = "client"
-			}
+			install(SinglePageApplication)
 			install(AutoHeadResponse)
 			install(ConditionalHeaders)
 			install(PartialContent)
