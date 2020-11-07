@@ -292,6 +292,14 @@ d4bbd8e2-1bbc-479f-843c-2f486bcc43ca,en,translation,root.building.edit.form.canc
 02dfecde-d55f-4eda-97f5-6b998105207f,en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"
 10a4bf35-b2cf-4610-b797-28426f68e38d,en,translation,root.user.list.login,Login
 4a328c83-c0aa-4205-ade0-9d923bf85dd3,en,translation,root.user.list.token,Token
-f080898c-4c48-4deb-a807-49fa588a394f,en,translation,root.user.list.kingdom-hint,Click to see kingdom list.
 3ca0eab8-6bb3-4f4f-9a08-8bcd5bbf3a35,en,translation,root.user.list.edit,Edit!
 18a94bc5-2ce8-4b08-8131-33b6d3d98f5e,en,translation,root.user.list.empty-token,Empty token
+a304af2a-ec2e-4c5c-9d24-35fef05d7ab5,en,translation,root.kingdom.list.edit,Edit!
+0f0795b6-1ea4-45f3-975c-4139c183696b,en,translation,root.kingdom.list.create-hero,Create Hero!
+f4c3b7cb-97cf-4a40-92f0-67cf0f7e101c,en,translation,root.kingdom.list.create-building,Create Building!
+c3237f95-16db-452e-9324-ae46deb8de8e,en,translation,root.kingdom.list.edit-attributes,Edit Attributes!
+3db10929-9c1a-4680-83be-180bce17e00f,en,translation,root.user.list.create-kingdom,Create Kingdom!
+56d2b848-be36-4635-877b-3266e148c580,en,translation,root.translation.delete.success,Translation deleted!
+dca5a2fd-368a-45c3-a2ac-8f21fa04a1de,en,translation,root.user.list.no-site,Without site (disabled)
+322f383e-e6a9-4b7e-a4ba-e94dddb5f47b,en,translation,root.user.list.site,Site
+b0c0f0cb-91ff-40fd-ad7d-15562e4ec04f,en,translation,root.user.list.edit-attributes,Edit Attributes!
