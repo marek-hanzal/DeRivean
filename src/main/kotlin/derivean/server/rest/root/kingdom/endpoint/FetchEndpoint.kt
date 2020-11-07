@@ -27,6 +27,10 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 		this.id = item.id
 		this.user = item.user.id
 		this.name = item.name
+		this.stats = Stats(
+			item.heroes.count(),
+			item.buildings.count(),
+		)
 		item.attributes.forEach {
 			this.attributes.add(Attribute(it.name, it.value))
 		}
@@ -36,6 +40,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 		val id: String,
 		val user: String,
 		val name: String,
+		val stats: Stats,
 		val attributes: List<Attribute>,
 	) {
 		companion object {
@@ -46,15 +51,22 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			lateinit var id: EntityUUID
 			lateinit var user: EntityUUID
 			lateinit var name: String
+			lateinit var stats: Stats
 			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Fetch(
 				id.toString(),
 				user.toString(),
 				name,
+				stats,
 				attributes,
 			)
 		}
 	}
+
+	data class Stats(
+		val heroes: Long,
+		val buildings: Long,
+	)
 }
 

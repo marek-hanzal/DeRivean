@@ -11,6 +11,7 @@ const UserView = ({children, ...props}) => {
 			id: "root.user",
 			redux: UserRedux,
 			link: Routes.root.user,
+			param: "user",
 		}}>
 			<RootView context={UserContext} {...props}>
 				{children}

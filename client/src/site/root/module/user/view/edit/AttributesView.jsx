@@ -17,7 +17,7 @@ const AttributesView = () => {
 			<UserContext.Consumer>
 				{({id}) => (
 					<BaseEditor
-						readyCount={2}
+						readyCount={1}
 						onFinish={(values, initials) => {
 							dispatchUserUpdate(dispatch, {id: initials.id, ...values}, () => {
 								message.success(t(`${id}.attributes.updated`));

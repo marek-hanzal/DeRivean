@@ -1,4 +1,5 @@
-import {Avatar, Button, Divider, List, Space, Tooltip} from "antd";
+import {Avatar, Button, Divider, List, Space} from "antd";
+import AttributeIcon from "component/icon/AttributeIcon";
 import EditIcon from "component/icon/EditIcon";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
@@ -13,7 +14,9 @@ const UserListItem = ({item}) => {
 	const {t} = useTranslation();
 	const context = useContext(UserContext);
 	return (
-		<List.Item actions={[<Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={<Link to={context.link.edit.link(item.id)}>{t(context.id + ".list.edit")}</Link>}/>]}>
+		<List.Item actions={[
+			<Link to={context.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(context.id + ".list.edit")}/></Link>,
+		]}>
 			<List.Item.Meta
 				avatar={
 					<Avatar style={{color: "#1890ff", backgroundColor: "#FFF"}} size={"large"} icon={<UserIcon/>}/>
@@ -21,15 +24,16 @@ const UserListItem = ({item}) => {
 				title={<Link to={context.link.home.link(item.id)}>{item.name}</Link>}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
+						<Link to={Routes.root.user.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
+						<Link to={Routes.root.kingdom.create.link(item.id)}><Button icon={<KingdomIcon/>} type={"link"} size={"small"}>{t(context.id + ".list.create-kingdom")}</Button></Link>
 						<div>{t(context.id + ".list.login")} <strong>{item.login}</strong></div>
+						<div>{t(context.id + ".list.site")} <strong>{item.site || t(context.id + ".list.no-site")}</strong></div>
 						<div>{t(context.id + ".list.token")} <strong>{item.token || t(context.id + ".list.empty-token")}</strong></div>
 					</Space>
 				}
 			/>
 			<Space split={<Divider type={"vertical"}/>}>
-				<Tooltip title={t(context.id + ".list.kingdom-hint")}>
-					<Button type={"dashed"} icon={<KingdomIcon/>} children={<Link to={Routes.root.kingdom.list.link(item.id)}>&nbsp;{item.stats.kingdoms}</Link>}/>
-				</Tooltip>
+				<Link to={Routes.root.kingdom.list.link(item.id)}><Button type={"dashed"} icon={<KingdomIcon/>}>&nbsp;{item.stats.kingdoms}</Button></Link>
 			</Space>
 		</List.Item>
 	);
@@ -41,9 +45,8 @@ const UserList = () => {
 		<BaseTable
 			id={`${context.id}.list.table`}
 			redux={context.redux}
-		>
-			{item => <UserListItem item={item} key={item.id}/>}
-		</BaseTable>
+			children={item => <UserListItem item={item} key={item.id}/>}
+		/>
 	);
 };
 
