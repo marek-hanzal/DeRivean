@@ -11,7 +11,7 @@ FROM marekhanzal/buffalo as build
 WORKDIR /opt/app
 
 COPY --from=node /opt/app/build /opt/app/src/main/resources/client/
-RUN mkdir -p /opt/app/src/main/kotlin/resources/client/public/ && echo "$VERSION" > /opt/app/src/main/kotlin/resources/client/public/version.json
+RUN echo "$VERSION" > /opt/app/src/main/resources/client/version.json
 ADD . .
 RUN \
 	gradle --no-daemon build --warning-mode all && \
