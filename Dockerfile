@@ -17,20 +17,18 @@ RUN \
 	mkdir -p dist && tar x --strip-components=1 -f build/distributions/*.tar -C dist && \
 	rm dist/bin/*.bat && mv dist/bin/* dist/bin/app
 
-FROM marekhanzal/debian
+FROM alpine
 
-ENV \
-	JAVA_HOME="/usr/local/java"
+RUN apk add --update supervisor openjdk11-jre && rm  -rf /tmp/* /var/cache/apk/*
 
 WORKDIR /opt/app
 
-RUN groupadd -r app && useradd -rg app app
+RUN adduser --disabled-password --home /opt/app app app
 
 ADD rootfs/runtime /
 
 COPY --from=build /opt/app/dist .
-COPY --from=build /usr/local/sdkman/candidates/java/current /usr/local/java
 
 RUN chown app:app -R /opt/app
 
-RUN /usr/local/java/bin/java -version
+RUN java -version
