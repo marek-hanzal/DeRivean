@@ -2,8 +2,8 @@ package derivean.lib.http
 
 import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
+import derivean.lib.rest.Response
 import derivean.lib.rest.resolve
-import derivean.lib.rest.unauthorized
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.features.*
@@ -13,11 +13,13 @@ import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.sessions.*
+import io.ktor.util.*
 import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import kotlin.random.Random
 import kotlin.reflect.KClass
 
+@KtorExperimentalAPI
 class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
 	private var modules = arrayOf<KClass<out IHttpModule>>()
@@ -44,6 +46,9 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			install(AutoHeadResponse)
 			install(ConditionalHeaders)
 			install(PartialContent)
+			install(RoleBasedAuthorization) {
+				getRoles { (it as UserSession).roles }
+			}
 			install(Compression) {
 				gzip()
 			}
@@ -64,7 +69,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 						userSession
 					}
 					challenge {
-						call.resolve(unauthorized("You cannot access this endpoint, I'm sorry about that."))
+						call.resolve(Response(HttpStatusCode.Unauthorized, "You cannot access this endpoint, I'm sorry about that."))
 					}
 				}
 			}
@@ -98,5 +103,8 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 
 	data class UserSession(
 		val id: String,
-	) : Principal
+		val roles: Set<String> = emptySet(),
+	) : Principal {
+		override fun toString() = id
+	}
 }
