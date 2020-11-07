@@ -11,6 +11,7 @@ FROM marekhanzal/buffalo as build
 WORKDIR /opt/app
 
 COPY --from=node /opt/app/build /opt/app/src/main/resources/client/
+RUN echo "$VERSION" > /opt/app/src/main/kotlin/resources/client/public/version.json
 ADD . .
 RUN \
 	gradle --no-daemon build --warning-mode all && \
@@ -32,3 +33,5 @@ COPY --from=build /opt/app/dist .
 RUN chown app:app -R /opt/app
 
 RUN java -version
+
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
