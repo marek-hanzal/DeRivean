@@ -1,7 +1,8 @@
 {
 	"name": "derivean",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"private": true,
+	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@ant-design/icons": "^4.2.2",
 		"@testing-library/jest-dom": "^5.11.5",
