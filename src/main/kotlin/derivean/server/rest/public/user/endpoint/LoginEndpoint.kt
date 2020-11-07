@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.HttpServer
 import derivean.lib.rest.*
 import derivean.lib.storage.IStorage
+import derivean.lib.user.LockedUserException
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 import io.ktor.application.*
@@ -30,10 +31,18 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 						call.resolve(try {
 							storage.read {
 								authenticatorService.authenticate(it.login, it.password).let { user ->
+									if (user.site == null) {
+										throw LockedUserException("User has no site assigned, thus login is prohibited!")
+									}
 									call.sessions.set(HttpServer.UserSession(user.id.toString()))
+									ok(Response(user.login, user.name, user.site!!))
 								}
 							}
-							ok("")
+						} catch (e: LockedUserException) {
+							forbidden(ValidationResponse.build {
+								message = "Account locked!"
+								validation("login", "error", "Your account is locked - sadly you cannot do anything with this.")
+							})
 						} catch (e: UserException) {
 							forbidden(ValidationResponse.build {
 								message = "Login failed!"
@@ -54,4 +63,9 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	}
 
 	data class Request(val login: String, val password: String)
+	data class Response(
+		val login: String,
+		val name: String,
+		val site: String,
+	)
 }

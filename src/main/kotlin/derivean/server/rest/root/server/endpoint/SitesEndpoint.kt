@@ -20,6 +20,7 @@ class SitesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 					ok(
 						Response(
 							"game", listOf(
+								// null - means locked user (access to no site)
 								null,
 								// public is not listed as public is generally available
 								"game",
