@@ -2,7 +2,6 @@ import {List} from "antd";
 import axios from "axios";
 import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
-import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import defaultPage from "utils/page";
@@ -14,7 +13,6 @@ const BaseTable = (
 		children,
 	}) => {
 	const dispatch = useDispatch();
-	const {t} = useTranslation();
 	const params = useParams();
 	const [page, setPage] = useState(defaultPage);
 	const [loading, setLoading] = useState(true);

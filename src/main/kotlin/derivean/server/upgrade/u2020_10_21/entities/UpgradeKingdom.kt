@@ -7,6 +7,7 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 class UpgradeKingdom(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<UpgradeKingdom>(UpgradeKingdomTable)
 
+	val heroes by UpgradeHero referrersOn UpgradeHeroTable.kingdom
 	var user by UpgradeUser referencedOn UpgradeKingdomTable.user
 	var name by UpgradeKingdomTable.name
 }

@@ -8,6 +8,7 @@ class UpgradeUser(id: EntityUUID) : EntityWithAttributes(id) {
 	companion object : UUIDEntityClass<UpgradeUser>(UpgradeUserTable)
 
 	override val attributes by UpgradeUserAttribute referrersOn UpgradeUserAttributeTable.user
+	val kingdoms by UpgradeKingdom referrersOn UpgradeKingdomTable.user
 	var name by UpgradeUserTable.name
 	var login by UpgradeUserTable.login
 	var password by UpgradeUserTable.password
