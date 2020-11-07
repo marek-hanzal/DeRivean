@@ -6,7 +6,7 @@ const EditView = () => {
 	return (
 		<HeroView>
 			<HeroContext.Consumer>
-				{({}) => (
+				{() => (
 					<CommonEditView
 						context={HeroContext}
 						param={"hero"}

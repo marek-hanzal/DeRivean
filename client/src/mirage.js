@@ -3,7 +3,6 @@ import {v4 as uuid4} from "uuid";
 
 const MirageServer = ({environment = "development"} = {}) => createServer({
 	environment,
-	logging: false,
 
 	serializers: {
 		application: RestSerializer,
@@ -54,7 +53,7 @@ const MirageServer = ({environment = "development"} = {}) => createServer({
 		 * Fake client.json file which makes default configuration of the client.
 		 */
 		this.get("/client.json", _ => ({
-			discovery: process.env.REACT_APP_DISCOVERY,
+			discovery: "/api/discovery",
 		}));
 	},
 });
