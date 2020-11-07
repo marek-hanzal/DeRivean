@@ -2,14 +2,20 @@ package derivean.lib.http
 
 import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
+import derivean.lib.rest.resolve
+import derivean.lib.rest.unauthorized
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.features.*
 import io.ktor.gson.*
 import io.ktor.http.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.sessions.*
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
+import kotlin.random.Random
 import kotlin.reflect.KClass
 
 class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
@@ -49,6 +55,22 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 					setPrettyPrinting()
 				}
 			}
+			install(Sessions) {
+				cookie<UserSession>("user", SessionStorageMemory())
+			}
+			install(Authentication) {
+				session<UserSession> {
+					challenge {
+						call.resolve(unauthorized("You cannot access this endpoint, I'm sorry about that."))
+					}
+				}
+			}
+			/**
+			 * Slow server emulation
+			 */
+			intercept(ApplicationCallPipeline.Features) {
+				delay(Random.nextLong(30, 2500))
+			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
 				routing {
@@ -70,4 +92,8 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 		logger.info { "Start: [${this.name}] Listening on http://0.0.0.0:${httpServerConfig.port} (available on ${httpServerConfig.host})" }
 		server.start(wait = true)
 	}
+
+	data class UserSession(
+		val id: String,
+	)
 }

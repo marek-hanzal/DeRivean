@@ -34,8 +34,6 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 			item.kingdoms.count(),
 			userHeroRepository.total(item.id.value),
 		)
-		this.token = item.token
-		this.site = item.site
 		item.attributes.forEach {
 			this.attributes.add(Attribute(it.name, it.value))
 		}
@@ -46,8 +44,6 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 		val name: String,
 		val login: String,
 		val stats: Stats,
-		val token: String?,
-		val site: String?,
 		val attributes: List<Attribute>,
 	) {
 		companion object {
@@ -59,8 +55,6 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 			lateinit var name: String
 			lateinit var login: String
 			lateinit var stats: Stats
-			var token: String? = null
-			var site: String? = null
 			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Fetch(
@@ -68,8 +62,6 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 				name,
 				login,
 				stats,
-				token,
-				site,
 				attributes,
 			)
 		}

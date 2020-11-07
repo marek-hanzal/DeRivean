@@ -11,9 +11,8 @@ class User(id: EntityUUID) : EntityWithAttributes(id) {
 
 	override val attributes by UserAttribute referrersOn UserAttributeTable.user
 	val kingdoms by Kingdom referrersOn KingdomTable.user
+
 	var name by UserTable.name
 	var login by UserTable.login
 	var password by UserTable.password
-	var token by UserTable.token
-	var site by UserTable.site
 }

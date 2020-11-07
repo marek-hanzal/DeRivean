@@ -17,7 +17,6 @@ class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMappe
 		entity.name = request.name
 		entity.login = request.login
 		entity.password = request.password?.let { authenticatorService.encrypt(it) }
-		entity.token = request.token
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
@@ -33,6 +32,5 @@ class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMappe
 		val login: String,
 		val name: String,
 		val password: String?,
-		val token: String?,
 	)
 }
