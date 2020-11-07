@@ -1,5 +1,6 @@
 import axios from "axios";
 import {selectFetch} from "redux/discovery/redux";
+import {SessionRedux} from "redux/session/redux";
 import {Server} from "server";
 import fetchActions from "utils/action/actions/fetchActions";
 import fetchReducer from "utils/action/fetchReducer";
@@ -14,6 +15,7 @@ function CreateFetchRedux(id, link, param = "{id}") {
 					dispatch(this.actions.request());
 					return Server.get(selectFetch(link, uuid, getState(), param), {
 						cancelToken: (cancelToken || axios.CancelToken.source()).token,
+						headers: {Authorization: `Bearer ${SessionRedux.selector.getUser(getState()).token}`}
 					})
 						.then(({data}) => {
 							dispatch(this.actions.success(data));
