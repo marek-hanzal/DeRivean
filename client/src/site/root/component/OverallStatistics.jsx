@@ -1,8 +1,7 @@
 import {Card, Divider, message, Space, Spin, Statistic} from "antd";
-import axios from "axios";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
+import {useStatistics} from "redux/statistics/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
 
 const OverallStatistics = (
@@ -12,24 +11,19 @@ const OverallStatistics = (
 		exclude = [],
 	}) => {
 	const {t} = useTranslation();
-	const dispatch = useDispatch();
 	const [data, setData] = useState({users: 0, kingdoms: 0, heroes: 0, buildings: 0});
 	const [loading, setLoading] = useState(true);
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(action(cancelToken)).then(statistics => {
+	action = action || useStatistics;
+	action(
+		statistics => {
 			setData(statistics);
 			setLoading(false);
-		}, error => {
-			if (error.cancel) {
-				return;
-			}
+		},
+		() => {
 			setLoading(false);
 			message.error(t("root.statistic.fetch-error"));
-		});
-		return () => cancelToken.cancel();
-		// eslint-disable-next-line
-	}, [action]);
+		}
+	);
 	return (
 		<Card style={{textAlign: "center"}}>
 			<Spin spinning={loading}>

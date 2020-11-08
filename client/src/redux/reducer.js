@@ -10,7 +10,6 @@ import {MenuRedux} from "redux/menu/redux";
 import {NavigationRedux} from "redux/navigation/redux";
 import {SearchRedux} from "redux/search/redux";
 import {SessionRedux} from "redux/session/redux";
-import {StatisticsRedux} from "redux/statistics/redux";
 import {TranslationRedux} from "redux/translation/redux";
 import {UserRedux} from "redux/user/redux";
 
@@ -26,7 +25,6 @@ export default combineReducers({
 	navigation: NavigationRedux.reducer(),
 	session: SessionRedux.reducer(),
 	search: SearchRedux.reducer(),
-	statistics: StatisticsRedux.reducer(),
 	translation: TranslationRedux.reducer(),
 	user: UserRedux.reducer(),
 });

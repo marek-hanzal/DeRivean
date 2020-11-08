@@ -14,12 +14,16 @@ const HomeContext = React.createContext({
 });
 
 const ResolveStatus = ({validation, status}) => {
-	if (status === false) {
-		return <FailedResult/>;
+	switch (status) {
+		case false:
+			return <FailedResult/>;
+		case "unavailable":
+			return <HomeDashboard/>;
+		default:
+			return validation ?
+				(validation.errors.length ? <ErrorResult validation={validation}/> : <HomeDashboard/>) :
+				<LoaderResult/>;
 	}
-	return validation ?
-		(validation.errors.length ? <ErrorResult validation={validation}/> : <HomeDashboard/>) :
-		<LoaderResult/>;
 };
 
 const HomeView = () => {
@@ -33,6 +37,10 @@ const HomeView = () => {
 	}, () => {
 		setStatus(false);
 		message.error(t("root.home.validation-failed.message"));
+	}, {
+		401: () => {
+			setStatus("unavailable");
+		}
 	});
 	useMenuSelect("root.home");
 	return (
