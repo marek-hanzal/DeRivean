@@ -9,7 +9,6 @@ import FailedResult from "site/root/view/home/FailedResult";
 import HomeDashboard from "site/root/view/home/HomeDashboard";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import RootView from "site/root/view/RootView";
-import Routes from "site/Routes";
 
 const HomeContext = React.createContext({
 	id: "root.home"
@@ -41,9 +40,6 @@ const HomeView = () => {
 		setStatus(false);
 		message.error(t("root.home.validation-failed.message"));
 	}, {
-		401: () => {
-			navigate(Routes.root.sessionExpired.link());
-		},
 		403: () => {
 			setStatus("unavailable");
 		}
