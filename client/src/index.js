@@ -9,13 +9,8 @@ import thunkMiddleware from "redux-thunk";
 import "./assets/index.css";
 import DeRivean from "./DeRivean";
 import "./i18n";
-import MirageServer from "./mirage";
 import reducer from "./redux/reducer";
 import * as ServiceWorker from "./ServiceWorker";
-
-if (process.env.NODE_ENV === "development") {
-	MirageServer({environment: process.env.NODE_ENV});
-}
 
 // noinspection JSUnresolvedVariable,JSUnresolvedFunction
 const store = createStore(persistReducer({

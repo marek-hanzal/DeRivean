@@ -6,6 +6,7 @@ const get = (
 	onSuccess = data => null,
 	onError = error => null,
 	cancelToken = null,
+	onReason = null,
 ) => {
 	Server.get(href, {
 		cancelToken: (cancelToken || axios.CancelToken.source()).token,
@@ -14,7 +15,12 @@ const get = (
 			onSuccess(data);
 		})
 		.catch(error => {
-			if (!axios.isCancel(error)) {
+			if (axios.isCancel(error)) {
+				return;
+			}
+			if (onReason && error.response && onReason[error.response.status]) {
+				onReason[error.response.status](error);
+			} else {
 				onError(error);
 			}
 		});
