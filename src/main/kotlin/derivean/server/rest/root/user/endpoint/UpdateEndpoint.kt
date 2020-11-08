@@ -1,6 +1,7 @@
 package derivean.server.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.auth.AuthenticatorService
@@ -10,8 +11,10 @@ import derivean.server.user.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
+@KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val updateMapper: UpdateMapper by container.lazy()
 
@@ -23,8 +26,10 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				description = "Update an User"
 			}
 			routing.authenticate {
-				post(url) {
-					resolve(call, updateMapper)
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, updateMapper)
+					}
 				}
 			}
 		}

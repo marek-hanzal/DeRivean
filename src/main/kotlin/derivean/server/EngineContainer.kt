@@ -27,7 +27,7 @@ object EngineContainer {
 		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
 		register(PoolConfig::class) { create(EngineConfig::class).pool }
 		register(HttpServerConfig::class) { create(EngineConfig::class).httpServer }
-		register(IRoleService::class) { RoleService(this) }
+		service(IRoleService::class) { RoleService(this) }
 		/**
 		 * Common services.
 		 */

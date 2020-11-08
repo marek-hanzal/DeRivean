@@ -9,7 +9,9 @@ import derivean.server.user.UserHeroRepository
 import derivean.server.user.UserRepository
 import derivean.server.user.entities.User
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val userRepository: UserRepository by container.lazy()

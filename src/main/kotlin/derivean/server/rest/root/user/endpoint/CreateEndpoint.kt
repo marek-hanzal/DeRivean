@@ -1,6 +1,7 @@
 package derivean.server.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.Response
@@ -25,8 +26,10 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				this.description = "Create a new User"
 			}
 			routing.authenticate {
-				post(url) {
-					resolve(call, createMapper)
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, createMapper)
+					}
 				}
 			}
 		}

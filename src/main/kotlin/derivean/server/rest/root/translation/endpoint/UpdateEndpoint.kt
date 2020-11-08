@@ -1,13 +1,17 @@
 package derivean.server.rest.root.translation.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.translation.TranslationRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 import org.jetbrains.exposed.exceptions.ExposedSQLException
 
+@KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val updateMapper: UpdateMapper by container.lazy()
 
@@ -18,8 +22,12 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				name = "root.translation.update"
 				description = "Update a Translation"
 			}
-			routing.post(url) {
-				resolve(call, updateMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, updateMapper)
+					}
+				}
 			}
 		}
 	}

@@ -1,13 +1,16 @@
 package derivean.server.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.user.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val deleteMapper: DeleteMapper by container.lazy()
 
@@ -19,8 +22,10 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				description = "Delete an User"
 			}
 			routing.authenticate {
-				post(url) {
-					resolve(call, deleteMapper)
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, deleteMapper)
+					}
 				}
 			}
 		}

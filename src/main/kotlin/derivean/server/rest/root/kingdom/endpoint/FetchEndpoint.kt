@@ -8,7 +8,9 @@ import derivean.server.kingdom.KingdomRepository
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.rest.common.Attribute
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()

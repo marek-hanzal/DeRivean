@@ -1,13 +1,16 @@
 package derivean.server.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.user.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val searchMapper: SearchMapper by container.lazy()
 
@@ -19,8 +22,10 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				this.link = url
 			}
 			routing.authenticate {
-				post(url) {
-					resolve(call, searchMapper)
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, searchMapper)
+					}
 				}
 			}
 		}
