@@ -6,10 +6,12 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
+import derivean.server.user.RoleRepository
 import derivean.server.user.UserRepository
 import derivean.server.user.entities.User
 import io.ktor.application.*
 import io.ktor.routing.*
+import org.jetbrains.exposed.sql.SizedCollection
 
 class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val registerMapper: RegisterMapper by container.lazy()
@@ -32,11 +34,14 @@ class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMappe
 	override val repository: UserRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
+	private val roleRepository: RoleRepository by container.lazy()
 
 	override fun map(request: Request, entity: User) {
 		entity.name = request.name
 		entity.login = request.login
 		entity.password = request.password?.let { authenticatorService.encrypt(it) }
+		entity.site = "game"
+		entity.roles = SizedCollection(listOf(roleRepository.findByName("gamer")))
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
