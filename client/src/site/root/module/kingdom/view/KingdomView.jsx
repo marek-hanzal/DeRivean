@@ -1,4 +1,4 @@
-import {KingdomRedux, useKingdomFetch} from "redux/kingdom/redux";
+import {KingdomRedux, useKingdomAttributesFetch, useKingdomFetch} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import RootView from "site/root/view/RootView";
@@ -12,6 +12,7 @@ const KingdomView = ({children, ...props}) => {
 			redux: KingdomRedux,
 			link: Routes.root.kingdom,
 			fetch: useKingdomFetch,
+			attributes: useKingdomAttributesFetch,
 			param: "kingdom",
 		}}>
 			<RootView context={KingdomContext} {...props}>
