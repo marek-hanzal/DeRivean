@@ -25,6 +25,7 @@ const UserRedux = CreateCommonRedux(
 );
 
 const useUserFetch = commonFetchHook("root.user.fetch");
+const useUserAttributesFetch = commonFetchHook("root.user.attributes");
 const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}");
 const dispatchUserUpdate = commonUpdateDispatch(UserRedux);
 const fetchUserPage = fetchPage("root.user.page");
@@ -32,6 +33,7 @@ const fetchUserPage = fetchPage("root.user.page");
 export {
 	UserRedux,
 	useUserFetch,
+	useUserAttributesFetch,
 	useUserStatisticsFetch,
 	dispatchUserUpdate,
 	fetchUserPage,

@@ -1,4 +1,4 @@
-import {UserRedux, useUserFetch} from "redux/user/redux";
+import {UserRedux, useUserAttributesFetch, useUserFetch} from "redux/user/redux";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
 import RootView from "site/root/view/RootView";
@@ -12,6 +12,7 @@ const UserView = ({children, ...props}) => {
 			redux: UserRedux,
 			link: Routes.root.user,
 			fetch: useUserFetch,
+			attributes: useUserAttributesFetch,
 			param: "user",
 		}}>
 			<RootView context={UserContext} {...props}>
