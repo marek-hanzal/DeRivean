@@ -5,6 +5,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
+import {fetchBuildingPage} from "redux/building/redux";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 
@@ -33,8 +34,7 @@ const BuildingList = () => {
 	const context = useContext(BuildingContext);
 	return (
 		<BaseTable
-			redux={context.redux}
-			param={"kingdom"}
+			onFetchPage={fetchBuildingPage}
 			children={item => <BuildingListItem context={context} item={item} key={item.id}/>}
 		/>
 	);
