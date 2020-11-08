@@ -12,7 +12,6 @@ const KingdomRedux = CreateCommonRedux(
 	"root.kingdom.update",
 	"root.kingdom.delete",
 	"root.kingdom.fetch",
-	"root.user.kingdom.page",
 	{
 		attributes: CreateLinkRedux("kingdom", "attributes", "root.kingdom.attributes"),
 		search: CreatePostRedux("kingdom", "search", "root.kingdom.search"),

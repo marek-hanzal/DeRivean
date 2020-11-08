@@ -14,7 +14,6 @@ const UserRedux = CreateCommonRedux(
 	"root.user.update",
 	"root.user.delete",
 	"root.user.fetch",
-	"root.user.page",
 	{
 		register: CreateActionRedux("user", "register", "public.user.register", {
 			dismiss: dismissAction("user.register"),

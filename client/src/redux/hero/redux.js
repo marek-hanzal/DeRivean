@@ -10,7 +10,6 @@ const HeroRedux = CreateCommonRedux(
 	"root.hero.update",
 	"root.hero.delete",
 	"root.hero.fetch",
-	"root.kingdom.hero.page",
 	{
 		attributes: CreateLinkRedux("hero", "attributes", "root.hero.attributes"),
 	},
