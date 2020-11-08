@@ -46,15 +46,19 @@ abstract class AbstractPageEndpoint(container: IContainer) : AbstractEndpoint(co
 			this.link = "$url/page/{page}"
 			this.description = "Retrieve given page of [${repository.table().tableName}]."
 		}
-		routing.get("$url/page") {
-			call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
-		}
-		routing.get("$url/page/{page}") {
-			if (!call.parameters.contains(relation)) {
-				call.resolve(badRequest("Missing relation parameter [$relation] in route [$url]! This is probably a server bug!"))
-			}
-			handle(call) {
-				pageService.page(call, call.parameters[relation]!!, repository, mapper)
+		routing.authenticate {
+			withAnyRole("root") {
+				get("$url/page") {
+					call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
+				}
+				get("$url/page/{page}") {
+					if (!call.parameters.contains(relation)) {
+						call.resolve(badRequest("Missing relation parameter [$relation] in route [$url]! This is probably a server bug!"))
+					}
+					handle(call) {
+						pageService.page(call, call.parameters[relation]!!, repository, mapper)
+					}
+				}
 			}
 		}
 	}

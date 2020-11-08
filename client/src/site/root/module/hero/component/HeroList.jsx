@@ -5,6 +5,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
+import {fetchHeroPage} from "redux/hero/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 
@@ -33,8 +34,7 @@ const HeroList = () => {
 	const context = useContext(HeroContext);
 	return (
 		<BaseTable
-			redux={context.redux}
-			param={"kingdom"}
+			onFetchPage={fetchHeroPage}
 			children={item => <HeroListItem context={context} item={item} key={item.id}/>}
 		/>
 	);

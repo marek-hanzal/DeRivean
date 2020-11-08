@@ -4,6 +4,7 @@ import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreatePostRedux from "utils/redux/CreatePostRedux";
+import fetchPage from "utils/server/fetchPage";
 
 const KingdomRedux = CreateCommonRedux(
 	"kingdom",
@@ -20,11 +21,12 @@ const KingdomRedux = CreateCommonRedux(
 );
 
 const useKingdomFetch = commonFetchHook(KingdomRedux);
-
 const dispatchKingdomUpdate = commonUpdateDispatch(KingdomRedux);
+const fetchKingdomPage = fetchPage("root.user.kingdom.page", "user");
 
 export {
 	KingdomRedux,
 	useKingdomFetch,
 	dispatchKingdomUpdate,
+	fetchKingdomPage,
 };
