@@ -10,7 +10,6 @@ const BuildingRedux = CreateCommonRedux(
 	"root.building.update",
 	"root.building.delete",
 	"root.building.fetch",
-	"root.kingdom.building.page",
 	{
 		attributes: CreateLinkRedux("building", "attributes", "root.building.attributes"),
 	},

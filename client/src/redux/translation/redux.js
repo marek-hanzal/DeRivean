@@ -8,7 +8,6 @@ const TranslationRedux = CreateCommonRedux(
 	"root.translation.update",
 	"root.translation.delete",
 	"root.translation.fetch",
-	"root.translation.page",
 	{
 		translation: CreateLinkRedux("translation", "translation", "public.translation"),
 	}
