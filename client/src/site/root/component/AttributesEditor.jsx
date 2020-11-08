@@ -35,7 +35,7 @@ const AttributesEditor = ({context, fetch}) => {
 				subTitle={t(`${currentContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor translation={currentContext.id} redux={currentContext.redux}/>
+						<AttributeFieldEditor currentContext={currentContext} translation={currentContext.id} redux={currentContext.redux}/>
 					</Centered>
 				}
 			/>
