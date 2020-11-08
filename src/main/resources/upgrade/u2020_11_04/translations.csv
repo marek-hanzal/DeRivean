@@ -350,3 +350,6 @@ a77bcbca-513a-4c4a-8028-2c0decb70623,cs,translation,root.translation.list.title,
 83dbcf9d-8489-40a1-bd71-9183afd04cff,en,translation,root.user.list.ticket,Ticket
 21e6124c-0461-46ad-8b9a-c3b335422cb1,en,translation,root.home.content.loader.subtitle,"Fetching some interesting things for you, please wait!"
 688bbe28-3b9e-4642-877d-6f0ed0d030d7,en,translation,public.home.title,Home
+e4a08ac2-1971-4afd-9af8-486e3b31f67a,en,translation,public.session-expired.title,Session Expired!
+3a558841-2d52-4553-809a-2cd248f7b1d1,en,translation,public.session-expired.subtitle,"We're sorry, but you session has expired, so please log in, if you want to continue use the application!"
+26d1c82b-f7f3-4fb4-8944-9d12120a8df8,en,translation,public.session-expired.continue,Continue
