@@ -1,5 +1,6 @@
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
+import fetchPage from "utils/server/fetchPage";
 
 const TranslationRedux = CreateCommonRedux(
 	"translation",
@@ -13,6 +14,9 @@ const TranslationRedux = CreateCommonRedux(
 	}
 );
 
+const fetchTranslationPage = fetchPage("root.translation.page");
+
 export {
 	TranslationRedux,
+	fetchTranslationPage,
 };
