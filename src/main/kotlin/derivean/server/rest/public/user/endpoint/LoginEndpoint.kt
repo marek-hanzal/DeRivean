@@ -35,7 +35,7 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 							storage.write {
 								authenticatorService.authenticate(it.login, it.password).let { user ->
 									call.ticket(ticketService.ticketFor(user))
-									ok(Response(user.login, user.name, user.site!!))
+									ok(Response(user.login, user.name, user.site))
 								}
 							}
 						} catch (e: UserException) {
@@ -61,6 +61,6 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	data class Response(
 		val login: String,
 		val name: String,
-		val site: String,
+		val site: String?,
 	)
 }

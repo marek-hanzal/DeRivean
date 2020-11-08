@@ -90,7 +90,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			 * Slow server emulation
 			 */
 			intercept(ApplicationCallPipeline.Features) {
-				delay(Random.nextLong(30, 280))
+				delay(Random.nextLong(250, 1200))
 			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
