@@ -4,7 +4,6 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.ticket
 import derivean.lib.rest.*
 import derivean.lib.storage.IStorage
-import derivean.lib.user.LockedUserException
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 import derivean.server.auth.TicketService
@@ -35,18 +34,10 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 							 */
 							storage.write {
 								authenticatorService.authenticate(it.login, it.password).let { user ->
-									if (user.site == null) {
-										throw LockedUserException("User has no site assigned, thus login is prohibited!")
-									}
 									call.ticket(ticketService.ticketFor(user))
 									ok(Response(user.login, user.name, user.site!!))
 								}
 							}
-						} catch (e: LockedUserException) {
-							forbidden(ValidationResponse.build {
-								message = "Account locked!"
-								validation("login", "error", "Your account is locked - sadly you cannot do anything with this.")
-							})
 						} catch (e: UserException) {
 							forbidden(ValidationResponse.build {
 								message = "Login failed!"
