@@ -1,10 +1,12 @@
 package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.building.BuildingRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
 
 class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -17,12 +19,17 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Delete a Building"
 			}
-			routing.post(url) {
-				resolve(call, deleteMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, deleteMapper)
+					}
+				}
 			}
 		}
 	}
 }
+
 class DeleteMapper(container: IContainer) : AbstractActionMapper<DeleteMapper.Request, Response<out Any>>(container) {
 	private val buildingRepository: BuildingRepository by container.lazy()
 

@@ -1,12 +1,16 @@
 package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.kingdom.KingdomRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val searchMapper: SearchMapper by container.lazy()
 
@@ -17,8 +21,12 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				this.description = "Search for kingdom(s) filtered by an expression."
 				this.link = url
 			}
-			routing.post(url) {
-				resolve(call, searchMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, searchMapper)
+					}
+				}
 			}
 		}
 	}

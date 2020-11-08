@@ -1,6 +1,7 @@
 package derivean.server.rest.root.hero.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.Response
@@ -11,8 +12,11 @@ import derivean.server.kingdom.KingdomRepository
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val createMapper: CreateMapper by container.lazy()
 
@@ -23,8 +27,12 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Creates a new Hero"
 			}
-			routing.post(url) {
-				resolve(call, createMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, createMapper)
+					}
+				}
 			}
 		}
 	}

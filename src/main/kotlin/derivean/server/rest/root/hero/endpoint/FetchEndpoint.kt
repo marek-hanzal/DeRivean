@@ -7,7 +7,9 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.hero.HeroRepository
 import derivean.server.hero.entities.Hero
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val heroRepository: HeroRepository by container.lazy()

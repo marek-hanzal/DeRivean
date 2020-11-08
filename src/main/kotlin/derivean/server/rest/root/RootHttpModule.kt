@@ -4,7 +4,6 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
 import derivean.server.rest.root.building.BuildingHttpModule
 import derivean.server.rest.root.common.CommonHttpModule
-import derivean.server.rest.root.entity.EntityHttpModule
 import derivean.server.rest.root.hero.HeroHttpModule
 import derivean.server.rest.root.kingdom.KingdomHttpModule
 import derivean.server.rest.root.server.ServerHttpModule
@@ -17,7 +16,6 @@ class RootHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		modules(
 			routing,
 			CommonHttpModule::class,
-			EntityHttpModule::class,
 			KingdomHttpModule::class,
 			HeroHttpModule::class,
 			BuildingHttpModule::class,

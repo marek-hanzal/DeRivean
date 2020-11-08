@@ -1,6 +1,7 @@
 package derivean.server.rest.root.translation.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.Response
@@ -9,8 +10,11 @@ import derivean.lib.rest.conflict
 import derivean.server.translation.TranslationRepository
 import derivean.server.translation.entities.Translation
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val createMapper: CreateMapper by container.lazy()
 
@@ -21,8 +25,12 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Creates a new Translation"
 			}
-			routing.post(url) {
-				resolve(call, createMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, createMapper)
+					}
+				}
 			}
 		}
 	}

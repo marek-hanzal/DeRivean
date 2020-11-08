@@ -6,7 +6,9 @@ import derivean.lib.rest.AbstractFetchEndpoint
 import derivean.server.translation.TranslationRepository
 import derivean.server.translation.entities.Translation
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val translationRepository: TranslationRepository by container.lazy()

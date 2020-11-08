@@ -1,14 +1,18 @@
 package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.building.BuildingRepository
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val updateMapper: UpdateMapper by container.lazy()
 
@@ -19,8 +23,12 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Update a Building"
 			}
-			routing.post(url) {
-				resolve(call, updateMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, updateMapper)
+					}
+				}
 			}
 		}
 	}

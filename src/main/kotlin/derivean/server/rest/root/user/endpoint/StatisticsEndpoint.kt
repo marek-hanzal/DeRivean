@@ -1,6 +1,7 @@
 package derivean.server.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.user.UserBuildingRepository
@@ -9,8 +10,10 @@ import derivean.server.user.UserKingdomRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 import java.util.*
 
+@KtorExperimentalAPI
 class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val statisticMapper: StatisticsMapper by container.lazy()
 
@@ -22,8 +25,10 @@ class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(contain
 				this.description = "Various interesting statistics on the user"
 			}
 			routing.authenticate {
-				get(url) {
-					call.resolve(statisticMapper.resolve(StatisticsMapper.Request(call.parameters["user"]!!)))
+				withAnyRole("root") {
+					get(url) {
+						call.resolve(statisticMapper.resolve(StatisticsMapper.Request(call.parameters["user"]!!)))
+					}
 				}
 			}
 		}

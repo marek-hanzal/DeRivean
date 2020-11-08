@@ -1,12 +1,16 @@
 package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
+import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.server.kingdom.KingdomRepository
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val deleteMapper: DeleteMapper by container.lazy()
 
@@ -17,8 +21,12 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				link = url
 				description = "Delete a Kingdom"
 			}
-			routing.post(url) {
-				resolve(call, deleteMapper)
+			routing.authenticate {
+				withAnyRole("root") {
+					post(url) {
+						resolve(call, deleteMapper)
+					}
+				}
 			}
 		}
 	}

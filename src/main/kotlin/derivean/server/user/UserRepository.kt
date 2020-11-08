@@ -14,6 +14,8 @@ class UserRepository(container: IContainer) : AbstractAttributeRepository<User, 
 
 	fun findByLogin(login: String) = entity.find { table.login eq login }.first()
 
+	fun findByTicket(ticket: UUID) = entity.find { table.ticket eq ticket }.first()
+
 	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
 		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%" or (table.id eq uuid)) }.limit(limit)
