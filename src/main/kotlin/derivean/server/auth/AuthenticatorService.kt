@@ -23,7 +23,6 @@ class AuthenticatorService(container: IContainer) : AbstractService(container) {
 			if (!verify(password, it.password!!)) {
 				throw UserException("Invalid password")
 			}
-			it.ticket = UUID.randomUUID()
 		}
 	} catch (e: NoSuchElementException) {
 		throw UnknownUserException("Requested unknown login [$login].", e)
