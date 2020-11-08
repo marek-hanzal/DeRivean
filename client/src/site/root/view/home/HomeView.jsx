@@ -1,10 +1,8 @@
 import {Card, message} from "antd";
-import axios from "axios";
 import useMenuSelect from "hook/useMenuSelect";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
-import {ServerRedux, useServerValidate} from "redux/server/redux";
+import {useServerValidate} from "redux/server/redux";
 import ErrorResult from "site/root/view/home/ErrorResult";
 import FailedResult from "site/root/view/home/FailedResult";
 import HomeDashboard from "site/root/view/home/HomeDashboard";
@@ -25,7 +23,6 @@ const ResolveStatus = ({validation, status}) => {
 };
 
 const HomeView = () => {
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const [validation, setValidation] = useState();
 	const [status, setStatus] = useState(true);
@@ -37,15 +34,6 @@ const HomeView = () => {
 		setStatus(false);
 		message.error(t("root.home.validation-failed.message"));
 	});
-
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(ServerRedux.redux.validate.dispatch.validate(cancelToken)).then(validation => {
-			setValidation(validation);
-		}, () => {
-		});
-		return () => cancelToken.cancel();
-	}, [dispatch]);
 	useMenuSelect("root.home");
 	return (
 		<RootView context={HomeContext} id={"root.home"}>
