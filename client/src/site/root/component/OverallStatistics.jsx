@@ -26,7 +26,7 @@ const OverallStatistics = (
 			message.error(t("root.statistic.fetch-error"));
 		},
 		{
-			401: () => {
+			403: () => {
 				setUnavailable(true);
 			}
 		}
