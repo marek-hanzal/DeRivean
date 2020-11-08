@@ -2,29 +2,40 @@ import {List} from "antd";
 import axios from "axios";
 import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
-import {useParams} from "react-router";
+import {useStore} from "react-redux";
+import {useNavigate, useParams} from "react-router";
 import defaultPage from "utils/page";
 
 const BaseTable = (
 	{
-		redux,
+		onFetchPage,
 		param = null,
 		children,
 	}) => {
-	const dispatch = useDispatch();
+	const store = useStore();
+	const navigate = useNavigate();
 	const params = useParams();
 	const [page, setPage] = useState(defaultPage);
 	const [loading, setLoading] = useState(true);
 	const items = page.items;
 
 	const onPage = (current, size, cancelToken = null) => {
-		dispatch(redux.redux.page.dispatch.page(current, size, param, param ? params[param] : null, cancelToken)).then(data => {
-			setPage(data);
-			setLoading(false);
-		}, () => {
-			setLoading(false);
-		});
+		onFetchPage(
+			store.getState(),
+			current,
+			size,
+			param,
+			param ? params[param] : null,
+			cancelToken,
+			navigate,
+			data => {
+				setPage(data);
+				setLoading(false);
+			},
+			() => {
+				setLoading(false);
+			}
+		);
 	};
 
 	/**
@@ -62,7 +73,7 @@ const BaseTable = (
 
 BaseTable.propTypes = {
 	children: PropTypes.func.isRequired,
-	redux: PropTypes.object.isRequired,
+	onFetchPage: PropTypes.func.isRequired,
 };
 
 export default BaseTable;

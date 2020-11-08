@@ -5,6 +5,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
+import {fetchUserPage} from "redux/user/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
@@ -42,7 +43,7 @@ const UserList = () => {
 	const context = useContext(UserContext);
 	return (
 		<BaseTable
-			redux={context.redux}
+			onFetchPage={fetchUserPage}
 			children={item => <UserListItem context={context} item={item} key={item.id}/>}
 		/>
 	);
