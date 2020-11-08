@@ -39,6 +39,9 @@ const HomeView = () => {
 		message.error(t("root.home.validation-failed.message"));
 	}, {
 		401: () => {
+			console.error("handle unauthorized!");
+		},
+		403: () => {
 			setStatus("unavailable");
 		}
 	});
