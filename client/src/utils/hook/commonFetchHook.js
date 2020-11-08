@@ -7,7 +7,6 @@ import get from "utils/server/get";
 import resolveReason from "utils/server/resolveReason";
 
 const commonFetchHook = (link, replace = "{id}") => {
-	console.log("create fetch hook for ", link, replace);
 	return (
 		uuid,
 		onSuccess = data => null,
@@ -17,8 +16,6 @@ const commonFetchHook = (link, replace = "{id}") => {
 		const store = useStore();
 		const navigate = useNavigate();
 		useEffect(() => {
-			console.log("fetch-hook", uuid, link, replace);
-
 			const cancelToken = axios.CancelToken.source();
 			get(
 				selectFetch(link, uuid, store.getState(), replace),

@@ -1,4 +1,4 @@
-import {TranslationRedux} from "redux/translation/redux";
+import {TranslationRedux, useTranslationFetch} from "redux/translation/redux";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
 import RootView from "site/root/view/RootView";
@@ -10,6 +10,7 @@ const TranslationView = ({children, ...props}) => {
 			icon: <TranslationIcon/>,
 			id: "root.translation",
 			redux: TranslationRedux,
+			fetch: useTranslationFetch,
 			link: Routes.root.translation,
 		}}>
 			<RootView context={TranslationContext} {...props}>

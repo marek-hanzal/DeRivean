@@ -1,5 +1,4 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
-import axios from "axios";
 import BaseEditor from "component/form/BaseEditor";
 import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
@@ -7,30 +6,33 @@ import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
-const Editor = ({currentContext, param, children, name}) => {
+const Editor = (
+	{
+		currentContext,
+		fetch,
+		param,
+		children,
+		name,
+	}) => {
 	const {t} = useTranslation();
-	const dispatch = useDispatch();
 	const params = useParams();
 	const editorContext = useContext(EditorContext);
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(currentContext.redux.redux.fetch.dispatch.fetch(params[param], cancelToken)).then(data => {
+	currentContext.fetch(
+		params[param],
+		data => {
 			editorContext.setInitials(data);
 			values(editorContext.form, data);
 			editorContext.setEditor(false);
 			editorContext.isReady();
-		}, () => {
-		});
-		return () => cancelToken.cancel();
-		// eslint-disable-next-line
-	}, [dispatch, param, params]);
+		}
+	);
 	return (
 		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>
 			<Result
@@ -102,7 +104,13 @@ const CommonEditView = (
 			}}
 			name={currentContext.id}
 			translation={currentContext.id}
-			children={<Editor name={name || "name"} param={param} currentContext={currentContext} children={children}/>}
+			children={
+				<Editor
+					name={name || "name"}
+					param={param}
+					currentContext={currentContext}
+					children={children}
+				/>}
 		/>
 	);
 };

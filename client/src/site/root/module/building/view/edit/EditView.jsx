@@ -1,3 +1,4 @@
+import {useBuildingFetch} from "redux/building/redux";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingView from "site/root/module/building/view/BuildingView";
 import CommonEditView from "site/root/view/common/CommonEditView";
@@ -9,6 +10,7 @@ const EditView = () => {
 				{() => (
 					<CommonEditView
 						context={BuildingContext}
+						fetch={useBuildingFetch}
 						formName={"building"}
 						param={"building"}
 						defaultEnableSubmit={true}

@@ -1,4 +1,4 @@
-import {HeroRedux} from "redux/hero/redux";
+import {HeroRedux, useHeroFetch} from "redux/hero/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import RootView from "site/root/view/RootView";
@@ -11,6 +11,7 @@ const HeroView = ({children, ...props}) => {
 			id: "root.hero",
 			redux: HeroRedux,
 			link: Routes.root.hero,
+			fetch: useHeroFetch,
 			param: "hero",
 		}}>
 			<RootView context={HeroContext} {...props}>
