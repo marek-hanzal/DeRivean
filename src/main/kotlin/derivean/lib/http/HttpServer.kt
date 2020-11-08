@@ -1,5 +1,6 @@
 package derivean.lib.http
 
+import derivean.lib.auth.IRoleService
 import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
 import derivean.lib.rest.Response
@@ -23,6 +24,7 @@ import kotlin.reflect.KClass
 @KtorExperimentalAPI
 class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
+	private val roleService: IRoleService by container.lazy()
 	private var modules = arrayOf<KClass<out IHttpModule>>()
 	private val logger = KotlinLogging.logger { }
 	private lateinit var name: String
@@ -49,7 +51,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			install(ConditionalHeaders)
 			install(PartialContent)
 			install(RoleBasedAuthorization) {
-				getRoles { TODO("Get roles from service (by ticket)") }
+				getRoles { roleService.rolesFor((it as SessionTicket).id) }
 			}
 			install(Compression) {
 				gzip()

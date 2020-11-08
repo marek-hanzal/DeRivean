@@ -1,5 +1,6 @@
 package derivean.lib.container
 
+import derivean.lib.auth.IRoleService
 import derivean.lib.http.HttpServer
 import derivean.lib.http.IHttpServer
 import derivean.lib.http.ILinkGenerator
@@ -16,7 +17,10 @@ import derivean.lib.upgrade.IUpgradeManager
 import derivean.lib.upgrade.IVersionService
 import derivean.lib.upgrade.UpgradeManager
 import derivean.lib.upgrade.VersionService
+import derivean.server.auth.EmptyRoleService
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 object ContainerFactory {
 	fun container() = Container().apply {
 		registerSystemServices()
@@ -40,5 +44,6 @@ object ContainerFactory {
 		service(ILinkGenerator::class) { LinkGenerator(this) }
 		service(IPageService::class) { PageService(this) }
 		service(IDiscoveryService::class) { DiscoveryService(this) }
+		service(IRoleService::class) { EmptyRoleService(this) }
 	}
 }
