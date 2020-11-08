@@ -3,7 +3,6 @@ import commonFetchHook from "utils/hook/commonFetchHook";
 import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
-import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreatePostRedux from "utils/redux/CreatePostRedux";
 import fetchPage from "utils/server/fetchPage";
@@ -22,17 +21,18 @@ const UserRedux = CreateCommonRedux(
 		}),
 		attributes: CreateLinkRedux("user", "attributes", "root.user.attributes"),
 		search: CreatePostRedux("user", "search", "root.user.search"),
-		statistics: CreateFetchRedux("statistics", "root.user.statistics", "{user}"),
 	},
 );
 
 const useUserFetch = commonFetchHook("root.user.fetch");
+const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}");
 const dispatchUserUpdate = commonUpdateDispatch(UserRedux);
 const fetchUserPage = fetchPage("root.user.page");
 
 export {
 	UserRedux,
 	useUserFetch,
+	useUserStatisticsFetch,
 	dispatchUserUpdate,
 	fetchUserPage,
 };

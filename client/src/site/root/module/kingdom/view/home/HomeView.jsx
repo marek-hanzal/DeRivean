@@ -1,10 +1,12 @@
-import {KingdomRedux, useKingdomFetch} from "redux/kingdom/redux";
+import {useParams} from "react-router";
+import {useKingdomFetch, useKingdomStatisticsFetch} from "redux/kingdom/redux";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import CommonHomeView from "site/root/view/common/CommonHomeView";
 
 const HomeView = () => {
+	const params = useParams();
 	return (
 		<CommonHomeView
 			base={KingdomView}
@@ -15,7 +17,10 @@ const HomeView = () => {
 			menu={"root.kingdom"}
 		>
 			{data => (
-				<KingdomStatistics action={cancelToken => KingdomRedux.redux.statistics.dispatch.fetch(data.id, cancelToken)}/>
+				<KingdomStatistics action={(onSuccess, onFailure, onReason) => {
+					// eslint-disable-next-line
+					useKingdomStatisticsFetch(params.kingdom, onSuccess, onFailure, onReason);
+				}}/>
 			)}
 		</CommonHomeView>
 	);

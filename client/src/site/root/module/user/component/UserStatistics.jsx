@@ -1,12 +1,15 @@
 import {useParams} from "react-router";
-import {UserRedux} from "redux/user/redux";
+import {useUserStatisticsFetch} from "redux/user/redux";
 import OverallStatistics from "site/root/component/OverallStatistics";
 
 const UserStatistics = () => {
 	const params = useParams();
 	return <OverallStatistics
 		show={["kingdoms", "buildings", "heroes"]}
-		action={cancelToken => UserRedux.redux.statistics.dispatch.fetch(params.user, cancelToken)}
+		action={(onSuccess, onFailure, onReason) => {
+			// eslint-disable-next-line
+			useUserStatisticsFetch(params.user, onSuccess, onFailure, onReason);
+		}}
 	/>;
 };
 
