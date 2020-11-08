@@ -9,7 +9,6 @@ import defaultPage from "utils/page";
 const BaseTable = (
 	{
 		onFetchPage,
-		param = null,
 		children,
 	}) => {
 	const store = useStore();
@@ -24,8 +23,7 @@ const BaseTable = (
 			store.getState(),
 			current,
 			size,
-			param,
-			param ? params[param] : null,
+			params,
 			cancelToken,
 			navigate,
 			data => {

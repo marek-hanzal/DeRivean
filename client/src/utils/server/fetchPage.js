@@ -3,13 +3,12 @@ import {selectPage} from "redux/discovery/redux";
 import get from "utils/server/get";
 import resolveReason from "utils/server/resolveReason";
 
-const fetchPage = (link) => {
+const fetchPage = (link, param) => {
 	return (
 		state,
 		page,
 		size,
-		name = null,
-		param = null,
+		params = null,
 		cancelToken = null,
 		navigate,
 		onSuccess = data => null,
@@ -17,7 +16,7 @@ const fetchPage = (link) => {
 		onReason,
 	) => {
 		get(
-			buildUrl(selectPage(link, state, page, name, param), {queryParams: {limit: size.toString()}}),
+			buildUrl(selectPage(link, state, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
 			onSuccess,
 			onError,
 			cancelToken,
