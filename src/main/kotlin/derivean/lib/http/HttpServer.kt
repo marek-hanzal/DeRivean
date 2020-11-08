@@ -43,6 +43,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 				method(HttpMethod.Patch)
 				anyHost()
 			}
+			install(ForwardedHeaderSupport)
 			install(SinglePageApplication)
 			install(AutoHeadResponse)
 			install(ConditionalHeaders)
@@ -62,16 +63,14 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 				}
 			}
 			install(Sessions) {
-				cookie<SessionTicket>("bobobo") {
-					/**
-					 * Prevent Google to take over the whole world and decline this cookie!
-					 */
-//					cookie.extensions["SameSite"] = "None"
-//					cookie.maxAgeInSeconds = 10
+				cookie<SessionTicket>("ticket") {
+					cookie.extensions["SameSite"] = "Strict"
+					cookie.maxAgeInSeconds = 600
+					cookie.encoding = CookieEncoding.DQUOTES
 					this.serializer = object : SessionSerializer<SessionTicket> {
-						override fun deserialize(text: String) = SessionTicket(text)
+						override fun deserialize(text: String) = SessionTicket(UUID.fromString(text))
 
-						override fun serialize(session: SessionTicket) = session.id
+						override fun serialize(session: SessionTicket) = session.id.toString()
 					}
 				}
 			}
@@ -114,11 +113,11 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 	}
 
 	data class SessionTicket(
-		val id: String,
+		val id: UUID,
 	) : Principal {
-		override fun toString() = id
+		override fun toString() = id.toString()
 	}
 }
 
 @KtorExperimentalAPI
-fun ApplicationCall.ticket(ticket: UUID) = this.sessions.set(HttpServer.SessionTicket(ticket.toString()))
+fun ApplicationCall.ticket(ticket: UUID) = this.sessions.set(HttpServer.SessionTicket(ticket))
