@@ -1,4 +1,5 @@
 import {Button, Result} from "antd";
+import HomeIcon from "component/icon/HomeIcon";
 import useFullsizeContent from "hook/useFullsizeContent";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
@@ -14,9 +15,13 @@ const NotFoundView = () => {
 				status="404"
 				title={t("error.not-found.title")}
 				subTitle={t("error.not-found.body")}
-				extra={<Button type="primary">
-					<Link to={"/"}>{t("common.homepage")}</Link>
-				</Button>}
+				extra={
+					<Link to={"/"}>
+						<Button type="primary" icon={<HomeIcon/>}>
+							{t("common.homepage")}
+						</Button>
+					</Link>
+				}
 			/>
 		</>
 	);

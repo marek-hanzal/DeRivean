@@ -2,8 +2,10 @@ import {Card, Divider, message, Space, Spin, Statistic, Tooltip} from "antd";
 import ErrorIcon from "component/icon/ErrorIcon";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 import {useStatistics} from "redux/statistics/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
+import Routes from "site/Routes";
 
 const OverallStatistics = (
 	{
@@ -15,6 +17,7 @@ const OverallStatistics = (
 	const [data, setData] = useState({users: 0, kingdoms: 0, heroes: 0, buildings: 0});
 	const [unavailable, setUnavailable] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const navigate = useNavigate();
 	action = action || useStatistics;
 	action(
 		statistics => {
@@ -26,6 +29,9 @@ const OverallStatistics = (
 			message.error(t("root.statistic.fetch-error"));
 		},
 		{
+			401: () => {
+				navigate(Routes.root.sessionExpired.link());
+			},
 			403: () => {
 				setUnavailable(true);
 			}

@@ -9,6 +9,7 @@ import BaseRoutes from "component/route/BaseRoutes";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
 import HomeView from "site/public/view/HomeView";
+import SessionExpiredView from "site/public/view/SessionExpiredView";
 import SignUpView from "site/public/view/sign-up/SignUpView";
 import SingOutView from "site/public/view/SignOutView";
 import SingInView from "site/public/view/sing-in/SingInView";
@@ -40,6 +41,7 @@ const Site = () =>
 					route(link.signUp.match(), <SignUpView/>),
 					route(link.signIn.match(), <SingInView/>),
 					route(link.signOut.match(), <SingOutView/>),
+					route(link.sessionExpired.link(), <SessionExpiredView/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}

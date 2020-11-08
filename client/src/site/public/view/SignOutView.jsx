@@ -16,11 +16,11 @@ const SingOutView = () => {
 					status="success"
 					title={t("public.sign-out.succeed.title")}
 					subTitle={t("public.sign-out.succeed.subtitle")}
-					extra={[
+					extra={
 						<Button type="primary" key="continue">
 							<Link to={Routes.public.link()}>{t("public.sign-out.continue")}</Link>
 						</Button>
-					]}
+					}
 				/>
 			</Card>
 		</PublicView>
