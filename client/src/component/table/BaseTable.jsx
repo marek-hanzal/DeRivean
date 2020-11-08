@@ -22,10 +22,7 @@ const BaseTable = (
 		dispatch(redux.redux.page.dispatch.page(current, size, param, param ? params[param] : null, cancelToken)).then(data => {
 			setPage(data);
 			setLoading(false);
-		}, error => {
-			if (error.cancel) {
-				return;
-			}
+		}, () => {
 			setLoading(false);
 		});
 	};

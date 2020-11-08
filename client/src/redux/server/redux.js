@@ -14,7 +14,7 @@ const useServerSites = (
 		get(selectLink("root.server.sites", store.getState()), onSuccess, onError, cancelToken);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [dispatch]);
+	}, [store]);
 };
 
 const useServerValidate = (
