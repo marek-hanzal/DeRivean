@@ -33,6 +33,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 		this.name = item.name
 		this.login = item.login
 		this.site = item.site
+		item.ticket?.let { this.ticket = it.toString() }
 		this.stats = Stats(
 			item.kingdoms.count(),
 			userHeroRepository.total(item.id.value),
@@ -46,6 +47,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 		val id: String,
 		val name: String,
 		val login: String,
+		val ticket: String?,
 		val site: String?,
 		val stats: Stats,
 		val attributes: List<Attribute>,
@@ -58,6 +60,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 			lateinit var id: EntityUUID
 			lateinit var name: String
 			lateinit var login: String
+			var ticket: String? = null
 			var site: String? = null
 			lateinit var stats: Stats
 			val attributes = mutableListOf<Attribute>()
@@ -66,6 +69,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 				id.toString(),
 				name,
 				login,
+				ticket,
 				site,
 				stats,
 				attributes,

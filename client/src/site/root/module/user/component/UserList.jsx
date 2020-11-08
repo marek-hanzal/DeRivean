@@ -27,7 +27,7 @@ const UserListItem = ({item, context}) => {
 						<Link to={Routes.root.kingdom.create.link(item.id)}><Button icon={<KingdomIcon/>} type={"link"} size={"small"}>{t(context.id + ".list.create-kingdom")}</Button></Link>
 						<div>{t(context.id + ".list.login")} <strong>{item.login}</strong></div>
 						<div>{t(context.id + ".list.site")} <strong>{item.site || t(context.id + ".list.no-site")}</strong></div>
-						<div>{t(context.id + ".list.token")} <strong>{item.token || t(context.id + ".list.empty-token")}</strong></div>
+						<div>{t(context.id + ".list.ticket")} <strong>{item.ticket || t(context.id + ".list.empty-token")}</strong></div>
 					</Space>
 				}
 			/>
