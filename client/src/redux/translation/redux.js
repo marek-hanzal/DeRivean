@@ -1,3 +1,4 @@
+import commonFetchHook from "utils/hook/commonFetchHook";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import fetchPage from "utils/server/fetchPage";
@@ -7,15 +8,16 @@ const TranslationRedux = CreateCommonRedux(
 	"root.translation.create",
 	"root.translation.update",
 	"root.translation.delete",
-	"root.translation.fetch",
 	{
 		translation: CreateLinkRedux("translation", "translation", "public.translation"),
 	}
 );
 
+const useTranslationFetch = commonFetchHook("root.translation.fetch");
 const fetchTranslationPage = fetchPage("root.translation.page");
 
 export {
 	TranslationRedux,
+	useTranslationFetch,
 	fetchTranslationPage,
 };

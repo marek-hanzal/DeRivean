@@ -1,20 +1,28 @@
 import axios from "axios";
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useStore} from "react-redux";
+import {useNavigate} from "react-router";
+import {selectFetch} from "redux/discovery/redux";
+import get from "utils/server/get";
+import resolveReason from "utils/server/resolveReason";
 
-const commonFetchHook = (redux) => {
-	return (uuid, onSuccess = data => data, onFailure = error => error) => {
-		const dispatch = useDispatch();
+const commonFetchHook = (link, replace = "{id}") => {
+	return (
+		uuid,
+		onSuccess = data => null,
+		onFailure = error => null,
+		onReason = null,
+	) => {
+		const store = useStore();
+		const navigate = useNavigate();
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
-			dispatch(redux.redux.fetch.dispatch.fetch(uuid, cancelToken)).then(data => {
-				onSuccess(data);
-			}, error => {
-				if (error.cancel) {
-					return;
-				}
-				onFailure(error);
-			});
+			get(
+				selectFetch(link, uuid, store.getState(), replace),
+				onSuccess,
+				onFailure,
+				resolveReason(onReason, navigate),
+			);
 			return () => cancelToken.cancel();
 			// eslint-disable-next-line
 		}, [uuid]);

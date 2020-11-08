@@ -9,13 +9,12 @@ const HeroRedux = CreateCommonRedux(
 	"root.hero.create",
 	"root.hero.update",
 	"root.hero.delete",
-	"root.hero.fetch",
 	{
 		attributes: CreateLinkRedux("hero", "attributes", "root.hero.attributes"),
 	},
 );
 
-const useHeroFetch = commonFetchHook(HeroRedux);
+const useHeroFetch = commonFetchHook("root.hero.fetch");
 const dispatchHeroUpdate = commonUpdateDispatch(HeroRedux);
 const fetchHeroPage = fetchPage("root.kingdom.hero.page", "kingdom");
 

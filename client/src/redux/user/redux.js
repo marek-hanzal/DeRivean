@@ -13,7 +13,6 @@ const UserRedux = CreateCommonRedux(
 	"root.user.create",
 	"root.user.update",
 	"root.user.delete",
-	"root.user.fetch",
 	{
 		register: CreateActionRedux("user", "register", "public.user.register", {
 			dismiss: dismissAction("user.register"),
@@ -27,7 +26,7 @@ const UserRedux = CreateCommonRedux(
 	},
 );
 
-const useUserFetch = commonFetchHook(UserRedux);
+const useUserFetch = commonFetchHook("root.user.fetch");
 const dispatchUserUpdate = commonUpdateDispatch(UserRedux);
 const fetchUserPage = fetchPage("root.user.page");
 

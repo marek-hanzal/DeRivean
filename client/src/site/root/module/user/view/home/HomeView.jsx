@@ -11,7 +11,7 @@ const HomeView = () => {
 			context={UserContext}
 			param={"user"}
 			fetch={useUserFetch}
-			navigation={data => ({})}
+			navigation={data => null}
 			menu={"root.user"}
 		>
 			{data => (

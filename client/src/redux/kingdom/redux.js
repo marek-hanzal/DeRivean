@@ -11,7 +11,6 @@ const KingdomRedux = CreateCommonRedux(
 	"root.kingdom.create",
 	"root.kingdom.update",
 	"root.kingdom.delete",
-	"root.kingdom.fetch",
 	{
 		attributes: CreateLinkRedux("kingdom", "attributes", "root.kingdom.attributes"),
 		search: CreatePostRedux("kingdom", "search", "root.kingdom.search"),
@@ -19,7 +18,7 @@ const KingdomRedux = CreateCommonRedux(
 	},
 );
 
-const useKingdomFetch = commonFetchHook(KingdomRedux);
+const useKingdomFetch = commonFetchHook("root.kingdom.fetch");
 const dispatchKingdomUpdate = commonUpdateDispatch(KingdomRedux);
 const fetchKingdomPage = fetchPage("root.user.kingdom.page", "user");
 

@@ -1,5 +1,4 @@
 import CreateActionRedux from "utils/redux/CreateActionRedux";
-import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreateRedux from "utils/redux/CreateRedux";
 
 function CreateCommonRedux(
@@ -7,7 +6,6 @@ function CreateCommonRedux(
 	createId,
 	updateId,
 	deleteId,
-	fetchId,
 	extra = {},
 ) {
 	return CreateRedux(
@@ -15,7 +13,6 @@ function CreateCommonRedux(
 			create: CreateActionRedux(id, "create", createId),
 			update: CreateActionRedux(id, "update", updateId),
 			delete: CreateActionRedux(id, "delete", deleteId),
-			fetch: CreateFetchRedux(id, fetchId),
 			...extra,
 		}
 	);
