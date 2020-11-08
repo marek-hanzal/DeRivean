@@ -19,6 +19,7 @@ const BaseTable = (
 	const items = page.items;
 
 	const onPage = (current, size, cancelToken = null) => {
+		setLoading(true);
 		onFetchPage(
 			store.getState(),
 			current,
@@ -53,7 +54,7 @@ const BaseTable = (
 			rowKey={record => record.id}
 			loading={{
 				spinning: loading,
-				delay: 100,
+				delay: 50,
 			}}
 			itemLayout={"horizontal"}
 			size={"large"}
