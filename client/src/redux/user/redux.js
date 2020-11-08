@@ -6,6 +6,7 @@ import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import CreateFetchRedux from "utils/redux/CreateFetchRedux";
 import CreateLinkRedux from "utils/redux/CreateLinkRedux";
 import CreatePostRedux from "utils/redux/CreatePostRedux";
+import fetchPage from "utils/server/fetchPage";
 
 const UserRedux = CreateCommonRedux(
 	"user",
@@ -28,11 +29,12 @@ const UserRedux = CreateCommonRedux(
 );
 
 const useUserFetch = commonFetchHook(UserRedux);
-
 const dispatchUserUpdate = commonUpdateDispatch(UserRedux);
+const fetchUserPage = fetchPage("root.user.page");
 
 export {
 	UserRedux,
 	useUserFetch,
 	dispatchUserUpdate,
+	fetchUserPage,
 };
