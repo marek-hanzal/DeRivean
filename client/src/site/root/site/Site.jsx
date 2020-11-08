@@ -20,10 +20,13 @@ import {UserRoute} from "site/root/module/user/site/Router";
 import Footer from "site/root/site/Footer";
 import Header from "site/root/site/Header";
 import HomeView from "site/root/view/home/HomeView";
+import SessionExpiredView from "site/root/view/SessionExpiredView";
 import SingInView from "site/root/view/SingInView";
 import Routes from "site/Routes";
 import route from "utils/route/route";
 import NotFoundView from "view/NotFoundView";
+
+const link = Routes.root;
 
 const Site = () => {
 	return (
@@ -64,8 +67,9 @@ const Site = () => {
 						BlogRoute(),
 						TranslationRoute(),
 
-						route(Routes.root.signIn.link(), <SingInView/>),
-						route(Routes.root.signOut.link(), <SingOutView id={"root"}/>),
+						route(link.signIn.link(), <SingInView/>),
+						route(link.signOut.link(), <SingOutView id={"root"}/>),
+						route(link.sessionExpired.link(), <SessionExpiredView/>),
 						route("/", <HomeView/>),
 						route("*", <NotFoundView/>),
 					]}

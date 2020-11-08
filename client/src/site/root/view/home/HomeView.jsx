@@ -2,12 +2,14 @@ import {Card, message} from "antd";
 import useMenuSelect from "hook/useMenuSelect";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 import {useServerValidate} from "redux/server/redux";
 import ErrorResult from "site/root/view/home/ErrorResult";
 import FailedResult from "site/root/view/home/FailedResult";
 import HomeDashboard from "site/root/view/home/HomeDashboard";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import RootView from "site/root/view/RootView";
+import Routes from "site/Routes";
 
 const HomeContext = React.createContext({
 	id: "root.home"
@@ -30,6 +32,7 @@ const HomeView = () => {
 	const {t} = useTranslation();
 	const [validation, setValidation] = useState();
 	const [status, setStatus] = useState(true);
+	const navigate = useNavigate();
 
 	useServerValidate(validation => {
 		setValidation(validation);
@@ -39,7 +42,7 @@ const HomeView = () => {
 		message.error(t("root.home.validation-failed.message"));
 	}, {
 		401: () => {
-			console.error("handle unauthorized!");
+			navigate(Routes.root.sessionExpired.link());
 		},
 		403: () => {
 			setStatus("unavailable");
