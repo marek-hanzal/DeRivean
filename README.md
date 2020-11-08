@@ -20,3 +20,7 @@ nice graphics.
 Long time ago there was DeRivean Engine, before all Unitys and Unreals and other cool stuff today. Then I've moved to web development making the original Engine obsolete (yep, does not make sense when there are really cool things from Epic
 and other brave brothers in arms), so that's reason for the name
 `Legacy of DeRivean` as it was the original project which gave me initial power of programming.
+
+### Sidenote
+
+Current development version (lowest milestone) is in master; closed milestones are in respective branches.
