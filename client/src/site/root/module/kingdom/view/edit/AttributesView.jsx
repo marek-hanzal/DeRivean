@@ -3,7 +3,7 @@ import BaseEditor from "component/form/BaseEditor";
 import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {dispatchKingdomUpdate, useKingdomFetch} from "redux/kingdom/redux";
+import {dispatchKingdomUpdate} from "redux/kingdom/redux";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
@@ -25,7 +25,7 @@ const AttributesView = () => {
 						}}
 						name={id}
 						translation={id}
-						children={<AttributesEditor fetch={useKingdomFetch} context={KingdomContext}/>}
+						children={<AttributesEditor context={KingdomContext}/>}
 					/>
 				)}
 			</KingdomContext.Consumer>

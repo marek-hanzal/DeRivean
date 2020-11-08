@@ -3,7 +3,7 @@ import BaseEditor from "component/form/BaseEditor";
 import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {dispatchBuildingUpdate, useBuildingFetch} from "redux/building/redux";
+import {dispatchBuildingUpdate} from "redux/building/redux";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingView from "site/root/module/building/view/BuildingView";
@@ -25,7 +25,7 @@ const AttributesView = () => {
 						}}
 						name={id}
 						translation={id}
-						children={<AttributesEditor fetch={useBuildingFetch} context={BuildingContext}/>}
+						children={<AttributesEditor context={BuildingContext}/>}
 					/>
 				)}
 			</BuildingContext.Consumer>

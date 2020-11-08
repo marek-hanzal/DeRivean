@@ -3,7 +3,7 @@ import BaseEditor from "component/form/BaseEditor";
 import useMenuSelect from "hook/useMenuSelect";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
-import {dispatchUserUpdate, useUserFetch} from "redux/user/redux";
+import {dispatchUserUpdate} from "redux/user/redux";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import UserContext from "site/root/module/user/component/UserContext";
 import UserView from "site/root/module/user/view/UserView";
@@ -25,7 +25,7 @@ const AttributesView = () => {
 						}}
 						name={id}
 						translation={id}
-						children={<AttributesEditor fetch={useUserFetch} context={UserContext}/>}
+						children={<AttributesEditor context={UserContext}/>}
 					/>
 				)}
 			</UserContext.Consumer>

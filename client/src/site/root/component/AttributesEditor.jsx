@@ -11,12 +11,12 @@ import {useParams} from "react-router";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import values from "utils/form/values";
 
-const AttributesEditor = ({context, fetch}) => {
+const AttributesEditor = ({context}) => {
 	const {t} = useTranslation();
 	const currentContext = useContext(context);
 	const editorContext = useContext(EditorContext);
 	const params = useParams();
-	fetch(params[currentContext.param], fetch => {
+	currentContext.fetch(params[currentContext.param], fetch => {
 		editorContext.setInitials(fetch);
 		values(editorContext.form, fetch);
 		editorContext.setEnableSubmit(true);

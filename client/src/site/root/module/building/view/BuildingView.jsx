@@ -1,4 +1,4 @@
-import {BuildingRedux, useBuildingFetch} from "redux/building/redux";
+import {BuildingRedux, useBuildingAttributesFetch, useBuildingFetch} from "redux/building/redux";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import RootView from "site/root/view/RootView";
@@ -12,6 +12,7 @@ const BuildingView = ({children, ...props}) => {
 			redux: BuildingRedux,
 			link: Routes.root.building,
 			fetch: useBuildingFetch,
+			attributes: useBuildingAttributesFetch,
 			param: "building",
 		}}>
 			<RootView context={BuildingContext} {...props}>
