@@ -6,7 +6,6 @@ import fetchPage from "utils/server/fetchPage";
 
 const BuildingRedux = CreateCommonRedux(
 	"building",
-	"root.building.create",
 	"root.building.update",
 	"root.building.delete",
 );

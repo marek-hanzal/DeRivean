@@ -6,7 +6,6 @@ import fetchPage from "utils/server/fetchPage";
 
 const HeroRedux = CreateCommonRedux(
 	"hero",
-	"root.hero.create",
 	"root.hero.update",
 	"root.hero.delete",
 );
