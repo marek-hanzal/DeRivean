@@ -1,7 +1,6 @@
 import {Card, Result} from "antd";
-import BulletCard from "component/BulletCard";
 import SignUpIcon from "component/icon/SignUpIcon";
-import DualSection from "component/layout/DualSection";
+import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
@@ -26,14 +25,11 @@ const SignUpView = () => {
 							title={t("public.sign-up.content.title")}
 							subTitle={t("public.sign-up.content.subtitle")}
 							children={
-								<DualSection
-									left={
-										<Card title={t("public.sign-up.content.form.title")}>
-											<SignUpForm/>
-										</Card>
-									}
-									right={<BulletCard translation={"public.sign-up.content"} count={5}/>}
-								/>
+								<Centered span={16}>
+									<Card title={t("public.sign-up.content.form.title")}>
+										<SignUpForm/>
+									</Card>
+								</Centered>
 							}
 						/>
 					</Card>
