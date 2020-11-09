@@ -1,9 +1,4 @@
-import {
-	doKingdomCreate,
-	useKingdomAttributesFetch,
-	useKingdomFetch,
-	useKingdomSearch
-} from "redux/kingdom/redux";
+import {doKingdomCreate, doKingdomUpdate, useKingdomAttributesFetch, useKingdomFetch, useKingdomSearch} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import RootView from "site/root/view/RootView";
@@ -16,14 +11,15 @@ const KingdomView = (
 	}) => {
 	return (
 		<KingdomContext.Provider value={{
-			icon:        <KingdomIcon/>,
-			id:          "root.kingdom",
-			link:        Routes.root.kingdom,
-			create:      doKingdomCreate,
-			fetch:       useKingdomFetch,
-			attributes:  useKingdomAttributesFetch,
-			search:      useKingdomSearch,
-			param:       "kingdom",
+			icon: <KingdomIcon/>,
+			id: "root.kingdom",
+			link: Routes.root.kingdom,
+			create: doKingdomCreate,
+			update: doKingdomUpdate,
+			fetch: useKingdomFetch,
+			attributes: useKingdomAttributesFetch,
+			search: useKingdomSearch,
+			param: "kingdom",
 			parentParam: "user",
 		}}>
 			<RootView context={KingdomContext} {...props}>

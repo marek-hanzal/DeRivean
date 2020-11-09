@@ -1,8 +1,8 @@
-import { selectLink } from "redux/discovery/redux";
+import {selectLink} from "redux/discovery/redux";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
-const doCreate = (link) => {
+const doPost = (link) => {
 	return (
 		state,
 		data,
@@ -23,4 +23,4 @@ const doCreate = (link) => {
 	};
 };
 
-export default doCreate;
+export default doPost;
