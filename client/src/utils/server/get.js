@@ -1,12 +1,12 @@
 import axios from "axios";
-import {Server} from "server";
+import { Server } from "server";
 
 const get = (
 	href,
-	onSuccess = data => null,
-	onError = error => null,
+	onSuccess   = data => null,
+	onError     = error => null,
 	cancelToken = null,
-	onReason = null,
+	onReason    = null,
 ) => {
 	Server.get(href, {
 		cancelToken: (cancelToken || axios.CancelToken.source()).token,

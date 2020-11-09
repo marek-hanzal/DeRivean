@@ -7,14 +7,14 @@ const CreateView = () => {
 	return (
 		<BuildingView>
 			<BuildingContext.Consumer>
-				{({id, redux}) => (
+				{(currentContext) => (
 					<CommonCreateView
 						context={BuildingContext}
 						formName={"building"}
-						param={"kingdom"}
+						param={currentContext.parentParam}
 						defaultEnableSubmit={true}
 					>
-						<AttributeFieldEditor translation={id} redux={redux}/>
+						<AttributeFieldEditor currentContext={currentContext}/>
 					</CommonCreateView>
 				)}
 			</BuildingContext.Consumer>

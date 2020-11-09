@@ -1,18 +1,32 @@
-import {PlusOutlined} from "@ant-design/icons";
-import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import {
+	Button,
+	Card,
+	Divider,
+	Empty,
+	Form,
+	Input,
+	InputNumber,
+	List,
+	Popconfirm,
+	Select
+} from "antd";
 import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
-import {useContext, useState} from "react";
-import {useTranslation} from "react-i18next";
-import {useParams} from "react-router";
+import {
+	useContext,
+	useState
+} from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
 
-const AttributeFieldEditor = ({translation, currentContext}) => {
-	const {t} = useTranslation();
-	const editorContext = useContext(EditorContext);
+const AttributeFieldEditor = ({currentContext}) => {
+	const {t}                         = useTranslation();
+	const editorContext               = useContext(EditorContext);
 	const [attributes, setAttributes] = useState();
-	const params = useParams();
+	const params                      = useParams();
 	currentContext.attributes(
 		params[currentContext.param],
 		attributes => {
@@ -21,11 +35,14 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 		}
 	);
 	return (
-		<Card title={t(translation + ".form.attribute.title")}>
+		<Card title={t(currentContext.id + ".form.attribute.title")}>
 			<Form.List
 				name="attributes"
 			>
-				{(fields, {add, remove}) => (
+				{(fields, {
+					add,
+					remove
+				}) => (
 					fields.length ?
 						<List>
 							{fields.map(field => (
@@ -36,14 +53,25 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 											key={field.key + ".attribute"}
 											name={[field.name, "attribute"]}
 											fieldKey={[field.fieldKey, "attribute"]}
-											rules={[{required: true, message: t(translation + ".form.attribute.name.required")}]}
-											style={{width: "60%", marginBottom: 0}}
+											rules={[
+												{
+													required: true,
+													message:  t(currentContext.id + ".form.attribute.name.required")
+												}
+											]}
+											style={{
+												width:        "60%",
+												marginBottom: 0
+											}}
 										>
 											<Select
 												showSearch
 												allowClear
-												placeholder={t(translation + ".form.attribute.name.hint")}
-												options={(attributes || []).map(item => ({label: t(item), value: item}))}
+												placeholder={t(currentContext.id + ".form.attribute.name.hint")}
+												options={(attributes || []).map(item => ({
+													label: t(item),
+													value: item
+												}))}
 												disabled={!editorContext.editor}
 											/>
 										</Form.Item>
@@ -52,12 +80,20 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 											key={field.key + ".value"}
 											name={[field.name, "value"]}
 											fieldKey={[field.fieldKey, "value"]}
-											rules={[{required: true, message: t(translation + ".form.attribute.value.required")}]}
-											style={{width: "35%", marginBottom: 0}}
+											rules={[
+												{
+													required: true,
+													message:  t(currentContext.id + ".form.attribute.value.required")
+												}
+											]}
+											style={{
+												width:        "35%",
+												marginBottom: 0
+											}}
 										>
 											<InputNumber
 												step={10}
-												placeholder={t(translation + ".form.attribute.value.hint")}
+												placeholder={t(currentContext.id + ".form.attribute.value.hint")}
 												style={{width: "100%"}}
 												disabled={!editorContext.editor}
 											/>
@@ -67,7 +103,7 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 										okText={t("common.yes")}
 										cancelText={t("common.no")}
 										icon={<DeleteItemIcon/>}
-										title={t(translation + ".form.attribute.deleteConfirm")}
+										title={t(currentContext.id + ".form.attribute.deleteConfirm")}
 										onConfirm={() => remove(field.name)}
 										disabled={!editorContext.editor}
 									>
@@ -85,7 +121,7 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 												onClick={() => add()}
 												disabled={!attributes}
 												icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
-												children={t(translation + ".form.attribute.add")}
+												children={t(currentContext.id + ".form.attribute.add")}
 											/>
 										</List.Item>
 									</Centered>
@@ -94,7 +130,7 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 						</List> :
 						<Empty
 							image={Empty.PRESENTED_IMAGE_SIMPLE}
-							description={t(translation + ".form.attribute.empty")}
+							description={t(currentContext.id + ".form.attribute.empty")}
 						>
 							{editorContext.editor ? (
 								<>
@@ -105,7 +141,7 @@ const AttributeFieldEditor = ({translation, currentContext}) => {
 										onClick={() => add()}
 										disabled={!attributes}
 										icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
-										children={t(translation + ".form.attribute.add")}
+										children={t(currentContext.id + ".form.attribute.add")}
 									/>
 								</>
 							) : null}

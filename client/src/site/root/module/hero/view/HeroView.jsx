@@ -1,19 +1,27 @@
-import {HeroRedux, useHeroAttributesFetch, useHeroFetch} from "redux/hero/redux";
+import {
+	HeroRedux,
+	useHeroAttributesFetch,
+	useHeroFetch
+} from "redux/hero/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
-const HeroView = ({children, ...props}) => {
+const HeroView = ({
+					  children,
+					  ...props
+				  }) => {
 	return (
 		<HeroContext.Provider value={{
-			icon: <HeroIcon/>,
-			id: "root.hero",
-			redux: HeroRedux,
-			link: Routes.root.hero,
-			fetch: useHeroFetch,
-			attributes: useHeroAttributesFetch,
-			param: "hero",
+			icon:        <HeroIcon/>,
+			id:          "root.hero",
+			redux:       HeroRedux,
+			link:        Routes.root.hero,
+			fetch:       useHeroFetch,
+			attributes:  useHeroAttributesFetch,
+			param:       "hero",
+			parentParam: "kingdom",
 		}}>
 			<RootView context={HeroContext} {...props}>
 				{children}
