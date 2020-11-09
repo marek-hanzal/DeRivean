@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {SessionRedux} from "redux/session/redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { SessionRedux } from "redux/session/redux";
 
 const SessionExpiredView = () => {
 	const dispatch = useDispatch();

@@ -7,13 +7,13 @@ const CreateView = () => {
 	return (
 		<HeroView>
 			<HeroContext.Consumer>
-				{({id, redux}) => (
+				{(currentContext) => (
 					<CommonCreateView
 						context={HeroContext}
-						param={"kingdom"}
+						param={currentContext.parentParam}
 						defaultEnableSubmit={true}
 						readyCount={1}
-						children={<AttributeFieldEditor translation={id} redux={redux}/>}
+						children={<AttributeFieldEditor translation={currentContext.id} currentContext={currentContext}/>}
 					/>
 				)}
 			</HeroContext.Consumer>

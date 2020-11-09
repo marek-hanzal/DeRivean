@@ -1,5 +1,8 @@
-import {Card, Divider} from "antd";
-import {useTranslation} from "react-i18next";
+import {
+	Card,
+	Divider
+} from "antd";
+import { useTranslation } from "react-i18next";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import TemplateInput from "site/root/module/kingdom/component/form/TemplateInput";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
@@ -11,16 +14,16 @@ const CreateView = () => {
 	return (
 		<KingdomView>
 			<KingdomContext.Consumer>
-				{({id, redux}) => (
+				{(currentContext) => (
 					<CommonCreateView
 						context={KingdomContext}
-						param={"user"}
+						param={currentContext.parentParam}
 						defaultEnableSubmit={true}
 						readyCount={2}
 					>
-						<AttributeFieldEditor translation={id} redux={redux}/>
+						<AttributeFieldEditor translation={currentContext.id} currentContext={currentContext}/>
 						<Divider type={"horizontal"}/>
-						<Card title={t(`${id}.create.form.misc.title`)}>
+						<Card title={t(`${currentContext.id}.create.form.misc.title`)}>
 							<TemplateInput/>
 						</Card>
 					</CommonCreateView>
