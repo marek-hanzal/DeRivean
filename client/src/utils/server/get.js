@@ -4,7 +4,7 @@ import { Server } from "server";
 const get = (
 	href,
 	onSuccess   = data => null,
-	onError     = error => null,
+	onError     = null,
 	cancelToken = null,
 	onReason    = null,
 ) => {
@@ -20,7 +20,7 @@ const get = (
 			}
 			if (onReason && error.response && onReason[error.response.status]) {
 				onReason[error.response.status](error);
-			} else {
+			} else if (onError) {
 				onError(error);
 			}
 		});

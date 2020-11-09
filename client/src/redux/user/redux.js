@@ -26,8 +26,25 @@ const UserRedux = CreateCommonRedux(
 		}),
 	},
 );
-
-const useUserFetch           = commonFetchHook("root.user.fetch");
+const doUserCreate = (
+	state,
+	data,
+	onSuccess,
+	onError,
+	onReason,
+	cancelToken,
+	navigate
+) => {
+	post(
+		selectLink("root.user.create", state),
+		data,
+		onSuccess,
+		onError,
+		cancelToken,
+		resolveReason(onReason, navigate),
+	);
+};
+const useUserFetch = commonFetchHook("root.user.fetch");
 const useUserAttributesFetch = commonFetchHook("root.user.attributes");
 const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}");
 const dispatchUserUpdate     = commonUpdateDispatch(UserRedux);
@@ -77,6 +94,7 @@ const doUserSearch           = (
 
 export {
 	UserRedux,
+	doUserCreate,
 	useUserFetch,
 	useUserAttributesFetch,
 	useUserStatisticsFetch,

@@ -1,4 +1,5 @@
 import {
+	doUserCreate,
 	UserRedux,
 	useUserAttributesFetch,
 	useUserFetch,
@@ -20,6 +21,7 @@ const UserView = (
 			id:         "root.user",
 			redux:      UserRedux,
 			link:       Routes.root.user,
+			create:     doUserCreate,
 			fetch:      useUserFetch,
 			attributes: useUserAttributesFetch,
 			search:     useUserSearch,

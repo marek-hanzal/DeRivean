@@ -20,7 +20,7 @@ const CreateView = () => {
 				{(currentContext) => (
 					<CommonCreateView
 						context={UserContext}
-						param={"user"}
+						param={currentContext.param}
 						defaultEnableSubmit={true}
 						// site, template and attributes
 						readyCount={3}
