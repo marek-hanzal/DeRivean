@@ -21,7 +21,7 @@ const CreateView = () => {
 						defaultEnableSubmit={true}
 						readyCount={2}
 					>
-						<AttributeFieldEditor translation={currentContext.id} currentContext={currentContext}/>
+						<AttributeFieldEditor currentContext={currentContext}/>
 						<Divider type={"horizontal"}/>
 						<Card title={t(`${currentContext.id}.create.form.misc.title`)}>
 							<TemplateInput/>

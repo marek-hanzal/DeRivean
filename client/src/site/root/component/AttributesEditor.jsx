@@ -1,21 +1,25 @@
-import {Card, Divider, Result} from "antd";
+import {
+	Card,
+	Divider,
+	Result
+} from "antd";
 import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
-import {useContext} from "react";
-import {useTranslation} from "react-i18next";
-import {useParams} from "react-router";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import values from "utils/form/values";
 
 const AttributesEditor = ({context}) => {
-	const {t} = useTranslation();
+	const {t}            = useTranslation();
 	const currentContext = useContext(context);
-	const editorContext = useContext(EditorContext);
-	const params = useParams();
+	const editorContext  = useContext(EditorContext);
+	const params         = useParams();
 	currentContext.fetch(params[currentContext.param], fetch => {
 		editorContext.setInitials(fetch);
 		values(editorContext.form, fetch);
@@ -35,7 +39,7 @@ const AttributesEditor = ({context}) => {
 				subTitle={t(`${currentContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor currentContext={currentContext} translation={currentContext.id} redux={currentContext.redux}/>
+						<AttributeFieldEditor currentContext={currentContext}/>
 					</Centered>
 				}
 			/>

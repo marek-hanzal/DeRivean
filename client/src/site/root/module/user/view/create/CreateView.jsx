@@ -32,7 +32,7 @@ const CreateView = () => {
 							<SiteInput/>
 						</Card>
 						<Divider type={"horizontal"}/>
-						<AttributeFieldEditor translation={currentContext.id} currentContext={currentContext}/>
+						<AttributeFieldEditor currentContext={currentContext}/>
 						<Divider type={"horizontal"}/>
 						<Card title={t(`${currentContext.id}.form.misc.title`)}>
 							<TemplateInput/>
