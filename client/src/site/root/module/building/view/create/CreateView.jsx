@@ -10,12 +10,11 @@ const CreateView = () => {
 				{(currentContext) => (
 					<CommonCreateView
 						context={BuildingContext}
-						formName={"building"}
 						param={currentContext.parentParam}
 						defaultEnableSubmit={true}
-					>
-						<AttributeFieldEditor currentContext={currentContext}/>
-					</CommonCreateView>
+						readyCount={1}
+						children={<AttributeFieldEditor currentContext={currentContext}/>}
+					/>
 				)}
 			</BuildingContext.Consumer>
 		</BuildingView>

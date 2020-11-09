@@ -13,7 +13,7 @@ const CreateView = () => {
 						param={currentContext.parentParam}
 						defaultEnableSubmit={true}
 						readyCount={1}
-						children={<AttributeFieldEditor translation={currentContext.id} currentContext={currentContext}/>}
+						children={<AttributeFieldEditor currentContext={currentContext}/>}
 					/>
 				)}
 			</HeroContext.Consumer>
