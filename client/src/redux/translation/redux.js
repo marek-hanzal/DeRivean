@@ -1,27 +1,26 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useStore } from "react-redux";
-import { useNavigate } from "react-router";
-import { selectLink } from "redux/discovery/redux";
+import {useEffect} from "react";
+import {useStore} from "react-redux";
+import {useNavigate} from "react-router";
+import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
-import doCreate from "utils/server/doCreate";
+import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import get from "utils/server/get";
 import resolveReason from "utils/server/resolveReason";
 
 const TranslationRedux = CreateCommonRedux(
 	"translation",
-	"root.translation.update",
 	"root.translation.delete",
 );
 
-const useTranslation       = (
+const useTranslation = (
 	onSuccess = validation => null,
-	onError   = error => null,
-	onReason  = null,
+	onError = error => null,
+	onReason = null,
 ) => {
-	const store    = useStore();
+	const store = useStore();
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
@@ -36,14 +35,16 @@ const useTranslation       = (
 		// eslint-disable-next-line
 	}, [store]);
 };
-const doTranslationCreate  = doCreate("root.translation.create");
-const useTranslationFetch  = commonFetchHook("root.translation.fetch");
+const doTranslationCreate = doPost("root.translation.create");
+const doTranslationUpdate = doPost("root.translation.update");
+const useTranslationFetch = commonFetchHook("root.translation.fetch");
 const fetchTranslationPage = fetchPage("root.translation.page");
 
 export {
 	TranslationRedux,
 	useTranslation,
 	doTranslationCreate,
+	doTranslationUpdate,
 	useTranslationFetch,
 	fetchTranslationPage,
 };
