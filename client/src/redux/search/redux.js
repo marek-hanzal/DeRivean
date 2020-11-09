@@ -16,20 +16,29 @@ const useSearch = (
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		post(
-			selectLink("root.search", store.getState()),
+		doSearch(
+			store.getState(),
 			data,
 			onSuccess,
 			onError,
+			onReason,
 			cancelToken,
-			resolveReason(onReason, navigate),
+			navigate,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [store]);
 };
 
-const doSearch = (state, data, onSuccess, onError, onReason, cancelToken, navigate) => {
+const doSearch = (
+	state,
+	data,
+	onSuccess,
+	onError,
+	onReason,
+	cancelToken,
+	navigate
+) => {
 	post(
 		selectLink("root.search", state),
 		data,
