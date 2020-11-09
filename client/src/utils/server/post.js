@@ -5,7 +5,7 @@ const post = (
 	href,
 	data,
 	onSuccess   = data => null,
-	onError     = error => null,
+	onError     = null,
 	cancelToken = null,
 	onReason    = null,
 ) => {
@@ -21,7 +21,7 @@ const post = (
 			}
 			if (onReason && error.response && onReason[error.response.status]) {
 				onReason[error.response.status](error);
-			} else {
+			} else if (onError) {
 				onError(error);
 			}
 		});
