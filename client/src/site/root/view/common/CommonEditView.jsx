@@ -39,10 +39,8 @@ const Editor = (
 				status={"info"}
 				title={
 					<EditorToolbar
-						translation={currentContext.id}
+						currentContext={currentContext}
 						param={param}
-						redux={currentContext.redux}
-						deletedLink={currentContext.link.dashboard}
 					/>
 				}
 				subTitle={
