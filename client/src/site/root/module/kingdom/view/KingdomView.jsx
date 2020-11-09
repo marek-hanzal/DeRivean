@@ -1,4 +1,4 @@
-import {doKingdomCreate, doKingdomUpdate, useKingdomAttributesFetch, useKingdomFetch, useKingdomSearch} from "redux/kingdom/redux";
+import {doKingdomCreate, doKingdomDelete, doKingdomUpdate, useKingdomAttributesFetch, useKingdomFetch, useKingdomSearch} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import RootView from "site/root/view/RootView";
@@ -16,6 +16,7 @@ const KingdomView = (
 			link: Routes.root.kingdom,
 			create: doKingdomCreate,
 			update: doKingdomUpdate,
+			delete: doKingdomDelete,
 			fetch: useKingdomFetch,
 			attributes: useKingdomAttributesFetch,
 			search: useKingdomSearch,

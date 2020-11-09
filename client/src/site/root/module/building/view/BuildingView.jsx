@@ -1,4 +1,4 @@
-import {doBuildingCreate, doBuildingUpdate, useBuildingAttributesFetch, useBuildingFetch} from "redux/building/redux";
+import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, useBuildingAttributesFetch, useBuildingFetch} from "redux/building/redux";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import RootView from "site/root/view/RootView";
@@ -16,6 +16,7 @@ const BuildingView = (
 			link: Routes.root.building,
 			create: doBuildingCreate,
 			update: doBuildingUpdate,
+			delete: doBuildingDelete,
 			fetch: useBuildingFetch,
 			attributes: useBuildingAttributesFetch,
 			param: "building",

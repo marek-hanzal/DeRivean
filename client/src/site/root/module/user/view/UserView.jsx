@@ -1,4 +1,4 @@
-import {doUserCreate, doUserUpdate, useUserAttributesFetch, useUserFetch, useUserSearch} from "redux/user/redux";
+import {doUserCreate, doUserDelete, doUserUpdate, useUserAttributesFetch, useUserFetch, useUserSearch} from "redux/user/redux";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
 import RootView from "site/root/view/RootView";
@@ -16,6 +16,7 @@ const UserView = (
 			link: Routes.root.user,
 			create: doUserCreate,
 			update: doUserUpdate,
+			delete: doUserDelete,
 			fetch: useUserFetch,
 			attributes: useUserAttributesFetch,
 			search: useUserSearch,

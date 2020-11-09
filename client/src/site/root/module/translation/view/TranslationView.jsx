@@ -1,4 +1,4 @@
-import {doTranslationCreate, doTranslationUpdate, useTranslationFetch} from "redux/translation/redux";
+import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, useTranslationFetch} from "redux/translation/redux";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
 import RootView from "site/root/view/RootView";
@@ -15,6 +15,7 @@ const TranslationView = (
 			id: "root.translation",
 			create: doTranslationCreate,
 			update: doTranslationUpdate,
+			delete: doTranslationDelete,
 			fetch: useTranslationFetch,
 			link: Routes.root.translation,
 		}}>
