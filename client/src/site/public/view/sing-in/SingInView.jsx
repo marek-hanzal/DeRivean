@@ -2,20 +2,12 @@ import {Card, Result} from "antd";
 import BulletCard from "component/BulletCard";
 import SignInIcon from "component/icon/SignInIcon";
 import DualSection from "component/layout/DualSection";
-import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
-import {UserRedux} from "redux/user/redux";
 import PublicView from "site/public/view/PublicView";
 import SignInForm from "site/public/view/sing-in/SignInForm";
 
 const SingInView = () => {
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	useEffect(() => {
-		dispatch(UserRedux.redux.login.dispatch.dismiss());
-		return () => dispatch(UserRedux.redux.login.dispatch.dismiss());
-	});
 	return (
 		<PublicView id={"public.sign-in"}>
 			<Card title={t("public.sign-in.title")}>

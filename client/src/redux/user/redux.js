@@ -3,27 +3,14 @@ import {useEffect} from "react";
 import {useStore} from "react-redux";
 import {useNavigate} from "react-router";
 import {selectLink} from "redux/discovery/redux";
-import dismissAction from "utils/action/actions/dismissAction";
 import commonFetchHook from "utils/hook/commonFetchHook";
-import CreateActionRedux from "utils/redux/CreateActionRedux";
-import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
-const UserRedux = CreateCommonRedux(
-	"user",
-	"root.user.delete",
-	{
-		register: CreateActionRedux("user", "register", "public.user.register", {
-			dismiss: dismissAction("user.register"),
-		}),
-		login: CreateActionRedux("user", "login", "public.user.login", {
-			dismiss: dismissAction("user.login"),
-		}),
-	},
-);
+const doUserRegister = doPost("public.user.register");
+const doUserLogin = doPost("public.user.login");
 const doUserCreate = doPost("root.user.create");
 const doUserUpdate = doPost("root.user.update");
 const doUserDelete = doPost("root.user.delete");
@@ -74,7 +61,8 @@ const doUserSearch = (
 };
 
 export {
-	UserRedux,
+	doUserRegister,
+	doUserLogin,
 	doUserCreate,
 	doUserUpdate,
 	doUserDelete,
