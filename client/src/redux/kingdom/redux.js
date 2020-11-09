@@ -4,24 +4,17 @@ import {useStore} from "react-redux";
 import {useNavigate} from "react-router";
 import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
-import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
-import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
-const KingdomRedux = CreateCommonRedux(
-	"kingdom",
-	"root.kingdom.delete",
-);
-
 const doKingdomCreate = doPost("root.kingdom.create");
 const doKingdomUpdate = doPost("root.kingdom.update");
+const doKingdomDelete = doPost("root.kingdom.delete");
 const useKingdomFetch = commonFetchHook("root.kingdom.fetch");
 const useKingdomAttributesFetch = commonFetchHook("root.kingdom.attributes");
 const useKingdomStatisticsFetch = commonFetchHook("root.kingdom.statistics", "{kingdom}");
-const dispatchKingdomUpdate = commonUpdateDispatch(KingdomRedux);
 const fetchKingdomPage = fetchPage("root.user.kingdom.page", "user");
 const useKingdomSearch = (
 	data,
@@ -66,13 +59,12 @@ const doKingdomSearch = (
 };
 
 export {
-	KingdomRedux,
 	doKingdomCreate,
 	doKingdomUpdate,
+	doKingdomDelete,
 	useKingdomFetch,
 	useKingdomAttributesFetch,
 	useKingdomStatisticsFetch,
-	dispatchKingdomUpdate,
 	fetchKingdomPage,
 	useKingdomSearch,
 	doKingdomSearch,

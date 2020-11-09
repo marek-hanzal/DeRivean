@@ -8,15 +8,15 @@ import BackLink from "component/route/BackLink";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
+import {useDispatch, useStore} from "react-redux";
 import {useParams} from "react-router";
+import {LoadingRedux} from "redux/loading/redux";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
 const Editor = (
 	{
 		currentContext,
-		fetch,
 		param,
 		children,
 		name,
@@ -78,6 +78,7 @@ const CommonEditView = (
 		children,
 	}) => {
 	const currentContext = useContext(context);
+	const store = useStore();
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
@@ -88,16 +89,29 @@ const CommonEditView = (
 			readyCount={(readyCount || 0) + 1}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(data, initials, editor) => {
-				dispatch(currentContext.redux.redux.update.dispatch.update({...data, id: params[param]})).then(data => {
-					message.success(t(currentContext.id + ".update.success"));
-					editor.setEditor(false);
-					editor.setErrors(null);
-					editor.setInitials(data);
-					values(editor.form, data);
-				}, error => {
-					message.error(t(currentContext.id + ".update.error"));
-					editor.setErrors(error);
-				});
+				dispatch(LoadingRedux.start());
+				currentContext.update(
+					store.getState(),
+					{...data, id: params[param]},
+					data => {
+						message.success(t(currentContext.id + ".update.success"));
+						editor.setEditor(false);
+						editor.setErrors(null);
+						editor.setInitials(data);
+						values(editor.form, data);
+						dispatch(LoadingRedux.finish());
+					}, () => {
+						message.error(t(currentContext.id + ".update.general-error"));
+						dispatch(LoadingRedux.finish());
+					},
+					{
+						409: error => {
+							message.error(t(currentContext.id + ".update.conflict"));
+							editor.setErrors(error.response.data);
+							dispatch(LoadingRedux.finish());
+						}
+					}
+				);
 			}}
 			onFinishFailed={() => {
 				message.error(t(currentContext.id + ".update.error"));
