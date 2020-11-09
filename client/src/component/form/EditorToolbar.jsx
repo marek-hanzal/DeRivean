@@ -45,7 +45,7 @@ const EditorToolbar = (
 								store.getState(),
 								{id: params[param]},
 								_ => {
-									setTimeout(() => navigate(cleverLink.link), 0);
+									navigate(cleverLink.link);
 									message.success(t(currentContext.id + ".delete.success"));
 									dispatch(LoadingRedux.finish());
 								},
