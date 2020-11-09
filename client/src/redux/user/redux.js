@@ -8,11 +8,12 @@ import commonFetchHook from "utils/hook/commonFetchHook";
 import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateActionRedux from "utils/redux/CreateActionRedux";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
+import doCreate from "utils/server/doCreate";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
-const UserRedux = CreateCommonRedux(
+const UserRedux              = CreateCommonRedux(
 	"user",
 	"root.user.create",
 	"root.user.update",
@@ -26,25 +27,8 @@ const UserRedux = CreateCommonRedux(
 		}),
 	},
 );
-const doUserCreate = (
-	state,
-	data,
-	onSuccess,
-	onError,
-	onReason,
-	cancelToken,
-	navigate
-) => {
-	post(
-		selectLink("root.user.create", state),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
-const useUserFetch = commonFetchHook("root.user.fetch");
+const doUserCreate           = doCreate("root.user.create");
+const useUserFetch           = commonFetchHook("root.user.fetch");
 const useUserAttributesFetch = commonFetchHook("root.user.attributes");
 const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}");
 const dispatchUserUpdate     = commonUpdateDispatch(UserRedux);

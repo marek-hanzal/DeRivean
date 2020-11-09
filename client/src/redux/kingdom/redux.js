@@ -6,6 +6,7 @@ import { selectLink } from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
+import doCreate from "utils/server/doCreate";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
@@ -17,24 +18,7 @@ const KingdomRedux = CreateCommonRedux(
 	"root.kingdom.delete",
 );
 
-const doKingdomCreate           = (
-	state,
-	data,
-	onSuccess,
-	onError,
-	onReason,
-	cancelToken,
-	navigate
-) => {
-	post(
-		selectLink("root.kingdom.create", state),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+const doKingdomCreate           = doCreate("root.kingdom.create");
 const useKingdomFetch           = commonFetchHook("root.kingdom.fetch");
 const useKingdomAttributesFetch = commonFetchHook("root.kingdom.attributes");
 const useKingdomStatisticsFetch = commonFetchHook("root.kingdom.statistics", "{kingdom}");
