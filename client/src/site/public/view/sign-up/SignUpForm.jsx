@@ -1,23 +1,33 @@
 import {Button, Form, Input} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
 import Centered from "component/layout/Centered";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
-import {UserRedux} from "redux/user/redux";
+import {useStore} from "react-redux";
+import {doUserRegister} from "redux/user/redux";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignUpForm = () => {
+	const store = useStore();
 	const {t} = useTranslation();
 	const [form] = Form.useForm();
-	const errors = useSelector(UserRedux.redux.register.selector.getError);
-	const dispatch = useDispatch();
+	const [errors, setErrors] = useState();
 	return (
 		<Form
 			labelCol={{span: 6}}
 			form={form}
 			onFinish={values => {
-				dispatch(UserRedux.redux.register.dispatch.register(values));
+				doUserRegister(
+					store.getState(),
+					values,
+					() => {
+						alert("navigate to success page!");
+					},
+					error => {
+						setErrors(error.response.data);
+					}
+				);
 			}}
 			name={"sign-up"}
 		>
@@ -61,7 +71,6 @@ const SignUpForm = () => {
 							type="primary"
 							htmlType="submit"
 							icon={<SignUpIcon/>}
-							onClick={() => dispatch(UserRedux.redux.register.dispatch.dismiss())}
 							disabled={enableSubmit(form, ["name", "login", "password"])}
 							children={t("public.sign-up.form.submit.label")}
 						/>

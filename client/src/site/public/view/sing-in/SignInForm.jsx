@@ -1,25 +1,45 @@
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, message} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
 import Centered from "component/layout/Centered";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector, useStore} from "react-redux";
+import {useDispatch, useStore} from "react-redux";
+import {LoadingRedux} from "redux/loading/redux";
 import {SessionRedux} from "redux/session/redux";
-import {UserRedux} from "redux/user/redux";
+import {doUserLogin} from "redux/user/redux";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignInForm = () => {
 	const {t} = useTranslation();
-	const errors = useSelector(UserRedux.redux.login.selector.getError);
+	const [errors, setErrors] = useState();
 	const dispatch = useDispatch();
 	const store = useStore();
 	const [form] = Form.useForm();
 	return (
 		<Form
 			form={form}
-			onFinish={values => dispatch(UserRedux.redux.login.dispatch.login(values)).then(() => {
-				dispatch(SessionRedux.open(UserRedux.redux.login.selector.getPayload(store.getState())));
-			}, () => null)}
+			onFinish={values => {
+				dispatch(LoadingRedux.start());
+				doUserLogin(
+					store.getState(),
+					values,
+					data => {
+						dispatch(SessionRedux.open(data));
+						dispatch(LoadingRedux.finish());
+					},
+					() => {
+						dispatch(LoadingRedux.finish());
+						message.error(t("public.sign-in.general-error"));
+					},
+					{
+						403: (error) => {
+							setErrors(error.response.data);
+							dispatch(LoadingRedux.finish());
+						}
+					}
+				);
+			}}
 			name={"sign-in"}
 		>
 			<Form.Item
@@ -51,8 +71,7 @@ const SignInForm = () => {
 							type="primary"
 							htmlType="submit"
 							icon={<SignInIcon/>}
-							onClick={() => dispatch(UserRedux.redux.login.dispatch.dismiss())}
-							disabled={enableSubmit(form, ["login", "password"])}
+							disabled={!enableSubmit(form, true)}
 							children={t("public.sign-in.form.submit.label")}
 						/>
 					)}
