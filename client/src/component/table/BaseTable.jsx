@@ -63,6 +63,7 @@ const BaseTable = (
 				pageSize: page.size,
 				defaultPageSize: page.size,
 				showQuickJumper: true,
+				hideOnSinglePage: true,
 				onChange: (current, size) => onPage(current - 1, size),
 			}}
 			renderItem={children}

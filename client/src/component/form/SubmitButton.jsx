@@ -21,7 +21,7 @@ const SubmitButton = (
 					size={"large"}
 					htmlType={"submit"}
 					icon={<Spinner done={!editorContext.ready} icon={<SubmitIcon/>}/>}
-					disabled={!(!editorContext.ready && editorContext.enableSubmit && !enableSubmit(editorContext.form, false))}
+					disabled={!(!editorContext.ready && editorContext.enableSubmit && enableSubmit(editorContext.form, false))}
 					children={t(title || "common.submit")}
 				/>
 			)}
