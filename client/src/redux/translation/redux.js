@@ -5,9 +5,9 @@ import { useNavigate } from "react-router";
 import { selectLink } from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
+import doCreate from "utils/server/doCreate";
 import fetchPage from "utils/server/fetchPage";
 import get from "utils/server/get";
-import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
 const TranslationRedux = CreateCommonRedux(
@@ -37,24 +37,7 @@ const useTranslation       = (
 		// eslint-disable-next-line
 	}, [store]);
 };
-const doTranslationCreate  = (
-	state,
-	data,
-	onSuccess,
-	onError,
-	onReason,
-	cancelToken,
-	navigate
-) => {
-	post(
-		selectLink("root.translation.create", state),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+const doTranslationCreate  = doCreate("root.translation.create");
 const useTranslationFetch  = commonFetchHook("root.translation.fetch");
 const fetchTranslationPage = fetchPage("root.translation.page");
 

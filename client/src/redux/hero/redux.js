@@ -1,10 +1,8 @@
-import { selectLink } from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import commonUpdateDispatch from "utils/redux/commonUpdateDispatch";
 import CreateCommonRedux from "utils/redux/CreateCommonRedux";
+import doCreate from "utils/server/doCreate";
 import fetchPage from "utils/server/fetchPage";
-import post from "utils/server/post";
-import resolveReason from "utils/server/resolveReason";
 
 const HeroRedux = CreateCommonRedux(
 	"hero",
@@ -13,24 +11,7 @@ const HeroRedux = CreateCommonRedux(
 	"root.hero.delete",
 );
 
-const doHeroCreate           = (
-	state,
-	data,
-	onSuccess,
-	onError,
-	onReason,
-	cancelToken,
-	navigate
-) => {
-	post(
-		selectLink("root.hero.create", state),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+const doHeroCreate           = doCreate("root.hero.create");
 const useHeroFetch           = commonFetchHook("root.hero.fetch");
 const useHeroAttributesFetch = commonFetchHook("root.hero.attributes");
 const dispatchHeroUpdate     = commonUpdateDispatch(HeroRedux);
