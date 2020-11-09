@@ -15,7 +15,6 @@ import resolveReason from "utils/server/resolveReason";
 
 const UserRedux              = CreateCommonRedux(
 	"user",
-	"root.user.create",
 	"root.user.update",
 	"root.user.delete",
 	{

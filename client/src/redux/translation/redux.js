@@ -12,7 +12,6 @@ import resolveReason from "utils/server/resolveReason";
 
 const TranslationRedux = CreateCommonRedux(
 	"translation",
-	"root.translation.create",
 	"root.translation.update",
 	"root.translation.delete",
 );

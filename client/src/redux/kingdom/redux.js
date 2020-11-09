@@ -13,7 +13,6 @@ import resolveReason from "utils/server/resolveReason";
 
 const KingdomRedux = CreateCommonRedux(
 	"kingdom",
-	"root.kingdom.create",
 	"root.kingdom.update",
 	"root.kingdom.delete",
 );
