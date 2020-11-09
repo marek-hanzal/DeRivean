@@ -1,5 +1,5 @@
 import {
-	KingdomRedux,
+	doKingdomCreate,
 	useKingdomAttributesFetch,
 	useKingdomFetch,
 	useKingdomSearch
@@ -18,8 +18,8 @@ const KingdomView = (
 		<KingdomContext.Provider value={{
 			icon:        <KingdomIcon/>,
 			id:          "root.kingdom",
-			redux:       KingdomRedux,
 			link:        Routes.root.kingdom,
+			create:      doKingdomCreate,
 			fetch:       useKingdomFetch,
 			attributes:  useKingdomAttributesFetch,
 			search:      useKingdomSearch,

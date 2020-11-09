@@ -1,5 +1,5 @@
 import {
-	BuildingRedux,
+	doBuildingCreate,
 	useBuildingAttributesFetch,
 	useBuildingFetch
 } from "redux/building/redux";
@@ -17,8 +17,8 @@ const BuildingView = (
 		<BuildingContext.Provider value={{
 			icon:        <BuildingIcon/>,
 			id:          "root.building",
-			redux:       BuildingRedux,
 			link:        Routes.root.building,
+			create:      doBuildingCreate,
 			fetch:       useBuildingFetch,
 			attributes:  useBuildingAttributesFetch,
 			param:       "building",

@@ -17,6 +17,24 @@ const KingdomRedux = CreateCommonRedux(
 	"root.kingdom.delete",
 );
 
+const doKingdomCreate           = (
+	state,
+	data,
+	onSuccess,
+	onError,
+	onReason,
+	cancelToken,
+	navigate
+) => {
+	post(
+		selectLink("root.kingdom.create", state),
+		data,
+		onSuccess,
+		onError,
+		cancelToken,
+		resolveReason(onReason, navigate),
+	);
+};
 const useKingdomFetch           = commonFetchHook("root.kingdom.fetch");
 const useKingdomAttributesFetch = commonFetchHook("root.kingdom.attributes");
 const useKingdomStatisticsFetch = commonFetchHook("root.kingdom.statistics", "{kingdom}");
@@ -66,6 +84,7 @@ const doKingdomSearch           = (
 
 export {
 	KingdomRedux,
+	doKingdomCreate,
 	useKingdomFetch,
 	useKingdomAttributesFetch,
 	useKingdomStatisticsFetch,

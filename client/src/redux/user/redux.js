@@ -91,7 +91,6 @@ const doUserSearch           = (
 	);
 };
 
-
 export {
 	UserRedux,
 	doUserCreate,
