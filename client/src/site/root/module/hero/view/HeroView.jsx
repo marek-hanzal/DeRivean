@@ -1,4 +1,4 @@
-import {doHeroCreate, doHeroUpdate, useHeroAttributesFetch, useHeroFetch} from "redux/hero/redux";
+import {doHeroCreate, doHeroDelete, doHeroUpdate, useHeroAttributesFetch, useHeroFetch} from "redux/hero/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import RootView from "site/root/view/RootView";
@@ -16,6 +16,7 @@ const HeroView = (
 			link: Routes.root.hero,
 			create: doHeroCreate,
 			update: doHeroUpdate,
+			delete: doHeroDelete,
 			fetch: useHeroFetch,
 			attributes: useHeroAttributesFetch,
 			param: "hero",
