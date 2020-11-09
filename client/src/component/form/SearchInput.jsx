@@ -1,10 +1,15 @@
-import {Select} from "antd";
-import axios from "axios";
+import { Select } from "antd";
 import EditorContext from "component/form/EditorContext";
-import {useContext, useEffect, useRef, useState} from "react";
-import {GlobalHotKeys} from "react-hotkeys";
-import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
+import {
+	useContext,
+	useRef,
+	useState
+} from "react";
+import { GlobalHotKeys } from "react-hotkeys";
+import { useTranslation } from "react-i18next";
+import { useStore } from "react-redux";
+import { useNavigate } from "react-router";
+import { doSearch } from "redux/search/redux";
 
 const SearchInput = (
 	{
@@ -15,31 +20,32 @@ const SearchInput = (
 		hotkey,
 		...props
 	}) => {
-	context = useContext(context);
-	const {t} = useTranslation();
-	const ref = useRef();
-	const dispatch = useDispatch();
-	const [data, setData] = useState([]);
-	const isLoading = useSelector(context.redux.redux.search.selector.isLoading);
-	const editorContext = useContext(EditorContext);
-	mapper = mapper || (data => data.items.map(item => ({
+	const currentContext        = useContext(context);
+	const {t}                   = useTranslation();
+	const ref                   = useRef();
+	const navigate              = useNavigate();
+	const [data, setData]       = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [open, setOpen]       = useState(false);
+	const editorContext         = useContext(EditorContext);
+	const store                 = useStore();
+	mapper                      = mapper || (data => data.items.map(item => ({
 		label: item.name,
 		value: item.id, ...item
 	})));
-	render = render || (item => item.name);
-	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		dispatch(context.redux.redux.search.dispatch.search({search: ""}, cancelToken)).then(data => {
+	render                      = render || (item => item.name);
+	currentContext.search(
+		{search: ""},
+		data => {
 			setData(mapper(data));
 			if (editorContext) {
 				editorContext.isReady();
 			}
+			setLoading(false);
 		}, () => {
-		});
-		return () => cancelToken.cancel();
-		// eslint-disable-next-line
-	}, [dispatch]);
-	const [open, setOpen] = useState(false);
+			setLoading(false);
+		}
+	);
 	return (
 		<GlobalHotKeys keyMap={{
 			search: hotkey,
@@ -56,24 +62,24 @@ const SearchInput = (
 				onFocus={() => setOpen(true)}
 				onBlur={() => setOpen(false)}
 				filterOption={false}
-				loading={isLoading}
+				loading={loading}
 				allowClear
 				onSearch={search => {
-					dispatch(context.redux.redux.search.dispatch.search({search})).then(data => {
+					doSearch(store.getState(), {search}, data => {
 						setData(mapper(data));
-					});
+					}, null, null, null, navigate);
 				}}
 				onClear={_ => {
-					dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
+					doSearch(store.getState(), {search: ""}, data => {
 						setData(mapper(data));
-					});
+					}, null, null, null, navigate);
 				}}
 				onChange={_ => {
-					dispatch(context.redux.redux.search.dispatch.search({search: ""})).then(data => {
+					doSearch(store.getState(), {search: ""}, data => {
 						setData(mapper(data));
-					});
+					}, null, null, null, navigate);
 				}}
-				placeholder={t(`${context.id}.${placeholder}.label`)}
+				placeholder={t(`${currentContext.id}.${placeholder}.label`)}
 				{...props}
 			>
 				{data.map(item => (

@@ -16,10 +16,11 @@ const HomeContext = React.createContext({
 	id: "root.home"
 });
 
-const ResolveStatus = ({
-						   validation,
-						   status
-					   }) => {
+const ResolveStatus = (
+	{
+		validation,
+		status
+	}) => {
 	switch (status) {
 		case false:
 			return <FailedResult/>;
@@ -33,9 +34,9 @@ const ResolveStatus = ({
 };
 
 const HomeView = () => {
-	const {t} = useTranslation();
+	const {t}                         = useTranslation();
 	const [validation, setValidation] = useState();
-	const [status, setStatus] = useState(true);
+	const [status, setStatus]         = useState(true);
 	useServerValidate(validation => {
 		setValidation(validation);
 		setStatus(true);
