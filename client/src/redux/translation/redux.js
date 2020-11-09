@@ -4,16 +4,10 @@ import {useStore} from "react-redux";
 import {useNavigate} from "react-router";
 import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
-import CreateCommonRedux from "utils/redux/CreateCommonRedux";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import get from "utils/server/get";
 import resolveReason from "utils/server/resolveReason";
-
-const TranslationRedux = CreateCommonRedux(
-	"translation",
-	"root.translation.delete",
-);
 
 const useTranslation = (
 	onSuccess = validation => null,
@@ -37,14 +31,15 @@ const useTranslation = (
 };
 const doTranslationCreate = doPost("root.translation.create");
 const doTranslationUpdate = doPost("root.translation.update");
+const doTranslationDelete = doPost("root.translation.delete");
 const useTranslationFetch = commonFetchHook("root.translation.fetch");
 const fetchTranslationPage = fetchPage("root.translation.page");
 
 export {
-	TranslationRedux,
 	useTranslation,
 	doTranslationCreate,
 	doTranslationUpdate,
+	doTranslationDelete,
 	useTranslationFetch,
 	fetchTranslationPage,
 };
