@@ -12,7 +12,7 @@ const doPost = (link) => {
 		navigate
 	) => {
 		post(
-			discovery.selectLink(link),
+			discovery.link(link),
 			data,
 			onSuccess,
 			onError,

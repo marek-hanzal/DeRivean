@@ -15,7 +15,7 @@ const fetchPage = (link, param) => {
 		onReason,
 	) => {
 		get(
-			buildUrl(discovery.selectPage(link, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
+			buildUrl(discovery.page(link, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
 			onSuccess,
 			onError,
 			cancelToken,
