@@ -1,19 +1,29 @@
-import {Button, Form, Input} from "antd";
+import {
+	Button,
+	Form,
+	Input
+} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
 import Centered from "component/layout/Centered";
-import {useState} from "react";
-import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
-import {LoadingRedux} from "redux/loading/redux";
-import {doUserRegister} from "redux/user/redux";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+	useDispatch,
+	useStore
+} from "react-redux";
+import { useNavigate } from "react-router";
+import { LoadingRedux } from "redux/loading/redux";
+import { doUserRegister } from "redux/user/redux";
+import Routes from "site/Routes";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignUpForm = () => {
-	const store = useStore();
-	const dispatch = useDispatch();
-	const {t} = useTranslation();
-	const [form] = Form.useForm();
+	const store               = useStore();
+	const navigate            = useNavigate();
+	const dispatch            = useDispatch();
+	const {t}                 = useTranslation();
+	const [form]              = Form.useForm();
 	const [errors, setErrors] = useState();
 	return (
 		<Form
@@ -25,7 +35,7 @@ const SignUpForm = () => {
 					store.getState(),
 					values,
 					() => {
-						alert("navigate to success page!");
+						navigate(Routes.public.signUpSuccess.link());
 						dispatch(LoadingRedux.finish());
 					},
 					() => {
@@ -47,7 +57,7 @@ const SignUpForm = () => {
 				rules={[
 					{
 						required: true,
-						message: t("public.sign-up.form.name.required")
+						message:  t("public.sign-up.form.name.required")
 					}
 				]}
 				children={<Input addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.name.label")}</div>}/>}
@@ -58,7 +68,7 @@ const SignUpForm = () => {
 				rules={[
 					{
 						required: true,
-						message: t("public.sign-up.form.login.required")
+						message:  t("public.sign-up.form.login.required")
 					}
 				]}
 				children={<Input addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.login.label")}</div>}/>}
@@ -69,7 +79,7 @@ const SignUpForm = () => {
 				rules={[
 					{
 						required: true,
-						message: t("public.sign-up.form.password.required")
+						message:  t("public.sign-up.form.password.required")
 					}
 				]}
 				children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t("public.sign-up.form.password.label")}</div>}/>}

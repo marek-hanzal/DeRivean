@@ -1,0 +1,237 @@
+<code_scheme name="edde" version="173">
+  <option name="AUTODETECT_INDENTS" value="false" />
+  <option name="LINE_SEPARATOR" value="&#xA;" />
+  <option name="RIGHT_MARGIN" value="240" />
+  <option name="FORMATTER_TAGS_ENABLED" value="true" />
+  <DB2CodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </DB2CodeStyleSettings>
+  <DerbyCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </DerbyCodeStyleSettings>
+  <H2CodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </H2CodeStyleSettings>
+  <HSQLCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </HSQLCodeStyleSettings>
+  <HTMLCodeStyleSettings>
+    <option name="HTML_ATTRIBUTE_WRAP" value="0" />
+    <option name="HTML_ALIGN_TEXT" value="true" />
+    <option name="HTML_DO_NOT_INDENT_CHILDREN_OF" value="" />
+    <option name="HTML_ENFORCE_QUOTES" value="true" />
+  </HTMLCodeStyleSettings>
+  <JSCodeStyleSettings version="0">
+    <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    <option name="ALIGN_OBJECT_PROPERTIES" value="1" />
+    <option name="ALIGN_VAR_STATEMENTS" value="2" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="VAR_DECLARATION_WRAP" value="2" />
+    <option name="OBJECT_LITERAL_WRAP" value="2" />
+    <option name="IMPORTS_WRAP" value="2" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="IMPORT_SORT_MODULE_NAME" value="true" />
+    <option name="IMPORT_PREFER_ABSOLUTE_PATH" value="TRUE" />
+  </JSCodeStyleSettings>
+  <MSSQLCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </MSSQLCodeStyleSettings>
+  <MySQLCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="DISABLE_FORMATTING" value="true" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+  </MySQLCodeStyleSettings>
+  <OracleCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </OracleCodeStyleSettings>
+  <PostgresCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </PostgresCodeStyleSettings>
+  <SQLiteCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </SQLiteCodeStyleSettings>
+  <SqlCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </SqlCodeStyleSettings>
+  <SybaseCodeStyleSettings version="2">
+    <option name="myVersion" value="2" />
+    <option name="IDENTIFIER_CASE" value="1" />
+    <option name="TYPE_CASE" value="3" />
+    <option name="CUSTOM_TYPE_CASE" value="3" />
+    <option name="ALIAS_CASE" value="4" />
+    <option name="QUOTED_IDENTIFIER_CASE" value="1" />
+    <option name="QUERY_EL_LINE" value="101" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="FROM_EL_LINE" value="101" />
+    <option name="WHERE_EL_LINE" value="101" />
+    <option name="ORDER_EL_LINE" value="101" />
+  </SybaseCodeStyleSettings>
+  <codeStyleSettings language="DB2">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="Derby">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="H2">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="HOCON">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="4" />
+      <option name="CONTINUATION_INDENT_SIZE" value="4" />
+      <option name="TAB_SIZE" value="4" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="HSQLDB">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="JavaScript">
+    <option name="FOR_STATEMENT_WRAP" value="2" />
+    <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+    <option name="IF_BRACE_FORCE" value="3" />
+    <option name="DOWHILE_BRACE_FORCE" value="3" />
+    <option name="WHILE_BRACE_FORCE" value="3" />
+    <option name="FOR_BRACE_FORCE" value="3" />
+  </codeStyleSettings>
+  <codeStyleSettings language="Oracle">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="PostgreSQL">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="SQL">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="SQLite">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="Sybase">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="TSQL">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="kotlin">
+    <indentOptions>
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+</code_scheme>
