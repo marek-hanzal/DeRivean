@@ -9,6 +9,22 @@ const Discovery = ({children}) => {
 	const [status, setStatus] = useState();
 	const [discovery, setDiscovery] = useState();
 	const client = useContext(ClientContext);
+
+	function selectLink(id) {
+		if (!discovery[id]) {
+			throw new Error(`Cannot resolve link from Discovery for linkId [${id}]`);
+		}
+		return discovery[id].link;
+	}
+
+	function selectFetch(id, uuid, replace = "{id}") {
+		return selectLink(id).replace(replace, uuid);
+	}
+
+	function selectPage(id, page, name = null, param = null) {
+		return name ? selectLink(id).replace("{" + name + "}", param).replace("{page}", page) : selectLink(id).replace("{page}", page);
+	}
+
 	useDiscovery(client, discovery => {
 		setDiscovery(discovery);
 		setStatus(true);
@@ -18,9 +34,15 @@ const Discovery = ({children}) => {
 	switch (status) {
 		case true:
 			return (
-				<DiscoveryContext.Provider value={discovery}>
-					{children}
-				</DiscoveryContext.Provider>
+				<DiscoveryContext.Provider
+					value={{
+						discovery,
+						selectLink,
+						selectFetch,
+						selectPage,
+					}}
+					children={children}
+				/>
 			);
 		case false:
 			return <DiscoveryErrorView/>;
