@@ -8,18 +8,18 @@ const useSessionCheck = (
 	onError = null,
 	onReason = null,
 ) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.link("public.user.login"),
+			discoveryContext.link("public.user.login"),
 			onSuccess,
 			onError,
 			cancelToken,
 			onReason,
 		);
 		// eslint-disable-next-line
-	}, [discovery]);
+	}, [discoveryContext]);
 };
 
 export {

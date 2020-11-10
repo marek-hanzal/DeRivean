@@ -26,7 +26,7 @@ const CommonCreateView = (
 	name = name || "name";
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const {t} = useTranslation();
@@ -39,7 +39,7 @@ const CommonCreateView = (
 			onFinish={(values, initials, editor) => {
 				dispatch(LoadingRedux.start());
 				currentContext.create(
-					discovery,
+					discoveryContext,
 					{...values, ...{[param]: params[param]}},
 					entity => {
 						message.success(t(currentContext.id + ".create.success"));

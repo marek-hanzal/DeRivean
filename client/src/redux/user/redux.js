@@ -23,12 +23,12 @@ const useUserSearch = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doUserSearch(
-			discovery,
+			discoveryContext,
 			data,
 			onSuccess,
 			onError,
@@ -38,7 +38,7 @@ const useUserSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discovery, data]);
+	}, [discoveryContext, data]);
 };
 const doUserSearch = (
 	discovery,

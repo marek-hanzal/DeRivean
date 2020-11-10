@@ -24,7 +24,7 @@ const SearchInput = (
 	const [loading, setLoading] = useState(false);
 	const [open, setOpen] = useState(false);
 	const editorContext = useContext(EditorContext);
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	mapper = mapper || (data => data.items.map(item => ({
 		label: item.name,
 		value: item.id, ...item
@@ -61,17 +61,17 @@ const SearchInput = (
 				loading={loading}
 				allowClear
 				onSearch={search => {
-					doSearch(discovery, {search}, data => {
+					doSearch(discoveryContext, {search}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}
 				onClear={_ => {
-					doSearch(discovery, {search: ""}, data => {
+					doSearch(discoveryContext, {search: ""}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}
 				onChange={_ => {
-					doSearch(discovery, {search: ""}, data => {
+					doSearch(discoveryContext, {search: ""}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}

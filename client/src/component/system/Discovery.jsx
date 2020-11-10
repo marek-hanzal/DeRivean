@@ -17,14 +17,6 @@ const Discovery = ({children}) => {
 		return discovery[id].link;
 	}
 
-	function fetch(id, uuid, replace = "{id}") {
-		return link(id).replace(replace, uuid);
-	}
-
-	function page(id, page, name = null, param = null) {
-		return name ? link(id).replace("{" + name + "}", param).replace("{page}", page) : link(id).replace("{page}", page);
-	}
-
 	useDiscovery(client, discovery => {
 		setDiscovery(discovery);
 		setStatus(true);
@@ -39,8 +31,8 @@ const Discovery = ({children}) => {
 					value={{
 						discovery,
 						link,
-						fetch,
-						page,
+						fetch: (id, replace, uuid) => link(id).replace(replace, uuid),
+						page: (id, page, name = null, param = null) => name ? link(id).replace("{" + name + "}", param).replace("{page}", page) : link(id).replace("{page}", page),
 					}}
 					children={children}
 				/>

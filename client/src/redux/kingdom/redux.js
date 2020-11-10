@@ -21,12 +21,12 @@ const useKingdomSearch = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doKingdomSearch(
-			discovery,
+			discoveryContext,
 			data,
 			onSuccess,
 			onError,
@@ -36,7 +36,7 @@ const useKingdomSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [data, discovery]);
+	}, [data, discoveryContext]);
 };
 const doKingdomSearch = (
 	discovery,

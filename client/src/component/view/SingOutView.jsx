@@ -1,14 +1,14 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
+import SessionContext from "component/system/SessionContext";
 import useFullsizeContent from "hook/useFullsizeContent";
 import useMenuSelect from "hook/useMenuSelect";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import {SessionRedux} from "redux/session/redux";
 
 const SingOutView = ({id}) => {
-	const dispatch = useDispatch();
+	const sessionContext = useContext(SessionContext);
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	useMenuSelect(`${id}.sign-out`);
@@ -20,13 +20,10 @@ const SingOutView = ({id}) => {
 				title={t(`${id}.sign-out.title`)}
 				subTitle={t(`${id}.sign-out.subtitle`)}
 				extra={[
-					<Button type="primary" key="sign-out" onClick={() => {
-						dispatch(SessionRedux.close());
-					}} children={t(`${id}.sign-out.button.sign-out`)}/>,
+					<Button type="primary" key="sign-out" onClick={() => sessionContext.close()} children={t(`${id}.sign-out.button.sign-out`)}/>,
 					<Button key="back" onClick={() => navigate(-1)}>{t(`${id}.sign-out.button.back`)}</Button>,
 				]}
-			>
-			</Result>
+			/>
 		</Card>
 	);
 };

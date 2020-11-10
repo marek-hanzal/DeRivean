@@ -1,24 +1,25 @@
-import {useState} from "react";
-import {useDispatch} from "react-redux";
-import {SessionRedux} from "redux/session/redux";
+import SessionContext from "component/system/SessionContext";
+import {useContext, useState} from "react";
 import {useSessionCheck} from "site/public/redux/redux";
 import LoaderView from "view/LoaderView";
 import LockedUserView from "view/LockedUserView";
 
-const Session = ({sites}) => {
-	const dispatch = useDispatch();
+const DefaultState = {
+	site: "public",
+};
+
+const ResolveSession = ({sites}) => {
 	const [state, setState] = useState();
-	const [user, setUser] = useState({site: "public"});
+	const sessionContext = useContext(SessionContext);
 	useSessionCheck(
-		session => {
-			setUser(session);
-			dispatch(SessionRedux.open(session));
+		user => {
+			sessionContext.open(user);
 			/**
 			 * we're done, everything looks good
 			 */
 			setState(true);
 		},
-		error => {
+		() => {
 			/**
 			 * there is some (unhandled) error
 			 */
@@ -35,13 +36,26 @@ const Session = ({sites}) => {
 	);
 	switch (state) {
 		case true: {
-			return sites[user.site] || <LockedUserView/>;
+			return sites[sessionContext.session.site] || <LockedUserView/>;
 		}
 		default: {
 			return <LoaderView/>;
 		}
 	}
+};
 
+const Session = ({sites}) => {
+	const [session, setSession] = useState(DefaultState);
+	return (
+		<SessionContext.Provider
+			value={{
+				session,
+				open: session => setSession(session),
+				close: () => setSession(DefaultState),
+			}}
+			children={<ResolveSession sites={sites}/>}
+		/>
+	);
 };
 
 export default Session;

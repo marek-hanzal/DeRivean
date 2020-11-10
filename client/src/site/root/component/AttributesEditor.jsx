@@ -49,7 +49,7 @@ const AttributeForm = ({currentContext}) => {
 const AttributesEditor = ({currentContext}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	return (
 		<BaseEditor
 			readyCount={2}
@@ -57,7 +57,7 @@ const AttributesEditor = ({currentContext}) => {
 				dispatch(LoadingRedux.start());
 				values = {id: initials.id, ...values};
 				currentContext.update(
-					discovery,
+					discoveryContext,
 					values,
 					() => {
 						message.success(t(`${currentContext.id}.attributes.updated`));

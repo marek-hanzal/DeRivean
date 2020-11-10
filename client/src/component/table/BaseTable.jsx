@@ -11,7 +11,7 @@ const BaseTable = (
 		onFetchPage,
 		children,
 	}) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const [page, setPage] = useState(defaultPage);
@@ -21,7 +21,7 @@ const BaseTable = (
 	const onPage = (current, size, cancelToken = null) => {
 		setLoading(true);
 		onFetchPage(
-			discovery,
+			discoveryContext,
 			current,
 			size,
 			params,
