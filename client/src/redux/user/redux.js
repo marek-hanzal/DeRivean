@@ -50,7 +50,7 @@ const doUserSearch = (
 	navigate
 ) => {
 	post(
-		discovery.selectLink("root.user.search"),
+		discovery.link("root.user.search"),
 		data,
 		onSuccess,
 		onError,

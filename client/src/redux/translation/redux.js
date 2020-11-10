@@ -18,7 +18,7 @@ const useTranslation = (
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.selectLink("public.translation"),
+			discovery.link("public.translation"),
 			onSuccess,
 			onError,
 			cancelToken,

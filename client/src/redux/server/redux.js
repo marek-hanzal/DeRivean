@@ -13,7 +13,7 @@ const useServerSites = (
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		get(discovery.selectLink("root.server.sites"), onSuccess, onError, cancelToken, resolveReason(null, navigate));
+		get(discovery.link("root.server.sites"), onSuccess, onError, cancelToken, resolveReason(null, navigate));
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [discovery]);
@@ -29,7 +29,7 @@ const useServerValidate = (
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.selectLink("root.server.validate"),
+			discovery.link("root.server.validate"),
 			onSuccess,
 			onError,
 			cancelToken,

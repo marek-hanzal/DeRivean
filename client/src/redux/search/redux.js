@@ -39,7 +39,7 @@ const doSearch = (
 	navigate
 ) => {
 	post(
-		discovery.selectLink("root.search"),
+		discovery.link("root.search"),
 		data,
 		onSuccess,
 		onError,

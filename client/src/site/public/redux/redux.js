@@ -1,31 +1,27 @@
 import axios from "axios";
 import DiscoveryContext from "component/system/DiscoveryContext";
 import {useContext, useEffect} from "react";
-import {useNavigate} from "react-router";
 import get from "utils/server/get";
-import resolveReason from "utils/server/resolveReason";
 
-const useStatistics = (
-	onSuccess = validation => null,
-	onError = error => null,
+const useSessionCheck = (
+	onSuccess = () => null,
+	onError = null,
 	onReason = null,
 ) => {
 	const discovery = useContext(DiscoveryContext);
-	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.link("root.statistics"),
+			discovery.link("public.user.login"),
 			onSuccess,
 			onError,
 			cancelToken,
-			resolveReason(onReason, navigate),
+			onReason,
 		);
-		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, [discovery]);
 };
 
 export {
-	useStatistics,
+	useSessionCheck,
 };

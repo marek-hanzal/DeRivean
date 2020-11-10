@@ -48,7 +48,7 @@ const doKingdomSearch = (
 	navigate
 ) => {
 	post(
-		discovery.selectLink("root.kingdom.search"),
+		discovery.link("root.kingdom.search"),
 		data,
 		onSuccess,
 		onError,
