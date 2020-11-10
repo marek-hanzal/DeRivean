@@ -1,8 +1,7 @@
 import axios from "axios";
-import {useEffect} from "react";
-import {useStore} from "react-redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
-import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
@@ -22,12 +21,12 @@ const useKingdomSearch = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doKingdomSearch(
-			store.getState(),
+			discovery,
 			data,
 			onSuccess,
 			onError,
@@ -37,10 +36,10 @@ const useKingdomSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [store]);
+	}, [data, discovery]);
 };
 const doKingdomSearch = (
-	state,
+	discovery,
 	data,
 	onSuccess,
 	onError,
@@ -49,7 +48,7 @@ const doKingdomSearch = (
 	navigate
 ) => {
 	post(
-		selectLink("root.kingdom.search", state),
+		discovery.selectLink("root.kingdom.search"),
 		data,
 		onSuccess,
 		onError,

@@ -1,8 +1,7 @@
 import axios from "axios";
-import {useEffect} from "react";
-import {useStore} from "react-redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
-import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
@@ -14,12 +13,12 @@ const useTranslation = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const store = useStore();
 	const navigate = useNavigate();
+	const discovery = useContext(DiscoveryContext);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			selectLink("public.translation", store.getState()),
+			discovery.selectLink("public.translation"),
 			onSuccess,
 			onError,
 			cancelToken,
@@ -27,7 +26,7 @@ const useTranslation = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [store]);
+	}, [discovery]);
 };
 const doTranslationCreate = doPost("root.translation.create");
 const doTranslationUpdate = doPost("root.translation.update");

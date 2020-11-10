@@ -1,10 +1,9 @@
-import {selectLink} from "redux/discovery/redux";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
 const doPost = (link) => {
 	return (
-		state,
+		discovery,
 		data,
 		onSuccess,
 		onError,
@@ -13,7 +12,7 @@ const doPost = (link) => {
 		navigate
 	) => {
 		post(
-			selectLink(link, state),
+			discovery.selectLink(link),
 			data,
 			onSuccess,
 			onError,

@@ -1,8 +1,7 @@
 import axios from "axios";
-import {useEffect} from "react";
-import {useStore} from "react-redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
-import {selectFetch} from "redux/discovery/redux";
 import get from "utils/server/get";
 import resolveReason from "utils/server/resolveReason";
 
@@ -13,12 +12,12 @@ const commonFetchHook = (link, replace = "{id}") => {
 		onFailure = error => null,
 		onReason = null,
 	) => {
-		const store = useStore();
 		const navigate = useNavigate();
+		const discovery = useContext(DiscoveryContext);
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
 			get(
-				selectFetch(link, uuid, store.getState(), replace),
+				discovery.selectFetch(link, uuid, replace),
 				onSuccess,
 				onFailure,
 				cancelToken,
@@ -26,7 +25,7 @@ const commonFetchHook = (link, replace = "{id}") => {
 			);
 			return () => cancelToken.cancel();
 			// eslint-disable-next-line
-		}, [uuid]);
+		}, [uuid, discovery]);
 	};
 };
 

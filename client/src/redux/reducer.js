@@ -1,6 +1,5 @@
 import {combineReducers} from "redux";
 import {ContentRedux} from "redux/content/redux";
-import {DiscoveryRedux} from "redux/discovery/redux";
 import {LoadingRedux} from "redux/loading/redux";
 import {MenuRedux} from "redux/menu/redux";
 import {NavigationRedux} from "redux/navigation/redux";
@@ -8,7 +7,6 @@ import {SessionRedux} from "redux/session/redux";
 
 export default combineReducers({
 	content: ContentRedux.reducer(),
-	discovery: DiscoveryRedux.reducer(),
 	loading: LoadingRedux.reducer(),
 	menu: MenuRedux.reducer(),
 	navigation: NavigationRedux.reducer(),

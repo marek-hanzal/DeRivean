@@ -1,23 +1,22 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useStore } from "react-redux";
-import { useNavigate } from "react-router";
-import { selectLink } from "redux/discovery/redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useEffect} from "react";
+import {useNavigate} from "react-router";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
 const useSearch = (
 	data,
 	onSuccess = validation => null,
-	onError   = error => null,
-	onReason  = null,
+	onError = error => null,
+	onReason = null,
 ) => {
-	const store    = useStore();
 	const navigate = useNavigate();
+	const discovery = useContext(DiscoveryContext);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doSearch(
-			store.getState(),
+			discovery,
 			data,
 			onSuccess,
 			onError,
@@ -27,11 +26,11 @@ const useSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [store]);
+	}, [discovery, data]);
 };
 
 const doSearch = (
-	state,
+	discovery,
 	data,
 	onSuccess,
 	onError,
@@ -40,7 +39,7 @@ const doSearch = (
 	navigate
 ) => {
 	post(
-		selectLink("root.search", state),
+		discovery.selectLink("root.search"),
 		data,
 		onSuccess,
 		onError,

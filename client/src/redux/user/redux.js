@@ -1,8 +1,7 @@
 import axios from "axios";
-import {useEffect} from "react";
-import {useStore} from "react-redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
-import {selectLink} from "redux/discovery/redux";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
@@ -24,12 +23,12 @@ const useUserSearch = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doUserSearch(
-			store.getState(),
+			discovery,
 			data,
 			onSuccess,
 			onError,
@@ -39,10 +38,10 @@ const useUserSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [store]);
+	}, [discovery, data]);
 };
 const doUserSearch = (
-	state,
+	discovery,
 	data,
 	onSuccess,
 	onError,
@@ -51,7 +50,7 @@ const doUserSearch = (
 	navigate
 ) => {
 	post(
-		selectLink("root.user.search", state),
+		discovery.selectLink("root.user.search"),
 		data,
 		onSuccess,
 		onError,
