@@ -1,9 +1,10 @@
+import {SettingFilled} from "@ant-design/icons";
 import {Result} from "antd";
-import LoaderIcon from "component/icon/LoaderIcon";
 
 const LoaderView = () =>
 	<Result
-		icon={<LoaderIcon spin style={{fontSize: 42}}/>}
+		style={{marginTop: "10vh"}}
+		icon={<SettingFilled spin style={{fontSize: 42}}/>}
 	/>
 ;
 

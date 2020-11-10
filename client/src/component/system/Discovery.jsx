@@ -31,6 +31,7 @@ const Discovery = ({children}) => {
 	}, () => {
 		setStatus(false);
 	});
+
 	switch (status) {
 		case true:
 			return (
