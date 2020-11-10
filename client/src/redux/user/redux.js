@@ -38,7 +38,7 @@ const useUserSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discoveryContext, data]);
+	}, []);
 };
 const doUserSearch = (
 	discovery,
