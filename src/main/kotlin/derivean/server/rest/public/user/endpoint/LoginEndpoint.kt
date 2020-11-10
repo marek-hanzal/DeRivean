@@ -13,6 +13,7 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
+import io.ktor.sessions.*
 import io.ktor.util.*
 import java.util.*
 
@@ -72,6 +73,11 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 						)
 					}
 				}
+			}
+			routing.delete(url) {
+				call.sessions.get<HttpServer.SessionTicket>()?.let { sessionTicket -> storage.write { ticketService.drop(sessionTicket.id) } }
+				call.sessions.clear<HttpServer.SessionTicket>()
+				call.resolve(ok("You're logged out - see you soon!"))
 			}
 		}
 	}
