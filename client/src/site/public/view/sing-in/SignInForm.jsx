@@ -1,9 +1,10 @@
 import {Button, Form, Input, message} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
 import Centered from "component/layout/Centered";
-import {useState} from "react";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
+import {useDispatch} from "react-redux";
 import {LoadingRedux} from "redux/loading/redux";
 import {SessionRedux} from "redux/session/redux";
 import {doUserLogin} from "redux/user/redux";
@@ -14,7 +15,7 @@ const SignInForm = () => {
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
 	const dispatch = useDispatch();
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const [form] = Form.useForm();
 	return (
 		<Form
@@ -22,7 +23,7 @@ const SignInForm = () => {
 			onFinish={values => {
 				dispatch(LoadingRedux.start());
 				doUserLogin(
-					store.getState(),
+					discovery,
 					values,
 					data => {
 						dispatch(SessionRedux.open(data));

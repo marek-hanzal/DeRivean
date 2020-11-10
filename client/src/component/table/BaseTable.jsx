@@ -1,8 +1,8 @@
 import {List} from "antd";
 import axios from "axios";
+import DiscoveryContext from "component/system/DiscoveryContext";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
-import {useStore} from "react-redux";
+import {useContext, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router";
 import defaultPage from "utils/page";
 
@@ -11,7 +11,7 @@ const BaseTable = (
 		onFetchPage,
 		children,
 	}) => {
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const [page, setPage] = useState(defaultPage);
@@ -21,7 +21,7 @@ const BaseTable = (
 	const onPage = (current, size, cancelToken = null) => {
 		setLoading(true);
 		onFetchPage(
-			store.getState(),
+			discovery,
 			current,
 			size,
 			params,

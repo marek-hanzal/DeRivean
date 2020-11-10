@@ -1,15 +1,11 @@
-import { Select } from "antd";
+import {Select} from "antd";
 import EditorContext from "component/form/EditorContext";
-import {
-	useContext,
-	useRef,
-	useState
-} from "react";
-import { GlobalHotKeys } from "react-hotkeys";
-import { useTranslation } from "react-i18next";
-import { useStore } from "react-redux";
-import { useNavigate } from "react-router";
-import { doSearch } from "redux/search/redux";
+import DiscoveryContext from "component/system/DiscoveryContext";
+import {useContext, useRef, useState} from "react";
+import {GlobalHotKeys} from "react-hotkeys";
+import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
+import {doSearch} from "redux/search/redux";
 
 const SearchInput = (
 	{
@@ -20,20 +16,20 @@ const SearchInput = (
 		hotkey,
 		...props
 	}) => {
-	const currentContext        = useContext(context);
-	const {t}                   = useTranslation();
-	const ref                   = useRef();
-	const navigate              = useNavigate();
-	const [data, setData]       = useState([]);
+	const currentContext = useContext(context);
+	const {t} = useTranslation();
+	const ref = useRef();
+	const navigate = useNavigate();
+	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const [open, setOpen]       = useState(false);
-	const editorContext         = useContext(EditorContext);
-	const store                 = useStore();
-	mapper                      = mapper || (data => data.items.map(item => ({
+	const [open, setOpen] = useState(false);
+	const editorContext = useContext(EditorContext);
+	const discovery = useContext(DiscoveryContext);
+	mapper = mapper || (data => data.items.map(item => ({
 		label: item.name,
 		value: item.id, ...item
 	})));
-	render                      = render || (item => item.name);
+	render = render || (item => item.name);
 	currentContext.search(
 		{search: ""},
 		data => {
@@ -65,17 +61,17 @@ const SearchInput = (
 				loading={loading}
 				allowClear
 				onSearch={search => {
-					doSearch(store.getState(), {search}, data => {
+					doSearch(discovery, {search}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}
 				onClear={_ => {
-					doSearch(store.getState(), {search: ""}, data => {
+					doSearch(discovery, {search: ""}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}
 				onChange={_ => {
-					doSearch(store.getState(), {search: ""}, data => {
+					doSearch(discovery, {search: ""}, data => {
 						setData(mapper(data));
 					}, null, null, null, navigate);
 				}}

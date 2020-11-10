@@ -4,11 +4,12 @@ import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
+import DiscoveryContext from "component/system/DiscoveryContext";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
 import validationFor from "utils/form/validationFor";
@@ -25,7 +26,7 @@ const CommonCreateView = (
 	name = name || "name";
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const {t} = useTranslation();
@@ -38,7 +39,7 @@ const CommonCreateView = (
 			onFinish={(values, initials, editor) => {
 				dispatch(LoadingRedux.start());
 				currentContext.create(
-					store.getState(),
+					discovery,
 					{...values, ...{[param]: params[param]}},
 					entity => {
 						message.success(t(currentContext.id + ".create.success"));

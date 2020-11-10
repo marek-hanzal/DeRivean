@@ -5,10 +5,11 @@ import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
+import DiscoveryContext from "component/system/DiscoveryContext";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
 import validationFor from "utils/form/validationFor";
@@ -76,7 +77,7 @@ const CommonEditView = (
 		children,
 	}) => {
 	const currentContext = useContext(context);
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
@@ -89,7 +90,7 @@ const CommonEditView = (
 			onFinish={(data, initials, editor) => {
 				dispatch(LoadingRedux.start());
 				currentContext.update(
-					store.getState(),
+					discovery,
 					{...data, id: params[param]},
 					data => {
 						message.success(t(currentContext.id + ".update.success"));

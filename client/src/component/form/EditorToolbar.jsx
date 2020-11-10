@@ -6,10 +6,11 @@ import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import {useCleverLink} from "component/route/CleverLink";
+import DiscoveryContext from "component/system/DiscoveryContext";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
 import values from "utils/form/values";
@@ -22,8 +23,8 @@ const EditorToolbar = (
 	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
-	const store = useStore();
 	const editorContext = useContext(EditorContext);
+	const discovery = useContext(DiscoveryContext);
 	const {t} = useTranslation();
 	const cleverLink = useCleverLink(currentContext.link.dashboard || {link: () => ""});
 	if (!editorContext) {
@@ -42,7 +43,7 @@ const EditorToolbar = (
 						onConfirm={() => {
 							dispatch(LoadingRedux.start());
 							currentContext.delete(
-								store.getState(),
+								discovery,
 								{id: params[param]},
 								_ => {
 									navigate(cleverLink.link);

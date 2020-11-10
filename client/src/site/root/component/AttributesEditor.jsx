@@ -6,9 +6,10 @@ import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
+import DiscoveryContext from "component/system/DiscoveryContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch, useStore} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
@@ -48,7 +49,7 @@ const AttributeForm = ({currentContext}) => {
 const AttributesEditor = ({currentContext}) => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	const store = useStore();
+	const discovery = useContext(DiscoveryContext);
 	return (
 		<BaseEditor
 			readyCount={2}
@@ -56,7 +57,7 @@ const AttributesEditor = ({currentContext}) => {
 				dispatch(LoadingRedux.start());
 				values = {id: initials.id, ...values};
 				currentContext.update(
-					store.getState(),
+					discovery,
 					values,
 					() => {
 						message.success(t(`${currentContext.id}.attributes.updated`));
