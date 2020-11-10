@@ -1,6 +1,7 @@
+import DiscoveryContext from "component/system/DiscoveryContext";
 import SessionContext from "component/system/SessionContext";
 import {useContext, useState} from "react";
-import {useSessionCheck} from "site/public/redux/redux";
+import {doSessionDelete, useSessionCheck} from "site/public/redux/session/redux";
 import LoaderView from "view/LoaderView";
 import LockedUserView from "view/LockedUserView";
 
@@ -46,12 +47,16 @@ const ResolveSession = ({sites}) => {
 
 const Session = ({sites}) => {
 	const [session, setSession] = useState(DefaultState);
+	const discoveryContext = useContext(DiscoveryContext);
 	return (
 		<SessionContext.Provider
 			value={{
 				session,
 				open: session => setSession(session),
-				close: () => setSession(DefaultState),
+				close: () => {
+					setSession(DefaultState);
+					doSessionDelete(discoveryContext);
+				},
 			}}
 			children={<ResolveSession sites={sites}/>}
 		/>

@@ -26,7 +26,7 @@ const useSearch = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discoveryContext, data]);
+	}, []);
 };
 
 const doSearch = (

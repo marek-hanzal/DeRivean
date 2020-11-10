@@ -1,6 +1,7 @@
 import axios from "axios";
 import DiscoveryContext from "component/system/DiscoveryContext";
 import {useContext, useEffect} from "react";
+import doDelete from "utils/server/doDelete";
 import get from "utils/server/get";
 
 const useSessionCheck = (
@@ -22,6 +23,22 @@ const useSessionCheck = (
 	}, [discoveryContext]);
 };
 
+const doSessionDelete = (
+	discovery,
+	onSuccess = () => null,
+	onError = null,
+	onReason = null,
+) => {
+	doDelete(
+		discovery.link("public.user.login"),
+		onSuccess,
+		onError,
+		null,
+		onReason,
+	);
+};
+
 export {
 	useSessionCheck,
+	doSessionDelete,
 };
