@@ -1,34 +1,15 @@
-import {message} from "antd";
-import BaseEditor from "component/form/BaseEditor";
 import useMenuSelect from "hook/useMenuSelect";
-import {useTranslation} from "react-i18next";
-import {useStore} from "react-redux";
-import {doKingdomUpdate} from "redux/kingdom/redux";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
 const AttributesView = () => {
-	const store = useStore();
-	const {t} = useTranslation();
 	useMenuSelect(["root.kingdom.attributes"]);
 	return (
 		<KingdomView>
 			<KingdomContext.Consumer>
-				{({id}) => (
-					<BaseEditor
-						readyCount={2}
-						onFinish={(values, initials) => {
-							doKingdomUpdate(
-								store.getState(),
-								{id: initials.id, ...values},
-								() => message.success(t(`${id}.attributes.updated`)),
-							);
-						}}
-						name={id}
-						translation={id}
-						children={<AttributesEditor context={KingdomContext}/>}
-					/>
+				{(currentContext) => (
+					<AttributesEditor currentContext={currentContext}/>
 				)}
 			</KingdomContext.Consumer>
 		</KingdomView>
