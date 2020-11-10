@@ -14,11 +14,11 @@ const useTranslation = (
 	onReason = null,
 ) => {
 	const navigate = useNavigate();
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.link("public.translation"),
+			discoveryContext.link("public.translation"),
 			onSuccess,
 			onError,
 			cancelToken,
@@ -26,7 +26,7 @@ const useTranslation = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discovery]);
+	}, [discoveryContext]);
 };
 const doTranslationCreate = doPost("root.translation.create");
 const doTranslationUpdate = doPost("root.translation.update");

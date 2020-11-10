@@ -10,12 +10,12 @@ const useStatistics = (
 	onError = error => null,
 	onReason = null,
 ) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
-			discovery.link("root.statistics"),
+			discoveryContext.link("root.statistics"),
 			onSuccess,
 			onError,
 			cancelToken,
@@ -23,7 +23,7 @@ const useStatistics = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discovery]);
+	}, [discoveryContext]);
 };
 
 export {

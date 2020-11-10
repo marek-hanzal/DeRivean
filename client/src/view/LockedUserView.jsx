@@ -1,12 +1,12 @@
 import {LockOutlined} from "@ant-design/icons";
 import {Button, Result} from "antd";
+import SessionContext from "component/system/SessionContext";
+import {useContext} from "react";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
-import {SessionRedux} from "redux/session/redux";
 
 const LockedUserView = () => {
-	const dispatch = useDispatch();
+	const sessionContext = useContext(SessionContext);
 	const {t} = useTranslation();
 	return (
 		<>
@@ -16,9 +16,7 @@ const LockedUserView = () => {
 				icon={<LockOutlined/>}
 				title={t("error.user-locked.title")}
 				subTitle={t("error.user-locked.body")}
-				extra={<Button type="primary" onClick={() => {
-					dispatch(SessionRedux.close());
-				}}>{t("error.user-locked.dismiss")}</Button>}
+				extra={<Button type="primary" onClick={() => sessionContext.close()} children={t("error.user-locked.dismiss")}/>}
 			/>
 		</>
 	);

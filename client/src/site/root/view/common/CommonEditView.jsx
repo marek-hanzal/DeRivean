@@ -77,7 +77,7 @@ const CommonEditView = (
 		children,
 	}) => {
 	const currentContext = useContext(context);
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
@@ -90,7 +90,7 @@ const CommonEditView = (
 			onFinish={(data, initials, editor) => {
 				dispatch(LoadingRedux.start());
 				currentContext.update(
-					discovery,
+					discoveryContext,
 					{...data, id: params[param]},
 					data => {
 						message.success(t(currentContext.id + ".update.success"));

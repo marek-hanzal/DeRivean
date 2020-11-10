@@ -13,7 +13,7 @@ import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignUpForm = () => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
@@ -26,7 +26,7 @@ const SignUpForm = () => {
 			onFinish={values => {
 				dispatch(LoadingRedux.start());
 				doUserRegister(
-					discovery,
+					discoveryContext,
 					values,
 					() => {
 						navigate(Routes.public.signUpSuccess.link());

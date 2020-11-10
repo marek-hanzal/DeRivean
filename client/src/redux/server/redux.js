@@ -9,14 +9,14 @@ const useServerSites = (
 	onSuccess = sites => null,
 	onError = error => null,
 ) => {
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		get(discovery.link("root.server.sites"), onSuccess, onError, cancelToken, resolveReason(null, navigate));
+		get(discoveryContext.link("root.server.sites"), onSuccess, onError, cancelToken, resolveReason(null, navigate));
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discovery]);
+	}, [discoveryContext]);
 };
 
 const useServerValidate = (

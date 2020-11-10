@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { SessionRedux } from "redux/session/redux";
+import SessionContext from "component/system/SessionContext";
+import {useEffect} from "react";
+import {useContext} from "react/cjs/react.production.min";
 
 const SessionExpiredView = () => {
-	const dispatch = useDispatch();
+	const sessionContext = useContext(SessionContext);
 	useEffect(() => {
-		dispatch(SessionRedux.close());
-	}, [dispatch]);
+		sessionContext.close();
+	}, [sessionContext]);
 	return null;
 };
 

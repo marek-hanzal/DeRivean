@@ -24,7 +24,7 @@ const EditorToolbar = (
 	const params = useParams();
 	const navigate = useNavigate();
 	const editorContext = useContext(EditorContext);
-	const discovery = useContext(DiscoveryContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const {t} = useTranslation();
 	const cleverLink = useCleverLink(currentContext.link.dashboard || {link: () => ""});
 	if (!editorContext) {
@@ -43,7 +43,7 @@ const EditorToolbar = (
 						onConfirm={() => {
 							dispatch(LoadingRedux.start());
 							currentContext.delete(
-								discovery,
+								discoveryContext,
 								{id: params[param]},
 								_ => {
 									navigate(cleverLink.link);

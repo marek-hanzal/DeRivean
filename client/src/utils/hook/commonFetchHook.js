@@ -13,11 +13,11 @@ const commonFetchHook = (link, replace = "{id}") => {
 		onReason = null,
 	) => {
 		const navigate = useNavigate();
-		const discovery = useContext(DiscoveryContext);
+		const discoveryContext = useContext(DiscoveryContext);
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
 			get(
-				discovery.link(link, uuid, replace),
+				discoveryContext.link(link, uuid, replace),
 				onSuccess,
 				onFailure,
 				cancelToken,
@@ -25,7 +25,7 @@ const commonFetchHook = (link, replace = "{id}") => {
 			);
 			return () => cancelToken.cancel();
 			// eslint-disable-next-line
-		}, [uuid, discovery]);
+		}, [uuid, discoveryContext]);
 	};
 };
 
