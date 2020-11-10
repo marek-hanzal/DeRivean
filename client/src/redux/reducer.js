@@ -1,5 +1,4 @@
 import {combineReducers} from "redux";
-import {ClientRedux} from "redux/client/redux";
 import {ContentRedux} from "redux/content/redux";
 import {DiscoveryRedux} from "redux/discovery/redux";
 import {LoadingRedux} from "redux/loading/redux";
@@ -8,7 +7,6 @@ import {NavigationRedux} from "redux/navigation/redux";
 import {SessionRedux} from "redux/session/redux";
 
 export default combineReducers({
-	client: ClientRedux.reducer(),
 	content: ContentRedux.reducer(),
 	discovery: DiscoveryRedux.reducer(),
 	loading: LoadingRedux.reducer(),

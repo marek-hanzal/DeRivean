@@ -1,10 +1,10 @@
-import {LoadingOutlined} from "@ant-design/icons";
-import {Spin} from "antd";
+import {Result} from "antd";
+import LoaderIcon from "component/icon/LoaderIcon";
 
 const LoaderView = () =>
-	<Spin spinning={true} delay={100} indicator={<LoadingOutlined style={{fontSize: 42}}/>}>
-		<div style={{height: "100vh"}}/>
-	</Spin>
+	<Result
+		icon={<LoaderIcon spin style={{fontSize: 42}}/>}
+	/>
 ;
 
 export default LoaderView;
