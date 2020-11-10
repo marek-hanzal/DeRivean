@@ -26,7 +26,7 @@ const useTranslation = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discoveryContext]);
+	}, []);
 };
 const doTranslationCreate = doPost("root.translation.create");
 const doTranslationUpdate = doPost("root.translation.update");

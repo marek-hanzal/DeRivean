@@ -20,7 +20,7 @@ const useSessionCheck = (
 			onReason,
 		);
 		// eslint-disable-next-line
-	}, [discoveryContext]);
+	}, []);
 };
 
 const doSessionDelete = (
