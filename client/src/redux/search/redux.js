@@ -8,8 +8,8 @@ const useSearch = (
 	data,
 	events,
 ) => {
-	const navigate = useNavigate();
 	const discoveryContext = useContext(DiscoveryContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		doSearch(

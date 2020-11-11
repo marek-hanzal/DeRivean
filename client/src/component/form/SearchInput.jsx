@@ -6,6 +6,7 @@ import {GlobalHotKeys} from "react-hotkeys";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import {doSearch} from "redux/search/redux";
+import Events from "utils/Events";
 
 const SearchInput = (
 	{
@@ -32,15 +33,17 @@ const SearchInput = (
 	render = render || (item => item.name);
 	currentContext.search(
 		{search: ""},
-		data => {
-			setData(mapper(data));
-			if (editorContext) {
-				editorContext.isReady();
-			}
-			setLoading(false);
-		}, () => {
-			setLoading(false);
-		}
+		Events()
+			.on("success", data => {
+				setData(mapper(data));
+				if (editorContext) {
+					editorContext.isReady();
+				}
+				setLoading(false);
+			})
+			.on("error", () => {
+				setLoading(false);
+			})
 	);
 	return (
 		<GlobalHotKeys keyMap={{
