@@ -17,6 +17,7 @@ const BaseLayout = (
 ) => {
 	const [fullscreen, setFullscreen] = useState(false);
 	const [selectMenu, setSelectMenu] = useState([]);
+	const [collapsed, setCollapsed] = useState(false);
 	return (
 		<LayoutContext.Provider
 			value={{
@@ -37,7 +38,9 @@ const BaseLayout = (
 							this.setSelectMenu(isArray(select) ? select : [select]);
 						}, 0);
 					}, [select]);
-				}
+				},
+				collapsed,
+				setCollapsed,
 			}}
 			children={
 				<Loader>
