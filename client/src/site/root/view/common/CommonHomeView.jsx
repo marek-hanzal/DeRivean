@@ -65,6 +65,9 @@ const ContextView = (
 
 const CommonHomeView = (props) => {
 	const currentContext = useContext(props.context);
+	if (!currentContext) {
+		throw new Error("Missing current context (not found by using props.context)!");
+	}
 	return (
 		createElement(
 			currentContext.base,
