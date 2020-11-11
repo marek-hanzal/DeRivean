@@ -9,7 +9,7 @@ const LayoutContext = React.createContext(null);
 const useEnableFullscreen = (layoutContext, enable = true, restore = true) => {
 	useEffect(() => {
 		layoutContext.setFullscreen(enable);
-		return () => layoutContext.setFullscreen(restore);
+		return () => layoutContext.setFullscreen(!restore);
 	});
 };
 
