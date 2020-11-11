@@ -83,6 +83,7 @@ const CommonEditView = (
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
+	param = param || currentContext.param;
 	useMenuSelect(currentContext.id + ".edit");
 	return (
 		<BaseEditor

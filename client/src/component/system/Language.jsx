@@ -1,6 +1,6 @@
 import i18next from "i18next";
 import {useState} from "react";
-import {useTranslation} from "redux/translation/redux";
+import {useTranslation} from "site/root/module/translation/redux/redux";
 import Events from "utils/Events";
 import LanguageErrorView from "view/LanguageErrorView";
 import LoaderView from "view/LoaderView";
