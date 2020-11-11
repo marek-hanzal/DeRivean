@@ -14,20 +14,16 @@ const DefaultState = {
 	site: "public",
 };
 
-const useSessionCheck = (
-	onSuccess = () => null,
-	onError = null,
-	onReason = null,
-) => {
+const useSessionCheck = events => {
 	const discoveryContext = useContext(DiscoveryContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
 			discoveryContext.link("public.user.login"),
-			onSuccess,
-			onError,
+			events,
+			navigate,
 			cancelToken,
-			onReason,
 		);
 		// eslint-disable-next-line
 	}, []);
@@ -37,39 +33,36 @@ const doSessionDelete = (
 	discovery,
 	events,
 	navigate,
-) => {
-	doDelete(
-		discovery.link("public.user.login"),
-		events,
-		navigate,
-	);
-};
+) => doDelete(
+	discovery.link("public.user.login"),
+	events,
+	navigate,
+);
 
 const ResolveSession = ({sites}) => {
 	const [state, setState] = useState();
 	const sessionContext = useContext(SessionContext);
 	useSessionCheck(
-		user => {
-			sessionContext.open(user);
-			/**
-			 * we're done, everything looks good
-			 */
-			setState(true);
-		},
-		() => {
-			/**
-			 * there is some (unhandled) error
-			 */
-			setState(false);
-		},
-		{
-			401: () => {
+		Events()
+			.on("success", user => {
+				sessionContext.open(user);
+				/**
+				 * we're done, everything looks good
+				 */
+				setState(true);
+			})
+			.on("error", () => {
+				/**
+				 * there is some (unhandled) error
+				 */
+				setState(false);
+			})
+			.on("http-401", () => {
 				/**
 				 * 401 is OK here, because if we're on public, we'll get one when session is checked.
 				 */
 				setState(true);
-			}
-		}
+			})
 	);
 	switch (state) {
 		case true: {
