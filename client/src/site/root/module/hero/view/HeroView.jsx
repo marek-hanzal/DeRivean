@@ -1,6 +1,6 @@
-import {doHeroCreate, doHeroDelete, doHeroUpdate, useHeroAttributesFetch, useHeroFetch} from "redux/hero/redux";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import {doHeroCreate, doHeroDelete, doHeroUpdate, useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
