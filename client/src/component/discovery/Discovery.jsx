@@ -1,7 +1,6 @@
 import axios from "axios";
 import {ClientContext} from "component/client/Client";
 import React, {useContext, useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
 import Events from "utils/Events";
 import get from "utils/server/get";
@@ -14,7 +13,6 @@ const useDiscovery = (
 	client,
 	events,
 ) => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
@@ -26,7 +24,7 @@ const useDiscovery = (
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [dispatch, client]);
+	}, [client]);
 };
 
 const Discovery = ({children}) => {

@@ -5,7 +5,6 @@ import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
 import {doUserRegister} from "site/public/redux/user/redux";
 import Routes from "site/Routes";
@@ -17,7 +16,6 @@ const SignUpForm = () => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const [form] = Form.useForm();
 	const [errors, setErrors] = useState();
