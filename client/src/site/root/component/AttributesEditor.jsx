@@ -64,16 +64,17 @@ const AttributesEditor = ({currentContext}) => {
 				currentContext.update(
 					discoveryContext,
 					values,
-					() => {
-						message.success(t(`${currentContext.id}.attributes.updated`));
-						editor.setEditor(false);
-						editor.setInitials(values);
-						dispatch(LoadingRedux.finish());
-					},
-					() => {
-						message.success(t(`${currentContext.id}.attributes.update-failed`));
-						dispatch(LoadingRedux.finish());
-					}
+					Events()
+						.on("success", () => {
+							message.success(t(`${currentContext.id}.attributes.updated`));
+							editor.setEditor(false);
+							editor.setInitials(values);
+							dispatch(LoadingRedux.finish());
+						})
+						.on("error", () => {
+							message.success(t(`${currentContext.id}.attributes.update-failed`));
+							dispatch(LoadingRedux.finish());
+						})
 				);
 			}}
 			name={currentContext.id}
