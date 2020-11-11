@@ -1,12 +1,11 @@
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
-import resolveReason from "utils/server/resolveReason";
 
 const doUserCreate = doPost("root.user.create");
 const doUserUpdate = doPost("root.user.update");
@@ -17,9 +16,7 @@ const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}")
 const fetchUserPage = fetchPage("root.user.page");
 const useUserSearch = (
 	data,
-	onSuccess = validation => null,
-	onError = error => null,
-	onReason = null,
+	events,
 ) => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
@@ -28,11 +25,9 @@ const useUserSearch = (
 		doUserSearch(
 			discoveryContext,
 			data,
-			onSuccess,
-			onError,
-			onReason,
-			cancelToken,
+			events,
 			navigate,
+			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -41,21 +36,16 @@ const useUserSearch = (
 const doUserSearch = (
 	discovery,
 	data,
-	onSuccess,
-	onError,
-	onReason,
+	events,
+	navigate,
 	cancelToken,
-	navigate
-) => {
-	post(
-		discovery.link("root.user.search"),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+) => post(
+	discovery.link("root.user.search"),
+	data,
+	events,
+	navigate,
+	cancelToken,
+);
 
 export {
 	doUserCreate,

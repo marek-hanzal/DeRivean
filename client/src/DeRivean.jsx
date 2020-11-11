@@ -1,6 +1,6 @@
-import Client from "component/system/Client";
+import {Client} from "component/client/Client";
+import {Session} from "component/session/Session";
 import Language from "component/system/Language";
-import Session from "component/system/Session";
 import {Helmet} from "react-helmet";
 import {BrowserRouter} from "react-router-dom";
 import {default as PublicSite} from "site/public/site/Site";

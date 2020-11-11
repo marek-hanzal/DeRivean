@@ -1,43 +1,39 @@
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
 import get from "utils/server/get";
-import resolveReason from "utils/server/resolveReason";
 
-const useServerSites = (
-	onSuccess = sites => null,
-	onError = error => null,
-) => {
+const useServerSites = events => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		get(discoveryContext.link("root.server.sites"), onSuccess, onError, cancelToken, resolveReason(null, navigate));
+		get(
+			discoveryContext.link("root.server.sites"),
+			events,
+			navigate,
+			cancelToken,
+		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discoveryContext]);
+	}, []);
 };
 
-const useServerValidate = (
-	onSuccess = validation => null,
-	onError = error => null,
-	onReason = null,
-) => {
+const useServerValidate = events => {
 	const discovery = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
 			discovery.link("root.server.validate"),
-			onSuccess,
-			onError,
+			events,
+			navigate,
 			cancelToken,
-			resolveReason(onReason, navigate),
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discovery]);
+	}, []);
 };
 
 export {

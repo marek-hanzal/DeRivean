@@ -1,6 +1,6 @@
 import {List} from "antd";
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import PropTypes from "prop-types";
 import {useContext, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router";

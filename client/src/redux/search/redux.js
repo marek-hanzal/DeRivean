@@ -1,15 +1,12 @@
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
 import post from "utils/server/post";
-import resolveReason from "utils/server/resolveReason";
 
 const useSearch = (
 	data,
-	onSuccess = validation => null,
-	onError = error => null,
-	onReason = null,
+	events,
 ) => {
 	const navigate = useNavigate();
 	const discoveryContext = useContext(DiscoveryContext);
@@ -18,11 +15,9 @@ const useSearch = (
 		doSearch(
 			discoveryContext,
 			data,
-			onSuccess,
-			onError,
-			onReason,
-			cancelToken,
+			events,
 			navigate,
+			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -32,21 +27,16 @@ const useSearch = (
 const doSearch = (
 	discovery,
 	data,
-	onSuccess,
-	onError,
-	onReason,
+	events,
+	navigate,
 	cancelToken,
-	navigate
-) => {
-	post(
-		discovery.link("root.search"),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+) => post(
+	discovery.link("root.search"),
+	data,
+	events,
+	navigate,
+	cancelToken,
+);
 
 export {
 	useSearch,

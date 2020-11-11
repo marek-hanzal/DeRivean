@@ -1,6 +1,6 @@
 import {Select} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import EditorContext from "component/form/EditorContext";
-import DiscoveryContext from "component/system/DiscoveryContext";
 import {useContext, useRef, useState} from "react";
 import {GlobalHotKeys} from "react-hotkeys";
 import {useTranslation} from "react-i18next";

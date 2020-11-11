@@ -7,15 +7,13 @@ const doPost = (link) => {
 		events,
 		navigate,
 		cancelToken,
-	) => {
-		post(
-			discovery.link(link),
-			data,
-			events,
-			navigate,
-			cancelToken,
-		);
-	};
+	) => post(
+		discovery.link(link),
+		data,
+		events,
+		navigate,
+		cancelToken,
+	);
 };
 
 export default doPost;

@@ -1,28 +1,22 @@
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import get from "utils/server/get";
-import resolveReason from "utils/server/resolveReason";
 
-const useTranslation = (
-	onSuccess = validation => null,
-	onError = error => null,
-	onReason = null,
-) => {
+const useTranslation = events => {
 	const navigate = useNavigate();
 	const discoveryContext = useContext(DiscoveryContext);
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		get(
 			discoveryContext.link("public.translation"),
-			onSuccess,
-			onError,
+			events,
+			navigate,
 			cancelToken,
-			resolveReason(onReason, navigate),
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line

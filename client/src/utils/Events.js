@@ -6,8 +6,8 @@ const Events = () => {
 			return this;
 		},
 		call: function (event, ...data) {
-			for (const call of (this.events[event] || []).sort((a, b) => a.priority - b.priority)) {
-				if (call(...data) === false) {
+			for (const item of (this.events[event] || []).sort((a, b) => a.priority - b.priority)) {
+				if (item.callback(...data) === false) {
 					break;
 				}
 			}
