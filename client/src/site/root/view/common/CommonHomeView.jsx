@@ -7,20 +7,16 @@ import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
 import {createElement, useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
-import {NavigationRedux} from "redux/navigation/redux";
 import Events from "utils/Events";
 
 const ContextView = (
 	{
 		context,
-		navigation,
 		param,
 		menu,
 		children
 	}) => {
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
 	const [loading, setLoading] = useState(true);
@@ -36,7 +32,7 @@ const ContextView = (
 			.on("success", data => {
 				setData(data);
 				setLoading(false);
-				dispatch(NavigationRedux.params(navigation(data)));
+				layoutContext.setFetch(data);
 			})
 			.on("error", () => {
 				setLoading(false);
@@ -80,7 +76,6 @@ const CommonHomeView = (props) => {
 
 CommonHomeView.propTypes = {
 	context: PropTypes.object.isRequired,
-	navigation: PropTypes.func.isRequired,
 	children: PropTypes.func.isRequired,
 	menu: PropTypes.string.isRequired,
 };
