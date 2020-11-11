@@ -1,5 +1,5 @@
 import HomeIcon from "component/icon/HomeIcon";
-import BaseLayout from "component/layout/BaseLayout";
+import {BaseLayout} from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
