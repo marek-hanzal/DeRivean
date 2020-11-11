@@ -9,7 +9,7 @@ const SingOutView = () => {
 	return (
 		<PublicView
 			id={"public.sign-out"}
-			fullsize={true}
+			fullscreen={true}
 		>
 			<Card>
 				<Result

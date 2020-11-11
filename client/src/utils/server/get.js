@@ -8,7 +8,7 @@ const get = (
 	navigate,
 	cancelToken = null,
 ) => {
-	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0));
+	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0), 100);
 	Server.get(href, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
 		.then(({data}) => {
 			events.call("success", data);

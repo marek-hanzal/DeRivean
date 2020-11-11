@@ -9,7 +9,7 @@ const post = (
 	navigate,
 	cancelToken = null,
 ) => {
-	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0));
+	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0), 100);
 	Server.post(href, data, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
 		.then(({data}) => {
 			events.call("success", data);

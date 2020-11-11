@@ -9,14 +9,14 @@ const PublicView = (
 		id,
 		menu = id,
 		title = id,
-		fullsize,
+		fullscreen = false,
 		reset = true,
 		children,
 	}) => {
 	const {t} = useTranslation();
 	const layoutContext = useContext(LayoutContext);
 	layoutContext.useMenuSelect(menu);
-	layoutContext.useEnableFullscreen(fullsize, reset);
+	layoutContext.useEnableFullscreen(fullscreen, reset);
 	return (
 		<>
 			<ScrollToTop/>
