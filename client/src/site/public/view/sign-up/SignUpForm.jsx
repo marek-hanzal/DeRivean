@@ -7,8 +7,9 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
-import {doUserRegister} from "redux/user/redux";
+import {doUserRegister} from "site/public/redux/user/redux";
 import Routes from "site/Routes";
+import Events from "utils/Events";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
@@ -28,19 +29,18 @@ const SignUpForm = () => {
 				doUserRegister(
 					discoveryContext,
 					values,
-					() => {
-						navigate(Routes.public.signUpSuccess.link());
-						dispatch(LoadingRedux.finish());
-					},
-					() => {
-						dispatch(LoadingRedux.finish());
-					},
-					{
-						409: error => {
-							setErrors(error.response.data);
+					Events()
+						.on("success", () => {
+							navigate(Routes.public.signUpSuccess.link());
 							dispatch(LoadingRedux.finish());
-						}
-					}
+						})
+						.on("error", () => {
+							dispatch(LoadingRedux.finish());
+						})
+						.on("http-409", data => {
+							setErrors(data);
+							dispatch(LoadingRedux.finish());
+						})
 				);
 			}}
 			name={"sign-up"}

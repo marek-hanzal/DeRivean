@@ -1,23 +1,19 @@
 import post from "utils/server/post";
-import resolveReason from "utils/server/resolveReason";
 
 const doPost = (link) => {
 	return (
 		discovery,
 		data,
-		onSuccess,
-		onError,
-		onReason,
+		events,
+		navigate,
 		cancelToken,
-		navigate
 	) => {
 		post(
 			discovery.link(link),
 			data,
-			onSuccess,
-			onError,
+			events,
+			navigate,
 			cancelToken,
-			resolveReason(onReason, navigate),
 		);
 	};
 };

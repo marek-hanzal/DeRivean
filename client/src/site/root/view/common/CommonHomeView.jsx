@@ -14,7 +14,6 @@ import {NavigationRedux} from "redux/navigation/redux";
 const ContextView = (
 	{
 		context,
-		fetch,
 		navigation,
 		param,
 		menu,
@@ -29,7 +28,7 @@ const ContextView = (
 	const currentContext = useContext(context);
 	param = currentContext.param || param;
 	useMenuSelect([menu]);
-	fetch(
+	currentContext.fetch(
 		params[param],
 		data => {
 			setData(data);
@@ -62,14 +61,11 @@ const ContextView = (
 	);
 };
 
-const CommonHomeView = (
-	{
-		base,
-		...props
-	}) => {
+const CommonHomeView = (props) => {
+	const currentContext = useContext(props.context);
 	return (
 		createElement(
-			base,
+			currentContext.base,
 			{},
 			<ContextView {...props}/>
 		)
@@ -77,9 +73,7 @@ const CommonHomeView = (
 };
 
 CommonHomeView.propTypes = {
-	base: PropTypes.func.isRequired,
 	context: PropTypes.object.isRequired,
-	fetch: PropTypes.func.isRequired,
 	navigation: PropTypes.func.isRequired,
 	children: PropTypes.func.isRequired,
 	menu: PropTypes.string.isRequired,

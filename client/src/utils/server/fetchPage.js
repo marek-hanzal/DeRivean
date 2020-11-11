@@ -1,6 +1,5 @@
 import buildUrl from "build-url";
 import get from "utils/server/get";
-import resolveReason from "utils/server/resolveReason";
 
 const fetchPage = (link, param) => {
 	return (
@@ -8,20 +7,15 @@ const fetchPage = (link, param) => {
 		page,
 		size,
 		params = null,
-		cancelToken = null,
+		events,
 		navigate,
-		onSuccess = data => null,
-		onError = error => null,
-		onReason,
-	) => {
-		get(
-			buildUrl(discovery.page(link, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
-			onSuccess,
-			onError,
-			cancelToken,
-			resolveReason(onReason, navigate),
-		);
-	};
+		cancelToken = null,
+	) => get(
+		buildUrl(discovery.page(link, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
+		events,
+		navigate,
+		cancelToken,
+	);
 };
 
 export default fetchPage;
