@@ -17,7 +17,7 @@ const commonFetchHook = (link, replace = "{id}") => {
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
 			get(
-				discoveryContext.link(link, uuid, replace),
+				discoveryContext.fetch(link, uuid, replace),
 				onSuccess,
 				onFailure,
 				cancelToken,
