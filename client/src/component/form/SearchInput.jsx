@@ -1,11 +1,11 @@
 import {Select} from "antd";
+import axios from "axios";
 import {DiscoveryContext} from "component/discovery/Discovery";
 import EditorContext from "component/form/EditorContext";
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {GlobalHotKeys} from "react-hotkeys";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {doSearch} from "redux/search/redux";
 import Events from "utils/Events";
 
 const SearchInput = (
@@ -31,20 +31,47 @@ const SearchInput = (
 		value: item.id, ...item
 	})));
 	render = render || (item => item.name);
-	currentContext.search(
-		{search: ""},
-		Events()
-			.on("success", data => {
-				setData(mapper(data));
-				if (editorContext) {
-					editorContext.isReady();
-				}
-				setLoading(false);
-			})
-			.on("error", () => {
-				setLoading(false);
-			})
-	);
+
+	function search(search = "") {
+		setLoading(true);
+		currentContext.search(
+			discoveryContext,
+			{search},
+			Events()
+				.on("success", data => {
+					setData(mapper(data));
+					setLoading(false);
+				})
+				.on("error", () => {
+					setLoading(false);
+				}),
+			navigate,
+		);
+	}
+
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		currentContext.search(
+			discoveryContext,
+			{search: ""},
+			Events()
+				.on("success", data => {
+					setData(mapper(data));
+					if (editorContext) {
+						editorContext.isReady();
+					}
+					setLoading(false);
+				})
+				.on("error", () => {
+					setLoading(false);
+				}),
+			navigate,
+			cancelToken,
+		);
+		return () => cancelToken.cancel();
+		// eslint-disable-next-line
+	}, []);
+
 	return (
 		<GlobalHotKeys keyMap={{
 			search: hotkey,
@@ -63,30 +90,17 @@ const SearchInput = (
 				filterOption={false}
 				loading={loading}
 				allowClear
-				onSearch={search => {
-					doSearch(discoveryContext, {search}, data => {
-						setData(mapper(data));
-					}, null, null, null, navigate);
-				}}
-				onClear={_ => {
-					doSearch(discoveryContext, {search: ""}, data => {
-						setData(mapper(data));
-					}, null, null, null, navigate);
-				}}
-				onChange={_ => {
-					doSearch(discoveryContext, {search: ""}, data => {
-						setData(mapper(data));
-					}, null, null, null, navigate);
-				}}
+				onSearch={search}
+				onClear={_ => search()}
+				onChange={_ => search()}
 				placeholder={t(`${currentContext.id}.${placeholder}.label`)}
 				{...props}
-			>
-				{data.map(item => (
+				children={data.map(item => (
 					<Select.Option key={item.id} value={item.id} item={item}>
 						{render(item)}
 					</Select.Option>
 				))}
-			</Select>
+			/>
 		</GlobalHotKeys>
 	);
 };
