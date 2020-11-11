@@ -7,13 +7,6 @@ import React, {useEffect, useState} from "react";
 
 const LayoutContext = React.createContext(null);
 
-const useEnableFullscreen = (layoutContext, enable = true, restore = true) => {
-	useEffect(() => {
-		layoutContext.setFullscreen(enable);
-		return () => layoutContext.setFullscreen(!restore);
-	});
-};
-
 const BaseLayout = (
 	{
 		header,
@@ -29,6 +22,12 @@ const BaseLayout = (
 			value={{
 				fullscreen,
 				setFullscreen,
+				useEnableFullscreen: function (enable = true, restore = true) {
+					useEffect(() => {
+						this.setFullscreen(enable);
+						return () => this.setFullscreen(!restore);
+					});
+				},
 				menu,
 				selectMenu,
 				setSelectMenu,
@@ -66,5 +65,4 @@ const BaseLayout = (
 export {
 	BaseLayout,
 	LayoutContext,
-	useEnableFullscreen,
 };

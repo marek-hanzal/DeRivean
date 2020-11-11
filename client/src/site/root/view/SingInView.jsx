@@ -1,5 +1,5 @@
 import {Button, Card, Result} from "antd";
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import React, {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -13,7 +13,7 @@ const SignInContext = React.createContext({
 const SingInView = () => {
 	const {t} = useTranslation();
 	const layoutContext = useContext(LayoutContext);
-	useEnableFullscreen(layoutContext);
+	layoutContext.useEnableFullscreen();
 	return (
 		<RootView context={SignInContext}>
 			<Card>

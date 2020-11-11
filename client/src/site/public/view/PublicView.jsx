@@ -1,4 +1,4 @@
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import ScrollToTop from "component/ScrollToTop";
 import {useContext} from "react";
 import {Helmet} from "react-helmet";
@@ -16,7 +16,7 @@ const PublicView = (
 	const {t} = useTranslation();
 	const layoutContext = useContext(LayoutContext);
 	layoutContext.useMenuSelect(menu);
-	useEnableFullscreen(layoutContext, fullsize, reset);
+	layoutContext.useEnableFullscreen(fullsize, reset);
 	return (
 		<>
 			<ScrollToTop/>
