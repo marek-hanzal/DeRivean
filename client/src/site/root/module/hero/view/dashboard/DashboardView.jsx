@@ -12,9 +12,9 @@ const DashboardView = () => {
 			<BaseDashboardView
 				context={HeroContext}
 				children={
-					<HeroStatistics show={["heroes"]} action={(onSuccess, onFailure, onReason) => {
+					<HeroStatistics show={["heroes"]} action={events => {
 						// eslint-disable-next-line
-						useKingdomStatisticsFetch(params.kingdom, onSuccess, onFailure, onReason);
+						useKingdomStatisticsFetch(params.kingdom, events);
 					}}/>
 				}/>
 		</HeroView>
