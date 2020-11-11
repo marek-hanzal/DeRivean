@@ -6,8 +6,10 @@ import SessionContext from "component/system/SessionContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
-import {doUserLogin} from "redux/user/redux";
+import {doUserLogin} from "site/public/redux/user/redux";
+import Events from "utils/Events";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
@@ -18,6 +20,7 @@ const SignInForm = () => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const sessionContext = useContext(SessionContext);
 	const [form] = Form.useForm();
+	const navigate = useNavigate();
 	return (
 		<Form
 			form={form}
@@ -26,20 +29,20 @@ const SignInForm = () => {
 				doUserLogin(
 					discoveryContext,
 					values,
-					data => {
-						sessionContext.open(data);
-						dispatch(LoadingRedux.finish());
-					},
-					() => {
-						dispatch(LoadingRedux.finish());
-						message.error(t("public.sign-in.general-error"));
-					},
-					{
-						403: (error) => {
-							setErrors(error.response.data);
+					Events()
+						.on("success", data => {
+							sessionContext.open(data);
 							dispatch(LoadingRedux.finish());
-						}
-					}
+						})
+						.on("error", () => {
+							dispatch(LoadingRedux.finish());
+							message.error(t("public.sign-in.general-error"));
+						})
+						.on("http-403", data => {
+							setErrors(data);
+							dispatch(LoadingRedux.finish());
+						}),
+					navigate,
 				);
 			}}
 			name={"sign-in"}

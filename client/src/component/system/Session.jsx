@@ -1,12 +1,48 @@
-import DiscoveryContext from "component/system/DiscoveryContext";
-import SessionContext from "component/system/SessionContext";
-import {useContext, useState} from "react";
-import {doSessionDelete, useSessionCheck} from "site/public/redux/session/redux";
+import axios from "axios";
+import {DiscoveryContext} from "component/discovery/Discovery";
+import React, {useContext, useEffect, useState} from "react";
+import {useNavigate} from "react-router";
+import Events from "utils/Events";
+import doDelete from "utils/server/doDelete";
+import get from "utils/server/get";
 import LoaderView from "view/LoaderView";
 import LockedUserView from "view/LockedUserView";
 
+const SessionContext = React.createContext(null);
+
 const DefaultState = {
 	site: "public",
+};
+
+const useSessionCheck = (
+	onSuccess = () => null,
+	onError = null,
+	onReason = null,
+) => {
+	const discoveryContext = useContext(DiscoveryContext);
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		get(
+			discoveryContext.link("public.user.login"),
+			onSuccess,
+			onError,
+			cancelToken,
+			onReason,
+		);
+		// eslint-disable-next-line
+	}, []);
+};
+
+const doSessionDelete = (
+	discovery,
+	events,
+	navigate,
+) => {
+	doDelete(
+		discovery.link("public.user.login"),
+		events,
+		navigate,
+	);
 };
 
 const ResolveSession = ({sites}) => {
@@ -48,6 +84,7 @@ const ResolveSession = ({sites}) => {
 const Session = ({sites}) => {
 	const [session, setSession] = useState(DefaultState);
 	const discoveryContext = useContext(DiscoveryContext);
+	const navigate = useNavigate();
 	return (
 		<SessionContext.Provider
 			value={{
@@ -55,7 +92,13 @@ const Session = ({sites}) => {
 				open: session => setSession(session),
 				close: () => {
 					setSession(DefaultState);
-					doSessionDelete(discoveryContext);
+					doSessionDelete(
+						discoveryContext,
+						// if we're already logged out, do nothing (as internal stuff could handle 401 errors)
+						Events()
+							.on("http-401", () => false),
+						navigate
+					);
 				},
 			}}
 			children={<ResolveSession sites={sites}/>}
@@ -63,4 +106,9 @@ const Session = ({sites}) => {
 	);
 };
 
-export default Session;
+export {
+	Session,
+	SessionContext,
+	useSessionCheck,
+	doSessionDelete,
+};

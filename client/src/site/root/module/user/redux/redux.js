@@ -8,8 +8,6 @@ import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
 import resolveReason from "utils/server/resolveReason";
 
-const doUserRegister = doPost("public.user.register");
-const doUserLogin = doPost("public.user.login");
 const doUserCreate = doPost("root.user.create");
 const doUserUpdate = doPost("root.user.update");
 const doUserDelete = doPost("root.user.delete");
@@ -60,8 +58,6 @@ const doUserSearch = (
 };
 
 export {
-	doUserRegister,
-	doUserLogin,
 	doUserCreate,
 	doUserUpdate,
 	doUserDelete,

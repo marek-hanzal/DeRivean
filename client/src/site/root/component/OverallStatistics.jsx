@@ -4,6 +4,7 @@ import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useStatistics} from "redux/statistics/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
+import Events from "utils/Events";
 
 const OverallStatistics = (
 	{
@@ -15,21 +16,19 @@ const OverallStatistics = (
 	const [data, setData] = useState({users: 0, kingdoms: 0, heroes: 0, buildings: 0});
 	const [unavailable, setUnavailable] = useState(false);
 	const [loading, setLoading] = useState(true);
-	action = action || useStatistics;
-	action(
-		statistics => {
-			setData(statistics);
-			setLoading(false);
-		},
-		() => {
-			setLoading(false);
-			message.error(t("root.statistic.fetch-error"));
-		},
-		{
-			403: () => {
+	(action || useStatistics)(
+		Events()
+			.on("success", statistics => {
+				setData(statistics);
+				setLoading(false);
+			})
+			.on("error", () => {
+				setLoading(false);
+				message.error(t("root.statistic.fetch-error"));
+			})
+			.on("http-403", () => {
 				setUnavailable(true);
-			}
-		}
+			})
 	);
 	return (
 		<Card style={{textAlign: "center"}}>

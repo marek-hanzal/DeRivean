@@ -4,6 +4,7 @@ import DiscoveryContext from "component/system/DiscoveryContext";
 import PropTypes from "prop-types";
 import {useContext, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router";
+import Events from "utils/Events";
 import defaultPage from "utils/page";
 
 const BaseTable = (
@@ -18,22 +19,23 @@ const BaseTable = (
 	const [loading, setLoading] = useState(true);
 	const items = page.items;
 
-	const onPage = (current, size, cancelToken = null) => {
+	const onPage = (page, size, cancelToken = null) => {
 		setLoading(true);
 		onFetchPage(
 			discoveryContext,
-			current,
+			page,
 			size,
 			params,
-			cancelToken,
+			Events
+				.on("success", data => {
+					setPage(data);
+					setLoading(false);
+				})
+				.on("error", () => {
+					setLoading(false);
+				}),
 			navigate,
-			data => {
-				setPage(data);
-				setLoading(false);
-			},
-			() => {
-				setLoading(false);
-			}
+			cancelToken,
 		);
 	};
 

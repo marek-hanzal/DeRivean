@@ -1,9 +1,32 @@
-import ClientContext from "component/system/ClientContext";
-import DiscoveryContext from "component/system/DiscoveryContext";
-import {useContext, useState} from "react";
-import {useDiscovery} from "redux/discovery/redux";
+import axios from "axios";
+import {ClientContext} from "component/client/Client";
+import React, {useContext, useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router";
+import get from "utils/server/get";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
+
+const DiscoveryContext = React.createContext(null);
+
+const useDiscovery = (
+	client,
+	events,
+) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	useEffect(() => {
+		const cancelToken = axios.CancelToken.source();
+		get(
+			client.discovery,
+			events,
+			navigate,
+			cancelToken,
+		);
+		return () => cancelToken.cancel();
+		// eslint-disable-next-line
+	}, [dispatch, client]);
+};
 
 const Discovery = ({children}) => {
 	const [status, setStatus] = useState();
@@ -44,4 +67,8 @@ const Discovery = ({children}) => {
 	}
 };
 
-export default Discovery;
+export {
+	Discovery,
+	DiscoveryContext,
+	useDiscovery,
+};
