@@ -7,7 +7,7 @@ import {SessionContext} from "component/session/Session";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {doUserLogin} from "site/public/redux/user/redux";
+import {doUserLogin} from "site/public/action/action";
 import Events from "utils/Events";
 import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";

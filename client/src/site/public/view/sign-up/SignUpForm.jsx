@@ -6,7 +6,7 @@ import Centered from "component/layout/Centered";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {doUserRegister} from "site/public/redux/user/redux";
+import {doUserRegister} from "site/public/action/action";
 import Routes from "site/Routes";
 import Events from "utils/Events";
 import enableSubmit from "utils/form/enableSubmit";
