@@ -25,6 +25,7 @@ const useSessionCheck = events => {
 			navigate,
 			cancelToken,
 		);
+		return () => cancelToken.cancel();
 		// eslint-disable-next-line
 	}, []);
 };
