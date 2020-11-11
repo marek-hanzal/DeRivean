@@ -13,9 +13,9 @@ const DashboardView = () => {
 				context={BuildingContext}
 				menu={"root.building.dashboard"}
 				children={
-					<BuildingStatistics show={["buildings"]} action={(onSuccess, onFailure, onReason) => {
+					<BuildingStatistics show={["buildings"]} action={events => {
 						// eslint-disable-next-line
-						useKingdomStatisticsFetch(params.kingdom, onSuccess, onFailure, onReason);
+						useKingdomStatisticsFetch(params.kingdom, events);
 					}}/>
 				}
 			/>

@@ -16,9 +16,9 @@ const HomeView = () => {
 			menu={"root.kingdom"}
 		>
 			{data => (
-				<KingdomStatistics action={(onSuccess, onFailure, onReason) => {
+				<KingdomStatistics action={events => {
 					// eslint-disable-next-line
-					useKingdomStatisticsFetch(params.kingdom, onSuccess, onFailure, onReason);
+					useKingdomStatisticsFetch(params.kingdom, events);
 				}}/>
 			)}
 		</CommonHomeView>
