@@ -2,7 +2,7 @@ import {Form, message, Radio, Skeleton} from "antd";
 import EditorContext from "component/form/EditorContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useServerSites} from "redux/server/redux";
+import {useServerSites} from "site/root/hook/hook";
 import UserContext from "site/root/module/user/component/UserContext";
 import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";

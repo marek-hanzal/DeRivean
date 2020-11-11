@@ -2,7 +2,7 @@ import {Card, message} from "antd";
 import {LayoutContext} from "component/layout/BaseLayout";
 import React, {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useServerValidate} from "redux/server/redux";
+import {useServerValidate} from "site/root/hook/hook";
 import ErrorResult from "site/root/view/home/ErrorResult";
 import FailedResult from "site/root/view/home/FailedResult";
 import HomeDashboard from "site/root/view/home/HomeDashboard";
