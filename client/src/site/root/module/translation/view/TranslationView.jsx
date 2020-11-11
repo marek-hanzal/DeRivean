@@ -1,6 +1,7 @@
-import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, fetchTranslationPage, useTranslationFetch} from "hook.js";
+import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, fetchTranslationPage} from "site/root/module/translation/action/action";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
+import {useTranslationFetch} from "site/root/module/translation/hook/hook";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

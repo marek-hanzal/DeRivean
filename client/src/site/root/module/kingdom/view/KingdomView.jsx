@@ -1,6 +1,7 @@
-import {doKingdomCreate, doKingdomDelete, doKingdomSearch, doKingdomUpdate, fetchKingdomPage, useKingdomAttributesFetch, useKingdomFetch} from "hook.js";
+import {doKingdomCreate, doKingdomDelete, doKingdomSearch, doKingdomUpdate, fetchKingdomPage} from "site/root/module/kingdom/action/action";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
+import {useKingdomAttributesFetch, useKingdomFetch} from "site/root/module/kingdom/hook/hook";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

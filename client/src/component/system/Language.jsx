@@ -1,6 +1,6 @@
-import {useTranslation} from "hook.js";
 import i18next from "i18next";
 import {useState} from "react";
+import {useTranslation} from "site/root/module/translation/hook/hook";
 import Events from "utils/Events";
 import LanguageErrorView from "view/LanguageErrorView";
 import LoaderView from "view/LoaderView";

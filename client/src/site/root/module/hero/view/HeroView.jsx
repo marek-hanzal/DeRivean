@@ -1,6 +1,7 @@
-import {doHeroCreate, doHeroDelete, doHeroUpdate, fetchHeroPage, useHeroAttributesFetch, useHeroFetch} from "hook.js";
+import {doHeroCreate, doHeroDelete, doHeroUpdate, fetchHeroPage} from "site/root/module/hero/action/action";
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import {useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/hook/hook";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
