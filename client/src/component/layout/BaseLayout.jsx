@@ -2,9 +2,16 @@ import {Layout, PageHeader} from "antd";
 import CollapsibleContent from "component/layout/CollapsibleContent";
 import Sider from "component/layout/Sider";
 import Loader from "component/Loader";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const LayoutContext = React.createContext(null);
+
+const useEnableFullscreen = (layoutContext, enable = true, restore = true) => {
+	useEffect(() => {
+		layoutContext.setFullscreen(enable);
+		return () => layoutContext.setFullscreen(restore);
+	});
+};
 
 const BaseLayout = (
 	{
@@ -24,7 +31,7 @@ const BaseLayout = (
 			children={
 				<Loader>
 					<Layout>
-						{header}
+						{fullscreen ? null : header}
 						<Layout style={{
 							minHeight: "100vh",
 							padding: "0 50px",
@@ -46,4 +53,6 @@ const BaseLayout = (
 
 export {
 	BaseLayout,
+	LayoutContext,
+	useEnableFullscreen,
 };

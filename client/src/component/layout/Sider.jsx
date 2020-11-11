@@ -1,14 +1,15 @@
 import {Layout} from "antd";
+import {LayoutContext} from "component/layout/BaseLayout";
+import {useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {ContentRedux} from "redux/content/redux";
 import {MenuRedux} from "redux/menu/redux";
 
 const Sider = ({children}) => {
 	const dispatch = useDispatch();
 	const isCollapsed = useSelector(MenuRedux.selector.isCollapsed);
-	const isFullsize = useSelector(ContentRedux.selector.isFullsize);
+	const layoutContext = useContext(LayoutContext);
 	return (
-		isFullsize ? null :
+		layoutContext.fullscreen ? null :
 			<Layout.Sider
 				collapsible
 				collapsed={isCollapsed}
