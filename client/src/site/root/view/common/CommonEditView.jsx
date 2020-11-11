@@ -12,6 +12,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
+import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
@@ -27,12 +28,13 @@ const Editor = (
 	const editorContext = useContext(EditorContext);
 	currentContext.fetch(
 		params[param],
-		data => {
-			editorContext.setInitials(data);
-			values(editorContext.form, data);
-			editorContext.setEditor(false);
-			editorContext.isReady();
-		}
+		Events()
+			.on("success", data => {
+				editorContext.setInitials(data);
+				values(editorContext.form, data);
+				editorContext.setEditor(false);
+				editorContext.isReady();
+			})
 	);
 	return (
 		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>

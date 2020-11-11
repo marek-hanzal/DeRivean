@@ -13,18 +13,23 @@ import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
+import Events from "utils/Events";
 import values from "utils/form/values";
 
 const AttributeForm = ({currentContext}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const params = useParams();
-	currentContext.fetch(params[currentContext.param], fetch => {
-		editorContext.setInitials(fetch);
-		values(editorContext.form, fetch);
-		editorContext.setEnableSubmit(true);
-		editorContext.isReady();
-	});
+	currentContext.fetch(
+		params[currentContext.param],
+		Events()
+			.on("success", fetch => {
+				editorContext.setInitials(fetch);
+				values(editorContext.form, fetch);
+				editorContext.setEnableSubmit(true);
+				editorContext.isReady();
+			})
+	);
 	return (
 		<Card title={<><BackLink/>{t(`${currentContext.id}.attributes.title`)}</>}>
 			<Result
