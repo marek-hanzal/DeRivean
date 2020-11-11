@@ -1,7 +1,7 @@
+import {useKingdomStatisticsFetch} from "hook.js";
 import {useParams} from "react-router";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
-import {useKingdomStatisticsFetch} from "site/root/module/kingdom/redux/redux";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import CommonHomeView from "site/root/view/common/CommonHomeView";
 

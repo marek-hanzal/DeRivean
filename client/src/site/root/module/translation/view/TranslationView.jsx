@@ -1,6 +1,6 @@
+import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, fetchTranslationPage, useTranslationFetch} from "hook.js";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
-import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, fetchTranslationPage, useTranslationFetch} from "site/root/module/translation/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
