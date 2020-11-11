@@ -13,6 +13,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import {LoadingRedux} from "redux/loading/redux";
+import Events from "utils/Events";
 import values from "utils/form/values";
 
 const EditorToolbar = (
@@ -45,25 +46,34 @@ const EditorToolbar = (
 							currentContext.delete(
 								discoveryContext,
 								{id: params[param]},
-								_ => {
-									navigate(cleverLink.link);
-									message.success(t(currentContext.id + ".delete.success"));
-									dispatch(LoadingRedux.finish());
-								},
-								() => {
-									message.error(t(currentContext.id + ".delete.error"));
-									dispatch(LoadingRedux.finish());
-								}
+								Events()
+									.on("success", _ => {
+										navigate(cleverLink.link);
+										message.success(t(currentContext.id + ".delete.success"));
+										dispatch(LoadingRedux.finish());
+									})
+									.on("error", () => {
+										message.error(t(currentContext.id + ".delete.error"));
+										dispatch(LoadingRedux.finish());
+									})
 							);
 						}}
 						children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(currentContext.id + ".edit.form.delete")}/>}
 					/> : null
 				}
 			</Space> :
-			<Button type={"primary"} ghost size={"large"} disabled={editorContext.ready > 0} onClick={() => {
-				editorContext.setEditor(true);
-				values(editorContext.form, editorContext.initials);
-			}} icon={<Spinner done={!editorContext.ready} icon={<EditIcon/>}/>}>{t(currentContext.id + ".edit.form.edit")}</Button>
+			<Button
+				type={"primary"}
+				ghost
+				size={"large"}
+				disabled={editorContext.ready > 0}
+				onClick={() => {
+					editorContext.setEditor(true);
+					values(editorContext.form, editorContext.initials);
+				}}
+				icon={<Spinner done={!editorContext.ready} icon={<EditIcon/>}/>}
+				children={t(currentContext.id + ".edit.form.edit")}
+			/>
 	);
 };
 
