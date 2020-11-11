@@ -10,23 +10,23 @@ const KingdomView = (
 		...props
 	}) => {
 	return (
-		<KingdomContext.Provider value={{
-			icon: <KingdomIcon/>,
-			id: "root.kingdom",
-			link: Routes.root.kingdom,
-			create: doKingdomCreate,
-			update: doKingdomUpdate,
-			delete: doKingdomDelete,
-			fetch: useKingdomFetch,
-			attributes: useKingdomAttributesFetch,
-			search: useKingdomSearch,
-			param: "kingdom",
-			parentParam: "user",
-		}}>
-			<RootView context={KingdomContext} {...props}>
-				{children}
-			</RootView>
-		</KingdomContext.Provider>
+		<KingdomContext.Provider
+			value={{
+				base: KingdomView,
+				icon: <KingdomIcon/>,
+				id: "root.kingdom",
+				link: Routes.root.kingdom,
+				create: doKingdomCreate,
+				update: doKingdomUpdate,
+				delete: doKingdomDelete,
+				fetch: useKingdomFetch,
+				attributes: useKingdomAttributesFetch,
+				search: useKingdomSearch,
+				param: "kingdom",
+				parentParam: "user",
+			}}
+			children={<RootView context={KingdomContext} {...props} children={children}/>}
+		/>
 	);
 };
 
