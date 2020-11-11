@@ -1,6 +1,7 @@
-import {doUserCreate, doUserDelete, doUserSearch, doUserUpdate, fetchUserPage, useUserAttributesFetch, useUserFetch} from "hook.js";
+import {doUserCreate, doUserDelete, doUserSearch, doUserUpdate, fetchUserPage} from "site/root/module/user/action/action";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
+import {useUserAttributesFetch, useUserFetch} from "site/root/module/user/hook/hook";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

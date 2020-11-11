@@ -1,6 +1,7 @@
-import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, fetchBuildingPage, useBuildingAttributesFetch, useBuildingFetch} from "hook.js";
+import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, fetchBuildingPage} from "site/root/module/building/action/action";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import {useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/hook/hook";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
