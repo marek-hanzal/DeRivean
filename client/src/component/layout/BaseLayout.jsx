@@ -32,4 +32,6 @@ const BaseLayout = (
 	);
 };
 
-export default BaseLayout;
+export {
+	BaseLayout,
+};
