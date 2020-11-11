@@ -26,7 +26,7 @@ const BaseTable = (
 			page,
 			size,
 			params,
-			Events
+			Events()
 				.on("success", data => {
 					setPage(data);
 					setLoading(false);
