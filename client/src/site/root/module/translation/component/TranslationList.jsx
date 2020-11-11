@@ -4,7 +4,6 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import {fetchTranslationPage} from "redux/translation/redux";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
 
@@ -34,7 +33,7 @@ const TranslationList = () => {
 	const context = useContext(TranslationContext);
 	return (
 		<BaseTable
-			onFetchPage={fetchTranslationPage}
+			onFetchPage={context.page}
 			children={item => <TranslationListItem context={context} item={item} key={item.id}/>}
 		/>
 	);

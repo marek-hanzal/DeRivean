@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.6.74",
+	"version": "0.6.75",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
