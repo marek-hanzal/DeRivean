@@ -1,6 +1,6 @@
 import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import {doHeroCreate, doHeroDelete, doHeroUpdate, useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/redux/redux";
+import {doHeroCreate, doHeroDelete, doHeroUpdate, fetchHeroPage, useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
@@ -20,6 +20,7 @@ const HeroView = (
 				update: doHeroUpdate,
 				delete: doHeroDelete,
 				fetch: useHeroFetch,
+				page: fetchHeroPage,
 				attributes: useHeroAttributesFetch,
 				param: "hero",
 				parentParam: "kingdom",

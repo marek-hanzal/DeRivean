@@ -1,6 +1,6 @@
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/redux/redux";
+import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, fetchBuildingPage, useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
@@ -20,6 +20,7 @@ const BuildingView = (
 				update: doBuildingUpdate,
 				delete: doBuildingDelete,
 				fetch: useBuildingFetch,
+				page: fetchBuildingPage,
 				attributes: useBuildingAttributesFetch,
 				param: "building",
 				parentParam: "kingdom",
