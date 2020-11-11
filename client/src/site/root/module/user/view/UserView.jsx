@@ -1,6 +1,6 @@
+import {doUserCreate, doUserDelete, doUserSearch, doUserUpdate, fetchUserPage, useUserAttributesFetch, useUserFetch} from "hook.js";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
-import {doUserCreate, doUserDelete, doUserSearch, doUserUpdate, fetchUserPage, useUserAttributesFetch, useUserFetch} from "site/root/module/user/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

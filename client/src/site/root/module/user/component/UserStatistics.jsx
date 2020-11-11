@@ -1,6 +1,6 @@
+import {useUserStatisticsFetch} from "hook.js";
 import {useParams} from "react-router";
 import OverallStatistics from "site/root/component/OverallStatistics";
-import {useUserStatisticsFetch} from "site/root/module/user/redux/redux";
 
 const UserStatistics = () => {
 	const params = useParams();

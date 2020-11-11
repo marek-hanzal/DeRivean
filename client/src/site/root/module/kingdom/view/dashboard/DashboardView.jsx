@@ -1,9 +1,9 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
+import {useUserStatisticsFetch} from "hook.js";
 import {useParams} from "react-router";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
-import {useUserStatisticsFetch} from "site/root/module/user/redux/redux";
 
 const DashboardView = () => {
 	const params = useParams();
