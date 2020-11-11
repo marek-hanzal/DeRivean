@@ -1,18 +1,16 @@
-import {
-	Button,
-	Card,
-	Result
-} from "antd";
-import useFullsizeContent from "hook/useFullsizeContent";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import {Button, Card, Result} from "antd";
+import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {useContext} from "react";
+import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 import PublicView from "site/public/view/PublicView";
 import Routes from "site/Routes";
 
 const SignUpSuccessView = () => {
 	const navigate = useNavigate();
-	const {t}      = useTranslation();
-	useFullsizeContent(true);
+	const layoutContext = useContext(LayoutContext);
+	const {t} = useTranslation();
+	useEnableFullscreen(layoutContext);
 	return (
 		<PublicView>
 			<Card>
