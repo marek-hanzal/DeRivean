@@ -10,7 +10,10 @@ const doDelete = (
 ) => {
 	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0), 100);
 	Server.delete(href, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
-		.then(({data}) => events.on("success", data))
+		.then(({data}) => {
+			events.on("success", data);
+			events.on("done");
+		})
 		.catch(error => {
 			if (axios.isCancel(error)) {
 				return;
@@ -20,6 +23,7 @@ const doDelete = (
 			} else {
 				events.call("error", error);
 			}
+			events.call("done");
 		});
 };
 

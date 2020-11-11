@@ -17,7 +17,7 @@ const useStatistics = (events) => {
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
-	}, [discoveryContext]);
+	}, []);
 };
 
 export {

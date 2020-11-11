@@ -5,13 +5,12 @@ import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import Events from "utils/Events";
 import values from "utils/form/values";
@@ -52,14 +51,14 @@ const AttributeForm = ({currentContext}) => {
 };
 
 const AttributesEditor = ({currentContext}) => {
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useContext(LayoutContext);
 	return (
 		<BaseEditor
 			readyCount={2}
 			onFinish={(values, initials, editor) => {
-				dispatch(LoadingRedux.start());
+				layoutContext.loadingStart();
 				values = {id: initials.id, ...values};
 				currentContext.update(
 					discoveryContext,
@@ -69,11 +68,12 @@ const AttributesEditor = ({currentContext}) => {
 							message.success(t(`${currentContext.id}.attributes.updated`));
 							editor.setEditor(false);
 							editor.setInitials(values);
-							dispatch(LoadingRedux.finish());
 						})
 						.on("error", () => {
 							message.success(t(`${currentContext.id}.attributes.update-failed`));
-							dispatch(LoadingRedux.finish());
+						})
+						.on("done", () => {
+							layoutContext.loadingFinish();
 						})
 				);
 			}}

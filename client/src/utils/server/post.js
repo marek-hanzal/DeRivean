@@ -11,7 +11,10 @@ const post = (
 ) => {
 	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0));
 	Server.post(href, data, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
-		.then(({data}) => events.call("success", data))
+		.then(({data}) => {
+			events.call("success", data);
+			events.call("done");
+		})
 		.catch(error => {
 			if (axios.isCancel(error)) {
 				return;
@@ -21,6 +24,7 @@ const post = (
 			} else {
 				events.call("error", error);
 			}
+			events.call("done");
 		});
 };
 

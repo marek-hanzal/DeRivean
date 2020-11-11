@@ -10,7 +10,10 @@ const get = (
 ) => {
 	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0));
 	Server.get(href, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
-		.then(({data}) => events.call("success", data))
+		.then(({data}) => {
+			events.call("success", data);
+			events.call("done");
+		})
 		.catch(error => {
 			if (axios.isCancel(error)) {
 				return;
@@ -20,6 +23,7 @@ const get = (
 			} else {
 				events.call("error", error);
 			}
+			events.call("done");
 		});
 };
 

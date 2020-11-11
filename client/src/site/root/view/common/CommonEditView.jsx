@@ -9,9 +9,7 @@ import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useParams} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
@@ -81,7 +79,6 @@ const CommonEditView = (
 	const currentContext = useContext(context);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
-	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
 	param = param || currentContext.param;
@@ -92,7 +89,7 @@ const CommonEditView = (
 			readyCount={(readyCount || 0) + 1}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(data, initials, editor) => {
-				dispatch(LoadingRedux.start());
+				layoutContext.loadingStart();
 				currentContext.update(
 					discoveryContext,
 					{...data, id: params[param]},
@@ -103,16 +100,16 @@ const CommonEditView = (
 							editor.setErrors(null);
 							editor.setInitials(data);
 							values(editor.form, data);
-							dispatch(LoadingRedux.finish());
 						})
 						.on("error", () => {
 							message.error(t(currentContext.id + ".update.general-error"));
-							dispatch(LoadingRedux.finish());
 						})
 						.on("http-409", error => {
 							message.error(t(currentContext.id + ".update.conflict"));
 							editor.setErrors(error);
-							dispatch(LoadingRedux.finish());
+						})
+						.on("done", () => {
+							layoutContext.loadingFinish();
 						})
 				);
 			}}

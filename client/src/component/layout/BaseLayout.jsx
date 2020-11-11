@@ -18,29 +18,28 @@ const BaseLayout = (
 	const [fullscreen, setFullscreen] = useState(false);
 	const [selectMenu, setSelectMenu] = useState([]);
 	const [collapsed, setCollapsed] = useState(false);
+	const [loading, setLoading] = useState(0);
 	return (
 		<LayoutContext.Provider
 			value={{
 				fullscreen,
 				setFullscreen,
-				useEnableFullscreen: function (enable = true, restore = true) {
-					useEffect(() => {
-						this.setFullscreen(enable);
-						return () => this.setFullscreen(!restore);
-					});
-				},
+				useEnableFullscreen: (enable = true, restore = true) => useEffect(() => {
+					setFullscreen(enable);
+					return () => setFullscreen(!restore);
+				}),
 				menu,
 				selectMenu,
 				setSelectMenu,
-				useMenuSelect: function (select) {
-					useEffect(() => {
-						setTimeout(() => {
-							this.setSelectMenu(isArray(select) ? select : [select]);
-						}, 0);
-					}, [select]);
-				},
+				useMenuSelect: select => useEffect(() => {
+					setTimeout(() => setSelectMenu(isArray(select) ? select : [select]), 0);
+				}, [select]),
 				collapsed,
 				setCollapsed,
+				loading,
+				isLoading: () => this.loading <= 0,
+				loadingStart: () => setLoading(prev => prev + 1),
+				loadingFinish: () => setLoading(prev => prev - 1),
 			}}
 			children={
 				<Loader>
