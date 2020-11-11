@@ -94,24 +94,24 @@ const CommonEditView = (
 				currentContext.update(
 					discoveryContext,
 					{...data, id: params[param]},
-					data => {
-						message.success(t(currentContext.id + ".update.success"));
-						editor.setEditor(false);
-						editor.setErrors(null);
-						editor.setInitials(data);
-						values(editor.form, data);
-						dispatch(LoadingRedux.finish());
-					}, () => {
-						message.error(t(currentContext.id + ".update.general-error"));
-						dispatch(LoadingRedux.finish());
-					},
-					{
-						409: error => {
-							message.error(t(currentContext.id + ".update.conflict"));
-							editor.setErrors(error.response.data);
+					Events()
+						.on("success", data => {
+							message.success(t(currentContext.id + ".update.success"));
+							editor.setEditor(false);
+							editor.setErrors(null);
+							editor.setInitials(data);
+							values(editor.form, data);
 							dispatch(LoadingRedux.finish());
-						}
-					}
+						})
+						.on("error", () => {
+							message.error(t(currentContext.id + ".update.general-error"));
+							dispatch(LoadingRedux.finish());
+						})
+						.on("http-409", error => {
+							message.error(t(currentContext.id + ".update.conflict"));
+							editor.setErrors(error);
+							dispatch(LoadingRedux.finish());
+						})
 				);
 			}}
 			onFinishFailed={() => {

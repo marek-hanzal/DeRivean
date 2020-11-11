@@ -10,24 +10,23 @@ const UserView = (
 		...props
 	}) => {
 	return (
-		<UserContext.Provider value={{
-			base: UserView,
-			icon: <UserIcon/>,
-			id: "root.user",
-			link: Routes.root.user,
-			create: doUserCreate,
-			update: doUserUpdate,
-			delete: doUserDelete,
-			fetch: useUserFetch,
-			page: fetchUserPage,
-			attributes: useUserAttributesFetch,
-			search: doUserSearch,
-			param: "user",
-		}}>
-			<RootView context={UserContext} {...props}>
-				{children}
-			</RootView>
-		</UserContext.Provider>
+		<UserContext.Provider
+			value={{
+				base: UserView,
+				icon: <UserIcon/>,
+				id: "root.user",
+				link: Routes.root.user,
+				create: doUserCreate,
+				update: doUserUpdate,
+				delete: doUserDelete,
+				fetch: useUserFetch,
+				page: fetchUserPage,
+				attributes: useUserAttributesFetch,
+				search: doUserSearch,
+				param: "user",
+			}}
+			children={<RootView context={UserContext} {...props} children={children}/>}
+		/>
 	);
 };
 
