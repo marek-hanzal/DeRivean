@@ -1,5 +1,5 @@
 import {Button, Card, Result} from "antd";
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -9,7 +9,7 @@ import Routes from "site/Routes";
 const SessionExpiredView = () => {
 	const {t} = useTranslation();
 	const layoutContext = useContext(LayoutContext);
-	useEnableFullscreen(layoutContext);
+	layoutContext.useEnableFullscreen();
 	return (
 		<PublicView id={"public.session-expired"}>
 			<Card>

@@ -1,5 +1,5 @@
 import {Button, Card, Result} from "antd";
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
@@ -10,7 +10,7 @@ const SignUpSuccessView = () => {
 	const navigate = useNavigate();
 	const layoutContext = useContext(LayoutContext);
 	const {t} = useTranslation();
-	useEnableFullscreen(layoutContext);
+	layoutContext.useEnableFullscreen();
 	return (
 		<PublicView>
 			<Card>

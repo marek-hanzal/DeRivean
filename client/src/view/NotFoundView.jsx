@@ -1,6 +1,6 @@
 import {Button, Result} from "antd";
 import HomeIcon from "component/icon/HomeIcon";
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import {useContext} from "react";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 const NotFoundView = () => {
 	const {t} = useTranslation();
 	const layoutContext = useContext(LayoutContext);
-	useEnableFullscreen(layoutContext);
+	layoutContext.useEnableFullscreen();
 	return (
 		<>
 			<Helmet title={t("error.not-found.title")}/>

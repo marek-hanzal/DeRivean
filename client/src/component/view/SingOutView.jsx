@@ -1,6 +1,6 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
-import {LayoutContext, useEnableFullscreen} from "component/layout/BaseLayout";
+import {LayoutContext} from "component/layout/BaseLayout";
 import {SessionContext} from "component/session/Session";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -12,7 +12,7 @@ const SingOutView = ({id}) => {
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	layoutContext.useMenuSelect(`${id}.sign-out`);
-	useEnableFullscreen(layoutContext);
+	layoutContext.useEnableFullscreen();
 	return (
 		<Card>
 			<Result
