@@ -1,10 +1,13 @@
 import {Menu} from "antd";
+import {LayoutContext} from "component/layout/BaseLayout";
+import {useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {MenuRedux} from "redux/menu/redux";
 
 const BaseMenu = ({children}) => {
 	const dispatch = useDispatch();
-	const selected = useSelector(MenuRedux.selector.getSelected);
+	const layoutContext = useContext(LayoutContext);
+	const selected = layoutContext.selectMenu;
 	const opened = useSelector(MenuRedux.selector.getOpened);
 	return (
 		<Menu

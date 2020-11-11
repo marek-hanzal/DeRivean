@@ -1,9 +1,9 @@
 import {Button, Card, Divider, Result} from "antd";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Placeholder from "component/Placeholder";
 import BackLink from "component/route/BackLink";
-import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {createElement, useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
@@ -27,8 +27,9 @@ const ContextView = (
 	const [data, setData] = useState();
 	const navigate = useNavigate();
 	const currentContext = useContext(context);
+	const layoutContext = useContext(LayoutContext);
 	param = currentContext.param || param;
-	useMenuSelect([menu]);
+	layoutContext.useMenuSelect([menu]);
 	currentContext.fetch(
 		params[param],
 		Events()

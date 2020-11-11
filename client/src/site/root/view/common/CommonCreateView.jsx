@@ -3,9 +3,9 @@ import {DiscoveryContext} from "component/discovery/Discovery";
 import BaseEditor from "component/form/BaseEditor";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
-import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -28,10 +28,11 @@ const CommonCreateView = (
 	const currentContext = useContext(context);
 	const dispatch = useDispatch();
 	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const {t} = useTranslation();
-	useMenuSelect(currentContext.id + ".create");
+	layoutContext.useMenuSelect(currentContext.id + ".create");
 	return (
 		<BaseEditor
 			enableEditor={true}
