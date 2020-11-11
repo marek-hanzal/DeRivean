@@ -10,22 +10,22 @@ const HeroView = (
 		...props
 	}) => {
 	return (
-		<HeroContext.Provider value={{
-			icon: <HeroIcon/>,
-			id: "root.hero",
-			link: Routes.root.hero,
-			create: doHeroCreate,
-			update: doHeroUpdate,
-			delete: doHeroDelete,
-			fetch: useHeroFetch,
-			attributes: useHeroAttributesFetch,
-			param: "hero",
-			parentParam: "kingdom",
-		}}>
-			<RootView context={HeroContext} {...props}>
-				{children}
-			</RootView>
-		</HeroContext.Provider>
+		<HeroContext.Provider
+			value={{
+				base: HeroView,
+				icon: <HeroIcon/>,
+				id: "root.hero",
+				link: Routes.root.hero,
+				create: doHeroCreate,
+				update: doHeroUpdate,
+				delete: doHeroDelete,
+				fetch: useHeroFetch,
+				attributes: useHeroAttributesFetch,
+				param: "hero",
+				parentParam: "kingdom",
+			}}
+			children={<RootView context={HeroContext} {...props} children={children}/>}
+		/>
 	);
 };
 

@@ -10,22 +10,22 @@ const BuildingView = (
 		...props
 	}) => {
 	return (
-		<BuildingContext.Provider value={{
-			icon: <BuildingIcon/>,
-			id: "root.building",
-			link: Routes.root.building,
-			create: doBuildingCreate,
-			update: doBuildingUpdate,
-			delete: doBuildingDelete,
-			fetch: useBuildingFetch,
-			attributes: useBuildingAttributesFetch,
-			param: "building",
-			parentParam: "kingdom",
-		}}>
-			<RootView context={BuildingContext} {...props}>
-				{children}
-			</RootView>
-		</BuildingContext.Provider>
+		<BuildingContext.Provider
+			value={{
+				base: BuildingView,
+				icon: <BuildingIcon/>,
+				id: "root.building",
+				link: Routes.root.building,
+				create: doBuildingCreate,
+				update: doBuildingUpdate,
+				delete: doBuildingDelete,
+				fetch: useBuildingFetch,
+				attributes: useBuildingAttributesFetch,
+				param: "building",
+				parentParam: "kingdom",
+			}}
+			children={<RootView context={BuildingContext} {...props} children={children}/>}
+		/>
 	);
 };
 

@@ -10,19 +10,19 @@ const TranslationView = (
 		...props
 	}) => {
 	return (
-		<TranslationContext.Provider value={{
-			icon: <TranslationIcon/>,
-			id: "root.translation",
-			create: doTranslationCreate,
-			update: doTranslationUpdate,
-			delete: doTranslationDelete,
-			fetch: useTranslationFetch,
-			link: Routes.root.translation,
-		}}>
-			<RootView context={TranslationContext} {...props}>
-				{children}
-			</RootView>
-		</TranslationContext.Provider>
+		<TranslationContext.Provider
+			value={{
+				base: TranslationView,
+				icon: <TranslationIcon/>,
+				id: "root.translation",
+				create: doTranslationCreate,
+				update: doTranslationUpdate,
+				delete: doTranslationDelete,
+				fetch: useTranslationFetch,
+				link: Routes.root.translation,
+			}}
+			children={<RootView context={TranslationContext} {...props} children={children}/>}
+		/>
 	);
 };
 
