@@ -1,6 +1,6 @@
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import UserContext from "site/root/module/user/component/UserContext";
-import {doUserCreate, doUserDelete, doUserUpdate, fetchUserPage, useUserAttributesFetch, useUserFetch, useUserSearch} from "site/root/module/user/redux/redux";
+import {doUserCreate, doUserDelete, doUserSearch, doUserUpdate, fetchUserPage, useUserAttributesFetch, useUserFetch} from "site/root/module/user/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
@@ -21,7 +21,7 @@ const UserView = (
 			fetch: useUserFetch,
 			page: fetchUserPage,
 			attributes: useUserAttributesFetch,
-			search: useUserSearch,
+			search: doUserSearch,
 			param: "user",
 		}}>
 			<RootView context={UserContext} {...props}>

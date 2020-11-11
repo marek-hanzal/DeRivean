@@ -4,6 +4,7 @@ import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "redux/server/redux";
 import UserContext from "site/root/module/user/component/UserContext";
+import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 
 const SiteInput = () => {
@@ -12,17 +13,15 @@ const SiteInput = () => {
 	const editorContext = useContext(EditorContext);
 	const [sites, setSites] = useState();
 	useServerSites(
-		sites => {
-			setSites(sites.sites);
-			editorContext.setEnableSubmit(true);
-			editorContext.isReady();
-		},
-		error => {
-			if (error.cancel) {
-				return;
-			}
-			message.error(t("root.server.error.cannot-fetch-sites"));
-		}
+		Events()
+			.on("success", sites => {
+				setSites(sites.sites);
+				editorContext.setEnableSubmit(true);
+				editorContext.isReady();
+			})
+			.on("error", () => {
+				message.error(t("root.server.error.cannot-fetch-sites"));
+			})
 	);
 	return (
 		<Form.Item

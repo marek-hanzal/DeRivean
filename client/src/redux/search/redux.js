@@ -29,7 +29,7 @@ const doSearch = (
 	data,
 	events,
 	navigate,
-	cancelToken,
+	cancelToken = null,
 ) => post(
 	discovery.link("root.search"),
 	data,

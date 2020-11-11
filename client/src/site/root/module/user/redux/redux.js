@@ -39,13 +39,15 @@ const doUserSearch = (
 	events,
 	navigate,
 	cancelToken,
-) => post(
-	discovery.link("root.user.search"),
-	data,
-	events,
-	navigate,
-	cancelToken,
-);
+) => {
+	post(
+		discovery.link("root.user.search"),
+		data,
+		events,
+		navigate,
+		cancelToken,
+	);
+}
 
 export {
 	doUserCreate,

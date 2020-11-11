@@ -1,4 +1,0 @@
-export {
-	useSessionCheck,
-	doSessionDelete,
-};

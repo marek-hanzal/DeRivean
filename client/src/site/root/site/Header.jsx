@@ -6,7 +6,7 @@ import copy from "copy-to-clipboard";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
-import {useSearch} from "redux/search/redux";
+import {doSearch} from "redux/search/redux";
 import ModuleIcon from "site/root/component/ModuleIcon";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
@@ -15,7 +15,7 @@ import Routes from "site/Routes";
 
 const HeaderContext = React.createContext({
 	id: "root.header",
-	search: useSearch,
+	search: doSearch,
 });
 
 function warpTo(navigate, item, target = "home") {

@@ -1,38 +1,26 @@
-import { PlusOutlined } from "@ant-design/icons";
-import {
-	Button,
-	Card,
-	Divider,
-	Empty,
-	Form,
-	Input,
-	InputNumber,
-	List,
-	Popconfirm,
-	Select
-} from "antd";
+import {PlusOutlined} from "@ant-design/icons";
+import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
 import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
-import {
-	useContext,
-	useState
-} from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router";
+import {useContext, useState} from "react";
+import {useTranslation} from "react-i18next";
+import {useParams} from "react-router";
+import Events from "utils/Events";
 
 const AttributeFieldEditor = ({currentContext}) => {
-	const {t}                         = useTranslation();
-	const editorContext               = useContext(EditorContext);
+	const {t} = useTranslation();
+	const editorContext = useContext(EditorContext);
 	const [attributes, setAttributes] = useState();
-	const params                      = useParams();
+	const params = useParams();
 	currentContext.attributes(
 		params[currentContext.param],
-		attributes => {
-			setAttributes(attributes);
-			editorContext.isReady();
-		}
+		Events()
+			.on("success", attributes => {
+				setAttributes(attributes);
+				editorContext.isReady();
+			})
 	);
 	return (
 		<Card title={t(currentContext.id + ".form.attribute.title")}>
@@ -56,11 +44,11 @@ const AttributeFieldEditor = ({currentContext}) => {
 											rules={[
 												{
 													required: true,
-													message:  t(currentContext.id + ".form.attribute.name.required")
+													message: t(currentContext.id + ".form.attribute.name.required")
 												}
 											]}
 											style={{
-												width:        "60%",
+												width: "60%",
 												marginBottom: 0
 											}}
 										>
@@ -83,11 +71,11 @@ const AttributeFieldEditor = ({currentContext}) => {
 											rules={[
 												{
 													required: true,
-													message:  t(currentContext.id + ".form.attribute.value.required")
+													message: t(currentContext.id + ".form.attribute.value.required")
 												}
 											]}
 											style={{
-												width:        "35%",
+												width: "35%",
 												marginBottom: 0
 											}}
 										>
