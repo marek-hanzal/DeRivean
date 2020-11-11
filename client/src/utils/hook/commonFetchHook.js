@@ -13,6 +13,7 @@ const commonFetchHook = (link, replace = "{id}") => {
 		const discoveryContext = useContext(DiscoveryContext);
 		useEffect(() => {
 			const cancelToken = axios.CancelToken.source();
+			events.call("request", uuid);
 			get(
 				discoveryContext.fetch(link, uuid, replace),
 				events,
@@ -21,7 +22,7 @@ const commonFetchHook = (link, replace = "{id}") => {
 			);
 			return () => cancelToken.cancel();
 			// eslint-disable-next-line
-		}, [uuid, discoveryContext]);
+		}, [uuid]);
 	};
 };
 

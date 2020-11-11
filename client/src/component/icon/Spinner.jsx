@@ -6,7 +6,7 @@ const Spinner = ({done, icon}) => {
 };
 
 Spinner.propTypes = {
-	enable: PropTypes.any,
+	done: PropTypes.any,
 	icon: PropTypes.element.isRequired,
 };
 
