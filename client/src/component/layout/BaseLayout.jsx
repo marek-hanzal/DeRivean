@@ -27,19 +27,25 @@ const BaseLayout = (
 				useEnableFullscreen: (enable = true, restore = true) => useEffect(() => {
 					setFullscreen(enable);
 					return () => setFullscreen(!restore);
-				}),
+					// eslint-disable-next-line
+				}, []),
 				menu,
 				selectMenu,
 				setSelectMenu,
 				useMenuSelect: select => useEffect(() => {
 					setTimeout(() => setSelectMenu(isArray(select) ? select : [select]), 0);
-				}, [select]),
+					// eslint-disable-next-line
+				}, []),
 				collapsed,
 				setCollapsed,
 				loading,
-				isLoading: () => this.loading <= 0,
-				loadingStart: () => setLoading(prev => prev + 1),
-				loadingFinish: () => setLoading(prev => prev - 1),
+				isLoading: () => loading > 0,
+				loadingStart: () => {
+					setLoading(prev => prev + 1);
+				},
+				loadingFinish: () => {
+					setLoading(prev => prev - 1);
+				},
 			}}
 			children={
 				<Loader>
