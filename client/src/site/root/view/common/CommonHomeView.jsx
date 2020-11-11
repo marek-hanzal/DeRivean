@@ -10,6 +10,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
 import {NavigationRedux} from "redux/navigation/redux";
+import Events from "utils/Events";
 
 const ContextView = (
 	{
@@ -30,14 +31,15 @@ const ContextView = (
 	useMenuSelect([menu]);
 	currentContext.fetch(
 		params[param],
-		data => {
-			setData(data);
-			setLoading(false);
-			dispatch(NavigationRedux.params(navigation(data)));
-		},
-		() => {
-			setLoading(false);
-		}
+		Events()
+			.on("success", data => {
+				setData(data);
+				setLoading(false);
+				dispatch(NavigationRedux.params(navigation(data)));
+			})
+			.on("error", () => {
+				setLoading(false);
+			})
 	);
 	return (
 		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>
