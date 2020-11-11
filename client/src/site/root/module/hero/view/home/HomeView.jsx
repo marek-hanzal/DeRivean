@@ -7,7 +7,6 @@ const HomeView = () => {
 		<HeroView>
 			<CommonHomeView
 				context={HeroContext}
-				navigation={data => ({kingdom: data.kingdom})}
 				menu={"root.hero"}
 			>
 				{data => null}

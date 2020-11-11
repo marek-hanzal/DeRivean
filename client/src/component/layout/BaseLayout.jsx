@@ -19,6 +19,7 @@ const BaseLayout = (
 	const [selectMenu, setSelectMenu] = useState([]);
 	const [collapsed, setCollapsed] = useState(false);
 	const [loading, setLoading] = useState(0);
+	const [fetch, setFetch] = useState({});
 	return (
 		<LayoutContext.Provider
 			value={{
@@ -46,6 +47,8 @@ const BaseLayout = (
 				loadingFinish: () => {
 					setLoading(prev => prev - 1);
 				},
+				fetch,
+				setFetch,
 			}}
 			children={
 				<Loader>

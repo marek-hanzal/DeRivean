@@ -1,7 +1,7 @@
 @import '~antd/dist/antd.css';
 
 /*noinspection CssInvalidAtRule*/
-@import-normalize ;
+@import-normalize;
 
 .ant-layout-sider .ant-layout-sider-trigger {
 	background-color: rgba(0, 0, 0, 0.0);
