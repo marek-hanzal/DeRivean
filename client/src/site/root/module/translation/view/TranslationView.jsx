@@ -1,6 +1,6 @@
-import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, useTranslationFetch} from "redux/translation/redux";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import TranslationContext from "site/root/module/translation/component/TranslationContext";
+import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, useTranslationFetch} from "site/root/module/translation/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

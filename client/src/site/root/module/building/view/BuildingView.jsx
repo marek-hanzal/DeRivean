@@ -1,6 +1,6 @@
-import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, useBuildingAttributesFetch, useBuildingFetch} from "redux/building/redux";
 import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 

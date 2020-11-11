@@ -1,6 +1,6 @@
-import {doKingdomCreate, doKingdomDelete, doKingdomUpdate, useKingdomAttributesFetch, useKingdomFetch, useKingdomSearch} from "redux/kingdom/redux";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
+import {doKingdomCreate, doKingdomDelete, doKingdomSearch, doKingdomUpdate, useKingdomAttributesFetch, useKingdomFetch} from "site/root/module/kingdom/redux/redux";
 import RootView from "site/root/view/RootView";
 import Routes from "site/Routes";
 
@@ -21,7 +21,7 @@ const KingdomView = (
 				delete: doKingdomDelete,
 				fetch: useKingdomFetch,
 				attributes: useKingdomAttributesFetch,
-				search: useKingdomSearch,
+				search: doKingdomSearch,
 				param: "kingdom",
 				parentParam: "user",
 			}}
