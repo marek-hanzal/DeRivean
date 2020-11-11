@@ -1,10 +1,10 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import BaseEditor from "component/form/BaseEditor";
 import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
-import DiscoveryContext from "component/system/DiscoveryContext";
 import useMenuSelect from "hook/useMenuSelect";
 import PropTypes from "prop-types";
 import {useContext} from "react";

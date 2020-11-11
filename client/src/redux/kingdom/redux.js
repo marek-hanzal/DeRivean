@@ -1,12 +1,11 @@
 import axios from "axios";
-import DiscoveryContext from "component/system/DiscoveryContext";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import {useContext, useEffect} from "react";
 import {useNavigate} from "react-router";
 import commonFetchHook from "utils/hook/commonFetchHook";
 import doPost from "utils/server/doPost";
 import fetchPage from "utils/server/fetchPage";
 import post from "utils/server/post";
-import resolveReason from "utils/server/resolveReason";
 
 const doKingdomCreate = doPost("root.kingdom.create");
 const doKingdomUpdate = doPost("root.kingdom.update");
@@ -17,9 +16,7 @@ const useKingdomStatisticsFetch = commonFetchHook("root.kingdom.statistics", "{k
 const fetchKingdomPage = fetchPage("root.user.kingdom.page", "user");
 const useKingdomSearch = (
 	data,
-	onSuccess = validation => null,
-	onError = error => null,
-	onReason = null,
+	events,
 ) => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
@@ -28,11 +25,9 @@ const useKingdomSearch = (
 		doKingdomSearch(
 			discoveryContext,
 			data,
-			onSuccess,
-			onError,
-			onReason,
-			cancelToken,
+			events,
 			navigate,
+			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -41,21 +36,16 @@ const useKingdomSearch = (
 const doKingdomSearch = (
 	discovery,
 	data,
-	onSuccess,
-	onError,
-	onReason,
+	events,
+	navigate,
 	cancelToken,
-	navigate
-) => {
-	post(
-		discovery.link("root.kingdom.search"),
-		data,
-		onSuccess,
-		onError,
-		cancelToken,
-		resolveReason(onReason, navigate),
-	);
-};
+) => post(
+	discovery.link("root.kingdom.search"),
+	data,
+	events,
+	navigate,
+	cancelToken,
+);
 
 export {
 	doKingdomCreate,

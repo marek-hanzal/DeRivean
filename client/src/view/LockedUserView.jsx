@@ -1,6 +1,6 @@
 import {LockOutlined} from "@ant-design/icons";
 import {Button, Result} from "antd";
-import SessionContext from "component/system/SessionContext";
+import {SessionContext} from "component/session/Session";
 import {useContext} from "react";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";

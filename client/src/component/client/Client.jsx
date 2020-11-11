@@ -1,8 +1,9 @@
 import axios from "axios";
-import Discovery from "component/system/Discovery";
+import {Discovery} from "component/discovery/Discovery";
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
+import Events from "utils/Events";
 import get from "utils/server/get";
 import ClientErrorView from "view/ClientErrorView";
 import LoaderView from "view/LoaderView";
@@ -31,12 +32,16 @@ const useClient = (
 const Client = ({children}) => {
 	const [status, setStatus] = useState();
 	const [client, setClient] = useState();
-	useClient(client => {
-		setClient(client);
-		setStatus(true);
-	}, () => {
-		setStatus(false);
-	});
+	useClient(
+		Events()
+			.on("success", client => {
+				setClient(client);
+				setStatus(true);
+			})
+			.on("error", () => {
+				setStatus(false);
+			})
+	);
 	switch (status) {
 		case true:
 			return (

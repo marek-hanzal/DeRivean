@@ -1,11 +1,11 @@
 import {Card, Divider, Form, Input, message, Result} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import BaseEditor from "component/form/BaseEditor";
 import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
-import DiscoveryContext from "component/system/DiscoveryContext";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";

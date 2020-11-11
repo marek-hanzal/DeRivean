@@ -1,6 +1,6 @@
 import {QuestionCircleFilled} from "@ant-design/icons";
 import {Button, Card, Result} from "antd";
-import SessionContext from "component/system/SessionContext";
+import {SessionContext} from "component/session/Session";
 import useFullsizeContent from "hook/useFullsizeContent";
 import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";

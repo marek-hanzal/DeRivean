@@ -1,4 +1,5 @@
 import {Button, Divider, message, Popconfirm, Space} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import CancelEditButton from "component/form/CancelEditButton";
 import EditorContext from "component/form/EditorContext";
 import SubmitButton from "component/form/SubmitButton";
@@ -6,7 +7,6 @@ import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import {useCleverLink} from "component/route/CleverLink";
-import DiscoveryContext from "component/system/DiscoveryContext";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";

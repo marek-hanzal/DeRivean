@@ -1,7 +1,7 @@
 import {Button, Form, Input} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
 import SignUpIcon from "component/icon/SignUpIcon";
 import Centered from "component/layout/Centered";
-import DiscoveryContext from "component/system/DiscoveryContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";

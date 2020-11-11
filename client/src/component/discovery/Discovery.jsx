@@ -3,6 +3,7 @@ import {ClientContext} from "component/client/Client";
 import React, {useContext, useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
+import Events from "utils/Events";
 import get from "utils/server/get";
 import DiscoveryErrorView from "view/DiscoveryErrorView";
 import LoaderView from "view/LoaderView";
@@ -40,12 +41,17 @@ const Discovery = ({children}) => {
 		return discovery[id].link;
 	}
 
-	useDiscovery(client, discovery => {
-		setDiscovery(discovery);
-		setStatus(true);
-	}, () => {
-		setStatus(false);
-	});
+	useDiscovery(
+		client,
+		Events()
+			.on("success", discovery => {
+				setDiscovery(discovery);
+				setStatus(true);
+			})
+			.on("error", () => {
+				setStatus(false);
+			})
+	);
 
 	switch (status) {
 		case true:
