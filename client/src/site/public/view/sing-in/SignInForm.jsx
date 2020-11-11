@@ -1,13 +1,12 @@
 import {Button, Form, Input, message} from "antd";
 import {DiscoveryContext} from "component/discovery/Discovery";
 import SignInIcon from "component/icon/SignInIcon";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import {SessionContext} from "component/session/Session";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import {doUserLogin} from "site/public/redux/user/redux";
 import Events from "utils/Events";
 import enableSubmit from "utils/form/enableSubmit";
@@ -16,31 +15,31 @@ import validationFor from "utils/form/validationFor";
 const SignInForm = () => {
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
-	const dispatch = useDispatch();
 	const discoveryContext = useContext(DiscoveryContext);
 	const sessionContext = useContext(SessionContext);
+	const layoutContext = useContext(LayoutContext);
 	const [form] = Form.useForm();
 	const navigate = useNavigate();
 	return (
 		<Form
 			form={form}
 			onFinish={values => {
-				dispatch(LoadingRedux.start());
+				layoutContext.loadingStart();
 				doUserLogin(
 					discoveryContext,
 					values,
 					Events()
 						.on("success", data => {
 							sessionContext.open(data);
-							dispatch(LoadingRedux.finish());
 						})
 						.on("error", () => {
-							dispatch(LoadingRedux.finish());
 							message.error(t("public.sign-in.general-error"));
 						})
 						.on("http-403", data => {
 							setErrors(data);
-							dispatch(LoadingRedux.finish());
+						})
+						.on("done", () => {
+							layoutContext.loadingFinish();
 						}),
 					navigate,
 				);

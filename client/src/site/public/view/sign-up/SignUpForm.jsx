@@ -1,12 +1,12 @@
 import {Button, Form, Input} from "antd";
 import {DiscoveryContext} from "component/discovery/Discovery";
 import SignUpIcon from "component/icon/SignUpIcon";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import {doUserRegister} from "site/public/redux/user/redux";
 import Routes from "site/Routes";
 import Events from "utils/Events";
@@ -15,6 +15,7 @@ import validationFor from "utils/form/validationFor";
 
 const SignUpForm = () => {
 	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
@@ -25,21 +26,19 @@ const SignUpForm = () => {
 			labelCol={{span: 6}}
 			form={form}
 			onFinish={values => {
-				dispatch(LoadingRedux.start());
+				layoutContext.loadingStart();
 				doUserRegister(
 					discoveryContext,
 					values,
 					Events()
 						.on("success", () => {
 							navigate(Routes.public.signUpSuccess.link());
-							dispatch(LoadingRedux.finish());
-						})
-						.on("error", () => {
-							dispatch(LoadingRedux.finish());
 						})
 						.on("http-409", data => {
 							setErrors(data);
-							dispatch(LoadingRedux.finish());
+						})
+						.on("done", () => {
+							layoutContext.loadingFinish();
 						})
 				);
 			}}

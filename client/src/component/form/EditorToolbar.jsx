@@ -6,13 +6,12 @@ import SubmitButton from "component/form/SubmitButton";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
+import {LayoutContext} from "component/layout/BaseLayout";
 import {useCleverLink} from "component/route/CleverLink";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import Events from "utils/Events";
 import values from "utils/form/values";
 
@@ -21,11 +20,11 @@ const EditorToolbar = (
 		currentContext,
 		param,
 	}) => {
-	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
 	const editorContext = useContext(EditorContext);
 	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useContext(LayoutContext);
 	const {t} = useTranslation();
 	const cleverLink = useCleverLink(currentContext.link.dashboard || {link: () => ""});
 	if (!editorContext) {
@@ -42,7 +41,7 @@ const EditorToolbar = (
 						cancelText={t("common.no")}
 						title={t(currentContext.id + ".edit.form.deleteConfirm")}
 						onConfirm={() => {
-							dispatch(LoadingRedux.start());
+							layoutContext.loadingStart();
 							currentContext.delete(
 								discoveryContext,
 								{id: params[param]},
@@ -50,11 +49,11 @@ const EditorToolbar = (
 									.on("success", _ => {
 										navigate(cleverLink.link);
 										message.success(t(currentContext.id + ".delete.success"));
-										dispatch(LoadingRedux.finish());
+										layoutContext.loadingFinish();
 									})
 									.on("error", () => {
 										message.error(t(currentContext.id + ".delete.error"));
-										dispatch(LoadingRedux.finish());
+										layoutContext.loadingFinish();
 									})
 							);
 						}}

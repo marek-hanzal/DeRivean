@@ -9,9 +9,7 @@ import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router";
-import {LoadingRedux} from "redux/loading/redux";
 import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 
@@ -26,7 +24,6 @@ const CommonCreateView = (
 	}) => {
 	name = name || "name";
 	const currentContext = useContext(context);
-	const dispatch = useDispatch();
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
@@ -39,7 +36,7 @@ const CommonCreateView = (
 			readyCount={readyCount}
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(values, initials, editor) => {
-				dispatch(LoadingRedux.start());
+				layoutContext.loadingStart();
 				currentContext.create(
 					discoveryContext,
 					{...values, ...{[param]: params[param]}},
@@ -47,16 +44,16 @@ const CommonCreateView = (
 						.on("success", entity => {
 							message.success(t(currentContext.id + ".create.success"));
 							navigate(currentContext.link.home.link(entity.id));
-							dispatch(LoadingRedux.finish());
 						})
 						.on("error", () => {
 							message.error(t(currentContext.id + ".create.general-error"));
-							dispatch(LoadingRedux.finish());
 						})
 						.on("http-409", error => {
 							message.error(t(currentContext.id + ".create.conflict"));
 							editor.setErrors(error);
-							dispatch(LoadingRedux.finish());
+						})
+						.on("done", () => {
+							layoutContext.loadingFinish();
 						})
 				);
 			}}
