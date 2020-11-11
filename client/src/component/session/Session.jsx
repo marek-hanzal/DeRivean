@@ -62,6 +62,7 @@ const ResolveSession = ({sites}) => {
 				 * 401 is OK here, because if we're on public, we'll get one when session is checked.
 				 */
 				setState(true);
+				return false;
 			})
 	);
 	switch (state) {
