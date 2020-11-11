@@ -1,6 +1,6 @@
 import {Card, message} from "antd";
-import useMenuSelect from "hook/useMenuSelect";
-import React, {useState} from "react";
+import {LayoutContext} from "component/layout/BaseLayout";
+import React, {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerValidate} from "redux/server/redux";
 import ErrorResult from "site/root/view/home/ErrorResult";
@@ -35,6 +35,7 @@ const HomeView = () => {
 	const {t} = useTranslation();
 	const [validation, setValidation] = useState();
 	const [status, setStatus] = useState(true);
+	const layoutContext = useContext(LayoutContext);
 	useServerValidate(
 		Events()
 			.on("success", validation => {
@@ -47,7 +48,7 @@ const HomeView = () => {
 			})
 			.on("http-403", () => setStatus("unavailable"))
 	);
-	useMenuSelect("root.home");
+	layoutContext.useMenuSelect("root.home");
 	return (
 		<RootView context={HomeContext} id={"root.home"}>
 			<Card title={t("root.home.title")}>

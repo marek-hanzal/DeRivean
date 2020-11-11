@@ -4,9 +4,9 @@ import BaseEditor from "component/form/BaseEditor";
 import EditorContext from "component/form/EditorContext";
 import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import BackLink from "component/route/BackLink";
-import useMenuSelect from "hook/useMenuSelect";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
@@ -80,11 +80,12 @@ const CommonEditView = (
 	}) => {
 	const currentContext = useContext(context);
 	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useContext(LayoutContext);
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 	const params = useParams();
 	param = param || currentContext.param;
-	useMenuSelect(currentContext.id + ".edit");
+	layoutContext.useMenuSelect(currentContext.id + ".edit");
 	return (
 		<BaseEditor
 			// +1 because this component is doing Fetch (thus marking ready state)

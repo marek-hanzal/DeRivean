@@ -2,6 +2,7 @@ import {Layout, PageHeader} from "antd";
 import CollapsibleContent from "component/layout/CollapsibleContent";
 import Sider from "component/layout/Sider";
 import Loader from "component/Loader";
+import isArray from "isarray";
 import React, {useEffect, useState} from "react";
 
 const LayoutContext = React.createContext(null);
@@ -22,11 +23,22 @@ const BaseLayout = (
 	}
 ) => {
 	const [fullscreen, setFullscreen] = useState(false);
+	const [selectMenu, setSelectMenu] = useState([]);
 	return (
 		<LayoutContext.Provider
 			value={{
 				fullscreen,
 				setFullscreen,
+				menu,
+				selectMenu,
+				setSelectMenu,
+				useMenuSelect: function (select) {
+					useEffect(() => {
+						setTimeout(() => {
+							this.setSelectMenu(isArray(select) ? select : [select]);
+						}, 0);
+					}, [select]);
+				}
 			}}
 			children={
 				<Loader>
