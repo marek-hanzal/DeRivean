@@ -3,10 +3,7 @@ package derivean.server.rest.root.translation.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
-import derivean.lib.rest.AbstractActionEndpoint
-import derivean.lib.rest.Response
-import derivean.lib.rest.ValidationResponse
-import derivean.lib.rest.conflict
+import derivean.lib.rest.*
 import derivean.server.translation.TranslationRepository
 import derivean.server.translation.entities.Translation
 import io.ktor.application.*
@@ -36,15 +33,17 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Request, Translation>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, Translation>(container) {
 	override val repository: TranslationRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 
-	override fun map(request: Request, entity: Translation) {
-		entity.language = request.language
-		entity.namespace = request.namespace ?: "translation"
-		entity.label = request.label
-		entity.text = request.text
+	override fun map(request: ApplicationRequest<Request>, entity: Translation) {
+		request.request.let {
+			entity.language = it.language
+			entity.namespace = it.namespace ?: "translation"
+			entity.label = it.label
+			entity.text = it.text
+		}
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {

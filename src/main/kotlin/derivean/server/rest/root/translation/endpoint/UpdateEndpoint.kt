@@ -33,20 +33,22 @@ class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class UpdateMapper(container: IContainer) : AbstractActionMapper<UpdateMapper.Request, Response<out Any>>(container) {
+class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<UpdateMapper.Request>, Response<out Any>>(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val translationRepository: TranslationRepository by container.lazy()
 
-	override fun resolve(item: Request): Response<out Any> = try {
+	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
 		ok(storage.write {
-			fetchMapper.map(
-				translationRepository.update(item.id) {
-					this.language = item.language
-					this.namespace = item.namespace ?: "translation"
-					this.label = item.label
-					this.text = item.text
-				}
-			)
+			item.request.let {
+				fetchMapper.map(
+					translationRepository.update(it.id) {
+						this.language = it.language
+						this.namespace = it.namespace ?: "translation"
+						this.label = it.label
+						this.text = it.text
+					}
+				)
+			}
 		})
 	} catch (e: ExposedSQLException) {
 		when {

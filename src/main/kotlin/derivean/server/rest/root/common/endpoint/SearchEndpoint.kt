@@ -36,39 +36,34 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Request, Response<out Any>>(container) {
+class SearchMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<SearchMapper.Request>, Response<out Any>>(container) {
 	private val userRepository: UserRepository by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
 	private val heroRepository: HeroRepository by container.lazy()
 	private val translationRepository: TranslationRepository by container.lazy()
 
-	override fun resolve(item: Request) = try {
+	override fun resolve(item: ApplicationRequest<Request>) = try {
 		ok(storage.read {
-			/**
-			 * because this will search everywhere, there should be only a few results
-			 */
-			/**
-			 * because this will search everywhere, there should be only a few results
-			 */
-			val limit = 50
+			item.request.let {
+				/**
+				 * because this will search everywhere, there should be only a few results
+				 */
+				val limit = 50
 
-			/**
-			 * this will (should) prevent database for failing, but also all text columns
-			 * must be at least 36 chars in length
-			 */
-			/**
-			 * this will (should) prevent database for failing, but also all text columns
-			 * must be at least 36 chars in length
-			 */
-			val search = item.search.take(36)
-			Result(
-				userRepository.search(search, limit).map { Item(it.id.toString(), "user", it.name) } +
-					kingdomRepository.search(search, limit).map { Item(it.id.toString(), "kingdom", it.name) } +
-					buildingRepository.search(search, limit).map { Item(it.id.toString(), "building", it.name) } +
-					heroRepository.search(search, limit).map { Item(it.id.toString(), "hero", it.name) } +
-					translationRepository.search(search, limit).map { Item(it.id.toString(), "translation", it.language + ": " + it.label) }
-			)
+				/**
+				 * this will (should) prevent database for failing, but also all text columns
+				 * must be at least 36 chars in length
+				 */
+				val search = it.search.take(36)
+				Result(
+					userRepository.search(search, limit).map { item -> Item(item.id.toString(), "user", item.name) } +
+						kingdomRepository.search(search, limit).map { item -> Item(item.id.toString(), "kingdom", item.name) } +
+						buildingRepository.search(search, limit).map { item -> Item(item.id.toString(), "building", item.name) } +
+						heroRepository.search(search, limit).map { item -> Item(item.id.toString(), "hero", item.name) } +
+						translationRepository.search(search, limit).map { item -> Item(item.id.toString(), "translation", item.language + ": " + item.label) }
+				)
+			}
 		})
 	} catch (e: Throwable) {
 		logger.error(e.message, e)
