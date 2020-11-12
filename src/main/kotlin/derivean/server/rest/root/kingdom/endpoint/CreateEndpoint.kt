@@ -14,7 +14,9 @@ import derivean.server.user.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val createMapper: CreateMapper by container.lazy()
 

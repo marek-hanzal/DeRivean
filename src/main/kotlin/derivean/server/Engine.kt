@@ -6,6 +6,7 @@ import derivean.lib.upgrade.IUpgradeManager
 import derivean.lib.upgrade.IVersionService
 import derivean.lib.utils.asStamp
 import derivean.server.config.EngineConfig
+import io.ktor.util.*
 import mu.KotlinLogging
 import kotlin.system.measureTimeMillis
 import kotlin.time.ExperimentalTime
@@ -38,6 +39,7 @@ class Engine(container: IContainer) {
 	}
 }
 
+@KtorExperimentalAPI
 @ExperimentalStdlibApi
 @ExperimentalTime
 fun main() {
