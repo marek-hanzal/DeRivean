@@ -55,7 +55,8 @@ const CommonCreateView = (
 						})
 						.on("done", () => {
 							layoutContext.loadingFinish();
-						})
+						}),
+					navigate,
 				);
 			}}
 			onFinishFailed={() => {
