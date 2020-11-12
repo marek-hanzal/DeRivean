@@ -49,9 +49,6 @@ const Discovery = ({children}) => {
 			.on("catch", () => {
 				setStatus(false);
 			})
-			.on("done", () => {
-				setStatus(false);
-			})
 	);
 
 	switch (status) {
