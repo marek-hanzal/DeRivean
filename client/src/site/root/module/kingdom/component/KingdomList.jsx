@@ -1,6 +1,7 @@
 import {Avatar, Button, Divider, List, Space} from "antd";
 import AttributeIcon from "component/icon/AttributeIcon";
 import EditIcon from "component/icon/EditIcon";
+import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -8,25 +9,25 @@ import {Link} from "react-router-dom";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
-import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import Routes from "site/Routes";
 
-const KingdomListItem = ({item, context}) => {
+const KingdomListItem = ({item}) => {
+	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
 	return (
 		<List.Item actions={[
-			<Link to={context.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(context.id + ".list.edit")}/></Link>,
+			<Link to={moduleContext.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(moduleContext.id + ".list.edit")}/></Link>,
 		]}>
 			<List.Item.Meta
 				avatar={
 					<Avatar style={{color: "#1890ff", backgroundColor: "#FFF"}} size={"large"} icon={<KingdomIcon/>}/>
 				}
-				title={<Link to={context.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
-						<Link to={context.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
-						<Link to={Routes.root.hero.create.link(item.id)}><Button icon={<HeroIcon/>} type={"link"} size={"small"}>{t(context.id + ".list.create-hero")}</Button></Link>
-						<Link to={Routes.root.building.create.link(item.id)}><Button icon={<BuildingIcon/>} type={"link"} size={"small"}>{t(context.id + ".list.create-building")}</Button></Link>
+						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
+						<Link to={Routes.root.hero.create.link(item.id)}><Button icon={<HeroIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-hero")}</Button></Link>
+						<Link to={Routes.root.building.create.link(item.id)}><Button icon={<BuildingIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-building")}</Button></Link>
 					</Space>
 				}
 			/>
@@ -39,12 +40,11 @@ const KingdomListItem = ({item, context}) => {
 };
 
 const KingdomList = () => {
-	const context = useContext(KingdomContext);
+	const moduleContext = useContext(ModuleContext);
 	return (
 		<BaseTable
-			onFetchPage={context.page}
-			param={context.parentParam}
-			children={item => <KingdomListItem context={context} item={item} key={item.id}/>}
+			onFetchPage={moduleContext.page}
+			children={item => <KingdomListItem item={item} key={item.id}/>}
 		/>
 	);
 };

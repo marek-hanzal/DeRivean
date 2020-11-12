@@ -2,6 +2,7 @@ import {Select} from "antd";
 import axios from "axios";
 import {DiscoveryContext} from "component/discovery/Discovery";
 import EditorContext from "component/form/EditorContext";
+import ModuleContext from "component/ModuleContext";
 import {useContext, useEffect, useRef, useState} from "react";
 import {GlobalHotKeys} from "react-hotkeys";
 import {useTranslation} from "react-i18next";
@@ -10,14 +11,13 @@ import Events from "utils/Events";
 
 const SearchInput = (
 	{
-		context,
 		placeholder,
 		mapper = null,
 		render,
 		hotkey,
 		...props
 	}) => {
-	const currentContext = useContext(context);
+	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
 	const ref = useRef();
 	const navigate = useNavigate();
@@ -34,7 +34,7 @@ const SearchInput = (
 
 	function search(search = "") {
 		setLoading(true);
-		currentContext.search(
+		moduleContext.search(
 			discoveryContext,
 			{search},
 			Events()
@@ -51,7 +51,7 @@ const SearchInput = (
 
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		currentContext.search(
+		moduleContext.search(
 			discoveryContext,
 			{search: ""},
 			Events()
@@ -93,7 +93,7 @@ const SearchInput = (
 				onSearch={search}
 				onClear={_ => search()}
 				onChange={_ => search()}
-				placeholder={t(`${currentContext.id}.${placeholder}.label`)}
+				placeholder={t(`${moduleContext.id}.${placeholder}.label`)}
 				{...props}
 				children={data.map(item => (
 					<Select.Option key={item.id} value={item.id} item={item}>

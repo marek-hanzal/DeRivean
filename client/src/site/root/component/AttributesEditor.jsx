@@ -7,6 +7,7 @@ import AttributeIcon from "component/icon/AttributeIcon";
 import Spinner from "component/icon/Spinner";
 import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
+import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -15,12 +16,13 @@ import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import Events from "utils/Events";
 import values from "utils/form/values";
 
-const AttributeForm = ({currentContext}) => {
+const AttributeForm = () => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
+	const moduleContext = useContext(ModuleContext);
 	const params = useParams();
-	currentContext.fetch(
-		params[currentContext.param],
+	moduleContext.fetch(
+		params[moduleContext.param],
 		Events()
 			.on("success", fetch => {
 				editorContext.setInitials(fetch);
@@ -30,19 +32,19 @@ const AttributeForm = ({currentContext}) => {
 			})
 	);
 	return (
-		<Card title={<><BackLink/>{t(`${currentContext.id}.attributes.title`)}</>}>
+		<Card title={<><BackLink/>{t(`${moduleContext.id}.attributes.title`)}</>}>
 			<Result
 				icon={<Spinner icon={<AttributeIcon/>} done={!editorContext.ready}/>}
 				title={
 					<>
-						<EditorToolbar param={currentContext.param} currentContext={currentContext}/>
+						<EditorToolbar param={moduleContext.param} currentContext={moduleContext}/>
 						<Divider type={"horizontal"}/>
 					</>
 				}
-				subTitle={t(`${currentContext.id}.attributes.subtitle`)}
+				subTitle={t(`${moduleContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor currentContext={currentContext}/>
+						<AttributeFieldEditor currentContext={moduleContext}/>
 					</Centered>
 				}
 			/>
@@ -50,37 +52,38 @@ const AttributeForm = ({currentContext}) => {
 	);
 };
 
-const AttributesEditor = ({currentContext}) => {
+const AttributesEditor = () => {
 	const {t} = useTranslation();
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
+	const moduleContext = useContext(ModuleContext);
 	return (
 		<BaseEditor
 			readyCount={2}
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
 				values = {id: initials.id, ...values};
-				currentContext.update(
+				moduleContext.update(
 					discoveryContext,
 					values,
 					Events()
 						.on("success", () => {
-							message.success(t(`${currentContext.id}.attributes.updated`));
+							message.success(t(`${moduleContext.id}.attributes.updated`));
 							editor.setEditor(false);
 							editor.setInitials(values);
 						})
 						.on("error", () => {
-							message.success(t(`${currentContext.id}.attributes.update-failed`));
+							message.success(t(`${moduleContext.id}.attributes.update-failed`));
 						})
 						.on("done", () => {
 							layoutContext.loadingFinish();
 						})
 				);
 			}}
-			name={currentContext.id}
-			translation={currentContext.id}
+			name={moduleContext.id}
+			translation={moduleContext.id}
 			children={
-				<AttributeForm currentContext={currentContext}/>
+				<AttributeForm currentContext={moduleContext}/>
 			}
 		/>
 	);

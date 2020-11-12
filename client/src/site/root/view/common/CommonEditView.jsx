@@ -6,6 +6,7 @@ import EditorToolbar from "component/form/EditorToolbar";
 import Spinner from "component/icon/Spinner";
 import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
+import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -16,16 +17,15 @@ import values from "utils/form/values";
 
 const Editor = (
 	{
-		currentContext,
-		param,
 		children,
 		name,
 	}) => {
 	const {t} = useTranslation();
 	const params = useParams();
 	const editorContext = useContext(EditorContext);
-	currentContext.fetch(
-		params[param],
+	const moduleContext = useContext(ModuleContext);
+	moduleContext.fetch(
+		params[moduleContext.param],
 		Events()
 			.on("success", data => {
 				editorContext.setInitials(data);
@@ -35,14 +35,11 @@ const Editor = (
 			})
 	);
 	return (
-		<Card title={<><BackLink/>{t(`${currentContext.id}.title`)}</>}>
+		<Card title={<><BackLink/>{t(`${moduleContext.id}.title`)}</>}>
 			<Result
 				status={"info"}
 				title={
-					<EditorToolbar
-						currentContext={currentContext}
-						param={param}
-					/>
+					<EditorToolbar/>
 				}
 				subTitle={
 					<Centered span={12}>
@@ -53,14 +50,14 @@ const Editor = (
 							rules={[
 								{
 									required: true,
-									message: t(`${currentContext.id}.form.${name}.required`),
+									message: t(`${moduleContext.id}.form.${name}.required`),
 								}
 							]}
-							children={<Input disabled={!editorContext.editor} addonBefore={t(`${currentContext.id}.form.${name}.label`)} suffix={currentContext.icon}/>}
+							children={<Input disabled={!editorContext.editor} addonBefore={t(`${moduleContext.id}.form.${name}.label`)} suffix={moduleContext.icon}/>}
 						/>
 					</Centered>
 				}
-				icon={<Spinner icon={currentContext.icon} done={!editorContext.ready}/>}
+				icon={<Spinner icon={moduleContext.icon} done={!editorContext.ready}/>}
 				children={<Centered span={16} children={children}/>}
 			/>
 		</Card>
@@ -69,20 +66,17 @@ const Editor = (
 
 const CommonEditView = (
 	{
-		context,
 		readyCount,
-		param,
 		name,
 		defaultEnableSubmit,
 		children,
 	}) => {
-	const currentContext = useContext(context);
+	const moduleContext = useContext(ModuleContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const {t} = useTranslation();
 	const params = useParams();
-	param = param || currentContext.param;
-	layoutContext.useMenuSelect(currentContext.id + ".edit");
+	layoutContext.useMenuSelect(moduleContext.id + ".edit");
 	return (
 		<BaseEditor
 			// +1 because this component is doing Fetch (thus marking ready state)
@@ -90,22 +84,22 @@ const CommonEditView = (
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(data, initials, editor) => {
 				layoutContext.loadingStart();
-				currentContext.update(
+				moduleContext.update(
 					discoveryContext,
-					{...data, id: params[param]},
+					{...data, id: params[moduleContext.param]},
 					Events()
 						.on("success", data => {
-							message.success(t(currentContext.id + ".update.success"));
+							message.success(t(moduleContext.id + ".update.success"));
 							editor.setEditor(false);
 							editor.setErrors(null);
 							editor.setInitials(data);
 							values(editor.form, data);
 						})
 						.on("error", () => {
-							message.error(t(currentContext.id + ".update.general-error"));
+							message.error(t(moduleContext.id + ".update.general-error"));
 						})
 						.on("http-409", error => {
-							message.error(t(currentContext.id + ".update.conflict"));
+							message.error(t(moduleContext.id + ".update.conflict"));
 							editor.setErrors(error);
 						})
 						.on("done", () => {
@@ -114,15 +108,13 @@ const CommonEditView = (
 				);
 			}}
 			onFinishFailed={() => {
-				message.error(t(currentContext.id + ".update.error"));
+				message.error(t(moduleContext.id + ".update.error"));
 			}}
-			name={currentContext.id}
-			translation={currentContext.id}
+			name={moduleContext.id}
+			translation={moduleContext.id}
 			children={
 				<Editor
 					name={name || "name"}
-					param={param}
-					currentContext={currentContext}
 					children={children}
 				/>}
 		/>

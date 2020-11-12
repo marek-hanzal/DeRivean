@@ -7,57 +7,54 @@ import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
 import {LayoutContext} from "component/layout/BaseLayout";
+import ModuleContext from "component/ModuleContext";
 import {useCleverLink} from "component/route/CleverLink";
-import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router";
 import Events from "utils/Events";
 import values from "utils/form/values";
 
-const EditorToolbar = (
-	{
-		currentContext,
-		param,
-	}) => {
+const EditorToolbar = () => {
 	const params = useParams();
 	const navigate = useNavigate();
 	const editorContext = useContext(EditorContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
+	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
-	const cleverLink = useCleverLink(currentContext.link.dashboard || {link: () => ""});
+	const cleverLink = useCleverLink(moduleContext.link.dashboard || {link: () => ""});
 	if (!editorContext) {
 		throw new Error("Missing Editor Context!");
 	}
 	return (
 		editorContext.editor ?
 			<Space split={<Divider type={"vertical"}/>}>
-				<SubmitButton title={currentContext.id + ".edit.form.submit"}/>
-				<CancelEditButton translation={currentContext.id}/>
-				{currentContext.delete && param ?
+				<SubmitButton title={moduleContext.id + ".edit.form.submit"}/>
+				<CancelEditButton translation={moduleContext.id}/>
+				{moduleContext.delete ?
 					<Popconfirm
 						okText={t("common.yes")}
 						cancelText={t("common.no")}
-						title={t(currentContext.id + ".edit.form.deleteConfirm")}
+						title={t(moduleContext.id + ".edit.form.deleteConfirm")}
 						onConfirm={() => {
 							layoutContext.loadingStart();
-							currentContext.delete(
+							moduleContext.delete(
 								discoveryContext,
-								{id: params[param]},
+								{id: params[moduleContext.param]},
 								Events()
 									.on("success", _ => {
 										navigate(cleverLink.link);
-										message.success(t(currentContext.id + ".delete.success"));
+										message.success(t(moduleContext.id + ".delete.success"));
 										layoutContext.loadingFinish();
 									})
 									.on("error", () => {
-										message.error(t(currentContext.id + ".delete.error"));
+										message.error(t(moduleContext.id + ".delete.error"));
 										layoutContext.loadingFinish();
 									})
 							);
 						}}
-						children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(currentContext.id + ".edit.form.delete")}/>}
+						children={<Button type={"danger"} icon={<DeleteItemIcon/>} children={t(moduleContext.id + ".edit.form.delete")}/>}
 					/> : null
 				}
 			</Space> :
@@ -71,14 +68,9 @@ const EditorToolbar = (
 					values(editorContext.form, editorContext.initials);
 				}}
 				icon={<Spinner done={!editorContext.ready} icon={<EditIcon/>}/>}
-				children={t(currentContext.id + ".edit.form.edit")}
+				children={t(moduleContext.id + ".edit.form.edit")}
 			/>
 	);
-};
-
-EditorToolbar.propTypes = {
-	currentContext: PropTypes.object.isRequired,
-	param: PropTypes.string,
 };
 
 export default EditorToolbar;

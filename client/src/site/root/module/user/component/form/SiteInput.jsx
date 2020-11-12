@@ -1,15 +1,15 @@
 import {Form, message, Radio, Skeleton} from "antd";
 import EditorContext from "component/form/EditorContext";
+import ModuleContext from "component/ModuleContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "site/root/hook/hook";
-import UserContext from "site/root/module/user/component/UserContext";
 import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 
 const SiteInput = () => {
 	const {t} = useTranslation();
-	const userContext = useContext(UserContext);
+	const moduleContext = useContext(ModuleContext);
 	const editorContext = useContext(EditorContext);
 	const [sites, setSites] = useState();
 	useServerSites(
@@ -27,7 +27,7 @@ const SiteInput = () => {
 		<Form.Item
 			{...validationFor("site", editorContext.errors, t)}
 			name={"site"}
-			label={t(`${userContext.id}.form.site.label`)}
+			label={t(`${moduleContext.id}.form.site.label`)}
 			children={
 				sites ?
 					<Radio.Group disabled={!editorContext.editor}>

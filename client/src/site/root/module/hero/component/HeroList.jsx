@@ -1,18 +1,19 @@
 import {Avatar, Button, Divider, List, Space} from "antd";
 import AttributeIcon from "component/icon/AttributeIcon";
 import EditIcon from "component/icon/EditIcon";
+import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import HeroContext from "site/root/module/hero/component/HeroContext";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 
-const HeroListItem = ({item, context}) => {
+const HeroListItem = ({item}) => {
+	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
 	return (
 		<List.Item actions={[
-			<Link to={context.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(context.id + ".list.edit")}/></Link>,
+			<Link to={moduleContext.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(moduleContext.id + ".list.edit")}/></Link>,
 		]}>
 			<List.Item.Meta
 				avatar={
@@ -20,21 +21,21 @@ const HeroListItem = ({item, context}) => {
 				}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
-						<Link to={context.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
+						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
 					</Space>
 				}
-				title={<Link to={context.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
 			/>
 		</List.Item>
 	);
 };
 
 const HeroList = () => {
-	const context = useContext(HeroContext);
+	const moduleContext = useContext(ModuleContext);
 	return (
 		<BaseTable
-			onFetchPage={context.page}
-			children={item => <HeroListItem context={context} item={item} key={item.id}/>}
+			onFetchPage={moduleContext.page}
+			children={item => <HeroListItem item={item} key={item.id}/>}
 		/>
 	);
 };

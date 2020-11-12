@@ -1,12 +1,12 @@
 import {Form, Input} from "antd";
 import EditorContext from "component/form/EditorContext";
+import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import TranslationContext from "site/root/module/translation/component/TranslationContext";
 import validationFor from "utils/form/validationFor";
 
 const TextInput = () => {
-	const translationContext = useContext(TranslationContext);
+	const moduleContext = useContext(ModuleContext);
 	const editorContext = useContext(EditorContext);
 	const {t} = useTranslation();
 	return (
@@ -16,7 +16,7 @@ const TextInput = () => {
 			rules={[
 				{
 					required: true,
-					message: t(`${translationContext.id}.form.text.required`),
+					message: t(`${moduleContext.id}.form.text.required`),
 				}
 			]}
 			children={<Input.TextArea
