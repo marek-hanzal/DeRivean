@@ -1,5 +1,6 @@
 import {FrownOutlined, HeartFilled} from "@ant-design/icons";
 import {Alert, Button, Divider, List, Result} from "antd";
+import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 
 const ErrorResult = ({validation}) => {
@@ -19,10 +20,10 @@ const ErrorResult = ({validation}) => {
 							<Alert
 								message={t("root.server.error." + error.text)}
 								description={
-									<>
+									<Centered>
 										<Divider type={"horizontal"}/>
 										{error.action ? <Button icon={<HeartFilled/>} type={"danger"} ghost children={t("root.server.error.action." + error.action)}/> : t("root.server.error.action-unavailable")}
-									</>
+									</Centered>
 								}
 								type="warning"
 								showIcon
