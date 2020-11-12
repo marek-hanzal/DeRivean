@@ -9,7 +9,7 @@ import derivean.server.hero.entities.HeroTable
 import derivean.server.user.entities.User
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class Kingdom(id: EntityUUID) : EntityWithAttributes(id) {
+class Kingdom(id: EntityUUID) : EntityWithAttributes<KingdomAttribute>(id) {
 	companion object : UUIDEntityClass<Kingdom>(KingdomTable)
 
 	val heroes by Hero referrersOn HeroTable.kingdom

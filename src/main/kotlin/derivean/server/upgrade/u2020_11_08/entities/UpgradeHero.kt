@@ -4,7 +4,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.attribute.EntityWithAttributes
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class UpgradeHero(id: EntityUUID) : EntityWithAttributes(id) {
+class UpgradeHero(id: EntityUUID) : EntityWithAttributes<UpgradeHeroAttribute>(id) {
 	companion object : UUIDEntityClass<UpgradeHero>(UpgradeHeroTable)
 
 	var user by UpgradeUser referencedOn UpgradeHeroTable.user

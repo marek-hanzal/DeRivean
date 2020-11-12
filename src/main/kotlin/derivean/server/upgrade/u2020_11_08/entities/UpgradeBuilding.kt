@@ -4,7 +4,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.attribute.EntityWithAttributes
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class UpgradeBuilding(id: EntityUUID) : EntityWithAttributes(id) {
+class UpgradeBuilding(id: EntityUUID) : EntityWithAttributes<UpgradeBuildingAttribute>(id) {
 	companion object : UUIDEntityClass<UpgradeBuilding>(UpgradeBuildingTable)
 
 	var kingdom by UpgradeKingdom referencedOn UpgradeBuildingTable.kingdom
