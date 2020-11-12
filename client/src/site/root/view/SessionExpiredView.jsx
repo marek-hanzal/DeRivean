@@ -1,6 +1,5 @@
 import {SessionContext} from "component/session/Session";
-import {useEffect} from "react";
-import {useContext} from "react/cjs/react.production.min";
+import {useContext, useEffect} from "react";
 
 const SessionExpiredView = () => {
 	const sessionContext = useContext(SessionContext);

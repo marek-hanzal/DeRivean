@@ -1,9 +1,6 @@
-import {doTranslationCreate, doTranslationDelete, doTranslationUpdate, fetchTranslationPage} from "site/root/module/translation/action/action";
-import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
-import TranslationContext from "site/root/module/translation/component/TranslationContext";
-import {useTranslationFetch} from "site/root/module/translation/hook/hook";
+import ModuleContext from "component/ModuleContext";
+import {CreateTranslationModule} from "site/root/module/translation/Module";
 import RootView from "site/root/view/RootView";
-import Routes from "site/Routes";
 
 const TranslationView = (
 	{
@@ -11,19 +8,9 @@ const TranslationView = (
 		...props
 	}) => {
 	return (
-		<TranslationContext.Provider
-			value={{
-				base: TranslationView,
-				icon: <TranslationIcon/>,
-				id: "root.translation",
-				create: doTranslationCreate,
-				update: doTranslationUpdate,
-				delete: doTranslationDelete,
-				fetch: useTranslationFetch,
-				page: fetchTranslationPage,
-				link: Routes.root.translation,
-			}}
-			children={<RootView context={TranslationContext} {...props} children={children}/>}
+		<ModuleContext.Provider
+			value={CreateTranslationModule()}
+			children={<RootView {...props} children={children}/>}
 		/>
 	);
 };

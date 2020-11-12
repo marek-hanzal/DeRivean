@@ -1,18 +1,19 @@
 import {Avatar, Button, Divider, List, Space} from "antd";
 import AttributeIcon from "component/icon/AttributeIcon";
 import EditIcon from "component/icon/EditIcon";
+import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import BuildingContext from "site/root/module/building/component/BuildingContext";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 
-const BuildingListItem = ({item, context}) => {
+const BuildingListItem = ({item}) => {
+	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
 	return (
 		<List.Item actions={[
-			<Link to={context.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(context.id + ".list.edit")}/></Link>,
+			<Link to={moduleContext.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(moduleContext.id + ".list.edit")}/></Link>,
 		]}>
 			<List.Item.Meta
 				avatar={
@@ -20,21 +21,21 @@ const BuildingListItem = ({item, context}) => {
 				}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
-						<Link to={context.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(context.id + ".list.edit-attributes")}</Button></Link>
+						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
 					</Space>
 				}
-				title={<Link to={context.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
 			/>
 		</List.Item>
 	);
 };
 
 const BuildingList = () => {
-	const context = useContext(BuildingContext);
+	const moduleContext = useContext(ModuleContext);
 	return (
 		<BaseTable
-			onFetchPage={context.page}
-			children={item => <BuildingListItem context={context} item={item} key={item.id}/>}
+			onFetchPage={moduleContext.page}
+			children={item => <BuildingListItem item={item} key={item.id}/>}
 		/>
 	);
 };
