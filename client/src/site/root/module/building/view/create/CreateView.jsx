@@ -1,7 +1,7 @@
 import ModuleContext from "component/ModuleContext";
+import CommonCreateView from "site/common/view/CommonCreateView";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import BuildingView from "site/root/module/building/view/BuildingView";
-import CommonCreateView from "site/root/view/common/CommonCreateView";
 
 const CreateView = () => {
 	return (

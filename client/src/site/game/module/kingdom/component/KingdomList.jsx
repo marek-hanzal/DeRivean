@@ -26,14 +26,14 @@ const KingdomListItem = ({item}) => {
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
 						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
-						<Link to={Routes.root.hero.create.link(item.id)}><Button icon={<HeroIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-hero")}</Button></Link>
-						<Link to={Routes.root.building.create.link(item.id)}><Button icon={<BuildingIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-building")}</Button></Link>
+						<Link to={Routes.game.hero.create.link(item.id)}><Button icon={<HeroIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-hero")}</Button></Link>
+						<Link to={Routes.game.building.create.link(item.id)}><Button icon={<BuildingIcon/>} type={"link"} size={"small"}>{t(moduleContext.id + ".list.create-building")}</Button></Link>
 					</Space>
 				}
 			/>
 			<Space split={<Divider type={"vertical"}/>}>
-				<Link to={Routes.root.hero.list.link(item.id)}><Button type={"dashed"} icon={<HeroIcon/>}>&nbsp;{item.stats.heroes}</Button></Link>
-				<Link to={Routes.root.building.list.link(item.id)}><Button type={"dashed"} icon={<BuildingIcon/>}>&nbsp;{item.stats.buildings}</Button></Link>
+				<Link to={Routes.game.hero.list.link(item.id)}><Button type={"dashed"} icon={<HeroIcon/>}>&nbsp;{item.stats.heroes}</Button></Link>
+				<Link to={Routes.game.building.list.link(item.id)}><Button type={"dashed"} icon={<BuildingIcon/>}>&nbsp;{item.stats.buildings}</Button></Link>
 			</Space>
 		</List.Item>
 	);

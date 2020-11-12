@@ -1,10 +1,10 @@
 import {Card, Divider} from "antd";
 import ModuleContext from "component/ModuleContext";
 import {useTranslation} from "react-i18next";
+import CommonCreateView from "site/common/view/CommonCreateView";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import TemplateInput from "site/root/module/kingdom/component/form/TemplateInput";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
-import CommonCreateView from "site/root/view/common/CommonCreateView";
 
 const CreateView = () => {
 	const {t} = useTranslation();

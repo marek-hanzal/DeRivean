@@ -6,7 +6,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
+import BuildingIcon from "site/common/icon/BuildingIcon";
 
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);

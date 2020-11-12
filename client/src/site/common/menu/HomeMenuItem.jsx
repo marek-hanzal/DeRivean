@@ -1,9 +1,9 @@
 import BackIcon from "component/icon/BackIcon";
 import MenuItem from "component/menu/MenuItem";
 
-const HomeMenuItem = (props) => {
+const HomeMenuItem = ({id, ...props}) => {
 	return (
-		<MenuItem id={`${props.id}.home`} href={props.href} icon={<BackIcon/>} {...props}/>
+		<MenuItem id={`${id}.home`} href={props.href} icon={<BackIcon/>} {...props}/>
 	);
 };
 

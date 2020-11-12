@@ -32,29 +32,6 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
-				// route(link.home.match(), <BaseMenu>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={"root.kingdom.list"} id={"root.kingdom.home.back"} href={Routes.root.kingdom.list} icon={<BackIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
-				// 	<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<HeroMenuItem key={"root.hero"}/>
-				// 	<MenuDivider/>
-				// 	<BuildingMenuItem key={"root.building"}/>
-				// 	<MenuDivider/>
-				// 	<LogoutMenuItem/>
-				// </BaseMenu>),
-				// route(link.edit.match(), <BaseMenu>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<LogoutMenuItem/>
-				// </BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
 				route(link.list.match(), <DefaultMenu/>),

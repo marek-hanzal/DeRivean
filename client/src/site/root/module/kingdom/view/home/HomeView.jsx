@@ -1,8 +1,8 @@
 import {useParams} from "react-router";
+import CommonHomeView from "site/common/view/CommonHomeView";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import {useKingdomStatisticsFetch} from "site/root/module/kingdom/hook/hook";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
-import CommonHomeView from "site/root/view/common/CommonHomeView";
 
 const HomeView = () => {
 	const params = useParams();

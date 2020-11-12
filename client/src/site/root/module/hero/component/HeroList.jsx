@@ -6,7 +6,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
+import HeroIcon from "site/common/icon/HeroIcon";
 
 const HeroListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);

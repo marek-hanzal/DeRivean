@@ -1,6 +1,6 @@
+import CommonHomeView from "site/common/view/CommonHomeView";
 import UserStatistics from "site/root/module/user/component/UserStatistics";
 import UserView from "site/root/module/user/view/UserView";
-import CommonHomeView from "site/root/view/common/CommonHomeView";
 
 const HomeView = () => {
 	return (
