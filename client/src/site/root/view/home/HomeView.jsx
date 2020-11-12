@@ -1,6 +1,7 @@
 import {Card, message} from "antd";
 import {LayoutContext} from "component/layout/BaseLayout";
-import React, {useContext, useState} from "react";
+import ModuleContext from "component/ModuleContext";
+import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerValidate} from "site/root/hook/hook";
 import ErrorResult from "site/root/view/home/ErrorResult";
@@ -9,10 +10,6 @@ import HomeDashboard from "site/root/view/home/HomeDashboard";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import RootView from "site/root/view/RootView";
 import Events from "utils/Events";
-
-const HomeContext = React.createContext({
-	id: "root.home"
-});
 
 const ResolveStatus = (
 	{
@@ -50,11 +47,13 @@ const HomeView = () => {
 	);
 	layoutContext.useMenuSelect("root.home");
 	return (
-		<RootView context={HomeContext} id={"root.home"}>
-			<Card title={t("root.home.title")}>
-				<ResolveStatus status={status} validation={validation}/>
-			</Card>
-		</RootView>
+		<ModuleContext.Provider value={{id: "root.home"}}>
+			<RootView>
+				<Card title={t("root.home.title")}>
+					<ResolveStatus status={status} validation={validation}/>
+				</Card>
+			</RootView>
+		</ModuleContext.Provider>
 	);
 };
 export default HomeView;
