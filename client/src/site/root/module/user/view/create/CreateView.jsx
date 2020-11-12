@@ -1,14 +1,11 @@
-import {
-	Card,
-	Divider
-} from "antd";
-import { useTranslation } from "react-i18next";
+import {Card, Divider} from "antd";
+import ModuleContext from "component/ModuleContext";
+import {useTranslation} from "react-i18next";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import LoginInput from "site/root/module/user/component/form/LoginInput";
 import PasswordInput from "site/root/module/user/component/form/PasswordInput";
 import SiteInput from "site/root/module/user/component/form/SiteInput";
 import TemplateInput from "site/root/module/user/component/form/TemplateInput";
-import UserContext from "site/root/module/user/component/UserContext";
 import UserView from "site/root/module/user/view/UserView";
 import CommonCreateView from "site/root/view/common/CommonCreateView";
 
@@ -16,30 +13,28 @@ const CreateView = () => {
 	const {t} = useTranslation();
 	return (
 		<UserView>
-			<UserContext.Consumer>
-				{(currentContext) => (
+			<ModuleContext.Consumer>
+				{({id}) => (
 					<CommonCreateView
-						context={UserContext}
-						param={currentContext.param}
 						defaultEnableSubmit={true}
 						// site, template and attributes
 						readyCount={3}
 					>
-						<Card title={t(`${currentContext.id}.form.title`)}>
+						<Card title={t(`${id}.form.title`)}>
 							<LoginInput/>
 							<PasswordInput/>
 							<Divider type={"horizontal"}/>
 							<SiteInput/>
 						</Card>
 						<Divider type={"horizontal"}/>
-						<AttributeFieldEditor currentContext={currentContext}/>
+						<AttributeFieldEditor/>
 						<Divider type={"horizontal"}/>
-						<Card title={t(`${currentContext.id}.form.misc.title`)}>
+						<Card title={t(`${id}.form.misc.title`)}>
 							<TemplateInput/>
 						</Card>
 					</CommonCreateView>
 				)}
-			</UserContext.Consumer>
+			</ModuleContext.Consumer>
 		</UserView>
 	);
 };

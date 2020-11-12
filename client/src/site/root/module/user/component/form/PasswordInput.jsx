@@ -1,20 +1,20 @@
 import {LockOutlined} from "@ant-design/icons";
 import {Form, Input} from "antd";
 import EditorContext from "component/form/EditorContext";
+import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import UserContext from "site/root/module/user/component/UserContext";
 import validationFor from "utils/form/validationFor";
 
 const PasswordInput = () => {
 	const {t} = useTranslation();
-	const userContext = useContext(UserContext);
+	const moduleContext = useContext(ModuleContext);
 	const editorContext = useContext(EditorContext);
 	return (
 		<Form.Item
 			{...validationFor("password", editorContext.errors, t)}
 			name={"password"}
-			children={<Input.Password disabled={!editorContext.editor} addonBefore={<div style={{width: "120px"}}>{t(`${userContext.id}.form.password.label`)}</div>} suffix={<LockOutlined/>}/>}
+			children={<Input.Password disabled={!editorContext.editor} addonBefore={<div style={{width: "120px"}}>{t(`${moduleContext.id}.form.password.label`)}</div>} suffix={<LockOutlined/>}/>}
 		/>
 	);
 };

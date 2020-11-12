@@ -1,13 +1,13 @@
 import {Form, Input} from "antd";
 import EditorContext from "component/form/EditorContext";
+import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import UserContext from "site/root/module/user/component/UserContext";
 import validationFor from "utils/form/validationFor";
 
 const LoginInput = () => {
 	const {t} = useTranslation();
-	const userContext = useContext(UserContext);
+	const moduleContext = useContext(ModuleContext);
 	const editorContext = useContext(EditorContext);
 	return (
 		<Form.Item
@@ -16,10 +16,10 @@ const LoginInput = () => {
 			rules={[
 				{
 					required: true,
-					message: t(`${userContext.id}.form.login.required`),
+					message: t(`${moduleContext.id}.form.login.required`),
 				}
 			]}
-			children={<Input disabled={!editorContext.editor} addonBefore={<div style={{width: "120px"}}>{t(`${userContext.id}.form.login.label`)}</div>}/>}
+			children={<Input disabled={!editorContext.editor} addonBefore={<div style={{width: "120px"}}>{t(`${moduleContext.id}.form.login.label`)}</div>}/>}
 		/>
 	);
 };

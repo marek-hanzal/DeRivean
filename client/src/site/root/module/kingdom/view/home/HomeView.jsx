@@ -1,5 +1,4 @@
 import {useParams} from "react-router";
-import KingdomContext from "site/root/module/kingdom/component/KingdomContext";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import {useKingdomStatisticsFetch} from "site/root/module/kingdom/hook/hook";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
@@ -10,8 +9,6 @@ const HomeView = () => {
 	return (
 		<KingdomView>
 			<CommonHomeView
-				context={KingdomContext}
-				navigation={data => ({user: data.user})}
 				menu={"root.kingdom"}
 			>
 				{data => (

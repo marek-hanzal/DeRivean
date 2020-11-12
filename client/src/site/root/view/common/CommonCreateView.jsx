@@ -5,6 +5,7 @@ import CreateSubmitButtons from "component/form/CreateSubmitButtons";
 import EditorContext from "component/form/EditorContext";
 import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
+import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
 import {useContext} from "react";
@@ -15,7 +16,6 @@ import validationFor from "utils/form/validationFor";
 
 const CommonCreateView = (
 	{
-		context,
 		param,
 		children,
 		readyCount,
@@ -23,13 +23,14 @@ const CommonCreateView = (
 		defaultEnableSubmit,
 	}) => {
 	name = name || "name";
-	const currentContext = useContext(context);
+	const moduleContext = useContext(ModuleContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
 	const params = useParams();
 	const {t} = useTranslation();
-	layoutContext.useMenuSelect(currentContext.id + ".create");
+	layoutContext.useMenuSelect(moduleContext.id + ".create");
+	param = param || moduleContext.param;
 	return (
 		<BaseEditor
 			enableEditor={true}
@@ -37,19 +38,19 @@ const CommonCreateView = (
 			defaultEnableSubmit={defaultEnableSubmit}
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
-				currentContext.create(
+				moduleContext.create(
 					discoveryContext,
 					{...values, ...{[param]: params[param]}},
 					Events()
 						.on("success", entity => {
-							message.success(t(currentContext.id + ".create.success"));
-							navigate(currentContext.link.home.link(entity.id));
+							message.success(t(moduleContext.id + ".create.success"));
+							navigate(moduleContext.link.home.link(entity.id));
 						})
 						.on("error", () => {
-							message.error(t(currentContext.id + ".create.general-error"));
+							message.error(t(moduleContext.id + ".create.general-error"));
 						})
 						.on("http-409", error => {
-							message.error(t(currentContext.id + ".create.conflict"));
+							message.error(t(moduleContext.id + ".create.conflict"));
 							editor.setErrors(error);
 						})
 						.on("done", () => {
@@ -58,19 +59,19 @@ const CommonCreateView = (
 				);
 			}}
 			onFinishFailed={() => {
-				message.error(t(currentContext.id + ".create.error"));
+				message.error(t(moduleContext.id + ".create.error"));
 			}}
-			name={currentContext.id}
-			translation={currentContext.id}
+			name={moduleContext.id}
+			translation={moduleContext.id}
 			children={
 				<EditorContext.Consumer>
 					{({errors}) => (
-						<Card title={<><BackLink/>{t(`${currentContext.id}.create.title`)}</>}>
+						<Card title={<><BackLink/>{t(`${moduleContext.id}.create.title`)}</>}>
 							<Result
 								status={"info"}
-								icon={currentContext.icon}
+								icon={moduleContext.icon}
 								title={
-									<CreateSubmitButtons translation={currentContext.id}/>
+									<CreateSubmitButtons translation={moduleContext.id}/>
 								}
 								subTitle={<Centered span={12}>
 									<Divider type={"horizontal"}/>
@@ -80,10 +81,10 @@ const CommonCreateView = (
 										rules={[
 											{
 												required: true,
-												message: t(`${currentContext.id}.form.${name}.required`),
+												message: t(`${moduleContext.id}.form.${name}.required`),
 											}
 										]}
-										children={<Input addonBefore={t(`${currentContext.id}.form.${name}.label`)} suffix={currentContext.icon}/>}
+										children={<Input addonBefore={t(`${moduleContext.id}.form.${name}.label`)} suffix={moduleContext.icon}/>}
 									/>
 								</Centered>}
 								children={<Centered span={16} children={children}/>}
@@ -97,7 +98,6 @@ const CommonCreateView = (
 };
 
 CommonCreateView.propTypes = {
-	param: PropTypes.string.isRequired,
 	readyCount: PropTypes.number,
 	defaultEnableSubmit: PropTypes.any,
 };

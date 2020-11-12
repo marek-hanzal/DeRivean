@@ -1,8 +1,8 @@
 import {Card, Divider} from "antd";
+import ModuleContext from "component/ModuleContext";
 import {useTranslation} from "react-i18next";
 import LanguageInput from "site/root/module/translation/component/form/LanguageInput";
 import TextInput from "site/root/module/translation/component/form/TextInput";
-import TranslationContext from "site/root/module/translation/component/TranslationContext";
 import TranslationView from "site/root/module/translation/view/TranslationView";
 import CommonEditView from "site/root/view/common/CommonEditView";
 
@@ -10,11 +10,9 @@ const EditView = () => {
 	const {t} = useTranslation();
 	return (
 		<TranslationView>
-			<TranslationContext.Consumer>
+			<ModuleContext.Consumer>
 				{({id}) => (
 					<CommonEditView
-						context={TranslationContext}
-						param={"translation"}
 						defaultEnableSubmit={true}
 						name={"label"}
 					>
@@ -25,7 +23,7 @@ const EditView = () => {
 						<Divider type={"horizontal"}/>
 					</CommonEditView>
 				)}
-			</TranslationContext.Consumer>
+			</ModuleContext.Consumer>
 		</TranslationView>
 	);
 };

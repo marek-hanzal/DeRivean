@@ -4,18 +4,20 @@ import EditorContext from "component/form/EditorContext";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
+import ModuleContext from "component/ModuleContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router";
 import Events from "utils/Events";
 
-const AttributeFieldEditor = ({currentContext}) => {
+const AttributeFieldEditor = () => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
+	const moduleContext = useContext(ModuleContext);
 	const [attributes, setAttributes] = useState();
 	const params = useParams();
-	currentContext.attributes(
-		params[currentContext.param],
+	moduleContext.attributes(
+		params[moduleContext.param],
 		Events()
 			.on("success", attributes => {
 				setAttributes(attributes);
@@ -23,7 +25,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 			})
 	);
 	return (
-		<Card title={t(currentContext.id + ".form.attribute.title")}>
+		<Card title={t(moduleContext.id + ".form.attribute.title")}>
 			<Form.List
 				name="attributes"
 			>
@@ -44,7 +46,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 											rules={[
 												{
 													required: true,
-													message: t(currentContext.id + ".form.attribute.name.required")
+													message: t(moduleContext.id + ".form.attribute.name.required")
 												}
 											]}
 											style={{
@@ -55,7 +57,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 											<Select
 												showSearch
 												allowClear
-												placeholder={t(currentContext.id + ".form.attribute.name.hint")}
+												placeholder={t(moduleContext.id + ".form.attribute.name.hint")}
 												options={(attributes || []).map(item => ({
 													label: t(item),
 													value: item
@@ -71,7 +73,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 											rules={[
 												{
 													required: true,
-													message: t(currentContext.id + ".form.attribute.value.required")
+													message: t(moduleContext.id + ".form.attribute.value.required")
 												}
 											]}
 											style={{
@@ -81,7 +83,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 										>
 											<InputNumber
 												step={10}
-												placeholder={t(currentContext.id + ".form.attribute.value.hint")}
+												placeholder={t(moduleContext.id + ".form.attribute.value.hint")}
 												style={{width: "100%"}}
 												disabled={!editorContext.editor}
 											/>
@@ -91,7 +93,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 										okText={t("common.yes")}
 										cancelText={t("common.no")}
 										icon={<DeleteItemIcon/>}
-										title={t(currentContext.id + ".form.attribute.deleteConfirm")}
+										title={t(moduleContext.id + ".form.attribute.deleteConfirm")}
 										onConfirm={() => remove(field.name)}
 										disabled={!editorContext.editor}
 									>
@@ -109,7 +111,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 												onClick={() => add()}
 												disabled={!attributes}
 												icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
-												children={t(currentContext.id + ".form.attribute.add")}
+												children={t(moduleContext.id + ".form.attribute.add")}
 											/>
 										</List.Item>
 									</Centered>
@@ -118,7 +120,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 						</List> :
 						<Empty
 							image={Empty.PRESENTED_IMAGE_SIMPLE}
-							description={t(currentContext.id + ".form.attribute.empty")}
+							description={t(moduleContext.id + ".form.attribute.empty")}
 						>
 							{editorContext.editor ? (
 								<>
@@ -129,7 +131,7 @@ const AttributeFieldEditor = ({currentContext}) => {
 										onClick={() => add()}
 										disabled={!attributes}
 										icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
-										children={t(currentContext.id + ".form.attribute.add")}
+										children={t(moduleContext.id + ".form.attribute.add")}
 									/>
 								</>
 							) : null}
