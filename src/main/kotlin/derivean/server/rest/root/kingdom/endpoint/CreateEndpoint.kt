@@ -16,6 +16,7 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import java.util.*
 
 @KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -66,7 +67,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	data class Request(
 		val user: String,
 		val name: String,
-		val template: String?,
+		val template: UUID?,
 		val attributes: Attributes?,
 	)
 }

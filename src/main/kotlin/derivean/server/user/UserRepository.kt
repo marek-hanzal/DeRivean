@@ -6,6 +6,7 @@ import derivean.lib.storage.ilike
 import derivean.server.attribute.AbstractAttributeRepository
 import derivean.server.user.entities.User
 import derivean.server.user.entities.UserTable
+import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.or
 import java.util.*
 
@@ -18,9 +19,9 @@ class UserRepository(container: IContainer) : AbstractAttributeRepository<User, 
 
 	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%" or (table.id eq uuid)) }.limit(limit)
+		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%" or (table.id eq uuid)) }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%") }.limit(limit)
+		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%") }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	}
 
 	fun useTemplate(template: String, target: User) {
