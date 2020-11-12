@@ -6,9 +6,9 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
+import KingdomIcon from "site/common/icon/KingdomIcon";
 import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
 
 const KingdomListItem = ({item}) => {

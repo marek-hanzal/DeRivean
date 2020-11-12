@@ -5,7 +5,7 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
-import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
 import {BuildingRoute} from "site/root/module/building/site/Router";
@@ -52,7 +52,7 @@ const Site = () => {
 							<TranslationMenuItem key={"root.translation"}/>
 
 							<MenuDivider/>
-							<LogoutMenuItem key={"root.sign-out"}/>
+							<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 						</BaseMenu>)
 					]}
 				/>

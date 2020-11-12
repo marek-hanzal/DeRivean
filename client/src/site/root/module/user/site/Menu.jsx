@@ -9,8 +9,8 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import HomeMenuItem from "site/root/component/menu/HomeMenuItem";
-import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
+import HomeMenuItem from "site/common/menu/HomeMenuItem";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
@@ -32,7 +32,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<KingdomMenuItem key={"root.kingdom"}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
@@ -42,7 +42,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.attributes.match(), <BaseMenu>
 					<MenuDivider/>
@@ -52,15 +52,15 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route("*", <BaseMenu>
 					<MenuDivider/>
-					<HomeMenuItem key={"root.home"}/>
+					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
 					<UserMenuItem key={"root.user"}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 			]}
 		/>

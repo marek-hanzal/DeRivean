@@ -44,6 +44,31 @@ const Routes = {
 			match: () => "session-expired/*",
 			link: () => "/session-expired",
 		},
+		kingdom: {
+			match: () => "/kingdom/*",
+			dashboard: {
+				match: () => "dashboard/*",
+				link: "/kingdom/dashboard",
+			},
+			create: {
+				match: () => "create/*",
+				link: "/kingdom/create",
+			},
+			edit: {
+				match: () => "k/:kingdom/edit",
+				link: resolveUuid("kingdom", "/kingdom/k/:kingdom/edit"),
+				params: ["kingdom"],
+			},
+			list: {
+				match: () => "list/*",
+				link: "/kingdom/list",
+			},
+			home: {
+				match: () => "k/:kingdom/home",
+				link: resolveUuid("kingdom", "/kingdom/k/:kingdom/home"),
+				params: ["kingdom"],
+			},
+		},
 	},
 	root: {
 		match: () => "/",

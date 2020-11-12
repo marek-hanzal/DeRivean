@@ -6,7 +6,7 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
+import KingdomIcon from "site/common/icon/KingdomIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
 
