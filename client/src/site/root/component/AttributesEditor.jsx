@@ -37,14 +37,14 @@ const AttributeForm = () => {
 				icon={<Spinner icon={<AttributeIcon/>} done={!editorContext.ready}/>}
 				title={
 					<>
-						<EditorToolbar param={moduleContext.param} currentContext={moduleContext}/>
+						<EditorToolbar param={moduleContext.param}/>
 						<Divider type={"horizontal"}/>
 					</>
 				}
 				subTitle={t(`${moduleContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor currentContext={moduleContext}/>
+						<AttributeFieldEditor/>
 					</Centered>
 				}
 			/>
@@ -83,7 +83,7 @@ const AttributesEditor = () => {
 			name={moduleContext.id}
 			translation={moduleContext.id}
 			children={
-				<AttributeForm currentContext={moduleContext}/>
+				<AttributeForm/>
 			}
 		/>
 	);

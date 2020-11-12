@@ -8,7 +8,7 @@ const AttributesView = () => {
 	layoutContext.useMenuSelect(["root.kingdom.attributes"]);
 	return (
 		<KingdomView>
-			<AttributesEditor currentContext={currentContext}/>
+			<AttributesEditor/>
 		</KingdomView>
 	);
 };
