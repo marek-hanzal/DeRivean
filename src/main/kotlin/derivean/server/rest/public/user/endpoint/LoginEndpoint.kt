@@ -8,6 +8,7 @@ import derivean.lib.storage.IStorage
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 import derivean.server.auth.TicketService
+import derivean.server.rest.common.Attribute
 import derivean.server.user.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -35,9 +36,18 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 				get(url) {
 					call.authentication.principal<HttpServer.SessionTicket>()?.let {
 						try {
-							storage.read { userRepository.findByTicket(it.id) }.let { user ->
-								call.resolve(ok(Response(user.login, user.name, user.site)))
-							}
+							call.resolve(storage.read {
+								userRepository.findByTicket(it.id).let { user ->
+									ok(Response(
+										user.login,
+										user.name,
+										user.site,
+										user.attributes.map {
+											Attribute(it.name, it.value)
+										}
+									))
+								}
+							})
 						} catch (e: NoSuchElementException) {
 							logger.error(e.message, e)
 							call.resolve(unauthorized("Who are you?"))
@@ -55,7 +65,14 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 							storage.write {
 								authenticatorService.authenticate(it.login, it.password).let { user ->
 									call.ticket(ticketService.ticketFor(user))
-									ok(Response(user.login, user.name, user.site))
+									ok(Response(
+										user.login,
+										user.name,
+										user.site,
+										user.attributes.map {
+											Attribute(it.name, it.value)
+										}
+									))
 								}
 							}
 						} catch (e: UserException) {
@@ -87,5 +104,6 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 		val login: String,
 		val name: String,
 		val site: String?,
+		val attributes: List<Attribute>,
 	)
 }
