@@ -354,3 +354,10 @@ e4a08ac2-1971-4afd-9af8-486e3b31f67a,en,translation,public.session-expired.title
 26d1c82b-f7f3-4fb4-8944-9d12120a8df8,en,translation,public.session-expired.continue,Continue
 2ee98e08-55b9-472c-aa29-612d456f1d2d,en,translation,root.translation.form.label.label,Translation label
 395e59cb-246f-4940-a3c2-fef49a8bde42,en,translation,root.edit.form.edit,Edit!
+ceb1c8a5-2254-422a-bf5d-311003c1b0a4,en,translation,root.home.content.error.title,Server is Unhealthy!
+6f1b0109-3ad2-41ce-bb1e-e3cc36960bd5,en,translation,root.home.content.error.subtitle,Please check following errors as they could prevent players to register/login!
+499a4983-45c3-4ea5-915a-e1c578ab2bc1,en,translation,root.home.content.error.list.title,Please check following:
+45e0c53c-bdf4-4675-ad71-9a0bb9a12a58,en,translation,root.server.error.Missing template user!,There is missing Template User from which new registrations are created (for example number of gems or whatever). This error block new registrations (but current players are able to log in).
+c3eca859-9d5a-43d7-a26c-27f7bb916708,en,translation,root.server.error.Missing template kingdom!,There is missing Template Kingdom from which all users (players) are creating their kingdoms: thus any of players will be able to create a new kingdom until this is fixed.
+5abc927d-ec8a-4d87-b675-653397711bb9,en,translation,root.server.error.action.create-template-user,Create Template User
+5440adc8-0ee1-47a5-96fd-aa2cd2c0ddd4,en,translation,root.server.error.action.create-template-kingdom,Create Template Kingdom
