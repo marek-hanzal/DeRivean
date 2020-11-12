@@ -53,6 +53,9 @@ const CommonCreateView = (
 							message.error(t(moduleContext.id + ".create.conflict"));
 							editor.setErrors(error);
 						})
+						.on("http-429", () => {
+							message.error(t(moduleContext.id + ".create.resource-limit"));
+						})
 						.on("done", () => {
 							layoutContext.loadingFinish();
 						}),
