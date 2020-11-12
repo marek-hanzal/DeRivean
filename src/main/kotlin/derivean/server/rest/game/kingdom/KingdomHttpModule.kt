@@ -2,10 +2,7 @@ package derivean.server.rest.game.kingdom
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.server.rest.game.kingdom.endpoint.CreateEndpoint
-import derivean.server.rest.game.kingdom.endpoint.FetchEndpoint
-import derivean.server.rest.game.kingdom.endpoint.PageEndpoint
-import derivean.server.rest.game.kingdom.endpoint.StatisticsEndpoint
+import derivean.server.rest.game.kingdom.endpoint.*
 import io.ktor.routing.*
 import io.ktor.util.*
 
@@ -15,6 +12,8 @@ class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		install(
 			routing,
 			CreateEndpoint::class,
+			UpdateEndpoint::class,
+			DeleteEndpoint::class,
 			FetchEndpoint::class,
 			PageEndpoint::class,
 			StatisticsEndpoint::class,
