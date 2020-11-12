@@ -26,10 +26,10 @@ function CreateKingdomModule() {
 	module.fetch = useKingdomFetch;
 	module.page = fetchKingdomPage;
 	module.param = "kingdom";
-	module.parentParam = "user";
+	module.parent = "user";
 	module.attributes = useKingdomAttributesFetch;
 	module.search = doKingdomSearch;
-	return module;
+	return module.validate();
 }
 
 export {

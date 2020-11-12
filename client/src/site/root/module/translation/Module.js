@@ -16,7 +16,7 @@ function CreateTranslationModule() {
 	module.fetch = useTranslationFetch;
 	module.page = fetchTranslationPage;
 	module.param = "translation";
-	return module;
+	return module.validate();
 }
 
 export {

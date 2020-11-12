@@ -11,9 +11,9 @@ const CreateView = () => {
 	return (
 		<KingdomView>
 			<ModuleContext.Consumer>
-				{({parentParam, id}) => (
+				{({parent, id}) => (
 					<CommonCreateView
-						param={parentParam}
+						param={parent}
 						defaultEnableSubmit={true}
 						readyCount={2}
 					>

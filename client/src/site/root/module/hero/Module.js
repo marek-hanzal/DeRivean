@@ -27,7 +27,7 @@ function CreateHeroModule() {
 	module.param = "hero";
 	module.parent = "kingdom";
 	module.attributes = useHeroAttributesFetch;
-	return module;
+	return module.validate();
 }
 
 export {
