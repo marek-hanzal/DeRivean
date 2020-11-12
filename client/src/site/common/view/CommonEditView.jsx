@@ -10,7 +10,7 @@ import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import Events from "utils/Events";
 import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
@@ -74,6 +74,7 @@ const CommonEditView = (
 	const moduleContext = useContext(ModuleContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
+	const navigate = useNavigate();
 	const {t} = useTranslation();
 	const params = useParams();
 	layoutContext.useMenuSelect(moduleContext.id + ".edit");
@@ -104,7 +105,8 @@ const CommonEditView = (
 						})
 						.on("done", () => {
 							layoutContext.loadingFinish();
-						})
+						}),
+					navigate,
 				);
 			}}
 			onFinishFailed={() => {
