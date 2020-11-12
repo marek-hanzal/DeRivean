@@ -6,7 +6,7 @@ import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {KingdomMenuItem} from "site/game/module/kingdom/site/Menu";
+import {KingdomMenuItem, KingdomMenuRoute} from "site/game/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/game/module/kingdom/site/Router";
 import Footer from "site/game/site/Footer";
 import Header from "site/game/site/Header";
@@ -26,6 +26,7 @@ const Site = () => {
 			menu={
 				<BaseRoutes
 					routes={[
+						KingdomMenuRoute(),
 						route("*", <BaseMenu>
 							<MenuDivider/>
 							<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>

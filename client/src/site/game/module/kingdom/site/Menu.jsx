@@ -1,6 +1,10 @@
+import CreateIcon from "component/icon/CreateIcon";
+import DashboardIcon from "component/icon/DashboardIcon";
+import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
+import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import HomeMenuItem from "site/common/menu/HomeMenuItem";
@@ -62,9 +66,9 @@ const Menu = () => {
 const KingdomMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} icon={<KingdomIcon/>} {...props}>
-			{/*<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>*/}
-			{/*<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>*/}
-			{/*<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>*/}
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
 };
