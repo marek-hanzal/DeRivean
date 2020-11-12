@@ -26,7 +26,7 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 				description = "Creates a new Kingdom"
 			}
 			routing.authenticate {
-				withAnyRole("game") {
+				withAnyRole("game", "root") {
 					post(url) {
 						resolve(call, createMapper)
 					}

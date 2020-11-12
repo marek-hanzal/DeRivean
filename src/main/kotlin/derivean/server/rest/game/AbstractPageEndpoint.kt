@@ -9,7 +9,7 @@ import io.ktor.auth.*
 import io.ktor.util.*
 
 @KtorExperimentalAPI
-abstract class AbstractPageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "game") {
+abstract class AbstractPageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "game", "root") {
 	protected val userRepository: UserRepository by container.lazy()
 
 	fun user(call: ApplicationCall) = storage.read { userRepository.findByTicket(call.authentication.principal<HttpServer.SessionTicket>()!!.id) }.id.toString()

@@ -1,5 +1,7 @@
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
@@ -32,6 +34,19 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					{/*<HeroMenuItem key={"game.hero"}/>*/}
+					{/*<MenuDivider/>*/}
+					{/*<BuildingMenuItem key={"game.building"}/>*/}
+					{/*<MenuDivider/>*/}
+					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
+				</BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
 				route(link.list.match(), <DefaultMenu/>),
