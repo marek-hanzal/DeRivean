@@ -49,6 +49,12 @@ const Discovery = ({children}) => {
 			.on("error", () => {
 				setStatus(false);
 			})
+			.on("http-500", () => {
+				setStatus(false);
+			})
+			.on("done", () => {
+				setStatus(false);
+			})
 	);
 
 	switch (status) {
