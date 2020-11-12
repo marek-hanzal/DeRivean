@@ -6,7 +6,7 @@ import derivean.server.kingdom.entities.Kingdom
 import derivean.server.kingdom.entities.KingdomTable
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class User(id: EntityUUID) : EntityWithAttributes(id) {
+class User(id: EntityUUID) : EntityWithAttributes<UserAttribute>(id) {
 	companion object : UUIDEntityClass<User>(UserTable)
 
 	override val attributes by UserAttribute referrersOn UserAttributeTable.user

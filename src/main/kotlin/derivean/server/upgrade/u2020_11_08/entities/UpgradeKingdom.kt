@@ -4,7 +4,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.attribute.EntityWithAttributes
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class UpgradeKingdom(id: EntityUUID) : EntityWithAttributes(id) {
+class UpgradeKingdom(id: EntityUUID) : EntityWithAttributes<UpgradeKingdomAttribute>(id) {
 	companion object : UUIDEntityClass<UpgradeKingdom>(UpgradeKingdomTable)
 
 	val heroes by UpgradeHero referrersOn UpgradeHeroTable.kingdom

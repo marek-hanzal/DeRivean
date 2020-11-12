@@ -48,7 +48,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		super.validate(request)
 		user(request.call).let { user ->
 			storage.read {
-				userResourceService.check(user, UserAttributes.KINGDOM_LIMIT)
+				userResourceService.check(user.name, user, UserAttributes.KINGDOM_LIMIT)
 			}
 		}
 	}

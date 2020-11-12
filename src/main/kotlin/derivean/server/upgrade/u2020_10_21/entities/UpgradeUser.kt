@@ -4,7 +4,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.server.attribute.EntityWithAttributes
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class UpgradeUser(id: EntityUUID) : EntityWithAttributes(id) {
+class UpgradeUser(id: EntityUUID) : EntityWithAttributes<UpgradeUserAttribute>(id) {
 	companion object : UUIDEntityClass<UpgradeUser>(UpgradeUserTable)
 
 	override val attributes by UpgradeUserAttribute referrersOn UpgradeUserAttributeTable.user

@@ -6,7 +6,7 @@ import derivean.server.kingdom.entities.Kingdom
 import derivean.server.user.entities.User
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class Hero(id: EntityUUID) : EntityWithAttributes(id) {
+class Hero(id: EntityUUID) : EntityWithAttributes<HeroAttribute>(id) {
 	companion object : UUIDEntityClass<Hero>(HeroTable)
 
 	var user by User referencedOn HeroTable.user

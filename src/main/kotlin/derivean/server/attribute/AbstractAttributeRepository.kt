@@ -6,10 +6,11 @@ import derivean.lib.repository.AbstractRepository
 import derivean.lib.repository.IRepository
 import derivean.lib.storage.EntityUUID
 import org.jetbrains.exposed.dao.EntityClass
+import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.id.UUIDTable
 import java.util.*
 
-abstract class AbstractAttributeRepository<T : EntityWithAttributes, U : UUIDTable>(
+abstract class AbstractAttributeRepository<T : EntityWithAttributes<out UUIDEntity>, U : UUIDTable>(
 	entity: EntityClass<UUID, T>,
 	table: U,
 	container: IContainer,
