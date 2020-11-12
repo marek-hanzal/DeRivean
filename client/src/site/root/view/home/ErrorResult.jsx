@@ -1,5 +1,5 @@
-import {FrownOutlined, HeartOutlined} from "@ant-design/icons";
-import {Alert, Button, List, Result} from "antd";
+import {FrownOutlined, HeartFilled} from "@ant-design/icons";
+import {Alert, Button, Divider, List, Result} from "antd";
 import {useTranslation} from "react-i18next";
 
 const ErrorResult = ({validation}) => {
@@ -18,7 +18,12 @@ const ErrorResult = ({validation}) => {
 						<List.Item key={error.id}>
 							<Alert
 								message={t("root.server.error." + error.text)}
-								description={error.action ? <Button icon={<HeartOutlined/>} type={"link"} children={t("root.server.error.action." + error.action)}/> : t("root.server.error.action-unavailable")}
+								description={
+									<>
+										<Divider type={"horizontal"}/>
+										{error.action ? <Button icon={<HeartFilled/>} type={"danger"} ghost children={t("root.server.error.action." + error.action)}/> : t("root.server.error.action-unavailable")}
+									</>
+								}
 								type="warning"
 								showIcon
 								style={{width: "100%"}}
