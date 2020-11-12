@@ -13,23 +13,24 @@ const SingInView = () => {
 	layoutContext.useEnableFullscreen();
 	return (
 		<ModuleContext.Provider value={{id: "root.sign-in"}}>
-			{({id}) => (
-				<RootView>
-					<Card>
-						<Result
-							status={"success"}
-							title={t(`${id}.succeed.title`)}
-							subTitle={t(`${id}.succeed.subtitle`)}
-							extra={[
-								<Button type="primary" key="continue">
-									<Link to={Routes.root.link()}>{t(`${id}.continue`)}</Link>
-								</Button>
-							]}
-						/>
-					</Card>
-				</RootView>
-			)}
-
+			<ModuleContext.Consumer>
+				{({id}) => (
+					<RootView>
+						<Card>
+							<Result
+								status={"success"}
+								title={t(`${id}.succeed.title`)}
+								subTitle={t(`${id}.succeed.subtitle`)}
+								extra={[
+									<Button type="primary" key="continue">
+										<Link to={Routes.root.link()}>{t(`${id}.continue`)}</Link>
+									</Button>
+								]}
+							/>
+						</Card>
+					</RootView>
+				)}
+			</ModuleContext.Consumer>
 		</ModuleContext.Provider>
 	);
 };
