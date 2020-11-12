@@ -46,10 +46,7 @@ const Discovery = ({children}) => {
 				setDiscovery(discovery);
 				setStatus(true);
 			})
-			.on("error", () => {
-				setStatus(false);
-			})
-			.on("http-500", () => {
+			.on("catch", () => {
 				setStatus(false);
 			})
 			.on("done", () => {
