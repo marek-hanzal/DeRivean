@@ -9,7 +9,7 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import Routes from "site/Routes";
 import route from "utils/route/route";
@@ -25,7 +25,7 @@ const DefaultMenu = () => {
 			<MenuDivider/>
 			<HeroMenuItem key={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem/>
+			<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 		</BaseMenu>
 	);
 };
@@ -42,7 +42,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
@@ -52,7 +52,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.attributes.match(), <BaseMenu>
 					<MenuDivider/>
@@ -62,7 +62,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),

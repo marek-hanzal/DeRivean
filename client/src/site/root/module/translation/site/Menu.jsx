@@ -7,8 +7,8 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import HomeMenuItem from "site/root/component/menu/HomeMenuItem";
-import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
+import HomeMenuItem from "site/common/menu/HomeMenuItem";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import Routes from "site/Routes";
 import route from "utils/route/route";
@@ -22,7 +22,7 @@ const Menu = () => {
 			routes={[
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
-					<HomeMenuItem key={"root.home"}/>
+					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
 
 					<TranslationMenuItem key={id}>
@@ -30,17 +30,17 @@ const Menu = () => {
 					</TranslationMenuItem>,
 
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route("*", <BaseMenu>
 					<MenuDivider/>
-					<HomeMenuItem key={"root.home"}/>
+					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
 
 					<TranslationMenuItem key={id}/>
 
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 			]}
 		/>

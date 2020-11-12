@@ -5,7 +5,9 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
-import LogoutMenuItem from "site/game/menu/LogoutMenuItem";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import {KingdomMenuItem} from "site/game/module/kingdom/site/Menu";
+import {KingdomRoute} from "site/game/module/kingdom/site/Router";
 import Footer from "site/game/site/Footer";
 import Header from "site/game/site/Header";
 import HomeView from "site/game/view/home/HomeView";
@@ -28,8 +30,9 @@ const Site = () => {
 							<MenuDivider/>
 							<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>
 							<MenuDivider/>
+							<KingdomMenuItem/>
 							<MenuDivider/>
-							<LogoutMenuItem key={"game.sign-out"}/>
+							<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link}/>
 						</BaseMenu>)
 					]}
 				/>
@@ -37,6 +40,7 @@ const Site = () => {
 			router={
 				<BaseRoutes
 					routes={[
+						KingdomRoute(),
 						route(link.signIn.link(), <SingInView/>),
 						route(link.signOut.link(), <SingOutView id={"game"}/>),
 						route(link.sessionExpired.link(), <SessionExpiredView/>),

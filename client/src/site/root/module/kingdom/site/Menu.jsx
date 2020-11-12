@@ -9,10 +9,10 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import LogoutMenuItem from "site/root/component/menu/LogoutMenuItem";
+import KingdomIcon from "site/common/icon/KingdomIcon";
+import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {BuildingMenuItem} from "site/root/module/building/site/Menu";
 import {HeroMenuItem} from "site/root/module/hero/site/Menu";
-import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
 import route from "utils/route/route";
 
@@ -27,7 +27,7 @@ const DefaultMenu = () => {
 			<MenuDivider/>
 			<KingdomMenuItem key={id} id={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem key={"root.sign-out"} id={"root.sign-out"}/>
+			<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 		</BaseMenu>
 	);
 };
@@ -47,7 +47,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<BuildingMenuItem key={"root.building"}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
@@ -57,7 +57,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.attributes.match(), <BaseMenu>
 					<MenuDivider/>
@@ -67,7 +67,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
