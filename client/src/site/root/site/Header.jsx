@@ -2,8 +2,9 @@ import {Avatar, Button, Divider, Layout, message, Space} from "antd";
 import icon from "assets/icon.png";
 import SearchInput from "component/form/SearchInput";
 import EditIcon from "component/icon/EditIcon";
+import ModuleContext from "component/ModuleContext";
 import copy from "copy-to-clipboard";
-import React, {useState} from "react";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
 import {doSearch} from "site/root/action/action";
@@ -12,11 +13,6 @@ import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon"
 import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import KingdomIcon from "site/root/module/kingdom/component/icon/KingdomIcon";
 import Routes from "site/Routes";
-
-const HeaderContext = React.createContext({
-	id: "root.header",
-	search: doSearch,
-});
 
 function warpTo(navigate, item, target = "home") {
 	navigate(Routes.root[item.type][target].link(item.id));
@@ -115,21 +111,22 @@ const Header = () => {
 				width: "70%",
 				margin: "0 auto"
 			}}>
-				<SearchInput
-					listHeight={368}
-					showArrow={false}
-					size={"large"}
-					bordered={false}
-					style={{width: "100%"}}
-					context={HeaderContext}
-					placeholder={"search"}
-					value={value}
-					onSelect={(_, node) => {
-						setValue(null);
-					}}
-					render={item => <SearchItem item={item}/>}
-					hotkey={"alt+x"}
-				/>
+				<ModuleContext.Provider value={{search: doSearch, id: "root.header"}}>
+					<SearchInput
+						listHeight={368}
+						showArrow={false}
+						size={"large"}
+						bordered={false}
+						style={{width: "100%"}}
+						placeholder={"search"}
+						value={value}
+						onSelect={(_, node) => {
+							setValue(null);
+						}}
+						render={item => <SearchItem item={item}/>}
+						hotkey={"alt+x"}
+					/>
+				</ModuleContext.Provider>
 			</div>
 		</Layout.Header>
 	);
