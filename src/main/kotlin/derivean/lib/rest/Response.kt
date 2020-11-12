@@ -91,6 +91,10 @@ fun conflictWithUnique(message: String, field: String, hint: String) = conflict(
  */
 fun notImplemented(error: String) = Response(HttpStatusCode.NotImplemented, ErrorResponse(error))
 
+fun <T> tooManyRequests(response: T) = Response(HttpStatusCode.TooManyRequests, response)
+
+fun tooManyRequests(error: String) = tooManyRequests(ErrorResponse(error))
+
 /**
  * send response with Internal Server Error status code
  */
