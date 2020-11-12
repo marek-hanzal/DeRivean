@@ -12,7 +12,7 @@ abstract class AbstractActionEndpoint(container: IContainer) : AbstractEndpoint(
 		call.resolve(block(actionMapper.resolve(call.receive())))
 	}
 
-	suspend inline fun <reified T : Any> resolve(call: ApplicationCall, actionMapper: IActionMapper<T, Response<out Any>>) = handle(call) {
-		call.resolve(actionMapper.resolve(call.receive()))
+	suspend inline fun <reified T : Any> resolve(call: ApplicationCall, actionMapper: IActionMapper<ApplicationRequest<T>, Response<out Any>>) = handle(call) {
+		call.resolve(actionMapper.resolve(ApplicationRequest(call, call.receive())))
 	}
 }

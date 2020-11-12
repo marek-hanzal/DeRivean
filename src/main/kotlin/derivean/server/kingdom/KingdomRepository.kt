@@ -6,6 +6,7 @@ import derivean.lib.storage.ilike
 import derivean.server.attribute.AbstractAttributeRepository
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.kingdom.entities.KingdomTable
+import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.or
 import java.util.*
 
@@ -16,12 +17,16 @@ class KingdomRepository(container: IContainer) : AbstractAttributeRepository<Kin
 
 	fun search(search: String, limit: Int = 100) = try {
 		val uuid = UUID.fromString(search)
-		entity.find { table.name ilike "%${search}%" or (table.id eq uuid) }.limit(limit)
+		entity.find { table.name ilike "%${search}%" or (table.id eq uuid) }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	} catch (e: IllegalArgumentException) {
-		entity.find { table.name ilike "%${search}%" }.limit(limit)
+		entity.find { table.name ilike "%${search}%" }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	}
 
-	fun useTemplate(template: String, target: Kingdom) {
-		attributes(target.id, find(template).attributes.map { Attribute(it.name, it.value) }.toTypedArray(), replace = false)
+	fun useTemplate(template: UUID, target: Kingdom) = useTemplate(find(template), target)
+
+	fun useTemplate(template: String, target: Kingdom) = useTemplate(search(template).first(), target)
+
+	fun useTemplate(kingdom: Kingdom, target: Kingdom) {
+		attributes(target.id, kingdom.attributes.map { Attribute(it.name, it.value) }.toTypedArray(), replace = false)
 	}
 }
