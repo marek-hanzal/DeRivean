@@ -3,6 +3,7 @@ package derivean.server.rest.game
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
 import derivean.server.rest.game.kingdom.KingdomHttpModule
+import derivean.server.rest.game.user.UserHttpModule
 import io.ktor.routing.*
 import io.ktor.util.*
 
@@ -12,6 +13,7 @@ class GameHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		modules(
 			routing,
 			KingdomHttpModule::class,
+			UserHttpModule::class,
 		)
 	}
 }

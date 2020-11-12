@@ -1,4 +1,4 @@
-package derivean.lib.user
+package derivean.lib.resource
 
 data class Usage(
 	val resource: String,
