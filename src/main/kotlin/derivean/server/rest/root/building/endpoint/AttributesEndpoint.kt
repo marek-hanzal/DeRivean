@@ -9,7 +9,9 @@ import derivean.lib.rest.resolve
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class AttributesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	override fun install(routing: Routing) {
 		"/api/root/building/attributes".let { url ->

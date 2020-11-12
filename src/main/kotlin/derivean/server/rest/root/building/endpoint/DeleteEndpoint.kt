@@ -8,7 +8,9 @@ import derivean.server.building.BuildingRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
 	private val deleteMapper: DeleteMapper by container.lazy()
 
