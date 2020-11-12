@@ -361,3 +361,9 @@ ceb1c8a5-2254-422a-bf5d-311003c1b0a4,en,translation,root.home.content.error.titl
 c3eca859-9d5a-43d7-a26c-27f7bb916708,en,translation,root.server.error.Missing template kingdom!,There is missing Template Kingdom from which all users (players) are creating their kingdoms: thus any of players will be able to create a new kingdom until this is fixed.
 5abc927d-ec8a-4d87-b675-653397711bb9,en,translation,root.server.error.action.create-template-user,Create Template User
 5440adc8-0ee1-47a5-96fd-aa2cd2c0ddd4,en,translation,root.server.error.action.create-template-kingdom,Create Template Kingdom
+1fd5ec39-9150-46e6-956e-8a4769c880ef,en,translation,game.sign-in.succeed.title,Welcome back!
+1ab1b18b-2c7e-44e3-a2a7-096cd629ef13,en,translation,game.sign-in.succeed.subtitle,Looks around what's new in your kingdoms!
+09c2016e-1704-4297-acce-50ccaca39de6,en,translation,game.sign-in.continue,Continue!
+08bf8e4c-6def-4cf6-98ee-aa54a9dfe830,en,translation,game.home.menu,Home
+a5891ded-c3d0-45c9-b140-08d2cfdb2461,en,translation,game.sign-out.menu,Sign out!
+2d222e5e-aa44-41ee-a5ab-764f14ea65c0,en,translation,game.home.title,World of DeRivean
