@@ -10,6 +10,7 @@ import derivean.server.auth.AuthenticatorService
 import derivean.server.user.RoleRepository
 import derivean.server.user.UserRepository
 import derivean.server.user.entities.User
+import io.ktor.application.*
 import io.ktor.routing.*
 import org.jetbrains.exposed.sql.SizedCollection
 
