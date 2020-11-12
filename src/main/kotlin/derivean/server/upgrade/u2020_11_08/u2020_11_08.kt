@@ -21,7 +21,7 @@ class u2020_11_08(container: IContainer) : AbstractUpgrade(container) {
 		}
 		storage.transaction {
 			UpgradeRole.new {
-				name = "gamer"
+				name = "game"
 			}
 		}
 		storage.transaction {

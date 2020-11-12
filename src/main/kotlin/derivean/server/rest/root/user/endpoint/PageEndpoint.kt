@@ -7,7 +7,7 @@ import io.ktor.routing.*
 import io.ktor.util.*
 
 @KtorExperimentalAPI
-class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
+class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "root") {
 	private val userRepository: UserRepository by container.lazy()
 	private val fetchMapper: FetchMapper by container.lazy()
 

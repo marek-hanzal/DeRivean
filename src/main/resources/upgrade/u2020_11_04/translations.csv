@@ -27,7 +27,6 @@ b1538fe4-45ca-4410-8626-5c2ed819af20,en,translation,root.translation.list.table.
 bcd75d37-8b31-4b73-b4a6-ba82b473924f,en,translation,root.translation.edit.form.edit,Edit!
 d5549b6f-2e7d-409d-92d6-a405a5416ccd,en,translation,root.translation.edit.form.title,Translation
 7fd1c8a1-ea48-4176-8ecd-bf7041dcc176,en,translation,common.warped,You have been warped to target!
-e6371c18-fab8-4bf9-bb34-a8830e2f8934,en,translation,root.home.menu,Home
 a188a73f-7e90-4545-b180-e5c4f8f6c290,en,translation,root.user.dashboard.menu,Dashboard
 73435ffa-6bb5-4ea0-b44b-9fbef4d7813b,en,translation,root.user.create.menu,Create
 836f023b-d69f-4611-ae4b-7f7ab6649d8f,en,translation,root.user.list.menu,List
@@ -74,6 +73,7 @@ b6f085f6-497b-4998-bd09-2d26f83fa6d5,en,translation,root.user.menu,User
 86423c3b-5838-403c-be04-87bb66f3e65e,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
 c9cc95c6-b69c-4b06-9e6a-a6680474a87c,en,translation,root.translation.edit.menu,Edit
 0b7c755a-fb8f-41ee-bd9b-545c9f494666,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
+e6371c18-fab8-4bf9-bb34-a8830e2f8934,en,translation,root.home.menu,Home
 9bbbb9b7-d310-4a16-85cb-de2e0a592268,en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
 9f232533-c239-4511-abba-b5bd184dcc69,en,translation,public.sign-up.content.list.item-0,Create your own heroes
 00acc172-f1d8-4d95-98d9-e55503ba2ca9,en,translation,public.sign-up.content.list.item-1,Build up a Kingdom of Yours
@@ -323,7 +323,6 @@ e1c195eb-cbb1-40de-8978-a68e649c1372,cs,translation,root.translation.create.form
 a5ab29dc-7efc-477a-a17a-2b4983fb55ec,cs,translation,root.translation.edit.form.deleteConfirm,Opravdu si přeješ smazat tento překlad?
 35039402-b56d-4070-9f71-24ad582810cc,cs,translation,common.no,Ne
 0f9ae2f2-a4ac-4696-bc87-45b95f2b7ad2,cs,translation,common.yes,Ano!
-62f96412-a6af-4d09-86ab-ca7eae910daf,cs,translation,root.home.menu,Domů
 19f24f32-a8c8-4df4-ad1c-dbe6d0be28be,cs,translation,root.sign-out.menu,Odhlásit se!
 9fb48d99-5697-4399-8867-b7d70e6f94d7,cs,translation,root.user.menu,Uživatelé
 b43c3585-80d6-4c5a-ab1a-0374e1d29376,cs,translation,root.header.search.label,Hledátko!
@@ -367,3 +366,15 @@ c3eca859-9d5a-43d7-a26c-27f7bb916708,en,translation,root.server.error.Missing te
 08bf8e4c-6def-4cf6-98ee-aa54a9dfe830,en,translation,game.home.menu,Home
 a5891ded-c3d0-45c9-b140-08d2cfdb2461,en,translation,game.sign-out.menu,Sign out!
 2d222e5e-aa44-41ee-a5ab-764f14ea65c0,en,translation,game.home.title,World of DeRivean
+abd40682-8198-41e8-88c4-c1820d041ed5,en,translation,game.kingdom.menu,Kingdoms
+2cc20b6c-f3b5-42e5-9374-2e51f1b3e07d,en,translation,game.kingdom.dashboard.menu,Dashboard
+e4a681e3-836c-4773-8b48-f649f249a2b0,en,translation,game.kingdom.create.menu,Create!
+041a4d39-e269-4c4b-9319-53e4356f08bf,en,translation,game.kingdom.list.menu,List
+8f05cd16-f609-47b6-bc04-8e3b89794688,en,translation,game.kingdom.title,Kingdoms Overview
+d36255e3-fbef-400d-bf0c-feccd8ba7824,en,translation,game.kingdom.subtitle,Here you will find all information about your Kingdoms in one place!
+18b5dac2-d823-49f3-b37e-f50895f7c1f5,en,translation,game.kingdom.create.title,Create Kingdom!
+6458b66a-b810-4db3-8551-b500227d16b4,en,translation,game.kingdom.create.form.submit,Create!
+98d6d873-f185-4cfe-ab06-406a5888ce2c,en,translation,game.kingdom.form.cancel,Cancel!
+0c2ac08d-88af-4443-a771-72c3735899f4,en,translation,game.kingdom.form.name.label,Kingdom name
+a3a7e96d-a938-43d4-ac69-2a1a8a95b789,en,translation,game.kingdom.list.title,Kingdoms
+62f96412-a6af-4d09-86ab-ca7eae910daf,cs,translation,root.home.menu,Domů

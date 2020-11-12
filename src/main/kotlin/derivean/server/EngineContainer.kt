@@ -12,6 +12,7 @@ import derivean.lib.pool.PoolConfig
 import derivean.lib.upgrade.IUpgradeManager
 import derivean.server.auth.RoleService
 import derivean.server.config.EngineConfig
+import derivean.server.rest.game.GameHttpModule
 import derivean.server.rest.public.PublicHttpModule
 import derivean.server.rest.root.RootHttpModule
 import derivean.server.upgrade.u2020_10_21.u2020_10_21
@@ -40,6 +41,7 @@ object EngineContainer {
 			register(DiscoveryHttpModule::class)
 			register(ClientHttpModule::class)
 			register(PublicHttpModule::class)
+			register(GameHttpModule::class)
 			register(RootHttpModule::class)
 		}
 		block(this)

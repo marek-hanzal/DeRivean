@@ -41,7 +41,7 @@ class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMappe
 		entity.login = request.login
 		entity.password = request.password?.let { authenticatorService.encrypt(it) }
 		entity.site = "game"
-		entity.roles = SizedCollection(listOf(roleRepository.findByName("gamer")))
+		entity.roles = SizedCollection(listOf(roleRepository.findByName("game")))
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
