@@ -42,8 +42,10 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 	private val userRepository: UserRepository by container.lazy()
 
 	override fun map(request: Request, entity: Kingdom) {
+		// it's possible to use Pair<Call, Request> instead of <Request> and inject call to map here.
+		TODO("find way how to extract user id from current request here (some service? How to bind current application call? - nope, concurrency)")
 		entity.name = request.name
-		entity.user = userRepository.find(request.user)
+//		entity.user = userRepository.find(request.user)
 		repository.useTemplate("template", entity)
 	}
 
@@ -55,7 +57,6 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 	}
 
 	data class Request(
-		val user: String,
 		val name: String,
 	)
 }
