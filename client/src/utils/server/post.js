@@ -1,6 +1,8 @@
 import axios from "axios";
 import {Server} from "server";
 import Routes from "site/Routes";
+import handleError from "utils/server/handleError";
+import handleSuccess from "utils/server/handleSuccess";
 
 const post = (
 	href,
@@ -11,21 +13,8 @@ const post = (
 ) => {
 	events.on("http-401", () => setTimeout(() => navigate(Routes.root.sessionExpired.link()), 0), 100);
 	Server.post(href, data, {cancelToken: (cancelToken || axios.CancelToken.source()).token})
-		.then(({data}) => {
-			events.call("success", data);
-			events.call("done");
-		})
-		.catch(error => {
-			if (axios.isCancel(error)) {
-				return;
-			}
-			if (error.response && error.response.status) {
-				events.call("http-" + error.response.status, error.response.data);
-			} else {
-				events.call("error", error);
-			}
-			events.call("done");
-		});
+		.then(response => handleSuccess(response, events))
+		.catch(error => handleError(error, events));
 };
 
 export default post;
