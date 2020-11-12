@@ -1,9 +1,9 @@
 import SignOutIcon from "component/icon/SignOutIcon";
 import MenuItem from "component/menu/MenuItem";
 
-const LogoutMenuItem = (props) => {
+const LogoutMenuItem = ({id, ...props}) => {
 	return (
-		<MenuItem id={`${props.id}.sign-out`} href={props.href} icon={<SignOutIcon/>} {...props}/>
+		<MenuItem id={`${id}.sign-out`} href={props.href} icon={<SignOutIcon/>} {...props}/>
 	);
 };
 

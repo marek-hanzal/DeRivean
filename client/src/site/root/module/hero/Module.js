@@ -1,5 +1,5 @@
+import HeroIcon from "site/common/icon/HeroIcon";
 import {doHeroCreate, doHeroDelete, doHeroUpdate, fetchHeroPage} from "site/root/module/hero/action/action";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import {useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/hook/hook";
 import HeroView from "site/root/module/hero/view/HeroView";
 import Routes from "site/Routes";

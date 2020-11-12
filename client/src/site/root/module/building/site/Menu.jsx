@@ -9,8 +9,8 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import BuildingIcon from "site/common/icon/BuildingIcon";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import Routes from "site/Routes";
 import route from "utils/route/route";
 

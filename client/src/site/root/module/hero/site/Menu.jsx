@@ -9,8 +9,8 @@ import MenuDivider from "component/menu/MenuDivider";
 import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import HeroIcon from "site/common/icon/HeroIcon";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import Routes from "site/Routes";
 import route from "utils/route/route";
 

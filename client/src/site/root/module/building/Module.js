@@ -1,5 +1,5 @@
+import BuildingIcon from "site/common/icon/BuildingIcon";
 import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, fetchBuildingPage} from "site/root/module/building/action/action";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
 import {useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/hook/hook";
 import BuildingView from "site/root/module/building/view/BuildingView";
 import Routes from "site/Routes";

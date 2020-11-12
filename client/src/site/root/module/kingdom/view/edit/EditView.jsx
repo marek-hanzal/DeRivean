@@ -1,5 +1,5 @@
+import CommonEditView from "site/common/view/CommonEditView";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
-import CommonEditView from "site/root/view/common/CommonEditView";
 
 const EditView = () => {
 	return (

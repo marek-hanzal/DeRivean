@@ -1,7 +1,7 @@
 import {QuestionCircleOutlined} from "@ant-design/icons";
+import BuildingIcon from "site/common/icon/BuildingIcon";
+import HeroIcon from "site/common/icon/HeroIcon";
 import KingdomIcon from "site/common/icon/KingdomIcon";
-import BuildingIcon from "site/root/module/building/component/icon/BuildingIcon";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 
