@@ -48,11 +48,11 @@ const Routes = {
 			match: () => "/kingdom/*",
 			dashboard: {
 				match: () => "dashboard/*",
-				link: "/kingdom/dashboard",
+				link: () => "/kingdom/dashboard",
 			},
 			create: {
 				match: () => "create/*",
-				link: "/kingdom/create",
+				link: () => "/kingdom/create",
 			},
 			edit: {
 				match: () => "k/:kingdom/edit",
@@ -61,7 +61,7 @@ const Routes = {
 			},
 			list: {
 				match: () => "list/*",
-				link: "/kingdom/list",
+				link: () => "/kingdom/list",
 			},
 			home: {
 				match: () => "k/:kingdom/home",
