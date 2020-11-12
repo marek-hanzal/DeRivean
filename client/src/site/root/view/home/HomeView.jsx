@@ -48,11 +48,15 @@ const HomeView = () => {
 	layoutContext.useMenuSelect("root.home");
 	return (
 		<ModuleContext.Provider value={{id: "root.home"}}>
-			<RootView>
-				<Card title={t("root.home.title")}>
-					<ResolveStatus status={status} validation={validation}/>
-				</Card>
-			</RootView>
+			<ModuleContext.Consumer>
+				{({id}) => (
+					<RootView>
+						<Card title={t(`${id}.title`)}>
+							<ResolveStatus status={status} validation={validation}/>
+						</Card>
+					</RootView>
+				)}
+			</ModuleContext.Consumer>
 		</ModuleContext.Provider>
 	);
 };
