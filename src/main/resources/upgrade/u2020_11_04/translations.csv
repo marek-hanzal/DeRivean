@@ -366,9 +366,7 @@ c3eca859-9d5a-43d7-a26c-27f7bb916708,en,translation,root.server.error.Missing te
 08bf8e4c-6def-4cf6-98ee-aa54a9dfe830,en,translation,game.home.menu,Home
 a5891ded-c3d0-45c9-b140-08d2cfdb2461,en,translation,game.sign-out.menu,Sign out!
 2d222e5e-aa44-41ee-a5ab-764f14ea65c0,en,translation,game.home.title,World of DeRivean
-abd40682-8198-41e8-88c4-c1820d041ed5,en,translation,game.kingdom.menu,Kingdoms
 2cc20b6c-f3b5-42e5-9374-2e51f1b3e07d,en,translation,game.kingdom.dashboard.menu,Dashboard
-e4a681e3-836c-4773-8b48-f649f249a2b0,en,translation,game.kingdom.create.menu,Create!
 041a4d39-e269-4c4b-9319-53e4356f08bf,en,translation,game.kingdom.list.menu,List
 8f05cd16-f609-47b6-bc04-8e3b89794688,en,translation,game.kingdom.title,Kingdoms Overview
 d36255e3-fbef-400d-bf0c-feccd8ba7824,en,translation,game.kingdom.subtitle,Here you will find all information about your Kingdoms in one place!
@@ -392,3 +390,5 @@ f38d6f07-6b1b-46ab-b303-9a5cf772f89d,en,translation,game.kingdom.delete.success,
 cb8e97f7-437f-4b00-97d4-24dc272fb4b3,en,translation,game.sign-out.subtitle,We're sad you're leaving - but we hope see you soon!
 4144797b-3bce-4bbf-bf5e-72eab8526a3f,en,translation,game.sign-out.button.sign-out,Papa!
 ebdeed25-f9f5-45d6-8c42-502e9d6d8682,en,translation,game.sign-out.button.back,Back!
+abd40682-8198-41e8-88c4-c1820d041ed5,en,translation,game.kingdom.menu,Kingdom
+e4a681e3-836c-4773-8b48-f649f249a2b0,en,translation,game.kingdom.create.menu,Create
