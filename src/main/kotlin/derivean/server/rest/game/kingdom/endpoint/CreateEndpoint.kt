@@ -10,8 +10,7 @@ import derivean.lib.rest.conflictWithUnique
 import derivean.server.kingdom.KingdomRepository
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.rest.game.AbstractCreateMapper
-import derivean.server.user.ResourceLimitService
-import derivean.server.user.UserKingdomRepository
+import derivean.server.user.UserResourceService
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
@@ -43,14 +42,13 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Request, Kingdom>(container) {
 	override val repository: KingdomRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
-	private val userKingdomRepository: UserKingdomRepository by container.lazy()
-	private val resourceLimitService: ResourceLimitService by container.lazy()
+	private val userResourceService: UserResourceService by container.lazy()
 
 	override fun validate(request: ApplicationRequest<Request>) {
 		super.validate(request)
 		user(request.call).let { user ->
 			storage.read {
-				resourceLimitService.check(user, UserAttributes.KINGDOM_LIMIT, userKingdomRepository.total(user.id.value))
+				userResourceService.check(user, UserAttributes.KINGDOM_LIMIT)
 			}
 		}
 	}

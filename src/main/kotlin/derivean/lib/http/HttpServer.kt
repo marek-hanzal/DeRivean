@@ -65,7 +65,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			install(Sessions) {
 				cookie<SessionTicket>("ticket") {
 					cookie.extensions["SameSite"] = "Strict"
-					cookie.maxAgeInSeconds = 600
+					cookie.maxAgeInSeconds = 60 * 60
 					cookie.encoding = CookieEncoding.DQUOTES
 					this.serializer = object : SessionSerializer<SessionTicket> {
 						override fun deserialize(text: String) = SessionTicket(UUID.fromString(text))
