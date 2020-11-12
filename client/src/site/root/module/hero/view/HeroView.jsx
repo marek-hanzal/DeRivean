@@ -1,9 +1,6 @@
-import {doHeroCreate, doHeroDelete, doHeroUpdate, fetchHeroPage} from "site/root/module/hero/action/action";
-import HeroContext from "site/root/module/hero/component/HeroContext";
-import HeroIcon from "site/root/module/hero/component/icon/HeroIcon";
-import {useHeroAttributesFetch, useHeroFetch} from "site/root/module/hero/hook/hook";
+import ModuleContext from "component/ModuleContext";
+import {CreateHeroModule} from "site/root/module/hero/Module";
 import RootView from "site/root/view/RootView";
-import Routes from "site/Routes";
 
 const HeroView = (
 	{
@@ -11,22 +8,9 @@ const HeroView = (
 		...props
 	}) => {
 	return (
-		<HeroContext.Provider
-			value={{
-				base: HeroView,
-				icon: <HeroIcon/>,
-				id: "root.hero",
-				link: Routes.root.hero,
-				create: doHeroCreate,
-				update: doHeroUpdate,
-				delete: doHeroDelete,
-				fetch: useHeroFetch,
-				page: fetchHeroPage,
-				attributes: useHeroAttributesFetch,
-				param: "hero",
-				parentParam: "kingdom",
-			}}
-			children={<RootView context={HeroContext} {...props} children={children}/>}
+		<ModuleContext.Provider
+			value={CreateHeroModule()}
+			children={<RootView {...props} children={children}/>}
 		/>
 	);
 };
