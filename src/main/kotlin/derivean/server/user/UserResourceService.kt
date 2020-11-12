@@ -2,8 +2,8 @@ package derivean.server.user
 
 import derivean.game.user.UserAttributes
 import derivean.lib.container.IContainer
+import derivean.lib.resource.AbstractResourceService
 import derivean.server.attribute.EntityWithAttributesType
-import derivean.server.resource.AbstractResourceService
 import derivean.server.resource.limitOf
 
 class UserResourceService(container: IContainer) : AbstractResourceService<EntityWithAttributesType>(container) {
