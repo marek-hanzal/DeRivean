@@ -32,12 +32,12 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class DeleteMapper(container: IContainer) : AbstractActionMapper<DeleteMapper.Request, Response<out Any>>(container) {
+class DeleteMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<DeleteMapper.Request>, Response<out Any>>(container) {
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
-	override fun resolve(item: Request) = try {
+	override fun resolve(item: ApplicationRequest<Request>) = try {
 		ok(storage.write {
-			kingdomRepository.delete(item.id)
+			kingdomRepository.delete(item.request.id)
 		})
 	} catch (e: Throwable) {
 		logger.error(e.message, e)

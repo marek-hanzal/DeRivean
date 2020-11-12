@@ -32,12 +32,12 @@ class SearchEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class SearchMapper(container: IContainer) : AbstractActionMapper<SearchMapper.Request, Response<out Any>>(container) {
+class SearchMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<SearchMapper.Request>, Response<out Any>>(container) {
 	private val translationRepository: TranslationRepository by container.lazy()
 	private val fetchMapper: FetchMapper by container.lazy()
 
-	override fun resolve(item: Request) = try {
-		ok(Result(storage.read { translationRepository.search(item.search).map { fetchMapper.map(it) } }))
+	override fun resolve(item: ApplicationRequest<Request>) = try {
+		ok(Result(storage.read { translationRepository.search(item.request.search).map { fetchMapper.map(it) } }))
 	} catch (e: Throwable) {
 		logger.error(e.message, e)
 		internalServerError(ValidationResponse.build {

@@ -3,6 +3,7 @@ package derivean.server.rest.public.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
@@ -30,18 +31,20 @@ class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container
 	}
 }
 
-class RegisterMapper(container: IContainer) : AbstractCreateMapper<RegisterMapper.Request, User>(container) {
+class RegisterMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<RegisterMapper.Request>, User>(container) {
 	override val repository: UserRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val roleRepository: RoleRepository by container.lazy()
 
-	override fun map(request: Request, entity: User) {
-		entity.name = request.name
-		entity.login = request.login
-		entity.password = request.password?.let { authenticatorService.encrypt(it) }
-		entity.site = "game"
-		entity.roles = SizedCollection(listOf(roleRepository.findByName("game")))
+	override fun map(request: ApplicationRequest<Request>, entity: User) {
+		request.request.let {
+			entity.name = it.name
+			entity.login = it.login
+			entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
+			entity.site = "game"
+			entity.roles = SizedCollection(listOf(roleRepository.findByName("game")))
+		}
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {

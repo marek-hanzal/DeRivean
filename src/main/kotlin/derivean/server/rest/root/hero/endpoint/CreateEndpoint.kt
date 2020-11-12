@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.hero.HeroRepository
@@ -38,17 +39,19 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Request, Hero>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, Hero>(container) {
 	override val repository: HeroRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val attributesMapper: AttributesMapper by container.lazy()
 
-	override fun map(request: Request, entity: Hero) {
-		entity.name = request.name
-		entity.kingdom = kingdomRepository.find(request.kingdom)
-		entity.user = entity.kingdom.user
-		repository.attributes(entity.id, attributesMapper.map(request.attributes))
+	override fun map(request: ApplicationRequest<Request>, entity: Hero) {
+		request.request.let {
+			entity.name = it.name
+			entity.kingdom = kingdomRepository.find(it.kingdom)
+			entity.user = entity.kingdom.user
+			repository.attributes(entity.id, attributesMapper.map(it.attributes))
+		}
 	}
 
 	override fun resolveException(message: String): Response<out Any>? {
