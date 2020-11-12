@@ -388,3 +388,7 @@ c1cfcb0a-8350-4aa7-bebd-c8264c3e9856,en,translation,game.kingdom.edit.form.submi
 7ae1b909-cff5-4642-bdd6-210a76bcc1cd,en,translation,game.kingdom.edit.form.delete,Delete!
 f38d6f07-6b1b-46ab-b303-9a5cf772f89d,en,translation,game.kingdom.delete.success,Your Kingdom has been successfully deleted. All building are burning in the Hell Fire and Death is taking souls of all your Heroes!
 563c4c2f-a52b-471a-b870-097d8b564b89,en,translation,game.kingdom.update.success,Kingdom updated!
+7b0c5736-bcc0-44cb-ac9a-29d031d1da6f,en,translation,game.sign-out.title,Do you want to leave the game?
+cb8e97f7-437f-4b00-97d4-24dc272fb4b3,en,translation,game.sign-out.subtitle,We're sad you're leaving - but we hope see you soon!
+4144797b-3bce-4bbf-bf5e-72eab8526a3f,en,translation,game.sign-out.button.sign-out,Papa!
+ebdeed25-f9f5-45d6-8c42-502e9d6d8682,en,translation,game.sign-out.button.back,Back!
