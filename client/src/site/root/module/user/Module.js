@@ -28,7 +28,7 @@ function CreateUserModule() {
 	module.param = "user";
 	module.attributes = useUserAttributesFetch;
 	module.search = doUserSearch;
-	return module;
+	return module.validate();
 }
 
 export {

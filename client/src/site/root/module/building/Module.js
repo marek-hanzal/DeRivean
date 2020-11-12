@@ -27,7 +27,7 @@ function CreateBuildingModule() {
 	module.param = "building";
 	module.parent = "kingdom";
 	module.attributes = useBuildingAttributesFetch;
-	return module;
+	return module.validate();
 }
 
 export {

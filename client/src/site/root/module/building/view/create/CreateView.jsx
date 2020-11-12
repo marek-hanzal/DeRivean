@@ -7,9 +7,9 @@ const CreateView = () => {
 	return (
 		<BuildingView>
 			<ModuleContext.Consumer>
-				{({parentParam}) => (
+				{({parent}) => (
 					<CommonCreateView
-						param={parentParam}
+						param={parent}
 						defaultEnableSubmit={true}
 						readyCount={1}
 						children={<AttributeFieldEditor/>}
