@@ -2,10 +2,10 @@ package derivean.server.rest.root.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
-import derivean.lib.rest.AbstractFetchEndpoint
 import derivean.lib.storage.EntityUUID
 import derivean.server.building.BuildingRepository
 import derivean.server.building.entities.Building
+import derivean.server.rest.root.AbstractFetchEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
 
