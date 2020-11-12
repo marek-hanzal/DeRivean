@@ -20,7 +20,7 @@ abstract class AbstractResourceService<T>(container: IContainer) : AbstractServi
 
 	override fun check(principal: String, who: T, resource: String) {
 		storage.read {
-			usages.getOrDefault(resource) { 0.0 }.let { getUsage ->
+			(usages[resource] ?: { 0.0 }).let { getUsage ->
 				val usage = getUsage(who)
 				limit(who, resource)?.let { limit ->
 					if (usage >= limit) {
