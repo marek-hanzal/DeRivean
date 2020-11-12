@@ -378,3 +378,13 @@ d36255e3-fbef-400d-bf0c-feccd8ba7824,en,translation,game.kingdom.subtitle,Here y
 0c2ac08d-88af-4443-a771-72c3735899f4,en,translation,game.kingdom.form.name.label,Kingdom name
 a3a7e96d-a938-43d4-ac69-2a1a8a95b789,en,translation,game.kingdom.list.title,Kingdoms
 62f96412-a6af-4d09-86ab-ca7eae910daf,cs,translation,root.home.menu,Domů
+c979bb3c-eaf6-48c9-b8d6-0f94b8f749a4,en,translation,game.kingdom.create.conflict,Cannot create Kingdom - please check input fields!
+a7eab0c5-1881-4f05-9ce5-33a3ac7e9540,en,translation,game.kingdom.create.success,Congratulations to your new Kingdom!
+df6d9af8-de49-4b3c-988c-e33b4ce61453,en,translation,game.kingdom.home.back.menu,Back
+88e44ad2-bbf5-4c6f-b335-5ea2aae0370c,en,translation,game.kingdom.edit.menu,Edit
+fa3cfc3a-c139-49ab-b39c-e161694f634a,en,translation,game.kingdom.edit.form.deleteConfirm,"Do you want to delete selected Kingdom? This will destroy everything within Kingdom (buildings, heroes, overall progress) - aaand cannot be taken back!"
+b08bdc8c-5c9a-4f2b-9d10-903bea2dce71,en,translation,game.kingdom.edit.form.edit,Edit!
+c1cfcb0a-8350-4aa7-bebd-c8264c3e9856,en,translation,game.kingdom.edit.form.submit,Save changes!
+7ae1b909-cff5-4642-bdd6-210a76bcc1cd,en,translation,game.kingdom.edit.form.delete,Delete!
+f38d6f07-6b1b-46ab-b303-9a5cf772f89d,en,translation,game.kingdom.delete.success,Your Kingdom has been successfully deleted. All building are burning in the Hell Fire and Death is taking souls of all your Heroes!
+563c4c2f-a52b-471a-b870-097d8b564b89,en,translation,game.kingdom.update.success,Kingdom updated!

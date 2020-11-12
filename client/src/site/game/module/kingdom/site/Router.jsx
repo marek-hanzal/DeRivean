@@ -1,6 +1,7 @@
 import BaseRoutes from "component/route/BaseRoutes";
 import CreateView from "site/game/module/kingdom/view/create/CreateView";
 import DashboardView from "site/game/module/kingdom/view/dashboard/DashboardView";
+import EditView from "site/game/module/kingdom/view/edit/EditView";
 import HomeView from "site/game/module/kingdom/view/home/HomeView";
 import ListView from "site/game/module/kingdom/view/list/ListView";
 import Routes from "site/Routes";
@@ -17,7 +18,7 @@ const Router = () => {
 				route(links.create.match(), <CreateView/>),
 				route(links.list.match(), <ListView/>),
 				route(links.home.match(), <HomeView/>),
-				// route(links.edit.match(), <EditView/>),
+				route(links.edit.match(), <EditView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>

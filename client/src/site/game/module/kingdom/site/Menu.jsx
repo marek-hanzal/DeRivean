@@ -47,6 +47,14 @@ const Menu = () => {
 					{/*<MenuDivider/>*/}
 					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
 				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
+				</BaseMenu>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
 				route(link.list.match(), <DefaultMenu/>),
