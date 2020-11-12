@@ -1,0 +1,7 @@
+const useStatistics = () => {
+
+};
+
+export {
+	useStatistics,
+};

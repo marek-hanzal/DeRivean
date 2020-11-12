@@ -3,13 +3,13 @@ import ErrorIcon from "component/icon/ErrorIcon";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import ModuleIcon from "site/common/icon/ModuleIcon";
-import {useStatistics} from "site/root/hook/hook";
+import {useStatistics} from "site/game/hook/hook";
 import Events from "utils/Events";
 
 const OverallStatistics = (
 	{
 		action,
-		show = ["users", "kingdoms", "buildings", "heroes", "translations"],
+		show = ["kingdoms", "buildings", "heroes"],
 		exclude = [],
 	}) => {
 	const {t} = useTranslation();
@@ -24,7 +24,7 @@ const OverallStatistics = (
 			})
 			.on("error", () => {
 				setLoading(false);
-				message.error(t("root.statistic.fetch-error"));
+				message.error(t("game.statistic.fetch-error"));
 			})
 			.on("http-403", () => {
 				setUnavailable(true);
@@ -33,16 +33,16 @@ const OverallStatistics = (
 	return (
 		<Card style={{textAlign: "center"}}>
 			{unavailable ?
-				<Tooltip defaultVisible title={<><ErrorIcon/>&nbsp;{t("root.statistics.unavailable")}</>}>
+				<Tooltip defaultVisible title={<><ErrorIcon/>&nbsp;{t("game.statistics.unavailable")}</>}>
 					<Spin spinning={true} indicator={null}>
 						<Space size={"large"} split={<Divider type={"vertical"}/>} style={{textAlign: "center"}}>
-							{show.filter(value => !exclude.includes(value)).map(item => <Statistic key={item} title={t(`root.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
+							{show.filter(value => !exclude.includes(value)).map(item => <Statistic key={item} title={t(`game.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
 						</Space>
 					</Spin>
 				</Tooltip> :
 				<Spin spinning={loading}>
 					<Space size={"large"} split={<Divider type={"vertical"}/>} style={{textAlign: "center"}}>
-						{show.filter(value => !exclude.includes(value)).map(item => <Statistic key={item} title={t(`root.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
+						{show.filter(value => !exclude.includes(value)).map(item => <Statistic key={item} title={t(`game.statistic.${item}`)} value={data[item]} prefix={<ModuleIcon module={item}/>}/>)}
 					</Space>
 				</Spin>
 			}

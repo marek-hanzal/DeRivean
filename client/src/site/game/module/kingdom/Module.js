@@ -1,7 +1,7 @@
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import {doKingdomCreate, doKingdomDelete, doKingdomUpdate, fetchKingdomPage} from "site/game/module/kingdom/action/action";
+import {useKingdomFetch} from "site/game/module/kingdom/hook/hook";
 import KingdomView from "site/game/module/kingdom/view/KingdomView";
-import {useKingdomFetch} from "site/root/module/kingdom/hook/hook";
 import Routes from "site/Routes";
 import Module from "utils/Module";
 

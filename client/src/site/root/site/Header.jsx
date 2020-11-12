@@ -10,8 +10,8 @@ import {Link, useNavigate} from "react-router-dom";
 import BuildingIcon from "site/common/icon/BuildingIcon";
 import HeroIcon from "site/common/icon/HeroIcon";
 import KingdomIcon from "site/common/icon/KingdomIcon";
+import ModuleIcon from "site/common/icon/ModuleIcon";
 import {doSearch} from "site/root/action/action";
-import ModuleIcon from "site/root/component/ModuleIcon";
 import Routes from "site/Routes";
 
 function warpTo(navigate, item, target = "home") {
