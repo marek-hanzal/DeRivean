@@ -20,9 +20,9 @@ const ErrorResult = ({validation}) => {
 							<Alert
 								message={t("root.server.error." + error.text)}
 								description={
-									<Centered>
+									<Centered span={10}>
 										<Divider type={"horizontal"}/>
-										{error.action ? <Button icon={<HeartFilled/>} type={"danger"} ghost children={t("root.server.error.action." + error.action)}/> : t("root.server.error.action-unavailable")}
+										{error.action ? <Button style={{width: "100%"}} icon={<HeartFilled/>} type={"danger"} ghost children={t("root.server.error.action." + error.action)}/> : t("root.server.error.action-unavailable")}
 									</Centered>
 								}
 								type="warning"
