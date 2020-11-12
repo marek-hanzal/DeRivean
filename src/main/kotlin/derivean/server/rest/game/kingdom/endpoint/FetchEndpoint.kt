@@ -2,11 +2,11 @@ package derivean.server.rest.game.kingdom.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
-import derivean.lib.rest.AbstractFetchEndpoint
 import derivean.lib.storage.EntityUUID
 import derivean.server.kingdom.KingdomRepository
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.rest.common.Attribute
+import derivean.server.rest.game.AbstractFetchEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
 

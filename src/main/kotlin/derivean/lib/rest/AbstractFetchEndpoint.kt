@@ -13,7 +13,7 @@ import io.ktor.util.*
 import org.jetbrains.exposed.dao.UUIDEntity
 
 @KtorExperimentalAPI
-abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(container) {
+abstract class AbstractFetchEndpoint(container: IContainer, vararg val roles: String) : AbstractEndpoint(container) {
 	val storage: IStorage by container.lazy()
 
 	fun <T : UUIDEntity> fetch(routing: Routing, url: String, name: String, mapper: IMapper<T, out Any>, repository: IRepository<T>) {
@@ -23,7 +23,7 @@ abstract class AbstractFetchEndpoint(container: IContainer) : AbstractEndpoint(c
 			this.description = "Get [$name] by UUID."
 		}
 		routing.authenticate {
-			withAnyRole("root") {
+			withAnyRole(*roles) {
 				get(url) {
 					call.resolve(badRequest("Missing id parameter in url: [$url/fetch/{id}]."))
 				}

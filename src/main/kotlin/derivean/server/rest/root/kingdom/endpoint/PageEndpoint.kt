@@ -1,13 +1,13 @@
 package derivean.server.rest.root.kingdom.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.page.AbstractPageEndpoint
+import derivean.server.rest.root.AbstractPageEndpoint
 import derivean.server.user.UserKingdomRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 
 @KtorExperimentalAPI
-class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "root") {
+class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val userKingdomRepository: UserKingdomRepository by container.lazy()
 

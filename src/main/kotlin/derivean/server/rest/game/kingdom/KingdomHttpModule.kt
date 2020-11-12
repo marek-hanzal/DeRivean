@@ -2,6 +2,7 @@ package derivean.server.rest.game.kingdom
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
+import derivean.server.rest.game.kingdom.endpoint.CreateEndpoint
 import derivean.server.rest.game.kingdom.endpoint.FetchEndpoint
 import derivean.server.rest.game.kingdom.endpoint.PageEndpoint
 import io.ktor.routing.*
@@ -12,6 +13,7 @@ class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		install(
 			routing,
+			CreateEndpoint::class,
 			FetchEndpoint::class,
 			PageEndpoint::class,
 		)
