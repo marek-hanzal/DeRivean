@@ -9,7 +9,7 @@
     <option name="MAIN_CLASS_NAME" value="derivean.server.EngineKt" />
     <option name="WORKING_DIRECTORY" value="" />
     <envs>
-      <env name="DATABASE_URL" value="jdbc:postgresql://localhost:5432/derivean" />
+      <env name="DATABASE_URL" value="jdbc:postgresql://localhost:5432/derivean?currentSchema=development" />
       <env name="DATABASE_USER" value="postgres" />
       <env name="DATABASE_PASSWORD" value="1234" />
       <env name="HTTP_HOST" value="http://localhost:3000" />

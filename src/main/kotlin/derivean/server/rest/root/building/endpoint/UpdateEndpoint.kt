@@ -12,6 +12,7 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.joda.time.DateTime
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -47,6 +48,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 				fetchMapper.map(
 					buildingRepository.update(it.id) {
 						it.name?.let { name -> this.name = name }
+						it.built?.let { built -> this.built = DateTime(built) }
 						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
 					}
 				)
@@ -62,6 +64,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	data class Request(
 		val id: String,
 		val name: String?,
+		val built: String?,
 		val attributes: Attributes?,
 	)
 }

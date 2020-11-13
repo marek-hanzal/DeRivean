@@ -16,6 +16,7 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.joda.time.DateTime
 
 @KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -49,6 +50,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override fun map(request: ApplicationRequest<Request>, entity: Building) {
 		request.request.let {
 			entity.name = it.name
+			entity.built = it.built
 			entity.kingdom = kingdomRepository.find(it.kingdom)
 			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 		}
@@ -56,5 +58,10 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 
 	override fun resolveException(message: String): Response<out Any>? = null
 
-	data class Request(val kingdom: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val kingdom: String,
+		val name: String,
+		val built: DateTime?,
+		val attributes: Attributes?
+	)
 }
