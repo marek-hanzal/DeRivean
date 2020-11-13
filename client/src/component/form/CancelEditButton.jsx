@@ -24,14 +24,14 @@ const CancelEditButton = (
 						title={t(translation + ".edit.form.cancelConfirm")}
 						onConfirm={() => {
 							editorContext.setEditor(false);
-							values(editorContext.form, editorContext.initials);
+							values(editorContext.form, editorContext.inputMapper(editorContext.initials));
 							editorContext.setErrors(null);
 						}}
 						children={<Button type={"dashed"} danger ghost icon={<CancelIcon/>}>{t(translation + ".form.cancel")}</Button>}
 					/> :
 					<Button type={"dashed"} danger ghost icon={<CancelIcon/>} onClick={() => {
 						editorContext.setEditor(false);
-						values(editorContext.form, editorContext.initials);
+						values(editorContext.form, editorContext.inputMapper(editorContext.initials));
 						editorContext.setErrors(null);
 					}}>{t(translation + ".form.cancel")}</Button>
 			)}

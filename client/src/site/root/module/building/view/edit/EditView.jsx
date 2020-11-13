@@ -1,3 +1,4 @@
+import {Card} from "antd";
 import moment from "moment";
 import CommonEditView from "site/common/view/CommonEditView";
 import BuiltInput from "site/root/module/building/component/form/BuiltInput";
@@ -12,7 +13,9 @@ const EditView = () => {
 					return {...values, built: moment(values.built)};
 				}}
 			>
-				<BuiltInput/>
+				<Card>
+					<BuiltInput/>
+				</Card>
 			</CommonEditView>
 		</BuildingView>
 	);
