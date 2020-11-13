@@ -3,12 +3,12 @@ package derivean.server.rest.root.building.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
+import derivean.lib.utils.asIso
 import derivean.server.building.BuildingRepository
 import derivean.server.building.entities.Building
 import derivean.server.rest.root.AbstractFetchEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.joda.time.format.ISODateTimeFormat
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -30,7 +30,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
-		this.built = item.built?.toLocalDateTime()?.toString(ISODateTimeFormat.dateTimeNoMillis())
+		this.built = item.built?.asIso()
+		this.claim = item.claim?.asIso()
 		item.attributes.forEach {
 			this.attributes.add(Attribute(it.name, it.value))
 		}
@@ -42,6 +43,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		val user: String,
 		val name: String,
 		val built: String?,
+		val claim: String?,
 		val attributes: List<Attribute>,
 	) {
 		companion object {
@@ -54,6 +56,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			var built: String? = null
+			var claim: String? = null
 			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Fetch(
@@ -62,6 +65,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 				user.toString(),
 				name,
 				built,
+				claim,
 				attributes,
 			)
 		}
