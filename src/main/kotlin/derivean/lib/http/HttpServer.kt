@@ -15,8 +15,10 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.sessions.*
 import io.ktor.util.*
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import java.util.*
+import kotlin.random.Random
 import kotlin.reflect.KClass
 
 @KtorExperimentalAPI
@@ -87,9 +89,9 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			/**
 			 * Slow server emulation
 			 */
-//			intercept(ApplicationCallPipeline.Features) {
-//				delay(Random.nextLong(150, 350))
-//			}
+			intercept(ApplicationCallPipeline.Features) {
+				delay(Random.nextLong(250, 850))
+			}
 			modules.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
 				routing {
