@@ -7,7 +7,6 @@ import MenuGroup from "component/menu/MenuGroup";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import BuildingIcon from "site/common/icon/BuildingIcon";
-import HomeMenuItem from "site/common/menu/HomeMenuItem";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import Routes from "site/Routes";
 import route from "utils/route/route";
@@ -19,7 +18,7 @@ const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<HomeMenuItem id={"game"} href={Routes.game}/>
+			<MenuItem key={"game.kingdom"} id={"game.kingdom"} href={Routes.game.kingdom.home} icon={<BackIcon/>}/>
 			<MenuDivider/>
 			<BuildingMenuItem key={id} id={id}/>
 			<MenuDivider/>

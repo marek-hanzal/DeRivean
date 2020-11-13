@@ -8,6 +8,8 @@ import SiteContext from "component/SiteContext";
 import SingOutView from "component/view/SingOutView";
 import {useState} from "react";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import {BuildingMenuRoute} from "site/game/module/building/site/Menu";
+import {BuildingRoute} from "site/game/module/building/site/Router";
 import {KingdomMenuItem, KingdomMenuRoute} from "site/game/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/game/module/kingdom/site/Router";
 import Footer from "site/game/site/Footer";
@@ -34,6 +36,7 @@ const Site = () => {
 					<BaseRoutes
 						routes={[
 							KingdomMenuRoute(),
+							BuildingMenuRoute(),
 							route("*", <BaseMenu>
 								<MenuDivider/>
 								<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>
@@ -49,6 +52,7 @@ const Site = () => {
 					<BaseRoutes
 						routes={[
 							KingdomRoute(),
+							BuildingRoute(),
 							route(link.signIn.link(), <SingInView/>),
 							route(link.signOut.link(), <SingOutView id={"game"}/>),
 							route(link.sessionExpired.link(), <SessionExpiredView/>),
