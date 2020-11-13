@@ -9,7 +9,7 @@ class UserResourceService(container: IContainer) : AbstractAttributeResourceServ
 	private val userKingdomRepository: UserKingdomRepository by container.lazy()
 
 	override fun usages(): Map<String, (User) -> Double> = mapOf(
-		UserAttributes.KINGDOM_LIMIT to { userKingdomRepository.total(it.id.value).toDouble() },
+		usageOf(UserAttributes.KINGDOM_LIMIT) { userKingdomRepository.total(it.id.value).toDouble() }
 	)
 
 	override fun limits(): Map<String, (User) -> Double?> = mapOf(
