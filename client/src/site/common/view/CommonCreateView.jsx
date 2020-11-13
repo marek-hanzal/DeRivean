@@ -7,6 +7,7 @@ import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
+import SiteContext from "component/SiteContext";
 import PropTypes from "prop-types";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
@@ -24,6 +25,7 @@ const CommonCreateView = (
 	}) => {
 	name = name || "name";
 	const moduleContext = useContext(ModuleContext);
+	const siteContext = useContext(SiteContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const navigate = useNavigate();
@@ -33,6 +35,7 @@ const CommonCreateView = (
 	param = param || moduleContext.param;
 	return (
 		<BaseEditor
+			defaultInitials={siteContext.initials}
 			enableEditor={true}
 			readyCount={readyCount}
 			defaultEnableSubmit={defaultEnableSubmit}

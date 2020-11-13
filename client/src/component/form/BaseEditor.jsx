@@ -1,11 +1,12 @@
 import {Form} from "antd";
 import EditorContext from "component/form/EditorContext";
 import PropTypes from "prop-types";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const BaseEditor = (
 	{
 		name,
+		defaultInitials,
 		readyCount,
 		enableEditor = false,
 		defaultEnableSubmit,
@@ -14,12 +15,16 @@ const BaseEditor = (
 		children,
 	}) => {
 	const [errors, setErrors] = useState();
-	const [initials, setInitials] = useState();
+	const [initials, setInitials] = useState(defaultInitials);
 	const [editor, setEditor] = useState(enableEditor);
 	const [ready, setReady] = useState(readyCount || 0);
 	const [enableSubmit, setEnableSubmit] = useState(defaultEnableSubmit);
 	const [form] = Form.useForm();
 	const isReady = () => setReady(prev => Math.max(0, prev - 1));
+	useEffect(() => {
+		form.setFieldsValue(defaultInitials);
+		// eslint-disable-next-line
+	}, []);
 	return (
 		<Form
 			name={name}

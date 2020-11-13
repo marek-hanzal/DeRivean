@@ -1,11 +1,13 @@
 import {FrownOutlined, HeartFilled} from "@ant-design/icons";
 import {Alert, Button, Divider, List, Result} from "antd";
 import Centered from "component/layout/Centered";
-import ModuleContext from "component/ModuleContext";
+import SiteContext from "component/SiteContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import Routes from "site/Routes";
 
 const QuickActionButton = (props) => {
 	const {t} = useTranslation();
@@ -16,16 +18,31 @@ const QuickActionButton = (props) => {
 };
 
 const QuickAction = ({action}) => {
-	const moduleContext = useContext(ModuleContext);
+	const siteContext = useContext(SiteContext);
+	const navigate = useNavigate();
 	const {t} = useTranslation();
-
-	console.log("action", action);
-
 	switch (action) {
 		case "create-template-user":
-			return <QuickActionButton icon={<UserIcon/>} action={action}/>;
+			return (
+				<QuickActionButton
+					icon={<UserIcon/>}
+					action={action}
+					onClick={() => {
+						siteContext.setInitials({
+							name: "template",
+							login: "template",
+						});
+						navigate(Routes.root.user.create.link());
+					}}
+				/>
+			);
 		case "create-template-kingdom":
-			return <QuickActionButton icon={<KingdomIcon/>} action={action}/>;
+			return (
+				<QuickActionButton
+					icon={<KingdomIcon/>}
+					action={action}
+				/>
+			);
 		default:
 			return t("root.server.error.action-unavailable");
 	}

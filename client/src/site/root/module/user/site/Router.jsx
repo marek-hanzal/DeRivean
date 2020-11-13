@@ -11,19 +11,21 @@ import NotFoundView from "view/NotFoundView";
 
 const links = Routes.root.user;
 
-const Router = () =>
-	<BaseRoutes
-		routes={[
-			route(links.dashboard.match(), <DashboardView/>),
-			route(links.create.match(), <CreateView/>),
-			route(links.edit.match(), <EditView/>),
-			route(links.attributes.match(), <AttributesView/>),
-			route(links.list.match(), <ListView/>),
-			route(links.home.match(), <HomeView/>),
-			route("*", <NotFoundView/>),
-		]}
-	/>
-;
+const Router = () => {
+	return (
+		<BaseRoutes
+			routes={[
+				route(links.dashboard.match(), <DashboardView/>),
+				route(links.create.match(), <CreateView/>),
+				route(links.edit.match(), <EditView/>),
+				route(links.attributes.match(), <AttributesView/>),
+				route(links.list.match(), <ListView/>),
+				route(links.home.match(), <HomeView/>),
+				route("*", <NotFoundView/>),
+			]}
+		/>
+	);
+};
 
 const UserRoute = () => route(links.match(), <Router/>);
 

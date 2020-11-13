@@ -16,7 +16,6 @@ const CreateView = () => {
 			<ModuleContext.Consumer>
 				{({id}) => (
 					<CommonCreateView
-						defaultEnableSubmit={true}
 						// site, template and attributes
 						readyCount={3}
 					>
