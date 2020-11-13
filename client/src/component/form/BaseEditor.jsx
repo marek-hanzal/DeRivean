@@ -12,6 +12,7 @@ const BaseEditor = (
 		defaultEnableSubmit,
 		onFinish,
 		onFinishFailed = () => null,
+		inputMapper = values => values,
 		children,
 	}) => {
 	const [errors, setErrors] = useState();
@@ -22,7 +23,7 @@ const BaseEditor = (
 	const [form] = Form.useForm();
 	const isReady = () => setReady(prev => Math.max(0, prev - 1));
 	useEffect(() => {
-		form.setFieldsValue(defaultInitials);
+		form.setFieldsValue(inputMapper(defaultInitials));
 		// eslint-disable-next-line
 	}, []);
 	return (
@@ -45,6 +46,7 @@ const BaseEditor = (
 						ready,
 						isReady,
 						form,
+						inputMapper,
 					}}
 					children={children}
 				/>
