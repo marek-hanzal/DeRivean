@@ -13,5 +13,5 @@ class Hero(id: EntityUUID) : UUIDEntity(id) {
 	var user by User referencedOn HeroTable.user
 	var kingdom by Kingdom referencedOn HeroTable.kingdom
 	var name by HeroTable.name
-	val attributes by Attribute via HeroAttributeTable
+	var attributes by Attribute via HeroAttributeTable
 }

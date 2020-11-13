@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
+import derivean.server.attribute.AttributeRepository
 import derivean.server.auth.AuthenticatorService
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
@@ -41,6 +42,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val userRepository: UserRepository by container.lazy()
 	private val attributeMapper: AttributesMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
+	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
 		ok(storage.write {
@@ -51,7 +53,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 						it.login?.let { login -> this.login = login }
 						it.site?.let { site -> this.site = site }
 						it.password?.let { password -> this.password = authenticatorService.encrypt(password) }
-						userRepository.attributes(it.id, attributeMapper.map(it.attributes))
+						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
 					}
 				)
 			}

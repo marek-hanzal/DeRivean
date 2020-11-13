@@ -11,5 +11,5 @@ class Building(id: EntityUUID) : UUIDEntity(id) {
 
 	var kingdom by Kingdom referencedOn BuildingTable.kingdom
 	var name by BuildingTable.name
-	val attributes by Attribute via BuildingAttributeTable
+	var attributes by Attribute via BuildingAttributeTable
 }
