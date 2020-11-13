@@ -1,13 +1,32 @@
 import {FrownOutlined, HeartFilled} from "@ant-design/icons";
-import {Alert, Button, Divider, List, Result} from "antd";
+import {Alert, Button, Divider, List, message, Result} from "antd";
+import {DiscoveryContext} from "component/discovery/Discovery";
+import {LayoutContext} from "component/layout/BaseLayout";
 import Centered from "component/layout/Centered";
 import SiteContext from "component/SiteContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import KingdomIcon from "site/common/icon/KingdomIcon";
+import {doUserSearch} from "site/root/module/user/action/action";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
+import Events from "utils/Events";
+
+const onTemplateUser = (siteContext, navigate) => {
+	siteContext.setInitials({
+		name: "template",
+		login: "template",
+	});
+	navigate(Routes.root.user.create.link());
+};
+
+const onTemplateKingdom = (siteContext, navigate, userId) => {
+	siteContext.setInitials({
+		name: "template",
+	});
+	navigate(Routes.root.kingdom.create.link(userId));
+};
 
 const QuickActionButton = (props) => {
 	const {t} = useTranslation();
@@ -19,6 +38,8 @@ const QuickActionButton = (props) => {
 
 const QuickAction = ({action}) => {
 	const siteContext = useContext(SiteContext);
+	const layoutContext = useContext(LayoutContext);
+	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	switch (action) {
@@ -28,11 +49,7 @@ const QuickAction = ({action}) => {
 					icon={<UserIcon/>}
 					action={action}
 					onClick={() => {
-						siteContext.setInitials({
-							name: "template",
-							login: "template",
-						});
-						navigate(Routes.root.user.create.link());
+						onTemplateUser(siteContext, navigate);
 					}}
 				/>
 			);
@@ -41,6 +58,24 @@ const QuickAction = ({action}) => {
 				<QuickActionButton
 					icon={<KingdomIcon/>}
 					action={action}
+					onClick={() => {
+						layoutContext.loadingStart();
+						doUserSearch(
+							discoveryContext,
+							{search: "template"},
+							Events()
+								.on("success", ({items}) => {
+									if (!items[0]) {
+										message.error(t("root.home.error.create-template-user-first"));
+										onTemplateUser(siteContext, navigate);
+										return;
+									}
+									onTemplateKingdom(siteContext, navigate, items[0].id);
+								})
+								.on("done", () => layoutContext.loadingFinish()),
+							navigate,
+						);
+					}}
 				/>
 			);
 		default:
