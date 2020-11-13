@@ -10,7 +10,9 @@ import derivean.server.rest.root.server.ServerHttpModule
 import derivean.server.rest.root.translation.TranslationHttpModule
 import derivean.server.rest.root.user.UserHttpModule
 import io.ktor.routing.*
+import io.ktor.util.*
 
+@KtorExperimentalAPI
 class RootHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		modules(
