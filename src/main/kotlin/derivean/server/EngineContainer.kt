@@ -15,9 +15,7 @@ import derivean.server.config.EngineConfig
 import derivean.server.rest.game.GameHttpModule
 import derivean.server.rest.public.PublicHttpModule
 import derivean.server.rest.root.RootHttpModule
-import derivean.server.upgrade.u2020_10_21.u2020_10_21
-import derivean.server.upgrade.u2020_11_04.u2020_11_04
-import derivean.server.upgrade.u2020_11_08.u2020_11_08
+import derivean.server.upgrade.u2020_11_13.u2020_11_13
 import io.github.config4k.extract
 import io.ktor.util.*
 
@@ -33,9 +31,7 @@ object EngineContainer {
 		 * Common services.
 		 */
 		configurator(IUpgradeManager::class) {
-			register(u2020_10_21::class)
-			register(u2020_11_04::class)
-			register(u2020_11_08::class)
+			register(u2020_11_13::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
