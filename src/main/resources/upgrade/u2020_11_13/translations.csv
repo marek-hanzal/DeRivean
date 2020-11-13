@@ -393,3 +393,4 @@ c8325e56-f657-488a-8fb9-932f567af5bc,en,translation,game.sign-out.button.back,Ba
 458857f3-0e5f-4c15-92fe-d211e9accc2a,en,translation,game.kingdom.menu,Kingdom
 daa40aef-f077-40cc-be9f-6b46af183576,en,translation,game.kingdom.create.menu,Create
 960a6be2-cc17-4c97-af73-f1f6e5546fd5,en,translation,root.server.error.action-unavailable,There is no quick action available.
+93a1c66a-9683-4361-aeff-ffe07cb07760,en,translation,root.home.error.create-template-user-first,Template Kingdom belongs to Template user which is missing. Please create Template User first!
