@@ -42,6 +42,7 @@ const BaseLayout = (
 				loading,
 				isLoading: () => loading > 0,
 				loadingStart: () => {
+					window.scrollTo(0, 0);
 					setLoading(prev => prev + 1);
 				},
 				loadingFinish: () => {
