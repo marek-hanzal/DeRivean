@@ -21,4 +21,8 @@ class AttributeRepository(container: IContainer) : AbstractRepository<Attribute,
 			}
 		})
 	}
+
+	fun attributes(collection: SizedIterable<Attribute>, attributes: SizedIterable<Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
+		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.name, it.value) }.toTypedArray(), replace)
+	}
 }

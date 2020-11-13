@@ -1,4 +1,4 @@
-import {Card} from "antd";
+import {Card, Divider} from "antd";
 import ModuleContext from "component/ModuleContext";
 import CommonCreateView from "site/common/view/CommonCreateView";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
@@ -14,11 +14,12 @@ const CreateView = () => {
 						param={parent}
 						defaultEnableSubmit={true}
 						readyCount={1}
-						children={<AttributeFieldEditor/>}
 					>
 						<Card>
 							<BuiltInput/>
 						</Card>
+						<Divider type={"horizontal"}/>
+						<AttributeFieldEditor/>
 					</CommonCreateView>
 				)}
 			</ModuleContext.Consumer>

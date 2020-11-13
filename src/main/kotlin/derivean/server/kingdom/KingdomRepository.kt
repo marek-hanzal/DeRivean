@@ -1,10 +1,11 @@
 package derivean.server.kingdom
 
-import derivean.game.attribute.Attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
 import derivean.server.attribute.AttributeRepository
+import derivean.server.building.entities.Building
+import derivean.server.hero.entities.Hero
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.kingdom.entities.KingdomTable
 import org.jetbrains.exposed.sql.SortOrder
@@ -28,6 +29,22 @@ class KingdomRepository(container: IContainer) : AbstractRepository<Kingdom, Kin
 	fun useTemplate(template: String, target: Kingdom) = useTemplate(search(template).first(), target)
 
 	fun useTemplate(kingdom: Kingdom, target: Kingdom) {
-		attributeRepository.attributes(target.attributes, kingdom.attributes.map { Attribute(it.name, it.value) }.toTypedArray(), replace = false)
+		target.attributes = attributeRepository.attributes(target.attributes, kingdom.attributes, replace = false)
+		kingdom.buildings.forEach {
+			Building.new {
+				this.kingdom = target
+				this.name = it.name
+				this.built = it.built
+				this.attributes = attributeRepository.attributes(this.attributes, it.attributes)
+			}
+		}
+		kingdom.heroes.forEach {
+			Hero.new {
+				this.kingdom = target
+				this.user = target.user
+				this.name = it.name
+				this.attributes = attributeRepository.attributes(this.attributes, it.attributes)
+			}
+		}
 	}
 }
