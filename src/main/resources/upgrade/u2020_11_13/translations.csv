@@ -397,3 +397,9 @@ f514bc21-a5cb-4bd0-88e4-f1bb0964ca67,en,translation,root.home.error.create-templ
 0a009feb-0271-4a5f-8b6f-f33073385fc7,en,translation,root.building.built.label,Built date
 87f959d6-e30e-4821-a1a8-3db5f1e1b811,en,translation,root.building.built.hint,Pick built time
 d4c40af3-f0bf-4f0a-af24-9cf20b1c5a52,en,translation,game.kingdom.create.resource-limit,"We're sorry, but you have already reached Kingdom Limit!"
+9f4b227b-de5d-4f64-aa23-516e09dd744e,en,translation,game.building.menu,Buildings
+251d5bb1-0d6e-4c6e-8b79-81c0f788cf50,cs,translation,game.building.menu,Budovy
+0f2b4c32-8e34-421b-a81b-68d0e9dc00f0,en,translation,game.building.dashboard.menu,Dashboard
+60269e21-2fe6-449a-a208-b8689f0743de,cs,translation,game.building.dashboard.menu,Nástěnka
+e88b9f01-3f58-4419-8af1-53ecaad8def2,en,translation,game.building.list.menu,List
+2bbbc2a8-01b4-41fe-85ce-374bc4ab24dc,cs,translation,game.building.list.menu,Seznam
