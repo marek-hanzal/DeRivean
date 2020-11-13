@@ -7,6 +7,7 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
+import derivean.server.attribute.AttributeRepository
 import derivean.server.auth.AuthenticatorService
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
@@ -44,6 +45,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val attributesMapper: AttributesMapper by container.lazy()
+	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun map(request: ApplicationRequest<Request>, entity: User) {
 		request.request.let {
@@ -51,7 +53,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 			entity.login = it.login
 			entity.site = it.site
 			entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
-			repository.attributes(entity.id, attributesMapper.map(it.attributes))
+			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 			it.template?.let { template ->
 				repository.useTemplate(template, entity)
 			}

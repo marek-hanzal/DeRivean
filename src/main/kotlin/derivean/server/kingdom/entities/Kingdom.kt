@@ -17,5 +17,5 @@ class Kingdom(id: EntityUUID) : UUIDEntity(id) {
 	val buildings by Building referrersOn BuildingTable.kingdom
 	var user by User referencedOn KingdomTable.user
 	var name by KingdomTable.name
-	val attributes by Attribute via KingdomAttributeTable
+	var attributes by Attribute via KingdomAttributeTable
 }

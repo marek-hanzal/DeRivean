@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
+import derivean.server.attribute.AttributeRepository
 import derivean.server.building.BuildingRepository
 import derivean.server.rest.AttributesMapper
 import derivean.server.rest.common.Attributes
@@ -38,6 +39,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val buildingRepository: BuildingRepository by container.lazy()
 	private val attributeMapper: AttributesMapper by container.lazy()
+	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
 		ok(storage.write {
@@ -45,7 +47,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 				fetchMapper.map(
 					buildingRepository.update(it.id) {
 						it.name?.let { name -> this.name = name }
-						buildingRepository.attributes(it.id, attributeMapper.map(it.attributes))
+						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
 					}
 				)
 			}

@@ -6,6 +6,7 @@ import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
+import derivean.server.attribute.AttributeRepository
 import derivean.server.building.BuildingRepository
 import derivean.server.building.entities.Building
 import derivean.server.kingdom.KingdomRepository
@@ -43,12 +44,13 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val attributesMapper: AttributesMapper by container.lazy()
+	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun map(request: ApplicationRequest<Request>, entity: Building) {
 		request.request.let {
 			entity.name = it.name
 			entity.kingdom = kingdomRepository.find(it.kingdom)
-			repository.attributes(entity.id, attributesMapper.map(it.attributes))
+			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 		}
 	}
 

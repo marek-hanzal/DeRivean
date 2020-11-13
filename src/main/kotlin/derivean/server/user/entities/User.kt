@@ -10,7 +10,7 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 class User(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<User>(UserTable)
 
-	val attributes by Attribute via UserAttributeTable
+	var attributes by Attribute via UserAttributeTable
 	val kingdoms by Kingdom referrersOn KingdomTable.user
 	var roles by Role via UserRoleTable
 
