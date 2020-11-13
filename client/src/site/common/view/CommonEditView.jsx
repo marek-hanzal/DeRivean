@@ -29,7 +29,7 @@ const Editor = (
 		Events()
 			.on("success", data => {
 				editorContext.setInitials(data);
-				values(editorContext.form, data);
+				values(editorContext.form, editorContext.inputMapper(data));
 				editorContext.setEditor(false);
 				editorContext.isReady();
 			})
@@ -70,6 +70,7 @@ const CommonEditView = (
 		name,
 		defaultEnableSubmit,
 		children,
+		inputMapper = values => values,
 	}) => {
 	const moduleContext = useContext(ModuleContext);
 	const discoveryContext = useContext(DiscoveryContext);
@@ -78,11 +79,13 @@ const CommonEditView = (
 	const {t} = useTranslation();
 	const params = useParams();
 	layoutContext.useMenuSelect(moduleContext.id + ".edit");
+	const currentInputMapper = values => values ? inputMapper(values) : values;
 	return (
 		<BaseEditor
 			// +1 because this component is doing Fetch (thus marking ready state)
 			readyCount={(readyCount || 0) + 1}
 			defaultEnableSubmit={defaultEnableSubmit}
+			inputMapper={currentInputMapper}
 			onFinish={(data, initials, editor) => {
 				layoutContext.loadingStart();
 				moduleContext.update(
@@ -94,7 +97,7 @@ const CommonEditView = (
 							editor.setEditor(false);
 							editor.setErrors(null);
 							editor.setInitials(data);
-							values(editor.form, data);
+							values(editor.form, currentInputMapper(data));
 						})
 						.on("error", () => {
 							message.error(t(moduleContext.id + ".update.general-error"));
