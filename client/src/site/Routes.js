@@ -69,6 +69,24 @@ const Routes = {
 				params: ["kingdom"],
 			},
 		},
+		building: {
+			match: () => "/building/*",
+			dashboard: {
+				match: () => "k/:kingdom/dashboard/*",
+				link: resolveUuid("kingdom", "/building/k/:kingdom/dashboard"),
+				params: ["kingdom"],
+			},
+			list: {
+				match: () => "k/:kingdom/list/*",
+				link: resolveUuid("kingdom", "/building/k/:kingdom/list"),
+				params: ["kingdom"],
+			},
+			home: {
+				match: () => "b/:building/home",
+				link: resolveUuid("building", "/building/b/:building/home"),
+				params: ["building"],
+			},
+		},
 	},
 	root: {
 		match: () => "/",
