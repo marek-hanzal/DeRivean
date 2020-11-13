@@ -9,5 +9,6 @@ class UpgradeBuilding(id: EntityUUID) : UUIDEntity(id) {
 
 	var kingdom by UpgradeKingdom referencedOn UpgradeBuildingTable.kingdom
 	var name by UpgradeBuildingTable.name
+	var built by UpgradeBuildingTable.built
 	var attributes by UpgradeAttribute via UpgradeBuildingAttributeTable
 }

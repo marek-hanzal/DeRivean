@@ -8,6 +8,7 @@ import derivean.server.building.entities.Building
 import derivean.server.rest.root.AbstractFetchEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.joda.time.format.ISODateTimeFormat
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -29,6 +30,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
+		this.built = item.built?.toLocalDateTime()?.toString(ISODateTimeFormat.dateTimeNoMillis())
 		item.attributes.forEach {
 			this.attributes.add(Attribute(it.name, it.value))
 		}
@@ -39,6 +41,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		val kingdom: String,
 		val user: String,
 		val name: String,
+		val built: String?,
 		val attributes: List<Attribute>,
 	) {
 		companion object {
@@ -50,6 +53,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 			lateinit var kingdom: EntityUUID
 			lateinit var user: EntityUUID
 			lateinit var name: String
+			var built: String? = null
 			val attributes = mutableListOf<Attribute>()
 
 			fun build() = Fetch(
@@ -57,6 +61,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 				kingdom.toString(),
 				user.toString(),
 				name,
+				built,
 				attributes,
 			)
 		}
