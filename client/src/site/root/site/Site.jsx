@@ -4,9 +4,7 @@ import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
-import SiteContext from "component/SiteContext";
 import SingOutView from "component/view/SingOutView";
-import {useState} from "react";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
@@ -31,60 +29,54 @@ import NotFoundView from "view/NotFoundView";
 const link = Routes.root;
 
 const Site = () => {
-	const [initials, setInitials] = useState();
 	return (
-		<SiteContext.Provider value={{
-			initials,
-			setInitials,
-		}}>
-			<BaseLayout
-				header={<Header/>}
-				menu={
-					<BaseRoutes
-						routes={[
-							UserMenuRoute(),
-							KingdomMenuRoute(),
-							BuildingMenuRoute(),
-							HeroMenuRoute(),
-							TranslationMenuRoute(),
-							route("*", <BaseMenu>
-								<MenuDivider/>
-								<MenuItem key={"root.home"} id={"root.home"} href={Routes.root} icon={<HomeIcon/>}/>
-								<MenuDivider/>
+		<BaseLayout
+			header={<Header/>}
+			menu={
+				<BaseRoutes
+					routes={[
+						UserMenuRoute(),
+						KingdomMenuRoute(),
+						BuildingMenuRoute(),
+						HeroMenuRoute(),
+						TranslationMenuRoute(),
+						route("*", <BaseMenu>
+							<MenuDivider/>
+							<MenuItem key={"root.home"} id={"root.home"} href={Routes.root} icon={<HomeIcon/>}/>
+							<MenuDivider/>
 
-								<UserMenuItem key={"root.user"}/>
-								<MenuDivider/>
-								{/*<BlogMenuItem key={"root.blog"}/>*/}
-								{/*<MenuDivider/>*/}
-								<TranslationMenuItem key={"root.translation"}/>
+							<UserMenuItem key={"root.user"}/>
+							<MenuDivider/>
+							{/*<BlogMenuItem key={"root.blog"}/>*/}
+							{/*<MenuDivider/>*/}
+							<TranslationMenuItem key={"root.translation"}/>
 
-								<MenuDivider/>
-								<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-							</BaseMenu>)
-						]}
-					/>
-				}
-				router={
-					<BaseRoutes
-						routes={[
-							UserRoute(),
-							KingdomRoute(),
-							BuildingRoute(),
-							HeroRoute(),
-							BlogRoute(),
-							TranslationRoute(),
+							<MenuDivider/>
+							<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+						</BaseMenu>)
+					]}
+				/>
+			}
+			router={
+				<BaseRoutes
+					routes={[
+						UserRoute(),
+						KingdomRoute(),
+						BuildingRoute(),
+						HeroRoute(),
+						BlogRoute(),
+						TranslationRoute(),
 
-							route(link.signIn.link(), <SingInView/>),
-							route(link.signOut.link(), <SingOutView id={"root"}/>),
-							route(link.sessionExpired.link(), <SessionExpiredView/>),
-							route("/", <HomeView/>),
-							route("*", <NotFoundView/>),
-						]}
-					/>
-				}
-				footer={<Footer/>}
-			/>
-		</SiteContext.Provider>
+						route(link.signIn.link(), <SingInView/>),
+						route(link.signOut.link(), <SingOutView id={"root"}/>),
+						route(link.sessionExpired.link(), <SessionExpiredView/>),
+						route("/", <HomeView/>),
+						route("*", <NotFoundView/>),
+					]}
+				/>
+			}
+			footer={<Footer/>}
+		/>
 	);
 };
 
