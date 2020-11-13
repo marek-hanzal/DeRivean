@@ -8,5 +8,5 @@ import org.jetbrains.exposed.sql.ReferenceOption
 object HeroTable : UUIDTable("hero") {
 	val user = reference("user", UserTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 	val kingdom = reference("kingdom", KingdomTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
-	val name = varchar("name", 128).uniqueIndex()
+	val name = varchar("name", 128)
 }

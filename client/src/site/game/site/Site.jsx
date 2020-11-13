@@ -4,7 +4,9 @@ import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
+import SiteContext from "component/SiteContext";
 import SingOutView from "component/view/SingOutView";
+import {useState} from "react";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {KingdomMenuItem, KingdomMenuRoute} from "site/game/module/kingdom/site/Menu";
 import {KingdomRoute} from "site/game/module/kingdom/site/Router";
@@ -20,38 +22,44 @@ import NotFoundView from "view/NotFoundView";
 const link = Routes.game;
 
 const Site = () => {
+	const [initials, setInitials] = useState();
 	return (
-		<BaseLayout
-			header={<Header/>}
-			menu={
-				<BaseRoutes
-					routes={[
-						KingdomMenuRoute(),
-						route("*", <BaseMenu>
-							<MenuDivider/>
-							<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>
-							<MenuDivider/>
-							<KingdomMenuItem/>
-							<MenuDivider/>
-							<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link}/>
-						</BaseMenu>)
-					]}
-				/>
-			}
-			router={
-				<BaseRoutes
-					routes={[
-						KingdomRoute(),
-						route(link.signIn.link(), <SingInView/>),
-						route(link.signOut.link(), <SingOutView id={"game"}/>),
-						route(link.sessionExpired.link(), <SessionExpiredView/>),
-						route("/", <HomeView/>),
-						route("*", <NotFoundView/>),
-					]}
-				/>
-			}
-			footer={<Footer/>}
-		/>
+		<SiteContext.Provider value={{
+			initials,
+			setInitials,
+		}}>
+			<BaseLayout
+				header={<Header/>}
+				menu={
+					<BaseRoutes
+						routes={[
+							KingdomMenuRoute(),
+							route("*", <BaseMenu>
+								<MenuDivider/>
+								<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>
+								<MenuDivider/>
+								<KingdomMenuItem/>
+								<MenuDivider/>
+								<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link}/>
+							</BaseMenu>)
+						]}
+					/>
+				}
+				router={
+					<BaseRoutes
+						routes={[
+							KingdomRoute(),
+							route(link.signIn.link(), <SingInView/>),
+							route(link.signOut.link(), <SingOutView id={"game"}/>),
+							route(link.sessionExpired.link(), <SessionExpiredView/>),
+							route("/", <HomeView/>),
+							route("*", <NotFoundView/>),
+						]}
+					/>
+				}
+				footer={<Footer/>}
+			/>
+		</SiteContext.Provider>
 	);
 };
 

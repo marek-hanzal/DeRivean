@@ -14,12 +14,6 @@ const BuiltInput = () => {
 		<Form.Item
 			{...validationFor("built", editorContext.errors, t)}
 			name={"built"}
-			rules={[
-				{
-					required: true,
-					message: t(`${moduleContext.id}.form.built.required`),
-				}
-			]}
 			label={t("root.building.built.label")}
 			children={
 				<DatePicker
