@@ -1,3 +1,4 @@
+import {SettingFilled} from "@ant-design/icons";
 import {Spin} from "antd";
 import {LayoutContext} from "component/layout/BaseLayout";
 import {useContext} from "react";
@@ -7,7 +8,7 @@ const Loader = ({children}) => {
 	const layoutContext = useContext(LayoutContext);
 	const {t} = useTranslation();
 	return (
-		<Spin spinning={layoutContext.isLoading()} delay={100} tip={t("common.spinner")} children={children}/>
+		<Spin indicator={<SettingFilled spin/>} spinning={layoutContext.isLoading()} delay={50} tip={t("common.spinner")} children={children}/>
 	);
 };
 
