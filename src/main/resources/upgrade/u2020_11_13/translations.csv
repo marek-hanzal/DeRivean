@@ -403,3 +403,8 @@ d4c40af3-f0bf-4f0a-af24-9cf20b1c5a52,en,translation,game.kingdom.create.resource
 60269e21-2fe6-449a-a208-b8689f0743de,cs,translation,game.building.dashboard.menu,Nástěnka
 e88b9f01-3f58-4419-8af1-53ecaad8def2,en,translation,game.building.list.menu,List
 2bbbc2a8-01b4-41fe-85ce-374bc4ab24dc,cs,translation,game.building.list.menu,Seznam
+26e7f3d2-0af5-41ab-a99c-58f794c3177d,en,translation,game.building.title,Buildings Overview
+123fe07b-9579-4044-9fa0-e86c18371822,en,translation,game.building.subtitle,Here you will find general overview of all buildings in selected Kingdom!
+d8290e6e-56c2-427a-9857-582b7b1e5b08,en,translation,game.statistic.buildings,Available buildings
+70b565df-613e-4208-b47e-5347b9c2c153,en,translation,game.statistic.buildings.built,Built buildings
+af0a8781-69de-4746-a972-606c7dfc8305,en,translation,game.building.list.title,Buildings

@@ -1,15 +1,12 @@
-import {Avatar, Button, Divider, List, Space} from "antd";
-import AttributeIcon from "component/icon/AttributeIcon";
+import {Avatar, Divider, List, Space} from "antd";
 import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
-import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import BuildingIcon from "site/common/icon/BuildingIcon";
 
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
-	const {t} = useTranslation();
 	return (
 		<List.Item actions={[]}>
 			<List.Item.Meta
@@ -18,7 +15,6 @@ const BuildingListItem = ({item}) => {
 				}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
-						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
 					</Space>
 				}
 				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
