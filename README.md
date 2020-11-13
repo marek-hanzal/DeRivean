@@ -23,4 +23,11 @@ and other brave brothers in arms), so that's reason for the name
 
 ### Sidenote
 
-Current development version (lowest milestone) is in master; closed milestones are in respective branches.
+Current development version (the lowest milestone) is in master; closed milestones are in respective branches.
+
+## Big Sidenote!
+
+Until there is first "production" release (thus v1.0), development is very unstable and there will be a lot of breaking changes not respecting any compatibility - mainly talking about Upgrades, before they will settle down, it's possible
+that they will be disappearing without warning transforming into new upgrade and so.
+
+*This will not be happening after 1.0*.
