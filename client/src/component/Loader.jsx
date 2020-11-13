@@ -8,7 +8,7 @@ const Loader = ({children}) => {
 	const layoutContext = useContext(LayoutContext);
 	const {t} = useTranslation();
 	return (
-		<Spin indicator={<SettingFilled spin/>} spinning={layoutContext.isLoading()} delay={50} tip={t("common.spinner")} children={children}/>
+		<Spin indicator={<SettingFilled spin/>} spinning={layoutContext.isLoading()} tip={t("common.spinner")} children={children}/>
 	);
 };
 

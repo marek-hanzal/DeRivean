@@ -8,6 +8,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import KingdomIcon from "site/common/icon/KingdomIcon";
+import {quickCreateTemplateUser} from "site/root/action/action";
 import {doUserSearch} from "site/root/module/user/action/action";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
 import Routes from "site/Routes";
@@ -49,6 +50,17 @@ const QuickAction = ({action}) => {
 					icon={<UserIcon/>}
 					action={action}
 					onClick={() => {
+						layoutContext.loadingStart();
+						quickCreateTemplateUser(
+							discoveryContext,
+							Events()
+								.on("success", user => {
+									setTimeout(() => navigate(Routes.root.user.home.link(user.id)), 0);
+								})
+								.on("done", () => {
+									layoutContext.loadingFinish();
+								})
+						);
 						onTemplateUser(siteContext, navigate);
 					}}
 				/>
