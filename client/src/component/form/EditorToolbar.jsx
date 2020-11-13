@@ -65,7 +65,7 @@ const EditorToolbar = () => {
 				disabled={editorContext.ready > 0}
 				onClick={() => {
 					editorContext.setEditor(true);
-					values(editorContext.form, editorContext.initials);
+					values(editorContext.form, editorContext.inputMapper(editorContext.initials));
 				}}
 				icon={<Spinner done={!editorContext.ready} icon={<EditIcon/>}/>}
 				children={t(moduleContext.id + ".edit.form.edit")}
