@@ -1,4 +1,4 @@
-package derivean.server.rest.root.building.endpoint
+package derivean.server.rest.game.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
@@ -7,7 +7,7 @@ import derivean.lib.utils.asIso
 import derivean.server.building.BuildingRepository
 import derivean.server.building.entities.Building
 import derivean.server.rest.common.Attribute
-import derivean.server.rest.root.AbstractFetchEndpoint
+import derivean.server.rest.game.AbstractFetchEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
 
@@ -18,8 +18,8 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 
 	override fun install(routing: Routing) = fetch(
 		routing,
-		"/api/root/building",
-		"root.building",
+		"/api/game/building",
+		"game.building",
 		fetchMapper,
 		buildingRepository,
 	)
