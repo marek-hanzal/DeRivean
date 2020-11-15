@@ -6,8 +6,8 @@ import derivean.lib.storage.EntityUUID
 import derivean.lib.utils.asIso
 import derivean.rest.common.Attribute
 import derivean.rest.game.AbstractFetchEndpoint
-import derivean.server.building.BuildingRepository
 import derivean.storage.entities.Building
+import derivean.storage.repository.BuildingRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

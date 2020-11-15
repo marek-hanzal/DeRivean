@@ -5,9 +5,9 @@ import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.common.Attribute
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.server.user.UserHeroRepository
-import derivean.server.user.UserRepository
-import derivean.server.user.entities.User
+import derivean.storage.entities.User
+import derivean.storage.repository.UserHeroRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

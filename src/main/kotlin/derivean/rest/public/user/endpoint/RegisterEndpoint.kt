@@ -7,9 +7,9 @@ import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
-import derivean.server.user.RoleRepository
-import derivean.server.user.UserRepository
-import derivean.server.user.entities.User
+import derivean.storage.entities.User
+import derivean.storage.repository.RoleRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.routing.*
 import org.jetbrains.exposed.sql.SizedCollection

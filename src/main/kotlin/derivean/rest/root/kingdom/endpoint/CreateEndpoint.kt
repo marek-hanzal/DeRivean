@@ -10,9 +10,9 @@ import derivean.lib.rest.conflictWithUnique
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
 import derivean.server.attribute.AttributeRepository
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.kingdom.entities.Kingdom
-import derivean.server.user.UserRepository
+import derivean.storage.entities.Kingdom
+import derivean.storage.repository.KingdomRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*

@@ -3,8 +3,8 @@ package derivean.rest.root.translation.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.server.translation.TranslationRepository
-import derivean.server.translation.entities.Translation
+import derivean.storage.entities.Translation
+import derivean.storage.repository.TranslationRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

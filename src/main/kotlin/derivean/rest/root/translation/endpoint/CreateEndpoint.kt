@@ -4,8 +4,8 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.*
-import derivean.server.translation.TranslationRepository
-import derivean.server.translation.entities.Translation
+import derivean.storage.entities.Translation
+import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*

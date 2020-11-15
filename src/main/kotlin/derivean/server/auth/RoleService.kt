@@ -4,7 +4,7 @@ import derivean.lib.auth.IRoleService
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.storage.IStorage
-import derivean.server.user.UserRepository
+import derivean.storage.repository.UserRepository
 import java.util.*
 
 class RoleService(container: IContainer) : AbstractService(container), IRoleService {

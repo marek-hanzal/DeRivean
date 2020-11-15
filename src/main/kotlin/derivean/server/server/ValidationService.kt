@@ -3,8 +3,8 @@ package derivean.server.server
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.storage.IStorage
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.user.UserRepository
+import derivean.storage.repository.KingdomRepository
+import derivean.storage.repository.UserRepository
 
 data class ValidationError(val id: String, val text: String, val action: String)
 

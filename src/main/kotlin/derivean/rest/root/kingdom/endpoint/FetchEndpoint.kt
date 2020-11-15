@@ -5,8 +5,8 @@ import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.common.Attribute
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.kingdom.entities.Kingdom
+import derivean.storage.entities.Kingdom
+import derivean.storage.repository.KingdomRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

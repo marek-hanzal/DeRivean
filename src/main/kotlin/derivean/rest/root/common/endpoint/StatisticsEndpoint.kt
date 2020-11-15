@@ -7,11 +7,7 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.Response
 import derivean.lib.rest.ok
 import derivean.lib.rest.resolve
-import derivean.server.building.BuildingRepository
-import derivean.server.hero.HeroRepository
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.translation.TranslationRepository
-import derivean.server.user.UserRepository
+import derivean.storage.repository.*
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*

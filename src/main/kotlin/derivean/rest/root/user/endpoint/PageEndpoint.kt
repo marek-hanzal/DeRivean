@@ -2,7 +2,7 @@ package derivean.rest.root.user.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.rest.root.AbstractPageEndpoint
-import derivean.server.user.UserRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

@@ -5,7 +5,7 @@ import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.user.UnknownUserException
 import derivean.lib.user.UserException
-import derivean.server.user.UserRepository
+import derivean.storage.repository.UserRepository
 import java.util.*
 
 class AuthenticatorService(container: IContainer) : AbstractService(container) {

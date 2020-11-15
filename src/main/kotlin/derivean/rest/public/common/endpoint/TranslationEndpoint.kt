@@ -6,7 +6,7 @@ import derivean.lib.rest.AbstractEndpoint
 import derivean.lib.rest.Response
 import derivean.lib.rest.ok
 import derivean.lib.rest.resolve
-import derivean.server.translation.TranslationRepository
+import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
 import io.ktor.routing.*
 

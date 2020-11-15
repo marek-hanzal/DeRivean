@@ -4,8 +4,8 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.server.hero.HeroRepository
-import derivean.server.hero.entities.Hero
+import derivean.storage.entities.Hero
+import derivean.storage.repository.HeroRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

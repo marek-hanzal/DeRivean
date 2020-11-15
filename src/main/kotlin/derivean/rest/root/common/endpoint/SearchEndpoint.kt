@@ -4,11 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
-import derivean.server.building.BuildingRepository
-import derivean.server.hero.HeroRepository
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.translation.TranslationRepository
-import derivean.server.user.UserRepository
+import derivean.storage.repository.*
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*

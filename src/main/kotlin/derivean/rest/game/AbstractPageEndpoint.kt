@@ -3,7 +3,7 @@ package derivean.rest.game
 import derivean.lib.container.IContainer
 import derivean.lib.http.HttpServer
 import derivean.lib.rest.page.AbstractPageEndpoint
-import derivean.server.user.UserRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.util.*
