@@ -1,25 +1,22 @@
-import {Card, Divider} from "antd";
 import ModuleContext from "component/ModuleContext";
+import {useTranslation} from "react-i18next";
 import CommonCreateView from "site/common/view/CommonCreateView";
-import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
-import BuiltInput from "site/root/module/building/component/form/BuiltInput";
 import BuildingView from "site/root/module/building/view/BuildingView";
 
 const CreateView = () => {
+	const {t} = useTranslation();
 	return (
 		<BuildingView>
 			<ModuleContext.Consumer>
-				{({parent}) => (
+				{(moduleContext) => (
 					<CommonCreateView
-						param={parent}
+						param={moduleContext.parent}
 						defaultEnableSubmit={true}
 						readyCount={1}
 					>
-						<Card>
-							<BuiltInput/>
-						</Card>
-						<Divider type={"horizontal"}/>
-						<AttributeFieldEditor/>
+						<div style={{textAlign: "center"}}>
+							<i>{t(`${moduleContext.id}.building.hint`)}</i>
+						</div>
 					</CommonCreateView>
 				)}
 			</ModuleContext.Consumer>
