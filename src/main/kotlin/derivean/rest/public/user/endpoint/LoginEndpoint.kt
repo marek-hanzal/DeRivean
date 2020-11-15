@@ -8,7 +8,7 @@ import derivean.lib.storage.IStorage
 import derivean.lib.user.UserException
 import derivean.server.auth.AuthenticatorService
 import derivean.server.auth.TicketService
-import derivean.server.user.UserRepository
+import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.request.*

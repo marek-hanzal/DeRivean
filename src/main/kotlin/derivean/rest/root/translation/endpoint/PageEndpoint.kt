@@ -2,7 +2,7 @@ package derivean.rest.root.translation.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.rest.root.AbstractPageEndpoint
-import derivean.server.translation.TranslationRepository
+import derivean.storage.repository.TranslationRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

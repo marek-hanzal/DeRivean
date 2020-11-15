@@ -8,9 +8,9 @@ import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.game.AbstractCreateMapper
-import derivean.server.kingdom.KingdomRepository
-import derivean.server.kingdom.entities.Kingdom
 import derivean.server.user.UserResourceService
+import derivean.storage.entities.Kingdom
+import derivean.storage.repository.KingdomRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*

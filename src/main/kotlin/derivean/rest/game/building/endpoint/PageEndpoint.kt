@@ -2,7 +2,7 @@ package derivean.rest.game.building.endpoint
 
 import derivean.lib.container.IContainer
 import derivean.rest.game.AbstractPageEndpoint
-import derivean.server.kingdom.KingdomBuildingRepository
+import derivean.storage.repository.KingdomBuildingRepository
 import io.ktor.routing.*
 import io.ktor.util.*
 

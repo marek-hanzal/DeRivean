@@ -11,8 +11,8 @@ import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
 import derivean.server.attribute.AttributeRepository
 import derivean.server.auth.AuthenticatorService
-import derivean.server.user.UserRepository
-import derivean.server.user.entities.User
+import derivean.storage.entities.User
+import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
