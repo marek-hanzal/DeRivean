@@ -2,7 +2,7 @@ package derivean.server.building.entities
 
 import derivean.lib.storage.EntityUUID
 import derivean.server.attribute.entities.Attribute
-import derivean.server.attribute.entities.AttributeTable
+import derivean.server.attribute.tables.AttributeTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 

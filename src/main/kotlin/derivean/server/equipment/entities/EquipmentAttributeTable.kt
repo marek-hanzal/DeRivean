@@ -1,6 +1,6 @@
 package derivean.server.equipment.entities
 
-import derivean.server.attribute.entities.AttributeTable
+import derivean.server.attribute.tables.AttributeTable
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
