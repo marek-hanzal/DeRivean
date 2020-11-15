@@ -14,12 +14,14 @@ const BuiltInput = () => {
 		<Form.Item
 			{...validationFor("built", editorContext.errors, t)}
 			name={"built"}
-			label={t(`${moduleContext.id}.built.label`)}
+			style={{margin: 0}}
 			children={
 				<DatePicker
 					showTime
 					disabled={!editorContext.editor}
 					placeholder={t(`${moduleContext.id}.built.hint`)}
+					bordered={false}
+					style={{width: "100%"}}
 				/>
 			}
 		/>

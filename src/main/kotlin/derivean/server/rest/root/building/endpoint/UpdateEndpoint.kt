@@ -47,8 +47,8 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 			item.request.let {
 				fetchMapper.map(
 					buildingRepository.update(it.id) {
-						it.name?.let { name -> this.name = name }
-						it.built?.let { built -> this.built = DateTime(built) }
+						this.name = it.name
+						this.built = it.built?.let { built -> DateTime(built) }
 						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
 					}
 				)
@@ -63,7 +63,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 
 	data class Request(
 		val id: String,
-		val name: String?,
+		val name: String,
 		val built: String?,
 		val attributes: Attributes?,
 	)
