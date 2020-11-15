@@ -12,7 +12,6 @@ const CreateView = () => {
 					<CommonCreateView
 						param={moduleContext.parent}
 						defaultEnableSubmit={true}
-						readyCount={1}
 					>
 						<div style={{textAlign: "center"}}>
 							<i>{t(`${moduleContext.id}.building.hint`)}</i>
