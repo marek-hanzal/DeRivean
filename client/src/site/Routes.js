@@ -118,6 +118,21 @@ const Routes = {
 				link: () => "/blog/list",
 			},
 		},
+		attribute: {
+			match: () => "/attribute/*",
+			dashboard: {
+				match: () => "dashboard/*",
+				link: () => "/attribute/dashboard",
+			},
+			building: {
+				match: () => "building/*",
+				link: () => "/attribute/building",
+			},
+			hero: {
+				match: () => "hero/*",
+				link: () => "/attribute/hero",
+			},
+		},
 		user: {
 			match: () => "/user/*",
 			dashboard: {
