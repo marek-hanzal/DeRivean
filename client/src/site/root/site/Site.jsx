@@ -6,6 +6,7 @@ import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import {AttributeMenuItem, AttributeMenuRoute} from "site/root/module/attribute/site/Menu";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
 import {BuildingRoute} from "site/root/module/building/site/Router";
@@ -40,12 +41,15 @@ const Site = () => {
 						BuildingMenuRoute(),
 						HeroMenuRoute(),
 						TranslationMenuRoute(),
+						AttributeMenuRoute(),
 						route("*", <BaseMenu>
 							<MenuDivider/>
 							<MenuItem key={"root.home"} id={"root.home"} href={Routes.root} icon={<HomeIcon/>}/>
 							<MenuDivider/>
 
 							<UserMenuItem key={"root.user"}/>
+							<MenuDivider/>
+							<AttributeMenuItem key={"root.attribute"}/>
 							<MenuDivider/>
 							{/*<BlogMenuItem key={"root.blog"}/>*/}
 							{/*<MenuDivider/>*/}

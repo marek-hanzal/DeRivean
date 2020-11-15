@@ -408,3 +408,10 @@ e88b9f01-3f58-4419-8af1-53ecaad8def2,en,translation,game.building.list.menu,List
 d8290e6e-56c2-427a-9857-582b7b1e5b08,en,translation,game.statistic.buildings,Available buildings
 70b565df-613e-4208-b47e-5347b9c2c153,en,translation,game.statistic.buildings.built,Built buildings
 af0a8781-69de-4746-a972-606c7dfc8305,en,translation,game.building.list.title,Buildings
+dbe5cb00-9ca4-4e96-96c8-be39046f567f,en,translation,root.building.building.title,Other
+a34d6a5a-523f-4ab7-8e6a-921acb9fe769,en,translation,root.building.update.success,Building updated!
+6e4f10ad-df29-4162-a5ac-99bdbc060ece,en,translation,root.building.building.hint,You will be able finetune building settings after creation to keep this form as light as possible.
+4df04ef1-1cd4-476c-87fd-6f32ce863c02,en,translation,root.attribute.menu,Attributes
+2b50fb04-3da2-4469-b490-5478c7ec7536,en,translation,root.attribute.building.menu,Buildings
+1a57b83f-c6c1-456a-bc10-ab7ee27c8f3e,en,translation,root.attribute.hero.menu,Heroes
+89b6ba1f-bbbe-40a3-9c33-c3d68dd288b9,en,translation,root.attribute.dashboard.menu,Dashboard
