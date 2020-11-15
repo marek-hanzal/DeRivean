@@ -9,4 +9,5 @@ class Attribute(id: EntityUUID) : UUIDEntity(id) {
 
 	var name by AttributeTable.name
 	var value by AttributeTable.value
+	var description by AttributeTable.description
 }

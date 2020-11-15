@@ -31,6 +31,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
+		this.description = item.description
 		this.built = item.built?.asIso()
 		this.claim = item.claim?.asIso()
 		item.attributes.forEach {
@@ -43,6 +44,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		val kingdom: String,
 		val user: String,
 		val name: String,
+		val description: String?,
 		val built: String?,
 		val claim: String?,
 		val attributes: List<Attribute>,
@@ -56,6 +58,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 			lateinit var kingdom: EntityUUID
 			lateinit var user: EntityUUID
 			lateinit var name: String
+			var description: String? = null
 			var built: String? = null
 			var claim: String? = null
 			val attributes = mutableListOf<Attribute>()
@@ -65,6 +68,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 				kingdom.toString(),
 				user.toString(),
 				name,
+				description,
 				built,
 				claim,
 				attributes,

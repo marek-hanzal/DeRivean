@@ -50,9 +50,11 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override fun map(request: ApplicationRequest<Request>, entity: Building) {
 		request.request.let {
 			entity.name = it.name
+			entity.description = it.description
 			entity.built = DateTime(it.built)
 			entity.claim = DateTime(it.claim)
 			entity.kingdom = kingdomRepository.find(it.kingdom)
+			entity.user = entity.kingdom.user
 			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 		}
 	}
@@ -62,6 +64,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	data class Request(
 		val kingdom: String,
 		val name: String,
+		val description: String?,
 		val built: String?,
 		val claim: String?,
 		val attributes: Attributes?

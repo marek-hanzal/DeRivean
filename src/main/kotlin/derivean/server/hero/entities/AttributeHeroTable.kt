@@ -1,0 +1,10 @@
+package derivean.server.hero.entities
+
+import derivean.server.attribute.entities.AttributeTable
+import org.jetbrains.exposed.dao.id.UUIDTable
+import org.jetbrains.exposed.sql.ReferenceOption
+
+object AttributeHeroTable : UUIDTable("attribute-hero") {
+	val hero = reference("hero", HeroTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+	val attribute = reference("attribute", AttributeTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+}
