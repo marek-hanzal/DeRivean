@@ -16,7 +16,7 @@ class AttributeRepository(container: IContainer) : AbstractRepository<Attribute,
 		}
 		return SizedCollection(attributes.map {
 			entity.new {
-				this.name = it.first
+				this.type = it.first
 				this.value = it.second
 			}
 		})
