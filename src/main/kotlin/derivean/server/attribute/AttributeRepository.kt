@@ -3,7 +3,7 @@ package derivean.server.attribute
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.server.attribute.entities.Attribute
-import derivean.server.attribute.entities.AttributeTable
+import derivean.server.attribute.tables.AttributeTable
 import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 
