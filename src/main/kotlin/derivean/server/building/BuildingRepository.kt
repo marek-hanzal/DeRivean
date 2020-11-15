@@ -3,8 +3,8 @@ package derivean.server.building
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.building.entities.Building
-import derivean.server.building.entities.BuildingTable
+import derivean.storage.entities.Building
+import derivean.storage.tables.BuildingTable
 import org.jetbrains.exposed.sql.or
 import java.util.*
 

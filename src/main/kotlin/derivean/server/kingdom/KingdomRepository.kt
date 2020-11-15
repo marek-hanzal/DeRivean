@@ -4,10 +4,10 @@ import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
 import derivean.server.attribute.AttributeRepository
-import derivean.server.building.entities.Building
 import derivean.server.hero.entities.Hero
 import derivean.server.kingdom.entities.Kingdom
 import derivean.server.kingdom.entities.KingdomTable
+import derivean.storage.entities.Building
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.or
 import java.util.*

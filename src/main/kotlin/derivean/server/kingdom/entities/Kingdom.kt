@@ -1,12 +1,12 @@
 package derivean.server.kingdom.entities
 
 import derivean.lib.storage.EntityUUID
-import derivean.server.attribute.entities.Attribute
-import derivean.server.building.entities.Building
-import derivean.server.building.entities.BuildingTable
 import derivean.server.hero.entities.Hero
 import derivean.server.hero.entities.HeroTable
 import derivean.server.user.entities.User
+import derivean.storage.entities.Attribute
+import derivean.storage.entities.Building
+import derivean.storage.tables.BuildingTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
