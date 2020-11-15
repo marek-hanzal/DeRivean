@@ -23,6 +23,14 @@ class u2020_11_15(container: IContainer) : AbstractUpgrade(container) {
 //				description = "Attributes related to Buildings"
 //			}
 //			UpgradeAttributeGroup.new {
+//				name = "building.cost"
+//				description = "Attributes related to Cost of Buildings"
+//			}
+//			UpgradeAttributeGroup.new {
+//				name = "building.production"
+//				description = "Attributes related to Building Production"
+//			}
+//			UpgradeAttributeGroup.new {
 //				name = "hero"
 //				description = "Attributes related to Heroes"
 //			}
