@@ -2,9 +2,9 @@ package derivean.server.user
 
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRelationRepository
-import derivean.server.building.entities.Building
-import derivean.server.building.entities.BuildingTable
 import derivean.server.kingdom.entities.KingdomTable
+import derivean.storage.entities.Building
+import derivean.storage.tables.BuildingTable
 import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.selectAll
 import java.util.*

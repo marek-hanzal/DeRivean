@@ -2,7 +2,7 @@ package derivean.server.attribute
 
 import derivean.lib.container.IContainer
 import derivean.lib.resource.AbstractResourceService
-import derivean.server.attribute.entities.Attribute
+import derivean.storage.entities.Attribute
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.sql.SizedIterable
 
