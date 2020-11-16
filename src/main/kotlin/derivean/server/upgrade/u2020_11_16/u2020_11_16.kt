@@ -52,7 +52,15 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 				roles = Role.find { RoleTable.name eq "root" }
 			}
 			AttributeGroup.new {
-				name = "building"
+				name = "kingdom.common"
+				description = "Attributes related to Kingdoms"
+			}
+			AttributeGroup.new {
+				name = "kingdom.resource"
+				description = "Attributes related to Kingdoms"
+			}
+			AttributeGroup.new {
+				name = "building.common"
 				description = "Attributes related to Buildings"
 			}
 			AttributeGroup.new {
@@ -60,11 +68,11 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 				description = "Attributes related to Cost of Buildings"
 			}
 			AttributeGroup.new {
-				name = "building.production"
-				description = "Attributes related to Building Production"
+				name = "building.resource"
+				description = "Attributes related to Building production (resources)"
 			}
 			AttributeGroup.new {
-				name = "hero"
+				name = "hero.common"
 				description = "Attributes related to Heroes"
 			}
 			AttributeGroup.new {

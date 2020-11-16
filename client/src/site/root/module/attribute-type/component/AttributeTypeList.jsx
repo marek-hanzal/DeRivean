@@ -27,12 +27,13 @@ const AttributeTypeListItem = ({item}) => {
 	);
 };
 
-const AttributeTypeList = () => {
+const AttributeTypeList = (props) => {
 	const moduleContext = useContext(ModuleContext);
 	return (
 		<BaseTable
 			onFetchPage={moduleContext.page}
 			children={item => <AttributeTypeListItem item={item} key={item.id}/>}
+			{...props}
 		/>
 	);
 };

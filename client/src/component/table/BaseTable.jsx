@@ -11,6 +11,7 @@ const BaseTable = (
 	{
 		onFetchPage,
 		children,
+		pageSize = 10,
 	}) => {
 	const discoveryContext = useContext(DiscoveryContext);
 	const navigate = useNavigate();
@@ -44,7 +45,7 @@ const BaseTable = (
 	 */
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
-		onPage(0, 10, cancelToken);
+		onPage(0, pageSize, cancelToken);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
