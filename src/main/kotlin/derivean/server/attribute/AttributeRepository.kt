@@ -14,15 +14,17 @@ class AttributeRepository(container: IContainer) : AbstractRepository<Attribute,
 				it.delete()
 			}
 		}
-		return SizedCollection(attributes.map {
-			entity.new {
-				this.type = it.first
-				this.value = it.second
-			}
-		})
+		TODO("Update attributes!")
+//		return SizedCollection(attributes.map {
+//			entity.new {
+//				this.type = it.first
+//				this.value = it.second
+//			}
+//		})
 	}
 
 	fun attributes(collection: SizedIterable<Attribute>, attributes: SizedIterable<Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
-		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.name, it.value) }.toTypedArray(), replace)
+		TODO("Update new attribute!")
+//		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.type.name, it.value) }.toTypedArray(), replace)
 	}
 }

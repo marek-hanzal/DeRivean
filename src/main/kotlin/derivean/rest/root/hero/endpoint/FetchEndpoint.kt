@@ -29,9 +29,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<Hero, FetchMapper.Fetc
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
-		item.attributes.forEach {
-			this.attributes.add(Attribute(it.name, it.value))
-		}
+//		item.attributes.forEach {
+//			this.attributes.add(Attribute(it.name, it.value))
+//		}
 	}
 
 	data class Fetch(
