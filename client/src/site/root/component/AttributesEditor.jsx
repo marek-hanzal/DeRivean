@@ -20,6 +20,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
+	const layoutContext = useContext(LayoutContext);
 	const params = useParams();
 	moduleContext.fetch(
 		params[moduleContext.param],
@@ -28,6 +29,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 				editorContext.setInitials(fetch);
 				values(editorContext.form, fetch);
 				editorContext.setEnableSubmit(true);
+				layoutContext.setFetch(fetch);
 				editorContext.isReady();
 			})
 	);
