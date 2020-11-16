@@ -34,9 +34,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		this.description = item.description
 		this.built = item.built?.asIso()
 		this.claim = item.claim?.asIso()
-		item.attributes.forEach {
-			this.attributes.add(Attribute(it.name, it.value))
-		}
+//		item.attributes.forEach {
+//			this.attributes.add(Attribute(it.name, it.value))
+//		}
 	}
 
 	data class Fetch(

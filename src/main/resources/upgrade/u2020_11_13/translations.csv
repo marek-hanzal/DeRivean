@@ -137,7 +137,6 @@ c88d1567-a705-4fc0-83ca-57b9483481de,en,translation,root.user.edit.form.delete,D
 f4e7f6dd-4a45-43b6-8244-b41e0c46c86a,en,translation,root.user.form.login.label,Login
 366b2208-59e7-493f-96e7-d588aec98754,en,translation,root.user.form.password.label,Password
 3cc9e5ab-fb77-401f-9f31-3f18bd6393e8,en,translation,root.user.form.site.label,Site
-2991df79-a8fd-4777-8735-9185868372ff,en,translation,root.user.attributes.menu,Attributes
 a3a59c55-20d0-41ca-8435-692c4629d0c8,en,translation,root.kingdom.dashboard.menu,Dashboard
 83621ab2-0e99-4054-9d59-133a5ae00899,en,translation,root.kingdom.create.menu,Create
 152afd88-8367-4c9b-a5dd-ff8eb726e589,en,translation,root.kingdom.list.menu,List
@@ -411,9 +410,10 @@ af0a8781-69de-4746-a972-606c7dfc8305,en,translation,game.building.list.title,Bui
 dbe5cb00-9ca4-4e96-96c8-be39046f567f,en,translation,root.building.building.title,Other
 a34d6a5a-523f-4ab7-8e6a-921acb9fe769,en,translation,root.building.update.success,Building updated!
 6e4f10ad-df29-4162-a5ac-99bdbc060ece,en,translation,root.building.building.hint,You will be able finetune building settings after creation to keep this form as light as possible.
-4df04ef1-1cd4-476c-87fd-6f32ce863c02,en,translation,root.attribute.menu,Attributes
-2b50fb04-3da2-4469-b490-5478c7ec7536,en,translation,root.attribute.building.menu,Buildings
-1a57b83f-c6c1-456a-bc10-ab7ee27c8f3e,en,translation,root.attribute.hero.menu,Heroes
 89b6ba1f-bbbe-40a3-9c33-c3d68dd288b9,en,translation,root.attribute.dashboard.menu,Dashboard
 54a6299f-ad66-4a1d-a71c-5bc93d1daf2b,en,translation,root.attribute.title,Attributes Overview
 2ec00f24-32f7-43de-9b54-9a7c3499501c,en,translation,root.attribute.subtitle,Here you can manage all attributes available through whole game.
+6dc4b2fe-a4f1-4073-b65c-8fc33ecc7649,en,translation,root.attribute-group.menu,Attribute Group
+cf536c16-ba46-4f71-8dee-ffee83fa44b7,en,translation,root.attribute-group.dashboard.menu,Dashboard
+dc84a410-0f86-4bb4-bbff-baf99156c736,en,translation,root.attribute-group.create.menu,Create
+dbe87894-21be-4bfe-9255-118484980888,en,translation,root.attribute-group.list.menu,List

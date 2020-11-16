@@ -2,7 +2,7 @@ package derivean.rest.root
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.rest.root.attribute.AttributeHttpModule
+import derivean.rest.root.`attribute-group`.AttributeGroupHttpModule
 import derivean.rest.root.building.BuildingHttpModule
 import derivean.rest.root.common.CommonHttpModule
 import derivean.rest.root.hero.HeroHttpModule
@@ -19,7 +19,7 @@ class RootHttpModule(container: IContainer) : AbstractHttpModule(container) {
 		modules(
 			routing,
 			CommonHttpModule::class,
-			AttributeHttpModule::class,
+			AttributeGroupHttpModule::class,
 			KingdomHttpModule::class,
 			HeroHttpModule::class,
 			BuildingHttpModule::class,
