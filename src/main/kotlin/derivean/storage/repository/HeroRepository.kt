@@ -3,8 +3,8 @@ package derivean.storage.repository
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.upgrade.u2020_11_16.storage.tables.HeroTable
 import derivean.storage.entities.Hero
+import derivean.storage.tables.HeroTable
 import org.jetbrains.exposed.sql.or
 import java.util.*
 

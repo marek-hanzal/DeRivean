@@ -1,6 +1,5 @@
 package derivean.storage.tables
 
-import derivean.server.upgrade.u2020_11_16.storage.tables.HeroTable
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
