@@ -25,6 +25,9 @@ abstract class AbstractEndpoint(container: IContainer) : AbstractService(contain
 		} catch (e: JsonSyntaxException) {
 			call.resolve(badRequest("Malformed JSON"))
 			logger.error(e.message, e)
+		} catch (e: NoSuchElementException) {
+			call.resolve(notFound("Item not found!"))
+			logger.error(e.message, e)
 		} catch (e: InvalidRequestException) {
 			call.resolve(badRequest(e.message ?: "You sent something strange and I don't understand your request. Try read docs, make a coffee or fix this bug :)"))
 			logger.error(e.message, e)
