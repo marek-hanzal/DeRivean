@@ -434,3 +434,4 @@ cdfd08cb-6430-4b7f-ac0f-3c49c9e33008,en,translation,root.attribute-group.edit.fo
 c725e289-0686-4de3-a457-d3f9c63e4dbe,en,translation,root.attribute-group.edit.form.delete,Delete!
 98e80cf7-2ef3-4efb-8da2-21c896d1fca7,en,translation,root.attribute-group.edit.form.deleteConfirm,Do you want to remove this attribute group? All related attributes within whole game will be deleted too!
 fbae0a3f-351b-4a83-a710-0d9ff711d687,en,translation,root.attribute-group.subtitle,Here you can manage all attribute groups needed by the rest of game.
+c66da4f7-4205-4d66-adaf-ee8681415623,en,translation,root.attribute-group.create.success,Attribute Group created!
