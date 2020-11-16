@@ -7,10 +7,7 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
-import derivean.rest.AttributesMapper
-import derivean.rest.common.Attributes
 import derivean.storage.entities.Kingdom
-import derivean.storage.repository.AttributeRepository
 import derivean.storage.repository.KingdomRepository
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
@@ -45,14 +42,11 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val repository: KingdomRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val userRepository: UserRepository by container.lazy()
-	private val attributesMapper: AttributesMapper by container.lazy()
-	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun map(request: ApplicationRequest<Request>, entity: Kingdom) {
 		request.request.let {
 			entity.name = it.name
 			entity.user = userRepository.find(it.user)
-			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 			it.template?.let { template ->
 				repository.useTemplate(template, entity)
 			}
@@ -70,6 +64,5 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		val user: String,
 		val name: String,
 		val template: UUID?,
-		val attributes: Attributes?,
 	)
 }
