@@ -1,18 +1,18 @@
 import ModuleContext from "component/ModuleContext";
-import {CreateAttributeModule} from "site/root/module/attribute/Module";
+import {CreateAttributeGroupModule} from "site/root/module/attribute-group/Module";
 import RootView from "site/root/view/RootView";
 
-const AttributeView = (
+const AttributeGroupView = (
 	{
 		children,
 		...props
 	}) => {
 	return (
 		<ModuleContext.Provider
-			value={CreateAttributeModule()}
+			value={CreateAttributeGroupModule()}
 			children={<RootView {...props} children={children}/>}
 		/>
 	);
 };
 
-export default AttributeView;
+export default AttributeGroupView;

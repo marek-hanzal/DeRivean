@@ -1,13 +1,13 @@
 import BaseDashboardView from "component/view/BaseDashboardView";
-import AttributeView from "site/root/module/attribute/view/AttributeView";
+import AttributeGroupView from "site/root/module/attribute-group/view/AttributeGroupView";
 
 const DashboardView = () => {
 	return (
-		<AttributeView>
+		<AttributeGroupView>
 			<BaseDashboardView>
 				{/*<OverallStatistics exclude={["translations"]}/>*/}
 			</BaseDashboardView>
-		</AttributeView>
+		</AttributeGroupView>
 	);
 };
 

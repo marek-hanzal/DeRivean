@@ -4,7 +4,6 @@ import {DiscoveryContext} from "component/discovery/Discovery";
 import EditorContext from "component/form/EditorContext";
 import ModuleContext from "component/ModuleContext";
 import {useContext, useEffect, useRef, useState} from "react";
-import {GlobalHotKeys} from "react-hotkeys";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import Events from "utils/Events";
@@ -73,35 +72,35 @@ const SearchInput = (
 	}, []);
 
 	return (
-		<GlobalHotKeys keyMap={{
-			search: hotkey,
-		}} handlers={{
-			search: _ => {
-				ref.current.focus();
-			}
-		}}>
-			<Select
-				ref={ref}
-				showSearch
-				defaultActiveFirstOption={false}
-				open={open}
-				onFocus={() => setOpen(true)}
-				onBlur={() => setOpen(false)}
-				filterOption={false}
-				loading={loading}
-				allowClear
-				onSearch={search}
-				onClear={_ => search()}
-				onChange={_ => search()}
-				placeholder={t(`${moduleContext.id}.${placeholder}.label`)}
-				{...props}
-				children={data.map(item => (
-					<Select.Option key={item.id} value={item.id} item={item}>
-						{render(item)}
-					</Select.Option>
-				))}
-			/>
-		</GlobalHotKeys>
+		// <GlobalHotKeys keyMap={{
+		// 	search: hotkey,
+		// }} handlers={{
+		// 	search: _ => {
+		// 		ref.current.focus();
+		// 	}
+		// }}>
+		<Select
+			ref={ref}
+			showSearch
+			defaultActiveFirstOption={false}
+			// open={open}
+			// onFocus={() => setOpen(true)}
+			// onBlur={() => setOpen(false)}
+			filterOption={false}
+			loading={loading}
+			allowClear
+			onSearch={search}
+			onClear={_ => search()}
+			onChange={_ => search()}
+			placeholder={t(`${moduleContext.id}.${placeholder}.label`)}
+			{...props}
+			children={data.map(item => (
+				<Select.Option key={item.id} value={item.id} item={item}>
+					{render(item)}
+				</Select.Option>
+			))}
+		/>
+		// </GlobalHotKeys>
 	);
 };
 
