@@ -143,6 +143,27 @@ const Routes = {
 				params: ["group"],
 			},
 		},
+		attributeType: {
+			match: () => "/attribute-type/*",
+			create: {
+				match: () => "create/*",
+				link: () => "/attribute-type/create",
+			},
+			edit: {
+				match: () => "t/:type/edit/*",
+				link: resolveUuid("type", "/attribute-type/t/:type/edit"),
+				params: ["type"],
+			},
+			list: {
+				match: () => "list/*",
+				link: () => "/attribute-type/list",
+			},
+			home: {
+				match: () => "t/:type/home/*",
+				link: resolveUuid("type", "/attribute-type/t/:type/home"),
+				params: ["type"],
+			},
+		},
 		user: {
 			match: () => "/user/*",
 			dashboard: {
