@@ -2,7 +2,7 @@ package derivean.rest.root.`attribute-group`
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
-import derivean.rest.root.`attribute-type`.endpoint.*
+import derivean.rest.root.`attribute-group`.endpoint.*
 import io.ktor.routing.*
 import io.ktor.util.*
 

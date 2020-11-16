@@ -39,8 +39,10 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuGroup id={id}>
+						<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
+						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					</MenuGroup>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),

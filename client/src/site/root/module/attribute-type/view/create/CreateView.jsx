@@ -12,6 +12,7 @@ const CreateView = () => {
 			<ModuleContext.Consumer>
 				{(moduleContext) => (
 					<CommonCreateView
+						param={moduleContext.parent}
 						defaultEnableSubmit={true}
 					>
 						<Card title={t(`${moduleContext.id}.attribute-type.title`)}>

@@ -447,3 +447,6 @@ aa809fe0-e1ba-4672-a52a-14df3f4a2ba1,en,translation,root.attribute-type.create.t
 b69ae179-22bb-47a8-8803-a2dd76fe704f,en,translation,root.attribute-type.form.cancel,Cancel!
 d41bc857-89d5-4756-a0c6-80a504f9e938,en,translation,root.attribute-type.create.form.cancelConfirm,"All changes will be lost, continue?"
 b1f44bf6-1839-4b5a-92de-07f73d1d8716,en,translation,root.attribute-type.description.hint,"Description goes through translation, keep it short."
+05d60a10-a0d9-4614-94e8-bad2f28dbac0,en,translation,root.attribute-type.list.title,Attribute Types
+1998ba6d-f79a-4c69-97bd-6b69ea959055,en,translation,root.attribute-type.create.success,Attribute Type created!
+3f8b66cc-cebe-4109-b701-9c2da56e3842,en,translation,root.attribute-type.list.edit,Edit!

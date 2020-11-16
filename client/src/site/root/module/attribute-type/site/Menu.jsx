@@ -20,7 +20,12 @@ const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<MenuItem key={`root.attribute-group`} id={`root.attribute-group`} href={Routes.root.attributeGroup.home} icon={<BackIcon/>}/>
+			<MenuItem key={`root.attribute-group.list`} id={`root.attribute-group.list`} href={Routes.root.attributeGroup.list} icon={<BackIcon/>}/>
+			<MenuDivider/>
+			<MenuGroup id={"root.attribute-group"}>
+				<MenuItem key={"root.attribute-group"} id={"root.attribute-group"} href={Routes.root.attributeGroup.home} icon={<GroupIcon/>}/>
+				<MenuItem key={"root.attribute-group.edit"} id={"root.attribute-group.edit"} href={Routes.root.attributeGroup.edit} icon={<EditIcon/>}/>
+			</MenuGroup>
 			<MenuDivider/>
 			<AttributeTypeMenuItem key={id}/>
 			<MenuDivider/>
@@ -43,6 +48,7 @@ const Menu = () => {
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.create.match(), <DefaultMenu/>),
+				route(link.list.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
