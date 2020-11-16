@@ -3,7 +3,6 @@ package derivean.storage.repository
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.attribute.AttributeRepository
 import derivean.storage.entities.Building
 import derivean.storage.entities.Hero
 import derivean.storage.entities.Kingdom

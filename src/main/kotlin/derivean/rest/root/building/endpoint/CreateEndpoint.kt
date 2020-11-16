@@ -8,8 +8,8 @@ import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
-import derivean.server.attribute.AttributeRepository
 import derivean.storage.entities.Building
+import derivean.storage.repository.AttributeRepository
 import derivean.storage.repository.BuildingRepository
 import derivean.storage.repository.KingdomRepository
 import io.ktor.application.*

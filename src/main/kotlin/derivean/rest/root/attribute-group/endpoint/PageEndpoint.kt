@@ -1,17 +1,21 @@
 package derivean.rest.root.`attribute-group`.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.rest.AbstractEndpoint
+import derivean.rest.root.AbstractPageEndpoint
+import derivean.storage.repository.AttributeGroupRepository
 import io.ktor.routing.*
+import io.ktor.util.*
 
-class PageEndpoint(container: IContainer) : AbstractEndpoint(container) {
-	override fun install(routing: Routing) {
-		"/api/root/attribute-group/page".let { url ->
-			discovery {
-				this.link = url
-				this.name = "root.attribute-group.list"
-				this.description = "Return all attribute groups."
-			}
-		}
-	}
+@KtorExperimentalAPI
+class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
+	private val attributeGroupRepository: AttributeGroupRepository by container.lazy()
+	private val fetchMapper: FetchMapper by container.lazy()
+
+	override fun install(routing: Routing) = page(
+		routing,
+		"/api/root/attribute-group",
+		"root.attribute-group",
+		attributeGroupRepository,
+		fetchMapper,
+	)
 }

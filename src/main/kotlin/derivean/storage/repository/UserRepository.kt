@@ -3,7 +3,6 @@ package derivean.storage.repository
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.attribute.AttributeRepository
 import derivean.storage.entities.User
 import derivean.storage.tables.UserTable
 import org.jetbrains.exposed.sql.SortOrder
