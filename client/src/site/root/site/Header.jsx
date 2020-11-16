@@ -124,7 +124,7 @@ const Header = () => {
 							setValue(null);
 						}}
 						render={item => <SearchItem item={item}/>}
-						hotkey={"alt+x"}
+						// hotkey={"alt+x"}
 					/>
 				</ModuleContext.Provider>
 			</div>

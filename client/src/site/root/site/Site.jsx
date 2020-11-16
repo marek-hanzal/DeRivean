@@ -6,8 +6,8 @@ import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {AttributeMenuItem, AttributeMenuRoute} from "site/root/module/attribute/site/Menu";
-import {AttributeRoute} from "site/root/module/attribute/site/Router";
+import {AttributeGroupMenuItem, AttributeGroupMenuRoute} from "site/root/module/attribute-group/site/Menu";
+import {AttributeGroupRoute} from "site/root/module/attribute-group/site/Router";
 import {BlogRoute} from "site/root/module/blog/site/Router";
 import {BuildingMenuRoute} from "site/root/module/building/site/Menu";
 import {BuildingRoute} from "site/root/module/building/site/Router";
@@ -42,7 +42,7 @@ const Site = () => {
 						BuildingMenuRoute(),
 						HeroMenuRoute(),
 						TranslationMenuRoute(),
-						AttributeMenuRoute(),
+						AttributeGroupMenuRoute(),
 						route("*", <BaseMenu>
 							<MenuDivider/>
 							<MenuItem key={"root.home"} id={"root.home"} href={Routes.root} icon={<HomeIcon/>}/>
@@ -50,7 +50,7 @@ const Site = () => {
 
 							<UserMenuItem key={"root.user"}/>
 							<MenuDivider/>
-							<AttributeMenuItem key={"root.attribute"}/>
+							<AttributeGroupMenuItem key={"root.attribute-group"}/>
 							<MenuDivider/>
 							{/*<BlogMenuItem key={"root.blog"}/>*/}
 							{/*<MenuDivider/>*/}
@@ -71,7 +71,7 @@ const Site = () => {
 						HeroRoute(),
 						BlogRoute(),
 						TranslationRoute(),
-						AttributeRoute(),
+						AttributeGroupRoute(),
 
 						route(link.signIn.link(), <SingInView/>),
 						route(link.signOut.link(), <SingOutView id={"root"}/>),

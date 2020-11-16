@@ -118,19 +118,29 @@ const Routes = {
 				link: () => "/blog/list",
 			},
 		},
-		attribute: {
-			match: () => "/attribute/*",
+		attributeGroup: {
+			match: () => "/attribute-group/*",
 			dashboard: {
 				match: () => "dashboard/*",
-				link: () => "/attribute/dashboard",
+				link: () => "/attribute-group/dashboard",
 			},
-			building: {
-				match: () => "building/*",
-				link: () => "/attribute/building",
+			create: {
+				match: () => "create/*",
+				link: () => "/attribute-group/create",
 			},
-			hero: {
-				match: () => "hero/*",
-				link: () => "/attribute/hero",
+			edit: {
+				match: () => "g/:attribute-group/edit/*",
+				link: resolveUuid("attribute-group", "/attribute-group/g/:attribute-group/edit"),
+				params: ["attribute-group"],
+			},
+			list: {
+				match: () => "list/*",
+				link: () => "/attribute-group/list",
+			},
+			home: {
+				match: () => "g/:attribute-group/home/*",
+				link: resolveUuid("attribute-group", "/attribute-group/g/:attribute-group/home"),
+				params: ["attribute-group"],
 			},
 		},
 		user: {
