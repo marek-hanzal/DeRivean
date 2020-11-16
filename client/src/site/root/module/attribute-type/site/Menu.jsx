@@ -40,7 +40,16 @@ const Menu = () => {
 			routes={[
 				route(link.home.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={`root.attribute-group.list`} id={`root.attribute-group.list`} href={link.list} icon={<GroupIcon/>}/>
+					<MenuItem key={`root.attribute-type.list`} id={`root.attribute-type.list`} href={link.list} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<AttributeIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={`root.attribute-type.list`} id={`root.attribute-type.list`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={id} id={id} href={link.home} icon={<AttributeIcon/>}/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>

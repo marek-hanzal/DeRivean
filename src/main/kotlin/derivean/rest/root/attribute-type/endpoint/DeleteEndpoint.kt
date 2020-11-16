@@ -4,7 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
-import derivean.storage.repository.AttributeGroupRepository
+import derivean.storage.repository.AttributeTypeRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
@@ -33,11 +33,11 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 }
 
 class DeleteMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<DeleteMapper.Request>, Response<out Any>>(container) {
-	private val attributeGroupRepository: AttributeGroupRepository by container.lazy()
+	private val attributeTypeRepository: AttributeTypeRepository by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Request>) = try {
 		ok(storage.write {
-			attributeGroupRepository.delete(item.request.id)
+			attributeTypeRepository.delete(item.request.id)
 		})
 	} catch (e: Throwable) {
 		logger.error(e.message, e)

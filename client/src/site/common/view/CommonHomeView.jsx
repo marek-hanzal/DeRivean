@@ -29,8 +29,8 @@ const ContextView = (
 		Events()
 			.on("success", data => {
 				setData(data);
-				setLoading(false);
 				layoutContext.setFetch(data);
+				setLoading(false);
 			})
 			.on("error", () => {
 				setLoading(false);

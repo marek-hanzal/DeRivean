@@ -24,6 +24,7 @@ const Editor = (
 	const params = useParams();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
+	const layoutContext = useContext(LayoutContext);
 	moduleContext.fetch(
 		params[moduleContext.param],
 		Events()
@@ -31,6 +32,7 @@ const Editor = (
 				editorContext.setInitials(data);
 				values(editorContext.form, editorContext.inputMapper(data));
 				editorContext.setEditor(false);
+				layoutContext.setFetch(data);
 				editorContext.isReady();
 			})
 	);
