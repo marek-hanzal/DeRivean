@@ -459,3 +459,8 @@ c5519dab-4193-4068-ac40-8d6dc458e1d8,en,translation,root.attribute-type.edit.for
 c607370a-40fb-4f8a-ab4a-ddac72991f7c,en,translation,root.attribute-type.delete.success,Attribute Type deleted!
 ddbce91e-2e50-46f4-9905-0ff81a3b44b4,en,translation,root.attribute-type.dashboard.menu,Dashboard
 21e47120-f1ef-42cf-a32e-e95097d39bc0,en,translation,root.attribute-type.subtitle,Here you will find all attribute types of the selected group.
+26894bbc-ea38-4a7a-8a30-9411b03adc3d,cs,translation,root.attribute-group.menu,Skupina attributů
+f8827309-3c4c-41f9-8b5f-52d439649655,cs,translation,root.attribute-group.dashboard.menu,Nástěnka
+db661142-862b-49dd-82d9-ce5f61a7fb02,cs,translation,root.attribute-group.create.menu,Vytvořit
+469fb64f-ccce-4c31-a367-8aa5ebfbcc03,cs,translation,root.attribute-group.list.menu,Seznam
+3b4c67be-680d-4b02-b664-1803255076cf,en,translation,root.attribute-group.update.success,Attribute Group updated!

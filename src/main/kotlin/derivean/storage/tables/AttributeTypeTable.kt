@@ -5,6 +5,10 @@ import org.jetbrains.exposed.sql.ReferenceOption
 
 object AttributeTypeTable : UUIDTable("attribute-type") {
 	val group = reference("group", AttributeGroupTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
-	val name = varchar("name", 64).uniqueIndex()
+	val name = varchar("name", 64)
 	val description = varchar("description", 128).nullable()
+
+	init {
+		uniqueIndex("type_unique", group, name)
+	}
 }
