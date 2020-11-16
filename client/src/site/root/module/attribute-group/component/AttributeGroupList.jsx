@@ -5,7 +5,6 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import BuildingIcon from "site/common/icon/BuildingIcon";
 
 const AttributeGroupListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
@@ -16,7 +15,7 @@ const AttributeGroupListItem = ({item}) => {
 		]}>
 			<List.Item.Meta
 				avatar={
-					<Avatar style={{color: "#1890ff", backgroundColor: "#FFF"}} size={"large"} icon={<BuildingIcon/>}/>
+					<Avatar style={{color: "#1890ff", backgroundColor: "#FFF"}} size={"large"} icon={moduleContext.icon}/>
 				}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
