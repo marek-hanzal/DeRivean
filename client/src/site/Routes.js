@@ -145,6 +145,11 @@ const Routes = {
 		},
 		attributeType: {
 			match: () => "/attribute-type/*",
+			dashboard: {
+				match: () => "g/:group/dashboard/*",
+				link: resolveUuid("group", "/attribute-type/g/:group/dashboard"),
+				params: ["group"],
+			},
 			create: {
 				match: () => "g/:group/create/*",
 				link: resolveUuid("group", "/attribute-type/g/:group/create"),
