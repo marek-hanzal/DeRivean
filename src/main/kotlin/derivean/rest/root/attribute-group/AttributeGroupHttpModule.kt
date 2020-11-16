@@ -16,6 +16,7 @@ class AttributeGroupHttpModule(container: IContainer) : AbstractHttpModule(conta
 			UpdateEndpoint::class,
 			DeleteEndpoint::class,
 			PageEndpoint::class,
+			ListEndpoint::class,
 		)
 	}
 }

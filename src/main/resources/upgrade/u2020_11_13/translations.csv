@@ -466,3 +466,4 @@ d534634d-a5a2-4446-a72f-bb788eba3db5,cs,translation,root.attribute-group.list.me
 2f3101a2-5f3f-42e9-b3c2-80be4b732fac,en,translation,root.attribute-group.update.success,Attribute Group updated!
 5b9eb0e3-11be-4de8-a342-5584a4cb0c83,en,translation,root.kingdom.attributes.common.menu,Common
 f4540c02-ea74-4fae-8cd4-a7b8d5ed30f2,en,translation,root.kingdom.attributes.resources.menu,Resources
+0b97f1bf-87db-4295-8b68-2da2c32a63fc,en,translation,root.kingdom.edit.form.cancelConfirm,"All changes will be lost, continue?"
