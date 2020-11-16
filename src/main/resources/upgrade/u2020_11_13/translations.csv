@@ -456,3 +456,6 @@ b1f44bf6-1839-4b5a-92de-07f73d1d8716,en,translation,root.attribute-type.descript
 1941864f-9d2f-4b26-96fc-fe6c15043fb5,en,translation,root.attribute-type.edit.form.submit,Save changes!
 f4754f04-501d-4ddc-911b-dad4f71b1949,en,translation,root.attribute-type.edit.form.delete,Delete!
 c5519dab-4193-4068-ac40-8d6dc458e1d8,en,translation,root.attribute-type.edit.form.deleteConfirm,"Do you want remove selected Attribute Type? All usages of this type will be removed too (so, it's quite dangerous action!)."
+c607370a-40fb-4f8a-ab4a-ddac72991f7c,en,translation,root.attribute-type.delete.success,Attribute Type deleted!
+ddbce91e-2e50-46f4-9905-0ff81a3b44b4,en,translation,root.attribute-type.dashboard.menu,Dashboard
+21e47120-f1ef-42cf-a32e-e95097d39bc0,en,translation,root.attribute-type.subtitle,Here you will find all attribute types of the selected group.

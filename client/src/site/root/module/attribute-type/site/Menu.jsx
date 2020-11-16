@@ -1,6 +1,7 @@
 import AttributeIcon from "component/icon/AttributeIcon";
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
+import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import GroupIcon from "component/icon/GroupIcon";
 import ListIcon from "component/icon/ListIcon";
@@ -56,6 +57,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
+				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
 				route(link.list.match(), <DefaultMenu/>),
 			]}
@@ -66,6 +68,7 @@ const Menu = () => {
 const AttributeTypeMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} {...props}>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
 			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
 			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 		</MenuGroup>
