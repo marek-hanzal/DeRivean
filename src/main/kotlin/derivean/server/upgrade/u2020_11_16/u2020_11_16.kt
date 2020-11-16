@@ -4,10 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.auth.AuthenticatorService
 import derivean.server.translation.TranslationCsv
-import derivean.server.upgrade.u2020_11_16.storage.entities.AttributeGroup
-import derivean.server.upgrade.u2020_11_16.storage.entities.Role
-import derivean.server.upgrade.u2020_11_16.storage.entities.Translation
-import derivean.server.upgrade.u2020_11_16.storage.entities.User
+import derivean.server.upgrade.u2020_11_16.storage.entities.*
 import derivean.server.upgrade.u2020_11_16.storage.tables.*
 import org.jetbrains.exposed.sql.SchemaUtils
 
@@ -51,34 +48,62 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 				site = "root"
 				roles = Role.find { RoleTable.name eq "root" }
 			}
-			AttributeGroup.new {
-				name = "kingdom.common"
-				description = "Attributes related to Kingdoms"
+
+			val resources = { it: AttributeGroup ->
+				AttributeType.new {
+					this.group = it
+					this.name = "wood"
+					this.description = "Just good old wood"
+				}
+				AttributeType.new {
+					this.group = it
+					this.name = "stone"
+					this.description = "Hard rough stone"
+				}
+				AttributeType.new {
+					this.group = it
+					this.name = "plank"
+					this.description = "That thing made from wood used for a bit more sophisticated buildings"
+				}
+				AttributeType.new {
+					this.group = it
+					this.name = "gold"
+					this.description = "Without gold nothing is possible!"
+				}
 			}
-			AttributeGroup.new {
-				name = "kingdom.resource"
-				description = "Attributes related to Kingdoms"
+			val commons = { it: AttributeGroup ->
+				AttributeType.new {
+					this.group = it
+					this.name = "xp"
+					this.description = "You know it, experience!"
+				}
 			}
+
 			AttributeGroup.new {
-				name = "building.common"
+				name = "resources"
+				description = "Attributes describing Resources (usually production of buildings)."
+			}.also { resources(it) }
+			AttributeGroup.new {
+				name = "costs"
+				description = "Attributes describing cost of something; should be in pair with Resources."
+			}.also { resources(it) }
+			AttributeGroup.new {
+				name = "production"
+				description = "Attributes related to production of Resources; should be in pair with Resources."
+			}.also { resources(it) }
+
+			AttributeGroup.new {
+				name = "kingdoms"
+				description = "Attributes related to Kingdoms"
+			}.also { commons(it) }
+			AttributeGroup.new {
+				name = "buildings"
 				description = "Attributes related to Buildings"
-			}
+			}.also { commons(it) }
 			AttributeGroup.new {
-				name = "building.cost"
-				description = "Attributes related to Cost of Buildings"
-			}
-			AttributeGroup.new {
-				name = "building.resource"
-				description = "Attributes related to Building production (resources)"
-			}
-			AttributeGroup.new {
-				name = "hero.common"
+				name = "heroes"
 				description = "Attributes related to Heroes"
-			}
-			AttributeGroup.new {
-				name = "hero.cost"
-				description = "Attributes related to cost of Heroes"
-			}
+			}.also { commons(it) }
 		}
 		storage.write {
 			TranslationCsv.translations("upgrade/u2020_11_13/translations.csv").forEach {
