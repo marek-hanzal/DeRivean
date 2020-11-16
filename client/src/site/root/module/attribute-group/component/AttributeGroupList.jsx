@@ -19,6 +19,7 @@ const AttributeGroupListItem = ({item}) => {
 				}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
+						{t("attribute-group." + item.description)}
 					</Space>
 				}
 				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
