@@ -8,7 +8,7 @@ object BuildingTable : UUIDTable("building") {
 	val user = reference("user", UserTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 	val kingdom = reference("kingdom", KingdomTable, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 	val name = varchar("name", 64)
-	val description = varchar("description", 128).nullable()
+	val description = varchar("description", 192).nullable()
 	val built = datetime("built").nullable()
 	val claim = datetime("claim").nullable()
 }
