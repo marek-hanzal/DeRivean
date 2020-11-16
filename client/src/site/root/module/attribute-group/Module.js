@@ -12,7 +12,7 @@ function CreateAttributeGroupModule() {
 	const module = new AttributeGroupModule("root.attribute-group");
 	module.baseView = AttributeGroupView;
 	module.icon = <GroupIcon/>;
-	module.link = Routes.root.attribute;
+	module.link = Routes.root.attributeGroup;
 	module.create = doAttributeGroupCreate;
 	module.update = doAttributeGroupUpdate;
 	module.delete = doAttributeGroupDelete;
