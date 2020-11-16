@@ -22,7 +22,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
-					<AttributeMenuItem key={id}/>
+					<AttributeGroupMenuItem key={id}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),

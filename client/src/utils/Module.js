@@ -19,7 +19,7 @@ class Module {
 	validate(fields = this.validateFields) {
 		for (const field of fields) {
 			if (!this[field]) {
-				throw new Error(`Missing [${field}] in module [${this.id}] (call ${field}(...) to setup a field)!`);
+				throw new Error(`Missing [${field}] field in module [${this.id}]!`);
 			}
 		}
 		return this;
