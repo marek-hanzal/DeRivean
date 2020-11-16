@@ -39,7 +39,7 @@ const Menu = () => {
 				// </BaseMenu>),
 				route("*", <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={`root.attribute-group.list`} id={`root.attribute-group.list`} href={link.list} icon={<GroupIcon/>}/>
+					<MenuItem key={`root.attribute-group.list`} id={`root.attribute-group.list`} href={Routes.root.attributeGroup.home} icon={<GroupIcon/>}/>
 					<MenuDivider/>
 					<AttributeTypeMenuItem key={id}/>
 					<MenuDivider/>

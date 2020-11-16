@@ -146,8 +146,9 @@ const Routes = {
 		attributeType: {
 			match: () => "/attribute-type/*",
 			create: {
-				match: () => "create/*",
-				link: () => "/attribute-type/create",
+				match: () => "g/:group/create/*",
+				link: resolveUuid("group", "/attribute-type/g/:group/create"),
+				params: ["group"],
 			},
 			edit: {
 				match: () => "t/:type/edit/*",
@@ -155,8 +156,9 @@ const Routes = {
 				params: ["type"],
 			},
 			list: {
-				match: () => "list/*",
-				link: () => "/attribute-type/list",
+				match: () => "g/:group/list/*",
+				link: resolveUuid("group", "/attribute-type/g/:group/list"),
+				params: ["group"],
 			},
 			home: {
 				match: () => "t/:type/home/*",
