@@ -10,13 +10,13 @@ import {useTranslation} from "react-i18next";
 import {useParams} from "react-router";
 import Events from "utils/Events";
 
-const AttributeFieldEditor = () => {
+const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
 	const [attributes, setAttributes] = useState();
 	const params = useParams();
-	moduleContext.attributes(
+	(useAttributeFetch || moduleContext.attributes)(
 		params[moduleContext.param],
 		Events()
 			.on("success", attributes => {
@@ -59,8 +59,8 @@ const AttributeFieldEditor = () => {
 												allowClear
 												placeholder={t(moduleContext.id + ".form.attribute.name.hint")}
 												options={(attributes || []).map(item => ({
-													label: t(item),
-													value: item
+													label: t(item.name),
+													value: item.id,
 												}))}
 												disabled={!editorContext.editor}
 											/>

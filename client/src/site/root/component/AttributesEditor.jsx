@@ -16,7 +16,7 @@ import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import Events from "utils/Events";
 import values from "utils/form/values";
 
-const AttributeForm = () => {
+const AttributeForm = ({useAttributeFetch = null}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
@@ -44,7 +44,7 @@ const AttributeForm = () => {
 				subTitle={t(`${moduleContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor/>
+						<AttributeFieldEditor useAttributeFetch={useAttributeFetch}/>
 					</Centered>
 				}
 			/>
@@ -52,7 +52,7 @@ const AttributeForm = () => {
 	);
 };
 
-const AttributesEditor = () => {
+const AttributesEditor = ({useAttributeFetch = null}) => {
 	const {t} = useTranslation();
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
@@ -83,7 +83,7 @@ const AttributesEditor = () => {
 			name={moduleContext.id}
 			translation={moduleContext.id}
 			children={
-				<AttributeForm/>
+				<AttributeForm useAttributeFetch={useAttributeFetch}/>
 			}
 		/>
 	);
