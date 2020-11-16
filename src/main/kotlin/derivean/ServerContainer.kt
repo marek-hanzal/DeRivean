@@ -15,8 +15,7 @@ import derivean.rest.public.PublicHttpModule
 import derivean.rest.root.RootHttpModule
 import derivean.server.auth.RoleService
 import derivean.server.config.EngineConfig
-import derivean.server.upgrade.u2020_11_13.u2020_11_13
-import derivean.server.upgrade.u2020_11_15.u2020_11_15
+import derivean.server.upgrade.u2020_11_16.u2020_11_16
 import io.github.config4k.extract
 import io.ktor.util.*
 
@@ -32,8 +31,7 @@ object ServerContainer {
 		 * Common services.
 		 */
 		configurator(IUpgradeManager::class) {
-			register(u2020_11_13::class)
-			register(u2020_11_15::class)
+			register(u2020_11_16::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)

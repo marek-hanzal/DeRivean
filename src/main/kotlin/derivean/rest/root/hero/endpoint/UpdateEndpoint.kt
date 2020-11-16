@@ -6,7 +6,7 @@ import derivean.lib.mapper.AbstractActionMapper
 import derivean.lib.rest.*
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
-import derivean.server.attribute.AttributeRepository
+import derivean.storage.repository.AttributeRepository
 import derivean.storage.repository.HeroRepository
 import io.ktor.application.*
 import io.ktor.auth.*
