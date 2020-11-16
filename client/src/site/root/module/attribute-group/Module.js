@@ -18,7 +18,7 @@ function CreateAttributeGroupModule() {
 	module.delete = doAttributeGroupDelete;
 	module.fetch = useAttributeGroupFetch;
 	module.page = fetchAttributeGroupPage;
-	module.param = "attribute-group";
+	module.param = "group";
 	return module.validate();
 }
 

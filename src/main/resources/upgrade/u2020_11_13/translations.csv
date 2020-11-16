@@ -1,419 +1,436 @@
 id,language,namespace,label,text
-0db3ed57-ac04-4e8c-8cd1-335f0ed06068,en,translation,root.translation.create.menu,Create
-90d954f0-5e35-46b5-b8a2-a421daab4694,en,translation,root.translation.create.form.submit,Create!
-fb8d0bd1-3441-49ea-8d0c-27d917b3c419,en,translation,common.back.menu,Back
-db905c6b-b885-4cf7-8082-aebaf63816fb,en,translation,root.translation.form.cancel,Cancel!
-d194934d-432c-461c-8370-0f7449ba8472,en,translation,root.translation.create.form.namespace.label,Namespace
-0285b0b1-d363-4145-aeae-b041a65a0b9a,en,translation,root.translation.create.form.text.label,Text
-e65c04a6-ba64-47f6-8b98-8867fb751918,en,translation,root.translation.create.title,Create translation
-92d87369-65cc-433d-91cc-f5e43c83daf5,en,translation,root.translation.title,Translation
-b670d153-59e5-4cb3-a6a0-093cc8798cde,en,translation,root.sign-out.menu,Sign out!
-6b8bcb3d-243f-4ea4-abb5-a5bd35037dc1,en,translation,common.view-item,View
-223870c0-079a-480a-b9f8-a4cda6d90ce9,en,translation,root.header.search.label,Search everywhere!
-5fd1b0e8-41d5-4baf-a43b-03b07d8b1407,en,translation,root.translation.create.form.title,Translation
-d18945f0-7ac6-4fe9-899d-a74490286496,en,translation,root.translation.create.success,Translation created!
-1b22cf09-ea76-4314-b583-066109543628,en,translation,root.translation.dashboard.menu,Dashboard
-92be1835-9867-4a09-b8b3-f992b75309fc,en,translation,root.translation.list.menu,List
-0b4c47ce-c8ca-43bf-a356-f4572770b2d5,en,translation,common.edit-item,Edit
-f2d077ef-eb46-41cd-b153-7732bfc2ad45,en,translation,common.copy-success,You have copied the UUID in your clipboard!
-8dd85d6b-6acd-4a54-9d21-83b05a5f848e,en,translation,common.yes,Yep!
-a1691b8c-f81b-4023-a4ff-a6361391f45c,en,translation,common.no,Nope!
-0ad3f01f-6838-45b5-aaae-21085800294f,en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
-edcd0f68-ff2b-4b3b-a9fc-b68bf3505d89,en,translation,root.translation.list.title,Translations
-f9015640-737b-40e5-bf95-0c35122a7f10,en,translation,root.translation.list.table.id.column,UUID
-66c35337-7fa2-4fac-820b-af92688924fd,en,translation,root.translation.list.table.language.column,Language
-ac281f6c-f656-4a8c-b60c-6fe0bfa7a280,en,translation,root.translation.list.table.namespace.column,Namespace
-80b73409-4c93-41cc-9d4f-ae4091d4d341,en,translation,root.translation.list.table.label.column,Label
-87ac53e3-20b4-41fe-9aef-d02140da92ab,en,translation,root.translation.edit.form.edit,Edit!
-11ac8738-43e9-47d1-8813-2204515eaa05,en,translation,root.translation.edit.form.title,Translation
-c37f742f-a37d-4b3e-b937-e1ecc066454c,en,translation,common.warped,You have been warped to target!
-83d13bad-a6fc-4c11-b214-adfd644f5ce4,en,translation,root.user.dashboard.menu,Dashboard
-033117ae-5e7d-4919-b355-df8f152ea5f4,en,translation,root.user.create.menu,Create
-d2eb6e25-f442-4abd-883b-0f05de59faee,en,translation,root.user.list.menu,List
-2ae0b44b-22d5-4f2e-97ac-5a48a274c36e,en,translation,root.user.list.title,Users
-60755245-0852-4121-ad4c-1c58123666c0,en,translation,root.home.content.title,Welcome to DeRivean Game Server!
-369b94c6-123b-40a7-bbc2-2220f221d431,en,translation,root.home.title,Server Administration
-cccc23a9-ca3c-4cf2-9265-6c2f8b9d0a3d,en,translation,root.translation.create.list.title,Translations
-0604e4f2-7ce5-4c62-92d2-1ae2c0c2d534,en,translation,root.translation.home.menu,Translation
-9717f75d-744d-4046-baf2-21dd85401e87,en,translation,root.translation.menu,Translations
-fe402ff8-a68f-4dae-a6a1-7af10b71712d,en,translation,root.sign-out.title,Sign out?
-87a05bac-1414-459e-991b-e5042326b06f,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
-6a6564be-15fc-4d07-9869-35da6b23d0b2,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
-cf2084bc-c4cb-4ce8-8e2d-7e2c14ee567c,en,translation,root.translation.create.form.text.required,Translation text is required!
-201960ac-080e-4a46-ba9e-a3f693a0f0f1,en,translation,root.translation.form.language.label,Language
-3e82ba30-11a7-42c7-8999-ebc5306a75c0,en,translation,root.translation.update.success,Translation updated!
-1aae9d87-7b03-403e-8052-5aeed8f00468,en,translation,root.translation.create.error,"Cannot create translation, please check form!"
-e92c17be-7e36-4ff9-a976-acd37dd9d197,en,translation,root.translation.form.title,Translation
-7b152ec3-0cd6-4a87-a45c-203bcf8d7f4c,en,translation,root.statistic.translations,Translations
-350d7d8b-4243-4620-a64d-64f1cfb417da,en,translation,root.statistic.heroes,Heroes
-ebe91e6a-f54f-4a39-8522-d12dd3c1ccb5,en,translation,root.statistic.users,Users
-f2786209-fc15-4089-9690-d03db0a593e6,en,translation,root.statistic.kingdoms,Kingdoms
-8a495b07-2285-4280-9773-18b7ce807676,en,translation,root.statistic.buildings,Buildings
-60a673d7-f7ce-4ce4-b94b-8c6ab22a9b2a,en,translation,root.home.content.subtitle,This is the place where all the dark magic happens!
-0d2229da-ff33-4f46-adbc-e1642d787502,en,translation,root.blog.menu,Blog
-5cc5cbef-a26d-4a32-91a9-5697be00131f,en,translation,root.blog.dashboard.menu,Dashboard
-12f85ba9-2426-4ad2-9f8b-0bc31c0482c2,en,translation,root.blog.create.menu,New Post
-b3078188-d49a-4663-9791-95ed126e6330,en,translation,root.blog.list.menu,List
-08c62fb2-93ae-4e20-bacc-42eee9ba33f7,en,translation,root.translation.form.text.required,Translation text is required!
-582dfe59-ca3e-41e2-a276-fd3005d8d222,en,translation,root.translation.form.label.required,Translation label is required!
-643df2e2-0320-4471-b06e-980922b16116,en,translation,root.translation.form.language.required,Language is required!
-8aef7d77-f4af-4e95-8e0a-4289b30ebc1f,en,translation,public.home.menu,Home
-bd69141d-adeb-4afb-afc0-6e285a63337a,en,translation,public.sign-up.menu,Sign up
-d494aa2a-814e-40bf-a57b-ca54ee9ada34,en,translation,public.sign-in.menu,Sign in
-96f1149d-a421-4ee0-8cc0-2cfd6788add0,en,translation,public.home.sign-in.title,Sign In!
-81efec29-9384-450f-b514-a881b13452f5,en,translation,public.home.sign-up.title,Sign Up!
-09624f10-0bff-4c86-869f-d04c255a7bb2,en,translation,public.home.content.title,Welcome to DeRivean!
-85666474-1638-4a2b-8a0b-7a95c8e6bea9,en,translation,public.home.content.subtitle,You're welcome to look around and start playing!
-582d09b3-b153-404f-ae8c-7ca54df8f21c,en,translation,public.home.content.list.title,"DeRivean is simple game, where you will:"
-d150b854-6986-4e6d-89c4-9ea9e150b396,en,translation,public.home.content.list.item-0,Create your own heroes and take them to battle.
-112b6eec-58e8-4684-b895-98046fff2b6a,en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
-2931237b-f346-4b45-bab5-7a4f59d46b4c,en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
-ed776a07-b8ae-4211-9be0-d1354cbab8ab,en,translation,root.user.menu,User
-f2f463e2-1a7b-49d7-b350-41b4a1f5f0f1,en,translation,public.sign-up.title,Sign Up!
-7cb25be9-76db-45ea-99ff-df52443c13cd,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
-cf06452c-35f1-4aeb-ae9c-aa3a1cae3b2e,en,translation,root.translation.edit.menu,Edit
-fe887fa4-047d-4298-bf0f-6e6e297326a9,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
-99946609-dfa9-47b7-b0e1-2d4fb51e1fce,en,translation,root.home.menu,Home
-bb2b4342-dc2d-484e-ba00-7abea9eccc65,en,translation,root.building.dashboard.menu,Dashboard
-5db90906-3f88-46f6-a0ad-d51348a7fbfa,en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
-6a0d08e9-3d4c-4466-a27e-38327fc0871f,en,translation,public.sign-up.content.list.item-0,Create your own heroes
-ca7a9d25-23a3-4e86-b504-e3b3ededf917,en,translation,public.sign-up.content.list.item-1,Build up a Kingdom of Yours
-9007d22f-3ca3-48c0-a0c5-d41abfdbe0ff,en,translation,public.sign-up.content.list.item-2,"Gain resources, XP, level up Heroes, merge them"
-1fb5a0c3-1009-488d-8e0d-0a5d3d03caa8,en,translation,public.sign-up.content.list.item-3,Fight for becoming the greatest King over here
-754ffa12-6116-47d0-bd69-59847a2cc920,en,translation,public.sign-up.content.list.item-4,...and a lot more awaits for you!
-2f0956a2-684d-4eb3-9d08-1789bd3de5d2,en,translation,public.sign-up.content.form.title,Registration
-39269758-90df-4cc4-8359-0c8125102ea9,en,translation,public.sign-up.form.name.label,Name
-e0425ca2-2e91-486c-bc3c-7ba8d93deb12,en,translation,public.sign-up.form.login.label,Login
-16ef2bfa-9a6f-432c-8062-e7bb71adfb96,en,translation,public.sign-up.form.password.label,Password
-d0889b25-3442-43d2-9adb-8fa0ba8e85be,en,translation,public.sign-up.form.name.required,Please choose some name representing you!
-894f85d9-69ea-46f6-957f-98db2e205206,en,translation,public.sign-up.form.login.required,Please choose some login - for example your nick or email address.
-af42af55-12b4-47ea-b88e-678854e9902d,en,translation,public.sign-up.form.password.required,"We still need everlasting passwords, so please pick some."
-12d2d1e3-b8c2-46b5-9dff-0c66a7c61226,en,translation,public.sign-up.form.submit.label,Sign Up!
-b90e286d-9f02-4ae6-8f3b-b7c1cbc5e3dc,en,translation,public.sign-in.title,Sign In!
-54b709d3-a28d-4f79-bdc2-c7506dfa13f0,en,translation,public.sign-in.content.title,"Welcome back, brave Hero!"
-8be38a2f-8e32-4b12-b178-589169183d2d,en,translation,public.sign-in.content.subtitle,"Login and look around, what's new!"
-6e8c7ae3-d120-4b0f-9c1b-b06565b2c2cb,en,translation,public.sign-in.content.form.title,Open a magic gate by your password!
-0724bcdf-1e5c-4074-a3ba-03e432dd7b51,en,translation,public.sign-in.form.login.label,Login
-27036a80-b16e-4767-b526-5d251eeffe9c,en,translation,public.sign-in.form.password.label,Password
-0e6fe4f5-8a69-425a-9c1b-cf4fa9f82155,en,translation,public.sign-in.form.login.required,We cannot make login request without... login!
-d3692d85-ac3a-47ed-abfe-760b7fc03d8e,en,translation,public.sign-in.form.password.required,"Please, give us your deepest secret!"
-62428e39-334e-4804-ba08-a12d63dcb31d,en,translation,public.sign-in.form.submit.label,Login!
-7b014efc-09fb-4020-8b4d-00307e0937f3,en,translation,public.sign-in.content.list.title,"Check, what's new in your Kingdom"
-5fd3bdee-00fa-41a9-bbd0-3e4668dec641,en,translation,public.sign-in.content.list.item-0,Don't forget to claim your resources
-433085bd-5df5-4415-a71a-99150bdff84f,en,translation,public.sign-in.content.list.item-1,Look for some new battles
-95c2bfbc-499b-496c-9c85-af7263c572a9,en,translation,public.sign-in.content.list.item-2,See Store for new equipment
-cfe805e5-29d1-4d23-98a5-cba130dfce1c,en,translation,public.sign-in.content.list.item-3,Level up your Heroes and Buddies
-62828d55-3d27-47b5-9157-ab3f6c457c0f,en,translation,root.sign-out.button.sign-out,Leave!
-22fdbc33-0418-46d8-8790-716ed9f9ad3d,en,translation,root.sign-out.button.back,Return!
-7fbf19d6-6987-48bb-ab87-e20cdf7862ee,en,translation,root.home.content.loader.title,Fetching server health status
-c9973f33-8559-4bd7-8665-4301a8609121,en,translation,root.sign-in.succeed.title,Welcome back to the Root!
-8d9586b8-d87c-46a0-aed5-952770de19ea,en,translation,root.sign-in.succeed.subtitle,"Be careful here, dude, it's quite dangerous 'round here!"
-a94eae2f-5d3c-4ba1-b5bd-6c65f4a204ac,en,translation,root.sign-in.continue,Continue!
-78157d1e-2c1d-4e5a-8001-7d9be970f26b,en,translation,public.sign-out.succeed.title,You are logged out!
-b1107227-b38b-47d7-83ab-97a193a150f7,en,translation,public.sign-out.succeed.subtitle,"We will miss you, so see you soon!"
-f1c0d2e0-7bd2-4bb6-b1b8-3c5e307f466a,en,translation,public.sign-out.continue,Continue!
-387975df-8fc3-4344-bd13-1232d6089d44,en,translation,public.sign-out.title,See you soon!
-e2264061-e479-4dc3-b35b-aa1a00d0c8c5,en,translation,root.sign-in.title,Welcome back!
-5cb894d9-d9ef-46d8-a6a4-79ab96e789bf,en,translation,root.user.edit.menu,Edit
-4bcf7ee6-aca8-4b78-8558-7cbead6c23be,en,translation,root.user.create.form.submit,Create!
-98bff36c-6a16-455a-8797-b285720c4d95,en,translation,root.user.form.cancel,Cancel!
-fe60b18a-ed2f-4df8-b4c2-4f0480a1cdd9,en,translation,root.user.form.name.label,Name
-91672c6c-1a1f-4843-b162-888e1932158c,en,translation,root.user.form.title,Registration
-f04e5bd9-5a9d-466b-bb6e-25ddf53d8963,en,translation,root.user.list.table.id.column,UUID
-74577907-7356-4e06-bf60-533ecb54f955,en,translation,root.user.list.table.name.column,Name
-f5585b14-4ba9-4289-bb84-29c162232983,en,translation,root.user.list.table.login.column,Login
-46b6f098-456d-4385-9928-e05d411e8491,en,translation,root.user.list.table.token.column,Token
-b3e558ce-9481-42f3-ae23-fcd1aeb793ac,en,translation,root.user.list.table.site.column,Site
-041ab133-f3ef-4a79-9a49-e32aee2be72e,cs,translation,root.home.title,Administrace serveru
-8961a704-db9b-4506-86cc-0b6dbd94c199,en,translation,common.copy-id,Copy UUID
-416c8f71-0785-4ff1-a425-8d6ed29c0c20,en,translation,root.translation.edit.form.submit,Save changes!
-b31c46ff-ed93-4bf0-a2f8-ccd96d0a49e1,en,translation,root.translation.edit.form.delete,Delete!
-cd99fa73-4894-4d35-883a-0b373061ea9e,en,translation,root.translation.edit.form.deleteConfirm,Do you want to remove translation?
-a258bf1a-9943-4af4-b37d-d75a61c22820,en,translation,root.translation.edit.form.cancelConfirm,"All changes will be lost, continue?"
-c557c375-86fe-4d16-b86b-3843094bc9c8,en,translation,root.user.title,Users
-3f4e801a-8885-4ae7-aae6-0a6bc542af00,en,translation,root.user.edit.form.edit,Edit!
-44ef6f59-f1b2-4a6c-9cf0-ebb5bcbce3ed,en,translation,root.user.edit.form.submit,Save changes!
-c88d1567-a705-4fc0-83ca-57b9483481de,en,translation,root.user.edit.form.delete,Delete!
-f4e7f6dd-4a45-43b6-8244-b41e0c46c86a,en,translation,root.user.form.login.label,Login
-366b2208-59e7-493f-96e7-d588aec98754,en,translation,root.user.form.password.label,Password
-3cc9e5ab-fb77-401f-9f31-3f18bd6393e8,en,translation,root.user.form.site.label,Site
-a3a59c55-20d0-41ca-8435-692c4629d0c8,en,translation,root.kingdom.dashboard.menu,Dashboard
-83621ab2-0e99-4054-9d59-133a5ae00899,en,translation,root.kingdom.create.menu,Create
-152afd88-8367-4c9b-a5dd-ff8eb726e589,en,translation,root.kingdom.list.menu,List
-50c0c483-045e-4667-9d04-650fb7aaf820,en,translation,root.user.form.attribute.title,Attributes
-07e2f9c1-e257-400f-bc09-849375a5f9f3,en,translation,root.kingdom.edit.menu,Edit
-68a49842-1ee8-4279-9c64-66e000d0be9e,en,translation,root.kingdom.title,Kingdom Overview
-7ee5410d-47ba-46f1-8a94-ddd513dae0ab,en,translation,root.hero.menu,Hero
-7fd3c2f0-9d98-4d25-85d1-e771430373e8,en,translation,root.kingdom.menu,Kingdom
-cd26b8b8-977f-4fcf-8479-d990a258fe17,en,translation,root.hero.dashboard.menu,Dasbhoard
-e76d744f-36c2-4ed4-be53-b1e6f9727890,en,translation,root.hero.create.menu,Create
-81580598-6ba1-47ca-90e9-0a629ec38cff,en,translation,root.hero.list.menu,List
-7ca9467f-71ad-4fc9-97aa-d2d9641244ba,en,translation,root.building.create.menu,Create
-21bcf96d-980b-4ddc-b5f7-4fb5fb2849a8,en,translation,root.building.list.menu,List
-15315cb1-dd73-4999-8e63-3dd551dcd251,en,translation,root.hero.title,Heroes
-8a62d386-e969-4359-9224-c79e4162652f,en,translation,root.site.null,No site
-358b37eb-2e6a-4869-abdf-eea7bb1e5483,en,translation,root.site.game,Game
-8a9d7864-d6b8-4e34-9fb1-47b04d50146e,en,translation,root.site.root,Root
-dd35ba8a-96b5-462f-9adc-dacef599a289,en,translation,root.user.form.misc.title,Others
-e3459ee0-e1c4-4cd1-97c3-399bcda6beb7,en,translation,root.user.form.template.label,Template user
-152653ec-9484-4016-8d5e-11429600d0b6,en,translation,root.user.form.template.help,Attributes will be copied from the selected template user (if selected).
-8982592d-85c8-4af0-82e6-83cc528c1b73,en,translation,root.user.form.attribute.empty,There are no attributes.
-58456739-2adb-409a-bd3f-13ac8e9fabbf,en,translation,root.user.form.attribute.add,Attribute
-cd7ee2ae-14df-4550-9c55-2339740669d9,en,translation,root.user.create.list.title,Users
-9e1684e1-ae2b-4c7b-a112-e3d469d825e9,en,translation,root.user.create.list.item-0,User represents a human being.
-bd5729b0-82f4-48e2-b0cf-cbd2970d7a22,en,translation,root.user.create.list.item-1,User could log in into the game (Game site) or as the root administrator (Root site).
-c63d1968-f33d-4dc1-bdab-b5e07ef47fc4,en,translation,root.user.create.list.item-2,"Gamers have access to the game, thus using game rules defined in this administration."
-7c6bc377-b6a4-4a72-990c-06939d6dabec,en,translation,root.user.create.list.item-3,"Root users have full access to the server, thus not able to play the game - they're like Game Masters."
-2da567ef-3c13-456b-b0ab-9e1d3682df89,en,translation,root.kingdom.edit.form.edit,Edit!
-62e17ff2-bf94-4577-a8ff-c9ddfa6f5c1f,cs,translation,root.kingdom.edit.form.edit,Editovat!
-e5096466-5fad-4f4d-8db6-e868b3f8f49c,en,translation,root.kingdom.list.title,Kingdom list
-0622ac4a-6ff4-49bf-bee4-0b96a9abb3df,en,translation,root.kingdom.list.table.name.column,Name
-b9409350-97ec-4d2e-a5e7-33c18f9a3376,en,translation,root.kingdom.list.table.id.column,UUID
-f90d28a5-a398-46c1-a34c-2b0ad85d470d,en,translation,root.kingdom.create.title,Create Kingdom!
-25ade645-d592-438f-94f5-cc3b786aa5cd,en,translation,root.kingdom.create.form.submit,Create!
-010881e2-4443-4885-ba6d-896dbd5dcd5e,en,translation,root.kingdom.form.cancel,Cancel!
-31df5832-51b9-4898-97b1-5e5c10994e6e,en,translation,root.kingdom.form.name.label,Name
-80fefeb0-68dc-483f-b7a0-03db2cf56e44,en,translation,root.kingdom.create.form.misc.title,Others
-5a1fa00b-2a28-4ecd-9895-23d05cd63904,en,translation,root.kingdom.create.form.template.label,Template
-8d44749a-d779-44bc-9357-e1ef4ac46ee1,en,translation,root.kingdom.create.form.template.help,Use template kingdom to copy default attributes.
-32918ce1-253b-492c-8b78-cf689081d5cd,en,translation,root.kingdom.form.attribute.add,Attribute
-070ccb79-75a1-4e9d-b853-592dea5e9527,en,translation,root.kingdom.form.attribute.title,Attributes
-1ff99295-9909-4bb4-84ad-2d5b30888015,en,translation,root.kingdom.form.attribute.empty,There are no attributes.
-4b5a9007-a450-4785-9ea4-6072249a7672,en,translation,root.kingdom.subtitle,Here you have overview of all kingdoms!
-2877fb9c-06d8-4e25-b161-5587b585eea1,en,translation,root.building.edit.form.edit,Edit!
-b7ad0d64-c4e3-4c08-b4b1-606386c9dab2,en,translation,root.building.form.name.label,Name
-381ab2ff-4f6f-420f-a53a-40d46bd0edcc,en,translation,root.building.title,Building
-3586537f-18f7-4621-a4c7-16d2d661984c,en,translation,root.building.form.attribute.title,Attributes
-237f3fd2-d916-45d9-9f35-ce699217d9f9,en,translation,root.building.form.attribute.empty,There are no attributes.
-a16707d4-ccf5-42dd-a612-2139b0c82c15,en,translation,root.building.edit.form.submit,Save changes!
-6a737466-5313-4b73-be45-c1b4091af874,en,translation,root.building.form.attribute.add,Attribute
-d87347da-ac8d-44f0-9cba-25f1c1f10f04,en,translation,root.building.form.cancel,Cancel!
-77c4cc92-33d5-49b8-928c-fc372dc3703b,en,translation,root.building.edit.form.delete,Delete!
-be13247e-d934-4d6a-8d4e-651e1e756fad,en,translation,root.building.form.attribute.deleteConfirm,Delete attribute?
-92f9de18-9d1a-42d3-86f3-4f38c7d08468,en,translation,root.building.edit.form.deleteConfirm,Delete building? This action cannot be reverted!
-427dc467-d913-406f-957b-c0ba15a4b939,en,translation,root.toolbar.kingdom.create,Create
-4492bc7d-1a76-41bb-a786-2cabcdb090f8,en,translation,root.toolbar.building.create,Create
-8e80417e-ccc7-4edb-87c7-64ae34fcba34,en,translation,root.toolbar.hero.create,Create
-74f9a7e6-bbdb-4d9e-8d3a-d13ead46838c,en,translation,root.toolbar.kingdom.list,List
-338c5d6d-7080-488f-9c6f-17dac22ef3b9,en,translation,root.toolbar.hero.list,List
-0a4c109c-5c1c-4187-9ea8-990e758433ec,en,translation,root.toolbar.building.list,List
-1262d022-31f1-4867-9d94-e9d37efc45a0,en,translation,root.building.create.form.submit,Create!
-9927d0da-2a38-4c52-ac1e-018ff2b3b362,en,translation,root.hero.create.form.submit,Create!
-c8311354-a4a7-407d-ac1b-d6e8025c914b,en,translation,root.building.create.title,Create building!
-5a3cac71-5390-4455-bf03-09fafb7547d9,en,translation,root.hero.list.title,Heroes
-1d02f7a1-c6b8-4456-a528-d7b92a191c52,en,translation,root.hero.list.table.id.column,UUID
-59e3da72-02b6-454c-86a1-51cbb6f32ae4,en,translation,root.hero.list.table.name.column,Name
-41fcd1b5-7940-47f6-a46b-7bfc30985951,en,translation,root.hero.form.cancel,Cancel!
-134f3dda-ef9b-47d9-84f6-6f253a4216b4,en,translation,root.building.list.title,Buildings
-8527d42d-c2af-4d39-a9e5-151abad089d5,en,translation,root.building.list.table.id.column,UUID
-a0ff5ec0-a4bd-4c96-8568-098e3964387e,en,translation,root.building.list.table.name.column,Name
-60b77744-803e-4f59-86bc-ce2ac8251286,en,translation,root.user.subtitle,Dashboard for all users on the server.
-1a6fda6f-0ca3-4cf2-ba9f-1a4ddc552c9c,en,translation,root.hero.form.name.label,Name
-f1eafa72-2703-4410-afda-52d53b0c2385,en,translation,root.hero.form.attribute.title,Attributes
-4598f76c-2176-4bc5-ac55-46f75ab8c974,en,translation,root.hero.form.attribute.empty,There are no attributes!
-75ae6d6c-e991-4775-89b7-cf2ba7734107,en,translation,root.hero.form.attribute.add,Attribute
-4be9c59a-38c3-4921-bf2d-a8a3e52f9eed,en,translation,root.hero.create.title,Create new Hero!
-f6dab407-372d-4104-a932-629dca18cc48,en,translation,root.hero.create.list.title,Heroes
-e1fa6a81-f71e-4696-89e9-c598c4362136,en,translation,root.building.subtitle,Dashboard of all Buildings in the selected Kingdom.
-1af8c062-aaef-4abc-abd4-a8306ec7262f,en,translation,root.hero.subtitle,Dashboard of all Heroes in the selected Kingdom.
-54f0aaaa-ff50-4876-82dc-0887c3de6510,en,translation,root.user.create.title,Create User
-0cd3ee84-e7d5-44a9-bdef-baa2fdf958ce,en,translation,root.kingdom.edit.form.submit,Save changes!
-5f316e07-67e3-4c36-9168-627612383b00,en,translation,root.building.menu,Building
-5087af50-b4d6-4435-9310-96ee23a39d7d,en,translation,root.kingdom.edit.form.delete,Delete!
-fb064543-c9f9-4241-a924-9519ca77f0f6,en,translation,root.building.edit.menu,Edit
-1188af16-0f73-46b6-91c4-cfbd774a0ed5,en,translation,root.hero.edit.menu,Edit
-3cac3273-7567-4920-b766-6ac1dcfb8c53,en,translation,root.hero.edit.form.edit,Edit!
-92e3e041-0c3e-4720-a3ae-2ab29d36d007,en,translation,root.hero.edit.form.submit,Save changes!
-99f34a88-ce13-4609-b44b-ac27dabc87a1,en,translation,root.hero.edit.form.delete,Delete!
-f96a3c12-d92b-45ee-8fc8-cdd919dd6deb,en,translation,root.hero.edit.form.deleteConfirm,Do you want to kill the selected Hero? This action cannot be taken back!
-8226857f-29ca-48dc-b81b-5fe15277772a,en,translation,root.hero.form.attribute.name.hint,Select Attribute!
-7a0cbc48-5190-4e80-bbd6-29c89a1e0864,en,translation,root.hero.form.attribute.value.hint,Value
-12f926fc-b719-45e4-a258-93bb6501d7fc,en,translation,root.hero.form.attribute.deleteConfirm,Delete selected attribute?
-2d91bae4-e642-488f-a2cd-273d76950501,en,translation,public.sign-up.succeed.title,Welcome to the World of DeRivean!
-04ae136e-cdd0-492a-9218-273e6d549b33,en,translation,public.sign-up.succeed.subtitle,Now you can access you account from login page and see what awaits you!
-54f689ca-3a68-4be9-b5fa-335c052e37f7,en,translation,public.sign-up.continue.title,Sing In!
-ca65d770-2e5b-447d-ae33-4a2d0d111dab,en,translation,root.user.form.login.required,"User login is a bit required field, so please fill one!"
-d41e13dc-f388-4d7c-8659-965436e102c4,en,translation,hero.list.back.menu,Back
-eae0515d-c234-49b9-a337-1981a83957b6,en,translation,root.building.list.back,Back
-0cbc2ca3-43d0-45aa-acd0-40b84f2215a1,en,translation,root.hero.home.back.menu,Back
-0f1db440-b864-49d6-8dd2-380ab1fb99c4,en,translation,root.building.home.back.menu,Back
-a165bb26-6335-4607-ae98-975b87314708,en,translation,root.kingdom.home.back.menu,Back
-c10d2587-32fd-4c13-8c43-750f7fb34fa0,en,translation,root.hero.create.success,Hero created!
-c9f4cadf-cbf5-4821-8b00-2d02ee0bdd95,en,translation,root.building.create.success,Building created!
-917c8241-7d1b-4327-9e0e-fb7b44cb3637,en,translation,root.hero.create.error,"Cannot create hero, please check inputs."
-ee9e56b7-51e2-4837-b8b9-aaab5ce2b2ba,en,translation,root.building.create.error,"Cannot create the building, please check inputs."
-72bf0009-49f7-487f-98ec-403978bcb8b6,en,translation,root.user.create.form.cancelConfirm,Do you want to cancel changes?
-3a1ce408-a00f-4325-bae9-b0446ab3b262,en,translation,root.user.create.success,User created!
-cdb78784-34a9-4538-bae8-41a0246fe489,en,translation,root.user.edit.form.cancelConfirm,Do you want to cancel changes?
-f07cc9c7-01dd-4864-9601-0476958f2209,en,translation,root.user.edit.form.deleteConfirm,"Do you want to remove selected user? This action cannot be taken back and a lof of data (kingdoms, heroes, ...) could be lost!"
-8cd08316-e428-4ed5-97b2-562755eff88f,en,translation,root.user.delete.success,User removed!
-3d5fe7ac-5fa8-4406-9072-c7fa5e6078e5,en,translation,root.user.home.back.menu,Back
-b032eedc-ccbf-4928-bdab-1176d57ad66b,en,translation,root.kingdom.edit.form.deleteConfirm,Do you want to remove the Kingdom? A lot of data will be lost and cannot be reverted!
-821723de-c3d6-49c5-a277-f32d69dd8b6d,en,translation,root.kingdom.delete.success,Kingdom deleted!
-27baab29-7802-4f72-8541-046e3c99b872,en,translation,root.kingdom.create.success,Kingdom created!
-f754a075-b1a1-41d2-b0d9-e3e0461efc2a,en,translation,root.hero.delete.success,Hero deleted!
-8384d5e6-f00d-435f-9c9c-a357b3038517,en,translation,root.building.delete.success,Building deleted!
-8f15ffe3-19b5-4f94-a1dc-8317312ded15,en,translation,root.kingdom.form.attribute.name.hint,Select attribute
-fd29e758-3aaa-486d-9dbe-32e5ba5985e4,en,translation,root.kingdom.form.attribute.value.hint,Value
-210c00ea-0840-4a4c-a61e-6c6a37afc89d,en,translation,root.kingdom.form.attribute.name.required,Please pick some attribute!
-74784421-8f7b-4a4b-8430-687460947806,en,translation,root.kingdom.form.attribute.value.required,Please specify value!
-45338644-ce92-4914-9715-670a3684ee5f,en,translation,root.kingdom.form.name.required,Please choose some epic kingdom name!
-8f9c5295-293f-4934-967c-b3a538ee2b03,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
-00b75009-b6b4-44ef-9b20-6d4f2af8d44f,en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
-07713835-b7a7-4e35-a80a-4ccb5137ee60,en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
-f265f020-25a9-493b-945f-e8e7e474afe0,en,translation,root.user.attributes.subtitle,Editor of attributes for the selected user.
-b29639dc-cdd0-4b0f-9202-190912d53a37,en,translation,root.user.form.attribute.name.hint,Select attribute
-191948ad-509b-4321-9863-72705df3abe2,en,translation,root.user.form.attribute.value.hint,Value
-9faf06e6-9902-4fd6-974d-e581bf2df206,en,translation,root.user.form.attribute.name.required,Please pick attribute!
-4114a48d-8985-40c6-8a78-b7b015786f82,en,translation,root.user.form.attribute.value.required,Please fill attribute value!
-0e0bb157-d3cd-4694-b2c0-9d32280fcf48,en,translation,root.user.update.error,"Cannot update User, please check inputs!"
-89a4a45d-7dfc-4c5c-aa5c-b25bf322a6ab,en,translation,root.user.attributes.submit,Save changes!
-b74240c5-d2b2-441c-925c-6719a18b2de6,en,translation,root.user.form.attribute.deleteConfirm,Delete attribute?
-a4119982-c989-4759-92f4-07f22fee544c,en,translation,root.user.form.name.required,Please pick some nice user name!
-2ae7609b-92df-43d7-ac83-77830d4e29ec,en,translation,root.user.attributes.title,User's Attributes
-1985fb42-2cf3-4181-ae69-9f1aabae4efc,en,translation,root.user.create.error,Cannot create User!
-b9d9cd96-654f-4761-bddb-820bb04c62a7,en,translation,root.user.attributes.updated,Attributes updated!
-02ac0a98-4e69-4210-92c4-e4f87c5da41a,en,translation,root.user.update.success,User updated!
-5934ce1e-f9e7-4f1b-94de-5f96282beaf3,en,translation,root.kingdom.attributes.menu,Attributes
-63543b40-702d-4080-9828-72d6bcfea9c1,en,translation,root.kingdom.attributes.title,Kingdom Attributes
-f0b25389-646a-4183-ad61-f31f95b8d0df,en,translation,root.kingdom.attributes.subtitle,Here you can edit attributes of the selected Kingdom!
-46ba889f-c606-43bc-89e1-72581b599f21,en,translation,root.kingdom.attributes.updated,Kingdom Attributes updated!
-52c78689-d1c5-4a10-ac91-2205c9fa53f0,en,translation,root.hero.attributes.menu,Attributes
-5a2e23ab-dfed-41d9-9c17-e40050c67190,en,translation,root.hero.attributes.title,Hero Attributes
-62605570-b70e-4063-a20d-96e820d4019a,en,translation,root.hero.attributes.updated,Attributes updated!
-4c0268c4-aaf8-46cb-828e-a3bcd19ded30,en,translation,root.hero.attributes.subtitle,Here you can manager Hero Attributes!
-d14b7a49-bf2b-4775-b961-b9462b048054,en,translation,root.building.attributes.menu,Attributes
-caa6c4a6-7ed3-425b-bfec-182c9587b4ec,en,translation,root.building.attributes.updated,Attributes updated!
-f1133885-255b-4b08-9849-111e323b1d71,en,translation,root.building.attributes.subtitle,Here you can manage Attributes of selected Building!
-d989e5c5-70b9-408e-8fb1-251486e6d8e3,en,translation,root.building.attributes.title,Building Attributes
-d3d776a3-ca07-49c6-915f-443eaae9d47d,en,translation,root.building.edit.form.cancelConfirm,"All changes will be lost, continue?"
-9d148a07-3d66-42fa-b8a8-82844d8dfe6f,en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"
-6468598e-0f58-42bb-8009-4c1d7b9c29d1,en,translation,root.user.list.login,Login
-348568a7-2c17-4560-8668-26dc9c175d23,en,translation,root.user.list.edit,Edit!
-898c8a83-fdfc-4e3f-81bc-dc7e2eeec2eb,en,translation,root.user.list.empty-token,Empty token
-b12ca859-b8d3-46ed-b11f-136eb28bb875,en,translation,root.kingdom.list.edit,Edit!
-4ac04e1e-d537-40da-8acf-7d9087af8210,en,translation,game.home.title,World of DeRivean
-86e4dc4d-75b8-406c-a4cb-762cfde730ed,en,translation,root.kingdom.list.create-hero,Create Hero!
-212794a4-3b37-441f-91b8-8736bcd69b1c,en,translation,root.kingdom.list.create-building,Create Building!
-4fb55368-ab97-40b4-b607-67462ec13b82,en,translation,root.kingdom.list.edit-attributes,Edit Attributes!
-2b3c3799-17b7-4614-aad0-1ee7045ea6a7,en,translation,root.user.list.create-kingdom,Create Kingdom!
-42c28db9-d9e3-48c0-946a-635b04107361,en,translation,root.translation.delete.success,Translation deleted!
-dd61ad65-c045-4734-99cf-7f190c48a89f,en,translation,root.user.list.no-site,Without site (disabled)
-f6d313da-8743-4b43-9437-7b4ff452335d,en,translation,root.user.list.site,Site
-bdd08f7f-824a-4615-8800-ad1106f292e0,en,translation,root.user.list.edit-attributes,Edit Attributes!
-4b8a8341-e856-41ee-aac6-96be20d49d40,en,translation,root.hero.list.edit,Edit!
-d115e95d-1801-4490-8d85-f7ac2e26eed4,en,translation,root.hero.list.edit-attributes,Edit Attributes!
-4cca68b4-bc12-4830-ad38-e32d0a8782cc,en,translation,root.building.list.edit-attributes,Edit Attributes!
-f06fba44-2752-48c6-ada6-45d94f96de36,en,translation,root.building.list.edit,Edit!
-268ff7df-7a02-4cd4-9b40-2d652d31f7f8,en,translation,root.translation.list.edit,Edit!
-42fa8d09-d9d7-4b4a-9964-c86417e76d33,en,translation,root.translation.list.language,Language
-69f1e22b-a596-4779-aed3-f2fbcfbe1dec,en,translation,root.translation.list.label,Label
-ade8fd72-ba94-424b-8a70-8b91c5e63575,cs,translation,root.home.content.title,Vítej v administraci herního serveru DeRivean!
-89279d16-7f3f-452c-b097-71a538c10454,cs,translation,root.home.content.subtitle,"Tady se odehrává veškerá magie, buď tedy obezřetný!"
-f9ca5f9f-8186-4bcc-b3a9-ebbad5a70a75,cs,translation,root.translation.create.menu,Vytvořit
-d75efd99-89e9-4eaa-8ef3-d970669b337d,cs,translation,root.translation.list.menu,Seznam
-321561b1-097c-495c-9175-f618ee55f0e7,cs,translation,root.translation.edit.menu,Editace
-5fcb03df-3909-405b-a764-8fabc74c53e8,cs,translation,root.translation.edit.form.edit,Editovat!
-46fe03ec-5a31-466c-9c21-3d0e3bfce86a,cs,translation,root.translation.dashboard.menu,Nástěnka
-1a560b83-e619-4acb-a6f4-d04e3b5dec24,cs,translation,root.translation.menu,Překlady
-f3f04286-309c-42db-b770-4371779debbe,cs,translation,root.translation.create.form.submit,Vytvořit!
-65fc0386-9293-4a83-b7ae-90b31ba45fcf,cs,translation,root.translation.form.cancel,Zrušit!
-32acf56c-ab02-4e82-a45e-cf79203cfae7,cs,translation,root.translation.edit.form.submit,Uložit!
-2ca261f4-68ea-4c98-946c-253cfbfda9a4,cs,translation,root.translation.edit.form.delete,Smazat!
-009751b7-49e9-4d7e-a818-eb1054e44e13,cs,translation,root.translation.edit.form.deleteConfirm,Opravdu si přeješ smazat tento překlad?
-5d70d601-2b28-483e-a2d2-df239282b0dd,cs,translation,common.no,Ne
-216568b2-cbc5-4b35-bec9-9078dadcdb11,cs,translation,common.yes,Ano!
-36206e8c-4d4a-4482-ab79-2140f5c3de9c,cs,translation,root.sign-out.menu,Odhlásit se!
-9c39b694-7aee-486c-bf61-1c46d8bc4165,cs,translation,root.user.menu,Uživatelé
-3888f29c-396c-47e5-9647-1164466fa3d4,cs,translation,root.header.search.label,Hledátko!
-e5fb2286-834f-4736-a594-022ef8d9c6ab,cs,translation,root.statistic.users,Uživatelé
-43f7f4e2-c0a6-45dc-a0be-0a0a67f59034,cs,translation,root.statistic.kingdoms,Království
-2ba6a57f-123b-41d3-b047-220b9be49518,cs,translation,root.statistic.buildings,Budovy
-f892733e-7867-4a66-9d73-9f7e8187a7ab,cs,translation,root.statistic.heroes,Hrdinové
-7c7f872c-ee39-4498-9d33-18aedbbfad7e,cs,translation,root.statistic.translations,Překlady
-c994bbbd-bc1e-42a3-8962-615c41f12dfe,cs,translation,root.user.dashboard.menu,Nástěnka
-4ef4d438-3513-423c-b95f-cc0445f8a9e1,cs,translation,root.user.create.menu,Vytvořit
-c436a8e9-46ce-45de-a5fd-496e9f23b813,cs,translation,root.user.list.menu,Seznam
-53dee343-956b-454a-ac08-a737f0d58acb,cs,translation,common.view-item,Náhled
-fdb3dcb5-d1fc-4c14-8122-7ae4be213e2b,cs,translation,common.edit-item,Editovat
-601a2355-1718-421a-b197-151b2287d4a8,cs,translation,common.copy-id,Kopírovat ID
-d1edb43a-0020-4b79-8621-2b686544b188,cs,translation,root.translation.form.label.label,Klíč překladu
-a3575c3c-ebc6-4a5c-87db-3b4ed7b196c8,cs,translation,root.translation.form.language.label,Kód jazyka
-7dc4c7ea-b7d1-40da-a478-ee63a9578378,cs,translation,root.translation.create.title,Tvorba překladu
-9cfba8da-df88-4814-a0c9-6c055768927f,cs,translation,root.translation.title,Překlad
-89f57d43-73a6-42a8-9182-00a1f40887c7,cs,translation,root.translation.list.title,Seznam překladů
-888b426c-d122-44b0-a63f-2baada35ca50,en,translation,error.user-locked.title,Account Locked!
-ede4fd31-7c5a-4b20-8193-dc88b5d63bcc,en,translation,error.user-locked.body,You've been evil or there is some kind of system error preventing you from login.
-691461ac-104f-4d36-9fcf-9c33fb3237a8,en,translation,error.user-locked.dismiss,Give up!
-54dafa68-cba3-4568-bb52-02ae95a3e892,en,translation,root.user.list.ticket,Ticket
-0266e1c3-ec27-4aac-ae1e-ed60b3742ace,en,translation,root.home.content.loader.subtitle,"Fetching some interesting things for you, please wait!"
-8d2b9c61-41c0-48f0-a6b8-fb36e0559fa4,en,translation,public.home.title,Home
-bc62e808-5682-4ef9-b069-f424887cf6bb,en,translation,public.session-expired.title,Session Expired!
-27d2c2dc-02e4-44dd-80b8-ca6ba0641276,en,translation,public.session-expired.subtitle,"We're sorry, but you session has expired, so please log in, if you want to continue use the application!"
-ace36961-68a4-4461-b2a3-7f90bbde8a30,en,translation,public.session-expired.continue,Continue
-e35a719d-d689-4b1c-a216-a4a26c8254e7,en,translation,root.translation.form.label.label,Translation label
-f26445b5-7a88-41fb-8309-d4471c62d7df,en,translation,root.edit.form.edit,Edit!
-c8730469-dc8f-472c-bb8e-bbc91c5ae3f9,en,translation,root.home.content.error.title,Server is Unhealthy!
-c0bd8a2f-b496-4854-a2bf-ce898582747b,en,translation,root.home.content.error.subtitle,Please check following errors as they could prevent players to register/login!
-6da01dac-ec9f-471b-9c0d-6dc5c4638a19,en,translation,root.home.content.error.list.title,Please check following:
-74265914-7d13-4955-bf25-8004d473f7a7,en,translation,root.server.error.Missing template user!,There is missing Template User from which new registrations are created (for example number of gems or whatever). This error block new registrations (but current players are able to log in).
-0bbde0fc-1d9f-48a0-bdbc-c17f8027f0c9,en,translation,root.server.error.Missing template kingdom!,There is missing Template Kingdom from which all users (players) are creating their kingdoms: thus any of players will be able to create a new kingdom until this is fixed.
-07d0b6e7-424f-485d-bcd3-73db8cbedca5,en,translation,root.server.error.action.create-template-user,Create Template User
-fc4f4538-980d-4013-99ff-d4b91c289b12,en,translation,root.server.error.action.create-template-kingdom,Create Template Kingdom
-0cd6a114-70cd-4624-a7a1-b939ca5806f0,en,translation,game.sign-in.succeed.title,Welcome back!
-1d11f8a4-c86f-4b68-a337-ff7fa1bb11eb,en,translation,game.sign-in.succeed.subtitle,Looks around what's new in your kingdoms!
-89ebdb68-b976-4001-ae87-35903fb44007,en,translation,game.sign-in.continue,Continue!
-9f06a02e-0abb-4df7-ab7d-9db1f74a9c9a,en,translation,game.home.menu,Home
-e0a5db79-609c-4a76-93ca-683cf7a149e2,en,translation,game.sign-out.menu,Sign out!
-d78c2b80-68a6-49af-b201-5e81644fc40a,en,translation,game.kingdom.dashboard.menu,Dashboard
-1fefb19c-8c9d-456b-9129-2d5ff37231e1,en,translation,game.kingdom.list.menu,List
-af0193e8-c195-4901-8cc5-505e1aaff555,en,translation,game.kingdom.title,Kingdoms Overview
-f2cbbb31-e1c4-4188-8dc3-aa6088d88eba,en,translation,game.kingdom.subtitle,Here you will find all information about your Kingdoms in one place!
-2abd6dc4-fe57-4200-b2a6-c08549c2d167,en,translation,game.kingdom.create.title,Create Kingdom!
-f18b4efb-f806-4b28-822e-db5eff14677a,en,translation,game.kingdom.create.form.submit,Create!
-304f6d77-329b-4c64-bdaa-00eeaaca2def,en,translation,game.kingdom.form.cancel,Cancel!
-0bcc65c2-46f2-4569-bcda-ae71dc4623ae,en,translation,game.kingdom.form.name.label,Kingdom name
-70e6bf8c-6a63-4093-9cf9-78c5f28eef1b,en,translation,game.kingdom.list.title,Kingdoms
-35ec2956-838c-4864-a22a-e3c7bd9eb899,cs,translation,root.home.menu,Domů
-69f4ef4a-919b-49e8-a381-01b303afa883,en,translation,game.kingdom.create.conflict,Cannot create Kingdom - please check input fields!
-1327cab4-8b98-4fa9-91fb-fec978861f4e,en,translation,game.kingdom.create.success,Congratulations to your new Kingdom!
-ac3d7981-d4af-4130-ae08-71ee955c5f1d,en,translation,game.kingdom.home.back.menu,Back
-5763e625-a677-490e-bc25-9c59bc78233a,en,translation,game.kingdom.edit.menu,Edit
-0282791e-c38a-498e-a327-10f2cea4d485,en,translation,game.kingdom.edit.form.deleteConfirm,"Do you want to delete selected Kingdom? This will destroy everything within Kingdom (buildings, heroes, overall progress) - aaand cannot be taken back!"
-342a7b0d-5b3b-4891-9164-cdf069d4b691,en,translation,game.kingdom.edit.form.edit,Edit!
-addb8001-7a89-4018-840e-a2df278a0efa,en,translation,game.kingdom.edit.form.submit,Save changes!
-04342296-73b9-4407-96e0-9537ecdea834,en,translation,game.kingdom.edit.form.delete,Delete!
-bb64c59b-a633-4b77-a774-14f8771cbda2,en,translation,game.kingdom.delete.success,Your Kingdom has been successfully deleted. All building are burning in the Hell Fire and Death is taking souls of all your Heroes!
-347f98d7-5511-43d2-bffe-df8d84e0d0b8,en,translation,game.kingdom.update.success,Kingdom updated!
-7afaec1a-0a6f-4d41-908e-6e2c6f994cf3,en,translation,game.sign-out.title,Do you want to leave the game?
-33e65876-3729-4ef3-853f-ed9a58b6bb33,en,translation,game.sign-out.subtitle,We're sad you're leaving - but we hope see you soon!
-8ccd3431-e4ef-4faa-a850-4092aaab756e,en,translation,game.sign-out.button.sign-out,Papa!
-5f8a15f2-262a-448b-9740-404ffb1c9020,en,translation,game.sign-out.button.back,Back!
-787a60d0-3f72-4f44-8cb9-16d3a47a913d,en,translation,game.kingdom.menu,Kingdom
-49ac6fc6-589b-44b1-a4e2-4272650c3955,en,translation,game.kingdom.create.menu,Create
-b0a7c323-5ebd-4bd9-a939-3a0d607536c7,en,translation,root.server.error.action-unavailable,There is no quick action available.
-f514bc21-a5cb-4bd0-88e4-f1bb0964ca67,en,translation,root.home.error.create-template-user-first,Template Kingdom belongs to Template user which is missing. Please create Template User first!
-0a009feb-0271-4a5f-8b6f-f33073385fc7,en,translation,root.building.built.label,Built date
-87f959d6-e30e-4821-a1a8-3db5f1e1b811,en,translation,root.building.built.hint,Pick built time
-d4c40af3-f0bf-4f0a-af24-9cf20b1c5a52,en,translation,game.kingdom.create.resource-limit,"We're sorry, but you have already reached Kingdom Limit!"
-9f4b227b-de5d-4f64-aa23-516e09dd744e,en,translation,game.building.menu,Buildings
-251d5bb1-0d6e-4c6e-8b79-81c0f788cf50,cs,translation,game.building.menu,Budovy
-0f2b4c32-8e34-421b-a81b-68d0e9dc00f0,en,translation,game.building.dashboard.menu,Dashboard
-60269e21-2fe6-449a-a208-b8689f0743de,cs,translation,game.building.dashboard.menu,Nástěnka
-e88b9f01-3f58-4419-8af1-53ecaad8def2,en,translation,game.building.list.menu,List
-2bbbc2a8-01b4-41fe-85ce-374bc4ab24dc,cs,translation,game.building.list.menu,Seznam
-26e7f3d2-0af5-41ab-a99c-58f794c3177d,en,translation,game.building.title,Buildings Overview
-123fe07b-9579-4044-9fa0-e86c18371822,en,translation,game.building.subtitle,Here you will find general overview of all buildings in selected Kingdom!
-d8290e6e-56c2-427a-9857-582b7b1e5b08,en,translation,game.statistic.buildings,Available buildings
-70b565df-613e-4208-b47e-5347b9c2c153,en,translation,game.statistic.buildings.built,Built buildings
-af0a8781-69de-4746-a972-606c7dfc8305,en,translation,game.building.list.title,Buildings
-dbe5cb00-9ca4-4e96-96c8-be39046f567f,en,translation,root.building.building.title,Other
-a34d6a5a-523f-4ab7-8e6a-921acb9fe769,en,translation,root.building.update.success,Building updated!
-6e4f10ad-df29-4162-a5ac-99bdbc060ece,en,translation,root.building.building.hint,You will be able finetune building settings after creation to keep this form as light as possible.
-89b6ba1f-bbbe-40a3-9c33-c3d68dd288b9,en,translation,root.attribute.dashboard.menu,Dashboard
-54a6299f-ad66-4a1d-a71c-5bc93d1daf2b,en,translation,root.attribute.title,Attributes Overview
-2ec00f24-32f7-43de-9b54-9a7c3499501c,en,translation,root.attribute.subtitle,Here you can manage all attributes available through whole game.
-6dc4b2fe-a4f1-4073-b65c-8fc33ecc7649,en,translation,root.attribute-group.menu,Attribute Group
-cf536c16-ba46-4f71-8dee-ffee83fa44b7,en,translation,root.attribute-group.dashboard.menu,Dashboard
-dc84a410-0f86-4bb4-bbff-baf99156c736,en,translation,root.attribute-group.create.menu,Create
-dbe87894-21be-4bfe-9255-118484980888,en,translation,root.attribute-group.list.menu,List
+d3584f20-34ec-4967-b1c7-72492b1f798b,en,translation,root.translation.create.menu,Create
+97050dcf-68c4-4e85-891d-1a9ef6b85c10,en,translation,root.translation.create.form.submit,Create!
+f50016dc-ba22-4b19-8721-a7af63c3a18e,en,translation,common.back.menu,Back
+990dd661-6f62-46a8-bb0c-e364572ce86f,en,translation,root.translation.form.cancel,Cancel!
+a1a35adc-9aca-41d9-adce-8ad3a3cab75f,en,translation,root.translation.create.form.namespace.label,Namespace
+727cc09f-4629-445b-8917-a28cfa95f97f,en,translation,root.translation.create.form.text.label,Text
+ec6d8452-83d0-45a2-8070-efcddeeaf324,en,translation,root.translation.create.title,Create translation
+a936f9ed-0ef8-4a38-ba58-ecdb6e107dad,en,translation,root.translation.title,Translation
+72f595c9-4ad9-41d3-ac66-0880ae2413c0,en,translation,root.sign-out.menu,Sign out!
+2825945e-42ad-4812-af33-6dff36cf4831,en,translation,common.view-item,View
+52439ea0-111a-4e24-bb81-97db43c48845,en,translation,root.header.search.label,Search everywhere!
+a1aa73ac-c2f7-4264-9ee1-7c1fea8d7bc0,en,translation,root.translation.create.form.title,Translation
+3ad770d0-2a00-4ced-93ad-e59fda92771c,en,translation,root.translation.create.success,Translation created!
+f926b5eb-3e71-4144-b953-a39ecf623d04,en,translation,root.translation.dashboard.menu,Dashboard
+1c067588-5dad-4e9b-92ed-4103845cf3c0,en,translation,root.translation.list.menu,List
+64c15a83-3a18-482b-92b2-e01d4f9d1c93,en,translation,common.edit-item,Edit
+b8a7d9cf-da10-4861-ae4a-d8d48c4e9c6d,en,translation,common.copy-success,You have copied the UUID in your clipboard!
+a478986c-2782-479f-aec4-1d03915443a8,en,translation,common.yes,Yep!
+370e2001-fe53-4942-9f95-c44a77d24429,en,translation,common.no,Nope!
+fb1705a0-7965-4aa0-a36c-40a8ef2d2128,en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
+159b65bc-7d2f-418b-8391-7886cf8c3237,en,translation,root.translation.list.title,Translations
+a79e9dbb-5978-4045-b108-d3f28e2f984e,en,translation,root.translation.list.table.id.column,UUID
+10b6da87-ae09-41eb-b553-ceace27d4c41,en,translation,root.translation.list.table.language.column,Language
+e99eb657-ee27-470f-96e7-ec396d0411a4,en,translation,root.translation.list.table.namespace.column,Namespace
+fa65735a-b5d3-4d26-a397-7d3cbed91357,en,translation,root.translation.list.table.label.column,Label
+10947e3f-6572-4ae0-afa9-5de256cf0a50,en,translation,root.translation.edit.form.edit,Edit!
+4990fd37-347e-4bfe-9716-005235ae8a85,en,translation,root.translation.edit.form.title,Translation
+828495bd-fb09-477e-8c2b-02be85415111,en,translation,common.warped,You have been warped to target!
+8072d903-60c3-4076-a32d-eb7695a2b3a9,en,translation,root.user.dashboard.menu,Dashboard
+4bc3e211-f1c7-4bda-88fa-c380ca55446b,en,translation,root.user.create.menu,Create
+1c510c42-29d7-46e9-9456-1a79164d6c14,en,translation,root.user.list.menu,List
+5ea32b1f-8ebf-469a-8cb4-025f001705d0,en,translation,root.user.list.title,Users
+0090a224-5ebd-4e20-af88-79b3b1fbd9bf,en,translation,root.home.content.title,Welcome to DeRivean Game Server!
+4f5decce-394c-402c-b6bf-02d96a4ba94e,en,translation,root.home.title,Server Administration
+e8a476f7-5f2b-4f58-9256-2e8dcbde1dba,en,translation,root.translation.create.list.title,Translations
+803e6574-c58b-4462-a4a4-1852d9e86a42,en,translation,root.translation.home.menu,Translation
+ff80dd3e-d6ea-4301-b40c-5667c80916b6,en,translation,root.translation.menu,Translations
+6d4e42e4-5618-4865-a2bb-d14b9ffc854b,en,translation,root.sign-out.title,Sign out?
+e0917f34-681f-428f-994c-9a274b6a78b7,en,translation,root.sign-out.subtitle,Do you really want to leave administration?
+b1ee322e-1485-481c-85db-81110a813bae,en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
+fd9354a1-2098-4b73-b584-3c7e28bd70ed,en,translation,root.translation.create.form.text.required,Translation text is required!
+32de631c-a09b-4a5e-8c55-02994949ab92,en,translation,root.translation.form.language.label,Language
+7091fbba-ac54-4807-8fd1-ce918e066ac9,en,translation,root.translation.update.success,Translation updated!
+db8e2d34-564b-4fe0-9b79-a367bdfbfd0e,en,translation,root.translation.create.error,"Cannot create translation, please check form!"
+896d2746-648b-471b-9fd2-1e6309297046,en,translation,root.translation.form.title,Translation
+4781273a-ed64-45c3-953e-3599369cd486,en,translation,root.statistic.translations,Translations
+d7eae250-b9d1-4e57-81c8-bfa2a3f2e879,en,translation,root.statistic.heroes,Heroes
+d438851a-22af-4d00-9025-fd813231f79b,en,translation,root.statistic.users,Users
+a0b7dd31-738f-4e8b-8a7b-b3b5d3928445,en,translation,root.statistic.kingdoms,Kingdoms
+c5d5c40f-1a86-44c7-89cc-3112a847ba61,en,translation,root.statistic.buildings,Buildings
+1296299c-672f-4d65-968c-6c1c4ab4e615,en,translation,root.home.content.subtitle,This is the place where all the dark magic happens!
+e3d9514e-da1d-4720-81e2-f40a098de3b7,en,translation,root.blog.menu,Blog
+29b16fa9-6d08-4bef-88f2-321fa726bebb,en,translation,root.blog.dashboard.menu,Dashboard
+aa030f03-1825-4d0e-bb8d-da028297f486,en,translation,root.blog.create.menu,New Post
+88d002a3-71e2-49b7-afa8-aaa41f96d519,en,translation,root.blog.list.menu,List
+e29c31e2-7bb9-4e5b-8071-ccbe06e7337a,en,translation,root.translation.form.text.required,Translation text is required!
+d04ae8c2-45d5-4369-9044-becb54cf568a,en,translation,root.translation.form.label.required,Translation label is required!
+0d33537f-bc9e-423e-b6b0-916d0eabcf79,en,translation,root.translation.form.language.required,Language is required!
+1804bb9f-5982-4476-914a-43acbc9c382e,en,translation,public.home.menu,Home
+cbae263c-a9fb-4cb2-8168-11a34ff85ca6,en,translation,public.sign-up.menu,Sign up
+5b8205af-4c1c-438b-9164-9773e60bbbc3,en,translation,public.sign-in.menu,Sign in
+d4489899-bd1d-44d1-9eaa-6bd8d759c162,en,translation,public.home.sign-in.title,Sign In!
+a9b50731-9a07-474b-ac36-b21d66717ca8,en,translation,public.home.sign-up.title,Sign Up!
+08df14e0-2ec4-44f3-8970-8562f5462033,en,translation,public.home.content.title,Welcome to DeRivean!
+58312ea7-bad3-4530-9d0f-69de7cd5bba4,en,translation,public.home.content.subtitle,You're welcome to look around and start playing!
+635104c2-b968-4cf2-a0ff-2f547f9432c9,en,translation,public.home.content.list.title,"DeRivean is simple game, where you will:"
+6c0e5e3e-78e1-4927-a67f-2964c2d74778,en,translation,public.home.content.list.item-0,Create your own heroes and take them to battle.
+07cb8110-d4c5-43f8-ac11-fcd97a11aece,en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
+e508bd5e-9234-4123-bff0-a87de2111b6e,en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
+8ab9d030-0a30-499f-85dc-1631f3de0cd9,en,translation,root.user.menu,User
+1491dbb3-7cb8-467e-b47f-a75185505d8b,en,translation,public.sign-up.title,Sign Up!
+81a9926c-4755-48d6-ac46-4e4a8e52d528,en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
+91f22c35-3fd1-4433-b95c-b17bfa1e59a0,en,translation,root.translation.edit.menu,Edit
+7ac61584-c6d8-4aa3-95cb-94b32df40496,en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
+cd74a57f-bd63-49df-84e4-6c1e3542e5e8,en,translation,root.home.menu,Home
+13b65e28-e257-47bc-899f-992776046492,en,translation,root.building.dashboard.menu,Dashboard
+b06c19e3-eed8-486a-a605-0722cab0018b,en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
+566667e0-800f-4f00-89e4-74871448414a,en,translation,public.sign-up.content.list.item-0,Create your own heroes
+883cacf8-b42f-4926-8cc9-fa015bc43c41,en,translation,public.sign-up.content.list.item-1,Build up a Kingdom of Yours
+eb428b9c-b8bd-438f-aa8a-71d10c66cb0c,en,translation,public.sign-up.content.list.item-2,"Gain resources, XP, level up Heroes, merge them"
+35ea4f63-cebf-4e21-943e-4cf865bca68d,en,translation,public.sign-up.content.list.item-3,Fight for becoming the greatest King over here
+c6d7928d-fdff-4167-95d0-fd052ab1da2c,en,translation,public.sign-up.content.list.item-4,...and a lot more awaits for you!
+eb543707-61ce-4fb1-9133-f04eeddc4f83,en,translation,public.sign-up.content.form.title,Registration
+3800fdab-259b-4e83-8eb2-f3aeb3627206,en,translation,public.sign-up.form.name.label,Name
+0688efa3-ed9d-4635-9f36-f8d81cd547cc,en,translation,public.sign-up.form.login.label,Login
+247c9008-fcf7-430c-af4a-a1e2cb950457,en,translation,public.sign-up.form.password.label,Password
+eb5d7fff-8fd3-44f2-9726-3e0340b2f8a7,en,translation,public.sign-up.form.name.required,Please choose some name representing you!
+6afa82c4-5884-4227-ae59-daabe1bd732d,en,translation,public.sign-up.form.login.required,Please choose some login - for example your nick or email address.
+5afd758f-fbd5-49c8-9baa-89c3f8a74c71,en,translation,public.sign-up.form.password.required,"We still need everlasting passwords, so please pick some."
+31cca995-bc00-42a4-9fc0-2bdacf09209c,en,translation,public.sign-up.form.submit.label,Sign Up!
+9d872506-73b4-46df-b5d4-de2604383e40,en,translation,public.sign-in.title,Sign In!
+67afd2d0-6dc3-4184-ae0b-f55aa8165111,en,translation,public.sign-in.content.title,"Welcome back, brave Hero!"
+9c634ba2-bc58-4614-9783-04f191ae1d26,en,translation,public.sign-in.content.subtitle,"Login and look around, what's new!"
+0e0dd9f8-368f-43c2-8ec0-784fa7e6bb7e,en,translation,public.sign-in.content.form.title,Open a magic gate by your password!
+9110020a-3564-4fc7-9d80-f48a81ae7c16,en,translation,public.sign-in.form.login.label,Login
+86fc160a-b90a-47cc-bf05-e09d1b62cf36,en,translation,public.sign-in.form.password.label,Password
+0b640f79-c369-4048-b425-c50e31efca7e,en,translation,public.sign-in.form.login.required,We cannot make login request without... login!
+38cb19e8-e3b8-4b69-aa1b-da5f39f0569a,en,translation,public.sign-in.form.password.required,"Please, give us your deepest secret!"
+93a9c5c7-6547-4486-ba1a-5924e3d6f090,en,translation,public.sign-in.form.submit.label,Login!
+1caf6b67-3158-4cac-ac41-8761c8f876d6,en,translation,public.sign-in.content.list.title,"Check, what's new in your Kingdom"
+579132a3-caaa-4109-b5f0-2aba292f2385,en,translation,public.sign-in.content.list.item-0,Don't forget to claim your resources
+11f971bf-6764-49de-80eb-f0a70857acde,en,translation,public.sign-in.content.list.item-1,Look for some new battles
+636f3a24-b334-4257-9928-7227dd7c23bb,en,translation,public.sign-in.content.list.item-2,See Store for new equipment
+5a48ddcf-4cc0-4af3-a41c-c1695e16331d,en,translation,public.sign-in.content.list.item-3,Level up your Heroes and Buddies
+75024a7d-5c0f-44b1-bd9c-fdee69e9583f,en,translation,root.sign-out.button.sign-out,Leave!
+a57f34ce-d5f2-4651-ae5b-636ad04f3505,en,translation,root.sign-out.button.back,Return!
+7a809059-d8bc-4fe7-91be-8e86a22160b8,en,translation,root.home.content.loader.title,Fetching server health status
+8b63880e-fbdb-4e3e-adab-85c0ab36c577,en,translation,root.sign-in.succeed.title,Welcome back to the Root!
+35bb3dbe-3b93-4fad-973b-b0e09d6f48fc,en,translation,root.sign-in.succeed.subtitle,"Be careful here, dude, it's quite dangerous 'round here!"
+cf2b123b-b6fd-4464-8a61-e33729488244,en,translation,root.sign-in.continue,Continue!
+4980873d-813d-4e8e-8cdf-61dfe5a61152,en,translation,public.sign-out.succeed.title,You are logged out!
+bff9f9fb-17cd-430d-bf4d-8d2dcf61677d,en,translation,public.sign-out.succeed.subtitle,"We will miss you, so see you soon!"
+b86030af-bb18-4418-99cc-5cb1a46caab3,en,translation,public.sign-out.continue,Continue!
+32193c6c-8bdb-4ad9-af91-5eae0c0929ee,en,translation,public.sign-out.title,See you soon!
+c0d8b739-3433-43e6-b5f0-caceaed97703,en,translation,root.sign-in.title,Welcome back!
+19d01769-2397-4d5b-87fd-094a096c3d2b,en,translation,root.user.edit.menu,Edit
+3db21cdc-984f-4267-84bd-74ce971c1d39,en,translation,root.user.create.form.submit,Create!
+c37ee147-b445-41e9-b503-764303fef193,en,translation,root.user.form.cancel,Cancel!
+8bba4fe5-1960-4ac4-8dbe-b28d42e44024,en,translation,root.user.form.name.label,Name
+5a00a43f-2c3d-48a0-9f0d-8375496bad1f,en,translation,root.user.form.title,Registration
+897d97fe-61bd-46c7-b0a8-2d10f9baca10,en,translation,root.user.list.table.id.column,UUID
+ae5447b3-19ab-498f-a52e-550de4a67b9c,en,translation,root.user.list.table.name.column,Name
+a9b30848-aacc-4bab-8c24-5119536bbf49,en,translation,root.user.list.table.login.column,Login
+c1c27a43-0a5e-40aa-9e20-34a2ce9ccdfc,en,translation,root.user.list.table.token.column,Token
+b97b4779-7d77-46ea-a9d8-ff62dc294067,en,translation,root.user.list.table.site.column,Site
+860e476e-bb42-41ad-b91d-95e442c7bceb,cs,translation,root.home.title,Administrace serveru
+b7ef4240-95cd-4a92-b021-3b05cf90b564,en,translation,common.copy-id,Copy UUID
+d90f497b-c325-4ff1-be93-00afda8f3801,en,translation,root.translation.edit.form.submit,Save changes!
+2d82ed35-6065-4b25-b321-d8076869d3ea,en,translation,root.translation.edit.form.delete,Delete!
+942e1c07-62b8-44c6-ad87-0608d6981bb4,en,translation,root.translation.edit.form.deleteConfirm,Do you want to remove translation?
+4eb8f314-60cc-4c40-af99-3591196c3081,en,translation,root.translation.edit.form.cancelConfirm,"All changes will be lost, continue?"
+159bffa2-c2f3-4b61-a823-47cf5df1b980,en,translation,root.user.title,Users
+b3425209-2402-40a1-8d47-96129fe89f1f,en,translation,root.user.edit.form.edit,Edit!
+c9ba2e83-4463-4585-97e5-d2d661c62861,en,translation,root.user.edit.form.submit,Save changes!
+f9edd2f2-43d1-40f1-8262-b1e62c493a32,en,translation,root.user.edit.form.delete,Delete!
+f7df436a-0a1b-4add-b6e3-f64ddd589886,en,translation,root.user.form.login.label,Login
+10ae9f65-5b8c-42fb-a380-bf99020cb6ab,en,translation,root.user.form.password.label,Password
+3e85b18f-18b6-4ac4-a274-36c8fec486e5,en,translation,root.user.form.site.label,Site
+b6195bc7-7281-4c0e-8447-90713730b07d,en,translation,root.kingdom.dashboard.menu,Dashboard
+9d35c6ee-6ee2-472c-8dd1-fc8394df4ba8,en,translation,root.kingdom.create.menu,Create
+1dd57d12-97ac-4411-ac3f-b3d880391496,en,translation,root.kingdom.list.menu,List
+11bb9f26-ec12-49d9-8ffe-9f3d4c8f6018,en,translation,root.user.form.attribute.title,Attributes
+1f195156-15a7-4ab4-8a31-a33684ef0f6a,en,translation,root.kingdom.edit.menu,Edit
+9df69336-00a0-42fa-baad-e19f8e9b3b74,en,translation,root.kingdom.title,Kingdom Overview
+8291420f-f588-4968-95ae-e978a45bfce9,en,translation,root.hero.menu,Hero
+4e8e756c-3d0c-4ff8-bd96-48d181aa5d62,en,translation,root.kingdom.menu,Kingdom
+7ed0ee57-750c-4625-93de-be92923e4025,en,translation,root.hero.dashboard.menu,Dasbhoard
+9fccb1d7-2f29-4c3a-8ad4-076a02b19e3d,en,translation,root.hero.create.menu,Create
+899f39a7-2837-42d2-83c4-ad29e2620e25,en,translation,root.hero.list.menu,List
+2c221409-e2f4-4e93-ba61-ad2a44b86810,en,translation,root.building.create.menu,Create
+754a2d95-6587-4753-804a-de70df90f2c7,en,translation,root.building.list.menu,List
+1c56c1a8-c9ab-479c-80e2-8e197a12a46b,en,translation,root.hero.title,Heroes
+8fb478c6-4220-4e58-bb65-844453bd616f,en,translation,root.site.null,No site
+5bad0ac3-9aae-4375-ae5c-dcda45d0c4c1,en,translation,root.site.game,Game
+b8f6f424-7587-461f-8ae0-dde80ca11cf6,en,translation,root.site.root,Root
+36ce39de-e9a6-48f7-963d-aa3b6a9247c5,en,translation,root.user.form.misc.title,Others
+a6d2af2a-fde6-4e64-af71-6884443b2485,en,translation,root.user.form.template.label,Template user
+317405a1-c0cd-41d1-bc05-3fdb8d304f2d,en,translation,root.user.form.template.help,Attributes will be copied from the selected template user (if selected).
+af58ab08-2993-4768-ad76-f0b0b12de45f,en,translation,root.user.form.attribute.empty,There are no attributes.
+a793c071-abce-41cf-a2bb-ec6f33ac1ed7,en,translation,root.user.form.attribute.add,Attribute
+c73fb456-fec8-4f4e-be74-ae110580ef35,en,translation,root.user.create.list.title,Users
+62582621-0822-447b-b8f6-70e8efb9f053,en,translation,root.user.create.list.item-0,User represents a human being.
+d2c43b11-454a-44eb-9820-9050f57dc7a1,en,translation,root.user.create.list.item-1,User could log in into the game (Game site) or as the root administrator (Root site).
+171bcece-3dcb-4a4d-8b24-f6189ef4678e,en,translation,root.user.create.list.item-2,"Gamers have access to the game, thus using game rules defined in this administration."
+2ebad5ac-f749-4523-bb71-5e26a80f1ed3,en,translation,root.user.create.list.item-3,"Root users have full access to the server, thus not able to play the game - they're like Game Masters."
+4c644bf6-67ac-4779-b953-c82a45ecfb47,en,translation,root.kingdom.edit.form.edit,Edit!
+6c54503b-10c5-4a64-acd7-063c33d8a43f,cs,translation,root.kingdom.edit.form.edit,Editovat!
+6d3f110f-f6dc-4c6b-bcc5-4a3361d3c180,en,translation,root.kingdom.list.title,Kingdom list
+7b79f1e6-5589-4d4c-b4c6-0c17fef8ad8f,en,translation,root.kingdom.list.table.name.column,Name
+fe2b280b-3e54-4ad6-9d61-d22eef5ca4d0,en,translation,root.kingdom.list.table.id.column,UUID
+25abd2ad-3d07-42a7-9c26-c5adbbaf56b0,en,translation,root.kingdom.create.title,Create Kingdom!
+ffd4df00-f9fd-406c-8679-2c144468ca47,en,translation,root.kingdom.create.form.submit,Create!
+a56f48ab-d192-4932-93be-77c5529241b3,en,translation,root.kingdom.form.cancel,Cancel!
+c0f0856b-34e8-46f6-b663-aa3246bd7e8c,en,translation,root.kingdom.form.name.label,Name
+e2e353b8-6080-48f7-afcd-db7f7db3bdc3,en,translation,root.kingdom.create.form.misc.title,Others
+ca1cced7-148d-45cd-955f-cb65b9899dd9,en,translation,root.kingdom.create.form.template.label,Template
+307dd643-d224-4273-871a-dc0005934741,en,translation,root.kingdom.create.form.template.help,Use template kingdom to copy default attributes.
+4fd7c9da-dcf4-4bf9-ad1d-8e53f413b3e0,en,translation,root.kingdom.form.attribute.add,Attribute
+b8c18b36-c91a-459f-9faf-0d7e01b8da5c,en,translation,root.kingdom.form.attribute.title,Attributes
+ad8d1f72-39be-4a59-9195-5cad24f051ea,en,translation,root.kingdom.form.attribute.empty,There are no attributes.
+aaf14b4a-c351-4001-9e47-37b7d00aeccb,en,translation,root.kingdom.subtitle,Here you have overview of all kingdoms!
+81d51e0e-9262-46f0-9728-7dfa22443320,en,translation,root.building.edit.form.edit,Edit!
+10cc1161-8080-4f9d-b2f7-7e1b2b408d5d,en,translation,root.building.form.name.label,Name
+b731f151-40ba-4f59-99b6-cf6acf738e78,en,translation,root.building.title,Building
+a4beb7c6-c3a8-4adf-8dff-d1b5662c822b,en,translation,root.building.form.attribute.title,Attributes
+176218ea-87dd-4fc8-8168-7a6193bc28b6,en,translation,root.building.form.attribute.empty,There are no attributes.
+47834743-688d-4d01-856a-9494b1bb3e92,en,translation,root.building.edit.form.submit,Save changes!
+da628d97-4988-48f0-be36-7a0a647a5052,en,translation,root.building.form.attribute.add,Attribute
+ec047ef4-9227-49f1-b099-d7598d6ae703,en,translation,root.building.form.cancel,Cancel!
+10ef47b2-290c-4cae-8f97-1d881e81754d,en,translation,root.building.edit.form.delete,Delete!
+3d4d2a00-21ca-4b6c-af4f-e58b1d69e7b7,en,translation,root.building.form.attribute.deleteConfirm,Delete attribute?
+1fb6f4a8-7cc1-40c2-89ca-73adbea75e26,en,translation,root.building.edit.form.deleteConfirm,Delete building? This action cannot be reverted!
+4a2871ea-dedd-4d74-8e92-0edfa399a3fa,en,translation,root.toolbar.kingdom.create,Create
+b446e1bf-3189-4386-8bb2-31bdde3ff0e8,en,translation,root.toolbar.building.create,Create
+7ed17939-e75e-4c64-bbeb-2c88d5b560a8,en,translation,root.toolbar.hero.create,Create
+fd0a23c3-bed9-4b72-b9b8-bd4a2540e78e,en,translation,root.toolbar.kingdom.list,List
+055a9e6e-0186-4a2e-912e-aca2df84cc05,en,translation,root.toolbar.hero.list,List
+d01d9559-d839-4d02-be7a-f58cade815b2,en,translation,root.toolbar.building.list,List
+a77be10c-4381-4f35-89a6-f0d95e3eec88,en,translation,root.building.create.form.submit,Create!
+ba044faf-be69-4044-bd81-95981cb7edd3,en,translation,root.hero.create.form.submit,Create!
+ce9739fa-a889-4f59-a948-b9a58deb1029,en,translation,root.building.create.title,Create building!
+5fc9f584-934b-4009-9cc7-ba0ce6dec6a0,en,translation,root.hero.list.title,Heroes
+e737ca3c-77ef-45f5-ba3a-e482dc369ce8,en,translation,root.hero.list.table.id.column,UUID
+431a49ac-91fa-41c4-8e77-1b709ae552b7,en,translation,root.hero.list.table.name.column,Name
+e47f1356-7b34-4980-82b0-7109721fc132,en,translation,root.hero.form.cancel,Cancel!
+e26bcd82-d81b-41db-b29c-623809f2895a,en,translation,root.building.list.title,Buildings
+1eb1e782-2c84-42e9-a077-9d2360bb8221,en,translation,root.building.list.table.id.column,UUID
+4b96ac39-e037-4a3c-8e3e-7afabe536595,en,translation,root.building.list.table.name.column,Name
+d0121d45-450c-46fd-b681-714fdb4a634f,en,translation,root.user.subtitle,Dashboard for all users on the server.
+ccc151c6-2772-473d-9720-f4b02c431f93,en,translation,root.hero.form.name.label,Name
+8e7a017d-0ab0-474e-8ab2-3c357aecc6c5,en,translation,root.hero.form.attribute.title,Attributes
+2732866f-69bb-49c6-9e78-4fc06add6cb9,en,translation,root.hero.form.attribute.empty,There are no attributes!
+5a5402cd-f1e1-420d-b3b2-10fa8a8d8554,en,translation,root.hero.form.attribute.add,Attribute
+efde5cbd-ce29-486f-ab17-1656047d2d3a,en,translation,root.hero.create.title,Create new Hero!
+d50eb4d1-4ab2-499f-9feb-9818dbeac09b,en,translation,root.hero.create.list.title,Heroes
+90e00cf8-4da1-42bb-9b1e-5d5b5a8b1bcc,en,translation,root.building.subtitle,Dashboard of all Buildings in the selected Kingdom.
+44b78303-9c6c-4ec9-a4e1-cdaead0e1893,en,translation,root.hero.subtitle,Dashboard of all Heroes in the selected Kingdom.
+72e3ac31-b466-44a1-8d3f-21c24d8236dc,en,translation,root.user.create.title,Create User
+9c009e66-2da8-4eba-b47a-5fb2f8ab26f0,en,translation,root.kingdom.edit.form.submit,Save changes!
+77ba01ee-e67e-42e0-8826-08a44763b7c2,en,translation,root.building.menu,Building
+cd09df04-e2a7-4513-8d1a-a616ed8244a2,en,translation,root.kingdom.edit.form.delete,Delete!
+a627aac5-2d21-49ac-9456-1f208afe27c3,en,translation,root.building.edit.menu,Edit
+18d37b9e-f7a4-4a3a-bdcd-a2845ae03d56,en,translation,root.hero.edit.menu,Edit
+e226b576-ee19-4bfd-ba29-1c1649dc5754,en,translation,root.hero.edit.form.edit,Edit!
+2520ee60-42ff-42ce-9d1e-cf88626ea093,en,translation,root.hero.edit.form.submit,Save changes!
+c1224a20-6d8f-4f56-9804-adb1fb72db13,en,translation,root.hero.edit.form.delete,Delete!
+8394aabd-8a9c-4c25-a1eb-d7eda550c4d0,en,translation,root.hero.edit.form.deleteConfirm,Do you want to kill the selected Hero? This action cannot be taken back!
+e121485d-6c8e-4db8-a8a8-108da54ce72b,en,translation,root.hero.form.attribute.name.hint,Select Attribute!
+591c0cf3-b7ae-4368-81a6-aff3a1f287e6,en,translation,root.hero.form.attribute.value.hint,Value
+f1722fab-d9fb-41b2-82ff-5b5cebfff9bb,en,translation,root.hero.form.attribute.deleteConfirm,Delete selected attribute?
+0d67ba76-fb5c-4286-b1e0-7f3fd9b4aee9,en,translation,public.sign-up.succeed.title,Welcome to the World of DeRivean!
+3e27e592-9e86-4c19-afc4-46719b3ba2ef,en,translation,public.sign-up.succeed.subtitle,Now you can access you account from login page and see what awaits you!
+43962c14-0015-4897-8a30-f9ed56bd7099,en,translation,public.sign-up.continue.title,Sing In!
+0159d53e-b5cb-4a2e-bf37-8a638bccef32,en,translation,root.user.form.login.required,"User login is a bit required field, so please fill one!"
+00e7d0bc-beb8-4499-bfdf-1cbd84e4344a,en,translation,hero.list.back.menu,Back
+faed835c-9e87-4940-bb54-7cc7cad5d7f4,en,translation,root.building.list.back,Back
+15595926-b346-474a-ae70-d05ec89020fd,en,translation,root.hero.home.back.menu,Back
+4df07e72-f33b-4619-a4a1-15f7e344b77d,en,translation,root.building.home.back.menu,Back
+eacc49ad-d862-430d-bc01-f7b21332b5fd,en,translation,root.kingdom.home.back.menu,Back
+f9ce7665-e3ed-46d9-bcf6-dbcf35b5cabd,en,translation,root.hero.create.success,Hero created!
+f6b1c269-048c-4257-aa2a-cddce25b4cda,en,translation,root.building.create.success,Building created!
+2ac97a78-8543-489a-8226-715feb43fb7d,en,translation,root.hero.create.error,"Cannot create hero, please check inputs."
+82d32891-125b-4408-a1b3-44e23596f41b,en,translation,root.building.create.error,"Cannot create the building, please check inputs."
+59332a84-7b8e-48ae-a1c0-24a0b5aa24b4,en,translation,root.user.create.form.cancelConfirm,Do you want to cancel changes?
+19f7ce84-c825-4d63-a45b-28429d426820,en,translation,root.user.create.success,User created!
+a35fa3fd-67a3-4b30-8d82-b876eaf5a4c2,en,translation,root.user.edit.form.cancelConfirm,Do you want to cancel changes?
+7687a11e-8c5d-47a2-87e4-e4cc749bd96c,en,translation,root.user.edit.form.deleteConfirm,"Do you want to remove selected user? This action cannot be taken back and a lof of data (kingdoms, heroes, ...) could be lost!"
+a5064b8e-ca28-4874-aee7-6bfbae03e2f2,en,translation,root.user.delete.success,User removed!
+ab42aad6-55c2-473a-9642-66889d9b2303,en,translation,root.user.home.back.menu,Back
+2c7a5ec7-cdde-41a7-add8-b8ff5fba4686,en,translation,root.kingdom.edit.form.deleteConfirm,Do you want to remove the Kingdom? A lot of data will be lost and cannot be reverted!
+68869188-b783-406a-b2cf-74ec9532eb78,en,translation,root.kingdom.delete.success,Kingdom deleted!
+69250b88-b11f-4d03-9b25-1442c191309b,en,translation,root.kingdom.create.success,Kingdom created!
+6f0c8b08-a77a-411f-ab79-1ee16f2337d9,en,translation,root.hero.delete.success,Hero deleted!
+f6087c78-48bb-422e-a109-dc0a78a83519,en,translation,root.building.delete.success,Building deleted!
+2797ed4e-ad5a-4e4c-8013-458e601cd133,en,translation,root.kingdom.form.attribute.name.hint,Select attribute
+fcddf05a-2bbb-46eb-a55c-c20d9cc4c32f,en,translation,root.kingdom.form.attribute.value.hint,Value
+d750d643-5788-4bad-a763-80f7e33d4908,en,translation,root.kingdom.form.attribute.name.required,Please pick some attribute!
+7fd63738-6f04-4fb1-84a8-1a4f80c5f8c4,en,translation,root.kingdom.form.attribute.value.required,Please specify value!
+3c46dfd5-a924-4e1e-85e2-83cc35e1cfe6,en,translation,root.kingdom.form.name.required,Please choose some epic kingdom name!
+ea90826f-0939-4673-8ab8-6ac0fc3ec7a0,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
+317e676e-d19a-426d-89aa-28ed02d991b2,en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
+8f4ee872-5fb7-4139-924d-e5848ef9a341,en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
+b1eac8b3-ae12-4cb1-83d5-70b709eba4df,en,translation,root.user.attributes.subtitle,Editor of attributes for the selected user.
+1d383c27-a2a1-45c4-babd-207702031767,en,translation,root.user.form.attribute.name.hint,Select attribute
+46e12d9b-3bdd-4828-a475-d5aaa9902a16,en,translation,root.user.form.attribute.value.hint,Value
+fa256d32-b035-4399-8266-8c5ff6ee6d00,en,translation,root.user.form.attribute.name.required,Please pick attribute!
+f3d84241-5c8f-4ffd-8135-ef543f46cbee,en,translation,root.user.form.attribute.value.required,Please fill attribute value!
+ba1af05f-c7d8-47eb-9196-666c8416c18b,en,translation,root.user.update.error,"Cannot update User, please check inputs!"
+8e9435ae-b783-4218-810b-6c2dbe5987f5,en,translation,root.user.attributes.submit,Save changes!
+e45a95ab-dc32-4d42-afdb-568394caf1d9,en,translation,root.user.form.attribute.deleteConfirm,Delete attribute?
+6320b5e4-7620-4b18-b20d-386f05d076be,en,translation,root.user.form.name.required,Please pick some nice user name!
+d745aac0-8df2-4496-bd67-a5dfde981f58,en,translation,root.user.attributes.title,User's Attributes
+6a0a29ac-64b7-4a8f-ab2d-7f662ed5a3a5,en,translation,root.user.create.error,Cannot create User!
+2a5546bb-ce64-4a3d-abff-84089bf2bc5e,en,translation,root.user.attributes.updated,Attributes updated!
+b20ccea7-b9a8-469b-b45e-772ecda46458,en,translation,root.user.update.success,User updated!
+de0fff3e-6e50-4ef7-a148-d973d32013bd,en,translation,root.kingdom.attributes.menu,Attributes
+edd8bb1b-537a-4b6d-98f5-7407e6a13c22,en,translation,root.kingdom.attributes.title,Kingdom Attributes
+822c81e4-d7fa-4d3e-aae3-134fa037fb04,en,translation,root.kingdom.attributes.subtitle,Here you can edit attributes of the selected Kingdom!
+289c30a8-fbbc-4576-9e59-3e8ec487e932,en,translation,root.kingdom.attributes.updated,Kingdom Attributes updated!
+ed2b768b-68e7-479d-8980-1d9dabf0223f,en,translation,root.hero.attributes.menu,Attributes
+cb6fbb69-10f0-4d4f-bcfc-d23af03d633d,en,translation,root.hero.attributes.title,Hero Attributes
+7b720509-155f-4667-b886-7cf93f871a30,en,translation,root.hero.attributes.updated,Attributes updated!
+0e03bbdf-2e19-47da-93bd-b2025aa9ee1e,en,translation,root.hero.attributes.subtitle,Here you can manager Hero Attributes!
+fb79d7c5-a0b0-4d89-93e4-481e9e2d512f,en,translation,root.building.attributes.menu,Attributes
+c6273082-3df4-47c3-85aa-0e91a9e4f0a4,en,translation,root.building.attributes.updated,Attributes updated!
+afe324f1-5002-4748-8a2d-6f3154aaf507,en,translation,root.building.attributes.subtitle,Here you can manage Attributes of selected Building!
+1983061c-f46c-4c51-98e4-3c2a78004f6e,en,translation,root.building.attributes.title,Building Attributes
+a8ef295f-7a92-4a26-887e-40a7c0f31c7d,en,translation,root.building.edit.form.cancelConfirm,"All changes will be lost, continue?"
+326079dc-6095-4507-ae72-40a9bd2537e3,en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"
+cbfe40fe-3d5e-4c06-9acf-4e8e8978758d,en,translation,root.user.list.login,Login
+d125e5c4-f517-437c-afa1-fa4690c794b8,en,translation,root.user.list.edit,Edit!
+6654c412-c7c0-4422-bc06-96ad38178e07,en,translation,root.user.list.empty-token,Empty token
+679523a7-9d35-46ad-bf71-d559a3c55286,en,translation,root.kingdom.list.edit,Edit!
+9aacfb6e-5f64-4382-81bd-489a9c752347,en,translation,game.home.title,World of DeRivean
+9b35ac90-5340-45fc-b68e-32a49be892d9,en,translation,root.kingdom.list.create-hero,Create Hero!
+128c8055-da95-4882-a4ce-d54c9e3932c5,en,translation,root.kingdom.list.create-building,Create Building!
+07f9af7f-60db-4b6b-abaf-b7305b7eaa01,en,translation,root.kingdom.list.edit-attributes,Edit Attributes!
+6e1946d1-94a6-4cf1-a4b7-99a9e9ad6733,en,translation,root.user.list.create-kingdom,Create Kingdom!
+22e7cc80-ca99-41c4-8356-9bd7a4a0c63f,en,translation,root.translation.delete.success,Translation deleted!
+224eda5f-e6ec-4b7c-8cae-4611994b5a28,en,translation,root.user.list.no-site,Without site (disabled)
+33d9fc45-f858-45d0-96e2-be5839128bcd,en,translation,root.user.list.site,Site
+ff72a979-3b2e-404d-96b8-da8afaaae287,en,translation,root.user.list.edit-attributes,Edit Attributes!
+2010f382-fd9d-4e9d-b834-05a43dbcc066,en,translation,root.hero.list.edit,Edit!
+7263f3ab-2b5b-4494-885d-43a8ccab0153,en,translation,root.hero.list.edit-attributes,Edit Attributes!
+b1f81c1b-2a8f-4508-aa3b-7926f683dad8,en,translation,root.building.list.edit-attributes,Edit Attributes!
+53350ea1-d60d-4007-8225-c5600060e7e7,en,translation,root.building.list.edit,Edit!
+2227eae1-410b-4fcf-9de0-bff2f5866d1f,en,translation,root.translation.list.edit,Edit!
+b1e8c4eb-240f-44f1-ad18-7556c884a1d3,en,translation,root.translation.list.language,Language
+29f440d0-2376-4357-b2d1-12285e355312,en,translation,root.translation.list.label,Label
+0b9aa5ea-bc2e-455f-88d9-2d24784d3317,cs,translation,root.home.content.title,Vítej v administraci herního serveru DeRivean!
+8b300144-dad3-45a5-95f0-d0b0f001d8cc,cs,translation,root.home.content.subtitle,"Tady se odehrává veškerá magie, buď tedy obezřetný!"
+7cfd172d-c922-4878-98c2-cdcd499c13c0,cs,translation,root.translation.create.menu,Vytvořit
+52704261-cb41-4ae7-8297-d3e024bc71b6,cs,translation,root.translation.list.menu,Seznam
+81deb08b-2318-4d0b-b482-59e7a983259d,cs,translation,root.translation.edit.menu,Editace
+aa330613-c457-497f-b7af-bf181f7416fe,cs,translation,root.translation.edit.form.edit,Editovat!
+31d265e7-1670-457f-9294-1d1156cdb172,cs,translation,root.translation.dashboard.menu,Nástěnka
+6763b6f1-4b84-4054-9426-f4f5a5b6e491,cs,translation,root.translation.menu,Překlady
+09b1bf22-8e40-4b22-b180-07554b896a8c,cs,translation,root.translation.create.form.submit,Vytvořit!
+2990dece-1c2c-4d0c-92ce-ff8b21ee5716,cs,translation,root.translation.form.cancel,Zrušit!
+4543533e-d8da-4a4b-aad9-957021ce9a42,cs,translation,root.translation.edit.form.submit,Uložit!
+b2664019-4325-4ecf-9484-47a04a89e778,cs,translation,root.translation.edit.form.delete,Smazat!
+e46a1ab8-19af-4e62-ae1f-b69d36bda416,cs,translation,root.translation.edit.form.deleteConfirm,Opravdu si přeješ smazat tento překlad?
+4d5806cc-bdb1-4351-a138-bfe98c926b82,cs,translation,common.no,Ne
+525719aa-f7c9-4423-a76e-53ca28eeef2c,cs,translation,common.yes,Ano!
+f0fe5244-8bb8-465f-9190-ac712fe697bc,cs,translation,root.sign-out.menu,Odhlásit se!
+d8c50d8b-fbcc-4f64-aaa2-a98b17dcb15a,cs,translation,root.user.menu,Uživatelé
+1b106814-352a-4494-b700-dca282603ad6,cs,translation,root.header.search.label,Hledátko!
+5b6be3fc-a584-4839-a587-00cbc14f2a8e,cs,translation,root.statistic.users,Uživatelé
+988382b9-fa44-4e90-9961-a650abdcfa14,cs,translation,root.statistic.kingdoms,Království
+e7381038-0534-4338-9c80-43028e729fdc,cs,translation,root.statistic.buildings,Budovy
+be14faca-910f-4ed3-92b3-e7935f4f73e5,cs,translation,root.statistic.heroes,Hrdinové
+31931122-efca-40de-8ccc-d2b5b2385cb7,cs,translation,root.statistic.translations,Překlady
+b068acb7-5696-4f0f-9dab-3cd496915946,cs,translation,root.user.dashboard.menu,Nástěnka
+95797f48-8457-4a10-a84e-78e931b7cbb3,cs,translation,root.user.create.menu,Vytvořit
+e47cef78-3acb-47a7-a0e4-42b446dc460b,cs,translation,root.user.list.menu,Seznam
+c2ff21d5-b6e6-4855-8542-3a391518e520,cs,translation,common.view-item,Náhled
+555ef3c4-72b1-4b4d-a756-f3c5f14fff8b,cs,translation,common.edit-item,Editovat
+a9c62739-4427-4b98-89c9-0146aa79e4c7,cs,translation,common.copy-id,Kopírovat ID
+13e1e146-eb79-4651-8ec0-07cfb2e1330d,cs,translation,root.translation.form.label.label,Klíč překladu
+9d10c9fd-31dd-4279-bea8-522efce3b511,cs,translation,root.translation.form.language.label,Kód jazyka
+55df73c2-c43a-4d68-b61d-3c924ce02f39,cs,translation,root.translation.create.title,Tvorba překladu
+b2251617-e22e-448b-89e2-e4f9cd86a734,cs,translation,root.translation.title,Překlad
+0d2311e2-d8cf-4d43-8180-9bd1bf87ca9b,cs,translation,root.translation.list.title,Seznam překladů
+742be840-6d7a-4ad9-a557-f34cd23ccb10,en,translation,error.user-locked.title,Account Locked!
+4fed9a2d-c057-4ece-bd9e-844a68da438a,en,translation,error.user-locked.body,You've been evil or there is some kind of system error preventing you from login.
+4b82316a-bcaa-4c49-bf7a-059ceee974d8,en,translation,error.user-locked.dismiss,Give up!
+9aefdbd6-253c-4505-bb6a-9675e68aaca2,en,translation,root.user.list.ticket,Ticket
+a947fcb6-bdab-4c71-b7ce-eb0988d4408f,en,translation,root.home.content.loader.subtitle,"Fetching some interesting things for you, please wait!"
+42f6c4d4-ce70-444e-bedf-df887be7a257,en,translation,public.home.title,Home
+9df0502f-b56e-43d2-ae91-c5edb4df16ae,en,translation,public.session-expired.title,Session Expired!
+a2795af5-e4d3-4cfd-a817-e40564b2dcc7,en,translation,public.session-expired.subtitle,"We're sorry, but you session has expired, so please log in, if you want to continue use the application!"
+4d047e63-9c6e-4927-a2b7-f74ec9bdb315,en,translation,public.session-expired.continue,Continue
+baf805ca-aafd-43f5-b597-9d42999bd0ba,en,translation,root.translation.form.label.label,Translation label
+6c906301-3a8d-4b83-a421-55bc1395fe70,en,translation,root.edit.form.edit,Edit!
+2ce4f27e-2dd3-4418-832e-15ceb19d6535,en,translation,root.home.content.error.title,Server is Unhealthy!
+b580d585-378a-4a4a-a8ee-0c32a975d1a5,en,translation,root.home.content.error.subtitle,Please check following errors as they could prevent players to register/login!
+a428151a-afc9-4691-a417-c7692b0296b1,en,translation,root.home.content.error.list.title,Please check following:
+388f8196-36cd-47b9-bf94-85e9ea7bd8bc,en,translation,root.server.error.Missing template user!,There is missing Template User from which new registrations are created (for example number of gems or whatever). This error block new registrations (but current players are able to log in).
+ca344c56-cdf6-4d3b-a597-9bd3d55464b1,en,translation,root.server.error.Missing template kingdom!,There is missing Template Kingdom from which all users (players) are creating their kingdoms: thus any of players will be able to create a new kingdom until this is fixed.
+f097312f-2f89-4c5a-bf83-71481ac565b7,en,translation,root.server.error.action.create-template-user,Create Template User
+ab8901f2-1539-41e5-b20e-e5d2d1eeecab,en,translation,root.server.error.action.create-template-kingdom,Create Template Kingdom
+0a7e467f-2544-44c6-9fd1-5b1b51cd55d6,en,translation,game.sign-in.succeed.title,Welcome back!
+5fed6df8-02af-410f-82b7-f8a1d7dc83f6,en,translation,game.sign-in.succeed.subtitle,Looks around what's new in your kingdoms!
+44f7abe3-d753-42d7-8152-6fbed9dfe568,en,translation,game.sign-in.continue,Continue!
+265c5313-835e-4986-b247-ce005c6e3529,en,translation,game.home.menu,Home
+476702cc-4318-45be-b2c5-fc2772b0a8d2,en,translation,game.sign-out.menu,Sign out!
+12e9bd44-5094-4692-82cc-0a31679c505c,en,translation,game.kingdom.dashboard.menu,Dashboard
+c8b51bac-3c8b-4e12-9d9c-56dfcb721ea5,en,translation,game.kingdom.list.menu,List
+02422237-7244-4808-97ef-e698d639dfb0,en,translation,game.kingdom.title,Kingdoms Overview
+1c3c3bd1-3548-4f94-b9a6-9db827e32f2d,en,translation,game.kingdom.subtitle,Here you will find all information about your Kingdoms in one place!
+dc74484e-1d55-48d9-82ad-d6acbd9ad561,en,translation,game.kingdom.create.title,Create Kingdom!
+c81f38f9-7de8-45b6-9d46-fe83bece77a8,en,translation,game.kingdom.create.form.submit,Create!
+1a2a1ece-b7e1-499d-a03f-6e23ce125325,en,translation,game.kingdom.form.cancel,Cancel!
+3b4b3b92-f1a8-4f2a-83a2-6379dd76f63d,en,translation,game.kingdom.form.name.label,Kingdom name
+c1452d04-b777-4f0d-8bfa-a80aafeb0e37,en,translation,game.kingdom.list.title,Kingdoms
+7373675a-a800-4c11-8273-fdd27be53334,cs,translation,root.home.menu,Domů
+34b30e0f-a18a-47ca-bbff-af708f8f6d0a,en,translation,game.kingdom.create.conflict,Cannot create Kingdom - please check input fields!
+4ba55181-5886-488d-870c-44910f6a5941,en,translation,game.kingdom.create.success,Congratulations to your new Kingdom!
+5cfff3e8-978a-4a85-84dc-ab7e5cdeb269,en,translation,game.kingdom.home.back.menu,Back
+1db7f77a-de59-4d67-996a-95a61f837e6c,en,translation,game.kingdom.edit.menu,Edit
+018be2c7-3563-4c67-9fc0-01b85ea61ab1,en,translation,game.kingdom.edit.form.deleteConfirm,"Do you want to delete selected Kingdom? This will destroy everything within Kingdom (buildings, heroes, overall progress) - aaand cannot be taken back!"
+f2b73766-5a03-4e88-b3aa-dbdb5a564e61,en,translation,game.kingdom.edit.form.edit,Edit!
+6e2eb524-65e9-472a-9031-bd4711c0dfba,en,translation,game.kingdom.edit.form.submit,Save changes!
+19159822-8d7f-4bad-998d-abf55f563506,en,translation,game.kingdom.edit.form.delete,Delete!
+d8550a6e-429d-4298-897d-230168285685,en,translation,game.kingdom.delete.success,Your Kingdom has been successfully deleted. All building are burning in the Hell Fire and Death is taking souls of all your Heroes!
+f50e964d-127e-4d3c-b4cf-bfa8458a83b9,en,translation,game.kingdom.update.success,Kingdom updated!
+931b41a9-e283-4f79-998a-a95d5408b1d3,en,translation,game.sign-out.title,Do you want to leave the game?
+35494027-bfd3-48b4-9489-b95f28f8b7b0,en,translation,game.sign-out.subtitle,We're sad you're leaving - but we hope see you soon!
+a8bd8dce-0105-495c-863b-a8674548ad7c,en,translation,game.sign-out.button.sign-out,Papa!
+eb70476b-f82c-4dcf-acda-e778e8c13cb4,en,translation,game.sign-out.button.back,Back!
+9cbc4313-9ec1-406c-b96a-33e2af7380b3,en,translation,game.kingdom.menu,Kingdom
+370e2542-59fa-4c9b-bf75-3fa2fb41a6d4,en,translation,game.kingdom.create.menu,Create
+95e261eb-7c5b-4bfa-b697-20faa7afb941,en,translation,root.server.error.action-unavailable,There is no quick action available.
+4f140900-1b35-41ac-93e4-319ca57947d1,en,translation,root.home.error.create-template-user-first,Template Kingdom belongs to Template user which is missing. Please create Template User first!
+6fea6f6c-3065-4e58-9d4b-ab5fabb02c6d,en,translation,root.building.built.label,Built date
+edb429fa-23a6-40aa-8423-4bc5079e930f,en,translation,root.building.built.hint,Pick built time
+9bb50eaa-c306-410a-bc57-760f9d2837e2,en,translation,game.kingdom.create.resource-limit,"We're sorry, but you have already reached Kingdom Limit!"
+12065aff-af11-4fa6-af37-53d24027b9da,en,translation,game.building.menu,Buildings
+2ca8658b-7bcc-4711-85f1-d040c8f086f7,cs,translation,game.building.menu,Budovy
+56ed2f3f-4e6a-42df-8a40-0b345473626b,en,translation,game.building.dashboard.menu,Dashboard
+29d874fc-0795-4f10-a74b-270dbbfa653f,cs,translation,game.building.dashboard.menu,Nástěnka
+105079ae-a151-4808-8e47-901aaea48a5f,en,translation,game.building.list.menu,List
+ca95825d-7f5a-444d-a6c5-e50429c62747,cs,translation,game.building.list.menu,Seznam
+bec8f349-2a93-41cc-b6a2-74c86adb8ffc,en,translation,game.building.title,Buildings Overview
+9b879291-744b-41e2-bbc3-5fed22b0d773,en,translation,game.building.subtitle,Here you will find general overview of all buildings in selected Kingdom!
+21015ce9-6659-44d0-8c75-9b6fd9ec03f7,en,translation,game.statistic.buildings,Available buildings
+3a465812-613b-4017-a5ca-473e93caf6f2,en,translation,game.statistic.buildings.built,Built buildings
+bef5e85e-fb43-4548-b1a8-33805bdaa394,en,translation,game.building.list.title,Buildings
+cae730a3-483f-4eb9-a681-fb61a46fbe25,en,translation,root.building.building.title,Other
+17d22381-28ba-490a-ae76-f7929c5f41b6,en,translation,root.building.update.success,Building updated!
+20dd4e7d-effb-46cd-8fbc-2877cd4401eb,en,translation,root.building.building.hint,You will be able finetune building settings after creation to keep this form as light as possible.
+7ee15127-4f93-43e9-a29e-fc2f927c5664,en,translation,root.attribute.dashboard.menu,Dashboard
+76d53b33-5206-40d6-b64d-f25949cf1eb3,en,translation,root.attribute.title,Attributes Overview
+3970c1bb-b344-42c1-979c-a5a16464c94d,en,translation,root.attribute.subtitle,Here you can manage all attributes available through whole game.
+832bc783-6b12-4afb-b58d-81c463fdd0b9,en,translation,root.attribute-group.menu,Attribute Group
+7b800937-a97c-4247-8618-4fdf12c2265d,en,translation,root.attribute-group.dashboard.menu,Dashboard
+e605c732-0b35-4f02-8f3c-2d6818722488,en,translation,root.attribute-group.create.menu,Create
+32e96d54-6bbc-40b0-9bd2-82446f8874cb,en,translation,root.attribute-group.list.menu,List
+723c849d-a4df-4a4f-b4fc-f75aba1617a4,en,translation, root.statistics.unavailable,Statistics are unavailable (probably you don't have permissions).
+5601541e-1635-4f59-aaab-a48b325fefeb,en,translation,root.attribute-group.list.title,Attribute Group List
+b006ea94-a1a6-40b9-ab3b-ddb2a2b64095,en,translation,root.attribute-group.list.edit,Edit!
+f9f17f32-0d1c-4d27-88d4-b29a0016577d,en,translation,root.attribute-group.create.title,Create new Attribute Group
+e903c124-a81b-4614-ae6c-c0a0a0954116,en,translation,root.attribute-group.create.form.submit,Create!
+2b5e58f4-1ede-414c-b642-213d3a16599e,en,translation,root.attribute-group.form.cancel,Cancel!
+2c56685a-5d47-424e-94b2-d21fc999c82a,en,translation,root.attribute-group.form.name.label,Group name
+13fc5f1d-1140-4223-9acb-41fec838824e,en,translation,root.attribute-group.create.form.cancelConfirm,"All changes will be lost, continue?"
+5c645bdd-4619-4f68-958f-56fc4235d6d3,en,translation,root.attribute-group.attribute-group.title,Other
+c708d5ff-b51d-4db3-b317-aaf7f5157b6e,en,translation,root.attribute-group.description.hint,"Descriptions goes through translations, so use some simple identifier."
+b27faf91-3be6-4760-bdcb-aae90fef4485,en,translation,root.attribute-group.description.label,Description
+85c4ed41-f544-4b28-ada4-525e6dec1973,en,translation,root.attribute-group.title,Attribute Group
+9776b790-d08b-4f5b-970a-1de37cd4c03f,en,translation,root.attribute-group.edit.form.edit,Edit!
+cdfd08cb-6430-4b7f-ac0f-3c49c9e33008,en,translation,root.attribute-group.edit.form.submit,Save changes!
+c725e289-0686-4de3-a457-d3f9c63e4dbe,en,translation,root.attribute-group.edit.form.delete,Delete!
+98e80cf7-2ef3-4efb-8da2-21c896d1fca7,en,translation,root.attribute-group.edit.form.deleteConfirm,Do you want to remove this attribute group? All related attributes within whole game will be deleted too!
+fbae0a3f-351b-4a83-a710-0d9ff711d687,en,translation,root.attribute-group.subtitle,Here you can manage all attribute groups needed by the rest of game.
