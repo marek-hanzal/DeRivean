@@ -19,6 +19,7 @@ function CreateAttributeTypeModule() {
 	module.fetch = useAttributeTypeFetch;
 	module.page = fetchAttributeTypePage;
 	module.param = "type";
+	module.parent = "group";
 	return module.validate();
 }
 
