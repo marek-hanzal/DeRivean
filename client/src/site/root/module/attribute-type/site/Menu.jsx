@@ -1,4 +1,5 @@
 import AttributeIcon from "component/icon/AttributeIcon";
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import EditIcon from "component/icon/EditIcon";
 import GroupIcon from "component/icon/GroupIcon";
@@ -15,6 +16,19 @@ import route from "utils/route/route";
 const id = "root.attribute-type";
 const link = Routes.root.attributeType;
 
+const DefaultMenu = () => {
+	return (
+		<BaseMenu>
+			<MenuDivider/>
+			<MenuItem key={`root.attribute-group`} id={`root.attribute-group`} href={Routes.root.attributeGroup.home} icon={<BackIcon/>}/>
+			<MenuDivider/>
+			<AttributeTypeMenuItem key={id}/>
+			<MenuDivider/>
+			<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+		</BaseMenu>
+	);
+};
+
 const Menu = () => {
 	return (
 		<BaseRoutes
@@ -28,23 +42,7 @@ const Menu = () => {
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
-				// route(link.edit.match(), <BaseMenu>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<BackIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
-				// 	<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				// </BaseMenu>),
-				route("*", <BaseMenu>
-					<MenuDivider/>
-					<MenuItem key={`root.attribute-group.list`} id={`root.attribute-group.list`} href={Routes.root.attributeGroup.home} icon={<GroupIcon/>}/>
-					<MenuDivider/>
-					<AttributeTypeMenuItem key={id}/>
-					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
+				route(link.create.match(), <DefaultMenu/>),
 			]}
 		/>
 	);
@@ -53,7 +51,6 @@ const Menu = () => {
 const AttributeTypeMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} {...props}>
-			{/*<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>*/}
 			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
 			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
 		</MenuGroup>
