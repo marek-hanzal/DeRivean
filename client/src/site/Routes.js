@@ -244,9 +244,16 @@ const Routes = {
 				params: ["kingdom"],
 			},
 			attributes: {
-				match: () => "k/:kingdom/attributes",
-				link: resolveUuid("kingdom", "/kingdom/k/:kingdom/attributes"),
-				params: ["kingdom"],
+				common: {
+					match: () => "k/:kingdom/attributes/common",
+					link: resolveUuid("kingdom", "/kingdom/k/:kingdom/attributes/common"),
+					params: ["kingdom"],
+				},
+				resources: {
+					match: () => "k/:kingdom/attributes/resources",
+					link: resolveUuid("kingdom", "/kingdom/k/:kingdom/attributes/resources"),
+					params: ["kingdom"],
+				},
 			},
 			list: {
 				match: () => "u/:user/list/*",
