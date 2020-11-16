@@ -129,18 +129,18 @@ const Routes = {
 				link: () => "/attribute-group/create",
 			},
 			edit: {
-				match: () => "g/:attribute-group/edit/*",
-				link: resolveUuid("attribute-group", "/attribute-group/g/:attribute-group/edit"),
-				params: ["attribute-group"],
+				match: () => "g/:group/edit/*",
+				link: resolveUuid("group", "/attribute-group/g/:group/edit"),
+				params: ["group"],
 			},
 			list: {
 				match: () => "list/*",
 				link: () => "/attribute-group/list",
 			},
 			home: {
-				match: () => "g/:attribute-group/home/*",
-				link: resolveUuid("attribute-group", "/attribute-group/g/:attribute-group/home"),
-				params: ["attribute-group"],
+				match: () => "g/:group/home/*",
+				link: resolveUuid("group", "/attribute-group/g/:group/home"),
+				params: ["group"],
 			},
 		},
 		user: {
