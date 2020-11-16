@@ -1,4 +1,4 @@
-package derivean.rest.root.`attribute-group`
+package derivean.rest.root.`attribute-type`
 
 import derivean.lib.container.IContainer
 import derivean.lib.http.AbstractHttpModule
@@ -7,7 +7,7 @@ import io.ktor.routing.*
 import io.ktor.util.*
 
 @KtorExperimentalAPI
-class AttributeGroupHttpModule(container: IContainer) : AbstractHttpModule(container) {
+class AttributeTypeHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {
 		install(
 			routing,

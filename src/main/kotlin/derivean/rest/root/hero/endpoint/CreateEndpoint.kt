@@ -63,5 +63,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		return null
 	}
 
-	data class Request(val kingdom: String, val name: String, val attributes: Attributes?)
+	data class Request(
+		val kingdom: String,
+		val name: String,
+		val attributes: Attributes?,
+	)
 }

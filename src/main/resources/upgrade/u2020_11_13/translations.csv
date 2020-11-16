@@ -436,3 +436,14 @@ fbae0a3f-351b-4a83-a710-0d9ff711d687,en,translation,root.attribute-group.subtitl
 c66da4f7-4205-4d66-adaf-ee8681415623,en,translation,root.attribute-group.create.success,Attribute Group created!
 47b9541c-86ad-4bab-8998-bb5c961375ad,en,translation,root.attribute-group.edit.menu,Edit
 159bffa2-c2f3-4b61-a823-47cf5df1b980,en,translation,root.user.title,User
+8e958d01-4329-49cc-a31d-341f35f21e1a,en,translation,root.attribute-type.create.menu,Create
+81f8ecd2-57f6-4268-b633-5e399c6ac320,en,translation,root.attribute-type.list.menu,List
+de42e6cb-0257-46ce-902f-b552b990575d,en,translation,root.attribute-type.menu,Attribute Type
+aa809fe0-e1ba-4672-a52a-14df3f4a2ba1,en,translation,root.attribute-type.create.title,Create Attribute Type
+940ccb45-fccc-4356-b1c9-5a484354fc5d,en,translation,root.attribute-type.form.name.label,Attribute Type name
+64491cda-1e28-4d29-893d-8cddf6f0e966,en,translation,root.attribute-type.attribute-type.title,Other
+3ffaad39-4c2f-4e55-b234-71f16b321d1b,en,translation,root.attribute-type.description.label,Description
+9644600d-f360-4771-a4ad-c1d17123a918,en,translation,root.attribute-type.create.form.submit,Create!
+b69ae179-22bb-47a8-8803-a2dd76fe704f,en,translation,root.attribute-type.form.cancel,Cancel!
+d41bc857-89d5-4756-a0c6-80a504f9e938,en,translation,root.attribute-type.create.form.cancelConfirm,"All changes will be lost, continue?"
+b1f44bf6-1839-4b5a-92de-07f73d1d8716,en,translation,root.attribute-type.description.hint,"Description goes through translation, keep it short."
