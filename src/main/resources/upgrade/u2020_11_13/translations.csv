@@ -130,7 +130,6 @@ d90f497b-c325-4ff1-be93-00afda8f3801,en,translation,root.translation.edit.form.s
 2d82ed35-6065-4b25-b321-d8076869d3ea,en,translation,root.translation.edit.form.delete,Delete!
 942e1c07-62b8-44c6-ad87-0608d6981bb4,en,translation,root.translation.edit.form.deleteConfirm,Do you want to remove translation?
 4eb8f314-60cc-4c40-af99-3591196c3081,en,translation,root.translation.edit.form.cancelConfirm,"All changes will be lost, continue?"
-159bffa2-c2f3-4b61-a823-47cf5df1b980,en,translation,root.user.title,Users
 b3425209-2402-40a1-8d47-96129fe89f1f,en,translation,root.user.edit.form.edit,Edit!
 c9ba2e83-4463-4585-97e5-d2d661c62861,en,translation,root.user.edit.form.submit,Save changes!
 f9edd2f2-43d1-40f1-8262-b1e62c493a32,en,translation,root.user.edit.form.delete,Delete!
@@ -324,7 +323,6 @@ e46a1ab8-19af-4e62-ae1f-b69d36bda416,cs,translation,root.translation.edit.form.d
 4d5806cc-bdb1-4351-a138-bfe98c926b82,cs,translation,common.no,Ne
 525719aa-f7c9-4423-a76e-53ca28eeef2c,cs,translation,common.yes,Ano!
 f0fe5244-8bb8-465f-9190-ac712fe697bc,cs,translation,root.sign-out.menu,Odhlásit se!
-d8c50d8b-fbcc-4f64-aaa2-a98b17dcb15a,cs,translation,root.user.menu,Uživatelé
 1b106814-352a-4494-b700-dca282603ad6,cs,translation,root.header.search.label,Hledátko!
 5b6be3fc-a584-4839-a587-00cbc14f2a8e,cs,translation,root.statistic.users,Uživatelé
 988382b9-fa44-4e90-9961-a650abdcfa14,cs,translation,root.statistic.kingdoms,Království
@@ -365,6 +363,7 @@ ab8901f2-1539-41e5-b20e-e5d2d1eeecab,en,translation,root.server.error.action.cre
 44f7abe3-d753-42d7-8152-6fbed9dfe568,en,translation,game.sign-in.continue,Continue!
 265c5313-835e-4986-b247-ce005c6e3529,en,translation,game.home.menu,Home
 476702cc-4318-45be-b2c5-fc2772b0a8d2,en,translation,game.sign-out.menu,Sign out!
+d8c50d8b-fbcc-4f64-aaa2-a98b17dcb15a,cs,translation,root.user.menu,Uživatel
 12e9bd44-5094-4692-82cc-0a31679c505c,en,translation,game.kingdom.dashboard.menu,Dashboard
 c8b51bac-3c8b-4e12-9d9c-56dfcb721ea5,en,translation,game.kingdom.list.menu,List
 02422237-7244-4808-97ef-e698d639dfb0,en,translation,game.kingdom.title,Kingdoms Overview
@@ -435,3 +434,5 @@ c725e289-0686-4de3-a457-d3f9c63e4dbe,en,translation,root.attribute-group.edit.fo
 98e80cf7-2ef3-4efb-8da2-21c896d1fca7,en,translation,root.attribute-group.edit.form.deleteConfirm,Do you want to remove this attribute group? All related attributes within whole game will be deleted too!
 fbae0a3f-351b-4a83-a710-0d9ff711d687,en,translation,root.attribute-group.subtitle,Here you can manage all attribute groups needed by the rest of game.
 c66da4f7-4205-4d66-adaf-ee8681415623,en,translation,root.attribute-group.create.success,Attribute Group created!
+47b9541c-86ad-4bab-8998-bb5c961375ad,en,translation,root.attribute-group.edit.menu,Edit
+159bffa2-c2f3-4b61-a823-47cf5df1b980,en,translation,root.user.title,User

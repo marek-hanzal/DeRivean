@@ -1,5 +1,8 @@
+import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
+import EditIcon from "component/icon/EditIcon";
+import GroupIcon from "component/icon/GroupIcon";
 import ListIcon from "component/icon/ListIcon";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
@@ -18,6 +21,24 @@ const Menu = () => {
 	return (
 		<BaseRoutes
 			routes={[
+				route(link.home.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+				</BaseMenu>),
+				route(link.edit.match(), <BaseMenu>
+					<MenuDivider/>
+					<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<BackIcon/>}/>
+					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuDivider/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+				</BaseMenu>),
 				route("*", <BaseMenu>
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
