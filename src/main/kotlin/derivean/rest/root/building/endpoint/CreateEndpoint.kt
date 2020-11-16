@@ -6,10 +6,7 @@ import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.Response
-import derivean.rest.AttributesMapper
-import derivean.rest.common.Attributes
 import derivean.storage.entities.Building
-import derivean.storage.repository.AttributeRepository
 import derivean.storage.repository.BuildingRepository
 import derivean.storage.repository.KingdomRepository
 import io.ktor.application.*
@@ -44,18 +41,15 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val repository: BuildingRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
-	private val attributesMapper: AttributesMapper by container.lazy()
-	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun map(request: ApplicationRequest<Request>, entity: Building) {
 		request.request.let {
 			entity.name = it.name
 			entity.description = it.description
-			entity.built = DateTime(it.built)
-			entity.claim = DateTime(it.claim)
+			entity.built = it.built?.let { date -> DateTime(date) }
+			entity.claim = it.claim?.let { date -> DateTime(date) }
 			entity.kingdom = kingdomRepository.find(it.kingdom)
 			entity.user = entity.kingdom.user
-			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 		}
 	}
 
@@ -67,6 +61,5 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		val description: String?,
 		val built: String?,
 		val claim: String?,
-		val attributes: Attributes?
 	)
 }
