@@ -11,6 +11,7 @@ import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import HomeMenuItem from "site/common/menu/HomeMenuItem";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import {AttributeTypeMenuItem} from "site/root/module/attribute-type/site/Menu";
 import Routes from "site/Routes";
 import route from "utils/route/route";
 
@@ -25,8 +26,12 @@ const Menu = () => {
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuGroup id={id}>
+						<MenuItem key={id} id={id} href={link.home} icon={<GroupIcon/>}/>
+						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					</MenuGroup>
+					<MenuDivider/>
+					<AttributeTypeMenuItem key={"root.attribute-type"} id={"root.attribute-type"}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
