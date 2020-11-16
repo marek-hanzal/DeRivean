@@ -3,9 +3,9 @@ import {useContext} from "react";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
-const AttributesView = () => {
+const ResourcesView = () => {
 	const layoutContext = useContext(LayoutContext);
-	layoutContext.useMenuSelect(["root.kingdom.attributes"]);
+	layoutContext.useMenuSelect(["root.kingdom.attributes.resources"]);
 	return (
 		<KingdomView>
 			<AttributesEditor/>
@@ -13,4 +13,4 @@ const AttributesView = () => {
 	);
 };
 
-export default AttributesView;
+export default ResourcesView;

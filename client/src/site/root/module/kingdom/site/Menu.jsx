@@ -33,6 +33,25 @@ const DefaultMenu = () => {
 	);
 };
 
+const EditMenu = () => {
+	return (
+		<BaseMenu>
+			<MenuDivider/>
+			<MenuItem key={"root.kingdom.list"} id={"root.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
+			<MenuDivider/>
+			<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
+			<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+			<MenuDivider/>
+			<MenuGroup id={`${id}.attributes`}>
+				<MenuItem key={`${id}.attributes.common`} id={`${id}.attributes.common`} href={link.attributes.common} icon={<AttributeIcon/>}/>
+				<MenuItem key={`${id}.attributes.resources`} id={`${id}.attributes.resources`} href={link.attributes.resources} icon={<ResourceIcon/>}/>
+			</MenuGroup>
+			<MenuDivider/>
+			<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+		</BaseMenu>
+	);
+};
+
 const Menu = () => {
 	return (
 		<BaseRoutes
@@ -50,30 +69,9 @@ const Menu = () => {
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
-				route(link.edit.match(), <BaseMenu>
-					<MenuDivider/>
-					<MenuItem key={"root.kingdom.list"} id={"root.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
-					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-					<MenuDivider/>
-					<MenuGroup id={`${id}.attributes`}>
-						<MenuItem key={`${id}.attributes.common`} id={`${id}.attributes.common`} href={link.attributes.common} icon={<AttributeIcon/>}/>
-						<MenuItem key={`${id}.attributes.resources`} id={`${id}.attributes.resources`} href={link.attributes.resources} icon={<ResourceIcon/>}/>
-					</MenuGroup>
-					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-				// route(link.attributes.match(), <BaseMenu>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
-				// 	<MenuDivider/>
-				// 	<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				// </BaseMenu>),
+				route(link.edit.match(), <EditMenu/>),
+				route(link.attributes.common.match(), <EditMenu/>),
+				route(link.attributes.resources.match(), <EditMenu/>),
 				route(link.dashboard.match(), <DefaultMenu/>),
 				route(link.create.match(), <DefaultMenu/>),
 				route(link.list.match(), <DefaultMenu/>),
