@@ -49,6 +49,7 @@ const BaseEditor = (
 						isReady,
 						form,
 						inputMapper,
+						outputMapper,
 					}}
 					children={children}
 				/>

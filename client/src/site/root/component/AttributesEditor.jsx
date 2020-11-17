@@ -16,7 +16,7 @@ import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import Events from "utils/Events";
 import values from "utils/form/values";
 
-const AttributeForm = ({useAttributeFetch = null}) => {
+const AttributeForm = ({groups}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
@@ -28,7 +28,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 		Events()
 			.on("success", fetch => {
 				editorContext.setInitials(fetch);
-				values(editorContext.form, fetch);
+				values(editorContext.form, editorContext.inputMapper(fetch));
 				editorContext.setEnableSubmit(true);
 				layoutContext.setFetch(fetch);
 				editorContext.isReady();
@@ -48,7 +48,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 				subTitle={t(`${moduleContext.id}.attributes.subtitle`)}
 				children={
 					<Centered span={16}>
-						<AttributeFieldEditor useAttributeFetch={useAttributeFetch}/>
+						<AttributeFieldEditor groups={groups}/>
 					</Centered>
 				}
 			/>
@@ -58,7 +58,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 
 const AttributesEditor = (
 	{
-		useAttributeFetch = null,
+		groups,
 		children = children => children,
 		outputMapper = values => values,
 	}) => {
@@ -70,6 +70,14 @@ const AttributesEditor = (
 	return (
 		<BaseEditor
 			readyCount={2}
+			inputMapper={values => {
+				if (!values) {
+					return values;
+				}
+				return {
+					...values, attributes: values.attributes.map(attribute => ({...attribute, type: [attribute.type.group, attribute.type.id]}))
+				};
+			}}
 			outputMapper={outputMapper}
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
@@ -95,7 +103,7 @@ const AttributesEditor = (
 			name={moduleContext.id}
 			translation={moduleContext.id}
 			children={
-				children(<AttributeForm useAttributeFetch={useAttributeFetch}/>)
+				children(<AttributeForm groups={groups}/>)
 			}
 		/>
 	);

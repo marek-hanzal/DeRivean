@@ -1,17 +1,11 @@
 import BuildingIcon from "site/common/icon/BuildingIcon";
 import {doBuildingCreate, doBuildingDelete, doBuildingUpdate, fetchBuildingPage} from "site/root/module/building/action/action";
-import {useBuildingAttributesFetch, useBuildingFetch} from "site/root/module/building/hook/hook";
+import {useBuildingFetch} from "site/root/module/building/hook/hook";
 import BuildingView from "site/root/module/building/view/BuildingView";
 import Routes from "site/Routes";
 import Module from "utils/Module";
 
 class BuildingModule extends Module {
-	attributes;
-
-	constructor(id) {
-		super(id);
-		this.validateFields.push("attributes");
-	}
 }
 
 function CreateBuildingModule() {
@@ -26,7 +20,6 @@ function CreateBuildingModule() {
 	module.page = fetchBuildingPage;
 	module.param = "building";
 	module.parent = "kingdom";
-	module.attributes = useBuildingAttributesFetch;
 	return module.validate();
 }
 

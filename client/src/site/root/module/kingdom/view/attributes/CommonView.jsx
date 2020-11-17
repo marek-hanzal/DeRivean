@@ -1,7 +1,6 @@
 import {LayoutContext} from "component/layout/BaseLayout";
 import {useContext} from "react";
 import AttributesEditor from "site/root/component/AttributesEditor";
-import {useAttributeTypeByGroups} from "site/root/module/attribute-type/hook/hook";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
 const CommonView = () => {
@@ -10,10 +9,7 @@ const CommonView = () => {
 	return (
 		<KingdomView>
 			<AttributesEditor
-				useAttributeFetch={(_, events) => {
-					// eslint-disable-next-line
-					useAttributeTypeByGroups(["kingdom", "resource"], events);
-				}}
+				groups={["kingdom", "resource"]}
 			/>
 		</KingdomView>
 	);

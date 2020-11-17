@@ -1,23 +1,23 @@
 import {PlusOutlined} from "@ant-design/icons";
-import {Button, Card, Divider, Empty, Form, Input, InputNumber, List, Popconfirm, Select} from "antd";
+import {Button, Card, Cascader, Divider, Empty, Form, Input, InputNumber, List, Popconfirm} from "antd";
 import EditorContext from "component/form/EditorContext";
+import AttributeIcon from "component/icon/AttributeIcon";
 import DeleteItemIcon from "component/icon/DeleteItemIcon";
 import Spinner from "component/icon/Spinner";
 import Centered from "component/layout/Centered";
 import ModuleContext from "component/ModuleContext";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useParams} from "react-router";
+import {useAttributeTypeByGroups} from "site/root/module/attribute-type/hook/hook";
 import Events from "utils/Events";
 
-const AttributeFieldEditor = ({useAttributeFetch = null}) => {
+const AttributeFieldEditor = ({groups = null}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
-	const [attributeTypes, setAttributes] = useState();
-	const params = useParams();
-	(useAttributeFetch || moduleContext.attributes)(
-		params[moduleContext.param],
+	const [attributeGroups, setAttributes] = useState();
+	useAttributeTypeByGroups(
+		groups,
 		Events()
 			.on("success", attributes => {
 				setAttributes(attributes);
@@ -54,15 +54,21 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 												marginBottom: 0
 											}}
 										>
-											<Select
+											<Cascader
 												showSearch
 												allowClear
+												expandTrigger={"hover"}
 												placeholder={t(moduleContext.id + ".form.attribute.name.hint")}
-												options={(attributeTypes || []).map(item => ({
-													value: item.id,
-													label: t(item.name),
-												}))}
 												disabled={!editorContext.editor}
+												options={(attributeGroups || []).map(item => ({
+													value: item.id,
+													label: item.name,
+													children: (item.types || []).map(item => ({
+														value: item.id,
+														label: item.name,
+													}))
+												}))}
+												suffixIcon={<AttributeIcon/>}
 											/>
 										</Form.Item>
 										<Form.Item
@@ -108,8 +114,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 												type="primary"
 												ghost
 												onClick={() => add()}
-												disabled={!attributeTypes}
-												icon={<Spinner done={attributeTypes} icon={<PlusOutlined/>}/>}
+												disabled={!attributeGroups}
+												icon={<Spinner done={attributeGroups} icon={<PlusOutlined/>}/>}
 												children={t(moduleContext.id + ".form.attribute.add")}
 											/>
 										</List.Item>
@@ -128,8 +134,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 										type="primary"
 										ghost
 										onClick={() => add()}
-										disabled={!attributeTypes}
-										icon={<Spinner done={attributeTypes} icon={<PlusOutlined/>}/>}
+										disabled={!attributeGroups}
+										icon={<Spinner done={attributeGroups} icon={<PlusOutlined/>}/>}
 										children={t(moduleContext.id + ".form.attribute.add")}
 									/>
 								</>
