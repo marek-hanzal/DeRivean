@@ -14,16 +14,12 @@ import kotlin.math.floor
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 
-	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
-		page(call, { repository.total() }, mapper) { page, limit, block ->
-			repository.page(page, limit, block)
-		}
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>) = page(call, { repository.total() }, mapper) { page, limit, block ->
+		repository.page(page, limit, block)
 	}
 
-	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) {
-		page(call, { repository.total(relation) }, mapper) { page, limit, block ->
-			repository.page(relation, page, limit, block)
-		}
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) = page(call, { repository.total(relation) }, mapper) { page, limit, block ->
+		repository.page(relation, page, limit, block)
 	}
 
 	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Int, Int, (T) -> Unit) -> Unit) = storage.read {
