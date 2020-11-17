@@ -10,10 +10,9 @@ const CommonView = () => {
 	return (
 		<KingdomView>
 			<AttributesEditor
-				outputMapper={values => ({...values, group: "kingdoms"})}
 				useAttributeFetch={(_, events) => {
 					// eslint-disable-next-line
-					useAttributeGroupNameFetch("kingdoms", events);
+					useAttributeGroupNameFetch("kingdom", events);
 				}}
 			/>
 		</KingdomView>

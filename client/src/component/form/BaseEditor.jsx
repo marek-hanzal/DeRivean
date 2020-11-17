@@ -1,5 +1,6 @@
 import {Form} from "antd";
 import EditorContext from "component/form/EditorContext";
+import deepmerge from "deepmerge";
 import PropTypes from "prop-types";
 import {useEffect, useState} from "react";
 
@@ -31,7 +32,7 @@ const BaseEditor = (
 		<Form
 			name={name}
 			form={form}
-			onFinish={values => onFinish(outputMapper(values), initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
+			onFinish={values => onFinish(outputMapper(deepmerge(values, initials)), initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
 			onFinishFailed={onFinishFailed}
 			children={
 				<EditorContext.Provider

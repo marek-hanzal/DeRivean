@@ -14,7 +14,7 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 	const {t} = useTranslation();
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
-	const [attributes, setAttributes] = useState();
+	const [attributeTypes, setAttributes] = useState();
 	const params = useParams();
 	(useAttributeFetch || moduleContext.attributes)(
 		params[moduleContext.param],
@@ -27,7 +27,7 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 	return (
 		<Card title={t(moduleContext.id + ".form.attribute.title")}>
 			<Form.List
-				name="attributes"
+				name={"attributes"}
 			>
 				{(fields, {
 					add,
@@ -40,13 +40,13 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 									<Input.Group style={{display: "flex"}}>
 										<Form.Item
 											{...field}
-											key={field.key + ".attribute"}
-											name={[field.name, "attribute"]}
-											fieldKey={[field.fieldKey, "attribute"]}
+											key={field.key + ".type"}
+											name={[field.name, "type"]}
+											fieldKey={[field.fieldKey, "type"]}
 											rules={[
 												{
 													required: true,
-													message: t(moduleContext.id + ".form.attribute.name.required")
+													message: t(moduleContext.id + ".form.attribute.type.required")
 												}
 											]}
 											style={{
@@ -58,7 +58,7 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 												showSearch
 												allowClear
 												placeholder={t(moduleContext.id + ".form.attribute.name.hint")}
-												options={(attributes || []).map(item => ({
+												options={(attributeTypes || []).map(item => ({
 													label: t(item.name),
 													value: item.id,
 												}))}
@@ -109,8 +109,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 												type="primary"
 												ghost
 												onClick={() => add()}
-												disabled={!attributes}
-												icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
+												disabled={!attributeTypes}
+												icon={<Spinner done={attributeTypes} icon={<PlusOutlined/>}/>}
 												children={t(moduleContext.id + ".form.attribute.add")}
 											/>
 										</List.Item>
@@ -129,8 +129,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 										type="primary"
 										ghost
 										onClick={() => add()}
-										disabled={!attributes}
-										icon={<Spinner done={attributes} icon={<PlusOutlined/>}/>}
+										disabled={!attributeTypes}
+										icon={<Spinner done={attributeTypes} icon={<PlusOutlined/>}/>}
 										children={t(moduleContext.id + ".form.attribute.add")}
 									/>
 								</>

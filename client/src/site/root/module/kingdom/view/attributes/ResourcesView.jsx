@@ -10,10 +10,9 @@ const ResourcesView = () => {
 	return (
 		<KingdomView>
 			<AttributesEditor
-				outputMapper={values => ({...values, group: "resources"})}
 				useAttributeFetch={(_, events) => {
 					// eslint-disable-next-line
-					useAttributeGroupNameFetch("resources", events);
+					useAttributeGroupNameFetch("resource", events);
 				}}
 			/>
 		</KingdomView>
