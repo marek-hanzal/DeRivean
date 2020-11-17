@@ -1,0 +1,22 @@
+group,name,description
+resource,wood,Just good old wood
+resource,stone,Hard rough stone
+resource,plank,That thing made from wood used for a bit more sophisticated buildings
+resource,gold,Without gold nothing is possible!
+cost,wood,Just good old wood
+cost,stone,Hard rough stone
+cost,plank,That thing made from wood used for a bit more sophisticated buildings
+cost,gold,Without gold nothing is possible!
+production,wood,Just good old wood
+production,stone,Hard rough stone
+production,plank,That thing made from wood used for a bit more sophisticated buildings
+production,gold,Without gold nothing is possible!
+kingdom,xp,"You know it, experience!"
+building,xp,"You know it, experience!"
+hero,xp,"You know it, experience!"
+user,xp,"You know it, experience!"
+user.limit,limit.kingdoms,Limit number of kingdoms user can create
+resource,gem,That thing used for monetization!
+production,gem,That thing used for monetization!
+cost,gem,That thing used for monetization!
+kingdom.limit,limit.heroes,Limit number of heroes a Kingdom could posess

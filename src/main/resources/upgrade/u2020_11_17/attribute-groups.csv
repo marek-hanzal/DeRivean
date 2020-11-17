@@ -1,0 +1,10 @@
+name,description
+resource,Attributes describing Resources (usually production of buildings).
+cost,Attributes describing cost of something; should be in pair with Resources.
+production,Attributes related to production of Resources; should be in pair with Resources.
+kingdom,Attributes related to Kingdoms
+building,Attributes related to Buildings
+hero,Attributes related to Heroes
+user,Attributes related to Users
+user.limit,Attributes related to User's limits
+kingdom.limit,Attributes related to limiting Kingdoms

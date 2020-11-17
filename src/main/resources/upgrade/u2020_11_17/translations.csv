@@ -1,0 +1,507 @@
+language,namespace,label,text
+en,translation,root.translation.create.menu,Create
+en,translation,root.translation.create.form.submit,Create!
+en,translation,common.back.menu,Back
+en,translation,root.translation.form.cancel,Cancel!
+en,translation,root.translation.create.form.namespace.label,Namespace
+en,translation,root.translation.create.form.text.label,Text
+en,translation,root.translation.create.title,Create translation
+en,translation,root.translation.title,Translation
+en,translation,root.sign-out.menu,Sign out!
+en,translation,common.view-item,View
+en,translation,root.header.search.label,Search everywhere!
+en,translation,root.translation.create.form.title,Translation
+en,translation,root.translation.create.success,Translation created!
+en,translation,root.translation.dashboard.menu,Dashboard
+en,translation,root.translation.list.menu,List
+en,translation,common.edit-item,Edit
+en,translation,common.copy-success,You have copied the UUID in your clipboard!
+en,translation,common.yes,Yep!
+en,translation,common.no,Nope!
+en,translation,root.translation.create.form.cancelConfirm,"All changes will be lost, proceed?"
+en,translation,root.translation.list.title,Translations
+en,translation,root.translation.list.table.id.column,UUID
+en,translation,root.translation.list.table.language.column,Language
+en,translation,root.translation.list.table.namespace.column,Namespace
+en,translation,root.translation.list.table.label.column,Label
+en,translation,root.translation.edit.form.edit,Edit!
+en,translation,root.translation.edit.form.title,Translation
+en,translation,common.warped,You have been warped to target!
+en,translation,root.user.dashboard.menu,Dashboard
+en,translation,root.user.create.menu,Create
+en,translation,root.user.list.menu,List
+en,translation,root.user.list.title,Users
+en,translation,root.home.content.title,Welcome to DeRivean Game Server!
+en,translation,root.home.title,Server Administration
+en,translation,root.translation.create.list.title,Translations
+en,translation,root.translation.home.menu,Translation
+en,translation,root.translation.menu,Translations
+en,translation,root.sign-out.title,Sign out?
+en,translation,root.sign-out.subtitle,Do you really want to leave administration?
+en,translation,root.translation.create.list.item-0,You can simply change all texts displayed
+en,translation,root.translation.create.form.text.required,Translation text is required!
+en,translation,root.translation.form.language.label,Language
+en,translation,root.translation.update.success,Translation updated!
+en,translation,root.translation.create.error,"Cannot create translation, please check form!"
+en,translation,root.translation.form.title,Translation
+en,translation,root.statistic.translations,Translations
+en,translation,root.statistic.heroes,Heroes
+en,translation,root.statistic.users,Users
+en,translation,root.statistic.kingdoms,Kingdoms
+en,translation,root.statistic.buildings,Buildings
+en,translation,root.home.content.subtitle,This is the place where all the dark magic happens!
+en,translation,root.blog.menu,Blog
+en,translation,root.blog.dashboard.menu,Dashboard
+en,translation,root.blog.create.menu,New Post
+en,translation,root.blog.list.menu,List
+en,translation,root.translation.form.text.required,Translation text is required!
+en,translation,root.translation.form.label.required,Translation label is required!
+en,translation,root.translation.form.language.required,Language is required!
+en,translation,public.home.menu,Home
+en,translation,public.sign-up.menu,Sign up
+en,translation,public.sign-in.menu,Sign in
+en,translation,public.home.sign-in.title,Sign In!
+en,translation,public.home.sign-up.title,Sign Up!
+en,translation,public.home.content.title,Welcome to DeRivean!
+en,translation,public.home.content.subtitle,You're welcome to look around and start playing!
+en,translation,public.home.content.list.title,"DeRivean is simple game, where you will:"
+en,translation,public.home.content.list.item-0,Create your own heroes and take them to battle.
+en,translation,public.home.content.list.item-1,Gain experience in quite different way and build you kingdom.
+en,translation,public.home.content.list.item-2,"Fight other players, pass stages and become most powerful king over here!"
+en,translation,root.user.menu,User
+en,translation,public.sign-up.title,Sign Up!
+en,translation,public.sign-up.content.title,Sign up to join World of DeRivean!
+en,translation,root.translation.edit.menu,Edit
+en,translation,public.sign-up.content.subtitle,Just type a few things and start playing!
+en,translation,root.home.menu,Home
+en,translation,root.building.dashboard.menu,Dashboard
+en,translation,public.sign-up.content.list.title,"This is a RPG game, where you will:"
+en,translation,public.sign-up.content.list.item-0,Create your own heroes
+en,translation,public.sign-up.content.list.item-1,Build up a Kingdom of Yours
+en,translation,public.sign-up.content.list.item-2,"Gain resources, XP, level up Heroes, merge them"
+en,translation,public.sign-up.content.list.item-3,Fight for becoming the greatest King over here
+en,translation,public.sign-up.content.list.item-4,...and a lot more awaits for you!
+en,translation,public.sign-up.content.form.title,Registration
+en,translation,public.sign-up.form.name.label,Name
+en,translation,public.sign-up.form.login.label,Login
+en,translation,public.sign-up.form.password.label,Password
+en,translation,public.sign-up.form.name.required,Please choose some name representing you!
+en,translation,public.sign-up.form.login.required,Please choose some login - for example your nick or email address.
+en,translation,public.sign-up.form.password.required,"We still need everlasting passwords, so please pick some."
+en,translation,public.sign-up.form.submit.label,Sign Up!
+en,translation,public.sign-in.title,Sign In!
+en,translation,public.sign-in.content.title,"Welcome back, brave Hero!"
+en,translation,public.sign-in.content.subtitle,"Login and look around, what's new!"
+en,translation,public.sign-in.content.form.title,Open a magic gate by your password!
+en,translation,public.sign-in.form.login.label,Login
+en,translation,public.sign-in.form.password.label,Password
+en,translation,public.sign-in.form.login.required,We cannot make login request without... login!
+en,translation,public.sign-in.form.password.required,"Please, give us your deepest secret!"
+en,translation,public.sign-in.form.submit.label,Login!
+en,translation,public.sign-in.content.list.title,"Check, what's new in your Kingdom"
+en,translation,public.sign-in.content.list.item-0,Don't forget to claim your resources
+en,translation,public.sign-in.content.list.item-1,Look for some new battles
+en,translation,public.sign-in.content.list.item-2,See Store for new equipment
+en,translation,public.sign-in.content.list.item-3,Level up your Heroes and Buddies
+en,translation,root.sign-out.button.sign-out,Leave!
+en,translation,root.sign-out.button.back,Return!
+en,translation,root.home.content.loader.title,Fetching server health status
+en,translation,root.sign-in.succeed.title,Welcome back to the Root!
+en,translation,root.sign-in.succeed.subtitle,"Be careful here, dude, it's quite dangerous 'round here!"
+en,translation,root.sign-in.continue,Continue!
+en,translation,public.sign-out.succeed.title,You are logged out!
+en,translation,public.sign-out.succeed.subtitle,"We will miss you, so see you soon!"
+en,translation,public.sign-out.continue,Continue!
+en,translation,public.sign-out.title,See you soon!
+en,translation,root.sign-in.title,Welcome back!
+en,translation,root.user.edit.menu,Edit
+en,translation,root.user.create.form.submit,Create!
+en,translation,root.user.form.cancel,Cancel!
+en,translation,root.user.form.name.label,Name
+en,translation,root.user.form.title,Registration
+en,translation,root.user.list.table.id.column,UUID
+en,translation,root.user.list.table.name.column,Name
+en,translation,root.user.list.table.login.column,Login
+en,translation,root.user.list.table.token.column,Token
+en,translation,root.user.list.table.site.column,Site
+cs,translation,root.home.title,Administrace serveru
+en,translation,common.copy-id,Copy UUID
+en,translation,root.translation.edit.form.submit,Save changes!
+en,translation,root.translation.edit.form.delete,Delete!
+en,translation,root.translation.edit.form.deleteConfirm,Do you want to remove translation?
+en,translation,root.translation.edit.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.user.edit.form.edit,Edit!
+en,translation,root.user.edit.form.submit,Save changes!
+en,translation,root.user.edit.form.delete,Delete!
+en,translation,root.user.form.login.label,Login
+en,translation,root.user.form.password.label,Password
+en,translation,root.user.form.site.label,Site
+en,translation,root.kingdom.dashboard.menu,Dashboard
+en,translation,root.kingdom.create.menu,Create
+en,translation,root.kingdom.list.menu,List
+en,translation,root.user.form.attribute.title,Attributes
+en,translation,root.kingdom.edit.menu,Edit
+en,translation,root.kingdom.title,Kingdom Overview
+en,translation,root.hero.menu,Hero
+en,translation,root.kingdom.menu,Kingdom
+en,translation,root.hero.dashboard.menu,Dasbhoard
+en,translation,root.hero.create.menu,Create
+en,translation,root.hero.list.menu,List
+en,translation,root.building.create.menu,Create
+en,translation,root.building.list.menu,List
+en,translation,root.hero.title,Heroes
+en,translation,root.site.null,No site
+en,translation,root.site.game,Game
+en,translation,root.site.root,Root
+en,translation,root.user.form.misc.title,Others
+en,translation,root.user.form.template.label,Template user
+en,translation,root.user.form.template.help,Attributes will be copied from the selected template user (if selected).
+en,translation,root.user.form.attribute.empty,There are no attributes.
+en,translation,root.user.form.attribute.add,Attribute
+en,translation,root.user.create.list.title,Users
+en,translation,root.user.create.list.item-0,User represents a human being.
+en,translation,root.user.create.list.item-1,User could log in into the game (Game site) or as the root administrator (Root site).
+en,translation,root.user.create.list.item-2,"Gamers have access to the game, thus using game rules defined in this administration."
+en,translation,root.user.create.list.item-3,"Root users have full access to the server, thus not able to play the game - they're like Game Masters."
+en,translation,root.kingdom.edit.form.edit,Edit!
+cs,translation,root.kingdom.edit.form.edit,Editovat!
+en,translation,root.kingdom.list.title,Kingdom list
+en,translation,root.kingdom.list.table.name.column,Name
+en,translation,root.kingdom.list.table.id.column,UUID
+en,translation,root.kingdom.create.title,Create Kingdom!
+en,translation,root.kingdom.create.form.submit,Create!
+en,translation,root.kingdom.form.cancel,Cancel!
+en,translation,root.kingdom.form.name.label,Name
+en,translation,root.kingdom.create.form.misc.title,Others
+en,translation,root.kingdom.create.form.template.label,Template
+en,translation,root.kingdom.create.form.template.help,Use template kingdom to copy default attributes.
+en,translation,root.kingdom.form.attribute.add,Attribute
+en,translation,root.kingdom.form.attribute.title,Attributes
+en,translation,root.kingdom.form.attribute.empty,There are no attributes.
+en,translation,root.kingdom.subtitle,Here you have overview of all kingdoms!
+en,translation,root.building.edit.form.edit,Edit!
+en,translation,root.building.form.name.label,Name
+en,translation,root.building.title,Building
+en,translation,root.building.form.attribute.title,Attributes
+en,translation,root.building.form.attribute.empty,There are no attributes.
+en,translation,root.building.edit.form.submit,Save changes!
+en,translation,root.building.form.attribute.add,Attribute
+en,translation,root.building.form.cancel,Cancel!
+en,translation,root.building.edit.form.delete,Delete!
+en,translation,root.building.form.attribute.deleteConfirm,Delete attribute?
+en,translation,root.building.edit.form.deleteConfirm,Delete building? This action cannot be reverted!
+en,translation,root.toolbar.kingdom.create,Create
+en,translation,root.toolbar.building.create,Create
+en,translation,root.toolbar.hero.create,Create
+en,translation,root.toolbar.kingdom.list,List
+en,translation,root.toolbar.hero.list,List
+en,translation,root.toolbar.building.list,List
+en,translation,root.building.create.form.submit,Create!
+en,translation,root.hero.create.form.submit,Create!
+en,translation,root.building.create.title,Create building!
+en,translation,root.hero.list.title,Heroes
+en,translation,root.hero.list.table.id.column,UUID
+en,translation,root.hero.list.table.name.column,Name
+en,translation,root.hero.form.cancel,Cancel!
+en,translation,root.building.list.title,Buildings
+en,translation,root.building.list.table.id.column,UUID
+en,translation,root.building.list.table.name.column,Name
+en,translation,root.user.subtitle,Dashboard for all users on the server.
+en,translation,root.hero.form.name.label,Name
+en,translation,root.hero.form.attribute.title,Attributes
+en,translation,root.hero.form.attribute.empty,There are no attributes!
+en,translation,root.hero.form.attribute.add,Attribute
+en,translation,root.hero.create.title,Create new Hero!
+en,translation,root.hero.create.list.title,Heroes
+en,translation,root.building.subtitle,Dashboard of all Buildings in the selected Kingdom.
+en,translation,root.hero.subtitle,Dashboard of all Heroes in the selected Kingdom.
+en,translation,root.user.create.title,Create User
+en,translation,root.kingdom.edit.form.submit,Save changes!
+en,translation,root.building.menu,Building
+en,translation,root.kingdom.edit.form.delete,Delete!
+en,translation,root.building.edit.menu,Edit
+en,translation,root.hero.edit.menu,Edit
+en,translation,root.hero.edit.form.edit,Edit!
+en,translation,root.hero.edit.form.submit,Save changes!
+en,translation,root.hero.edit.form.delete,Delete!
+en,translation,root.hero.edit.form.deleteConfirm,Do you want to kill the selected Hero? This action cannot be taken back!
+en,translation,root.hero.form.attribute.name.hint,Select Attribute!
+en,translation,root.hero.form.attribute.value.hint,Value
+en,translation,root.hero.form.attribute.deleteConfirm,Delete selected attribute?
+en,translation,public.sign-up.succeed.title,Welcome to the World of DeRivean!
+en,translation,public.sign-up.succeed.subtitle,Now you can access you account from login page and see what awaits you!
+en,translation,public.sign-up.continue.title,Sing In!
+en,translation,root.user.form.login.required,"User login is a bit required field, so please fill one!"
+en,translation,hero.list.back.menu,Back
+en,translation,root.building.list.back,Back
+en,translation,root.hero.home.back.menu,Back
+en,translation,root.building.home.back.menu,Back
+en,translation,root.kingdom.home.back.menu,Back
+en,translation,root.hero.create.success,Hero created!
+en,translation,root.building.create.success,Building created!
+en,translation,root.hero.create.error,"Cannot create hero, please check inputs."
+en,translation,root.building.create.error,"Cannot create the building, please check inputs."
+en,translation,root.user.create.form.cancelConfirm,Do you want to cancel changes?
+en,translation,root.user.create.success,User created!
+en,translation,root.user.edit.form.cancelConfirm,Do you want to cancel changes?
+en,translation,root.user.edit.form.deleteConfirm,"Do you want to remove selected user? This action cannot be taken back and a lof of data (kingdoms, heroes, ...) could be lost!"
+en,translation,root.user.delete.success,User removed!
+en,translation,root.user.home.back.menu,Back
+en,translation,root.kingdom.edit.form.deleteConfirm,Do you want to remove the Kingdom? A lot of data will be lost and cannot be reverted!
+en,translation,root.kingdom.delete.success,Kingdom deleted!
+en,translation,root.kingdom.create.success,Kingdom created!
+en,translation,root.hero.delete.success,Hero deleted!
+en,translation,root.building.delete.success,Building deleted!
+en,translation,root.kingdom.form.attribute.name.hint,Select attribute
+en,translation,root.kingdom.form.attribute.value.hint,Value
+en,translation,root.kingdom.form.attribute.value.required,Please specify value!
+en,translation,root.kingdom.form.name.required,Please choose some epic kingdom name!
+en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
+en,translation,root.kingdom.form.attribute.deleteConfirm,Delete attribute?
+en,translation,root.kingdom.create.form.cancelConfirm,Cancel changes? All unsaved changes will be lost!
+en,translation,root.user.attributes.subtitle,Editor of attributes for the selected user.
+en,translation,root.user.form.attribute.name.hint,Select attribute
+en,translation,root.user.form.attribute.value.hint,Value
+en,translation,root.user.form.attribute.name.required,Please pick attribute!
+en,translation,root.user.form.attribute.value.required,Please fill attribute value!
+en,translation,root.user.update.error,"Cannot update User, please check inputs!"
+en,translation,root.user.attributes.submit,Save changes!
+en,translation,root.user.form.attribute.deleteConfirm,Delete attribute?
+en,translation,root.user.form.name.required,Please pick some nice user name!
+en,translation,root.user.attributes.title,User's Attributes
+en,translation,root.user.create.error,Cannot create User!
+en,translation,root.user.attributes.updated,Attributes updated!
+en,translation,root.user.update.success,User updated!
+en,translation,root.kingdom.attributes.menu,Attributes
+en,translation,root.kingdom.attributes.title,Kingdom Attributes
+en,translation,root.kingdom.attributes.subtitle,Here you can edit attributes of the selected Kingdom!
+en,translation,root.kingdom.attributes.updated,Kingdom Attributes updated!
+en,translation,root.hero.attributes.menu,Attributes
+en,translation,root.hero.attributes.title,Hero Attributes
+en,translation,root.hero.attributes.updated,Attributes updated!
+en,translation,root.hero.attributes.subtitle,Here you can manager Hero Attributes!
+en,translation,root.building.attributes.menu,Attributes
+en,translation,root.building.attributes.updated,Attributes updated!
+en,translation,root.building.attributes.subtitle,Here you can manage Attributes of selected Building!
+en,translation,root.building.attributes.title,Building Attributes
+en,translation,root.building.edit.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.hero.edit.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.user.list.login,Login
+en,translation,root.user.list.edit,Edit!
+en,translation,root.user.list.empty-token,Empty token
+en,translation,root.kingdom.list.edit,Edit!
+en,translation,game.home.title,World of DeRivean
+en,translation,game.kingdom.dashboard.menu,Dashboard
+en,translation,root.kingdom.list.create-hero,Create Hero!
+en,translation,root.kingdom.list.create-building,Create Building!
+en,translation,root.kingdom.list.edit-attributes,Edit Attributes!
+en,translation,root.user.list.create-kingdom,Create Kingdom!
+en,translation,root.translation.delete.success,Translation deleted!
+en,translation,root.user.list.no-site,Without site (disabled)
+en,translation,root.user.list.site,Site
+en,translation,root.user.list.edit-attributes,Edit Attributes!
+en,translation,root.hero.list.edit,Edit!
+en,translation,root.hero.list.edit-attributes,Edit Attributes!
+en,translation,root.building.list.edit-attributes,Edit Attributes!
+en,translation,root.building.list.edit,Edit!
+en,translation,root.translation.list.edit,Edit!
+en,translation,root.translation.list.language,Language
+en,translation,root.translation.list.label,Label
+cs,translation,root.home.content.title,Vítej v administraci herního serveru DeRivean!
+cs,translation,root.home.content.subtitle,"Tady se odehrává veškerá magie, buď tedy obezřetný!"
+cs,translation,root.translation.create.menu,Vytvořit
+cs,translation,root.translation.list.menu,Seznam
+cs,translation,root.translation.edit.menu,Editace
+cs,translation,root.translation.edit.form.edit,Editovat!
+cs,translation,root.translation.dashboard.menu,Nástěnka
+cs,translation,root.translation.menu,Překlady
+cs,translation,root.translation.create.form.submit,Vytvořit!
+cs,translation,root.translation.form.cancel,Zrušit!
+cs,translation,root.translation.edit.form.submit,Uložit!
+cs,translation,root.translation.edit.form.delete,Smazat!
+cs,translation,root.translation.edit.form.deleteConfirm,Opravdu si přeješ smazat tento překlad?
+cs,translation,common.no,Ne
+cs,translation,common.yes,Ano!
+cs,translation,root.sign-out.menu,Odhlásit se!
+cs,translation,root.header.search.label,Hledátko!
+cs,translation,root.statistic.users,Uživatelé
+cs,translation,root.statistic.kingdoms,Království
+cs,translation,root.statistic.buildings,Budovy
+cs,translation,root.statistic.heroes,Hrdinové
+cs,translation,root.statistic.translations,Překlady
+cs,translation,root.user.dashboard.menu,Nástěnka
+cs,translation,root.user.create.menu,Vytvořit
+cs,translation,root.user.list.menu,Seznam
+cs,translation,common.view-item,Náhled
+cs,translation,common.edit-item,Editovat
+cs,translation,common.copy-id,Kopírovat ID
+cs,translation,root.translation.form.label.label,Klíč překladu
+cs,translation,root.translation.form.language.label,Kód jazyka
+cs,translation,root.translation.create.title,Tvorba překladu
+cs,translation,root.translation.title,Překlad
+cs,translation,root.translation.list.title,Seznam překladů
+en,translation,error.user-locked.title,Account Locked!
+en,translation,error.user-locked.body,You've been evil or there is some kind of system error preventing you from login.
+en,translation,error.user-locked.dismiss,Give up!
+en,translation,root.user.list.ticket,Ticket
+en,translation,root.home.content.loader.subtitle,"Fetching some interesting things for you, please wait!"
+en,translation,public.home.title,Home
+en,translation,public.session-expired.title,Session Expired!
+en,translation,public.session-expired.subtitle,"We're sorry, but you session has expired, so please log in, if you want to continue use the application!"
+en,translation,public.session-expired.continue,Continue
+en,translation,root.translation.form.label.label,Translation label
+en,translation,root.edit.form.edit,Edit!
+en,translation,root.home.content.error.title,Server is Unhealthy!
+en,translation,root.home.content.error.subtitle,Please check following errors as they could prevent players to register/login!
+en,translation,root.home.content.error.list.title,Please check following:
+en,translation,root.server.error.Missing template user!,There is missing Template User from which new registrations are created (for example number of gems or whatever). This error block new registrations (but current players are able to log in).
+en,translation,root.server.error.Missing template kingdom!,There is missing Template Kingdom from which all users (players) are creating their kingdoms: thus any of players will be able to create a new kingdom until this is fixed.
+en,translation,root.server.error.action.create-template-user,Create Template User
+en,translation,root.server.error.action.create-template-kingdom,Create Template Kingdom
+en,translation,game.sign-in.succeed.title,Welcome back!
+en,translation,game.sign-in.succeed.subtitle,Looks around what's new in your kingdoms!
+en,translation,game.sign-in.continue,Continue!
+en,translation,game.home.menu,Home
+en,translation,game.sign-out.menu,Sign out!
+cs,translation,root.user.menu,Uživatel
+en,translation,game.kingdom.list.menu,List
+en,translation,game.kingdom.title,Kingdoms Overview
+en,translation,game.kingdom.subtitle,Here you will find all information about your Kingdoms in one place!
+en,translation,game.kingdom.create.title,Create Kingdom!
+en,translation,game.kingdom.create.form.submit,Create!
+en,translation,game.kingdom.form.cancel,Cancel!
+en,translation,game.kingdom.form.name.label,Kingdom name
+en,translation,game.kingdom.list.title,Kingdoms
+cs,translation,root.home.menu,Domů
+en,translation,game.kingdom.create.conflict,Cannot create Kingdom - please check input fields!
+en,translation,game.kingdom.create.success,Congratulations to your new Kingdom!
+en,translation,game.kingdom.home.back.menu,Back
+en,translation,game.kingdom.edit.menu,Edit
+en,translation,game.kingdom.edit.form.deleteConfirm,"Do you want to delete selected Kingdom? This will destroy everything within Kingdom (buildings, heroes, overall progress) - aaand cannot be taken back!"
+en,translation,game.kingdom.edit.form.edit,Edit!
+en,translation,game.kingdom.edit.form.submit,Save changes!
+en,translation,game.kingdom.edit.form.delete,Delete!
+en,translation,game.kingdom.delete.success,Your Kingdom has been successfully deleted. All building are burning in the Hell Fire and Death is taking souls of all your Heroes!
+en,translation,game.kingdom.update.success,Kingdom updated!
+en,translation,game.sign-out.title,Do you want to leave the game?
+en,translation,game.sign-out.subtitle,We're sad you're leaving - but we hope see you soon!
+en,translation,game.sign-out.button.sign-out,Papa!
+en,translation,game.sign-out.button.back,Back!
+en,translation,game.kingdom.menu,Kingdom
+en,translation,game.kingdom.create.menu,Create
+en,translation,root.server.error.action-unavailable,There is no quick action available.
+en,translation,root.home.error.create-template-user-first,Template Kingdom belongs to Template user which is missing. Please create Template User first!
+en,translation,root.building.built.label,Built date
+en,translation,root.building.built.hint,Pick built time
+en,translation,game.kingdom.create.resource-limit,"We're sorry, but you have already reached Kingdom Limit!"
+en,translation,game.building.menu,Buildings
+cs,translation,game.building.menu,Budovy
+en,translation,game.building.dashboard.menu,Dashboard
+cs,translation,game.building.dashboard.menu,Nástěnka
+en,translation,game.building.list.menu,List
+cs,translation,game.building.list.menu,Seznam
+en,translation,game.building.title,Buildings Overview
+en,translation,game.building.subtitle,Here you will find general overview of all buildings in selected Kingdom!
+en,translation,game.statistic.buildings,Available buildings
+en,translation,game.statistic.buildings.built,Built buildings
+en,translation,game.building.list.title,Buildings
+en,translation,root.building.building.title,Other
+en,translation,root.building.update.success,Building updated!
+en,translation,root.building.building.hint,You will be able finetune building settings after creation to keep this form as light as possible.
+en,translation,root.attribute.dashboard.menu,Dashboard
+en,translation,root.attribute.title,Attributes Overview
+en,translation,root.attribute.subtitle,Here you can manage all attributes available through whole game.
+en,translation,root.attribute-group.menu,Attribute Group
+en,translation,root.attribute-group.dashboard.menu,Dashboard
+en,translation,root.attribute-group.create.menu,Create
+en,translation,root.attribute-group.list.menu,List
+en,translation,root.statistics.unavailable,Statistics are unavailable (probably you don't have permissions).
+en,translation,root.attribute-group.list.title,Attribute Group List
+en,translation,root.attribute-group.list.edit,Edit!
+en,translation,root.attribute-group.create.title,Create new Attribute Group
+en,translation,root.attribute-group.create.form.submit,Create!
+en,translation,root.attribute-group.form.cancel,Cancel!
+en,translation,root.attribute-group.form.name.label,Group name
+en,translation,root.attribute-group.create.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.attribute-group.attribute-group.title,Other
+en,translation,root.attribute-group.description.hint,"Descriptions goes through translations, so use some simple identifier."
+en,translation,root.attribute-group.description.label,Description
+en,translation,root.attribute-group.title,Attribute Group
+en,translation,root.attribute-group.edit.form.edit,Edit!
+en,translation,root.attribute-group.edit.form.submit,Save changes!
+en,translation,root.attribute-group.edit.form.delete,Delete!
+en,translation,root.attribute-group.edit.form.deleteConfirm,Do you want to remove this attribute group? All related attributes within whole game will be deleted too!
+en,translation,root.attribute-group.subtitle,Here you can manage all attribute groups needed by the rest of game.
+en,translation,root.attribute-group.create.success,Attribute Group created!
+en,translation,root.attribute-group.edit.menu,Edit
+en,translation,root.user.title,User
+en,translation,root.attribute-type.create.menu,Create
+en,translation,root.attribute-type.list.menu,List
+en,translation,root.attribute-type.menu,Attribute Type
+en,translation,root.attribute-type.create.title,Create Attribute Type
+en,translation,root.attribute-type.form.name.label,Attribute Type name
+en,translation,root.attribute-type.attribute-type.title,Other
+en,translation,root.attribute-type.description.label,Description
+en,translation,root.attribute-type.create.form.submit,Create!
+en,translation,root.attribute-type.form.cancel,Cancel!
+en,translation,root.attribute-type.create.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.attribute-type.description.hint,"Description goes through translation, keep it short."
+en,translation,root.attribute-type.list.title,Attribute Types
+en,translation,root.attribute-type.create.success,Attribute Type created!
+en,translation,root.attribute-type.list.edit,Edit!
+en,translation,root.attribute-type.title,Attribute Type
+en,translation,root.attribute-type.edit.menu,Edit
+en,translation,root.attribute-type.edit.form.edit,Edit!
+en,translation,root.attribute-type.edit.form.submit,Save changes!
+en,translation,root.attribute-type.edit.form.delete,Delete!
+en,translation,root.attribute-type.edit.form.deleteConfirm,"Do you want remove selected Attribute Type? All usages of this type will be removed too (so, it's quite dangerous action!)."
+en,translation,root.attribute-type.delete.success,Attribute Type deleted!
+en,translation,root.attribute-type.dashboard.menu,Dashboard
+en,translation,root.attribute-type.subtitle,Here you will find all attribute types of the selected group.
+cs,translation,root.attribute-group.menu,Skupina attributů
+cs,translation,root.attribute-group.dashboard.menu,Nástěnka
+cs,translation,root.attribute-group.create.menu,Vytvořit
+cs,translation,root.attribute-group.list.menu,Seznam
+en,translation,root.attribute-group.update.success,Attribute Group updated!
+en,translation,root.kingdom.attributes.common.menu,Common
+en,translation,root.kingdom.attributes.resources.menu,Resources
+en,translation,root.kingdom.edit.form.cancelConfirm,"All changes will be lost, continue?"
+en,translation,root.kingdom.form.attribute.type.required,Please pick some attribute!
+en,translation,root.user.attributes.menu,Attributes
+en,translation,root.building.form.attribute.value.hint,Value
+en,translation,root.building.form.attribute.name.hint,Pick attribute!
+en,translation,attribute-group.cost,Cost
+en,translation,attribute.wood,Wood
+en,translation,attribute.gold,Gold
+en,translation,attribute.stone,Stone
+en,translation,attribute.plank,Plank
+en,translation,attribute-group.production,Production
+en,translation,attribute-group.resource,Resource
+en,translation,attribute-group.user,User
+en,translation,attribute-group.user.limit,User Limit
+en,translation,attribute.xp,XP
+en,translation,attribute.limit.kingdoms,Kingdom limit
+en,translation,attribute-group.building,Building
+en,translation,attribute-group.kingdom,Kingdom
+en,translation,building.lumberjack,Luberjack
+en,translation,building.quarry,Quarry
+cs,translation,building.lumberjack,Dřevorubec
+cs,translation,building.quarry,Kamenolom
+en,translation,attribute-group.hero,Hero
+en,translation,attribute.build-time,Build Time
+en,translation,root.building.build-countdown,Build Countdown
+en,translation,game.building.build,Build!
+cs,translation,game.building.build,Postavit!
+cs,translation,attribute-group.cost,Cena
+cs,translation,attribute.wood,Dřevo
+cs,translation,attribute.stone,Kámen
+cs,translation,game.kingdom.title,Přehled království
+cs,translation,game.kingdom.menu,Království
+cs,translation,game.sign-out.menu,Odhlásit se!
+cs,translation,attribute.gold,Zlato
+cs,translation,game.kingdom.edit.menu,Editace
+cs,translation,game.kingdom.dashboard.menu,Nástěnka
+cs,translation,game.kingdom.create.menu,Vytvořit
+cs,translation,game.kingdom.list.menu,Seznam
+cs,translation,common.back.menu,Zpět
+cs,translation,attribute-group.resource,Zdroje
