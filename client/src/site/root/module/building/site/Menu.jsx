@@ -39,15 +39,15 @@ const Menu = () => {
 					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
-					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
@@ -55,8 +55,9 @@ const Menu = () => {
 				</BaseMenu>),
 				route(link.attributes.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
