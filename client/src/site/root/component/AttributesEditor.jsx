@@ -11,7 +11,7 @@ import ModuleContext from "component/ModuleContext";
 import BackLink from "component/route/BackLink";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import AttributeFieldEditor from "site/root/component/AttributeFieldEditor";
 import Events from "utils/Events";
 import values from "utils/form/values";
@@ -21,6 +21,7 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 	const editorContext = useContext(EditorContext);
 	const moduleContext = useContext(ModuleContext);
 	const layoutContext = useContext(LayoutContext);
+	const navigate = useNavigate();
 	const params = useParams();
 	moduleContext.fetch(
 		params[moduleContext.param],
@@ -31,7 +32,8 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 				editorContext.setEnableSubmit(true);
 				layoutContext.setFetch(fetch);
 				editorContext.isReady();
-			})
+			}),
+		navigate,
 	);
 	return (
 		<Card title={<><BackLink/>{t(`${moduleContext.id}.attributes.title`)}</>}>
@@ -54,14 +56,21 @@ const AttributeForm = ({useAttributeFetch = null}) => {
 	);
 };
 
-const AttributesEditor = ({useAttributeFetch = null}) => {
+const AttributesEditor = (
+	{
+		useAttributeFetch = null,
+		children = children => children,
+		outputMapper = values => values,
+	}) => {
 	const {t} = useTranslation();
 	const discoveryContext = useContext(DiscoveryContext);
 	const layoutContext = useContext(LayoutContext);
 	const moduleContext = useContext(ModuleContext);
+	const navigate = useNavigate();
 	return (
 		<BaseEditor
 			readyCount={2}
+			outputMapper={outputMapper}
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
 				values = {id: initials.id, ...values};
@@ -79,13 +88,14 @@ const AttributesEditor = ({useAttributeFetch = null}) => {
 						})
 						.on("done", () => {
 							layoutContext.loadingFinish();
-						})
+						}),
+					navigate,
 				);
 			}}
 			name={moduleContext.id}
 			translation={moduleContext.id}
 			children={
-				<AttributeForm useAttributeFetch={useAttributeFetch}/>
+				children(<AttributeForm useAttributeFetch={useAttributeFetch}/>)
 			}
 		/>
 	);
