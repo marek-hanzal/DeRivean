@@ -33,9 +33,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			item.heroes.count(),
 			item.buildings.count(),
 		)
-//		item.attributes.forEach {
-//			this.attributes.add(Attribute(it.type.name, it.value))
-//		}
+		item.attributes.forEach {
+			this.attributes.add(Attribute(it.type.id.value, it.type.name, it.value))
+		}
 	}
 
 	data class Fetch(
