@@ -71,7 +71,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 				description,
 				built,
 				claim,
-				attributes.map { Attribute(it.id.value, it.value) },
+				attributes.map { Attribute(it.type.id.value, it.value) },
 			)
 		}
 	}
