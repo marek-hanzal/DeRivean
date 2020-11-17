@@ -37,28 +37,22 @@ class ListMapper(container: IContainer) : AbstractActionMapper<ListMapper.Reques
 	private val attributeGroupRepository: AttributeGroupRepository by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.read {
-		AttributeGroups(
-			attributeGroupRepository.findByNames(item.request.groups).map { attributeGroup ->
-				AttributeGroup(
-					attributeGroup.id.value,
-					attributeGroup.name,
-					attributeGroup.types.map { attributeType ->
-						AttributeType(
-							attributeType.id.value,
-							attributeType.name,
-						)
-					},
-				)
-			}
-		)
+		attributeGroupRepository.findByNames(item.request.groups).map { attributeGroup ->
+			AttributeGroup(
+				attributeGroup.id.value,
+				attributeGroup.name,
+				attributeGroup.types.map { attributeType ->
+					AttributeType(
+						attributeType.id.value,
+						attributeType.name,
+					)
+				},
+			)
+		}
 	})
 
 	data class Request(
 		val groups: List<String>,
-	)
-
-	data class AttributeGroups(
-		val groups: List<AttributeGroup>,
 	)
 
 	data class AttributeGroup(
