@@ -7,12 +7,25 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import BuildingIcon from "site/common/icon/BuildingIcon";
+import {attributeFilterByGroup} from "site/root/module/attribute/utils/utils";
+
+const AttributeGroupItems = ({attributes, group}) => {
+	const {t} = useTranslation();
+	return (
+		<>
+			<strong>{t("attribute-group." + group)}:&nbsp;</strong>
+			<Space split={<Divider type={"vertical"}/>} size={"small"}>
+				{attributeFilterByGroup(group, attributes).map(attribute => (
+					<span key={attribute.type.name}><strong>{t("attribute." + attribute.type.name)}:</strong>&nbsp;{attribute.value}</span>
+				))}
+			</Space>
+		</>
+	);
+};
 
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
-
-	const cost = item => item.attributes.filter(item => item.type.group.name === "cost");
 
 	return (
 		<List.Item actions={[
@@ -25,10 +38,8 @@ const BuildingListItem = ({item}) => {
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
 						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
-						<strong>{t("attribute-group.cost")}</strong>
-						{cost(item).map(attribute => (
-							<span key={attribute.type.name}><strong>{t("attribute." + attribute.type.name)}:</strong>&nbsp;{attribute.value}</span>
-						))}
+						<AttributeGroupItems group={"cost"} attributes={item.attributes}/>
+						<AttributeGroupItems group={"production"} attributes={item.attributes}/>
 					</Space>
 				}
 				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
