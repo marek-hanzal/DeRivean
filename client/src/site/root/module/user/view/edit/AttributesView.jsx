@@ -8,7 +8,7 @@ const AttributesView = () => {
 	layoutContext.useMenuSelect(["root.user.attributes"]);
 	return (
 		<UserView>
-			<AttributesEditor/>
+			<AttributesEditor groups={["user", "resource"]}/>
 		</UserView>
 	);
 };

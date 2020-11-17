@@ -254,7 +254,6 @@ ac869cee-8199-49c4-9dd0-97e964b347aa,en,translation,root.hero.delete.success,Her
 ba2ed01b-aed9-4abb-8ecb-117be9153062,en,translation,root.building.delete.success,Building deleted!
 d2fb77b9-931e-43c3-8d45-f759d8c3ea70,en,translation,root.kingdom.form.attribute.name.hint,Select attribute
 4dbf93db-4768-4f6e-bb52-d9d9b9c04e5a,en,translation,root.kingdom.form.attribute.value.hint,Value
-6fa5dfa8-1b30-4573-be84-0ff1b70d5e73,en,translation,root.kingdom.form.attribute.name.required,Please pick some attribute!
 7c390065-53a1-4924-9646-0b8cf3e452a5,en,translation,root.kingdom.form.attribute.value.required,Please specify value!
 b5b54d21-c337-4204-9d91-81990f64be71,en,translation,root.kingdom.form.name.required,Please choose some epic kingdom name!
 bf28acf2-8b92-42f5-b040-795968163c16,en,translation,root.kingdom.create.error,"Cannot create Kingdom, please check inputs!"
@@ -467,3 +466,7 @@ d534634d-a5a2-4446-a72f-bb788eba3db5,cs,translation,root.attribute-group.list.me
 5b9eb0e3-11be-4de8-a342-5584a4cb0c83,en,translation,root.kingdom.attributes.common.menu,Common
 f4540c02-ea74-4fae-8cd4-a7b8d5ed30f2,en,translation,root.kingdom.attributes.resources.menu,Resources
 0b97f1bf-87db-4295-8b68-2da2c32a63fc,en,translation,root.kingdom.edit.form.cancelConfirm,"All changes will be lost, continue?"
+6fa5dfa8-1b30-4573-be84-0ff1b70d5e73,en,translation,root.kingdom.form.attribute.type.required,Please pick some attribute!
+24b46e71-22c8-4cb7-a52a-9c81245f03eb,en,translation,root.user.attributes.menu,Attributes
+48c8869d-8cda-4f4b-abf5-ec7d7002316d,en,translation,root.building.form.attribute.value.hint,Value
+966e85a4-ea5b-4c09-bb30-fd01976d1779,en,translation,root.building.form.attribute.name.hint,Pick attribute!
