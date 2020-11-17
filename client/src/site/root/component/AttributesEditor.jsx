@@ -60,7 +60,6 @@ const AttributesEditor = (
 	{
 		groups,
 		children = children => children,
-		outputMapper = values => values,
 	}) => {
 	const {t} = useTranslation();
 	const discoveryContext = useContext(DiscoveryContext);
@@ -78,7 +77,7 @@ const AttributesEditor = (
 					...values, attributes: values.attributes.map(attribute => ({...attribute, type: [attribute.type.group, attribute.type.id]}))
 				};
 			}}
-			outputMapper={outputMapper}
+			outputMapper={values => ({...values, attributes: values.attributes.map(attribute => ({...attribute, type: attribute.type.id || attribute.type[attribute.type.length - 1]}))})}
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
 				values = {id: initials.id, ...values};
