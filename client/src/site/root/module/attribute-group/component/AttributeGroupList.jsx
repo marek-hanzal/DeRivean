@@ -22,7 +22,7 @@ const AttributeGroupListItem = ({item}) => {
 						{t("attribute-group." + item.description)}
 					</Space>
 				}
-				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{t("attribute-group." + item.name)}</Link>}
 			/>
 		</List.Item>
 	);
