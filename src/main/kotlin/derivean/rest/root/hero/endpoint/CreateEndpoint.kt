@@ -53,12 +53,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 	}
 
-	override fun exception(e: Throwable) = when {
-		e.message?.contains("hero_name_unique") == true -> {
-			conflictWithUnique("Cannot create Hero!", "name", "Hero with the given name already exists.")
-		}
-		else -> null
-	}
+	override fun exception() = mapOf(
+		"hero_name_unique" to { conflictWithUnique("Cannot create Hero!", "name", "Hero with the given name already exists.") },
+	)
 
 	data class Request(
 		val kingdom: String,

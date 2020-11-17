@@ -52,12 +52,9 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		}
 	}
 
-	override fun exception(e: Throwable) = when {
-		e.message?.contains("kingdom_name_unique") == true -> {
-			conflictWithUnique("Cannot create Kingdom!", "name", "Kingdom with the given name already exists.")
-		}
-		else -> null
-	}
+	override fun exception() = mapOf(
+		"kingdom_name_unique" to { conflictWithUnique("Cannot create Kingdom!", "name", "Kingdom with the given name already exists.") },
+	)
 
 	data class Request(
 		val user: String,

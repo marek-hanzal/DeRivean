@@ -57,15 +57,10 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 		}
 	})
 
-	override fun exception(e: Throwable) = when {
-		e.message?.contains("user_name_unique") == true -> {
-			conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
-		}
-		e.message?.contains("user_login_unique") == true -> {
-			conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
-		}
-		else -> null
-	}
+	override fun exception() = mapOf(
+		"user_name_unique" to { conflictWithUnique("Cannot update user!", "name", "Duplicate user name!") },
+		"user_login_unique" to { conflictWithUnique("Cannot update user!", "login", "Duplicate login name!") }
+	)
 
 	data class Request(
 		val id: String,

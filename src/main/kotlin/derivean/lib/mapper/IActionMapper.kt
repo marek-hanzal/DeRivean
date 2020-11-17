@@ -9,5 +9,9 @@ import derivean.lib.config.IConfigurable
 interface IActionMapper<T, U> : IConfigurable {
 	fun resolve(item: T): U
 
-	fun exception(e: Throwable): U?
+	fun exception(e: Throwable): U? = e.message?.let { message ->
+		exception().filter { message.contains(it.key) }.map { it.value() }.firstOrNull()
+	}
+
+	fun exception(): Map<String, () -> U> = mapOf()
 }

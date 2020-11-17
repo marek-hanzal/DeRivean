@@ -47,16 +47,15 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		entity.text = it.text
 	}
 
-	override fun exception(e: Throwable) = when {
-		e.message?.contains("translation_unique") == true -> {
+	override fun exception() = mapOf(
+		"translation_unique" to {
 			conflict(ValidationResponse.build {
 				this.message = "Cannot create Translation!"
 				this.validation("language", "error", "Language or label already exists!")
 				this.validation("label", "error", "Language or label already exists!")
 			})
 		}
-		else -> null
-	}
+	)
 
 	data class Request(
 		val language: String,

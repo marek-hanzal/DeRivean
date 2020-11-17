@@ -55,12 +55,9 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 		})
 	}
 
-	override fun exception(e: Throwable): Response<out Any>? = when {
-		e.message?.contains("kingdom_name_unique") == true -> {
-			conflictWithUnique("Cannot update Kingdom!", "name", "Kingdom with the given name already exists.")
-		}
-		else -> null
-	}
+	override fun exception() = mapOf(
+		"kingdom_name_unique" to { conflictWithUnique("Cannot update Kingdom!", "name", "Kingdom with the given name already exists.") },
+	)
 
 	data class Request(
 		val id: String,
