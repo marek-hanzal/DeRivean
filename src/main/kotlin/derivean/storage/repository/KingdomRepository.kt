@@ -34,6 +34,7 @@ class KingdomRepository(container: IContainer) : AbstractRepository<KingdomEntit
 				this.kingdom = target
 				this.user = target.user
 				this.name = it.name
+				this.description = it.description
 				this.build = it.build
 				this.attributes = attributeRepository.attributes(this.attributes, it.attributes)
 			}
