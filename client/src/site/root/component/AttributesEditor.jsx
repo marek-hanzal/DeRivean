@@ -74,7 +74,7 @@ const AttributesEditor = (
 					return values;
 				}
 				return {
-					...values, attributes: values.attributes.map(attribute => ({...attribute, type: [attribute.type.group, attribute.type.id]}))
+					...values, attributes: values.attributes.map(attribute => ({...attribute, type: [attribute.type.group.id, attribute.type.id]}))
 				};
 			}}
 			outputMapper={values => ({...values, attributes: values.attributes.map(attribute => ({...attribute, type: attribute.type.id || attribute.type[attribute.type.length - 1]}))})}

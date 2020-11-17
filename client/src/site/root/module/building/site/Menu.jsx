@@ -49,7 +49,6 @@ const Menu = () => {
 					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
@@ -59,7 +58,6 @@ const Menu = () => {
 					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
 					<MenuDivider/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
-					<MenuDivider/>
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>

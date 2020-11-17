@@ -11,6 +11,9 @@ import BuildingIcon from "site/common/icon/BuildingIcon";
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
+
+	const cost = item => item.attributes.filter(item => item.type.group.name === "cost");
+
 	return (
 		<List.Item actions={[
 			<Link to={moduleContext.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(moduleContext.id + ".list.edit")}/></Link>,
@@ -22,6 +25,10 @@ const BuildingListItem = ({item}) => {
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
 						<Link to={moduleContext.link.attributes.link(item.id)}><Button type={"link"} size={"small"} icon={<AttributeIcon/>}>{t(moduleContext.id + ".list.edit-attributes")}</Button></Link>
+						<strong>{t("attribute-group.cost")}</strong>
+						{cost(item).map(attribute => (
+							<span key={attribute.type.name}><strong>{t("attribute." + attribute.type.name)}:</strong>&nbsp;{attribute.value}</span>
+						))}
 					</Space>
 				}
 				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
