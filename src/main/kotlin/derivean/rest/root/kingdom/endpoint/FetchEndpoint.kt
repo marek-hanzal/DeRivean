@@ -3,9 +3,10 @@ package derivean.rest.root.kingdom.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
-import derivean.rest.common.Attribute
 import derivean.rest.common.AttributeType
+import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
+import derivean.storage.entities.Attribute
 import derivean.storage.entities.Kingdom
 import derivean.storage.repository.KingdomRepository
 import io.ktor.routing.*
@@ -44,7 +45,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 		val user: String,
 		val name: String,
 		val stats: Stats,
-		val attributes: List<Attribute>,
+		val attributes: List<FetchAttribute>,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -55,14 +56,14 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			lateinit var stats: Stats
-			var attributes: SizedIterable<derivean.storage.entities.Attribute> = SizedCollection()
+			var attributes: SizedIterable<Attribute> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),
 				user.toString(),
 				name,
 				stats,
-				attributes.map { Attribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
+				attributes.map { FetchAttribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
 			)
 		}
 	}
