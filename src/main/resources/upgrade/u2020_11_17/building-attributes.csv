@@ -1,0 +1,7 @@
+kingdom,building,group,type,value
+template,lumberjack,cost,wood,12
+template,lumberjack,cost,stone,4
+template,lumberjack,production,wood,12
+template,quarry,cost,wood,4
+template,quarry,cost,stone,12
+template,quarry,production,stone,8

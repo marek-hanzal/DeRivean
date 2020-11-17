@@ -5,6 +5,7 @@ import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
+import derivean.storage.entities.AttributeEntity
 import derivean.storage.entities.UserEntity
 import derivean.storage.repository.UserHeroRepository
 import derivean.storage.repository.UserRepository
@@ -63,7 +64,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<UserEntity, FetchMappe
 			var ticket: String? = null
 			var site: String? = null
 			lateinit var stats: Stats
-			var attributes: SizedIterable<derivean.storage.entities.AttributeEntity> = SizedCollection()
+			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),

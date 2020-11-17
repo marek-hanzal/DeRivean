@@ -41,6 +41,7 @@ object ServerContainer {
 			register(u2020_11_17_02::class)
 			register(u2020_11_17_03::class)
 			register(u2020_11_17_04::class)
+			register(u2020_11_17_05::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)

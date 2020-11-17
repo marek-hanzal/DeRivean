@@ -5,7 +5,10 @@ import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
 import derivean.server.upgrade.u2020_11_16.storage.entities.BuildingEntity
 import derivean.server.upgrade.u2020_11_16.storage.tables.BuildingTable
+import derivean.server.upgrade.u2020_11_16.storage.tables.KingdomTable
+import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.or
+import org.jetbrains.exposed.sql.selectAll
 import java.util.*
 
 class BuildingRepository(container: IContainer) : AbstractRepository<BuildingEntity, BuildingTable>(BuildingEntity, BuildingTable, container) {
@@ -15,4 +18,6 @@ class BuildingRepository(container: IContainer) : AbstractRepository<BuildingEnt
 	} catch (e: IllegalArgumentException) {
 		entity.find { table.name ilike "%${search}%" }.limit(limit)
 	}
+
+	fun findByKingdomAndName(kingdom: String, building: String) = BuildingEntity.wrapRow(BuildingTable.innerJoin(KingdomTable).selectAll().andWhere { KingdomTable.name eq kingdom }.andWhere { BuildingTable.name eq building }.first())
 }
