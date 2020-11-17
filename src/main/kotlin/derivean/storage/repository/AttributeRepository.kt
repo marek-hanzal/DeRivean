@@ -8,23 +8,23 @@ import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 
 class AttributeRepository(container: IContainer) : AbstractRepository<Attribute, AttributeTable>(Attribute, AttributeTable, container) {
+	private val attributeTypeRepository: AttributeTypeRepository by container.lazy()
+
 	fun attributes(collection: SizedIterable<Attribute>, attributes: Array<derivean.game.attribute.Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
 		if (replace) {
 			collection.forEach {
 				it.delete()
 			}
 		}
-		TODO("Update attributes!")
-//		return SizedCollection(attributes.map {
-//			entity.new {
-//				this.type = it.first
-//				this.value = it.second
-//			}
-//		})
+		return SizedCollection(attributes.map {
+			entity.new {
+				this.type = attributeTypeRepository.find(it.first)
+				this.value = it.second
+			}
+		})
 	}
 
 	fun attributes(collection: SizedIterable<Attribute>, attributes: SizedIterable<Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
-		TODO("Update new attribute!")
-//		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.type.name, it.value) }.toTypedArray(), replace)
+		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.type.name, it.value) }.toTypedArray(), replace)
 	}
 }

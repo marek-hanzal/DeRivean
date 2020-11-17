@@ -1,3 +1,9 @@
 package derivean.rest.common
 
-data class Attribute(val attribute: String, val value: Double)
+import java.util.*
+
+data class Attribute(
+	val type: UUID,
+	val name: String? = null,
+	val value: Double,
+)

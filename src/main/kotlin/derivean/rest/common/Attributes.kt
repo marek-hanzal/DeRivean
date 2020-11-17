@@ -1,5 +1,5 @@
 package derivean.rest.common
 
 class Attributes : ArrayList<Attribute>() {
-	fun toDistinctArray() = distinctBy { it.attribute }.map { it.attribute to it.value }.toTypedArray()
+	fun toDistinctArray() = distinctBy { it.type }.map { it.name to it.value }.toTypedArray()
 }
