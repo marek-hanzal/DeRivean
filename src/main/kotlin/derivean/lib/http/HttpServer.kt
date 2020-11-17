@@ -5,6 +5,8 @@ import derivean.lib.config.AbstractConfigurable
 import derivean.lib.container.IContainer
 import derivean.lib.rest.Response
 import derivean.lib.rest.resolve
+import derivean.lib.user.ISessionValidator
+import derivean.lib.user.SessionTicket
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.features.*
@@ -24,6 +26,7 @@ import kotlin.reflect.KClass
 @KtorExperimentalAPI
 class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 	private val httpServerConfig: HttpServerConfig by container.lazy()
+	private val sessionValidator: ISessionValidator by container.lazy()
 	private val roleService: IRoleService by container.lazy()
 	private var modules = arrayOf<KClass<out IHttpModule>>()
 	private val logger = KotlinLogging.logger { }
@@ -79,7 +82,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 			install(Authentication) {
 				session<SessionTicket> {
 					validate { sessionTicket: SessionTicket ->
-						sessionTicket
+						sessionValidator.validate(sessionTicket)
 					}
 					challenge {
 						call.resolve(Response(HttpStatusCode.Unauthorized, "You cannot access this endpoint, I'm sorry about that."))
@@ -113,13 +116,4 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 		logger.info { "Start: [${this.name}] Listening on http://0.0.0.0:${httpServerConfig.port} (available on ${httpServerConfig.host})" }
 		server.start(wait = true)
 	}
-
-	data class SessionTicket(
-		val id: UUID,
-	) : Principal {
-		override fun toString() = id.toString()
-	}
 }
-
-@KtorExperimentalAPI
-fun ApplicationCall.ticket(ticket: UUID) = this.sessions.set(HttpServer.SessionTicket(ticket))

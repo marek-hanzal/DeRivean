@@ -10,12 +10,14 @@ import derivean.lib.http.modules.ClientHttpModule
 import derivean.lib.http.modules.DiscoveryHttpModule
 import derivean.lib.pool.PoolConfig
 import derivean.lib.upgrade.IUpgradeManager
+import derivean.lib.user.ISessionValidator
 import derivean.rest.game.GameHttpModule
 import derivean.rest.public.PublicHttpModule
 import derivean.rest.root.RootHttpModule
 import derivean.server.auth.RoleService
 import derivean.server.config.EngineConfig
 import derivean.server.upgrade.u2020_11_16.u2020_11_16
+import derivean.server.user.SessionValidator
 import io.github.config4k.extract
 import io.ktor.util.*
 
@@ -27,6 +29,7 @@ object ServerContainer {
 		register(PoolConfig::class) { create(EngineConfig::class).pool }
 		register(HttpServerConfig::class) { create(EngineConfig::class).httpServer }
 		service(IRoleService::class) { RoleService(this) }
+		service(ISessionValidator::class) { SessionValidator(this) }
 		/**
 		 * Common services.
 		 */

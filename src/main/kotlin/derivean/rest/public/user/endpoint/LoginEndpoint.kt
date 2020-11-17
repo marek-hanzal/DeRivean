@@ -1,11 +1,11 @@
 package derivean.rest.public.user.endpoint
 
 import derivean.lib.container.IContainer
-import derivean.lib.http.HttpServer
-import derivean.lib.http.ticket
 import derivean.lib.rest.*
 import derivean.lib.storage.IStorage
+import derivean.lib.user.SessionTicket
 import derivean.lib.user.UserException
+import derivean.lib.user.ticket
 import derivean.server.auth.AuthenticatorService
 import derivean.server.auth.TicketService
 import derivean.storage.repository.UserRepository
@@ -32,7 +32,7 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			}
 			routing.authenticate(optional = true) {
 				get(url) {
-					call.authentication.principal<HttpServer.SessionTicket>()?.let {
+					call.authentication.principal<SessionTicket>()?.let {
 						call.handle(logger, {
 							storage.read {
 								userRepository.findByTicket(it.id).let { user ->
@@ -91,8 +91,8 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			}
 			routing.delete(url) {
 				call.handle(logger) {
-					call.sessions.get<HttpServer.SessionTicket>()?.let { sessionTicket -> storage.write { ticketService.drop(sessionTicket.id) } }
-					call.sessions.clear<HttpServer.SessionTicket>()
+					call.sessions.get<SessionTicket>()?.let { sessionTicket -> storage.write { ticketService.drop(sessionTicket.id) } }
+					call.sessions.clear<SessionTicket>()
 					ok("You're logged out - see you soon!")
 				}
 			}

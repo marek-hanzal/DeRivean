@@ -1,7 +1,7 @@
 package derivean.rest.game
 
 import derivean.lib.container.IContainer
-import derivean.lib.http.HttpServer
+import derivean.lib.user.SessionTicket
 import derivean.rest.common.AbstractActionMapper
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
@@ -12,5 +12,5 @@ import io.ktor.util.*
 abstract class AbstractActionMapper<T>(container: IContainer) : AbstractActionMapper<T>(container) {
 	protected val userRepository: UserRepository by container.lazy()
 
-	fun user(call: ApplicationCall) = storage.read { userRepository.findByTicket(call.authentication.principal<HttpServer.SessionTicket>()!!.id) }
+	fun user(call: ApplicationCall) = storage.read { userRepository.findByTicket(call.authentication.principal<SessionTicket>()!!.id) }
 }
