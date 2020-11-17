@@ -10,9 +10,9 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 /**
  * Relation from building to attributes (so which building has which attributes).
  */
-class BuildingAttribute(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<BuildingAttribute>(BuildingAttributeTable)
+class BuildingAttributeEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<BuildingAttributeEntity>(BuildingAttributeTable)
 
-	var building by Building referencedOn BuildingTable.id
-	var attribute by Attribute referencedOn AttributeTable.id
+	var building by BuildingEntity referencedOn BuildingTable.id
+	var attribute by AttributeEntity referencedOn AttributeTable.id
 }

@@ -3,15 +3,15 @@ package derivean.server.upgrade.u2020_11_16.storage.repository
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.upgrade.u2020_11_16.storage.entities.Building
-import derivean.server.upgrade.u2020_11_16.storage.entities.Hero
-import derivean.server.upgrade.u2020_11_16.storage.entities.Kingdom
+import derivean.server.upgrade.u2020_11_16.storage.entities.BuildingEntity
+import derivean.server.upgrade.u2020_11_16.storage.entities.HeroEntity
+import derivean.server.upgrade.u2020_11_16.storage.entities.KingdomEntity
 import derivean.server.upgrade.u2020_11_16.storage.tables.KingdomTable
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.or
 import java.util.*
 
-class KingdomRepository(container: IContainer) : AbstractRepository<Kingdom, KingdomTable>(Kingdom, KingdomTable, container) {
+class KingdomRepository(container: IContainer) : AbstractRepository<KingdomEntity, KingdomTable>(KingdomEntity, KingdomTable, container) {
 	private val attributeRepository: AttributeRepository by container.lazy()
 
 	fun findByName(name: String) = entity.find { table.name eq name }.first()
@@ -23,22 +23,23 @@ class KingdomRepository(container: IContainer) : AbstractRepository<Kingdom, Kin
 		entity.find { table.name ilike "%${search}%" }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	}
 
-	fun useTemplate(template: UUID, target: Kingdom) = useTemplate(find(template), target)
+	fun useTemplate(template: UUID, target: KingdomEntity) = useTemplate(find(template), target)
 
-	fun useTemplate(template: String, target: Kingdom) = useTemplate(search(template).first(), target)
+	fun useTemplate(template: String, target: KingdomEntity) = useTemplate(search(template).first(), target)
 
-	fun useTemplate(kingdom: Kingdom, target: Kingdom) {
-		target.attributes = attributeRepository.attributes(target.attributes, kingdom.attributes, replace = false)
-		kingdom.buildings.forEach {
-			Building.new {
+	fun useTemplate(kingdomEntity: KingdomEntity, target: KingdomEntity) {
+		target.attributes = attributeRepository.attributes(target.attributes, kingdomEntity.attributes, replace = false)
+		kingdomEntity.buildings.forEach {
+			BuildingEntity.new {
 				this.kingdom = target
+				this.user = target.user
 				this.name = it.name
-				this.built = it.built
+				this.build = it.build
 				this.attributes = attributeRepository.attributes(this.attributes, it.attributes)
 			}
 		}
-		kingdom.heroes.forEach {
-			Hero.new {
+		kingdomEntity.heroes.forEach {
+			HeroEntity.new {
 				this.kingdom = target
 				this.user = target.user
 				this.name = it.name

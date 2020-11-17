@@ -7,9 +7,9 @@ import derivean.server.upgrade.u2020_11_16.storage.tables.UserTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class UserAttribute(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<UserAttribute>(UserAttributeTable)
+class UserAttributeEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<UserAttributeEntity>(UserAttributeTable)
 
-	var user by User referencedOn UserTable.id
-	var attribute by Attribute referencedOn AttributeTable.id
+	var user by UserEntity referencedOn UserTable.id
+	var attribute by AttributeEntity referencedOn AttributeTable.id
 }

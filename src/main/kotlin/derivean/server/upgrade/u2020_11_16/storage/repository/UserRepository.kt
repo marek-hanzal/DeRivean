@@ -3,13 +3,13 @@ package derivean.server.upgrade.u2020_11_16.storage.repository
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRepository
 import derivean.lib.storage.ilike
-import derivean.server.upgrade.u2020_11_16.storage.entities.User
+import derivean.server.upgrade.u2020_11_16.storage.entities.UserEntity
 import derivean.server.upgrade.u2020_11_16.storage.tables.UserTable
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.or
 import java.util.*
 
-class UserRepository(container: IContainer) : AbstractRepository<User, UserTable>(User, UserTable, container) {
+class UserRepository(container: IContainer) : AbstractRepository<UserEntity, UserTable>(UserEntity, UserTable, container) {
 	private val attributeRepository: AttributeRepository by container.lazy()
 
 	fun findByLogin(login: String) = entity.find { table.login eq login }.first()
@@ -23,8 +23,7 @@ class UserRepository(container: IContainer) : AbstractRepository<User, UserTable
 		entity.find { table.login ilike "%${search}%" or (table.name ilike "%${search}%") }.orderBy(table.name to SortOrder.ASC).limit(limit)
 	}
 
-	fun useTemplate(template: String, target: User) {
-		TODO("Update attribute template!")
-//		attributeRepository.attributes(target.attributes, find(template).attributes.map { derivean.rest.common.Attribute(it.name, it.value) }.toTypedArray(), replace = false)
+	fun useTemplate(template: String, target: UserEntity) {
+		target.attributes = attributeRepository.attributes(target.attributes, find(template).attributes, replace = false)
 	}
 }

@@ -2,7 +2,7 @@ package derivean.server.upgrade.u2020_11_16.storage.repository
 
 import derivean.lib.container.IContainer
 import derivean.lib.repository.AbstractRelationRepository
-import derivean.server.upgrade.u2020_11_16.storage.entities.Building
+import derivean.server.upgrade.u2020_11_16.storage.entities.BuildingEntity
 import derivean.server.upgrade.u2020_11_16.storage.tables.BuildingTable
 
-class UserBuildingRepository(container: IContainer) : AbstractRelationRepository<Building, BuildingTable>(Building, BuildingTable, BuildingTable.user, container)
+class UserBuildingRepository(container: IContainer) : AbstractRelationRepository<BuildingEntity, BuildingTable>(BuildingEntity, BuildingTable, BuildingTable.user, container)
