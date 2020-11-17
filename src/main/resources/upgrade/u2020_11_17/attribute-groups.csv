@@ -2,6 +2,7 @@ name,description
 resource,Attributes describing Resources (usually production of buildings).
 cost,Attributes describing cost of something; should be in pair with Resources.
 production,Attributes related to production of Resources; should be in pair with Resources.
+production.requirement,Required production for building a building.
 kingdom,Attributes related to Kingdoms
 building,Attributes related to Buildings
 hero,Attributes related to Heroes

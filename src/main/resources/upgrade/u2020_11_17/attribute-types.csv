@@ -20,3 +20,7 @@ resource,gem,That thing used for monetization!
 production,gem,That thing used for monetization!
 cost,gem,That thing used for monetization!
 kingdom.limit,limit.heroes,Limit number of heroes a Kingdom could posess
+production.requirement,wood,Just good old wood
+production.requirement,stone,Hard rough stone
+production.requirement,plank,That thing made from wood used for a bit more sophisticated buildings
+production.requirement,gold,Without gold nothing is possible!
