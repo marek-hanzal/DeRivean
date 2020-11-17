@@ -1,6 +1,6 @@
 package derivean.rest.common
 
-data class Attribute(
+data class FetchAttribute(
 	val type: AttributeType,
 	val value: Double,
 )

@@ -4,8 +4,8 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.lib.utils.asIso
-import derivean.rest.common.Attribute
 import derivean.rest.common.AttributeType
+import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.Building
 import derivean.storage.repository.BuildingRepository
@@ -48,7 +48,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 		val description: String?,
 		val built: String?,
 		val claim: String?,
-		val attributes: List<Attribute>,
+		val attributes: List<FetchAttribute>,
 	) {
 		companion object {
 			inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
@@ -72,7 +72,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Building, FetchMapper.
 				description,
 				built,
 				claim,
-				attributes.map { Attribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
+				attributes.map { FetchAttribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
 			)
 		}
 	}
