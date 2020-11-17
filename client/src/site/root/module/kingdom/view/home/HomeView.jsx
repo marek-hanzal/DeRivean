@@ -1,4 +1,6 @@
+import {Card, Divider, Space} from "antd";
 import {useParams} from "react-router";
+import AttributeGroupStatistics from "site/common/attribute/AttributeGroupStatistics";
 import CommonHomeView from "site/common/view/CommonHomeView";
 import KingdomStatistics from "site/root/module/kingdom/component/KingdomStatistics";
 import {useKingdomStatisticsFetch} from "site/root/module/kingdom/hook/hook";
@@ -12,10 +14,15 @@ const HomeView = () => {
 				menu={"root.kingdom"}
 			>
 				{data => (
-					<KingdomStatistics action={events => {
-						// eslint-disable-next-line
-						useKingdomStatisticsFetch(params.kingdom, events);
-					}}/>
+					<Card style={{textAlign: "center"}}>
+						<Space split={<Divider type={"horizontal"}/>} direction={"vertical"}>
+							<KingdomStatistics action={events => {
+								// eslint-disable-next-line
+								useKingdomStatisticsFetch(params.kingdom, events);
+							}}/>
+							<AttributeGroupStatistics group={"resource"} attributes={data.attributes}/>
+						</Space>
+					</Card>
 				)}
 			</CommonHomeView>
 		</KingdomView>

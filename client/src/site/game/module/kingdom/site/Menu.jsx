@@ -42,16 +42,15 @@ const Menu = () => {
 					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					{/*<HeroMenuItem key={"game.hero"}/>*/}
-					{/*<MenuDivider/>*/}
 					<BuildingMenuItem key={"game.building"}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
 				</BaseMenu>),
 				route(link.edit.match(), <BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<BackIcon/>}/>
+					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
+					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
 					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>

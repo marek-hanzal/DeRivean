@@ -3,11 +3,11 @@ import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {Link} from "react-router-dom";
+import AttributeGroupItems from "site/common/attribute/AttributeGroupItems";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 
 const KingdomListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
-	// const {t} = useTranslation();
 	return (
 		<List.Item>
 			<List.Item.Meta
@@ -17,6 +17,7 @@ const KingdomListItem = ({item}) => {
 				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
 				description={
 					<Space split={<Divider type={"vertical"}/>}>
+						<AttributeGroupItems attributes={item.attributes} group={"resource"}/>
 					</Space>
 				}
 			/>
