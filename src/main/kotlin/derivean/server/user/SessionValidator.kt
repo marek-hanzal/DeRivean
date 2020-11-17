@@ -12,8 +12,12 @@ class SessionValidator(container: IContainer) : AbstractService(container), ISes
 	private val storage: IStorage by container.lazy()
 
 	override fun validate(sessionTicket: SessionTicket) = try {
-		storage.read { userRepository.findByTicket(sessionTicket.id) }
-		sessionTicket
+		storage.read { userRepository.findByTicket(sessionTicket.id) }.let {
+			/**
+			 * If the user has site (thus has an access) - return it's ticket; if not, return null (access forbidden).
+			 */
+			it.site?.let { sessionTicket }
+		}
 	} catch (e: NoSuchElementException) {
 		logger.error(e.message, e)
 		null
