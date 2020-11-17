@@ -1,17 +1,16 @@
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import {doKingdomCreate, doKingdomDelete, doKingdomSearch, doKingdomUpdate, fetchKingdomPage} from "site/root/module/kingdom/action/action";
-import {useKingdomAttributesFetch, useKingdomFetch} from "site/root/module/kingdom/hook/hook";
+import {useKingdomFetch} from "site/root/module/kingdom/hook/hook";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 import Routes from "site/Routes";
 import Module from "utils/Module";
 
 class KingdomModule extends Module {
-	attributes;
 	search;
 
 	constructor(id) {
 		super(id);
-		this.validateFields.push("attributes", "search");
+		this.validateFields.push("search");
 	}
 }
 
@@ -27,7 +26,6 @@ function CreateKingdomModule() {
 	module.page = fetchKingdomPage;
 	module.param = "kingdom";
 	module.parent = "user";
-	module.attributes = useKingdomAttributesFetch;
 	module.search = doKingdomSearch;
 	return module.validate();
 }
