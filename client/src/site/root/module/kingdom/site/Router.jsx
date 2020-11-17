@@ -1,6 +1,5 @@
 import BaseRoutes from "component/route/BaseRoutes";
-import CommonView from "site/root/module/kingdom/view/attributes/CommonView";
-import ResourcesView from "site/root/module/kingdom/view/attributes/ResourcesView";
+import AttributesView from "site/root/module/kingdom/view/attributes/AttributesView";
 import CreateView from "site/root/module/kingdom/view/create/CreateView";
 import DashboardView from "site/root/module/kingdom/view/dashboard/DashboardView";
 import EditView from "site/root/module/kingdom/view/edit/EditView";
@@ -21,8 +20,7 @@ const Router = () => {
 				route(links.list.match(), <ListView/>),
 				route(links.home.match(), <HomeView/>),
 				route(links.edit.match(), <EditView/>),
-				route(links.attributes.common.match(), <CommonView/>),
-				route(links.attributes.resources.match(), <ResourcesView/>),
+				route(links.attributes.match(), <AttributesView/>),
 				route("*", <NotFoundView/>),
 			]}
 		/>

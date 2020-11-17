@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.6.157",
+	"version": "0.6.158",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
@@ -8,7 +8,7 @@
 		"@testing-library/jest-dom": "^5.11.6",
 		"@testing-library/react": "^11.1.1",
 		"@testing-library/user-event": "^12.2.0",
-		"antd": "^4.8.0",
+		"antd": "^4.8.4",
 		"arr-diff": "^4.0.0",
 		"axios": "^0.21.0",
 		"build-url": "^6.0.1",
