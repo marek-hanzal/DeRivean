@@ -52,7 +52,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 					it.name?.let { name -> this.name = name }
 					it.description?.let { description -> this.description = description }
 					this.built = it.built?.let { built -> DateTime(built) }
-					this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
+					it.attributes?.let { attributes -> this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(attributes)) }
 				}
 			)
 		}

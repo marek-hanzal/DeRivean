@@ -480,3 +480,13 @@ e3710e04-7b88-47d6-9ec2-ce52f614340b,en,translation,attribute-group.resource,Res
 84210f41-667b-4a0e-a230-5b857956de3c,en,translation,attribute-group.user,User
 8e512a86-484c-4057-8de3-17d2df2dfa8c,en,translation,attribute-group.user.limit,User Limit
 b1f41c52-f638-4331-b96b-4f11cb2ff115,en,translation,attribute.xp,XP
+0da816a2-a423-47bb-b581-abc58101786a,en,translation,attribute.limit.kingdoms,Kingdom limit
+d5cef097-9016-474d-a010-6751a3e1fea6,en,translation,attribute-group.building,Building
+b9a3a226-de91-440b-922d-95a96ecd86cc,en,translation,attribute-group.kingdom,Kingdom
+dd9dd698-1c5b-4b7a-899e-ca07e354f88c,en,translation,building.lumberjack,Luberjack
+be10f5f3-fb79-4c13-90cf-e50b17f70936,en,translation,building.quarry,Quarry
+8f3918e3-9bd1-4a89-9476-19af273ec246,cs,translation,building.lumberjack,Dřevorubec
+cef36fec-dd07-4047-be34-222244a333ad,cs,translation,building.quarry,Kamenolom
+5f0a4783-44b7-4ecf-b3d5-68eb66a72cda,en,translation,attribute-group.hero,Hero
+1b2b2a36-4af4-42c0-92ce-7bab0951b8a6,en,translation,attribute.build-time,Build Time
+351e4ba7-b4a6-4abf-af20-f0f291966b56,en,translation,root.building.build-countdown,Build Countdown
