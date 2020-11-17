@@ -42,9 +42,6 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val attributeRepository: AttributeRepository by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = item.request.let {
-		if (it.attributes !== null && it.attributeGroup == null) {
-			throw InvalidRequestException("When attributes are set, attribute group [attributeGroup] must be set too!")
-		}
 		ok(storage.write {
 			fetchMapper.map(
 				kingdomRepository.update(it.id) {
@@ -62,7 +59,6 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	data class Request(
 		val id: String,
 		val name: String?,
-		val attributeGroup: String?,
 		val attributes: Attributes?,
 	)
 }

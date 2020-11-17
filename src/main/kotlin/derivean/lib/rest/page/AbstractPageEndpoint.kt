@@ -31,7 +31,7 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 				}
 				get("$url/page/{page}") {
 					call.handle(logger) {
-						ok(pageService.page(call, repository, mapper))
+						ok(pageService.page(this, repository, mapper))
 					}
 				}
 			}
@@ -60,7 +60,7 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 				}
 				get("$url/page/{page}") {
 					call.handle(logger) {
-						ok(pageService.page(call, relation(call), repository, mapper))
+						ok(pageService.page(this, relation(call), repository, mapper))
 					}
 				}
 			}
