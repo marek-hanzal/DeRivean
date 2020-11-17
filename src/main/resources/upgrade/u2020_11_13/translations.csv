@@ -476,3 +476,7 @@ e8fb0c87-e280-4ad8-9f5d-50492e4d825a,en,translation,attribute.gold,Gold
 2660e4f4-a40b-4690-b03f-7c3d200f71e1,en,translation,attribute.stone,Stone
 2f0c2d9b-6070-499a-8db7-043d079df4a1,en,translation,attribute.plank,Plank
 c790bdcc-b7d9-470c-b6f6-91247637817d,en,translation,attribute-group.production,Production
+e3710e04-7b88-47d6-9ec2-ce52f614340b,en,translation,attribute-group.resource,Resource
+84210f41-667b-4a0e-a230-5b857956de3c,en,translation,attribute-group.user,User
+8e512a86-484c-4057-8de3-17d2df2dfa8c,en,translation,attribute-group.user.limit,User Limit
+b1f41c52-f638-4331-b96b-4f11cb2ff115,en,translation,attribute.xp,XP

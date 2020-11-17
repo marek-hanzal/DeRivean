@@ -62,7 +62,7 @@ const AttributeFieldEditor = ({groups = null}) => {
 												disabled={!editorContext.editor}
 												options={(attributeGroups || []).map(item => ({
 													value: item.id,
-													label: t("attribute." + item.name),
+													label: t("attribute-group." + item.name),
 													children: (item.types || []).map(item => ({
 														value: item.id,
 														label: t("attribute." + item.name),
