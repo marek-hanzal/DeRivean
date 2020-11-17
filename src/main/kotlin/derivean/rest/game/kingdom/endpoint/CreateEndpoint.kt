@@ -8,7 +8,7 @@ import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.game.AbstractCreateMapper
 import derivean.server.user.UserResourceService
-import derivean.storage.entities.Kingdom
+import derivean.storage.entities.KingdomEntity
 import derivean.storage.repository.KingdomRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -38,7 +38,7 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 }
 
 @KtorExperimentalAPI
-class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Request, Kingdom>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Request, KingdomEntity>(container) {
 	override val repository: KingdomRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val userResourceService: UserResourceService by container.lazy()
@@ -52,7 +52,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		}
 	}
 
-	override fun map(request: ApplicationRequest<Request>, entity: Kingdom) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: KingdomEntity) = request.request.let {
 		entity.name = it.name
 		entity.user = user(request.call)
 		repository.useTemplate("template", entity)

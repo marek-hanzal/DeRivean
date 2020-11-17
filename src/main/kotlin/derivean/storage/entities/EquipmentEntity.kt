@@ -6,9 +6,9 @@ import derivean.storage.tables.EquipmentTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class Equipment(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<Equipment>(EquipmentTable)
+class EquipmentEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<EquipmentEntity>(EquipmentTable)
 
 	var name by EquipmentTable.name
-	val attributes by Attribute via EquipmentAttributeTable
+	val attributes by AttributeEntity via EquipmentAttributeTable
 }

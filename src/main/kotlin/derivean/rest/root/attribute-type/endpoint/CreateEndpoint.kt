@@ -6,7 +6,7 @@ import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.conflictWithUnique
-import derivean.storage.entities.AttributeType
+import derivean.storage.entities.AttributeTypeEntity
 import derivean.storage.repository.AttributeGroupRepository
 import derivean.storage.repository.AttributeTypeRepository
 import io.ktor.application.*
@@ -36,12 +36,12 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, AttributeType>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, AttributeTypeEntity>(container) {
 	override val repository: AttributeTypeRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val attributeGroupRepository: AttributeGroupRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: AttributeType) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: AttributeTypeEntity) = request.request.let {
 		entity.group = attributeGroupRepository.find(it.group)
 		entity.name = it.name
 		entity.description = it.description

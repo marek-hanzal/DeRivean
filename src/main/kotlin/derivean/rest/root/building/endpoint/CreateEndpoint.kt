@@ -5,7 +5,7 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.storage.entities.Building
+import derivean.storage.entities.BuildingEntity
 import derivean.storage.repository.BuildingRepository
 import derivean.storage.repository.KingdomRepository
 import io.ktor.application.*
@@ -36,12 +36,12 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, Building>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, BuildingEntity>(container) {
 	override val repository: BuildingRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Building) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: BuildingEntity) = request.request.let {
 		entity.name = it.name
 		entity.description = it.description
 		entity.built = it.built?.let { date -> DateTime(date) }

@@ -3,7 +3,7 @@ package derivean.rest.root.translation.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.storage.entities.Translation
+import derivean.storage.entities.TranslationEntity
 import derivean.storage.repository.TranslationRepository
 import io.ktor.routing.*
 import io.ktor.util.*
@@ -22,8 +22,8 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	)
 }
 
-class FetchMapper(container: IContainer) : AbstractMapper<Translation, FetchMapper.Fetch>(container) {
-	override fun map(item: Translation) = Fetch(
+class FetchMapper(container: IContainer) : AbstractMapper<TranslationEntity, FetchMapper.Fetch>(container) {
+	override fun map(item: TranslationEntity) = Fetch(
 		item.id.toString(),
 		item.language,
 		item.namespace,

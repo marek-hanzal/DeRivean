@@ -8,12 +8,12 @@ import derivean.storage.tables.UserTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class User(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<User>(UserTable)
+class UserEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<UserEntity>(UserTable)
 
-	var attributes by Attribute via UserAttributeTable
-	val kingdoms by Kingdom referrersOn KingdomTable.user
-	var roles by Role via UserRoleTable
+	var attributes by AttributeEntity via UserAttributeTable
+	val kingdoms by KingdomEntity referrersOn KingdomTable.user
+	var roles by RoleEntity via UserRoleTable
 
 	var name by UserTable.name
 	var login by UserTable.login

@@ -7,9 +7,9 @@ import derivean.storage.tables.EntityTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class EntityAttribute(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<EntityAttribute>(EntityAttributeTable)
+class EntityAttributeEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<EntityAttributeEntity>(EntityAttributeTable)
 
-	var entity by Entity referencedOn EntityTable.id
-	var attribute by Attribute referencedOn AttributeTable.id
+	var entity by EntityEntity referencedOn EntityTable.id
+	var attribute by AttributeEntity referencedOn AttributeTable.id
 }
