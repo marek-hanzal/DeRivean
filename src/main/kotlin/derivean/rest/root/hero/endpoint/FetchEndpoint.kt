@@ -58,7 +58,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Hero, FetchMapper.Fetc
 				kingdom.toString(),
 				user.toString(),
 				name,
-				attributes.map { Attribute(it.id.value, it.value) },
+				attributes.map { Attribute(it.type.id.value, it.value) },
 			)
 		}
 	}

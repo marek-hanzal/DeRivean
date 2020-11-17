@@ -72,7 +72,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 				ticket,
 				site,
 				stats,
-				attributes.map { Attribute(it.id.value, it.value) },
+				attributes.map { Attribute(it.type.id.value, it.value) },
 			)
 		}
 	}
