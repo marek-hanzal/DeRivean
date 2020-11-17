@@ -32,7 +32,7 @@ const BaseEditor = (
 		<Form
 			name={name}
 			form={form}
-			onFinish={values => onFinish(outputMapper(deepmerge(values, initials)), initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
+			onFinish={values => onFinish(outputMapper(deepmerge(initials, values)), initials, {setErrors, setInitials, setEditor, setEnableSubmit, form})}
 			onFinishFailed={onFinishFailed}
 			children={
 				<EditorContext.Provider
