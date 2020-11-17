@@ -6,28 +6,9 @@ import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
+import AttributeGroupItems from "site/common/attribute/AttributeGroupItems";
+import IsBuiltIcon from "site/common/building/IsBuiltIcon";
 import BuildingIcon from "site/common/icon/BuildingIcon";
-import {attributeFilterByGroup} from "site/root/module/attribute/utils/utils";
-
-const IsBuiltIcon = ({isBuilt}) => {
-	return (
-		<BuildingIcon style={isBuilt ? {color: "#262"} : {color: "#CCC"}}/>
-	);
-};
-
-const AttributeGroupItems = ({attributes, group}) => {
-	const {t} = useTranslation();
-	return (
-		<>
-			<strong>{t("attribute-group." + group)}:&nbsp;</strong>
-			<Space split={<Divider type={"vertical"}/>} size={"small"}>
-				{attributeFilterByGroup(group, attributes).map(attribute => (
-					<span key={attribute.type.name}><strong>{t("attribute." + attribute.type.name)}:</strong>&nbsp;{attribute.value}</span>
-				))}
-			</Space>
-		</>
-	);
-};
 
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);

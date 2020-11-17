@@ -32,6 +32,7 @@ class KingdomRepository(container: IContainer) : AbstractRepository<KingdomEntit
 		kingdomEntity.buildings.forEach {
 			BuildingEntity.new {
 				this.kingdom = target
+				this.user = target.user
 				this.name = it.name
 				this.built = it.built
 				this.attributes = attributeRepository.attributes(this.attributes, it.attributes)
