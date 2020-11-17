@@ -6,7 +6,7 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
-import derivean.storage.entities.User
+import derivean.storage.entities.UserEntity
 import derivean.storage.repository.RoleRepository
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
@@ -30,13 +30,13 @@ class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container
 	}
 }
 
-class RegisterMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<RegisterMapper.Request>, User>(container) {
+class RegisterMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<RegisterMapper.Request>, UserEntity>(container) {
 	override val repository: UserRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val roleRepository: RoleRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: User) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: UserEntity) = request.request.let {
 		entity.name = it.name
 		entity.login = it.login
 		entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }

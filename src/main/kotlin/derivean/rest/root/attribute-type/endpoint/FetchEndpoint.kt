@@ -4,7 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.storage.entities.AttributeType
+import derivean.storage.entities.AttributeTypeEntity
 import derivean.storage.repository.AttributeTypeRepository
 import io.ktor.routing.*
 import io.ktor.util.*
@@ -23,8 +23,8 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	)
 }
 
-class FetchMapper(container: IContainer) : AbstractMapper<AttributeType, FetchMapper.Fetch>(container) {
-	override fun map(item: AttributeType) = Fetch.build {
+class FetchMapper(container: IContainer) : AbstractMapper<AttributeTypeEntity, FetchMapper.Fetch>(container) {
+	override fun map(item: AttributeTypeEntity) = Fetch.build {
 		this.id = item.id
 		this.group = item.group.id
 		this.name = item.name

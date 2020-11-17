@@ -6,7 +6,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.rest.common.AttributeType
 import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
-import derivean.storage.entities.User
+import derivean.storage.entities.UserEntity
 import derivean.storage.repository.UserHeroRepository
 import derivean.storage.repository.UserRepository
 import io.ktor.routing.*
@@ -28,10 +28,10 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	)
 }
 
-class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetch>(container) {
+class FetchMapper(container: IContainer) : AbstractMapper<UserEntity, FetchMapper.Fetch>(container) {
 	private val userHeroRepository: UserHeroRepository by container.lazy()
 
-	override fun map(item: User) = Fetch.build {
+	override fun map(item: UserEntity) = Fetch.build {
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login
@@ -64,7 +64,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 			var ticket: String? = null
 			var site: String? = null
 			lateinit var stats: Stats
-			var attributes: SizedIterable<derivean.storage.entities.Attribute> = SizedCollection()
+			var attributes: SizedIterable<derivean.storage.entities.AttributeEntity> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),

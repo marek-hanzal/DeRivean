@@ -7,9 +7,9 @@ import derivean.storage.tables.KingdomTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class KingdomAttribute(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<KingdomAttribute>(KingdomAttributeTable)
+class KingdomAttributeEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<KingdomAttributeEntity>(KingdomAttributeTable)
 
-	var kingdom by Kingdom referencedOn KingdomTable.id
-	var attribute by Attribute referencedOn AttributeTable.id
+	var kingdom by KingdomEntity referencedOn KingdomTable.id
+	var attribute by AttributeEntity referencedOn AttributeTable.id
 }

@@ -10,6 +10,6 @@ import org.jetbrains.exposed.dao.UUIDEntityClass
 class HeroAttribute(id: EntityUUID) : UUIDEntity(id) {
 	companion object : UUIDEntityClass<HeroAttribute>(HeroAttributeTable)
 
-	var hero by Hero referencedOn HeroTable.id
-	var attribute by Attribute referencedOn AttributeTable.id
+	var hero by HeroEntity referencedOn HeroTable.id
+	var attribute by AttributeEntity referencedOn AttributeTable.id
 }

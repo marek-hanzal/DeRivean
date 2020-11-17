@@ -3,10 +3,10 @@ package derivean.rest.public.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
-import derivean.storage.entities.User
+import derivean.storage.entities.UserEntity
 
-class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Response>(container) {
-	override fun map(item: User) = Response.build {
+class FetchMapper(container: IContainer) : AbstractMapper<UserEntity, FetchMapper.Response>(container) {
+	override fun map(item: UserEntity) = Response.build {
 		this.id = item.id
 		this.name = item.name
 		this.login = item.login

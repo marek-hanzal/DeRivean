@@ -8,12 +8,12 @@ import derivean.storage.tables.KingdomTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class Kingdom(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<Kingdom>(KingdomTable)
+class KingdomEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<KingdomEntity>(KingdomTable)
 
-	val heroes by Hero referrersOn HeroTable.kingdom
-	val buildings by Building referrersOn BuildingTable.kingdom
-	var user by User referencedOn KingdomTable.user
+	val heroes by HeroEntity referrersOn HeroTable.kingdom
+	val buildings by BuildingEntity referrersOn BuildingTable.kingdom
+	var user by UserEntity referencedOn KingdomTable.user
 	var name by KingdomTable.name
-	var attributes by Attribute via KingdomAttributeTable
+	var attributes by AttributeEntity via KingdomAttributeTable
 }

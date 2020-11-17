@@ -7,7 +7,7 @@ import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.ValidationResponse
 import derivean.lib.rest.conflict
-import derivean.storage.entities.Translation
+import derivean.storage.entities.TranslationEntity
 import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -36,11 +36,11 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, Translation>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, TranslationEntity>(container) {
 	override val repository: TranslationRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Translation) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: TranslationEntity) = request.request.let {
 		entity.language = it.language
 		entity.namespace = it.namespace ?: "translation"
 		entity.label = it.label

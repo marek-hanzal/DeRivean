@@ -8,7 +8,7 @@ import derivean.lib.rest.ApplicationRequest
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
-import derivean.storage.entities.Hero
+import derivean.storage.entities.HeroEntity
 import derivean.storage.repository.AttributeRepository
 import derivean.storage.repository.HeroRepository
 import derivean.storage.repository.KingdomRepository
@@ -39,14 +39,14 @@ class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 	}
 }
 
-class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, Hero>(container) {
+class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequest<CreateMapper.Request>, HeroEntity>(container) {
 	override val repository: HeroRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val attributesMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Hero) = request.request.let {
+	override fun map(request: ApplicationRequest<Request>, entity: HeroEntity) = request.request.let {
 		entity.name = it.name
 		entity.kingdom = kingdomRepository.find(it.kingdom)
 		entity.user = entity.kingdom.user

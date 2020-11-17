@@ -5,7 +5,7 @@ import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.common.FetchAttribute
 import derivean.rest.game.AbstractFetchEndpoint
-import derivean.storage.entities.Kingdom
+import derivean.storage.entities.KingdomEntity
 import derivean.storage.repository.KingdomRepository
 import io.ktor.routing.*
 import io.ktor.util.*
@@ -24,8 +24,8 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 	)
 }
 
-class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.Fetch>(container) {
-	override fun map(item: Kingdom) = Fetch.build {
+class FetchMapper(container: IContainer) : AbstractMapper<KingdomEntity, FetchMapper.Fetch>(container) {
+	override fun map(item: KingdomEntity) = Fetch.build {
 		this.id = item.id
 		this.user = item.user.id
 		this.name = item.name

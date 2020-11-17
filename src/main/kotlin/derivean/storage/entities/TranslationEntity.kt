@@ -5,8 +5,8 @@ import derivean.storage.tables.TranslationTable
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 
-class Translation(id: EntityUUID) : UUIDEntity(id) {
-	companion object : UUIDEntityClass<Translation>(TranslationTable)
+class TranslationEntity(id: EntityUUID) : UUIDEntity(id) {
+	companion object : UUIDEntityClass<TranslationEntity>(TranslationTable)
 
 	var language by TranslationTable.language
 	var namespace by TranslationTable.namespace
