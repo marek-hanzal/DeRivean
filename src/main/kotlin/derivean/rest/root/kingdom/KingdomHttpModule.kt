@@ -16,7 +16,6 @@ class KingdomHttpModule(container: IContainer) : AbstractHttpModule(container) {
 			FetchEndpoint::class,
 			PageEndpoint::class,
 			DeleteEndpoint::class,
-			AttributesEndpoint::class,
 			SearchEndpoint::class,
 			StatisticsEndpoint::class,
 		)

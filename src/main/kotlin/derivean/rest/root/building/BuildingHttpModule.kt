@@ -16,7 +16,6 @@ class BuildingHttpModule(container: IContainer) : AbstractHttpModule(container) 
 			FetchEndpoint::class,
 			PageEndpoint::class,
 			DeleteEndpoint::class,
-			AttributesEndpoint::class,
 		)
 	}
 }

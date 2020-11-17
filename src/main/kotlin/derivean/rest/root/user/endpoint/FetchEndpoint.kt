@@ -4,6 +4,7 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.rest.common.Attribute
+import derivean.rest.common.AttributeType
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.User
 import derivean.storage.repository.UserHeroRepository
@@ -72,7 +73,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<User, FetchMapper.Fetc
 				ticket,
 				site,
 				stats,
-				attributes.map { Attribute(it.type.id.value, it.value) },
+				attributes.map { Attribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
 			)
 		}
 	}
