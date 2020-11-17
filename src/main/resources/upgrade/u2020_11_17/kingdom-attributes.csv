@@ -1,0 +1,6 @@
+kingdom,group,type,value
+template,kingdom.limit,limit.heroes,8.0
+template,resource,wood,200
+template,resource,stone,200
+template,resource,gold,80
+template,resource,gem,200
