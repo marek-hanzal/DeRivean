@@ -3,8 +3,8 @@ package derivean.rest.root.`attribute-group`.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.rest.AbstractEndpoint
+import derivean.lib.rest.handle
 import derivean.lib.rest.ok
-import derivean.lib.rest.resolve
 import derivean.lib.storage.IStorage
 import derivean.storage.repository.AttributeGroupRepository
 import io.ktor.application.*
@@ -27,8 +27,8 @@ class ListEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			routing.authenticate {
 				withAnyRole("root") {
 					get(url) {
-						handle(call) {
-							resolve(ok(storage.read { attributeGroupRepository.findByName(call.parameters["name"]!!).types.map { Item(it.id.toString(), it.name) } }))
+						call.handle(logger) {
+							ok(storage.read { attributeGroupRepository.findByName(call.parameters["name"]!!).types.map { Item(it.id.toString(), it.name) } })
 						}
 					}
 				}

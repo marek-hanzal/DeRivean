@@ -13,7 +13,6 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -44,43 +43,28 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					userRepository.update(it.id) {
-						it.name?.let { name -> this.name = name }
-						it.login?.let { login -> this.login = login }
-						it.site?.let { site -> this.site = site }
-						it.password?.let { password -> this.password = authenticatorService.encrypt(password) }
-						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
-					}
-				)
-			}
-		})
-	} catch (e: ExposedSQLException) {
-		when {
-			e.message?.contains("user_name_unique") == true -> {
-				conflict(ValidationResponse.build {
-					message = "Cannot update User!"
-					validation("name", "error", "User with the given name already exists.")
-				})
-			}
-			e.message?.contains("user_login_unique") == true -> {
-				conflict(ValidationResponse.build {
-					message = "Cannot update User!"
-					validation("login", "error", "User with the given login already exists.")
-				})
-			}
-			else -> {
-				throw e
-			}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				userRepository.update(it.id) {
+					it.name?.let { name -> this.name = name }
+					it.login?.let { login -> this.login = login }
+					it.site?.let { site -> this.site = site }
+					it.password?.let { password -> this.password = authenticatorService.encrypt(password) }
+					this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
+				}
+			)
 		}
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
+	})
+
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("user_name_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
+		}
+		e.message?.contains("user_login_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+		}
+		else -> null
 	}
 
 	data class Request(

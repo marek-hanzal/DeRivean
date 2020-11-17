@@ -3,7 +3,10 @@ package derivean.rest.root.kingdom.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.Response
+import derivean.lib.rest.ok
+import derivean.lib.rest.resolve
 import derivean.storage.repository.KingdomBuildingRepository
 import derivean.storage.repository.KingdomHeroRepository
 import io.ktor.application.*
@@ -38,24 +41,14 @@ class StatisticsMapper(container: IContainer) : AbstractActionMapper<StatisticsM
 	private val kingdomBuildingRepository: KingdomBuildingRepository by container.lazy()
 	private val kingdomHeroRepository: KingdomHeroRepository by container.lazy()
 
-	override fun resolve(item: Request) = try {
-		storage.read {
-			val uuid = UUID.fromString(item.user)
-			ok(
-				Statistics(
-					kingdomBuildingRepository.total(uuid),
-					kingdomHeroRepository.total(uuid),
-				)
+	override fun resolve(item: Request) = storage.read {
+		val uuid = UUID.fromString(item.user)
+		ok(
+			Statistics(
+				kingdomBuildingRepository.total(uuid),
+				kingdomHeroRepository.total(uuid),
 			)
-		}
-	} catch (e: IllegalArgumentException) {
-		logger.error(e.message, e)
-		badRequest("Invalid UUID supplied!")
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
+		)
 	}
 
 	data class Request(

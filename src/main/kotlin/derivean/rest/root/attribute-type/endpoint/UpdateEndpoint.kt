@@ -3,7 +3,10 @@ package derivean.rest.root.`attribute-type`.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.Response
+import derivean.lib.rest.ok
 import derivean.storage.repository.AttributeTypeRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -36,23 +39,16 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val attributeTypeRepository: AttributeTypeRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					attributeTypeRepository.update(it.id) {
-						this.name = it.name
-						this.description = it.description
-					}
-				)
-			}
-		})
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
-	}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				attributeTypeRepository.update(it.id) {
+					this.name = it.name
+					this.description = it.description
+				}
+			)
+		}
+	})
 
 	data class Request(
 		val id: String,

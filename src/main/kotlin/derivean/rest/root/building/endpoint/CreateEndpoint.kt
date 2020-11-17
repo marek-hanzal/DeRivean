@@ -5,7 +5,6 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.storage.entities.Building
 import derivean.storage.repository.BuildingRepository
 import derivean.storage.repository.KingdomRepository
@@ -42,18 +41,14 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Building) {
-		request.request.let {
-			entity.name = it.name
-			entity.description = it.description
-			entity.built = it.built?.let { date -> DateTime(date) }
-			entity.claim = it.claim?.let { date -> DateTime(date) }
-			entity.kingdom = kingdomRepository.find(it.kingdom)
-			entity.user = entity.kingdom.user
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: Building) = request.request.let {
+		entity.name = it.name
+		entity.description = it.description
+		entity.built = it.built?.let { date -> DateTime(date) }
+		entity.claim = it.claim?.let { date -> DateTime(date) }
+		entity.kingdom = kingdomRepository.find(it.kingdom)
+		entity.user = entity.kingdom.user
 	}
-
-	override fun resolveException(message: String): Response<out Any>? = null
 
 	data class Request(
 		val kingdom: String,

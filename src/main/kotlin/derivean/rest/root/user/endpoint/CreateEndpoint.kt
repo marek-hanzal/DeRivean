@@ -5,7 +5,6 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
@@ -47,26 +46,25 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	private val attributesMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: User) {
-		request.request.let {
-			entity.name = it.name
-			entity.login = it.login
-			entity.site = it.site
-			entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
-			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
-			it.template?.let { template ->
-				repository.useTemplate(template, entity)
-			}
+	override fun map(request: ApplicationRequest<Request>, entity: User) = request.request.let {
+		entity.name = it.name
+		entity.login = it.login
+		entity.site = it.site
+		entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
+		entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
+		it.template?.let { template ->
+			repository.useTemplate(template, entity)
 		}
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("user_name_unique")) {
-			return conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
-		} else if (message.contains("user_login_unique")) {
-			return conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("user_name_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
 		}
-		return null
+		e.message?.contains("user_login_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+		}
+		else -> null
 	}
 
 	data class Request(

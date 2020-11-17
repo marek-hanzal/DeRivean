@@ -12,7 +12,6 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -42,39 +41,31 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val attributeMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					kingdomRepository.update(it.id) {
-						it.name?.let { name -> this.name = name }
-						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
-					}
-				)
-			}
-		})
-	} catch (e: ExposedSQLException) {
-		when {
-			e.message?.contains("kingdom_name_unique") == true -> {
-				conflict(ValidationResponse.build {
-					message = "Cannot update Kingdom!"
-					validation("name", "error", "Kingdom with the given name already exists.")
-				})
-			}
-			else -> {
-				throw e
-			}
+	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = item.request.let {
+		if (it.attributes !== null && it.attributeGroup == null) {
+			throw InvalidRequestException("When attributes are set, attribute group [attributeGroup] must be set too!")
 		}
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
+		ok(storage.write {
+			fetchMapper.map(
+				kingdomRepository.update(it.id) {
+					it.name?.let { name -> this.name = name }
+					this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
+				}
+			)
 		})
+	}
+
+	override fun exception(e: Throwable): Response<out Any>? = when {
+		e.message?.contains("kingdom_name_unique") == true -> {
+			conflictWithUnique("Cannot update Kingdom!", "name", "Kingdom with the given name already exists.")
+		}
+		else -> null
 	}
 
 	data class Request(
 		val id: String,
 		val name: String?,
+		val attributeGroup: String?,
 		val attributes: Attributes?,
 	)
 }

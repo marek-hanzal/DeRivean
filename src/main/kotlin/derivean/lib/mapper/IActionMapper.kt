@@ -8,4 +8,6 @@ import derivean.lib.config.IConfigurable
  */
 interface IActionMapper<T, U> : IConfigurable {
 	fun resolve(item: T): U
+
+	fun exception(e: Throwable): U?
 }

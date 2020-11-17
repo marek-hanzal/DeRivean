@@ -5,7 +5,6 @@ import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.game.AbstractCreateMapper
 import derivean.server.user.UserResourceService
@@ -53,19 +52,17 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<CreateMapper.Re
 		}
 	}
 
-	override fun map(request: ApplicationRequest<Request>, entity: Kingdom) {
-		request.request.let {
-			entity.name = it.name
-			entity.user = user(request.call)
-			repository.useTemplate("template", entity)
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: Kingdom) = request.request.let {
+		entity.name = it.name
+		entity.user = user(request.call)
+		repository.useTemplate("template", entity)
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("kingdom_name_unique")) {
-			return conflictWithUnique("Cannot create kingdom!", "name", "Duplicate kingdom name!")
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("kingdom_name_unique") == true -> {
+			conflictWithUnique("Cannot create Kingdom!", "name", "Kingdom with the given name already exists.")
 		}
-		return null
+		else -> null
 	}
 
 	data class Request(

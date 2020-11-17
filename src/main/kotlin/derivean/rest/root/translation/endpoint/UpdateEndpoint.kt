@@ -9,7 +9,6 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -37,37 +36,28 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val translationRepository: TranslationRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					translationRepository.update(it.id) {
-						this.language = it.language
-						this.namespace = it.namespace ?: "translation"
-						this.label = it.label
-						this.text = it.text
-					}
-				)
-			}
-		})
-	} catch (e: ExposedSQLException) {
-		when {
-			e.message?.contains("translation_unique") == true -> {
-				conflict(ValidationResponse.build {
-					this.message = "Cannot update Translation!"
-					this.validation("language", "error", "Language or label already exists!")
-					this.validation("label", "error", "Language or label already exists!")
-				})
-			}
-			else -> {
-				throw e
-			}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				translationRepository.update(it.id) {
+					this.language = it.language
+					this.namespace = it.namespace ?: "translation"
+					this.label = it.label
+					this.text = it.text
+				}
+			)
 		}
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
+	})
+
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("translation_unique") == true -> {
+			conflict(ValidationResponse.build {
+				this.message = "Cannot update Translation!"
+				this.validation("language", "error", "Language or label already exists!")
+				this.validation("label", "error", "Language or label already exists!")
+			})
+		}
+		else -> null
 	}
 
 	data class Request(

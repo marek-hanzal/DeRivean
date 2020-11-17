@@ -80,11 +80,11 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 			}
 
 			AttributeGroup.new {
-				name = "resources"
+				name = "resource"
 				description = "Attributes describing Resources (usually production of buildings)."
 			}.also { resources(it) }
 			AttributeGroup.new {
-				name = "costs"
+				name = "cost"
 				description = "Attributes describing cost of something; should be in pair with Resources."
 			}.also { resources(it) }
 			AttributeGroup.new {
@@ -93,15 +93,15 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 			}.also { resources(it) }
 
 			AttributeGroup.new {
-				name = "kingdoms"
+				name = "kingdom"
 				description = "Attributes related to Kingdoms"
 			}.also { commons(it) }
 			AttributeGroup.new {
-				name = "buildings"
+				name = "building"
 				description = "Attributes related to Buildings"
 			}.also { commons(it) }
 			AttributeGroup.new {
-				name = "heroes"
+				name = "hero"
 				description = "Attributes related to Heroes"
 			}.also { commons(it) }
 		}

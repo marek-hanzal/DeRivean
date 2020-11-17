@@ -5,7 +5,6 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.storage.entities.Kingdom
 import derivean.storage.repository.KingdomRepository
@@ -53,11 +52,11 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		}
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("kingdom_name_unique")) {
-			return conflictWithUnique("Cannot create kingdom!", "name", "Duplicate kingdom name!")
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("kingdom_name_unique") == true -> {
+			conflictWithUnique("Cannot create Kingdom!", "name", "Kingdom with the given name already exists.")
 		}
-		return null
+		else -> null
 	}
 
 	data class Request(

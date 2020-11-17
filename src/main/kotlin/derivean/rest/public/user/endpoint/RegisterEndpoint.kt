@@ -4,7 +4,6 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.server.auth.AuthenticatorService
 import derivean.storage.entities.User
@@ -37,23 +36,22 @@ class RegisterMapper(container: IContainer) : AbstractCreateMapper<ApplicationRe
 	private val authenticatorService: AuthenticatorService by container.lazy()
 	private val roleRepository: RoleRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: User) {
-		request.request.let {
-			entity.name = it.name
-			entity.login = it.login
-			entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
-			entity.site = "game"
-			entity.roles = SizedCollection(listOf(roleRepository.findByName("game")))
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: User) = request.request.let {
+		entity.name = it.name
+		entity.login = it.login
+		entity.password = it.password?.let { password -> authenticatorService.encrypt(password) }
+		entity.site = "game"
+		entity.roles = SizedCollection(listOf(roleRepository.findByName("game")))
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("user_name_unique")) {
-			return conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
-		} else if (message.contains("user_login_unique")) {
-			return conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("user_name_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "name", "Duplicate user name!")
 		}
-		return null
+		e.message?.contains("user_login_unique") == true -> {
+			conflictWithUnique("Cannot register user!", "login", "Duplicate login name!")
+		}
+		else -> null
 	}
 
 	data class Request(

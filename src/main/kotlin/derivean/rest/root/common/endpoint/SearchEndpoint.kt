@@ -3,7 +3,10 @@ package derivean.rest.root.common.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.Response
+import derivean.lib.rest.ok
 import derivean.storage.repository.*
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -39,40 +42,34 @@ class SearchMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val heroRepository: HeroRepository by container.lazy()
 	private val translationRepository: TranslationRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>) = try {
-		ok(storage.read {
-			item.request.let {
-				/**
-				 * because this will search everywhere, there should be only a few results
-				 */
-				val limit = 50
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.read {
+		item.request.let {
+			/**
+			 * because this will search everywhere, there should be only a few results
+			 */
+			val limit = 50
 
-				/**
-				 * this will (should) prevent database for failing, but also all text columns
-				 * must be at least 36 chars in length
-				 */
-				val search = it.search.take(36)
-				Result(
+			/**
+			 * this will (should) prevent database for failing, but also all text columns
+			 * must be at least 36 chars in length
+			 */
+			val search = it.search.take(36)
+			Response(
+				emptyList<Item>() +
 					userRepository.search(search, limit).map { item -> Item(item.id.toString(), "user", item.name) } +
-						kingdomRepository.search(search, limit).map { item -> Item(item.id.toString(), "kingdom", item.name) } +
-						buildingRepository.search(search, limit).map { item -> Item(item.id.toString(), "building", item.name) } +
-						heroRepository.search(search, limit).map { item -> Item(item.id.toString(), "hero", item.name) } +
-						translationRepository.search(search, limit).map { item -> Item(item.id.toString(), "translation", item.language + ": " + item.label) }
-				)
-			}
-		})
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
-	}
+					kingdomRepository.search(search, limit).map { item -> Item(item.id.toString(), "kingdom", item.name) } +
+					buildingRepository.search(search, limit).map { item -> Item(item.id.toString(), "building", item.name) } +
+					heroRepository.search(search, limit).map { item -> Item(item.id.toString(), "hero", item.name) } +
+					translationRepository.search(search, limit).map { item -> Item(item.id.toString(), "translation", item.language + ": " + item.label) }
+			)
+		}
+	})
 
 	data class Request(
 		val search: String,
 	)
 
-	data class Result(
+	data class Response(
 		val items: List<Item>,
 	)
 
