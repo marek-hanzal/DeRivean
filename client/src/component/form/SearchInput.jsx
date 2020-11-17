@@ -22,7 +22,6 @@ const SearchInput = (
 	const navigate = useNavigate();
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const [open, setOpen] = useState(false);
 	const editorContext = useContext(EditorContext);
 	const discoveryContext = useContext(DiscoveryContext);
 	mapper = mapper || (data => data.items.map(item => ({

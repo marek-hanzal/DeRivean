@@ -78,6 +78,13 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 					this.description = "You know it, experience!"
 				}
 			}
+			val userLimits = { it: AttributeGroup ->
+				AttributeType.new {
+					this.group = it
+					this.name = "limit.kingdoms"
+					this.description = "Limit number of kingdoms user can create"
+				}
+			}
 
 			AttributeGroup.new {
 				name = "resource"
@@ -104,6 +111,14 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 				name = "hero"
 				description = "Attributes related to Heroes"
 			}.also { commons(it) }
+			AttributeGroup.new {
+				name = "user"
+				description = "Attributes related to Users"
+			}.also { commons(it) }
+			AttributeGroup.new {
+				name = "limits.user"
+				description = "Attributes related to User's limits"
+			}.also { userLimits(it) }
 		}
 		storage.write {
 			TranslationCsv.translations("upgrade/u2020_11_13/translations.csv").forEach {
