@@ -116,7 +116,7 @@ class u2020_11_16(container: IContainer) : AbstractUpgrade(container) {
 				description = "Attributes related to Users"
 			}.also { commons(it) }
 			AttributeGroup.new {
-				name = "limits.user"
+				name = "user.limit"
 				description = "Attributes related to User's limits"
 			}.also { userLimits(it) }
 		}
