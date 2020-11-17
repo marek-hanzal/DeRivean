@@ -20,9 +20,13 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 
 	override fun delete(uuid: UUID) = storage.write { find(uuid).delete() }
 
-	override fun total() = entity.table.slice(entity.table.id).selectAll().count()
+	override fun total(filter: EntityFilter<T>?) = filter?.let { entity.all().filter(it).sumBy { 1 }.toLong() } ?: entity.table.slice(entity.table.id).selectAll().count()
 
-	override fun page(page: Int, limit: Int, block: (T) -> Unit) = entity.all().limit(limit, (page * limit).toLong()).forEach { block(it) }
+	override fun page(page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>?) {
+		entity.all().limit(limit, (page * limit).toLong()).let { collection ->
+			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
+		}
+	}
 
 	override fun find(uuid: UUID) = entity.findById(uuid) ?: throw UnknownEntityException("Requested an unknown [${entity.table}] [${uuid}].")
 

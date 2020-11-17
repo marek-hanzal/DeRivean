@@ -20,13 +20,15 @@ interface IRepository<T : UUIDEntity> {
 
 	/**
 	 * Return total number of records in this repository (total number of rows in table).
+	 *
+	 * If filter is provided, items are iterated and counted manually.
 	 */
-	fun total(): Long
+	fun total(filter: EntityFilter<T>? = null): Long
 
 	/**
 	 * Return just UUIDs of the given entity page.
 	 */
-	fun page(page: Int, limit: Int, block: (T) -> Unit)
+	fun page(page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>? = null)
 
 	fun table(): UUIDTable
 
