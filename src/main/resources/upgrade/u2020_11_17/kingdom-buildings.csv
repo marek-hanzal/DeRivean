@@ -1,2 +1,17 @@
 kingdom,name,description
 template,lumberjack,Fights for wood!
+template,quarry,Gets stone
+template,sawmill,Makes planks from raw wood
+template,waterworks,The source of water
+template,brewery,You god good beer there!
+template,farm,Some food from here
+template,pig farm,"Pigs, pigs, pigz"
+template,mill,Flour maker
+template,bakery,Bakes bread from Flour Maker
+template,butcher,Sad end for Pigz
+template,inn,"Source of quests, heroes and whatever else"
+template,coal mine,Important place - source of fuel!
+template,gold mine,You will be rich!
+template,goldsmith,Makes money. A lot!
+template,iron mine,Source of rough power!
+template,gem mine,Treasures are hidden there

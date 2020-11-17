@@ -40,4 +40,8 @@ object BuildingTable : UUIDTable("building") {
 	 * the first time the building starts production.
 	 */
 	val claim = datetime("claim").nullable()
+
+	init {
+		uniqueIndex("building_unique", kingdom, name)
+	}
 }
