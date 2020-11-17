@@ -86,7 +86,7 @@ const AttributesEditor = (
 						.on("error", () => {
 							message.success(t(`${moduleContext.id}.attributes.update-failed`));
 						})
-						.on("done", () => {
+						.on("catch", () => {
 							layoutContext.loadingFinish();
 						}),
 					navigate,

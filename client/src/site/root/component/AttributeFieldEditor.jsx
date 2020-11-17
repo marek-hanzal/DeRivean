@@ -59,8 +59,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 												allowClear
 												placeholder={t(moduleContext.id + ".form.attribute.name.hint")}
 												options={(attributeTypes || []).map(item => ({
-													label: t(item.name),
 													value: item.id,
+													label: t(item.name),
 												}))}
 												disabled={!editorContext.editor}
 											/>
@@ -96,9 +96,8 @@ const AttributeFieldEditor = ({useAttributeFetch = null}) => {
 										title={t(moduleContext.id + ".form.attribute.deleteConfirm")}
 										onConfirm={() => remove(field.name)}
 										disabled={!editorContext.editor}
-									>
-										<Button disabled={!editorContext.editor} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>
-									</Popconfirm>
+										children={<Button disabled={!editorContext.editor} size={"small"} type={"danger"} ghost shape={"circle"} icon={<DeleteItemIcon/>}/>}
+									/>
 								</List.Item>
 							))}
 							{
