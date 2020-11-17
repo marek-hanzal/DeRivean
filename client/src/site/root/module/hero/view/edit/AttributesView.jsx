@@ -8,7 +8,7 @@ const AttributesView = () => {
 	layoutContext.useMenuSelect(["root.hero.attributes"]);
 	return (
 		<HeroView>
-			<AttributesEditor/>
+			<AttributesEditor groups={["resource", "hero", "cost"]}/>
 		</HeroView>
 	);
 };

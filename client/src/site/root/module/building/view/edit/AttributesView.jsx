@@ -8,7 +8,7 @@ const AttributesView = () => {
 	layoutContext.useMenuSelect(["root.building.attributes"]);
 	return (
 		<BuildingView>
-			<AttributesEditor/>
+			<AttributesEditor groups={["resource", "building", "cost"]}/>
 		</BuildingView>
 	);
 };
