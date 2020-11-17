@@ -44,7 +44,7 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override fun map(request: ApplicationRequest<Request>, entity: BuildingEntity) = request.request.let {
 		entity.name = it.name
 		entity.description = it.description
-		entity.built = it.built?.let { date -> DateTime(date) }
+		entity.build = it.built?.let { date -> DateTime(date) }
 		entity.claim = it.claim?.let { date -> DateTime(date) }
 		entity.kingdom = kingdomRepository.find(it.kingdom)
 		entity.user = entity.kingdom.user

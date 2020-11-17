@@ -37,7 +37,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		this.user = item.kingdom.user.id
 		this.name = item.name
 		this.description = item.description
-		this.built = item.built
+		this.built = item.build
 		this.claim = item.claim
 		this.attributes = item.attributes
 	}

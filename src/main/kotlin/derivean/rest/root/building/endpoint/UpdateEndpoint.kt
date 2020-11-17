@@ -51,7 +51,7 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 				buildingRepository.update(it.id) {
 					it.name?.let { name -> this.name = name }
 					it.description?.let { description -> this.description = description }
-					this.built = it.built?.let { built -> DateTime(built) }
+					this.build = it.built?.let { built -> DateTime(built) }
 					it.attributes?.let { attributes -> this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(attributes)) }
 				}
 			)

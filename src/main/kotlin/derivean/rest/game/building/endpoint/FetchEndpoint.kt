@@ -6,6 +6,7 @@ import derivean.lib.storage.EntityUUID
 import derivean.lib.utils.asIso
 import derivean.rest.common.FetchAttribute
 import derivean.rest.game.AbstractFetchEndpoint
+import derivean.server.building.BuildingService
 import derivean.storage.entities.AttributeEntity
 import derivean.storage.entities.BuildingEntity
 import derivean.storage.repository.BuildingRepository
@@ -31,13 +32,15 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 }
 
 class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchMapper.Fetch>(container) {
+	private val buildingService: BuildingService by container.lazy()
+
 	override fun map(item: BuildingEntity) = Fetch.build {
 		this.id = item.id
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
 		this.description = item.description
-		this.built = item.built
+		this.built = item.build
 		this.claim = item.claim
 		this.attributes = item.attributes
 	}
@@ -51,6 +54,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		val built: String?,
 		val isBuilt: Boolean,
 		val remainingBuildTime: Long?,
+		val buildAvailable: Boolean,
 		val claim: String?,
 		val attributes: List<FetchAttribute>,
 	) {
@@ -77,6 +81,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				built?.asIso(),
 				built?.isBeforeNow ?: false,
 				built?.let { Duration(DateTime.now(), it).standardSeconds },
+				false,
 				claim?.asIso(),
 				attributes.map { FetchAttribute.build(it) },
 			)

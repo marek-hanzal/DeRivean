@@ -11,9 +11,10 @@ class BuildingEntity(id: EntityUUID) : UUIDEntity(id) {
 
 	var user by UserEntity referencedOn BuildingTable.user
 	var kingdom by KingdomEntity referencedOn BuildingTable.kingdom
+	var attributes by AttributeEntity via BuildingAttributeTable
+
 	var name by BuildingTable.name
 	var description by BuildingTable.description
-	var built by BuildingTable.built
+	var build by BuildingTable.build
 	var claim by BuildingTable.claim
-	var attributes by AttributeEntity via BuildingAttributeTable
 }
