@@ -4,9 +4,9 @@ import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
 import derivean.lib.utils.asIso
-import derivean.rest.common.AttributeType
 import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
+import derivean.storage.entities.AttributeEntity
 import derivean.storage.entities.BuildingEntity
 import derivean.storage.repository.BuildingRepository
 import io.ktor.routing.*
@@ -62,7 +62,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			var description: String? = null
 			var built: String? = null
 			var claim: String? = null
-			var attributes: SizedIterable<derivean.storage.entities.AttributeEntity> = SizedCollection()
+			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),
@@ -72,7 +72,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				description,
 				built,
 				claim,
-				attributes.map { FetchAttribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
+				attributes.map { FetchAttribute.build(it) },
 			)
 		}
 	}

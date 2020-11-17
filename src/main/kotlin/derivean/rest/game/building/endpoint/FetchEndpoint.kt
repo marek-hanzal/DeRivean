@@ -6,10 +6,13 @@ import derivean.lib.storage.EntityUUID
 import derivean.lib.utils.asIso
 import derivean.rest.common.FetchAttribute
 import derivean.rest.game.AbstractFetchEndpoint
+import derivean.storage.entities.AttributeEntity
 import derivean.storage.entities.BuildingEntity
 import derivean.storage.repository.BuildingRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.jetbrains.exposed.sql.SizedCollection
+import org.jetbrains.exposed.sql.SizedIterable
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -34,9 +37,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		this.description = item.description
 		this.built = item.built?.asIso()
 		this.claim = item.claim?.asIso()
-//		item.attributes.forEach {
-//			this.attributes.add(Attribute(it.name, it.value))
-//		}
+		this.attributes = item.attributes
 	}
 
 	data class Fetch(
@@ -61,7 +62,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			var description: String? = null
 			var built: String? = null
 			var claim: String? = null
-			val attributes = mutableListOf<FetchAttribute>()
+			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),
@@ -71,7 +72,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				description,
 				built,
 				claim,
-				attributes,
+				attributes.map { FetchAttribute.build(it) },
 			)
 		}
 	}

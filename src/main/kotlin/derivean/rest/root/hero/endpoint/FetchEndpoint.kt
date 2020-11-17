@@ -3,7 +3,6 @@ package derivean.rest.root.hero.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
-import derivean.rest.common.AttributeType
 import derivean.rest.common.FetchAttribute
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.HeroEntity
@@ -59,7 +58,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<HeroEntity, FetchMappe
 				kingdom.toString(),
 				user.toString(),
 				name,
-				attributes.map { FetchAttribute(AttributeType(it.type.id.value, it.type.group.id.value, it.type.name), it.value) },
+				attributes.map { FetchAttribute.build(it) },
 			)
 		}
 	}
