@@ -20,6 +20,7 @@ import derivean.server.upgrade.u2020_11_16.u2020_11_16
 import derivean.server.upgrade.u2020_11_17.u2020_11_17
 import derivean.server.upgrade.u2020_11_17.u2020_11_17_01
 import derivean.server.upgrade.u2020_11_17.u2020_11_17_02
+import derivean.server.upgrade.u2020_11_17.u2020_11_17_03
 import derivean.server.user.SessionValidator
 import io.github.config4k.extract
 import io.ktor.util.*
@@ -41,6 +42,7 @@ object ServerContainer {
 			register(u2020_11_17::class)
 			register(u2020_11_17_01::class)
 			register(u2020_11_17_02::class)
+			register(u2020_11_17_03::class)
 		}
 		configurator(IHttpServer::class) {
 			register(DiscoveryHttpModule::class)
