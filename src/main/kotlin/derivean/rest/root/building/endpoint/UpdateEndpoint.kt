@@ -3,7 +3,10 @@ package derivean.rest.root.building.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.Response
+import derivean.lib.rest.ok
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
 import derivean.storage.repository.AttributeRepository
@@ -42,25 +45,18 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val attributeMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					buildingRepository.update(it.id) {
-						this.name = it.name
-						this.description = it.description
-						this.built = it.built?.let { built -> DateTime(built) }
-						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
-					}
-				)
-			}
-		})
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
-	}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				buildingRepository.update(it.id) {
+					this.name = it.name
+					this.description = it.description
+					this.built = it.built?.let { built -> DateTime(built) }
+					this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
+				}
+			)
+		}
+	})
 
 	data class Request(
 		val id: String,

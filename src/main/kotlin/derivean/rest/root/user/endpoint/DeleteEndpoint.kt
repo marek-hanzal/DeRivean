@@ -3,7 +3,10 @@ package derivean.rest.root.user.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.Response
+import derivean.lib.rest.ok
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -35,16 +38,9 @@ class DeleteEndpoint(container: IContainer) : AbstractActionEndpoint(container) 
 class DeleteMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<DeleteMapper.Request>, Response<out Any>>(container) {
 	private val userRepository: UserRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>) = try {
-		ok(storage.write {
-			userRepository.delete(item.request.id)
-		})
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
-	}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		userRepository.delete(item.request.id)
+	})
 
 	data class Request(val id: String)
 }

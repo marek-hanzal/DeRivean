@@ -5,9 +5,7 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.IMapper
 import derivean.lib.repository.IRelationRepository
 import derivean.lib.repository.IRepository
-import derivean.lib.rest.AbstractEndpoint
-import derivean.lib.rest.badRequest
-import derivean.lib.rest.resolve
+import derivean.lib.rest.*
 import derivean.lib.storage.IStorage
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -32,8 +30,8 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 					call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
 				}
 				get("$url/page/{page}") {
-					handle(call) {
-						pageService.page(call, repository, mapper)
+					call.handle(logger) {
+						ok(pageService.page(call, repository, mapper))
 					}
 				}
 			}
@@ -61,8 +59,8 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 					call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
 				}
 				get("$url/page/{page}") {
-					handle(call) {
-						pageService.page(call, relation(call), repository, mapper)
+					call.handle(logger) {
+						ok(pageService.page(call, relation(call), repository, mapper))
 					}
 				}
 			}

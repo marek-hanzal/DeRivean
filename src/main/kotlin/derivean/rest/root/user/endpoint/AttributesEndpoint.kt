@@ -1,10 +1,9 @@
 package derivean.rest.root.user.endpoint
 
-import derivean.game.user.UserAttributes
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.rest.AbstractEndpoint
-import derivean.lib.rest.ok
+import derivean.lib.rest.notImplemented
 import derivean.lib.rest.resolve
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -23,7 +22,8 @@ class AttributesEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			routing.authenticate {
 				withAnyRole("root") {
 					get(url) {
-						call.resolve(ok(UserAttributes.export()))
+						call.resolve(notImplemented("Read read attributes from a new endpoint (attribute group)"))
+//						call.resolve(ok(UserAttributes.export()))
 					}
 				}
 			}

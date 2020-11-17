@@ -5,7 +5,6 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.lib.rest.conflictWithUnique
 import derivean.rest.AttributesMapper
 import derivean.rest.common.Attributes
@@ -47,20 +46,18 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	private val attributesMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Hero) {
-		request.request.let {
-			entity.name = it.name
-			entity.kingdom = kingdomRepository.find(it.kingdom)
-			entity.user = entity.kingdom.user
-			entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: Hero) = request.request.let {
+		entity.name = it.name
+		entity.kingdom = kingdomRepository.find(it.kingdom)
+		entity.user = entity.kingdom.user
+		entity.attributes = attributeRepository.attributes(entity.attributes, attributesMapper.map(it.attributes))
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("hero_name_unique")) {
-			return conflictWithUnique("Cannot create hero!", "name", "Duplicate hero name!")
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("hero_name_unique") == true -> {
+			conflictWithUnique("Cannot create Hero!", "name", "Hero with the given name already exists.")
 		}
-		return null
+		else -> null
 	}
 
 	data class Request(

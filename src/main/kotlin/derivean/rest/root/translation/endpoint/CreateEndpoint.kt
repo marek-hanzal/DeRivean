@@ -3,7 +3,10 @@ package derivean.rest.root.translation.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
-import derivean.lib.rest.*
+import derivean.lib.rest.AbstractActionEndpoint
+import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.ValidationResponse
+import derivean.lib.rest.conflict
 import derivean.storage.entities.Translation
 import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
@@ -37,24 +40,22 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val repository: TranslationRepository by container.lazy()
 	override val fetchMapper: FetchMapper by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: Translation) {
-		request.request.let {
-			entity.language = it.language
-			entity.namespace = it.namespace ?: "translation"
-			entity.label = it.label
-			entity.text = it.text
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: Translation) = request.request.let {
+		entity.language = it.language
+		entity.namespace = it.namespace ?: "translation"
+		entity.label = it.label
+		entity.text = it.text
 	}
 
-	override fun resolveException(message: String): Response<out Any>? {
-		if (message.contains("translation_unique")) {
-			return conflict(ValidationResponse.build {
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("translation_unique") == true -> {
+			conflict(ValidationResponse.build {
 				this.message = "Cannot create Translation!"
 				this.validation("language", "error", "Language or label already exists!")
 				this.validation("label", "error", "Language or label already exists!")
 			})
 		}
-		return null
+		else -> null
 	}
 
 	data class Request(

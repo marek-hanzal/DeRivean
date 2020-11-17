@@ -15,7 +15,6 @@ import io.ktor.request.*
 import io.ktor.routing.*
 import io.ktor.sessions.*
 import io.ktor.util.*
-import java.util.*
 
 @KtorExperimentalAPI
 class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
@@ -34,8 +33,8 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 			routing.authenticate(optional = true) {
 				get(url) {
 					call.authentication.principal<HttpServer.SessionTicket>()?.let {
-						try {
-							call.resolve(storage.read {
+						call.handle(logger, {
+							storage.read {
 								userRepository.findByTicket(it.id).let { user ->
 									ok(
 										Response(
@@ -45,53 +44,57 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 										)
 									)
 								}
-							})
-						} catch (e: NoSuchElementException) {
-							logger.error(e.message, e)
-							call.resolve(unauthorized("Who are you?"))
+							}
+						}) {
+							when (it) {
+								is NoSuchElementException -> {
+									logger.error(it.message, it)
+									unauthorized("Who are you?")
+								}
+								else -> null
+							}
 						}
 					} ?: call.resolve(unauthorized("You don't have a valid ticket, bro!"))
 				}
 			}
 			routing.post(url) {
-				handle(call) {
-					call.receive<Request>().let {
-						call.resolve(try {
-							/**
-							 * Write, because ticket service will generate a new ticket
-							 */
-							storage.write {
-								authenticatorService.authenticate(it.login, it.password).let { user ->
-									call.ticket(ticketService.ticketFor(user))
-									ok(
-										Response(
-											user.login,
-											user.name,
-											user.site,
-										)
+				call.handle(logger, {
+					receive<Request>().let {
+						/**
+						 * Write, because ticket service will generate a new ticket
+						 */
+						storage.write {
+							authenticatorService.authenticate(it.login, it.password).let { user ->
+								call.ticket(ticketService.ticketFor(user))
+								ok(
+									Response(
+										user.login,
+										user.name,
+										user.site,
 									)
-								}
+								)
 							}
-						} catch (e: UserException) {
+						}
+					}
+				}) {
+					when (it) {
+						is UserException -> {
 							forbidden(ValidationResponse.build {
 								message = "Login failed!"
 								validation("login", "error", "Check your login")
 								validation("password", "error", "And your password")
 							})
-						} catch (e: Throwable) {
-							logger.error(e.message, e)
-							internalServerError(ValidationResponse.build {
-								message = "Some ugly internal server error happened!"
-							})
 						}
-						)
+						else -> null
 					}
 				}
 			}
 			routing.delete(url) {
-				call.sessions.get<HttpServer.SessionTicket>()?.let { sessionTicket -> storage.write { ticketService.drop(sessionTicket.id) } }
-				call.sessions.clear<HttpServer.SessionTicket>()
-				call.resolve(ok("You're logged out - see you soon!"))
+				call.handle(logger) {
+					call.sessions.get<HttpServer.SessionTicket>()?.let { sessionTicket -> storage.write { ticketService.drop(sessionTicket.id) } }
+					call.sessions.clear<HttpServer.SessionTicket>()
+					ok("You're logged out - see you soon!")
+				}
 			}
 		}
 	}

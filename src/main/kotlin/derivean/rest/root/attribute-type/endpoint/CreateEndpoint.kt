@@ -5,7 +5,6 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
 import derivean.storage.entities.AttributeType
 import derivean.storage.repository.AttributeGroupRepository
 import derivean.storage.repository.AttributeTypeRepository
@@ -41,15 +40,11 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 	override val fetchMapper: FetchMapper by container.lazy()
 	private val attributeGroupRepository: AttributeGroupRepository by container.lazy()
 
-	override fun map(request: ApplicationRequest<Request>, entity: AttributeType) {
-		request.request.let {
-			entity.group = attributeGroupRepository.find(it.group)
-			entity.name = it.name
-			entity.description = it.description
-		}
+	override fun map(request: ApplicationRequest<Request>, entity: AttributeType) = request.request.let {
+		entity.group = attributeGroupRepository.find(it.group)
+		entity.name = it.name
+		entity.description = it.description
 	}
-
-	override fun resolveException(message: String): Response<out Any>? = null
 
 	data class Request(
 		val group: String,

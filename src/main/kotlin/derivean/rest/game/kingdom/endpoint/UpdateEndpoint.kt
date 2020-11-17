@@ -9,7 +9,6 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -37,33 +36,21 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					kingdomRepository.update(it.id) {
-						it.name?.let { name -> this.name = name }
-					}
-				)
-			}
-		})
-	} catch (e: ExposedSQLException) {
-		when {
-			e.message?.contains("kingdom_name_unique") == true -> {
-				conflict(ValidationResponse.build {
-					message = "Cannot update Kingdom!"
-					validation("name", "error", "Kingdom with the given name already exists.")
-				})
-			}
-			else -> {
-				throw e
-			}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				kingdomRepository.update(it.id) {
+					it.name?.let { name -> this.name = name }
+				}
+			)
 		}
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
+	})
+
+	override fun exception(e: Throwable) = when {
+		e.message?.contains("kingdom_name_unique") == true -> {
+			conflictWithUnique("Cannot update Kingdom!", "name", "Kingdom with the given name already exists.")
+		}
+		else -> null
 	}
 
 	data class Request(
