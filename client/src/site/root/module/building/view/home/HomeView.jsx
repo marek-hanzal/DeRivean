@@ -1,4 +1,6 @@
+import {Card} from "antd";
 import CommonHomeView from "site/common/view/CommonHomeView";
+import BuildCountdown from "site/root/module/building/component/BuildCountdown";
 import BuildingView from "site/root/module/building/view/BuildingView";
 
 const HomeView = () => {
@@ -7,7 +9,11 @@ const HomeView = () => {
 			<CommonHomeView
 				menu={"root.building"}
 			>
-				{data => null}
+				{data => (
+					<Card style={{textAlign: "center"}}>
+						<BuildCountdown building={data}/>
+					</Card>
+				)}
 			</CommonHomeView>
 		</BuildingView>
 	);

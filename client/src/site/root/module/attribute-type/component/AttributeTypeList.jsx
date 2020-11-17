@@ -22,7 +22,7 @@ const AttributeTypeListItem = ({item}) => {
 						{t("attribute-type." + item.description)}
 					</Space>
 				}
-				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{t("attribute." + item.name)}</Link>}
 			/>
 		</List.Item>
 	);

@@ -9,6 +9,12 @@ import {Link} from "react-router-dom";
 import BuildingIcon from "site/common/icon/BuildingIcon";
 import {attributeFilterByGroup} from "site/root/module/attribute/utils/utils";
 
+const IsBuiltIcon = ({isBuilt}) => {
+	return (
+		<BuildingIcon style={isBuilt ? {color: "#262"} : {color: "#CCC"}}/>
+	);
+};
+
 const AttributeGroupItems = ({attributes, group}) => {
 	const {t} = useTranslation();
 	return (
@@ -29,6 +35,7 @@ const BuildingListItem = ({item}) => {
 
 	return (
 		<List.Item actions={[
+			<IsBuiltIcon isBuilt={item.isBuilt}/>,
 			<Link to={moduleContext.link.edit.link(item.id)}><Button type={"primary"} ghost icon={<EditIcon/>} size={"large"} children={t(moduleContext.id + ".list.edit")}/></Link>,
 		]}>
 			<List.Item.Meta
@@ -42,7 +49,7 @@ const BuildingListItem = ({item}) => {
 						<AttributeGroupItems group={"production"} attributes={item.attributes}/>
 					</Space>
 				}
-				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{t("building." + item.name)}</Link>}
 			/>
 		</List.Item>
 	);
