@@ -36,7 +36,7 @@ class ResourceEndpoint(container: IContainer) : AbstractActionEndpoint(container
 }
 
 @KtorExperimentalAPI
-class ResourceMapper(container: IContainer) : AbstractActionMapper<ApplicationRequest<Unit>>(container) {
+class ResourceMapper(container: IContainer) : AbstractActionMapper<Unit>(container) {
 	private val userResourceService: UserResourceService by container.lazy()
 
 	override fun resolve(item: ApplicationRequest<Unit>) = ok(userResourceService.usage(user(item.call)))
