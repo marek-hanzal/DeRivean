@@ -3,10 +3,7 @@ package derivean.rest.root.`attribute-type`.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.AbstractActionEndpoint
-import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
-import derivean.lib.rest.ok
+import derivean.lib.rest.*
 import derivean.storage.repository.AttributeTypeRepository
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -49,6 +46,10 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 			)
 		}
 	})
+
+	override fun exception() = mapOf(
+		"attribute-type_name_unique" to { conflictWithUnique("Cannot update Attribute Type!", "name", "Attribute Type with the given name already exists.") },
+	)
 
 	data class Request(
 		val id: String,

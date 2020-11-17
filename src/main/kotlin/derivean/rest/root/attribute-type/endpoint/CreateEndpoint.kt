@@ -5,6 +5,7 @@ import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.AbstractCreateMapper
 import derivean.lib.rest.AbstractActionEndpoint
 import derivean.lib.rest.ApplicationRequest
+import derivean.lib.rest.conflictWithUnique
 import derivean.storage.entities.AttributeType
 import derivean.storage.repository.AttributeGroupRepository
 import derivean.storage.repository.AttributeTypeRepository
@@ -45,6 +46,10 @@ class CreateMapper(container: IContainer) : AbstractCreateMapper<ApplicationRequ
 		entity.name = it.name
 		entity.description = it.description
 	}
+
+	override fun exception() = mapOf(
+		"attribute-type_name_unique" to { conflictWithUnique("Cannot create Attribute Type!", "name", "Attribute Type with the given name already exists.") },
+	)
 
 	data class Request(
 		val group: String,

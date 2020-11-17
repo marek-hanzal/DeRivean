@@ -12,7 +12,6 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {
@@ -42,35 +41,20 @@ class UpdateMapper(container: IContainer) : AbstractActionMapper<ApplicationRequ
 	private val attributeMapper: AttributesMapper by container.lazy()
 	private val attributeRepository: AttributeRepository by container.lazy()
 
-	override fun resolve(item: ApplicationRequest<Request>): Response<out Any> = try {
-		ok(storage.write {
-			item.request.let {
-				fetchMapper.map(
-					heroRepository.update(it.id) {
-						it.name?.let { name -> this.name = name }
-						this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
-					}
-				)
-			}
-		})
-	} catch (e: ExposedSQLException) {
-		when {
-			e.message?.contains("hero_name_unique") == true -> {
-				conflict(ValidationResponse.build {
-					message = "Cannot update Hero!"
-					validation("name", "error", "Hero with the given name already exists.")
-				})
-			}
-			else -> {
-				throw e
-			}
+	override fun resolve(item: ApplicationRequest<Request>) = ok(storage.write {
+		item.request.let {
+			fetchMapper.map(
+				heroRepository.update(it.id) {
+					it.name?.let { name -> this.name = name }
+					this.attributes = attributeRepository.attributes(this.attributes, attributeMapper.map(it.attributes))
+				}
+			)
 		}
-	} catch (e: Throwable) {
-		logger.error(e.message, e)
-		internalServerError(ValidationResponse.build {
-			message = "Some ugly internal server error happened!"
-		})
-	}
+	})
+
+	override fun exception() = mapOf(
+		"hero_name_unique" to { conflictWithUnique("Cannot update Hero!", "name", "Hero with the given name already exists.") },
+	)
 
 	data class Request(
 		val id: String,
