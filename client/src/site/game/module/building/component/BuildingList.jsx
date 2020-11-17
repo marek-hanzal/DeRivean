@@ -2,16 +2,20 @@ import {Avatar, Divider, List, Space} from "antd";
 import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
+import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import AttributeGroupItems from "site/common/attribute/AttributeGroupItems";
 import IsBuiltIcon from "site/common/building/IsBuiltIcon";
 import BuildingIcon from "site/common/icon/BuildingIcon";
+import BuildButton from "site/game/module/building/component/BuildButton";
 
 const BuildingListItem = ({item}) => {
 	const moduleContext = useContext(ModuleContext);
+	const {t} = useTranslation();
 	return (
 		<List.Item actions={[
 			<IsBuiltIcon isBuilt={item.isBuilt}/>,
+			<BuildButton building={item}/>
 		]}>
 			<List.Item.Meta
 				avatar={
@@ -21,9 +25,10 @@ const BuildingListItem = ({item}) => {
 					<Space split={<Divider type={"vertical"}/>}>
 						<AttributeGroupItems group={"cost"} attributes={item.attributes}/>
 						{item.isBuilt ? <AttributeGroupItems group={"production"} attributes={item.attributes}/> : null}
+						{item.description ? t("building." + item.description) : null}
 					</Space>
 				}
-				title={<Link to={moduleContext.link.home.link(item.id)}>{item.name}</Link>}
+				title={<Link to={moduleContext.link.home.link(item.id)}>{t("building." + item.name)}</Link>}
 			/>
 		</List.Item>
 	);

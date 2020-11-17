@@ -15,7 +15,7 @@ const HomeView = () => {
 			>
 				{data => (
 					<Card style={{textAlign: "center"}}>
-						<Space split={<Divider type={"horizontal"}/>} direction={"vertical"}>
+						<Space split={<Divider type={"horizontal"}/>} direction={"vertical"} size={"small"}>
 							<KingdomStatistics action={events => {
 								// eslint-disable-next-line
 								useKingdomStatisticsFetch(params.kingdom, events);

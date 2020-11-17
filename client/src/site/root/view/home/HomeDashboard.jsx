@@ -1,5 +1,5 @@
 import {SmileOutlined} from "@ant-design/icons";
-import {Result} from "antd";
+import {Card, Result} from "antd";
 import {useTranslation} from "react-i18next";
 import OverallStatistics from "site/root/component/OverallStatistics";
 
@@ -11,7 +11,11 @@ const HomeDashboard = () => {
 			status={"info"}
 			title={t("root.home.content.title")}
 			subTitle={t("root.home.content.subtitle")}
-			children={<OverallStatistics/>}
+			children={
+				<Card style={{textAlign: "center"}}>
+					<OverallStatistics/>
+				</Card>
+			}
 		/>
 	);
 };
