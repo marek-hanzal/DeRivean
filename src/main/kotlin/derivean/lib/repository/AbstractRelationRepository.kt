@@ -17,9 +17,15 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 	val column: Column<EntityUUID>,
 	container: IContainer,
 ) : AbstractService(container), IRelationRepository<T> {
-	override fun total(relation: UUID) = entity.table.slice(entity.table.id).selectAll().andWhere { column eq relation }.count()
+	override fun total(relation: UUID, filter: EntityFilter<T>?) = filter?.let {
+		entity.table.selectAll().andWhere { column eq relation }.filter { filter(entity.wrapRow(it)) }.sumBy { 1 }.toLong()
+	} ?: entity.table.slice(entity.table.id).selectAll().andWhere { column eq relation }.count()
 
-	override fun page(relation: UUID, page: Int, limit: Int, block: (T) -> Unit) = entity.find { column eq relation }.limit(limit, (page * limit).toLong()).forEach { block(it) }
+	override fun page(relation: UUID, page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>?) {
+		entity.find { column eq relation }.limit(limit, (page * limit).toLong()).let { collection ->
+			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
+		}
+	}
 
 	override fun table() = table
 }

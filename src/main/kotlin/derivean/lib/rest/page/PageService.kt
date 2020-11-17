@@ -3,6 +3,7 @@ package derivean.lib.rest.page
 import derivean.lib.container.AbstractService
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.IMapper
+import derivean.lib.repository.EntityFilter
 import derivean.lib.repository.IRelationRepository
 import derivean.lib.repository.IRepository
 import derivean.lib.storage.IStorage
@@ -14,13 +15,14 @@ import kotlin.math.floor
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 
-	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>) = page(call, { repository.total() }, mapper) { page, limit, block ->
-		repository.page(page, limit, block)
-	}
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>?) = page(call, { repository.total(filter) }, mapper, { page, limit, block ->
+		repository.page(page, limit, block, filter)
+	})
 
-	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) = page(call, { repository.total(relation) }, mapper) { page, limit, block ->
-		repository.page(relation, page, limit, block)
-	}
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>?) =
+		page(call, { repository.total(relation, filter) }, mapper, { page, limit, block ->
+			repository.page(relation, page, limit, block, filter)
+		})
 
 	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Int, Int, (T) -> Unit) -> Unit) = storage.read {
 		PageIndex.build {

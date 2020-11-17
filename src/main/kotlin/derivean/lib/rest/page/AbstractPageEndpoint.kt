@@ -3,6 +3,7 @@ package derivean.lib.rest.page
 import derivean.lib.container.IContainer
 import derivean.lib.http.withAnyRole
 import derivean.lib.mapper.IMapper
+import derivean.lib.repository.EntityFilter
 import derivean.lib.repository.IRelationRepository
 import derivean.lib.repository.IRepository
 import derivean.lib.rest.*
@@ -18,7 +19,7 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 	val storage: IStorage by container.lazy()
 	val pageService: IPageService by container.lazy()
 
-	fun <T : UUIDEntity> page(routing: Routing, url: String, name: String, repository: IRepository<T>, mapper: IMapper<T, out Any>) {
+	fun <T : UUIDEntity> page(routing: Routing, url: String, name: String, repository: IRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) {
 		discovery {
 			this.name = "$name.page"
 			this.link = "$url/page/{page}"
@@ -31,23 +32,23 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 				}
 				get("$url/page/{page}") {
 					call.handle(logger) {
-						ok(pageService.page(this, repository, mapper))
+						ok(pageService.page(this, repository, mapper, filter))
 					}
 				}
 			}
 		}
 	}
 
-	fun <T : UUIDEntity> page(routing: Routing, relation: String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) {
+	fun <T : UUIDEntity> page(routing: Routing, relation: String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) {
 		return page(routing, { call ->
 			if (!call.parameters.contains(relation)) {
 				call.resolve(badRequest("Missing relation parameter [$relation] in route [$url]! This is probably a server bug!"))
 			}
 			call.parameters[relation]!!
-		}, url, name, repository, mapper)
+		}, url, name, repository, mapper, filter)
 	}
 
-	fun <T : UUIDEntity> page(routing: Routing, relation: suspend (ApplicationCall) -> String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>) {
+	fun <T : UUIDEntity> page(routing: Routing, relation: suspend (ApplicationCall) -> String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) {
 		discovery {
 			this.name = "$name.page"
 			this.link = "$url/page/{page}"
@@ -60,7 +61,7 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 				}
 				get("$url/page/{page}") {
 					call.handle(logger) {
-						ok(pageService.page(this, relation(call), repository, mapper))
+						ok(pageService.page(this, relation(call), repository, mapper, filter))
 					}
 				}
 			}
