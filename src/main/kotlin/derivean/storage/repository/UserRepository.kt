@@ -24,7 +24,6 @@ class UserRepository(container: IContainer) : AbstractRepository<UserEntity, Use
 	}
 
 	fun useTemplate(template: String, target: UserEntity) {
-		TODO("Update attribute template!")
-//		attributeRepository.attributes(target.attributes, find(template).attributes.map { derivean.rest.common.Attribute(it.name, it.value) }.toTypedArray(), replace = false)
+		target.attributes = attributeRepository.attributes(target.attributes, find(template).attributes, replace = false)
 	}
 }
