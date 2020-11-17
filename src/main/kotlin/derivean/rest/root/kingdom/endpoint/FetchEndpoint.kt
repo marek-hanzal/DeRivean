@@ -9,6 +9,8 @@ import derivean.storage.entities.Kingdom
 import derivean.storage.repository.KingdomRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.jetbrains.exposed.sql.SizedCollection
+import org.jetbrains.exposed.sql.SizedIterable
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -33,9 +35,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			item.heroes.count(),
 			item.buildings.count(),
 		)
-		item.attributes.forEach {
-			this.attributes.add(Attribute(it.type.id.value, it.type.name, it.value))
-		}
+		this.attributes = item.attributes
 	}
 
 	data class Fetch(
@@ -54,14 +54,14 @@ class FetchMapper(container: IContainer) : AbstractMapper<Kingdom, FetchMapper.F
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			lateinit var stats: Stats
-			val attributes = mutableListOf<Attribute>()
+			var attributes: SizedIterable<derivean.storage.entities.Attribute> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),
 				user.toString(),
 				name,
 				stats,
-				attributes,
+				attributes.map { Attribute(it.id.value, it.value) },
 			)
 		}
 	}

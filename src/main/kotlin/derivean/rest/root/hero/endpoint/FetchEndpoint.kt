@@ -3,11 +3,14 @@ package derivean.rest.root.hero.endpoint
 import derivean.lib.container.IContainer
 import derivean.lib.mapper.AbstractMapper
 import derivean.lib.storage.EntityUUID
+import derivean.rest.common.Attribute
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.Hero
 import derivean.storage.repository.HeroRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import org.jetbrains.exposed.sql.SizedCollection
+import org.jetbrains.exposed.sql.SizedIterable
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -29,9 +32,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<Hero, FetchMapper.Fetc
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
-//		item.attributes.forEach {
-//			this.attributes.add(Attribute(it.name, it.value))
-//		}
+		this.attributes = item.attributes
 	}
 
 	data class Fetch(
@@ -50,17 +51,15 @@ class FetchMapper(container: IContainer) : AbstractMapper<Hero, FetchMapper.Fetc
 			lateinit var kingdom: EntityUUID
 			lateinit var user: EntityUUID
 			lateinit var name: String
-			val attributes = mutableListOf<Attribute>()
+			var attributes: SizedIterable<derivean.storage.entities.Attribute> = SizedCollection()
 
 			fun build() = Fetch(
 				id.toString(),
 				kingdom.toString(),
 				user.toString(),
 				name,
-				attributes,
+				attributes.map { Attribute(it.id.value, it.value) },
 			)
 		}
 	}
-
-	data class Attribute(val attribute: String, val value: Double)
 }

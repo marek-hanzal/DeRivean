@@ -6,11 +6,12 @@ import derivean.storage.entities.Attribute
 import derivean.storage.tables.AttributeTable
 import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
+import java.util.*
 
 class AttributeRepository(container: IContainer) : AbstractRepository<Attribute, AttributeTable>(Attribute, AttributeTable, container) {
 	private val attributeTypeRepository: AttributeTypeRepository by container.lazy()
 
-	fun attributes(collection: SizedIterable<Attribute>, attributes: Array<derivean.game.attribute.Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
+	fun attributes(collection: SizedIterable<Attribute>, attributes: Array<Pair<UUID, Double>>, replace: Boolean = true): SizedCollection<Attribute> {
 		if (replace) {
 			collection.forEach {
 				it.delete()
@@ -25,6 +26,6 @@ class AttributeRepository(container: IContainer) : AbstractRepository<Attribute,
 	}
 
 	fun attributes(collection: SizedIterable<Attribute>, attributes: SizedIterable<Attribute>, replace: Boolean = true): SizedCollection<Attribute> {
-		return attributes(collection, attributes.map { derivean.game.attribute.Attribute(it.type.name, it.value) }.toTypedArray(), replace)
+		return attributes(collection, attributes.map { it.type.id.value to it.value }.toTypedArray(), replace)
 	}
 }
