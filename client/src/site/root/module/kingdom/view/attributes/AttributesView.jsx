@@ -3,9 +3,9 @@ import {useContext} from "react";
 import AttributesEditor from "site/root/component/AttributesEditor";
 import KingdomView from "site/root/module/kingdom/view/KingdomView";
 
-const CommonView = () => {
+const AttributesView = () => {
 	const layoutContext = useContext(LayoutContext);
-	layoutContext.useMenuSelect(["root.kingdom.attributes.common"]);
+	layoutContext.useMenuSelect(["root.kingdom.attributes"]);
 	return (
 		<KingdomView>
 			<AttributesEditor
@@ -15,4 +15,4 @@ const CommonView = () => {
 	);
 };
 
-export default CommonView;
+export default AttributesView;
