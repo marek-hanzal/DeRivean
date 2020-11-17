@@ -13,6 +13,8 @@ import io.ktor.routing.*
 import io.ktor.util.*
 import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
+import org.joda.time.DateTime
+import org.joda.time.Duration
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -35,8 +37,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		this.user = item.kingdom.user.id
 		this.name = item.name
 		this.description = item.description
-		this.built = item.built?.asIso()
-		this.claim = item.claim?.asIso()
+		this.built = item.built
+		this.claim = item.claim
 		this.attributes = item.attributes
 	}
 
@@ -47,6 +49,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		val name: String,
 		val description: String?,
 		val built: String?,
+		val isBuilt: Boolean,
+		val remainingBuildTime: Long?,
 		val claim: String?,
 		val attributes: List<FetchAttribute>,
 	) {
@@ -60,8 +64,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			var description: String? = null
-			var built: String? = null
-			var claim: String? = null
+			var built: DateTime? = null
+			var claim: DateTime? = null
 			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
 			fun build() = Fetch(
@@ -70,8 +74,10 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				user.toString(),
 				name,
 				description,
-				built,
-				claim,
+				built?.asIso(),
+				built?.isBeforeNow ?: false,
+				built?.let { Duration(DateTime.now(), it).standardSeconds },
+				claim?.asIso(),
 				attributes.map { FetchAttribute.build(it) },
 			)
 		}

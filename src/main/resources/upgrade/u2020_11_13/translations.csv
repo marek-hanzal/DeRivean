@@ -490,3 +490,18 @@ cef36fec-dd07-4047-be34-222244a333ad,cs,translation,building.quarry,Kamenolom
 5f0a4783-44b7-4ecf-b3d5-68eb66a72cda,en,translation,attribute-group.hero,Hero
 1b2b2a36-4af4-42c0-92ce-7bab0951b8a6,en,translation,attribute.build-time,Build Time
 351e4ba7-b4a6-4abf-af20-f0f291966b56,en,translation,root.building.build-countdown,Build Countdown
+56be5129-2d79-4777-b066-969b986c037d,en,translation,game.building.build,Build!
+d4484dc8-3a1b-4aaa-845d-60fac7d1963f,cs,translation,game.building.build,Postavit!
+5144d7cc-8fad-46c9-b0f6-95faa7e77af9,cs,translation,attribute-group.cost,Cena
+a4bb8e1e-cc86-4e15-ab22-3e57e69c14d0,cs,translation,attribute.wood,Dřevo
+13cf19e0-7e95-4bbb-a713-401a75f2fc85,cs,translation,attribute.stone,Kámen
+934c4e8c-9b98-4ca3-bc41-1795f9c63434,cs,translation,game.kingdom.title,Přehled království
+927b7c2a-c0bf-4e65-be5c-b39dedcaba37,cs,translation,game.kingdom.menu,Království
+159926d3-a985-4371-8e18-dcd807e9d239,cs,translation,game.sign-out.menu,Odhlásit se!
+2cb767a1-24fb-4e07-8b49-8675c3fc95ba,cs,translation,attribute.gold,Zlato
+2f580be2-2309-4edc-bd15-53ae2e52b871,cs,translation,game.kingdom.edit.menu,Editace
+ade87e02-0729-4901-9427-336a3fbb3207,cs,translation,game.kingdom.dashboard.menu,Nástěnka
+b63d6b9c-ddd1-46c4-bdd0-2ebac49ab97c,cs,translation,game.kingdom.create.menu,Vytvořit
+fb230383-b6a1-4a99-ae0a-32d18f5cf3b9,cs,translation,game.kingdom.list.menu,Seznam
+046f2f42-081b-487b-a836-b01af0b06167,cs,translation,common.back.menu,Zpět
+f3085f6c-813c-4859-95a8-141515e61046,cs,translation,attribute-group.resource,Zdroje

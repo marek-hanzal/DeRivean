@@ -15,7 +15,6 @@ import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 import org.joda.time.DateTime
 import org.joda.time.Duration
-import kotlin.properties.Delegates
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -66,7 +65,6 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			lateinit var name: String
 			var description: String? = null
 			var built: DateTime? = null
-			var isBuilt by Delegates.notNull<Boolean>()
 			var claim: DateTime? = null
 			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
