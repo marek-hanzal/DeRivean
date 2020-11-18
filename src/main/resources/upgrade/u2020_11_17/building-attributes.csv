@@ -7,5 +7,34 @@ template,quarry,cost,stone,12
 template,quarry,production,stone,8
 template,sawmill,cost,wood,24
 template,sawmill,cost,stone,16
-template,sawmill,production.requirement,wood,0
-template,sawmill,production.requirement,stone,0
+template,sawmill,production.requirement,wood,4
+template,sawmill,production.requirement,stone,4
+template,waterworks,production.requirement,plank,12
+template,pig farm,production.requirement,corn,24
+template,mill,production.requirement,corn,16
+template,bakery,production.requirement,flour,12
+template,bakery,production.requirement,water,10
+template,inn,production.requirement,bread,6
+template,farm,production.requirement,water,16
+template,pig farm,production.requirement,water,16
+template,butcher,production.requirement,pig,6
+template,inn,production.requirement,sausage,8
+template,pig farm,production,pig,4
+template,coal mine,production.requirement,sausage,4
+template,iron mine,production.requirement,sausage,6
+template,gold mine,production.requirement,sausage,10
+template,gold mine,production.requirement,bread,6
+template,gold mine,production.requirement,water,5
+template,iron mine,production.requirement,water,5
+template,hop farm,production.requirement,water,12
+template,hop farm,production.requirement,sausage,4
+template,brewery,production.requirement,hop,16
+template,hop farm,production,hop,8
+template,sawmill,production,plank,10
+template,coal mine,production,coal,4
+template,iron mine,production,iron ore,6
+template,goldsmith,production.requirement,gold ore,4
+template,goldsmith,production.requirement,coal,6
+template,gem mine,production.requirement,water,4
+template,gem mine,production.requirement,sausage,6
+template,gem mine,production,gem,0.5
