@@ -20,7 +20,7 @@ class KingdomEntity(id: EntityUUID) : UUIDEntity(id) {
 
 	fun getProduction() = Attributes().let { attributes ->
 		buildings.forEach {
-			attributes.inc(it.getProduction())
+			attributes.incBy(it.getProduction())
 		}
 	}
 
