@@ -6,14 +6,9 @@ import kotlin.math.max
  * Low-level class holding all attributes used in computing across the game.
  */
 class Attributes : LinkedHashMap<String, Double>() {
+	fun set(attributes: Iterable<Attribute>) = putAll(attributes)
 
-	fun set(attributes: Iterable<Attribute>) {
-		for ((k, v) in attributes) {
-			this[k] = v
-		}
-	}
-
-	fun set(vararg attribute: Attribute) = set(listOf(*attribute))
+	fun set(vararg attribute: Attribute) = putAll(attribute)
 
 	/**
 	 * Override current attributes by ones from attributes.
@@ -21,7 +16,7 @@ class Attributes : LinkedHashMap<String, Double>() {
 	fun set(attributes: Attributes) = putAll(attributes)
 
 	fun set(pair: Pair<String, String>) {
-		this[pair.first] = get(pair.second, 0.0)
+		this[pair.first] = this[pair.second, 0.0]
 	}
 
 	/**
@@ -33,16 +28,10 @@ class Attributes : LinkedHashMap<String, Double>() {
 	 * Increase an attribute by the given one.
 	 */
 	fun inc(attribute: Attribute) {
-		this[attribute.first] = get(attribute.first, 0.0) + attribute.second
+		this[attribute.first] = this[attribute.first, 0.0] + attribute.second
 	}
 
 	fun inc(vararg attributes: Attribute) = inc(listOf(*attributes))
-
-	fun inc(attributes: Attributes) {
-		for (attribute in attributes) {
-			inc(attribute.toPair())
-		}
-	}
 
 	fun inc(attributes: Iterable<Attribute>) {
 		for (attribute in attributes) {
@@ -55,7 +44,7 @@ class Attributes : LinkedHashMap<String, Double>() {
 	 */
 	fun incBy(attributes: Attributes) {
 		for ((k, v) in attributes) {
-			this[k] = get(k, 0.0) + v
+			this[k] = this[k, 0.0] + v
 		}
 	}
 
@@ -63,14 +52,14 @@ class Attributes : LinkedHashMap<String, Double>() {
 	 * Decrease a given attribute or leave zero.
 	 */
 	fun decOrZero(attribute: Attribute) {
-		this[attribute.first] = max(0.0, get(attribute.first, 0.0) - attribute.second)
+		this[attribute.first] = max(0.0, this[attribute.first, 0.0] - attribute.second)
 	}
 
 	/**
 	 * Multiply given attribute; default sets default behavior (should keep zero or 1.0 * attribute).
 	 */
 	fun multiply(attribute: Attribute, default: Double = 0.0) {
-		this[attribute.first] = get(attribute.first, default) * attribute.second
+		this[attribute.first] = this[attribute.first, default] * attribute.second
 	}
 
 	companion object {
