@@ -13,6 +13,8 @@ import leight.storage.IStorage
 import leight.upgrade.AbstractUpgrade
 import leight.upgrade.IUpgradeManager
 import org.junit.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
 
 @KtorExperimentalAPI
 @ExperimentalStdlibApi
@@ -36,6 +38,9 @@ class ProductionRequirementCheckerTest {
 		val productionRequirementChecker = container.create(ProductionRequirementChecker::class)
 		storage.transaction {
 			val brewery = buildingRepository.findByKingdomAndName("test", "brewery")
+			assertEquals("Brewery does not meet requirements!", assertFails {
+				productionRequirementChecker.validate(brewery, "Brewery does not meet requirements!")
+			}.message)
 		}
 	}
 }
