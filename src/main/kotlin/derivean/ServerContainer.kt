@@ -6,9 +6,9 @@ import derivean.rest.public.PublicHttpModule
 import derivean.rest.root.RootHttpModule
 import derivean.server.auth.RoleService
 import derivean.server.config.EngineConfig
-import derivean.server.upgrade.u2020_11_16.u2020_11_16
-import derivean.server.upgrade.u2020_11_17.*
 import derivean.server.user.SessionValidator
+import derivean.upgrade.u2020_11_16.u2020_11_16
+import derivean.upgrade.u2020_11_17.*
 import io.github.config4k.extract
 import io.ktor.util.*
 import leight.auth.IRoleService
@@ -17,6 +17,7 @@ import leight.container.IContainer
 import leight.http.HttpServerConfig
 import leight.http.IHttpServer
 import leight.http.modules.ClientHttpModule
+import leight.http.modules.DiscoveryHttpModule
 import leight.pool.PoolConfig
 import leight.upgrade.IUpgradeManager
 import leight.user.ISessionValidator
@@ -43,7 +44,7 @@ object ServerContainer {
 			register(u2020_11_17_05::class)
 		}
 		configurator(IHttpServer::class) {
-			register(leight.http.modules.DiscoveryHttpModule::class)
+			register(DiscoveryHttpModule::class)
 			register(ClientHttpModule::class)
 			register(PublicHttpModule::class)
 			register(GameHttpModule::class)

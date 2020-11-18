@@ -1,7 +1,7 @@
 package leight.container
 
-import derivean.server.auth.EmptyRoleService
 import io.ktor.util.*
+import leight.auth.EmptyRoleService
 import leight.auth.IRoleService
 import leight.http.HttpServer
 import leight.http.IHttpServer
