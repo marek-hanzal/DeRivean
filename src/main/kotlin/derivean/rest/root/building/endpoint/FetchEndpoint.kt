@@ -15,6 +15,7 @@ import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 import org.joda.time.DateTime
 import org.joda.time.Duration
+import kotlin.properties.Delegates
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -37,7 +38,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		this.user = item.kingdom.user.id
 		this.name = item.name
 		this.description = item.description
-		this.built = item.build
+		this.build = item.build
+		this.isBuilt = item.isBuilt()
 		this.claim = item.claim
 		this.attributes = item.attributes
 	}
@@ -48,7 +50,7 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		val user: String,
 		val name: String,
 		val description: String?,
-		val built: String?,
+		val build: String?,
 		val isBuilt: Boolean,
 		val remainingBuildTime: Long?,
 		val claim: String?,
@@ -64,7 +66,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			var description: String? = null
-			var built: DateTime? = null
+			var build: DateTime? = null
+			var isBuilt by Delegates.notNull<Boolean>()
 			var claim: DateTime? = null
 			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
@@ -74,9 +77,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				user.toString(),
 				name,
 				description,
-				built?.asIso(),
-				built?.isBeforeNow ?: false,
-				built?.let { Duration(DateTime.now(), it).standardSeconds },
+				build?.asIso(),
+				isBuilt,
+				build?.let { Duration(DateTime.now(), it).standardSeconds },
 				claim?.asIso(),
 				attributes.map { FetchAttribute.build(it) },
 			)

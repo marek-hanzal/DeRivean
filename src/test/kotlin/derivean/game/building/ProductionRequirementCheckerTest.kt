@@ -12,6 +12,7 @@ import leight.container.IContainer
 import leight.storage.IStorage
 import leight.upgrade.AbstractUpgrade
 import leight.upgrade.IUpgradeManager
+import org.joda.time.DateTime
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
@@ -44,13 +45,49 @@ class ProductionRequirementCheckerTest {
 					"Brewery does not meet requirements!"
 				)
 			}.message)
+			/**
+			 * This should fail, because Sawmill is not claimed (thus it's not producing).
+			 */
+			assertEquals("Sawmill does not meet requirements!", assertFails {
+				productionRequirementChecker.validate(
+					buildingRepository.findByKingdomAndName("test", "sawmill"),
+					"Sawmill does not meet requirements!"
+				)
+			}.message)
+		}
+		storage.transaction {
+			/**
+			 * Even when this building is claimed, there are missing producers of required materials (this situation
+			 * should not happen in general, but it's here to test proper logic).
+			 */
+			assertEquals("Sawmill does not meet requirements!", assertFails {
+				productionRequirementChecker.validate(
+					buildingRepository.findByKingdomAndName("test", "sawmill").also {
+						it.claim = DateTime.now().minusMinutes(5)
+					},
+					"Sawmill does not meet requirements!"
+				)
+			}.message)
+		}
+		storage.transaction {
+			/**
+			 * These buildings must be claimed to produce required materials for sawmill.
+			 */
+			buildingRepository.findByKingdomAndName("test", "lumberjack").claim = DateTime.now().minusMinutes(5)
+			buildingRepository.findByKingdomAndName("test", "quarry").claim = DateTime.now().minusMinutes(5)
+		}
+		storage.transaction {
+			/**
+			 * Test sawmill again, just set claim date (it's same like a player clicks on claim button).
+			 */
 			assertTrue(
 				productionRequirementChecker.check(
-					buildingRepository.findByKingdomAndName("test", "sawmill"),
+					buildingRepository.findByKingdomAndName("test", "sawmill").also {
+						it.claim = DateTime.now().minusMinutes(5)
+					},
 				),
 				"Sawmill should have requirements met!"
 			)
-			TODO("Buildings must be built to have production! - update query in Building Attributes, ...")
 		}
 	}
 }

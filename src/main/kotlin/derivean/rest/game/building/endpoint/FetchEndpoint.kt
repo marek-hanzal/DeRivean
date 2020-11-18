@@ -2,7 +2,6 @@ package derivean.rest.game.building.endpoint
 
 import derivean.rest.common.FetchAttribute
 import derivean.rest.game.AbstractFetchEndpoint
-import derivean.server.building.BuildingService
 import derivean.storage.entities.AttributeEntity
 import derivean.storage.entities.BuildingEntity
 import derivean.storage.repository.BuildingRepository
@@ -16,6 +15,7 @@ import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 import org.joda.time.DateTime
 import org.joda.time.Duration
+import kotlin.properties.Delegates
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
@@ -32,15 +32,14 @@ class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {
 }
 
 class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchMapper.Fetch>(container) {
-	private val buildingService: BuildingService by container.lazy()
-
 	override fun map(item: BuildingEntity) = Fetch.build {
 		this.id = item.id
 		this.kingdom = item.kingdom.id
 		this.user = item.kingdom.user.id
 		this.name = item.name
 		this.description = item.description
-		this.built = item.build
+		this.build = item.build
+		this.isBuilt = item.isBuilt()
 		this.claim = item.claim
 		this.attributes = item.attributes
 	}
@@ -51,10 +50,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 		val user: String,
 		val name: String,
 		val description: String?,
-		val built: String?,
+		val build: String?,
 		val isBuilt: Boolean,
 		val remainingBuildTime: Long?,
-		val buildAvailable: Boolean,
 		val claim: String?,
 		val attributes: List<FetchAttribute>,
 	) {
@@ -68,7 +66,8 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 			lateinit var user: EntityUUID
 			lateinit var name: String
 			var description: String? = null
-			var built: DateTime? = null
+			var build: DateTime? = null
+			var isBuilt by Delegates.notNull<Boolean>()
 			var claim: DateTime? = null
 			var attributes: SizedIterable<AttributeEntity> = SizedCollection()
 
@@ -78,10 +77,9 @@ class FetchMapper(container: IContainer) : AbstractMapper<BuildingEntity, FetchM
 				user.toString(),
 				name,
 				description,
-				built?.asIso(),
-				built?.isBeforeNow ?: false,
-				built?.let { Duration(DateTime.now(), it).standardSeconds },
-				false,
+				build?.asIso(),
+				isBuilt,
+				build?.let { Duration(DateTime.now(), it).standardSeconds },
 				claim?.asIso(),
 				attributes.map { FetchAttribute.build(it) },
 			)
