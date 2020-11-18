@@ -5,40 +5,46 @@ import kotlin.math.max
 /**
  * Low-level class holding all attributes used in computing across the game.
  */
-class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) : Iterable<Map.Entry<String, Double>> {
-	override fun iterator() = map.iterator()
+class Attributes : LinkedHashMap<String, Double>() {
 
-	/**
-	 * Variable set of attributes.
-	 */
-	fun set(vararg attributes: Attribute) {
+	fun set(attributes: Iterable<Attribute>) {
 		for ((k, v) in attributes) {
-			map[k] = v
+			this[k] = v
 		}
 	}
+
+	fun set(vararg attribute: Attribute) = set(listOf(*attribute))
 
 	/**
 	 * Override current attributes by ones from attributes.
 	 */
-	fun set(attributes: Attributes) = map.putAll(attributes.map)
+	fun set(attributes: Attributes) = putAll(attributes)
 
 	fun set(pair: Pair<String, String>) {
-		map[pair.first] = get(pair.second)
+		this[pair.first] = get(pair.second, 0.0)
 	}
 
 	/**
 	 * Return a value of an attribute or a default value.
 	 */
-	operator fun get(name: String, default: Double = 0.0) = map.getOrDefault(name, default)
+	operator fun get(name: String, default: Double = 0.0) = getOrDefault(name, default)
 
 	/**
 	 * Increase an attribute by the given one.
 	 */
 	fun inc(attribute: Attribute) {
-		map[attribute.first] = get(attribute.first) + attribute.second
+		this[attribute.first] = get(attribute.first, 0.0) + attribute.second
 	}
 
-	fun inc(vararg attributes: Attribute) {
+	fun inc(vararg attributes: Attribute) = inc(listOf(*attributes))
+
+	fun inc(attributes: Attributes) {
+		for (attribute in attributes) {
+			inc(attribute.toPair())
+		}
+	}
+
+	fun inc(attributes: Iterable<Attribute>) {
 		for (attribute in attributes) {
 			inc(attribute)
 		}
@@ -49,7 +55,7 @@ class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) :
 	 */
 	fun incBy(attributes: Attributes) {
 		for ((k, v) in attributes) {
-			map[k] = get(k) + v
+			this[k] = get(k, 0.0) + v
 		}
 	}
 
@@ -57,34 +63,15 @@ class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) :
 	 * Decrease a given attribute or leave zero.
 	 */
 	fun decOrZero(attribute: Attribute) {
-		map[attribute.first] = max(0.0, get(attribute.first) - attribute.second)
+		this[attribute.first] = max(0.0, get(attribute.first, 0.0) - attribute.second)
 	}
 
 	/**
 	 * Multiply given attribute; default sets default behavior (should keep zero or 1.0 * attribute).
 	 */
 	fun multiply(attribute: Attribute, default: Double = 0.0) {
-		map[attribute.first] = get(attribute.first, default) * attribute.second
+		this[attribute.first] = get(attribute.first, default) * attribute.second
 	}
-
-	override fun equals(other: Any?): Boolean {
-		if (this === other) {
-			return true
-		}
-		if (javaClass != other?.javaClass) {
-			return false
-		}
-
-		other as Attributes
-
-		if (map != other.map) {
-			return false
-		}
-
-		return true
-	}
-
-	override fun hashCode() = map.hashCode()
 
 	companion object {
 		fun from(vararg attributes: Attributes) = Attributes().also {
@@ -96,5 +83,7 @@ class Attributes(private val map: MutableMap<String, Double> = mutableMapOf()) :
 		fun from(vararg attributes: Attribute) = Attributes().also {
 			it.set(*attributes)
 		}
+
+		fun from(attributes: Iterable<Attribute>) = Attributes().apply { set(attributes) }
 	}
 }

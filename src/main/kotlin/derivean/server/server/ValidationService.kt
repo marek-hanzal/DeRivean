@@ -6,7 +6,11 @@ import leight.container.AbstractService
 import leight.container.IContainer
 import leight.storage.IStorage
 
-data class ValidationError(val id: String, val text: String, val action: String)
+data class ValidationError(
+	val id: String,
+	val text: String,
+	val action: String,
+)
 
 class ValidationService(container: IContainer) : AbstractService(container) {
 	private val storage: IStorage by container.lazy()

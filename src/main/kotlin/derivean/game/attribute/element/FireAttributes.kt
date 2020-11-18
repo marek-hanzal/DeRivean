@@ -9,19 +9,19 @@ class FireAttributes {
 	companion object {
 		private const val ATTRIBUTE_ATTACK = "fire.attack"
 		fun attack(value: Double) = ATTRIBUTE_ATTACK to value
-		fun attack(attributes: Attributes) = attributes[ATTRIBUTE_ATTACK]
+		fun attack(attributes: Attributes) = attributes[ATTRIBUTE_ATTACK] ?: 0.0
 
 		private const val ATTRIBUTE_DEFENSE = "fire.defense"
 		fun defense(value: Double) = ATTRIBUTE_DEFENSE to value
-		fun defense(attributes: Attributes) = attributes[ATTRIBUTE_DEFENSE]
+		fun defense(attributes: Attributes) = attributes[ATTRIBUTE_DEFENSE] ?: 0.0
 
 		private const val ATTRIBUTE_ELEMENT = "fire.element"
 		fun element(value: Double) = ATTRIBUTE_ELEMENT to value
-		fun element(attributes: Attributes) = attributes[ATTRIBUTE_ELEMENT]
+		fun element(attributes: Attributes) = attributes[ATTRIBUTE_ELEMENT] ?: 0.0
 
 		private const val ATTRIBUTE_DAMAGE = "fire.damage"
 		fun damage(value: Double) = ATTRIBUTE_DAMAGE to value
-		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE]
+		fun damage(attributes: Attributes) = attributes[ATTRIBUTE_DAMAGE] ?: 0.0
 	}
 }
 

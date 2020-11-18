@@ -1,5 +1,6 @@
 package derivean.storage.entities
 
+import derivean.game.attribute.Attributes
 import derivean.storage.tables.BuildingTable
 import derivean.storage.tables.HeroTable
 import derivean.storage.tables.KingdomAttributeTable
@@ -16,4 +17,12 @@ class KingdomEntity(id: EntityUUID) : UUIDEntity(id) {
 	var user by UserEntity referencedOn KingdomTable.user
 	var name by KingdomTable.name
 	var attributes by AttributeEntity via KingdomAttributeTable
+
+	fun getProduction() = Attributes().let { attributes ->
+		buildings.forEach {
+			attributes.inc(it.getProduction())
+		}
+	}
+
+	fun getResources() = attributes.getAttributes("resource")
 }
