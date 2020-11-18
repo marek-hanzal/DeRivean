@@ -12,16 +12,16 @@ import kotlin.test.assertTrue
 
 @KtorExperimentalAPI
 @ExperimentalStdlibApi
-class ProductionRequirementCheckerTest {
+class AvailableCheckerTest {
 	@Test
-	fun `Production requirement`() {
+	fun `Available building checker`() {
 		val container = TestContainer.setup()
 		val storage = container.create(IStorage::class)
 		val buildingRepository = container.create(BuildingRepository::class)
-		val productionRequirementChecker = container.create(ProductionRequirementChecker::class)
+		val availableChecker = container.create(AvailableChecker::class)
 		storage.transaction {
 			assertEquals("Brewery does not meet requirements!", assertFails {
-				productionRequirementChecker.validate(
+				availableChecker.validate(
 					buildingRepository.findByKingdomAndName("test", "brewery"),
 					"Brewery does not meet requirements!"
 				)
@@ -30,7 +30,7 @@ class ProductionRequirementCheckerTest {
 			 * This should fail, because Sawmill is not claimed (thus it's not producing).
 			 */
 			assertEquals("Sawmill does not meet requirements!", assertFails {
-				productionRequirementChecker.validate(
+				availableChecker.validate(
 					buildingRepository.findByKingdomAndName("test", "sawmill"),
 					"Sawmill does not meet requirements!"
 				)
@@ -42,7 +42,7 @@ class ProductionRequirementCheckerTest {
 			 * should not happen in general, but it's here to test proper logic).
 			 */
 			assertEquals("Sawmill does not meet requirements!", assertFails {
-				productionRequirementChecker.validate(
+				availableChecker.validate(
 					buildingRepository.findByKingdomAndName("test", "sawmill").also {
 						it.claim = DateTime.now().minusMinutes(5)
 					},
@@ -62,7 +62,7 @@ class ProductionRequirementCheckerTest {
 			 * Test sawmill again, just set claim date (it's same like a player clicks on claim button).
 			 */
 			assertTrue(
-				productionRequirementChecker.check(
+				availableChecker.check(
 					buildingRepository.findByKingdomAndName("test", "sawmill").also {
 						it.claim = DateTime.now().minusMinutes(5)
 					},
