@@ -24,3 +24,8 @@ production.requirement,wood,Just good old wood
 production.requirement,stone,Hard rough stone
 production.requirement,plank,That thing made from wood used for a bit more sophisticated buildings
 production.requirement,gold,Without gold nothing is possible!
+resource,water,That pure things making us almost happy. After the beer.
+production.requirement,water,That pure thing making us almost happy. After the beer.
+cost,water,That pure thing making us almost happy. After the beer.
+production.requirement,gem,That thing used for monetization!
+production,water,That pure thing making us almost happy. After the beer.

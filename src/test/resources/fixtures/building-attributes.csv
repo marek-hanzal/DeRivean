@@ -1,0 +1,12 @@
+kingdom,building,group,type,value
+test,lumberjack,cost,wood,12
+test,lumberjack,cost,stone,4
+test,lumberjack,production,wood,12
+test,quarry,cost,wood,4
+test,quarry,cost,stone,12
+test,quarry,production,stone,8
+test,sawmill,cost,wood,24
+test,sawmill,cost,stone,16
+test,sawmill,production.requirement,wood,0
+test,sawmill,production.requirement,stone,0
+test,brewery,production.requirement,water,8
