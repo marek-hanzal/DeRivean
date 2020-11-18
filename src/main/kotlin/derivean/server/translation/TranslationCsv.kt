@@ -1,11 +1,22 @@
 package derivean.server.translation
 
-import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
-import com.vhl.blackmo.grass.dsl.grass
+import derivean.storage.repository.TranslationRepository
+import leight.container.IContainer
+import leight.csv.AbstractCsvService
+import leight.csv.load
 
 @ExperimentalStdlibApi
-object TranslationCsv {
-	fun load(resource: String) = grass<Item>().harvest(csvReader().readAllWithHeader(javaClass.classLoader.getResourceAsStream(resource)!!))
+class TranslationCsv(container: IContainer) : AbstractCsvService(container) {
+	private val translationRepository: TranslationRepository by container.lazy()
+
+	override fun import(resource: String) = load<Item>(resource) {
+		translationRepository.create {
+			language = it.language
+			namespace = it.namespace
+			label = it.label
+			text = it.text
+		}
+	}
 
 	data class Item(
 		val language: String,

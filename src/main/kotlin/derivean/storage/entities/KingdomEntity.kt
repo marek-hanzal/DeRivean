@@ -18,7 +18,7 @@ class KingdomEntity(id: EntityUUID) : UUIDEntity(id) {
 	var name by KingdomTable.name
 	var attributes by AttributeEntity via KingdomAttributeTable
 
-	fun getProduction() = Attributes().let { attributes ->
+	fun getProduction() = Attributes().also { attributes ->
 		buildings.forEach {
 			attributes.incBy(it.getProduction())
 		}
