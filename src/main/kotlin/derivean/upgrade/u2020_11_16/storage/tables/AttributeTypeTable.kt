@@ -1,6 +1,5 @@
-package derivean.storage.tables
+package derivean.upgrade.u2020_11_16.storage.tables
 
-import derivean.upgrade.u2020_11_16.storage.tables.AttributeGroupTable
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
