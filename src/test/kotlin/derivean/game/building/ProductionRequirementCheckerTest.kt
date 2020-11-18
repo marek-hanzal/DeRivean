@@ -1,12 +1,15 @@
 package derivean.game.building
 
 import derivean.ServerContainer
+import derivean.server.building.BuildingAttributeCsv
 import derivean.server.kingdom.KingdomAttributeCsv
 import derivean.server.kingdom.KingdomBuildingCsv
+import derivean.storage.repository.BuildingRepository
 import derivean.storage.repository.KingdomRepository
 import derivean.storage.repository.UserRepository
 import io.ktor.util.*
 import leight.container.IContainer
+import leight.storage.IStorage
 import leight.upgrade.AbstractUpgrade
 import leight.upgrade.IUpgradeManager
 import org.junit.Test
@@ -28,6 +31,12 @@ class ProductionRequirementCheckerTest {
 	@Test
 	fun `Production requirement`() {
 		val container = setup()
+		val storage = container.create(IStorage::class)
+		val buildingRepository = container.create(BuildingRepository::class)
+		val productionRequirementChecker = container.create(ProductionRequirementChecker::class)
+		storage.transaction {
+			val brewery = buildingRepository.findByKingdomAndName("test", "brewery")
+		}
 	}
 }
 
@@ -37,6 +46,7 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 	private val kingdomRepository: KingdomRepository by container.lazy()
 	private val kingdomAttributeCsv: KingdomAttributeCsv by container.lazy()
 	private val kingdomBuildingCsv: KingdomBuildingCsv by container.lazy()
+	private val buildingAttributeCsv: BuildingAttributeCsv by container.lazy()
 
 	override fun upgrade() {
 		storage.write {
@@ -50,6 +60,9 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 		}
 		storage.write {
 			kingdomBuildingCsv.import("fixtures/kingdom-buildings.csv")
+		}
+		storage.write {
+			buildingAttributeCsv.import("fixtures/building-attributes.csv")
 		}
 	}
 }
