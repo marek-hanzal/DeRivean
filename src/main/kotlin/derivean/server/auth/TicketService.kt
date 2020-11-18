@@ -1,9 +1,9 @@
 package derivean.server.auth
 
-import derivean.lib.container.AbstractService
-import derivean.lib.container.IContainer
 import derivean.storage.entities.UserEntity
 import derivean.storage.repository.UserRepository
+import leight.container.AbstractService
+import leight.container.IContainer
 import java.util.*
 
 class TicketService(container: IContainer) : AbstractService(container) {

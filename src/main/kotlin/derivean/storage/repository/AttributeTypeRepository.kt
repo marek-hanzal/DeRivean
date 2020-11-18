@@ -1,10 +1,10 @@
 package derivean.storage.repository
 
-import derivean.lib.container.IContainer
-import derivean.lib.repository.AbstractRepository
 import derivean.storage.entities.AttributeTypeEntity
 import derivean.storage.tables.AttributeGroupTable
 import derivean.storage.tables.AttributeTypeTable
+import leight.container.IContainer
+import leight.repository.AbstractRepository
 import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.selectAll
 

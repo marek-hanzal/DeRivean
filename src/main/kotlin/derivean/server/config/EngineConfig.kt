@@ -1,7 +1,7 @@
 package derivean.server.config
 
-import derivean.lib.http.HttpServerConfig
-import derivean.lib.pool.PoolConfig
+import leight.http.HttpServerConfig
+import leight.pool.PoolConfig
 
 data class EngineConfig(
 	val version: String,

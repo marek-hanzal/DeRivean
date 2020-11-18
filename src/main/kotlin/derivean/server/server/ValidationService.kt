@@ -1,10 +1,10 @@
 package derivean.server.server
 
-import derivean.lib.container.AbstractService
-import derivean.lib.container.IContainer
-import derivean.lib.storage.IStorage
 import derivean.storage.repository.KingdomRepository
 import derivean.storage.repository.UserRepository
+import leight.container.AbstractService
+import leight.container.IContainer
+import leight.storage.IStorage
 
 data class ValidationError(val id: String, val text: String, val action: String)
 

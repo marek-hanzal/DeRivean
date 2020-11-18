@@ -1,11 +1,11 @@
 package derivean.rest.root.common
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.root.common.endpoint.SearchEndpoint
 import derivean.rest.root.common.endpoint.StatisticsEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class CommonHttpModule(container: IContainer) : AbstractHttpModule(container) {

@@ -1,8 +1,8 @@
 package derivean.rest.common
 
-import derivean.lib.container.IContainer
-import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.Response
+import leight.container.IContainer
+import leight.mapper.AbstractActionMapper
+import leight.rest.ApplicationRequest
+import leight.rest.Response
 
 abstract class AbstractActionMapper<T>(container: IContainer) : AbstractActionMapper<ApplicationRequest<T>, Response<out Any>>(container)

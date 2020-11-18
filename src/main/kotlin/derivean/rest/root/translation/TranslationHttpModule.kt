@@ -1,10 +1,10 @@
 package derivean.rest.root.translation
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.root.translation.endpoint.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class TranslationHttpModule(container: IContainer) : AbstractHttpModule(container) {

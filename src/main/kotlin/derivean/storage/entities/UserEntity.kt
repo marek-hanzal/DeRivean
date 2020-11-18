@@ -1,10 +1,10 @@
 package derivean.storage.entities
 
-import derivean.lib.storage.EntityUUID
 import derivean.storage.tables.KingdomTable
 import derivean.storage.tables.UserAttributeTable
 import derivean.storage.tables.UserRoleTable
 import derivean.storage.tables.UserTable
+import leight.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 

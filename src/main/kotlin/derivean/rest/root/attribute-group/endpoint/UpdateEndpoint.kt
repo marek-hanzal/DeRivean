@@ -1,14 +1,14 @@
 package derivean.rest.root.`attribute-group`.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.withAnyRole
-import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.*
 import derivean.storage.repository.AttributeGroupRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.withAnyRole
+import leight.mapper.AbstractActionMapper
+import leight.rest.*
 
 @KtorExperimentalAPI
 class UpdateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {

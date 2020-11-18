@@ -1,5 +1,5 @@
 package derivean.game
 
-import derivean.lib.CoreException
+import leight.LeightException
 
-open class GameException(message: String, cause: Throwable? = null) : CoreException(message, cause)
+open class GameException(message: String, cause: Throwable? = null) : LeightException(message, cause)

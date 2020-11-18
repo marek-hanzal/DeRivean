@@ -1,17 +1,17 @@
 package derivean.rest.root.common.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.withAnyRole
-import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.AbstractActionEndpoint
-import derivean.lib.rest.Response
-import derivean.lib.rest.ok
-import derivean.lib.rest.resolve
 import derivean.storage.repository.*
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.withAnyRole
+import leight.mapper.AbstractActionMapper
+import leight.rest.AbstractActionEndpoint
+import leight.rest.Response
+import leight.rest.ok
+import leight.rest.resolve
 
 @KtorExperimentalAPI
 class StatisticsEndpoint(container: IContainer) : AbstractActionEndpoint(container) {

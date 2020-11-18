@@ -1,11 +1,11 @@
 package derivean.rest.public.user
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.public.user.endpoint.LoginEndpoint
 import derivean.rest.public.user.endpoint.RegisterEndpoint
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class UserHttpModule(container: IContainer) : AbstractHttpModule(container) {

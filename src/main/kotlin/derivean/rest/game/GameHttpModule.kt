@@ -1,12 +1,12 @@
 package derivean.rest.game
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.game.building.BuildingHttpModule
 import derivean.rest.game.kingdom.KingdomHttpModule
 import derivean.rest.game.user.UserHttpModule
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class GameHttpModule(container: IContainer) : AbstractHttpModule(container) {

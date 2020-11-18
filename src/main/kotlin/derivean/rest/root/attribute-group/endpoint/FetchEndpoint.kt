@@ -1,13 +1,13 @@
 package derivean.rest.root.`attribute-group`.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.mapper.AbstractMapper
-import derivean.lib.storage.EntityUUID
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.AttributeGroupEntity
 import derivean.storage.repository.AttributeGroupRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.mapper.AbstractMapper
+import leight.storage.EntityUUID
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {

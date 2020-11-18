@@ -1,10 +1,10 @@
 package derivean.server.upgrade.u2020_11_17
 
-import derivean.lib.container.IContainer
-import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.kingdom.KingdomBuildingCsv
 import derivean.server.upgrade.u2020_11_16.storage.entities.BuildingEntity
 import derivean.server.upgrade.u2020_11_16.storage.repository.KingdomRepository
+import leight.container.IContainer
+import leight.upgrade.AbstractUpgrade
 
 @ExperimentalStdlibApi
 class u2020_11_17_04(container: IContainer) : AbstractUpgrade(container) {

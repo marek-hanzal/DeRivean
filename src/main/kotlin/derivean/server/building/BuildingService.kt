@@ -1,6 +1,6 @@
 package derivean.server.building
 
-import derivean.lib.container.AbstractService
-import derivean.lib.container.IContainer
+import leight.container.AbstractService
+import leight.container.IContainer
 
 class BuildingService(container: IContainer) : AbstractService(container)
