@@ -29,3 +29,43 @@ production.requirement,water,That pure thing making us almost happy. After the b
 cost,water,That pure thing making us almost happy. After the beer.
 production.requirement,gem,That thing used for monetization!
 production,water,That pure thing making us almost happy. After the beer.
+resource,corn,Your fresh breakfast!
+production.requirement,corn,Your fresh breakfast!
+production,corn,Your fresh breakfast!
+cost,corn,Your fresh breakfast!
+resource,flour,The good base for breads!
+production.requirement,flour,The good base for breads!
+production,flour,The good base for breads!
+cost,flour,The good base for breads!
+resource,bread,Do you feel warm smell of fresh bread?
+production.requirement,bread,Do you feel warm smell of fresh bread?
+production,bread,Do you feel warm smell of fresh bread?
+cost,bread,Do you feel warm smell of fresh bread?
+resource,pig,"You can love it, but one day..."
+production.requirement,pig,"You can love it, but one day..."
+production,pig,"You can love it, but one day..."
+cost,pig,"You can love it, but one day..."
+resource,sausage,...dead end for pigs
+production.requirement,sausage,...dead end for pigs
+production,sausage,...dead end for pigs
+cost,sausage,...dead end for pigs
+resource,coal,The power of Earth!
+production.requirement,coal,The power of Earth!
+production,coal,The power of Earth!
+cost,coal,The power of Earth!
+resource,gold ore,Raw richness!
+production.requirement,gold ore,Raw richness!
+production,gold ore,Raw richness!
+cost,gold ore,Raw richness!
+resource,iron ore,Raw power!
+production.requirement,iron ore,Raw power!
+production,iron ore,Raw power!
+cost,iron ore,Raw power!
+resource,hop,The base for beer!
+production.requirement,hop,The base for beer!
+production,hop,The base for beer!
+cost,hop,The base for beer!
+resource,iron,There is always need for Metal!
+production.requirement,iron,There is always need for Metal!
+production,iron,There is always need for Metal!
+cost,iron,There is always need for Metal!
