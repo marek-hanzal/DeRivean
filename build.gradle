@@ -11,6 +11,11 @@ repositories {
 	jcenter()
 }
 
+test {
+	maxParallelForks = 8
+	forkEvery = 0
+}
+
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 	kotlinOptions {
 		jvmTarget = JavaVersion.VERSION_11
