@@ -1,7 +1,7 @@
 package derivean.game.building
 
 import derivean.ServerContainer
-import derivean.storage.repository.BuildingRepository
+import derivean.server.kingdom.KingdomAttributeCsv
 import derivean.storage.repository.KingdomRepository
 import derivean.storage.repository.UserRepository
 import io.ktor.util.*
@@ -30,10 +30,11 @@ class ProductionRequirementCheckerTest {
 	}
 }
 
+@ExperimentalStdlibApi
 class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 	private val userRepository: UserRepository by container.lazy()
 	private val kingdomRepository: KingdomRepository by container.lazy()
-	private val buildingRepository: BuildingRepository by container.lazy()
+	private val kingdomAttributeCsv: KingdomAttributeCsv by container.lazy()
 
 	override fun upgrade() {
 		storage.write {
@@ -41,6 +42,7 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 				this.user = userRepository.findByLogin("template")
 				this.name = "test"
 			}
+			kingdomAttributeCsv.import("fixtures/kingdom-attributes.csv")
 		}
 	}
 }

@@ -19,5 +19,5 @@ class BuildingRepository(container: IContainer) : AbstractRepository<BuildingEnt
 		entity.find { table.name ilike "%${search}%" }.limit(limit)
 	}
 
-	fun findByKingdomAndName(kingdom: String, building: String) = BuildingEntity.wrapRow(BuildingTable.innerJoin(KingdomTable).selectAll().andWhere { KingdomTable.name eq kingdom }.andWhere { BuildingTable.name eq building }.first())
+	fun findByKingdomAndName(kingdom: String, building: String) = entity.wrapRow(table.innerJoin(KingdomTable).selectAll().andWhere { KingdomTable.name eq kingdom }.andWhere { table.name eq building }.first())
 }
