@@ -5,12 +5,10 @@ import leight.container.AbstractService
 import leight.container.IContainer
 
 class AvailableBuildingFilter(container: IContainer) : AbstractService(container) {
-	fun filter(building: BuildingEntity): Boolean {
-		val kingdom = building.kingdom
-		kingdom.getResources()
-		kingdom.getProduction()
-		building.getProductionRequirements()
+	private val productionRequirementChecker: ProductionRequirementChecker by container.lazy()
+	private val resourceChecker: ResourceChecker by container.lazy()
 
-		return false
+	fun filter(building: BuildingEntity): Boolean {
+		return productionRequirementChecker.check(building) && resourceChecker.check(building)
 	}
 }
