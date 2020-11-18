@@ -10,3 +10,4 @@ test,sawmill,cost,stone,16
 test,sawmill,production.requirement,wood,4
 test,sawmill,production.requirement,stone,8
 test,brewery,production.requirement,water,8
+test,brewery,cost,gold,120

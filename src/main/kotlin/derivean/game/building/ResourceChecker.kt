@@ -5,9 +5,5 @@ import leight.checker.AbstractChecker
 import leight.container.IContainer
 
 class ResourceChecker(container: IContainer) : AbstractChecker<BuildingEntity>(container) {
-	override fun check(item: BuildingEntity): Boolean {
-		val kingdom = item.kingdom
-		kingdom.getResources()
-		TODO("Not yet implemented")
-	}
+	override fun check(item: BuildingEntity) = item.kingdom.getResources().decBy(item.getCost()).filter { it.value < 0 }.isEmpty()
 }

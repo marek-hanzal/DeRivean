@@ -1,6 +1,6 @@
 package derivean.rest.game.building.endpoint
 
-import derivean.game.building.AvailableBuildingFilter
+import derivean.game.building.AvailableChecker
 import derivean.rest.game.AbstractPageEndpoint
 import derivean.storage.repository.KingdomBuildingRepository
 import io.ktor.routing.*
@@ -11,7 +11,7 @@ import leight.container.IContainer
 class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 	private val fetchMapper: FetchMapper by container.lazy()
 	private val kingdomBuildingRepository: KingdomBuildingRepository by container.lazy()
-	private val availableBuildingFilter: AvailableBuildingFilter by container.lazy()
+	private val availableChecker: AvailableChecker by container.lazy()
 
 	override fun install(routing: Routing) = page(
 		routing,
@@ -20,6 +20,6 @@ class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {
 		"game.kingdom.building",
 		kingdomBuildingRepository,
 		fetchMapper,
-		availableBuildingFilter::filter,
+		availableChecker::check,
 	)
 }

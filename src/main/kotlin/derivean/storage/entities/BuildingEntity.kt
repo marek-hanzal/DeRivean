@@ -21,6 +21,7 @@ class BuildingEntity(id: EntityUUID) : UUIDEntity(id) {
 
 	fun getProduction() = if (isClaimed()) attributes.getAttributes("production") else Attributes()
 	fun getProductionRequirements() = attributes.getAttributes("production.requirement")
+	fun getCost() = attributes.getAttributes("cost")
 	fun isBuilt() = build?.isBeforeNow ?: false
 	fun isClaimed() = claim?.isBeforeNow ?: false
 }
