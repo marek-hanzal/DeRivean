@@ -1,9 +1,10 @@
 package derivean
 
-import derivean.server.config.EngineConfig
 import io.ktor.util.*
 import leight.container.IContainer
+import leight.http.HttpServerConfig
 import leight.http.IHttpServer
+import leight.pool.PoolConfig
 import leight.upgrade.IUpgradeManager
 import leight.upgrade.IVersionService
 import leight.utils.asStamp
@@ -11,8 +12,14 @@ import mu.KotlinLogging
 import kotlin.system.measureTimeMillis
 import kotlin.time.ExperimentalTime
 
+data class ServerConfig(
+	val version: String,
+	val pool: PoolConfig,
+	val httpServer: HttpServerConfig
+)
+
 class Server(container: IContainer) {
-	private val engineConfig: EngineConfig by container.lazy()
+	private val serverConfig: ServerConfig by container.lazy()
 	private val upgradeManager: IUpgradeManager by container.lazy()
 	private val versionService: IVersionService by container.lazy()
 	private val httpServer: IHttpServer by container.lazy()
@@ -20,7 +27,7 @@ class Server(container: IContainer) {
 
 	fun run() {
 		measureTimeMillis {
-			logger.info { "Starting DeRivean Server: version: ${engineConfig.version}, upgrade: [${versionService.getVersion()}]" }
+			logger.info { "Starting DeRivean Server: version: ${serverConfig.version}, upgrade: [${versionService.getVersion()}]" }
 			versionService.getCollection().toList().asReversed().apply {
 				logger.info { if (count() > 0) "Installed upgrades:" else "Initial application state" }
 			}.forEach {
@@ -35,7 +42,7 @@ class Server(container: IContainer) {
 		}.also {
 			logger.info { "Boobstrap time ${it}ms" }
 		}
-		httpServer.start("DeRivean Server [${engineConfig.version}]")
+		httpServer.start("DeRivean Server [${serverConfig.version}]")
 	}
 }
 
