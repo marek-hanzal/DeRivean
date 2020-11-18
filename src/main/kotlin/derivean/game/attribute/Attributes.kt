@@ -55,6 +55,12 @@ class Attributes : LinkedHashMap<String, Double>() {
 		this[attribute.first] = max(0.0, this[attribute.first, 0.0] - attribute.second)
 	}
 
+	fun decBy(attributes: Attributes) = also {
+		for ((k, v) in attributes) {
+			it[k] = it[k, 0.0] - v
+		}
+	}
+
 	/**
 	 * Multiply given attribute; default sets default behavior (should keep zero or 1.0 * attribute).
 	 */

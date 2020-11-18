@@ -13,12 +13,5 @@ import leight.container.IContainer
  * - check if the given building does not have missing production requirement (for example gold or something)
  */
 class ProductionRequirementChecker(container: IContainer) : AbstractChecker<BuildingEntity>(container) {
-	override fun check(item: BuildingEntity): Boolean {
-		val kingdom = item.kingdom
-		val attributes = kingdom.getProduction().minus(item.getProductionRequirements())
-		attributes.forEach {
-			it
-		}
-		return false
-	}
+	override fun check(item: BuildingEntity) = item.kingdom.getProduction().decBy(item.getProductionRequirements()).filter { it.value < 0 }.isEmpty()
 }
