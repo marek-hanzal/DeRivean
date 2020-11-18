@@ -36,10 +36,7 @@ class Entity(
 	 * Use internal Selector to select targets with available abilities. Selector is responsible for selecting optimal
 	 * targets based on current situation (battle, university, ...).
 	 */
-	fun select(formations: Formations, block: (Targets) -> Unit) = selector.select(this, formations)?.let {
-		block(it)
-		it
-	}
+	fun select(formations: Formations, block: (Targets) -> Unit) = selector.select(this, formations)?.apply(block)
 
 	companion object {
 		inline fun build(name: String, block: Builder.() -> Unit) = Builder(name).apply(block).build()
@@ -55,7 +52,7 @@ class Entity(
 		 * Set attributes of the newborn Entity.
 		 */
 		fun attributes(vararg values: Attribute) {
-			attributes.set(*values)
+			attributes.set(listOf(*values))
 		}
 
 		/**

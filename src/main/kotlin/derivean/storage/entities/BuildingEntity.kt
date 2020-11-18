@@ -17,4 +17,7 @@ class BuildingEntity(id: EntityUUID) : UUIDEntity(id) {
 	var description by BuildingTable.description
 	var build by BuildingTable.build
 	var claim by BuildingTable.claim
+
+	fun getProduction() = attributes.getAttributes("production")
+	fun getProductionRequirements() = attributes.getAttributes("production.requirement")
 }

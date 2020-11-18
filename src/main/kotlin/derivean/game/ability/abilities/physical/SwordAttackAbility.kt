@@ -53,7 +53,9 @@ class SwordAttackAbility(ability: String, attributes: Attributes) : AbstractAtta
 
 	class Builder {
 		private val attributes = Attributes.from(
-			1.0.swordAttackTime(),
+			listOf(
+				1.0.swordAttackTime(),
+			)
 		)
 
 		fun attributes(vararg attribute: Attribute) = attributes.set(*attribute)
