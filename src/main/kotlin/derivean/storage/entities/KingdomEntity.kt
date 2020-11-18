@@ -19,7 +19,7 @@ class KingdomEntity(id: EntityUUID) : UUIDEntity(id) {
 	var attributes by AttributeEntity via KingdomAttributeTable
 
 	fun getProduction() = Attributes().also { attributes ->
-		buildings.forEach {
+		buildings.filter { it.isClaimed() }.forEach {
 			attributes.incBy(it.getProduction())
 		}
 	}

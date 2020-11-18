@@ -1,5 +1,6 @@
 package derivean.storage.entities
 
+import derivean.game.attribute.Attributes
 import derivean.storage.tables.BuildingAttributeTable
 import derivean.storage.tables.BuildingTable
 import leight.storage.EntityUUID
@@ -18,6 +19,8 @@ class BuildingEntity(id: EntityUUID) : UUIDEntity(id) {
 	var build by BuildingTable.build
 	var claim by BuildingTable.claim
 
-	fun getProduction() = attributes.getAttributes("production")
+	fun getProduction() = if (isClaimed()) attributes.getAttributes("production") else Attributes()
 	fun getProductionRequirements() = attributes.getAttributes("production.requirement")
+	fun isBuilt() = build?.isBeforeNow ?: false
+	fun isClaimed() = claim?.isBeforeNow ?: false
 }
