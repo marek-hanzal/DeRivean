@@ -7,6 +7,6 @@ test,quarry,cost,stone,12
 test,quarry,production,stone,8
 test,sawmill,cost,wood,24
 test,sawmill,cost,stone,16
-test,sawmill,production.requirement,wood,0
-test,sawmill,production.requirement,stone,0
+test,sawmill,production.requirement,wood,4
+test,sawmill,production.requirement,stone,8
 test,brewery,production.requirement,water,8
