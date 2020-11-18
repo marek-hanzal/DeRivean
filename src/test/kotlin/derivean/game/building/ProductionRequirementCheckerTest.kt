@@ -15,6 +15,7 @@ import leight.upgrade.IUpgradeManager
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
+import kotlin.test.assertTrue
 
 @KtorExperimentalAPI
 @ExperimentalStdlibApi
@@ -37,10 +38,19 @@ class ProductionRequirementCheckerTest {
 		val buildingRepository = container.create(BuildingRepository::class)
 		val productionRequirementChecker = container.create(ProductionRequirementChecker::class)
 		storage.transaction {
-			val brewery = buildingRepository.findByKingdomAndName("test", "brewery")
 			assertEquals("Brewery does not meet requirements!", assertFails {
-				productionRequirementChecker.validate(brewery, "Brewery does not meet requirements!")
+				productionRequirementChecker.validate(
+					buildingRepository.findByKingdomAndName("test", "brewery"),
+					"Brewery does not meet requirements!"
+				)
 			}.message)
+			assertTrue(
+				productionRequirementChecker.check(
+					buildingRepository.findByKingdomAndName("test", "sawmill"),
+				),
+				"Sawmill should have requirements met!"
+			)
+			TODO("Buildings must be built to have production! - update query in Building Attributes, ...")
 		}
 	}
 }
