@@ -5,7 +5,6 @@ import derivean.rest.game.GameHttpModule
 import derivean.rest.public.PublicHttpModule
 import derivean.rest.root.RootHttpModule
 import derivean.server.auth.RoleService
-import derivean.server.config.EngineConfig
 import derivean.server.user.SessionValidator
 import derivean.upgrade.u2020_11_16.u2020_11_16
 import derivean.upgrade.u2020_11_17.*
@@ -26,9 +25,9 @@ import leight.user.ISessionValidator
 @ExperimentalStdlibApi
 object ServerContainer {
 	fun create(block: IContainer.() -> Unit) = ContainerFactory.container().apply {
-		register(EngineConfig::class) { ConfigFactory.load().extract("derivean") }
-		register(PoolConfig::class) { create(EngineConfig::class).pool }
-		register(HttpServerConfig::class) { create(EngineConfig::class).httpServer }
+		register(ServerConfig::class) { ConfigFactory.load().extract("derivean") }
+		register(PoolConfig::class) { create(ServerConfig::class).pool }
+		register(HttpServerConfig::class) { create(ServerConfig::class).httpServer }
 		service(IRoleService::class) { RoleService(this) }
 		service(ISessionValidator::class) { SessionValidator(this) }
 		/**
