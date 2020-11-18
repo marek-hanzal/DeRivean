@@ -12,6 +12,7 @@ repositories {
 }
 
 test {
+	// https://docs.gradle.org/current/userguide/java_testing.html#sec:test_execution
 	maxParallelForks = 8
 	forkEvery = 0
 }
