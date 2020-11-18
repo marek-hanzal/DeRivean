@@ -3,7 +3,7 @@ import ModuleContext from "component/ModuleContext";
 import moment from "moment";
 import {useTranslation} from "react-i18next";
 import CommonEditView from "site/common/view/CommonEditView";
-import BuiltInput from "site/root/module/building/component/form/BuiltInput";
+import BuildInput from "site/root/module/building/component/form/BuildInput";
 import BuildingView from "site/root/module/building/view/BuildingView";
 
 const EditView = () => {
@@ -14,12 +14,12 @@ const EditView = () => {
 				{(moduleContext) => (
 					<CommonEditView
 						defaultEnableSubmit={true}
-						inputMapper={values => ({...values, built: values.built ? moment(values.built) : null})}
+						inputMapper={values => ({...values, build: values.build ? moment(values.build) : null})}
 					>
 						<Card title={t(`${moduleContext.id}.building.title`)}>
 							<Descriptions size={"small"} bordered>
-								<Descriptions.Item label={t(`${moduleContext.id}.built.label`)}>
-									<BuiltInput/>
+								<Descriptions.Item label={t(`${moduleContext.id}.build.label`)}>
+									<BuildInput/>
 								</Descriptions.Item>
 							</Descriptions>
 						</Card>

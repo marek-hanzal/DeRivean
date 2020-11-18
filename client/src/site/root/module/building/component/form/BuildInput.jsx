@@ -5,7 +5,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import validationFor from "utils/form/validationFor";
 
-const BuiltInput = () => {
+const BuildInput = () => {
 	const moduleContext = useContext(ModuleContext);
 	const editorContext = useContext(EditorContext);
 	const {t} = useTranslation();
@@ -19,7 +19,7 @@ const BuiltInput = () => {
 				<DatePicker
 					showTime
 					disabled={!editorContext.editor}
-					placeholder={t(`${moduleContext.id}.built.hint`)}
+					placeholder={t(`${moduleContext.id}.build.hint`)}
 					bordered={false}
 					style={{width: "100%"}}
 				/>
@@ -28,4 +28,4 @@ const BuiltInput = () => {
 	);
 };
 
-export default BuiltInput;
+export default BuildInput;
