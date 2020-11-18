@@ -17,6 +17,8 @@ class u2020_11_17_03(container: IContainer) : AbstractUpgrade(container) {
 				this.user = userRepository.findByLogin("template")
 				this.name = "template"
 			}
+		}
+		storage.write {
 			kingdomAttributeCsv.import("upgrade/u2020_11_17/kingdom-attributes.csv")
 		}
 	}

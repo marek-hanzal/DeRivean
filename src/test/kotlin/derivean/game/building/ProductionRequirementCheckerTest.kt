@@ -47,7 +47,9 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 		}
 		storage.write {
 			kingdomAttributeCsv.import("fixtures/kingdom-attributes.csv")
-//			kingdomBuildingCsv.import("fixtures/kingdom-buildings.csv")
+		}
+		storage.write {
+			kingdomBuildingCsv.import("fixtures/kingdom-buildings.csv")
 		}
 	}
 }
