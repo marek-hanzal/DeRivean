@@ -16,6 +16,8 @@ class u2020_11_17_02(container: IContainer) : AbstractUpgrade(container) {
 	override fun upgrade() {
 		storage.write {
 			attributeGroupCsv.import("upgrade/u2020_11_17/attribute-groups.csv")
+		}
+		storage.write {
 			attributeTypeCsv.import("upgrade/u2020_11_17/attribute-types.csv")
 		}
 	}
