@@ -1,13 +1,13 @@
 package derivean.rest.game
 
-import derivean.lib.container.IContainer
-import derivean.lib.mapper.AbstractCreateMapper
-import derivean.lib.rest.ApplicationRequest
-import derivean.lib.user.SessionTicket
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.mapper.AbstractCreateMapper
+import leight.rest.ApplicationRequest
+import leight.user.SessionTicket
 import org.jetbrains.exposed.dao.UUIDEntity
 
 @KtorExperimentalAPI

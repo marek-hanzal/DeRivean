@@ -1,8 +1,8 @@
 package derivean.storage.entities
 
-import derivean.lib.storage.EntityUUID
 import derivean.storage.tables.HeroAttributeTable
 import derivean.storage.tables.HeroTable
+import leight.storage.EntityUUID
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.UUIDEntityClass
 

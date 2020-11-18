@@ -1,14 +1,14 @@
 package derivean.rest.public.common.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.mapper.AbstractActionMapper
-import derivean.lib.rest.AbstractEndpoint
-import derivean.lib.rest.Response
-import derivean.lib.rest.ok
-import derivean.lib.rest.resolve
 import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
 import io.ktor.routing.*
+import leight.container.IContainer
+import leight.mapper.AbstractActionMapper
+import leight.rest.AbstractEndpoint
+import leight.rest.Response
+import leight.rest.ok
+import leight.rest.resolve
 
 class TranslationEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	private val translationMapper: TranslationMapper by container.lazy()

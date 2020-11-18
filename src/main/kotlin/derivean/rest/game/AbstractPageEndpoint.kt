@@ -1,12 +1,12 @@
 package derivean.rest.game
 
-import derivean.lib.container.IContainer
-import derivean.lib.rest.page.AbstractPageEndpoint
-import derivean.lib.user.SessionTicket
 import derivean.storage.repository.UserRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.rest.page.AbstractPageEndpoint
+import leight.user.SessionTicket
 
 @KtorExperimentalAPI
 abstract class AbstractPageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "game", "root") {

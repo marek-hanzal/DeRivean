@@ -1,12 +1,12 @@
 package derivean.rest.root.translation.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.mapper.AbstractMapper
 import derivean.rest.root.AbstractFetchEndpoint
 import derivean.storage.entities.TranslationEntity
 import derivean.storage.repository.TranslationRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.mapper.AbstractMapper
 
 @KtorExperimentalAPI
 class FetchEndpoint(container: IContainer) : AbstractFetchEndpoint(container) {

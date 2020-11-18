@@ -1,16 +1,16 @@
 package derivean.rest.root.server.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.withAnyRole
-import derivean.lib.rest.AbstractEndpoint
-import derivean.lib.rest.ok
-import derivean.lib.rest.resolve
 import derivean.server.server.ValidationError
 import derivean.server.server.ValidationService
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.withAnyRole
+import leight.rest.AbstractEndpoint
+import leight.rest.ok
+import leight.rest.resolve
 
 @KtorExperimentalAPI
 class ValidationEndpoint(container: IContainer) : AbstractEndpoint(container) {

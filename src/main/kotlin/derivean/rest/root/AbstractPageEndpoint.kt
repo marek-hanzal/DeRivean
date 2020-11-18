@@ -1,8 +1,8 @@
 package derivean.rest.root
 
-import derivean.lib.container.IContainer
-import derivean.lib.rest.page.AbstractPageEndpoint
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.rest.page.AbstractPageEndpoint
 
 @KtorExperimentalAPI
 abstract class AbstractPageEndpoint(container: IContainer) : AbstractPageEndpoint(container, "root")

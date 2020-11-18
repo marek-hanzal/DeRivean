@@ -1,11 +1,11 @@
 package derivean.server.upgrade.u2020_11_17
 
-import derivean.lib.container.IContainer
-import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.auth.AuthenticatorService
 import derivean.server.upgrade.u2020_11_16.storage.entities.RoleEntity
 import derivean.server.upgrade.u2020_11_16.storage.entities.UserEntity
 import derivean.server.upgrade.u2020_11_16.storage.tables.RoleTable
+import leight.container.IContainer
+import leight.upgrade.AbstractUpgrade
 
 /**
  * This upgrade contains default user and roles.

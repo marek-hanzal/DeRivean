@@ -1,9 +1,9 @@
 package derivean.storage.repository
 
-import derivean.lib.container.IContainer
-import derivean.lib.repository.AbstractRepository
 import derivean.storage.entities.AttributeEntity
 import derivean.storage.tables.AttributeTable
+import leight.container.IContainer
+import leight.repository.AbstractRepository
 import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 import java.util.*

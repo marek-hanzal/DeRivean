@@ -1,9 +1,9 @@
 package derivean.server.upgrade.u2020_11_17
 
-import derivean.lib.container.IContainer
-import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.translation.TranslationCsv
 import derivean.server.upgrade.u2020_11_16.storage.entities.TranslationEntity
+import leight.container.IContainer
+import leight.upgrade.AbstractUpgrade
 
 /**
  * Just translations. They're quite useful.

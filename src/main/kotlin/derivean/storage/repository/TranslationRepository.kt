@@ -1,10 +1,10 @@
 package derivean.storage.repository
 
-import derivean.lib.container.IContainer
-import derivean.lib.repository.AbstractRepository
-import derivean.lib.storage.ilike
 import derivean.storage.entities.TranslationEntity
 import derivean.storage.tables.TranslationTable
+import leight.container.IContainer
+import leight.repository.AbstractRepository
+import leight.storage.ilike
 import org.jetbrains.exposed.sql.or
 import java.util.*
 

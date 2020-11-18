@@ -1,10 +1,10 @@
 package derivean.server.auth
 
-import derivean.lib.auth.IRoleService
-import derivean.lib.container.AbstractService
-import derivean.lib.container.IContainer
-import derivean.lib.storage.IStorage
 import derivean.storage.repository.UserRepository
+import leight.auth.IRoleService
+import leight.container.AbstractService
+import leight.container.IContainer
+import leight.storage.IStorage
 import java.util.*
 
 class RoleService(container: IContainer) : AbstractService(container), IRoleService {

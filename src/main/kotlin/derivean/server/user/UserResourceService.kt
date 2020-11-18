@@ -1,10 +1,10 @@
 package derivean.server.user
 
 import derivean.game.user.UserAttributes
-import derivean.lib.container.IContainer
 import derivean.server.attribute.AbstractAttributeResourceService
 import derivean.storage.entities.UserEntity
 import derivean.storage.repository.UserKingdomRepository
+import leight.container.IContainer
 
 class UserResourceService(container: IContainer) : AbstractAttributeResourceService<UserEntity>(container) {
 	private val userKingdomRepository: UserKingdomRepository by container.lazy()

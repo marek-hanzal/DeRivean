@@ -1,18 +1,18 @@
 package derivean.rest.root.translation.endpoint
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.withAnyRole
-import derivean.lib.mapper.AbstractCreateMapper
-import derivean.lib.rest.AbstractActionEndpoint
-import derivean.lib.rest.ApplicationRequest
-import derivean.lib.rest.ValidationResponse
-import derivean.lib.rest.conflict
 import derivean.storage.entities.TranslationEntity
 import derivean.storage.repository.TranslationRepository
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.withAnyRole
+import leight.mapper.AbstractCreateMapper
+import leight.rest.AbstractActionEndpoint
+import leight.rest.ApplicationRequest
+import leight.rest.ValidationResponse
+import leight.rest.conflict
 
 @KtorExperimentalAPI
 class CreateEndpoint(container: IContainer) : AbstractActionEndpoint(container) {

@@ -1,7 +1,5 @@
 package derivean.rest.root
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.root.`attribute-group`.AttributeGroupHttpModule
 import derivean.rest.root.`attribute-type`.AttributeTypeHttpModule
 import derivean.rest.root.building.BuildingHttpModule
@@ -13,6 +11,8 @@ import derivean.rest.root.translation.TranslationHttpModule
 import derivean.rest.root.user.UserHttpModule
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class RootHttpModule(container: IContainer) : AbstractHttpModule(container) {

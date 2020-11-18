@@ -1,9 +1,9 @@
 package derivean.rest.public.common
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.public.common.endpoint.TranslationEndpoint
 import io.ktor.routing.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 class CommonHttpModule(container: IContainer) : AbstractHttpModule(container) {
 	override fun install(routing: Routing) {

@@ -1,10 +1,10 @@
 package derivean.rest.root.`attribute-type`
 
-import derivean.lib.container.IContainer
-import derivean.lib.http.AbstractHttpModule
 import derivean.rest.root.`attribute-type`.endpoint.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
+import leight.http.AbstractHttpModule
 
 @KtorExperimentalAPI
 class AttributeTypeHttpModule(container: IContainer) : AbstractHttpModule(container) {

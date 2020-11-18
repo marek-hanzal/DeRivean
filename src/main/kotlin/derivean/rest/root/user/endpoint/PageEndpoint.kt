@@ -1,10 +1,10 @@
 package derivean.rest.root.user.endpoint
 
-import derivean.lib.container.IContainer
 import derivean.rest.root.AbstractPageEndpoint
 import derivean.storage.repository.UserRepository
 import io.ktor.routing.*
 import io.ktor.util.*
+import leight.container.IContainer
 
 @KtorExperimentalAPI
 class PageEndpoint(container: IContainer) : AbstractPageEndpoint(container) {

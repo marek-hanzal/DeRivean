@@ -1,8 +1,8 @@
 package derivean.server.upgrade.u2020_11_16
 
-import derivean.lib.container.IContainer
-import derivean.lib.upgrade.AbstractUpgrade
 import derivean.server.upgrade.u2020_11_16.storage.tables.*
+import leight.container.IContainer
+import leight.upgrade.AbstractUpgrade
 import org.jetbrains.exposed.sql.SchemaUtils
 
 /**
