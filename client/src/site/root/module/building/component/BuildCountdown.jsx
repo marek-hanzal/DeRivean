@@ -7,7 +7,7 @@ const BuildCountdown = ({building}) => {
 	const {t} = useTranslation();
 	const moduleContext = useContext(ModuleContext);
 	return (
-		building.built && !building.isBuilt ? <Statistic.Countdown title={t(moduleContext.id + ".build-countdown")} value={Date.parse(building.built)}/> : null
+		building.build && !building.isBuilt ? <Statistic.Countdown title={t(moduleContext.id + ".build-countdown")} value={Date.parse(building.build)}/> : null
 	);
 };
 
