@@ -22,9 +22,21 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 
 	override fun total(filter: EntityFilter<T>?) = filter?.let { entity.all().filter(it).sumBy { 1 }.toLong() } ?: entity.table.slice(entity.table.id).selectAll().count()
 
+	override fun source(paging: Paging) = entity.all().limit(paging.limit, paging.offset)
+
 	override fun page(paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
-		entity.all().limit(paging.limit, paging.offset).let { collection ->
-			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
+		var current = paging
+		var contract = 0
+		var size: Long = 1
+		while (contract < size && size > 0) {
+			source(current).let { collection ->
+				size = collection.count()
+				(filter?.let { collection.filter(filter) } ?: collection).let {
+					it.forEach { item -> block(item) }
+					contract += it.count()
+				}
+				current = Paging(current.page + 1, current.limit)
+			}
 		}
 	}
 

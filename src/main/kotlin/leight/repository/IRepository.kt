@@ -25,6 +25,8 @@ interface IRepository<T : UUIDEntity> {
 	 */
 	fun total(filter: EntityFilter<T>? = null): Long
 
+	fun source(paging: Paging): SizedIterable<T>
+
 	/**
 	 * Return just UUIDs of the given entity page.
 	 */

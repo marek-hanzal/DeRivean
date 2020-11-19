@@ -21,9 +21,21 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 		entity.table.selectAll().andWhere { column eq relation }.filter { filter(entity.wrapRow(it)) }.sumBy { 1 }.toLong()
 	} ?: entity.table.slice(entity.table.id).selectAll().andWhere { column eq relation }.count()
 
+	override fun source(relation: UUID, paging: Paging) = entity.find { column eq relation }.limit(paging.limit, paging.offset)
+
 	override fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
-		entity.find { column eq relation }.limit(paging.limit, paging.offset).let { collection ->
-			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
+		var current = paging
+		var contract = 0
+		var size: Long = 1
+		while (contract < size && size > 0) {
+			source(relation, current).let { collection ->
+				size = collection.count()
+				(filter?.let { collection.filter(filter) } ?: collection).let {
+					it.forEach { item -> block(item) }
+					contract += it.count()
+				}
+				current = Paging(current.page + 1, current.limit)
+			}
 		}
 	}
 
