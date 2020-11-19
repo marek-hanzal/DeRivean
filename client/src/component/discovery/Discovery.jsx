@@ -59,7 +59,7 @@ const Discovery = ({children}) => {
 						discovery,
 						link,
 						fetch: (id, uuid, replace) => link(id).replace(replace, uuid),
-						page: (id, page, name = null, param = null) => name ? link(id).replace("{" + name + "}", param).replace("{page}", page) : link(id).replace("{page}", page),
+						page: (id, name = null, param = null) => name ? link(id).replace("{" + name + "}", param) : link(id)
 					}}
 					children={children}
 				/>
