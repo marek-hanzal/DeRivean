@@ -25,15 +25,14 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 
 	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Paging, (T) -> Unit) -> Unit) = storage.read {
 		PageIndex.build {
+			val paging = runBlocking { call.receive<Paging>() }
 			try {
 				this.total = total()
-				this.size = limit(call)
-				block(runBlocking { call.receive<Paging>().validate(this@build.total) }) { entity -> items.add(mapper.map(entity)) }
+				this.size = paging.limit
+				block(paging.validate(this@build.total)) { entity -> items.add(mapper.map(entity)) }
 			} catch (e: Exception) {
 				throw PageException(e.message ?: "You're making me suffering from huge pain!", e)
 			}
 		}
 	}
-
-	override fun limit(call: ApplicationCall, default: Int) = if (call.parameters.contains("limit")) call.parameters["limit"]!!.toInt() else default
 }
