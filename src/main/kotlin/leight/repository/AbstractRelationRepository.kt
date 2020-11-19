@@ -26,7 +26,7 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 	override fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
 		var current = paging
 		var contract = 0
-		var size: Long = 1
+		var size = 1L
 		/**
 		 * This is quite a piece of code!
 		 *
