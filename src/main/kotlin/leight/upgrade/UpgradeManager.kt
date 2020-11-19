@@ -10,7 +10,7 @@ class UpgradeManager(container: IContainer) : AbstractService(container), IUpgra
 	private val versionService: IVersionService by container.lazy()
 	private var upgrades: MutableList<LazyProxy<out IUpgrade>> = mutableListOf()
 
-	override fun <T : IUpgrade> register(upgrade: KClass<T>): IUpgradeManager {
+	override fun <T : IUpgrade> upgrade(upgrade: KClass<T>): IUpgradeManager {
 		upgrades.add(LazyProxy(upgrade, container))
 		return this
 	}

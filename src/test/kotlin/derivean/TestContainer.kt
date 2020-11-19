@@ -8,11 +8,8 @@ import leight.upgrade.IUpgradeManager
 @ExperimentalStdlibApi
 object TestContainer {
 	fun setup() = ServerContainer.create {
-		register(Fixtures::class) {
-			Fixtures(this)
-		}
 		configurator(IUpgradeManager::class) {
-			register(Fixtures::class)
+			upgrade(Fixtures::class)
 		}
 		create(IUpgradeManager::class).upgrade()
 	}

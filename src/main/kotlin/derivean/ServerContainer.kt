@@ -34,13 +34,13 @@ object ServerContainer {
 		 * Common services.
 		 */
 		configurator(IUpgradeManager::class) {
-			register(u2020_11_16::class)
-			register(u2020_11_17::class)
-			register(u2020_11_17_01::class)
-			register(u2020_11_17_02::class)
-			register(u2020_11_17_03::class)
-			register(u2020_11_17_04::class)
-			register(u2020_11_17_05::class)
+			upgrade(u2020_11_16::class)
+			upgrade(u2020_11_17::class)
+			upgrade(u2020_11_17_01::class)
+			upgrade(u2020_11_17_02::class)
+			upgrade(u2020_11_17_03::class)
+			upgrade(u2020_11_17_04::class)
+			upgrade(u2020_11_17_05::class)
 		}
 		configurator(IHttpServer::class) {
 			module(DiscoveryHttpModule::class)

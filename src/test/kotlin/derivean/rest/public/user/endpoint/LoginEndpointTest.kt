@@ -11,7 +11,7 @@ class LoginEndpointTest {
 	@Test
 	fun `Login with good credentials`() {
 		val container = TestContainer.setup()
-		val server = container.create(IHttpServer::class);
+		val server = container.create(IHttpServer::class)
 		server.start("Testing Server", wait = false)
 	}
 }
