@@ -18,9 +18,4 @@ interface IPageService {
 
 	suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) =
 		page(call, UUID.fromString(relation), repository, mapper, filter)
-
-	/**
-	 * Extract page limit from the application call.
-	 */
-	fun limit(call: ApplicationCall, default: Int = 100): Int
 }
