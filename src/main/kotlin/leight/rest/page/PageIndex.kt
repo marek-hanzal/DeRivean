@@ -3,7 +3,7 @@ package leight.rest.page
 import kotlin.math.ceil
 import kotlin.properties.Delegates
 
-data class PageIndex(
+data class PageIndex<T>(
 	/**
 	 * Total number of items available.
 	 */
@@ -23,7 +23,7 @@ data class PageIndex(
 	/**
 	 * Items of this page; could be also zero (thus total and others is zero).
 	 */
-	val items: List<*>,
+	val items: List<T>,
 ) {
 	companion object {
 		inline fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
