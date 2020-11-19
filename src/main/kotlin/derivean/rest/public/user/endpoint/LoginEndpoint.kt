@@ -99,7 +99,11 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 		}
 	}
 
-	data class Request(val login: String, val password: String)
+	data class Request(
+		val login: String,
+		val password: String,
+	)
+
 	data class Response(
 		val login: String,
 		val name: String,
