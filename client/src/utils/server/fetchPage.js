@@ -1,17 +1,20 @@
-import buildUrl from "build-url";
-import get from "utils/server/get";
+import post from "utils/server/post";
 
 const fetchPage = (link, param) => {
 	return (
 		discovery,
 		page,
-		size,
+		limit,
 		params = null,
 		events,
 		navigate,
 		cancelToken = null,
-	) => get(
-		buildUrl(discovery.page(link, page, param, params ? params[param] : null), {queryParams: {limit: size.toString()}}),
+	) => post(
+		discovery.page(link, param, params ? params[param] : null),
+		{
+			page,
+			limit,
+		},
 		events,
 		navigate,
 		cancelToken,
