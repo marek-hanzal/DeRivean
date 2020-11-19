@@ -1,5 +1,6 @@
 package leight.repository
 
+import leight.checker.IChecker
 import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.SizedIterable
@@ -24,6 +25,8 @@ interface IRepository<T : UUIDEntity> {
 	 * If filter is provided, items are iterated and counted manually.
 	 */
 	fun total(filter: EntityFilter<T>? = null): Long
+
+	fun total(filter: IChecker<T>) = total(filter::check)
 
 	fun source(paging: Paging): SizedIterable<T>
 

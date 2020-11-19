@@ -27,7 +27,7 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 	override fun page(paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
 		var current = paging
 		var contract = 0
-		var size: Long = 1
+		var size = 1L
 		while (contract < size && size > 0) {
 			source(current).let { collection ->
 				size = collection.count()
