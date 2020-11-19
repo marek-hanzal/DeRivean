@@ -7,6 +7,7 @@ import leight.mapper.IMapper
 import leight.repository.EntityFilter
 import leight.repository.IRelationRepository
 import leight.repository.IRepository
+import leight.repository.Paging
 import leight.storage.IStorage
 import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
@@ -15,16 +16,16 @@ import kotlin.math.floor
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
 
-	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>?) = page(call, { repository.total(filter) }, mapper, { page, limit, block ->
-		repository.page(page, limit, block, filter)
+	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, repository: IRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>?) = page(call, { repository.total(filter) }, mapper, { paging, block ->
+		repository.page(paging, block, filter)
 	})
 
 	override suspend fun <T : UUIDEntity> page(call: ApplicationCall, relation: UUID, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>?) =
-		page(call, { repository.total(relation, filter) }, mapper, { page, limit, block ->
-			repository.page(relation, page, limit, block, filter)
+		page(call, { repository.total(relation, filter) }, mapper, { paging, block ->
+			repository.page(relation, paging, block, filter)
 		})
 
-	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Int, Int, (T) -> Unit) -> Unit) = storage.read {
+	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Paging, (T) -> Unit) -> Unit) = storage.read {
 		PageIndex.build {
 			this.total = total()
 			this.size = limit(call)
@@ -45,7 +46,7 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 					if (page > pages) {
 						throw InvalidPageException("Out of range: page [$page] cannot be higher than [$pages]")
 					}
-					block(page, limit) { entity ->
+					block(Paging(page, limit)) { entity ->
 						items.add(mapper.map(entity))
 					}
 				} catch (e: NumberFormatException) {
