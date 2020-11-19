@@ -1,7 +1,6 @@
 package derivean
 
 import derivean.fixtures.Fixtures
-import derivean.rest.HttpClient
 import io.ktor.util.*
 import leight.upgrade.IUpgradeManager
 
@@ -9,7 +8,6 @@ import leight.upgrade.IUpgradeManager
 @ExperimentalStdlibApi
 object TestContainer {
 	fun setup() = ServerContainer.create {
-		register(HttpClient::class) { HttpClient(this) }
 		configurator(IUpgradeManager::class) {
 			upgrade(Fixtures::class)
 		}
