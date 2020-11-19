@@ -21,5 +21,7 @@ interface IRelationRepository<T : UUIDEntity> {
 	 */
 	fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>? = null)
 
+	fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: IChecker<T>) = page(relation, paging, block, filter::check)
+
 	fun table(): UUIDTable
 }
