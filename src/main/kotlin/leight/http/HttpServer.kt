@@ -93,7 +93,7 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 //			intercept(ApplicationCallPipeline.Features) {
 //				delay(Random.nextLong(250, 850))
 //			}
-			modules.forEach {
+			modules.distinctBy { it.qualifiedName }.forEach {
 				logger.debug { "Setup: Installing module [${it.qualifiedName}]" }
 				routing {
 					container.create(it).install(this)
@@ -105,13 +105,17 @@ class HttpServer(container: IContainer) : AbstractConfigurable(), IHttpServer {
 		}
 	}
 
-	override fun <TModule : IHttpModule> register(module: KClass<TModule>) {
+	override fun <TModule : IHttpModule> module(module: KClass<TModule>) {
 		modules += module
 	}
 
-	override fun start(name: String?) {
+	override fun start(name: String?, wait: Boolean) {
 		this.name = name ?: "Thor, The Server"
 		logger.info { "Start: [${this.name}] Listening on http://0.0.0.0:${httpServerConfig.port} (available on ${httpServerConfig.host})" }
-		server.start(wait = true)
+		server.start(wait)
+	}
+
+	override fun stop(gracePeriodMillis: Long, timeoutMillis: Long) {
+		server.stop(gracePeriodMillis, timeoutMillis)
 	}
 }

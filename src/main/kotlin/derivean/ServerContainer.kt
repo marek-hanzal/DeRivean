@@ -43,11 +43,11 @@ object ServerContainer {
 			register(u2020_11_17_05::class)
 		}
 		configurator(IHttpServer::class) {
-			register(DiscoveryHttpModule::class)
-			register(ClientHttpModule::class)
-			register(PublicHttpModule::class)
-			register(GameHttpModule::class)
-			register(RootHttpModule::class)
+			module(DiscoveryHttpModule::class)
+			module(ClientHttpModule::class)
+			module(PublicHttpModule::class)
+			module(GameHttpModule::class)
+			module(RootHttpModule::class)
 		}
 		block(this)
 	}
