@@ -1,12 +1,9 @@
 package derivean.rest.public.user.endpoint
 
 import derivean.TestContainer
-import io.ktor.client.*
-import io.ktor.client.request.*
+import derivean.rest.HttpClient
 import io.ktor.util.*
-import kotlinx.coroutines.runBlocking
 import leight.http.IHttpServer
-import leight.http.ILinkGenerator
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -17,14 +14,9 @@ class LoginEndpointTest {
 	fun `Login with good credentials`() {
 		val container = TestContainer.setup()
 		val server = container.create(IHttpServer::class)
-		val linkGenerator = container.create(ILinkGenerator::class)
 		server.start("Testing Server", wait = false)
-		container.create(HttpClient::class).use {
-			runBlocking {
-				val login = it.post<LoginEndpoint.Response>(linkGenerator.link("/api/public/user/login")) {
-					header("Content-Type", "application/json")
-					body = LoginEndpoint.Request("game", "game")
-				}
+		container.create(HttpClient::class).use { httpClient ->
+			httpClient.post<LoginEndpoint.Response>("/api/public/user/login", LoginEndpoint.Request("game", "game")).let { login ->
 				assertEquals("game", login.login)
 				assertEquals("The Gamer", login.name)
 				assertEquals("game", login.site)
