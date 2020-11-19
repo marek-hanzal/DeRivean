@@ -10,7 +10,7 @@ import leight.container.AbstractService
 import leight.container.IContainer
 import leight.http.IHttpServer
 import leight.http.ILinkGenerator
-import leight.rest.discovery.Link
+import leight.http.modules.DiscoveryMapper
 
 class HttpServerContext(container: IContainer) : AbstractService(container) {
 	private val linkGenerator: ILinkGenerator by container.lazy()
@@ -26,7 +26,7 @@ class HttpServerContext(container: IContainer) : AbstractService(container) {
 		}
 	}
 	private val discovery by lazy {
-		get<Map<String, Link>>(linkGenerator.link("/api/discovery"))
+		get<Map<String, DiscoveryMapper.DiscoveryLink>>(linkGenerator.link("/api/discovery"))
 	}
 
 
@@ -43,10 +43,16 @@ class HttpServerContext(container: IContainer) : AbstractService(container) {
 		}
 	}
 
-	inline fun <reified T> post(name: String, body: Any) = post<T>(Url(link(name)), body)
-	inline fun <reified T> get(name: String) = get<T>(Url(link(name)))
+	inline fun <reified T> post(name: String, body: Any, params: Map<String, Any> = mapOf()) = post<T>(Url(link(name, params)), body)
+	inline fun <reified T> get(name: String, params: Map<String, Any> = mapOf()) = get<T>(Url(link(name, params)))
 
-	fun link(name: String) = discovery[name]?.link ?: throw IllegalStateException("Requested name [$name] is not in Discovery Index (thus not supported on API).")
+	fun link(name: String, params: Map<String, Any> = mapOf()) = discovery[name]?.link?.let {
+		var link = it
+		for ((param, value) in params) {
+			link = link.replace("{${param}}", value.toString())
+		}
+		link
+	} ?: throw IllegalStateException("Requested name [$name] is not in Discovery Index (thus not supported on API).")
 
 	fun <T> use(block: (HttpServerContext) -> T) {
 		httpServer.start("Test Server", wait = false)
