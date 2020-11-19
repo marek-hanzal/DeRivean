@@ -40,7 +40,7 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 			source(relation, current).let { collection ->
 				size = collection.count()
 				(filter?.let { collection.filter(filter) } ?: collection).let {
-					it.forEach { item -> block(item) }
+					it.take((size - contract).toInt()).forEach { item -> block(item) }
 					contract += it.count()
 				}
 				current = Paging(current.page + 1, current.limit)

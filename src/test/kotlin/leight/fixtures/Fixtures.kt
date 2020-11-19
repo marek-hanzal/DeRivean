@@ -51,18 +51,32 @@ class Fixtures(container: IContainer) : AbstractUpgrade(container) {
 					flag = false
 				}
 			}
-			repeat(10) {
+			repeat(2) {
 				PagedEntity.new {
 					sort = inc++
 					name = "paged-$sort"
 					flag = true
 				}
 			}
-			repeat(10) {
+			repeat(8) {
 				PagedEntity.new {
 					sort = inc++
 					name = "paged-$sort"
 					flag = false
+				}
+			}
+			repeat(2) {
+				PagedEntity.new {
+					sort = inc++
+					name = "paged-$sort"
+					flag = false
+				}
+			}
+			repeat(8) {
+				PagedEntity.new {
+					sort = inc++
+					name = "paged-$sort"
+					flag = true
 				}
 			}
 		}
