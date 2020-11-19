@@ -28,6 +28,7 @@ class LoginEndpointTest {
 				assertEquals("game", login.site)
 			}
 		}
+		server.stop()
 	}
 
 	@Test
@@ -45,5 +46,6 @@ class LoginEndpointTest {
 				}
 			}
 		}
+		server.stop()
 	}
 }
