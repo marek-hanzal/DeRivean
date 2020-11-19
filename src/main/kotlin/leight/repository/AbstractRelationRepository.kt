@@ -21,8 +21,8 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 		entity.table.selectAll().andWhere { column eq relation }.filter { filter(entity.wrapRow(it)) }.sumBy { 1 }.toLong()
 	} ?: entity.table.slice(entity.table.id).selectAll().andWhere { column eq relation }.count()
 
-	override fun page(relation: UUID, page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>?) {
-		entity.find { column eq relation }.limit(limit, (page * limit).toLong()).let { collection ->
+	override fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
+		entity.find { column eq relation }.limit(paging.limit, paging.offset).let { collection ->
 			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
 		}
 	}

@@ -13,7 +13,7 @@ interface IRelationRepository<T : UUIDEntity> {
 	/**
 	 * Return just UUIDs of the given entity page.
 	 */
-	fun page(relation: UUID, page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>? = null)
+	fun page(relation: UUID, paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>? = null)
 
 	fun table(): UUIDTable
 }

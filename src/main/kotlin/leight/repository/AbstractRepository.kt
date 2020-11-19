@@ -22,8 +22,8 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 
 	override fun total(filter: EntityFilter<T>?) = filter?.let { entity.all().filter(it).sumBy { 1 }.toLong() } ?: entity.table.slice(entity.table.id).selectAll().count()
 
-	override fun page(page: Int, limit: Int, block: (T) -> Unit, filter: EntityFilter<T>?) {
-		entity.all().limit(limit, (page * limit).toLong()).let { collection ->
+	override fun page(paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>?) {
+		entity.all().limit(paging.limit, paging.offset).let { collection ->
 			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
 		}
 	}
