@@ -505,3 +505,5 @@ cs,translation,game.kingdom.create.menu,Vytvořit
 cs,translation,game.kingdom.list.menu,Seznam
 cs,translation,common.back.menu,Zpět
 cs,translation,attribute-group.resource,Zdroje
+en,translation,common.building.build-time,Build time
+en,translation,building.Fights for wood!,"Source of wood, the very basic material needed by almost everything!"

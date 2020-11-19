@@ -38,3 +38,6 @@ template,goldsmith,production.requirement,coal,6
 template,gem mine,production.requirement,water,4
 template,gem mine,production.requirement,sausage,6
 template,gem mine,production,gem,0.5
+template,lumberjack,building,build-time,0.08
+template,quarry,building,build-time,0.2
+template,quarry,production.requirement,wood,12

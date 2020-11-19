@@ -1,6 +1,6 @@
 {
 	"name": "derivean",
-	"version": "0.6.173",
+	"version": "0.6.174",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
@@ -14,6 +14,7 @@
 		"build-url": "^6.0.1",
 		"classnames": "^2.2.6",
 		"copy-to-clipboard": "^3.3.1",
+		"dayjs": "^1.9.6",
 		"deepmerge": "^4.2.2",
 		"history": "^5.0.0",
 		"i18next": "^19.8.3",
@@ -26,6 +27,7 @@
 		"omit-empty": "^1.0.0",
 		"prop-types": "^15.7.2",
 		"react": "^17.0.1",
+		"react-countdown": "^2.3.1",
 		"react-dom": "^17.0.1",
 		"react-helmet": "^6.1.0",
 		"react-hotkeys": "^2.0.0",

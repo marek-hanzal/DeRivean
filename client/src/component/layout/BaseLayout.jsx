@@ -54,7 +54,7 @@ const BaseLayout = (
 			children={
 				<Loader>
 					<Layout>
-						{fullscreen ? null : header}
+						{header}
 						<Layout style={{
 							minHeight: "100vh",
 							padding: "0 50px",

@@ -5,6 +5,7 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import AttributeGroupItems from "site/common/attribute/AttributeGroupItems";
+import BuildTime from "site/common/building/BuildTime";
 import IsBuiltIcon from "site/common/building/IsBuiltIcon";
 import BuildingIcon from "site/common/icon/BuildingIcon";
 import BuildButton from "site/game/module/building/component/BuildButton";
@@ -28,7 +29,12 @@ const BuildingListItem = ({item}) => {
 						{item.description ? t("building." + item.description) : null}
 					</Space>
 				}
-				title={<Link to={moduleContext.link.home.link(item.id)}>{t("building." + item.name)}</Link>}
+				title={
+					<Space split={<Divider type={"vertical"}/>}>
+						<Link to={moduleContext.link.home.link(item.id)}>{t("building." + item.name)}</Link>
+						<BuildTime building={item}/>
+					</Space>
+				}
 			/>
 		</List.Item>
 	);
@@ -37,10 +43,13 @@ const BuildingListItem = ({item}) => {
 const BuildingList = () => {
 	const moduleContext = useContext(ModuleContext);
 	return (
-		<BaseTable
-			onFetchPage={moduleContext.page}
-			children={item => <BuildingListItem item={item} key={item.id}/>}
-		/>
+		<>
+			<BaseTable
+				onFetchPage={moduleContext.page}
+				children={item => <BuildingListItem item={item} key={item.id}/>}
+			/>
+			<h1>[Discovery new building by building and upgrading...]</h1>
+		</>
 	);
 };
 
