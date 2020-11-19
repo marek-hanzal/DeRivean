@@ -3,7 +3,6 @@ package leight.rest
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
-import leight.rest.discovery.Discovery
 
 data class MessageResponse(val message: String)
 data class ErrorResponse(val error: String)
@@ -115,5 +114,3 @@ fun ok() = Response(HttpStatusCode.OK, Unit)
  * send response with Accepted status code
  */
 fun accepted() = Response<Nothing>(HttpStatusCode.Accepted)
-
-fun discovery(discovery: Discovery) = Response(HttpStatusCode.OK, discovery)
