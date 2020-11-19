@@ -11,6 +11,7 @@ const BaseTable = (
 	{
 		onFetchPage,
 		children,
+		footer = null,
 		pageSize = 10,
 	}) => {
 	const discoveryContext = useContext(DiscoveryContext);
@@ -60,7 +61,7 @@ const BaseTable = (
 				delay: 50,
 			}}
 			itemLayout={"horizontal"}
-			size={"large"}
+			footer={footer}
 			pagination={{
 				total: page.total,
 				pageSize: page.size,
