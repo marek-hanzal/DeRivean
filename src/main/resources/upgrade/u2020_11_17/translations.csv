@@ -507,3 +507,5 @@ cs,translation,common.back.menu,Zpět
 cs,translation,attribute-group.resource,Zdroje
 en,translation,common.building.build-time,Build time
 en,translation,building.Fights for wood!,"Source of wood, the very basic material needed by almost everything!"
+en,translation,game.building.list.discover-more.title,"Build more buildings, upgrade current buildings to discover more!"
+en,translation,game.building.list.discover-more.sub-title,"There is a lot more waiting for you to discover! When production requirements are met, new buildings will show up!"

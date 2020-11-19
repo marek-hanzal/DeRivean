@@ -1,4 +1,4 @@
-import {Avatar, Divider, List, Space} from "antd";
+import {Avatar, Divider, List, Result, Space} from "antd";
 import ModuleContext from "component/ModuleContext";
 import BaseTable from "component/table/BaseTable";
 import {useContext} from "react";
@@ -42,13 +42,20 @@ const BuildingListItem = ({item}) => {
 
 const BuildingList = () => {
 	const moduleContext = useContext(ModuleContext);
+	const {t} = useTranslation();
 	return (
 		<>
 			<BaseTable
 				onFetchPage={moduleContext.page}
 				children={item => <BuildingListItem item={item} key={item.id}/>}
+				footer={
+					<Result
+						status={"success"}
+						title={t(moduleContext.id + ".list.discover-more.title")}
+						subTitle={t(moduleContext.id + ".list.discover-more.sub-title")}
+					/>
+				}
 			/>
-			<h1>[Discovery new building by building and upgrading...]</h1>
 		</>
 	);
 };
