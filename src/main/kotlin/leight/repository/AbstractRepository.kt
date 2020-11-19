@@ -8,6 +8,7 @@ import org.jetbrains.exposed.dao.UUIDEntity
 import org.jetbrains.exposed.dao.id.UUIDTable
 import org.jetbrains.exposed.sql.selectAll
 import java.util.*
+import kotlin.math.max
 
 abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 	val entity: EntityClass<UUID, T>,
@@ -32,7 +33,7 @@ abstract class AbstractRepository<T : UUIDEntity, U : UUIDTable>(
 			source(current).let { collection ->
 				size = collection.count()
 				(filter?.let { collection.filter(filter) } ?: collection).let {
-					it.take((size - contract).toInt()).forEach { item -> block(item) }
+					it.take(max(0, size - contract).toInt()).forEach { item -> block(item) }
 					contract += it.count()
 				}
 				current = Paging(current.page + 1, current.limit)
