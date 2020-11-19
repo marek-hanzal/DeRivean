@@ -1,3 +1,4 @@
+import {Card} from "antd";
 import CommonHomeView from "site/common/view/CommonHomeView";
 import UserStatistics from "site/root/module/user/component/UserStatistics";
 import UserView from "site/root/module/user/view/UserView";
@@ -9,7 +10,9 @@ const HomeView = () => {
 				menu={"root.user"}
 			>
 				{data => (
-					<UserStatistics/>
+					<Card style={{textAlign: "center"}}>
+						<UserStatistics/>
+					</Card>
 				)}
 			</CommonHomeView>
 		</UserView>

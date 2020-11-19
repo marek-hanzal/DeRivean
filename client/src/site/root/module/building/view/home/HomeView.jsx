@@ -1,6 +1,6 @@
 import {Card} from "antd";
+import BuildCountdown from "site/common/building/BuildCountdown";
 import CommonHomeView from "site/common/view/CommonHomeView";
-import BuildCountdown from "site/root/module/building/component/BuildCountdown";
 import BuildingView from "site/root/module/building/view/BuildingView";
 
 const HomeView = () => {

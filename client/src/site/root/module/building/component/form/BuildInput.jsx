@@ -12,8 +12,8 @@ const BuildInput = () => {
 
 	return (
 		<Form.Item
-			{...validationFor("built", editorContext.errors, t)}
-			name={"built"}
+			{...validationFor("build", editorContext.errors, t)}
+			name={"build"}
 			style={{margin: 0}}
 			children={
 				<DatePicker

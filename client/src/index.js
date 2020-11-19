@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import "./assets/index.css";
+import "./dayjs";
 import DeRivean from "./DeRivean";
 import "./i18n";
 import * as ServiceWorker from "./ServiceWorker";
