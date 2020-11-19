@@ -29,6 +29,13 @@ class RelationRepositoryTest {
 					val list = mutableListOf<PagedEntity>()
 					pagedRepository.page(Paging(0, 5), { list.add(it) }, flagFilter)
 					assertEquals(5, list.count())
+					assertEquals(listOf(
+						"paged-0",
+						"paged-10",
+						"paged-11",
+						"paged-22",
+						"paged-23",
+					), list.map { it.name })
 				}
 			}
 		}
