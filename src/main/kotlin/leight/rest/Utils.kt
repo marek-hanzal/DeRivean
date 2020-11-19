@@ -2,6 +2,7 @@ package leight.rest
 
 import com.google.gson.JsonSyntaxException
 import io.ktor.application.*
+import leight.repository.PageException
 import leight.user.ResourceLimitException
 import mu.KLogger
 
@@ -26,7 +27,9 @@ suspend fun ApplicationCall.handle(
 		resolve(forbidden("Your request looks not good for us, sorry."))
 	} catch (e: ResourceLimitException) {
 		logger.error(e.message, e)
-		tooManyRequests(e.message ?: "Resource limit reached!")
+		resolve(tooManyRequests(e.message ?: "Resource limit reached!"))
+	} catch (e: PageException) {
+		resolve(badRequest(e.message ?: "You sent something strange and I don't understand your request. Try read docs, make a coffee or fix this bug :)"))
 	} catch (e: Throwable) {
 		logger.error(e.message, e)
 		try {

@@ -21,16 +21,13 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 
 	fun <T : UUIDEntity> page(routing: Routing, url: String, name: String, repository: IRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) {
 		discovery {
+			this.link = "$url/page"
 			this.name = "$name.page"
-			this.link = "$url/page/{page}"
 			this.description = "Retrieve given page of [${repository.table().tableName}]."
 		}
 		routing.authenticate {
 			withAnyRole(*roles) {
-				get("$url/page") {
-					call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
-				}
-				get("$url/page/{page}") {
+				post("$url/page") {
 					call.handle(logger) {
 						ok(pageService.page(this, repository, mapper, filter))
 					}
@@ -50,16 +47,13 @@ abstract class AbstractPageEndpoint(container: IContainer, vararg val roles: Str
 
 	fun <T : UUIDEntity> page(routing: Routing, relation: suspend (ApplicationCall) -> String, url: String, name: String, repository: IRelationRepository<T>, mapper: IMapper<T, out Any>, filter: EntityFilter<T>? = null) {
 		discovery {
+			this.link = "$url/page"
 			this.name = "$name.page"
-			this.link = "$url/page/{page}"
 			this.description = "Retrieve given page of [${repository.table().tableName}]."
 		}
 		routing.authenticate {
 			withAnyRole(*roles) {
-				get("$url/page") {
-					call.resolve(badRequest("Missing page parameter in url: [$url/{page}]."))
-				}
-				get("$url/page/{page}") {
+				post("$url/page") {
 					call.handle(logger) {
 						ok(pageService.page(this, relation(call), repository, mapper, filter))
 					}

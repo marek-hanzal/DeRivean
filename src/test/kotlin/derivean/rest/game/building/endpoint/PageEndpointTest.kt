@@ -6,6 +6,7 @@ import derivean.rest.game.kingdom.endpoint.CreateMapper
 import derivean.rest.game.kingdom.endpoint.FetchMapper
 import derivean.rest.public.user.endpoint.LoginEndpoint
 import io.ktor.util.*
+import leight.repository.Paging
 import leight.rest.page.PageIndex
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -18,7 +19,11 @@ class PageEndpointTest {
 		TestContainer.setup().create(HttpServerContext::class).use {
 			it.post<LoginEndpoint.Response>("public.user.login", LoginEndpoint.Request("game", "game"))
 			it.post<FetchMapper.Fetch>("game.kingdom.create", CreateMapper.Request("My Kingdom!")).let { kingdom ->
-				it.get<PageIndex<derivean.rest.game.building.endpoint.FetchMapper.Fetch>>("game.kingdom.building.page", mapOf("kingdom" to kingdom.id, "page" to 0)).let { buildings ->
+				it.post<PageIndex<derivean.rest.game.building.endpoint.FetchMapper.Fetch>>(
+					"game.kingdom.building.page",
+					Paging(0, 10),
+					mapOf("kingdom" to kingdom.id, "page" to 0)
+				).let { buildings ->
 					assertEquals(2, buildings.total)
 					assertEquals(2, buildings.count)
 				}
