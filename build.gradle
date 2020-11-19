@@ -58,6 +58,9 @@ dependencies {
 
 	testImplementation "org.jetbrains.kotlin:kotlin-test"
 	testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
+	testImplementation("io.ktor:ktor-client-cio:$ktor_version")
+	testImplementation("io.ktor:ktor-client-json:$ktor_version")
+	testImplementation("io.ktor:ktor-client-gson:$ktor_version")
 }
 
 application {
