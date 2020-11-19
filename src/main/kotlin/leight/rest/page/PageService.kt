@@ -1,17 +1,15 @@
 package leight.rest.page
 
 import io.ktor.application.*
+import io.ktor.request.*
+import kotlinx.coroutines.runBlocking
 import leight.container.AbstractService
 import leight.container.IContainer
 import leight.mapper.IMapper
-import leight.repository.EntityFilter
-import leight.repository.IRelationRepository
-import leight.repository.IRepository
-import leight.repository.Paging
+import leight.repository.*
 import leight.storage.IStorage
 import org.jetbrains.exposed.dao.UUIDEntity
 import java.util.*
-import kotlin.math.floor
 
 class PageService(container: IContainer) : AbstractService(container), IPageService {
 	private val storage: IStorage by container.lazy()
@@ -27,35 +25,12 @@ class PageService(container: IContainer) : AbstractService(container), IPageServ
 
 	fun <T : UUIDEntity> page(call: ApplicationCall, total: () -> Long, mapper: IMapper<T, out Any>, block: (Paging, (T) -> Unit) -> Unit) = storage.read {
 		PageIndex.build {
-			this.total = total()
-			this.size = limit(call)
 			try {
-				val page = call.parameters["page"]?.toInt() ?: 0
-				if (page < 0) {
-					throw InvalidPageException("Page must be a positive number")
-				}
-				try {
-					val limit = call.parameters["limit"]?.toInt() ?: 100
-					if (limit < 5) {
-						throw InvalidLimitException("Limit must be a positive number and higher than 5")
-					}
-					if (limit > 100) {
-						throw InvalidLimitException("Limit cannot be higher than 100")
-					}
-					val pages = floor(this.total.toDouble() / limit.toDouble()).toInt()
-					if (page > pages) {
-						throw InvalidPageException("Out of range: page [$page] cannot be higher than [$pages]")
-					}
-					block(Paging(page, limit)) { entity ->
-						items.add(mapper.map(entity))
-					}
-				} catch (e: NumberFormatException) {
-					throw InvalidLimitException("Limit must be a number.")
-				} catch (e: Exception) {
-					throw PageException(e.message ?: "You're making me suffering from huge pain!", e)
-				}
-			} catch (e: NumberFormatException) {
-				throw InvalidPageException("Page must be a number")
+				this.total = total()
+				this.size = limit(call)
+				block(runBlocking { call.receive<Paging>().validate(this@build.total) }) { entity -> items.add(mapper.map(entity)) }
+			} catch (e: Exception) {
+				throw PageException(e.message ?: "You're making me suffering from huge pain!", e)
 			}
 		}
 	}
