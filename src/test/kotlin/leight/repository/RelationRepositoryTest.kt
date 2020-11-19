@@ -26,6 +26,9 @@ class RelationRepositoryTest {
 				storage.transaction {
 					assertEquals(30, pagedRepository.total())
 					assertEquals(11, pagedRepository.total(flagFilter))
+					val list = mutableListOf<PagedEntity>()
+					pagedRepository.page(Paging(0, 5), { list.add(it) }, flagFilter)
+					assertEquals(5, list.count())
 				}
 			}
 		}

@@ -35,6 +35,8 @@ interface IRepository<T : UUIDEntity> {
 	 */
 	fun page(paging: Paging, block: (T) -> Unit, filter: EntityFilter<T>? = null)
 
+	fun page(paging: Paging, block: (T) -> Unit, filter: IChecker<T>) = page(paging, block, filter::check)
+
 	fun table(): UUIDTable
 
 	fun all(): SizedIterable<T>
