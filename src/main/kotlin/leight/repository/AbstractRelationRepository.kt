@@ -27,6 +27,15 @@ abstract class AbstractRelationRepository<T : UUIDEntity, U : UUIDTable>(
 		var current = paging
 		var contract = 0
 		var size: Long = 1
+		/**
+		 * This is quite a piece of code!
+		 *
+		 * The idea is to fulfill the contract of page size (for example 10 items), but
+		 * they could be filtered by a client side filter (filter parameter); that means the
+		 * database return 10 items, but just 7 remains after the filter, thus it's necessary
+		 * to fetch another page where will be just 1 item, thus it's necessary to fetch another
+		 * page, when the contract will be fulfilled. Or when a collection is empty.
+		 */
 		while (contract < size && size > 0) {
 			source(relation, current).let { collection ->
 				size = collection.count()
