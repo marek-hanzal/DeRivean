@@ -11,8 +11,20 @@ import java.util.*
 
 class KingdomBuildingRepository(container: IContainer) : AbstractRelationRepository<BuildingEntity, BuildingTable>(BuildingEntity, BuildingTable, BuildingTable.kingdom, container) {
 	override fun page(relation: UUID, paging: Paging, block: (BuildingEntity) -> Unit, filter: EntityFilter<BuildingEntity>?) {
-		entity.find { column eq relation }.orderBy(BuildingTable.name to SortOrder.ASC).limit(paging.limit, paging.offset).let { collection ->
-			(filter?.let { collection.filter(filter) } ?: collection).forEach { block(it) }
+		fun source(paging: Paging) = entity.find { column eq relation }.orderBy(BuildingTable.name to SortOrder.ASC).limit(paging.limit, paging.offset)
+
+		var current = paging
+		var contract = 0
+		var size: Long = 1
+		while (contract < size && size > 0) {
+			source(current).let { collection ->
+				size = collection.count()
+				(filter?.let { collection.filter(filter) } ?: collection).let {
+					it.forEach { item -> block(item) }
+					contract += it.count()
+				}
+				current = Paging(current.page + 1, current.limit)
+			}
 		}
 	}
 }
