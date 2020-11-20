@@ -1,14 +1,26 @@
-import {Button, Card, Divider, Result} from "antd";
+import {
+	Button,
+	Card,
+	Divider,
+	Result
+} from "antd";
 import EditIcon from "component/icon/EditIcon";
 import Spinner from "component/icon/Spinner";
-import {LayoutContext} from "component/layout/BaseLayout";
+import { LayoutContext } from "component/layout/BaseLayout";
 import ModuleContext from "component/ModuleContext";
 import Placeholder from "component/Placeholder";
 import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
-import {createElement, useContext, useState} from "react";
-import {useTranslation} from "react-i18next";
-import {useNavigate, useParams} from "react-router";
+import {
+	createElement,
+	useContext,
+	useState
+} from "react";
+import { useTranslation } from "react-i18next";
+import {
+	useNavigate,
+	useParams
+} from "react-router";
 import Events from "utils/Events";
 
 const ContextView = (
@@ -16,13 +28,13 @@ const ContextView = (
 		menu,
 		children
 	}) => {
-	const {t} = useTranslation();
-	const params = useParams();
+	const {t}                   = useTranslation();
+	const params                = useParams();
 	const [loading, setLoading] = useState(true);
-	const [data, setData] = useState();
-	const navigate = useNavigate();
-	const moduleContext = useContext(ModuleContext);
-	const layoutContext = useContext(LayoutContext);
+	const [data, setData]       = useState();
+	const navigate              = useNavigate();
+	const moduleContext         = useContext(ModuleContext);
+	const layoutContext         = useContext(LayoutContext);
 	layoutContext.useMenuSelect([menu]);
 	moduleContext.fetch(
 		params[moduleContext.param],
@@ -45,7 +57,7 @@ const ContextView = (
 					<>
 						<Button type={"primary"} size={"large"} icon={<EditIcon/>} ghost onClick={() => {
 							navigate(moduleContext.link.edit.link(params[moduleContext.param]));
-						}} children={t("root.edit.form.edit")}/>
+						}} children={t(moduleContext.id + ".edit.form.edit")}/>
 						<Divider type={"horizontal"}/>
 					</>
 				}
@@ -71,7 +83,7 @@ const CommonHomeView = (props) => {
 
 CommonHomeView.propTypes = {
 	children: PropTypes.func.isRequired,
-	menu: PropTypes.string.isRequired,
+	menu:     PropTypes.string.isRequired,
 };
 
 export default CommonHomeView;
