@@ -1,15 +1,18 @@
 import HomeIcon from "component/icon/HomeIcon";
-import {BaseLayout} from "component/layout/BaseLayout";
+import { BaseLayout } from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
 import BaseRoutes from "component/route/BaseRoutes";
 import SingOutView from "component/view/SingOutView";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {BuildingMenuRoute} from "site/game/module/building/site/Menu";
-import {BuildingRoute} from "site/game/module/building/site/Router";
-import {KingdomMenuItem, KingdomMenuRoute} from "site/game/module/kingdom/site/Menu";
-import {KingdomRoute} from "site/game/module/kingdom/site/Router";
+import { BuildingMenuRoute } from "site/game/module/building/site/Menu";
+import { BuildingRoute } from "site/game/module/building/site/Router";
+import {
+	KingdomMenuItem,
+	KingdomMenuRoute
+} from "site/game/module/kingdom/site/Menu";
+import { KingdomRoute } from "site/game/module/kingdom/site/Router";
 import Footer from "site/game/site/Footer";
 import Header from "site/game/site/Header";
 import HomeView from "site/game/view/home/HomeView";
@@ -46,9 +49,9 @@ const Site = () => {
 					routes={[
 						KingdomRoute(),
 						BuildingRoute(),
-						route(link.signIn.link(), <SingInView/>),
-						route(link.signOut.link(), <SingOutView id={"game"}/>),
-						route(link.sessionExpired.link(), <SessionExpiredView/>),
+						route(link.signIn.match(), <SingInView/>),
+						route(link.signOut.match(), <SingOutView id={"game"}/>),
+						route(link.sessionExpired.match(), <SessionExpiredView/>),
 						route("/", <HomeView/>),
 						route("*", <NotFoundView/>),
 					]}

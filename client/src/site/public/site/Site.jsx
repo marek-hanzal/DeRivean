@@ -1,7 +1,7 @@
 import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
-import {BaseLayout} from "component/layout/BaseLayout";
+import { BaseLayout } from "component/layout/BaseLayout";
 import BaseMenu from "component/menu/BaseMenu";
 import MenuDivider from "component/menu/MenuDivider";
 import MenuItem from "component/menu/MenuItem";
@@ -43,7 +43,7 @@ const Site = () =>
 					route(link.signUpSuccess.match(), <SignUpSuccessView/>),
 					route(link.signIn.match(), <SingInView/>),
 					route(link.signOut.match(), <SingOutView/>),
-					route(link.sessionExpired.link(), <SessionExpiredView/>),
+					route(link.sessionExpired.match(), <SessionExpiredView/>),
 					route("/", <HomeView/>),
 					route("*", <NotFoundView/>),
 				]}
