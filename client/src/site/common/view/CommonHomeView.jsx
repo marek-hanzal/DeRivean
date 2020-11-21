@@ -12,7 +12,6 @@ import Placeholder from "component/Placeholder";
 import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
 import {
-	createElement,
 	useContext,
 	useState
 } from "react";
@@ -71,14 +70,7 @@ const ContextView = (
 };
 
 const CommonHomeView = (props) => {
-	const moduleContext = useContext(ModuleContext);
-	return (
-		createElement(
-			moduleContext.baseView,
-			{},
-			<ContextView {...props}/>
-		)
-	);
+	return (<ContextView {...props}/>);
 };
 
 CommonHomeView.propTypes = {
