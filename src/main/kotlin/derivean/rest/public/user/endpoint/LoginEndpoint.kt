@@ -24,9 +24,9 @@ class LoginEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	private val storage: IStorage by container.lazy()
 
 	override fun install(routing: Routing) {
-		"/api/public/user/login".let { url ->
+		"/api/common/user/login".let { url ->
 			discovery {
-				this.name = "public.user.login"
+				this.name = "common.user.login"
 				this.link = url
 				this.description = "Login user"
 			}

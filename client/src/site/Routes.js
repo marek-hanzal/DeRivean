@@ -5,30 +5,6 @@ function resolveUuid(param, path) {
 }
 
 const Routes = {
-	public: {
-		match: () => "/",
-		link: () => "/",
-		signUp: {
-			match: () => "sign-up/*",
-			link: () => "/sign-up",
-		},
-		signUpSuccess: {
-			match: () => "sign-up/success",
-			link: () => "/sign-up/success",
-		},
-		signIn: {
-			match: () => "sign-in/*",
-			link: () => "/sign-in",
-		},
-		signOut: {
-			match: () => "sign-out/*",
-			link: () => "/sign-out",
-		},
-		sessionExpired: {
-			match: () => "session-expired/*",
-			link: () => "/session-expired",
-		},
-	},
 	game: {
 		kingdom: {
 			match: () => "/kingdom/*",

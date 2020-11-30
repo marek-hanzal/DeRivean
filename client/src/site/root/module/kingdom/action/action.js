@@ -1,8 +1,8 @@
 import {Server} from "@leight-core/leight";
 
-const doKingdomCreate = Server.httpPost("root.kingdom.create");
-const doKingdomUpdate = Server.httpPost("root.kingdom.update");
-const doKingdomDelete = Server.httpPost("root.kingdom.delete");
+const doKingdomCreate = Server.createPost("root.kingdom.create");
+const doKingdomUpdate = Server.createPost("root.kingdom.update");
+const doKingdomDelete = Server.createPost("root.kingdom.delete");
 const fetchKingdomPage = Server.createFetchPage("root.user.kingdom.page");
 const doKingdomSearch = (
 	discovery,

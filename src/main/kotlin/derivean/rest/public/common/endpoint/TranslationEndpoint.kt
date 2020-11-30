@@ -14,10 +14,10 @@ class TranslationEndpoint(container: IContainer) : AbstractEndpoint(container) {
 	private val translationMapper: TranslationMapper by container.lazy()
 
 	override fun install(routing: Routing) {
-		"/api/public/translation".let { url ->
+		"/api/common/translation".let { url ->
 			discovery {
 				this.link = url
-				this.name = "public.translation"
+				this.name = "common.translation"
 				this.description = "Retrieve all translations."
 			}
 			routing.get(url) {

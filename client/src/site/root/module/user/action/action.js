@@ -1,8 +1,8 @@
 import {Server} from "@leight-core/leight";
 
-const doUserCreate = Server.httpPost("root.user.create");
-const doUserUpdate = Server.httpPost("root.user.update");
-const doUserDelete = Server.httpPost("root.user.delete");
+const doUserCreate = Server.createPost("root.user.create");
+const doUserUpdate = Server.createPost("root.user.update");
+const doUserDelete = Server.createPost("root.user.delete");
 const fetchUserPage = Server.createFetchPage("root.user.page");
 const doUserSearch = (
 	discovery,

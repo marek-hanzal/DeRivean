@@ -1,15 +1,15 @@
 {
 	"name": "derivean",
-	"version": "0.6.176",
+	"version": "0.6.178",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@ant-design/icons": "^4.3.0",
-		"@leight-core/leight": "^0.5.33",
+		"@leight-core/leight": "^0.5.36",
 		"@testing-library/jest-dom": "^5.11.6",
 		"@testing-library/react": "^11.2.2",
 		"@testing-library/user-event": "^12.2.0",
-		"antd": "^4.8.5",
+		"antd": "^4.9.0",
 		"axios": "^0.21.0",
 		"build-url": "^6.0.1",
 		"copy-to-clipboard": "^3.3.1",

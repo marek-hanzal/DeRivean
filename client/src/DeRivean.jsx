@@ -10,7 +10,7 @@ const DeRivean = () => {
 		<App
 			titleTemplate={"DeRivean | %s"}
 			sites={{
-				public: <PublicSite/>,
+				common: <PublicSite/>,
 				game: <GameSite/>,
 				root: <RootSite/>,
 			}}
