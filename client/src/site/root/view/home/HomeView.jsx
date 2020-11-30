@@ -1,7 +1,7 @@
+import {Events, useLayoutContext} from "@leight-core/leight";
 import {Card, message} from "antd";
-import {LayoutContext} from "component/layout/BaseLayout";
 import ModuleContext from "component/ModuleContext";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerValidate} from "site/root/hook/hook";
 import ErrorResult from "site/root/view/home/ErrorResult";
@@ -9,7 +9,6 @@ import FailedResult from "site/root/view/home/FailedResult";
 import HomeDashboard from "site/root/view/home/HomeDashboard";
 import LoaderResult from "site/root/view/home/LoaderResult";
 import RootView from "site/root/view/RootView";
-import Events from "utils/Events";
 
 const ResolveStatus = (
 	{
@@ -32,7 +31,7 @@ const HomeView = () => {
 	const {t} = useTranslation();
 	const [validation, setValidation] = useState();
 	const [status, setStatus] = useState(true);
-	const layoutContext = useContext(LayoutContext);
+	const layoutContext = useLayoutContext();
 	useServerValidate(
 		Events()
 			.on("success", validation => {

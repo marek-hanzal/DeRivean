@@ -1,29 +1,23 @@
+import {BaseMenu, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import AttributeIcon from "component/icon/AttributeIcon";
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
-import BaseMenu from "component/menu/BaseMenu";
-import MenuDivider from "component/menu/MenuDivider";
-import MenuGroup from "component/menu/MenuGroup";
-import MenuItem from "component/menu/MenuItem";
-import BaseRoutes from "component/route/BaseRoutes";
+import {Route, Routes} from "react-router-dom";
 import HomeMenuItem from "site/common/menu/HomeMenuItem";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import Routes from "site/Routes";
-import route from "utils/route/route";
 
 const id = "root.user";
-const link = Routes.root.user;
 
 const Menu = () => {
 	return (
-		<BaseRoutes
-			routes={[
-				route(link.home.match(), <BaseMenu>
+		<Routes>
+			<Route path={link.home.match()} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
@@ -33,8 +27,10 @@ const Menu = () => {
 					<KingdomMenuItem key={"root.kingdom"}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-				route(link.edit.match(), <BaseMenu>
+				</BaseMenu>
+			}/>
+			<Route path={link.edit.match()} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
@@ -43,8 +39,10 @@ const Menu = () => {
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-				route(link.attributes.match(), <BaseMenu>
+				</BaseMenu>
+			}/>
+			<Route path={link.attributes.match()} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<MenuItem key={`${id}.list`} id={`${id}.home.back`} href={link.list} icon={<BackIcon/>}/>
 					<MenuDivider/>
@@ -53,17 +51,19 @@ const Menu = () => {
 					<MenuItem key={`${id}.attributes`} id={`${id}.attributes`} href={link.attributes} icon={<AttributeIcon/>}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-				route("*", <BaseMenu>
+				</BaseMenu>
+			}/>
+			<Route path={"*"} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
 					<UserMenuItem key={"root.user"}/>
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-			]}
-		/>
+				</BaseMenu>
+			}/>
+		</Routes>
 	);
 };
 
@@ -77,9 +77,9 @@ const UserMenuItem = (props) => {
 	);
 };
 
-const UserMenuRoute = () => route(link.match(), <Menu/>);
+// const UserMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
-	UserMenuRoute,
+	// UserMenuRoute,
 	UserMenuItem,
 };

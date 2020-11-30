@@ -1,30 +1,25 @@
 {
 	"name": "derivean",
-	"version": "0.6.175",
+	"version": "0.6.176",
 	"private": true,
 	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@ant-design/icons": "^4.3.0",
+		"@leight-core/leight": "^0.5.33",
 		"@testing-library/jest-dom": "^5.11.6",
-		"@testing-library/react": "^11.1.1",
+		"@testing-library/react": "^11.2.2",
 		"@testing-library/user-event": "^12.2.0",
-		"antd": "^4.8.4",
-		"arr-diff": "^4.0.0",
+		"antd": "^4.8.5",
 		"axios": "^0.21.0",
 		"build-url": "^6.0.1",
-		"classnames": "^2.2.6",
 		"copy-to-clipboard": "^3.3.1",
 		"dayjs": "^1.9.6",
-		"deepmerge": "^4.2.2",
 		"history": "^5.0.0",
-		"i18next": "^19.8.3",
+		"i18next": "^19.8.4",
 		"i18next-browser-languagedetector": "^6.0.1",
 		"i18next-xhr-backend": "^3.2.2",
-		"is-empty": "^1.2.0",
 		"isarray": "^2.0.5",
-		"isobject": "^4.0.0",
 		"moment": "^2.29.1",
-		"omit-empty": "^1.0.0",
 		"prop-types": "^15.7.2",
 		"react": "^17.0.1",
 		"react-countdown": "^2.3.1",
@@ -32,14 +27,9 @@
 		"react-helmet": "^6.1.0",
 		"react-hotkeys": "^2.0.0",
 		"react-i18next": "^11.7.3",
-		"react-markdown": "^5.0.2",
 		"react-router": "^6.0.0-beta.0",
 		"react-router-dom": "^6.0.0-beta.0",
-		"react-scripts": "^4.0.0",
-		"react-text-loop": "^2.3.0",
-		"remark-gfm": "^1.0.0",
-		"typescript": "^4.0.5",
-		"uuid": "^8.3.1"
+		"react-scripts": "^4.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -73,6 +63,17 @@
 		]
 	},
 	"devDependencies": {
-		"eslint-plugin-react-hooks": "^4.2.0"
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"typescript": "^3.9.7",
+		"node-sass": "^4.14.1",
+		"ts-node": "^9.0.0",
+		"canvas": "^2.6.1",
+		"sass": "^1.29.0",
+		"type-fest": "^0.13.1",
+		"webpack-hot-middleware": "^2.25.0",
+		"webpack-plugin-serve": "^1.2.1",
+		"fibers": "^5.0.0",
+		"bufferutil": "^4.0.2",
+		"utf-8-validate": "^5.0.3"
 	}
 }

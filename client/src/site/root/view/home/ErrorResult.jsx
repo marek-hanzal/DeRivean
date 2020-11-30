@@ -1,16 +1,11 @@
 import {FrownOutlined, HeartFilled} from "@ant-design/icons";
+import {Centered, Events, generate, useAppContext, useLayoutContext} from "@leight-core/leight";
 import {Alert, Button, Divider, List, Result} from "antd";
-import {DiscoveryContext} from "component/discovery/Discovery";
-import {LayoutContext} from "component/layout/BaseLayout";
-import Centered from "component/layout/Centered";
-import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import {quickCreateTemplateKingdom, quickCreateTemplateUser} from "site/root/action/action";
 import UserIcon from "site/root/module/user/component/icon/UserIcon";
-import Routes from "site/Routes";
-import Events from "utils/Events";
 
 const QuickActionButton = (props) => {
 	const {t} = useTranslation();
@@ -21,8 +16,8 @@ const QuickActionButton = (props) => {
 };
 
 const QuickAction = ({action}) => {
-	const layoutContext = useContext(LayoutContext);
-	const discoveryContext = useContext(DiscoveryContext);
+	const layoutContext = useLayoutContext();
+	const appContext = useAppContext();
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	switch (action) {
@@ -34,10 +29,10 @@ const QuickAction = ({action}) => {
 					onClick={() => {
 						layoutContext.loadingStart();
 						quickCreateTemplateUser(
-							discoveryContext,
+							appContext,
 							Events()
 								.on("success", user => {
-									setTimeout(() => navigate(Routes.root.user.home.link(user.id)), 0);
+									setTimeout(() => navigate(generate("root.user.home", {user: user.id})), 0);
 								})
 								.on("done", () => {
 									layoutContext.loadingFinish();
@@ -55,10 +50,10 @@ const QuickAction = ({action}) => {
 					onClick={() => {
 						layoutContext.loadingStart();
 						quickCreateTemplateKingdom(
-							discoveryContext,
+							appContext,
 							Events()
 								.on("success", kingdom => {
-									setTimeout(() => navigate(Routes.root.kingdom.home.link(kingdom.id)), 0);
+									setTimeout(() => navigate(generate("root.kingdom.home", {kingdom: kingdom.id})), 0);
 								})
 								.on("done", () => {
 									layoutContext.loadingFinish();

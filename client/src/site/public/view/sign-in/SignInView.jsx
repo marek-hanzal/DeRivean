@@ -1,11 +1,11 @@
+import {Centered} from "@leight-core/leight";
 import {Card, Result} from "antd";
 import SignInIcon from "component/icon/SignInIcon";
-import Centered from "component/layout/Centered";
 import {useTranslation} from "react-i18next";
 import PublicView from "site/public/view/PublicView";
-import SignInForm from "site/public/view/sing-in/SignInForm";
+import SignInForm from "site/public/view/sign-in/SignInForm";
 
-const SingInView = () => {
+const SignInView = () => {
 	const {t} = useTranslation();
 	return (
 		<PublicView id={"public.sign-in"}>
@@ -28,4 +28,4 @@ const SingInView = () => {
 	);
 };
 
-export default SingInView;
+export default SignInView;

@@ -1,3 +1,4 @@
+import {generate} from "@leight-core/leight";
 import {Avatar, Button, Divider, Layout, message, Space} from "antd";
 import icon from "assets/icon.png";
 import SearchInput from "component/form/SearchInput";
@@ -12,11 +13,6 @@ import HeroIcon from "site/common/icon/HeroIcon";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import ModuleIcon from "site/common/icon/ModuleIcon";
 import {doSearch} from "site/root/action/action";
-import Routes from "site/Routes";
-
-function warpTo(navigate, item, target = "home") {
-	navigate(Routes.root[item.type][target].link(item.id));
-}
 
 const UserToolbar = ({item}) => {
 	const {t} = useTranslation();
@@ -24,10 +20,10 @@ const UserToolbar = ({item}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
 			<Button size={"small"} type={"dashed"} icon={<KingdomIcon/>} onClick={() => {
-				navigate(Routes.root.kingdom.create.link(item.id));
+				navigate(generate("root.kingdom.create", {user: item.id}));
 			}}>{t("root.toolbar.kingdom.create")}</Button>
 			<Button size={"small"} type={"dashed"} icon={<KingdomIcon/>} onClick={() => {
-				navigate(Routes.root.kingdom.list.link(item.id));
+				navigate(generate("root.kingdom.list", {user: item.id}));
 			}}>{t("root.toolbar.kingdom.list")}</Button>
 		</Space>
 	);

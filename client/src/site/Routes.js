@@ -30,20 +30,6 @@ const Routes = {
 		},
 	},
 	game: {
-		match: () => "/",
-		link: () => "/",
-		signIn: {
-			match: () => "sign-in/*",
-			link: () => "/sign-in",
-		},
-		signOut: {
-			match: () => "sign-out/*",
-			link: () => "/sign-out",
-		},
-		sessionExpired: {
-			match: () => "session-expired/*",
-			link: () => "/session-expired",
-		},
 		kingdom: {
 			match: () => "/kingdom/*",
 			dashboard: {
@@ -89,35 +75,6 @@ const Routes = {
 		},
 	},
 	root: {
-		match: () => "/",
-		link: () => "/",
-		signIn: {
-			match: () => "sign-in/*",
-			link: () => "/sign-in",
-		},
-		signOut: {
-			match: () => "sign-out/*",
-			link: () => "/sign-out",
-		},
-		sessionExpired: {
-			match: () => "session-expired/*",
-			link: () => "/session-expired",
-		},
-		blog: {
-			match: () => "/blog/*",
-			dashboard: {
-				match: () => "dashboard/*",
-				link: () => "/blog/dashboard",
-			},
-			create: {
-				match: () => "create/*",
-				link: () => "/blog/create",
-			},
-			list: {
-				match: () => "list/*",
-				link: () => "/blog/list",
-			},
-		},
 		attributeGroup: {
 			match: () => "/attribute-group/*",
 			dashboard: {
@@ -327,5 +284,3 @@ const Routes = {
 		},
 	}
 };
-
-export default Routes;

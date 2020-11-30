@@ -1,19 +1,17 @@
+import {ScrollToTop, useAppContext} from "@leight-core/leight";
 import ModuleContext from "component/ModuleContext";
-import ScrollToTop from "component/ScrollToTop";
 import {useContext} from "react";
-import {Helmet} from "react-helmet";
-import {useTranslation} from "react-i18next";
 
 const GameView = (
 	{
 		children,
 	}) => {
-	const {t} = useTranslation();
 	const moduleContext = useContext(ModuleContext);
+	const appContext = useAppContext();
+	appContext.useTitle(`${moduleContext.id}.title`);
 	return (
 		<>
 			<ScrollToTop/>
-			<Helmet title={t(`${moduleContext.id}.title`)}/>
 			{children}
 		</>
 	);

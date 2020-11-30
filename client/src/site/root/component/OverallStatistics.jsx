@@ -1,10 +1,10 @@
+import {Events} from "@leight-core/leight";
 import {Divider, message, Space, Spin, Statistic, Tooltip} from "antd";
 import ErrorIcon from "component/icon/ErrorIcon";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import ModuleIcon from "site/common/icon/ModuleIcon";
 import {useStatistics} from "site/root/hook/hook";
-import Events from "utils/Events";
 
 const OverallStatistics = (
 	{

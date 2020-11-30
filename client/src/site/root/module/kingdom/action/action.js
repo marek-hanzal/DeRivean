@@ -1,23 +1,17 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
-import post from "utils/server/post";
+import {Server} from "@leight-core/leight";
 
-const doKingdomCreate = doPost("root.kingdom.create");
-const doKingdomUpdate = doPost("root.kingdom.update");
-const doKingdomDelete = doPost("root.kingdom.delete");
-const fetchKingdomPage = fetchPage("root.user.kingdom.page", "user");
+const doKingdomCreate = Server.httpPost("root.kingdom.create");
+const doKingdomUpdate = Server.httpPost("root.kingdom.update");
+const doKingdomDelete = Server.httpPost("root.kingdom.delete");
+const fetchKingdomPage = Server.createFetchPage("root.user.kingdom.page");
 const doKingdomSearch = (
 	discovery,
 	data,
 	events,
-	navigate,
-	cancelToken,
-) => post(
+) => Server.httpPost(
 	discovery.link("root.kingdom.search"),
 	data,
 	events,
-	navigate,
-	cancelToken,
 );
 
 export {

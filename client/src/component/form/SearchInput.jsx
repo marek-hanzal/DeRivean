@@ -1,12 +1,11 @@
+import {Events, useAppContext} from "@leight-core/leight";
 import {Select} from "antd";
 import axios from "axios";
-import {DiscoveryContext} from "component/discovery/Discovery";
 import EditorContext from "component/form/EditorContext";
 import ModuleContext from "component/ModuleContext";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import Events from "utils/Events";
 
 const SearchInput = (
 	{
@@ -18,12 +17,11 @@ const SearchInput = (
 	}) => {
 	const moduleContext = useContext(ModuleContext);
 	const {t} = useTranslation();
-	const ref = useRef();
 	const navigate = useNavigate();
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const editorContext = useContext(EditorContext);
-	const discoveryContext = useContext(DiscoveryContext);
+	const appContext = useAppContext();
 	mapper = mapper || (data => data.items.map(item => ({
 		label: item.name,
 		value: item.id, ...item
@@ -33,7 +31,7 @@ const SearchInput = (
 	function search(search = "") {
 		setLoading(true);
 		moduleContext.search(
-			discoveryContext,
+			appContext,
 			{search},
 			Events()
 				.on("success", data => {
@@ -50,7 +48,7 @@ const SearchInput = (
 	useEffect(() => {
 		const cancelToken = axios.CancelToken.source();
 		moduleContext.search(
-			discoveryContext,
+			appContext,
 			{search: ""},
 			Events()
 				.on("success", data => {
@@ -71,20 +69,9 @@ const SearchInput = (
 	}, []);
 
 	return (
-		// <GlobalHotKeys keyMap={{
-		// 	search: hotkey,
-		// }} handlers={{
-		// 	search: _ => {
-		// 		ref.current.focus();
-		// 	}
-		// }}>
 		<Select
-			ref={ref}
 			showSearch
 			defaultActiveFirstOption={false}
-			// open={open}
-			// onFocus={() => setOpen(true)}
-			// onBlur={() => setOpen(false)}
 			filterOption={false}
 			loading={loading}
 			allowClear
@@ -99,7 +86,6 @@ const SearchInput = (
 				</Select.Option>
 			))}
 		/>
-		// </GlobalHotKeys>
 	);
 };
 

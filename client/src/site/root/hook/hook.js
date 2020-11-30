@@ -1,19 +1,12 @@
-import axios from "axios";
-import {DiscoveryContext} from "component/discovery/Discovery";
-import {useContext, useEffect} from "react";
-import {useNavigate} from "react-router";
-import get from "utils/server/get";
+import {Server, useAppContext} from "@leight-core/leight";
+import {useEffect} from "react";
 
 const useStatistics = (events) => {
-	const discoveryContext = useContext(DiscoveryContext);
-	const navigate = useNavigate();
+	const appContext = useAppContext();
 	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		get(
-			discoveryContext.link("root.statistics"),
+		const cancelToken = Server.httpGet(
+			appContext.link("root.statistics"),
 			events,
-			navigate,
-			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -21,15 +14,11 @@ const useStatistics = (events) => {
 };
 
 const useServerSites = events => {
-	const discoveryContext = useContext(DiscoveryContext);
-	const navigate = useNavigate();
+	const appContext = useAppContext();
 	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		get(
-			discoveryContext.link("root.server.sites"),
+		const cancelToken = Server.httpGet(
+			appContext.link("root.server.sites"),
 			events,
-			navigate,
-			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line
@@ -37,15 +26,11 @@ const useServerSites = events => {
 };
 
 const useServerValidate = events => {
-	const discovery = useContext(DiscoveryContext);
-	const navigate = useNavigate();
+	const appContext = useAppContext();
 	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
-		get(
-			discovery.link("root.server.validate"),
+		const cancelToken = Server.httpGet(
+			appContext.link("root.server.validate"),
 			events,
-			navigate,
-			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line

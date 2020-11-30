@@ -1,56 +1,44 @@
+import {BaseLayout, BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, SessionExpiredView, SignedOutView} from "@leight-core/leight";
 import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
-import {BaseLayout} from "component/layout/BaseLayout";
-import BaseMenu from "component/menu/BaseMenu";
-import MenuDivider from "component/menu/MenuDivider";
-import MenuItem from "component/menu/MenuItem";
-import BaseRoutes from "component/route/BaseRoutes";
+import {Route, Routes} from "react-router-dom";
 import Footer from "site/public/site/Footer";
 import Header from "site/public/site/Header";
 import HomeView from "site/public/view/HomeView";
-import SessionExpiredView from "site/public/view/SessionExpiredView";
+import SignInView from "site/public/view/sign-in/SignInView";
 import SignUpSuccessView from "site/public/view/sign-up/SignUpSuccessView";
 import SignUpView from "site/public/view/sign-up/SignUpView";
-import SingOutView from "site/public/view/SignOutView";
-import SingInView from "site/public/view/sing-in/SingInView";
-import Routes from "site/Routes";
-import route from "utils/route/route";
-import NotFoundView from "view/NotFoundView";
 
-const link = Routes.public;
-
-const Site = () =>
-	<BaseLayout
-		header={<Header/>}
-		menu={
-			<BaseRoutes
-				routes={[
-					route("*", <BaseMenu>
-						<MenuDivider/>
-						<MenuItem key={"public.home"} id={"public.home"} href={link} icon={<HomeIcon/>}/>
-						<MenuDivider/>
-						<MenuItem key={"public.sign-up"} id={"public.sign-up"} href={link.signUp} icon={<SignUpIcon/>}/>
-						<MenuItem key={"public.sign-in"} id={"public.sign-in"} href={link.signIn} icon={<SignInIcon/>}/>
-					</BaseMenu>),
-				]}
-			/>
-		}
-		router={
-			<BaseRoutes
-				routes={[
-					route(link.signUp.match(), <SignUpView/>),
-					route(link.signUpSuccess.match(), <SignUpSuccessView/>),
-					route(link.signIn.match(), <SingInView/>),
-					route(link.signOut.match(), <SingOutView/>),
-					route(link.sessionExpired.link(), <SessionExpiredView/>),
-					route("/", <HomeView/>),
-					route("*", <NotFoundView/>),
-				]}
-			/>
-		}
-		footer={<Footer/>}
-	/>
-;
-
-export default Site;
+export const PublicSite = () => {
+	return (
+		<BaseLayout
+			header={<Header/>}
+			menu={
+				<Routes>
+					<Route path={"*"} element={
+						<BaseMenu>
+							<MenuDivider/>
+							<MenuItem key={"public.home"} id={"public.home"} href={link} icon={<HomeIcon/>}/>
+							<MenuDivider/>
+							<MenuItem key={"public.sign-up"} id={"public.sign-up"} href={link.signUp} icon={<SignUpIcon/>}/>
+							<MenuItem key={"public.sign-in"} id={"public.sign-in"} href={link.signIn} icon={<SignInIcon/>}/>
+						</BaseMenu>}
+					/>
+				</Routes>
+			}
+			router={
+				<Routes>
+					<Route path={link.signUp.match()} element={<SignUpView/>}/>
+					<Route path={link.signUpSuccess.match()} element={<SignUpSuccessView/>}/>
+					<Route path={link.signIn.match()} element={<SignInView/>}/>
+					<Route path={match("public.sign-out")} element={<SignedOutView link={link("public")}/>}/>
+					<Route path={match("public.session-expired")} element={<SessionExpiredView link={link("public")}/>}/>
+					<Route path={"/"} element={<HomeView/>}/>
+					<Route path={"*"} element={<NotFoundView/>}/>
+				</Routes>
+			}
+			footer={<Footer/>}
+		/>
+	);
+};

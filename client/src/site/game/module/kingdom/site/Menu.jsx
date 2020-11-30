@@ -1,81 +1,77 @@
+import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import BackIcon from "component/icon/BackIcon";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
-import BaseMenu from "component/menu/BaseMenu";
-import MenuDivider from "component/menu/MenuDivider";
-import MenuGroup from "component/menu/MenuGroup";
-import MenuItem from "component/menu/MenuItem";
-import BaseRoutes from "component/route/BaseRoutes";
+import {Route, Routes} from "react-router-dom";
 import KingdomIcon from "site/common/icon/KingdomIcon";
 import HomeMenuItem from "site/common/menu/HomeMenuItem";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import {BuildingMenuItem} from "site/game/module/building/site/Menu";
-import Routes from "site/Routes";
-import route from "utils/route/route";
 
 const id = "game.kingdom";
-const link = Routes.game.kingdom;
 
 const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<HomeMenuItem id={"game"} href={Routes.game}/>
+			<HomeMenuItem id={"game"} href={link("game")}/>
 			<MenuDivider/>
 			<KingdomMenuItem key={id} id={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
+			<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
 		</BaseMenu>
 	);
 };
 
 const Menu = () => {
 	return (
-		<BaseRoutes
-			routes={[
-				route(link.home.match(), <BaseMenu>
+		<Routes>
+			<Route path={match(id)} element={
+				<BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
+					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link(id + ".list")} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuItem key={id} id={id} href={link(id)} icon={<KingdomIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link(id + ".edit")} icon={<EditIcon/>}/>
 					<MenuDivider/>
 					<BuildingMenuItem key={"game.building"}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
-				</BaseMenu>),
-				route(link.edit.match(), <BaseMenu>
+					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
+				</BaseMenu>
+			}/>
+			<Route path={match(id + ".edit")} element={
+				<BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link.list} icon={<BackIcon/>}/>
+					<MenuItem key={"game.kingdom.list"} id={"game.kingdom.home.back"} href={link(id + ".list")} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<KingdomIcon/>}/>
-					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+					<MenuItem key={id} id={id} href={link(id)} icon={<KingdomIcon/>}/>
+					<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link(id + ".edit")} icon={<EditIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
-				</BaseMenu>),
-				route(link.dashboard.match(), <DefaultMenu/>),
-				route(link.create.match(), <DefaultMenu/>),
-				route(link.list.match(), <DefaultMenu/>),
-			]}
-		/>
+					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
+				</BaseMenu>
+			}/>
+			<Route path={match(id + ".dashboard")} element={<DefaultMenu/>}/>
+			<Route path={match(id + ".create")} element={<DefaultMenu/>}/>
+			<Route path={match(id + ".list")} element={<DefaultMenu/>}/>
+		</Routes>
 	);
 };
 
 const KingdomMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} icon={<KingdomIcon/>} {...props}>
-			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
-			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
+			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link(id + ".dashboard")} icon={<DashboardIcon/>}/>
+			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link(id + ".create")} icon={<CreateIcon/>}/>
+			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link(id + ".list")} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
 };
 
-const KingdomMenuRoute = () => route(link.match(), <Menu/>);
+// const KingdomMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	KingdomMenuItem,
-	KingdomMenuRoute,
+	// KingdomMenuRoute,
 };

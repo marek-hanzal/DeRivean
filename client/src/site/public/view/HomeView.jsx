@@ -1,4 +1,5 @@
 import {SmileOutlined} from "@ant-design/icons";
+import {link} from "@leight-core/leight";
 import {Button, Card, Image, Result, Typography} from "antd";
 import icon from "assets/icon-small.png";
 import SignInIcon from "component/icon/SignInIcon";
@@ -6,7 +7,6 @@ import SignUpIcon from "component/icon/SignUpIcon";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import PublicView from "site/public/view/PublicView";
-import Routes from "site/Routes";
 
 const HomeView = () => {
 	const {t} = useTranslation();
@@ -20,10 +20,10 @@ const HomeView = () => {
 					subTitle={t("public.home.content.subtitle")}
 					extra={[
 						<Button type="primary" key="sign-in">
-							<Link to={Routes.public.signIn.link()}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
+							<Link to={link("public.sign-in")}><SignInIcon/>&nbsp;{t("public.home.sign-in.title")}</Link>
 						</Button>,
 						<Button key="sign-up">
-							<Link to={Routes.public.signUp.link()}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
+							<Link to={link("public.sign-up")}><SignUpIcon/>&nbsp;{t("public.home.sign-up.title")}</Link>
 						</Button>,
 					]}
 				>

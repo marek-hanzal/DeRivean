@@ -1,7 +1,7 @@
+import {link} from "@leight-core/leight";
 import {Avatar, Button, Layout} from "antd";
 import icon from "assets/icon.png";
 import {Link} from "react-router-dom";
-import Routes from "site/Routes";
 
 const Header = () =>
 	<Layout.Header style={{
@@ -12,7 +12,7 @@ const Header = () =>
 		backgroundColor: "#FFF",
 	}}>
 		<div style={{float: "left"}}>
-			<Link to={Routes.public.link()}>
+			<Link to={link("public")}>
 				<Button type={"link"} size={"large"} icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}>
 					DeRivean
 				</Button>

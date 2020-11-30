@@ -1,10 +1,7 @@
-import {
-	Card,
-	Result
-} from "antd";
+import {Centered} from "@leight-core/leight";
+import {Card, Result} from "antd";
 import SignUpIcon from "component/icon/SignUpIcon";
-import Centered from "component/layout/Centered";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import PublicView from "site/public/view/PublicView";
 import SignUpForm from "site/public/view/sign-up/SignUpForm";
 

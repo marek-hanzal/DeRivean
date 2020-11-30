@@ -1,26 +1,20 @@
+import {BaseMenu, match, MenuDivider, MenuItem} from "@leight-core/leight";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
 import ListIcon from "component/icon/ListIcon";
-import BaseMenu from "component/menu/BaseMenu";
-import MenuDivider from "component/menu/MenuDivider";
-import MenuGroup from "component/menu/MenuGroup";
-import MenuItem from "component/menu/MenuItem";
-import BaseRoutes from "component/route/BaseRoutes";
+import {Route, Routes} from "react-router-dom";
 import HomeMenuItem from "site/common/menu/HomeMenuItem";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
 import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
-import Routes from "site/Routes";
-import route from "utils/route/route";
 
 const id = "root.translation";
-const link = Routes.root.translation;
 
 const Menu = () => {
 	return (
-		<BaseRoutes
-			routes={[
-				route(link.home.match(), <BaseMenu>
+		<Routes>
+			<Route path={match(id)} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
@@ -31,8 +25,10 @@ const Menu = () => {
 
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-				route("*", <BaseMenu>
+				</BaseMenu>
+			}/>
+			<Route path={"*"} element={
+				<BaseMenu>
 					<MenuDivider/>
 					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
 					<MenuDivider/>
@@ -41,9 +37,9 @@ const Menu = () => {
 
 					<MenuDivider/>
 					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
-				</BaseMenu>),
-			]}
-		/>
+				</BaseMenu>
+			}/>
+		</Routes>
 	);
 };
 
@@ -58,9 +54,9 @@ const TranslationMenuItem = ({children, ...props}) => {
 	);
 };
 
-const TranslationMenuRoute = () => route(link.match(), <Menu/>);
+// const TranslationMenuRoute = () => route(link.match(), <Menu/>);
 
 export {
 	TranslationMenuItem,
-	TranslationMenuRoute,
+	// TranslationMenuRoute,
 };

@@ -1,24 +1,18 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
-import post from "utils/server/post";
+import {Server} from "@leight-core/leight";
 
-const doUserCreate = doPost("root.user.create");
-const doUserUpdate = doPost("root.user.update");
-const doUserDelete = doPost("root.user.delete");
-const fetchUserPage = fetchPage("root.user.page");
+const doUserCreate = Server.httpPost("root.user.create");
+const doUserUpdate = Server.httpPost("root.user.update");
+const doUserDelete = Server.httpPost("root.user.delete");
+const fetchUserPage = Server.createFetchPage("root.user.page");
 const doUserSearch = (
 	discovery,
 	data,
 	events,
-	navigate,
-	cancelToken,
 ) => {
-	post(
+	Server.httpPost(
 		discovery.link("root.user.search"),
 		data,
 		events,
-		navigate,
-		cancelToken,
 	);
 };
 

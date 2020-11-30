@@ -1,20 +1,15 @@
+import {Events, Server} from "@leight-core/leight";
 import {doKingdomCreate} from "site/root/module/kingdom/action/action";
 import {doUserCreate, doUserSearch} from "site/root/module/user/action/action";
-import Events from "utils/Events";
-import post from "utils/server/post";
 
 const doSearch = (
 	discovery,
 	data,
 	events,
-	navigate,
-	cancelToken = null,
-) => post(
+) => Server.httpPost(
 	discovery.link("root.search"),
 	data,
 	events,
-	navigate,
-	cancelToken,
 );
 
 const quickCreateTemplateUser = (

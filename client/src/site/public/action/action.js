@@ -1,7 +1,7 @@
-import doPost from "utils/server/doPost";
+import {Server} from "@leight-core/leight";
 
-const doUserRegister = doPost("public.user.register");
-const doUserLogin = doPost("public.user.login");
+const doUserRegister = Server.httpPost("public.user.register");
+const doUserLogin = Server.httpPost("public.user.login");
 
 export {
 	doUserRegister,

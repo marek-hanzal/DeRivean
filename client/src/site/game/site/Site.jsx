@@ -1,62 +1,49 @@
+import {BaseLayout, BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SignedInView, SignOutView} from "@leight-core/leight";
 import HomeIcon from "component/icon/HomeIcon";
-import {BaseLayout} from "component/layout/BaseLayout";
-import BaseMenu from "component/menu/BaseMenu";
-import MenuDivider from "component/menu/MenuDivider";
-import MenuItem from "component/menu/MenuItem";
-import BaseRoutes from "component/route/BaseRoutes";
-import SingOutView from "component/view/SingOutView";
+import {Route, Routes} from "react-router-dom";
 import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {BuildingMenuRoute} from "site/game/module/building/site/Menu";
-import {BuildingRoute} from "site/game/module/building/site/Router";
-import {KingdomMenuItem, KingdomMenuRoute} from "site/game/module/kingdom/site/Menu";
-import {KingdomRoute} from "site/game/module/kingdom/site/Router";
+import {KingdomMenuItem} from "site/game/module/kingdom/site/Menu";
 import Footer from "site/game/site/Footer";
 import Header from "site/game/site/Header";
 import HomeView from "site/game/view/home/HomeView";
-import SessionExpiredView from "site/game/view/SessionExpiredView";
-import SingInView from "site/game/view/SingInView";
-import Routes from "site/Routes";
-import route from "utils/route/route";
-import NotFoundView from "view/NotFoundView";
 
-const link = Routes.game;
+route("game", "/", "/");
+route("game.sign-in", "sign-in/*", "/sign-in");
+route("game.sign-out", "sign-out/*", "/sign-out");
+route("game.session-expired", "session-expired/*", "/session-expired");
 
-const Site = () => {
+export const GameSite = () => {
 	return (
 		<BaseLayout
 			header={<Header/>}
 			menu={
-				<BaseRoutes
-					routes={[
-						KingdomMenuRoute(),
-						BuildingMenuRoute(),
-						route("*", <BaseMenu>
+				<Routes>
+					{/*KingdomMenuRoute(),*/}
+					{/*BuildingMenuRoute(),*/}
+					<Route path={"*"} element={
+						<BaseMenu>
 							<MenuDivider/>
-							<MenuItem key={"game.home"} id={"game.home"} href={Routes.game} icon={<HomeIcon/>}/>
+							<MenuItem key={"game.home"} id={"game.home"} href={link("game")} icon={<HomeIcon/>}/>
 							<MenuDivider/>
 							<KingdomMenuItem/>
 							<MenuDivider/>
-							<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link}/>
-						</BaseMenu>)
-					]}
-				/>
+							<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
+						</BaseMenu>
+					}/>
+				</Routes>
 			}
 			router={
-				<BaseRoutes
-					routes={[
-						KingdomRoute(),
-						BuildingRoute(),
-						route(link.signIn.link(), <SingInView/>),
-						route(link.signOut.link(), <SingOutView id={"game"}/>),
-						route(link.sessionExpired.link(), <SessionExpiredView/>),
-						route("/", <HomeView/>),
-						route("*", <NotFoundView/>),
-					]}
-				/>
+				<Routes>
+					{/*KingdomRoute(),*/}
+					{/*BuildingRoute(),*/}
+					<Route path={match("game.sign-in")} element={<SignedInView link={link("game")}/>}/>
+					<Route path={match("game.sign-out")} element={<SignOutView id={"game"}/>}/>
+					<Route path={match("game.session-expired")} element={<SessionExpiredView link={link("game")}/>}/>
+					<Route path={"/"} element={<HomeView/>}/>
+					<Route path={"*"} element={<NotFoundView/>}/>
+				</Routes>
 			}
 			footer={<Footer/>}
 		/>
 	);
 };
-
-export default Site;

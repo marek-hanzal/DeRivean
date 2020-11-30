@@ -1,23 +1,16 @@
-import {Button, Form, Input, message} from "antd";
-import {DiscoveryContext} from "component/discovery/Discovery";
-import SignInIcon from "component/icon/SignInIcon";
-import {LayoutContext} from "component/layout/BaseLayout";
-import Centered from "component/layout/Centered";
-import {SessionContext} from "component/session/Session";
-import {useContext, useState} from "react";
+import {Centered, Events, SubmitButton, useAppContext, useLayoutContext} from "@leight-core/leight";
+import {Form, Input, message} from "antd";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
 import {doUserLogin} from "site/public/action/action";
-import Events from "utils/Events";
-import enableSubmit from "utils/form/enableSubmit";
 import validationFor from "utils/form/validationFor";
 
 const SignInForm = () => {
 	const {t} = useTranslation();
 	const [errors, setErrors] = useState();
-	const discoveryContext = useContext(DiscoveryContext);
-	const sessionContext = useContext(SessionContext);
-	const layoutContext = useContext(LayoutContext);
+	const appContext = useAppContext();
+	const layoutContext = useLayoutContext();
 	const [form] = Form.useForm();
 	const navigate = useNavigate();
 	return (
@@ -26,11 +19,11 @@ const SignInForm = () => {
 			onFinish={values => {
 				layoutContext.loadingStart();
 				doUserLogin(
-					discoveryContext,
+					appContext,
 					values,
 					Events()
 						.on("success", data => {
-							sessionContext.open(data);
+							appContext.login(data);
 						})
 						.on("error", () => {
 							message.error(t("public.sign-in.general-error"));
@@ -69,17 +62,7 @@ const SignInForm = () => {
 				children={<Input.Password addonBefore={<div style={{width: "120px"}}>{t("public.sign-in.form.password.label")}</div>}/>}
 			/>
 			<Centered>
-				<Form.Item shouldUpdate>
-					{() => (
-						<Button
-							type="primary"
-							htmlType="submit"
-							icon={<SignInIcon/>}
-							disabled={!enableSubmit(form, true)}
-							children={t("public.sign-in.form.submit.label")}
-						/>
-					)}
-				</Form.Item>
+				<SubmitButton title={"public.sign-in.form.submit.label"} form={form}/>
 			</Centered>
 		</Form>
 	);
