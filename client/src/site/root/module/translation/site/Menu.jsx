@@ -1,4 +1,4 @@
-import {BaseMenu, match, MenuDivider, MenuItem} from "@leight-core/leight";
+import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import CreateIcon from "component/icon/CreateIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import EditIcon from "component/icon/EditIcon";
@@ -16,27 +16,27 @@ const Menu = () => {
 			<Route path={match(id)} element={
 				<BaseMenu>
 					<MenuDivider/>
-					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
+					<HomeMenuItem key={"root.home"} id={"root"} href={link("root")}/>
 					<MenuDivider/>
 
 					<TranslationMenuItem key={id}>
-						<MenuItem key={`${id}.edit`} id={`${id}.edit`} href={link.edit} icon={<EditIcon/>}/>
+						<MenuItem key={id + ".edit"} id={id + ".edit"} href={link(id + ".edit")} icon={<EditIcon/>}/>
 					</TranslationMenuItem>,
 
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={link("root.sign-out")}/>
 				</BaseMenu>
 			}/>
 			<Route path={"*"} element={
 				<BaseMenu>
 					<MenuDivider/>
-					<HomeMenuItem key={"root.home"} id={"root"} href={Routes.root}/>
+					<HomeMenuItem key={"root.home"} id={"root"} href={link("root")}/>
 					<MenuDivider/>
 
 					<TranslationMenuItem key={id}/>
 
 					<MenuDivider/>
-					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={Routes.root.signOut}/>
+					<LogoutMenuItem key={"root.sign-out"} id={"root"} href={link("root.sign-out")}/>
 				</BaseMenu>
 			}/>
 		</Routes>
@@ -46,9 +46,9 @@ const Menu = () => {
 const TranslationMenuItem = ({children, ...props}) => {
 	return (
 		<MenuGroup id={id} icon={<TranslationIcon/>} {...props}>
-			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${id}.create`} id={`${id}.create`} href={link.create} icon={<CreateIcon/>}/>
-			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
+			<MenuItem key={id + ".dashboard"} id={id + ".dashboard"} href={link(id + ".dashboard")} icon={<DashboardIcon/>}/>
+			<MenuItem key={id + ".create"} id={id + ".create"} href={link(id + ".create")} icon={<CreateIcon/>}/>
+			<MenuItem key={id + ".list"} id={id + ".list"} href={link(id + ".list")} icon={<ListIcon/>}/>
 			{children}
 		</MenuGroup>
 	);

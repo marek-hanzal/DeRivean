@@ -1,4 +1,4 @@
-import {BaseMenu, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
+import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import BackIcon from "component/icon/BackIcon";
 import DashboardIcon from "component/icon/DashboardIcon";
 import ListIcon from "component/icon/ListIcon";
@@ -12,11 +12,11 @@ const DefaultMenu = () => {
 	return (
 		<BaseMenu>
 			<MenuDivider/>
-			<MenuItem key={"game.kingdom"} id={"game.kingdom"} href={Routes.game.kingdom.home} icon={<BackIcon/>}/>
+			<MenuItem key={"game.kingdom"} id={"game.kingdom"} href={link("game.kingdom.home")} icon={<BackIcon/>}/>
 			<MenuDivider/>
 			<BuildingMenuItem key={id} id={id}/>
 			<MenuDivider/>
-			<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
+			<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
 		</BaseMenu>
 	);
 };
@@ -24,18 +24,18 @@ const DefaultMenu = () => {
 const Menu = () => {
 	return (
 		<Routes>
-			<Route path={link.home.match()} element={
+			<Route path={match("game.building.home")} element={
 				<BaseMenu>
 					<MenuDivider/>
-					<MenuItem key={"game.building.list"} id={"game.building.home.back"} href={link.list} icon={<BackIcon/>}/>
+					<MenuItem key={id + ".list"} id={id + ".home.back"} href={link(id + ".list")} icon={<BackIcon/>}/>
 					<MenuDivider/>
-					<MenuItem key={id} id={id} href={link.home} icon={<BuildingIcon/>}/>
+					<MenuItem key={id} id={id} href={link(id + ".home")} icon={<BuildingIcon/>}/>
 					<MenuDivider/>
-					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={Routes.game.signOut}/>
+					<LogoutMenuItem key={"game.sign-out"} id={"game"} href={link("game.sign-out")}/>
 				</BaseMenu>
 			}/>
-			<Route path={link.dashboard.match()} element={<DefaultMenu/>}/>
-			<Route path={link.list.match()} element={<DefaultMenu/>}/>
+			<Route path={match(id + ".dashboard")} element={<DefaultMenu/>}/>
+			<Route path={match(id + ".list")} element={<DefaultMenu/>}/>
 		</Routes>
 	);
 };
@@ -43,8 +43,8 @@ const Menu = () => {
 const BuildingMenuItem = (props) => {
 	return (
 		<MenuGroup id={id} icon={<BuildingIcon/>} {...props}>
-			<MenuItem key={`${id}.dashboard`} id={`${id}.dashboard`} href={link.dashboard} icon={<DashboardIcon/>}/>
-			<MenuItem key={`${id}.list`} id={`${id}.list`} href={link.list} icon={<ListIcon/>}/>
+			<MenuItem key={id + ".dashboard"} id={id + ".dashboard"} href={link(id + ".dashboard")} icon={<DashboardIcon/>}/>
+			<MenuItem key={id + ".list"} id={id + ".list"} href={link(id + ".list")} icon={<ListIcon/>}/>
 		</MenuGroup>
 	);
 };

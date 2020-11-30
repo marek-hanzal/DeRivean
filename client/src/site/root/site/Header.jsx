@@ -1,4 +1,4 @@
-import {generate} from "@leight-core/leight";
+import {generate, link} from "@leight-core/leight";
 import {Avatar, Button, Divider, Layout, message, Space} from "antd";
 import icon from "assets/icon.png";
 import SearchInput from "component/form/SearchInput";
@@ -35,16 +35,16 @@ const KingdomToolbar = ({item}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>}>
 			<Button size={"small"} type={"dashed"} icon={<BuildingIcon/>} onClick={() => {
-				navigate(Routes.root.building.create.link(item.id));
+				navigate(generate("root.building.create", {kingdom: item.id}));
 			}}>{t("root.toolbar.building.create")}</Button>
 			<Button size={"small"} type={"dashed"} icon={<BuildingIcon/>} onClick={() => {
-				navigate(Routes.root.building.list.link(item.id));
+				navigate(generate("root.building.list", {kingdom: item.id}));
 			}}>{t("root.toolbar.building.list")}</Button>
 			<Button size={"small"} type={"dashed"} icon={<HeroIcon/>} onClick={() => {
-				navigate(Routes.root.hero.create.link(item.id));
+				navigate(generate("root.hero.create", {kingdom: item.id}));
 			}}>{t("root.toolbar.hero.create")}</Button>
 			<Button size={"small"} type={"dashed"} icon={<HeroIcon/>} onClick={() => {
-				navigate(Routes.root.hero.list.link(item.id));
+				navigate(generate("root.hero.list", {kingdom: item.id}));
 			}}>{t("root.toolbar.hero.list")}</Button>
 		</Space>
 	);
@@ -67,11 +67,11 @@ const SearchItem = ({item}) => {
 	return (
 		<Space split={<Divider type={"vertical"}/>} size={"small"}>
 			<Button size={"small"} type={"dashed"} icon={<ModuleIcon module={item.type}/>} onClick={() => {
-				warpTo(navigate, item);
+				// warpTo(navigate, item);
 				message.success(t("common.warped"));
 			}} children={t("common.view-item")}/>
 			<Button size={"small"} type={"dashed"} icon={<EditIcon/>} onClick={() => {
-				warpTo(navigate, item, "edit");
+				// warpTo(navigate, item, "edit");
 				message.success(t("common.warped"));
 			}} children={t("common.edit-item")}/>
 			<Button size={"small"} type={"dashed"} onClick={e => {
@@ -97,7 +97,7 @@ const Header = () => {
 			backgroundColor: "#FFF",
 		}}>
 			<div style={{float: "left"}}>
-				<Link to={Routes.root.link()}>
+				<Link to={link("root")}>
 					<Button type={"link"} size={"large"} icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}>
 						DeRivean
 					</Button>
@@ -120,7 +120,6 @@ const Header = () => {
 							setValue(null);
 						}}
 						render={item => <SearchItem item={item}/>}
-						// hotkey={"alt+x"}
 					/>
 				</ModuleContext.Provider>
 			</div>
