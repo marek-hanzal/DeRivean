@@ -1,10 +1,9 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
+import {Server} from "@leight-core/leight";
 
-const doAttributeTypeCreate = doPost("root.attribute-type.create");
-const doAttributeTypeUpdate = doPost("root.attribute-type.update");
-const doAttributeTypeDelete = doPost("root.attribute-type.delete");
-const fetchAttributeTypePage = fetchPage("root.attribute-group.attribute-type.page", "group");
+const doAttributeTypeCreate = Server.createPost("root.attribute-type.create");
+const doAttributeTypeUpdate = Server.createPost("root.attribute-type.update");
+const doAttributeTypeDelete = Server.createPost("root.attribute-type.delete");
+const fetchAttributeTypePage = Server.createFetchPage("root.attribute-group.attribute-type.page");
 
 export {
 	doAttributeTypeCreate,

@@ -1,20 +1,13 @@
-import axios from "axios";
-import {DiscoveryContext} from "component/discovery/Discovery";
-import {useContext, useEffect} from "react";
-import {useNavigate} from "react-router";
-import get from "utils/server/get";
+import {Server, useAppContext} from "@leight-core/leight";
+import {useEffect} from "react";
 
 const useUserResource = (events) => {
-	const navigate = useNavigate();
-	const discoveryContext = useContext(DiscoveryContext);
+	const discoveryContext = useAppContext();
 	useEffect(() => {
-		const cancelToken = axios.CancelToken.source();
 		events.call("request");
-		get(
+		const cancelToken = Server.httpGet(
 			discoveryContext.link("game.user.resource"),
 			events,
-			navigate,
-			cancelToken,
 		);
 		return () => cancelToken.cancel();
 		// eslint-disable-next-line

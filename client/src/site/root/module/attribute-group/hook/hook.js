@@ -1,6 +1,6 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useAttributeGroupFetch = commonFetchHook("root.attribute-group.fetch");
+const useAttributeGroupFetch = createFetchHook("root.attribute-group.fetch");
 
 export {
 	useAttributeGroupFetch,

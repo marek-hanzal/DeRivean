@@ -1,10 +1,9 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
+import {Server} from "@leight-core/leight";
 
-const doTranslationCreate = doPost("root.translation.create");
-const doTranslationUpdate = doPost("root.translation.update");
-const doTranslationDelete = doPost("root.translation.delete");
-const fetchTranslationPage = fetchPage("root.translation.page");
+const doTranslationCreate = Server.createPost("root.translation.create");
+const doTranslationUpdate = Server.createPost("root.translation.update");
+const doTranslationDelete = Server.createPost("root.translation.delete");
+const fetchTranslationPage = Server.createFetchPage("root.translation.page");
 
 export {
 	doTranslationCreate,

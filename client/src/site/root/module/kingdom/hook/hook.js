@@ -1,7 +1,7 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useKingdomFetch = commonFetchHook("root.kingdom.fetch");
-const useKingdomStatisticsFetch = commonFetchHook("root.kingdom.statistics", "{kingdom}");
+const useKingdomFetch = createFetchHook("root.kingdom.fetch");
+const useKingdomStatisticsFetch = createFetchHook("root.kingdom.statistics", "{kingdom}");
 
 export {
 	useKingdomFetch,

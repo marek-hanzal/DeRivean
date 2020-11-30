@@ -1,6 +1,6 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useHeroFetch = commonFetchHook("root.hero.fetch");
+const useHeroFetch = createFetchHook("root.hero.fetch");
 
 export {
 	useHeroFetch,

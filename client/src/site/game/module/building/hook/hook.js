@@ -1,7 +1,7 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useBuildingFetch = commonFetchHook("game.building.fetch");
-const useBuildingStatisticsFetch = commonFetchHook("game.building.statistics", "{building}");
+const useBuildingFetch = createFetchHook("game.building.fetch");
+const useBuildingStatisticsFetch = createFetchHook("game.building.statistics", "{building}");
 
 export {
 	useBuildingFetch,

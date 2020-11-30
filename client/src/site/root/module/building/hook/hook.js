@@ -1,6 +1,6 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useBuildingFetch = commonFetchHook("root.building.fetch");
+const useBuildingFetch = createFetchHook("root.building.fetch");
 
 export {
 	useBuildingFetch,

@@ -1,10 +1,9 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
+import {Server} from "@leight-core/leight";
 
-const doBuildingCreate = doPost("root.building.create");
-const doBuildingUpdate = doPost("root.building.update");
-const doBuildingDelete = doPost("root.building.delete");
-const fetchBuildingPage = fetchPage("root.kingdom.building.page", "kingdom");
+const doBuildingCreate = Server.createPost("root.building.create");
+const doBuildingUpdate = Server.createPost("root.building.update");
+const doBuildingDelete = Server.createPost("root.building.delete");
+const fetchBuildingPage = Server.createFetchPage("root.kingdom.building.page");
 
 export {
 	doBuildingCreate,

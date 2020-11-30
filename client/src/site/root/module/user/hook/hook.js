@@ -1,7 +1,7 @@
-import commonFetchHook from "utils/hook/commonFetchHook";
+import {createFetchHook} from "@leight-core/leight";
 
-const useUserFetch = commonFetchHook("root.user.fetch");
-const useUserStatisticsFetch = commonFetchHook("root.user.statistics", "{user}");
+const useUserFetch = createFetchHook("root.user.fetch");
+const useUserStatisticsFetch = createFetchHook("root.user.statistics", "{user}");
 
 export {
 	useUserFetch,

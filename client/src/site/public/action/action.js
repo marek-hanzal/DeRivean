@@ -1,7 +1,7 @@
 import {Server} from "@leight-core/leight";
 
-const doUserRegister = Server.httpPost("public.user.register");
-const doUserLogin = Server.httpPost("public.user.login");
+const doUserRegister = Server.createPost("public.user.register");
+const doUserLogin = Server.createPost("public.user.login");
 
 export {
 	doUserRegister,

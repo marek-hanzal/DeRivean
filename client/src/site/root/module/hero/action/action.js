@@ -1,10 +1,9 @@
-import doPost from "utils/server/doPost";
-import fetchPage from "utils/server/fetchPage";
+import {Server} from "@leight-core/leight";
 
-const doHeroCreate = doPost("root.hero.create");
-const doHeroUpdate = doPost("root.hero.update");
-const doHeroDelete = doPost("root.hero.delete");
-const fetchHeroPage = fetchPage("root.kingdom.hero.page", "kingdom");
+const doHeroCreate = Server.createPost("root.hero.create");
+const doHeroUpdate = Server.createPost("root.hero.update");
+const doHeroDelete = Server.createPost("root.hero.delete");
+const fetchHeroPage = Server.createFetchPage("root.kingdom.hero.page");
 
 export {
 	doHeroCreate,
