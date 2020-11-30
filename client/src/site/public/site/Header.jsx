@@ -12,7 +12,7 @@ const Header = () =>
 		backgroundColor: "#FFF",
 	}}>
 		<div style={{float: "left"}}>
-			<Link to={link("public")}>
+			<Link to={link("public.home")}>
 				<Button type={"link"} size={"large"} icon={<Avatar style={{marginRight: "1em"}} size={"large"} src={icon}/>}>
 					DeRivean
 				</Button>

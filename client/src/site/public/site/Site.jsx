@@ -1,4 +1,4 @@
-import {BaseLayout, BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SignedOutView} from "@leight-core/leight";
+import {BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SiderLayout, SignedOutView} from "@leight-core/leight";
 import HomeIcon from "component/icon/HomeIcon";
 import SignInIcon from "component/icon/SignInIcon";
 import SignUpIcon from "component/icon/SignUpIcon";
@@ -17,9 +17,9 @@ route("public.sign-in", "sign-in/*", "/sign-in");
 route("public.sign-out", "sign-out/*", "/sign-out");
 route("public.session-expired", "session-expired/*", "/session-expired");
 
-export const PublicSite = () => {
+export const CommonSite = () => {
 	return (
-		<BaseLayout
+		<SiderLayout
 			header={<Header/>}
 			menu={
 				<Routes>
