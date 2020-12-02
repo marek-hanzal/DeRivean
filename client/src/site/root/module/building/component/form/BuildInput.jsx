@@ -1,18 +1,16 @@
+import {useModuleContext} from "@leight-core/leight";
 import {DatePicker, Form} from "antd";
-import EditorContext from "component/form/EditorContext";
-import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import validationFor from "utils/form/validationFor";
+import EditorContext from "../../../../../../component/form/EditorContext";
 
 const BuildInput = () => {
-	const moduleContext = useContext(ModuleContext);
+	const moduleContext = useModuleContext();
 	const editorContext = useContext(EditorContext);
 	const {t} = useTranslation();
 
 	return (
 		<Form.Item
-			{...validationFor("build", editorContext.errors, t)}
 			name={"build"}
 			style={{margin: 0}}
 			children={

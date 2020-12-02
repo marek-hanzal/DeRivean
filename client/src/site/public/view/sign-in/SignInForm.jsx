@@ -2,7 +2,7 @@ import {Centered, Events, Form, FormItem, SubmitButton, useAppContext, useLayout
 import {Input, message} from "antd";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {doUserLogin} from "site/public/action/action";
+import {doUserLogin} from "../../action/action";
 
 const SignInForm = () => {
 	const {t} = useTranslation();

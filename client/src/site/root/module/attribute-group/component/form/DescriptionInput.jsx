@@ -4,7 +4,6 @@ import DescriptionIcon from "component/icon/DescriptionIcon";
 import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import validationFor from "utils/form/validationFor";
 
 const DescriptionInput = () => {
 	const moduleContext = useContext(ModuleContext);
@@ -13,7 +12,6 @@ const DescriptionInput = () => {
 
 	return (
 		<Form.Item
-			{...validationFor("description", editorContext.errors, t)}
 			name={"description"}
 			style={{margin: 0}}
 			children={

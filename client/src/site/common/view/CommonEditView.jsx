@@ -12,7 +12,6 @@ import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router";
 import Events from "utils/Events";
-import validationFor from "utils/form/validationFor";
 import values from "utils/form/values";
 
 const Editor = (
@@ -47,7 +46,6 @@ const Editor = (
 					<Centered span={12}>
 						<Divider type={"horizontal"}/>
 						<Form.Item
-							{...validationFor(name, editorContext.errors, t)}
 							name={name}
 							rules={[
 								{

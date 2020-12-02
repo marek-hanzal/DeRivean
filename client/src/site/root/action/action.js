@@ -1,6 +1,6 @@
 import {Events, Server} from "@leight-core/leight";
-import {doKingdomCreate} from "site/root/module/kingdom/action/action";
-import {doUserCreate, doUserSearch} from "site/root/module/user/action/action";
+import {doKingdomCreate} from "../module/kingdom/action/action";
+import {doUserCreate, doUserSearch} from "../module/user/action/action";
 
 const doSearch = (
 	discovery,
@@ -15,7 +15,6 @@ const doSearch = (
 const quickCreateTemplateUser = (
 	discovery,
 	events,
-	navigate,
 ) => {
 	doUserCreate(
 		discovery,
@@ -24,14 +23,12 @@ const quickCreateTemplateUser = (
 			login: "template",
 		},
 		events,
-		navigate,
 	);
 };
 
 const quickCreateTemplateKingdom = (
 	discovery,
 	events,
-	navigate,
 ) => {
 	doUserSearch(
 		discovery,
@@ -43,7 +40,7 @@ const quickCreateTemplateKingdom = (
 						discovery,
 						Events()
 							.on("success", () => {
-								quickCreateTemplateKingdom(discovery, events, navigate);
+								quickCreateTemplateKingdom(discovery, events);
 							})
 					);
 					return;
@@ -55,10 +52,8 @@ const quickCreateTemplateKingdom = (
 						name: "template",
 					},
 					events,
-					navigate,
 				);
 			}),
-		navigate,
 	);
 };
 

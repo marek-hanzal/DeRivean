@@ -1,17 +1,15 @@
+import {useModuleContext} from "@leight-core/leight";
 import {Form, Input} from "antd";
-import EditorContext from "component/form/EditorContext";
-import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import validationFor from "utils/form/validationFor";
+import EditorContext from "../../../../../../component/form/EditorContext";
 
 const TextInput = () => {
-	const moduleContext = useContext(ModuleContext);
+	const moduleContext = useModuleContext();
 	const editorContext = useContext(EditorContext);
 	const {t} = useTranslation();
 	return (
 		<Form.Item
-			{...validationFor("text", editorContext.errors, t)}
 			name={"text"}
 			rules={[
 				{

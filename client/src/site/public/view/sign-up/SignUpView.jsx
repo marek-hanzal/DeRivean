@@ -1,9 +1,8 @@
-import {Centered} from "@leight-core/leight";
+import {Centered, SignUpIcon} from "@leight-core/leight";
 import {Card, Result} from "antd";
-import SignUpIcon from "component/icon/SignUpIcon";
 import {useTranslation} from "react-i18next";
-import PublicView from "site/public/view/PublicView";
-import SignUpForm from "site/public/view/sign-up/SignUpForm";
+import PublicView from "../PublicView";
+import SignUpForm from "./SignUpForm";
 
 const SignUpView = () => {
 	const {t} = useTranslation();

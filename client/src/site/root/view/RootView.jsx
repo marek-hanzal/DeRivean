@@ -1,14 +1,11 @@
-import {ScrollToTop, useAppContext} from "@leight-core/leight";
-import ModuleContext from "component/ModuleContext";
-import {useContext} from "react";
+import {ScrollToTop, useAppContext, useModuleContext} from "@leight-core/leight";
 
 const RootView = (
 	{
 		children,
 	}) => {
-	const moduleContext = useContext(ModuleContext);
-	const appContext = useAppContext();
-	appContext.useTitle(moduleContext.id + ".title");
+	const moduleContext = useModuleContext();
+	useAppContext().useTitle(moduleContext.id + ".title");
 	return (
 		<>
 			<ScrollToTop/>

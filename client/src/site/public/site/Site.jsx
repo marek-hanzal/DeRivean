@@ -1,14 +1,11 @@
-import {BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SiderLayout, SignedOutView} from "@leight-core/leight";
-import HomeIcon from "component/icon/HomeIcon";
-import SignInIcon from "component/icon/SignInIcon";
-import SignUpIcon from "component/icon/SignUpIcon";
+import {BaseMenu, HomeIcon, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SiderLayout, SignedOutView, SignInIcon, SignUpIcon} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import Footer from "site/public/site/Footer";
-import Header from "site/public/site/Header";
-import HomeView from "site/public/view/HomeView";
-import SignInView from "site/public/view/sign-in/SignInView";
-import SignUpSuccessView from "site/public/view/sign-up/SignUpSuccessView";
-import SignUpView from "site/public/view/sign-up/SignUpView";
+import HomeView from "../view/HomeView";
+import SignInView from "../view/sign-in/SignInView";
+import SignUpSuccessView from "../view/sign-up/SignUpSuccessView";
+import SignUpView from "../view/sign-up/SignUpView";
+import Footer from "./Footer";
+import Header from "./Header";
 
 route("public.home", "/", "/");
 route("public.sign-up", "sign-up/*", "/sign-up");

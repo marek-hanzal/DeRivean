@@ -1,14 +1,13 @@
-import {Events, useLayoutContext} from "@leight-core/leight";
+import {Events, ModuleContext, useLayoutContext} from "@leight-core/leight";
 import {Card, message} from "antd";
-import ModuleContext from "component/ModuleContext";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useServerValidate} from "site/root/hook/hook";
-import ErrorResult from "site/root/view/home/ErrorResult";
-import FailedResult from "site/root/view/home/FailedResult";
-import HomeDashboard from "site/root/view/home/HomeDashboard";
-import LoaderResult from "site/root/view/home/LoaderResult";
-import RootView from "site/root/view/RootView";
+import {useServerValidate} from "../../hook/hook";
+import RootView from "../RootView";
+import ErrorResult from "./ErrorResult";
+import FailedResult from "./FailedResult";
+import HomeDashboard from "./HomeDashboard";
+import LoaderResult from "./LoaderResult";
 
 const ResolveStatus = (
 	{
@@ -44,13 +43,13 @@ const HomeView = () => {
 			})
 			.on("http-403", () => setStatus("unavailable"))
 	);
-	layoutContext.useMenuSelect("root.home");
+	layoutContext.useMenuSelect(["root.home"]);
 	return (
 		<ModuleContext.Provider value={{id: "root.home"}}>
 			<ModuleContext.Consumer>
 				{({id}) => (
 					<RootView>
-						<Card title={t(`${id}.title`)}>
+						<Card title={t(id + ".title")}>
 							<ResolveStatus status={status} validation={validation}/>
 						</Card>
 					</RootView>

@@ -1,11 +1,10 @@
-import {Events, useAppContext} from "@leight-core/leight";
+import {Events, useAppContext, useModuleContext} from "@leight-core/leight";
 import {Select} from "antd";
 import axios from "axios";
-import EditorContext from "component/form/EditorContext";
-import ModuleContext from "component/ModuleContext";
 import {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
+import EditorContext from "./EditorContext";
 
 const SearchInput = (
 	{
@@ -15,7 +14,7 @@ const SearchInput = (
 		hotkey,
 		...props
 	}) => {
-	const moduleContext = useContext(ModuleContext);
+	const moduleContext = useModuleContext();
 	const {t} = useTranslation();
 	const navigate = useNavigate();
 	const [data, setData] = useState([]);

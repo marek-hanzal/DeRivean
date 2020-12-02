@@ -1,7 +1,7 @@
 import {link} from "@leight-core/leight";
 import {Avatar, Button, Layout} from "antd";
-import icon from "assets/icon.png";
 import {Link} from "react-router-dom";
+import icon from "../../../assets/icon.png";
 
 const Header = () => {
 	return (

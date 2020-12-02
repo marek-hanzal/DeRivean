@@ -5,7 +5,6 @@ import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useServerSites} from "site/root/hook/hook";
 import Events from "utils/Events";
-import validationFor from "utils/form/validationFor";
 
 const SiteInput = () => {
 	const {t} = useTranslation();
@@ -25,7 +24,6 @@ const SiteInput = () => {
 	);
 	return (
 		<Form.Item
-			{...validationFor("site", editorContext.errors, t)}
 			name={"site"}
 			label={t(`${moduleContext.id}.form.site.label`)}
 			children={

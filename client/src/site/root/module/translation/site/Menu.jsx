@@ -1,12 +1,8 @@
-import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
-import CreateIcon from "component/icon/CreateIcon";
-import DashboardIcon from "component/icon/DashboardIcon";
-import EditIcon from "component/icon/EditIcon";
-import ListIcon from "component/icon/ListIcon";
+import {BaseMenu, CreateIcon, DashboardIcon, EditIcon, link, ListIcon, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import HomeMenuItem from "site/common/menu/HomeMenuItem";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
+import HomeMenuItem from "../../../../common/menu/HomeMenuItem";
+import LogoutMenuItem from "../../../../common/menu/LogoutMenuItem";
+import TranslationIcon from "../component/icon/TranslationIcon";
 
 const id = "root.translation";
 

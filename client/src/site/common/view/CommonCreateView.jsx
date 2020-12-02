@@ -1,18 +1,10 @@
+import {BackLink, Centered, Events, useAppContext, useLayoutContext, useModuleContext} from "@leight-core/leight";
 import {Card, Divider, Form, Input, message, Result} from "antd";
-import {DiscoveryContext} from "component/discovery/Discovery";
-import BaseEditor from "component/form/BaseEditor";
-import CreateSubmitButtons from "component/form/CreateSubmitButtons";
-import EditorContext from "component/form/EditorContext";
-import {LayoutContext} from "component/layout/BaseLayout";
-import Centered from "component/layout/Centered";
-import ModuleContext from "component/ModuleContext";
-import BackLink from "component/route/BackLink";
 import PropTypes from "prop-types";
-import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useParams} from "react-router";
-import Events from "utils/Events";
-import validationFor from "utils/form/validationFor";
+import BaseEditor from "../../../component/form/BaseEditor";
+import CreateSubmitButtons from "../../../component/form/CreateSubmitButtons";
 
 const CommonCreateView = (
 	{
@@ -23,13 +15,13 @@ const CommonCreateView = (
 		defaultEnableSubmit,
 	}) => {
 	name = name || "name";
-	const moduleContext = useContext(ModuleContext);
-	const discoveryContext = useContext(DiscoveryContext);
-	const layoutContext = useContext(LayoutContext);
+	const moduleContext = useModuleContext();
+	const layoutContext = useLayoutContext();
+	const appContext = useAppContext();
 	const navigate = useNavigate();
 	const params = useParams();
 	const {t} = useTranslation();
-	layoutContext.useMenuSelect(moduleContext.id + ".create");
+	layoutContext.useMenuSelect([moduleContext.id + ".create"]);
 	param = param || moduleContext.param;
 	return (
 		<BaseEditor
@@ -39,7 +31,7 @@ const CommonCreateView = (
 			onFinish={(values, initials, editor) => {
 				layoutContext.loadingStart();
 				moduleContext.create(
-					discoveryContext,
+					appContext,
 					{...values, ...{[param]: params[param]}},
 					Events()
 						.on("success", entity => {
@@ -80,7 +72,6 @@ const CommonCreateView = (
 								subTitle={<Centered span={12}>
 									<Divider type={"horizontal"}/>
 									<Form.Item
-										{...validationFor(name, errors, t)}
 										name={name}
 										rules={[
 											{

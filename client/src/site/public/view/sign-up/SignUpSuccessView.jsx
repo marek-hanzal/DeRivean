@@ -2,7 +2,7 @@ import {link, useLayoutContext} from "@leight-core/leight";
 import {Button, Card, Result} from "antd";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import PublicView from "site/public/view/PublicView";
+import PublicView from "../PublicView";
 
 const SignUpSuccessView = () => {
 	const navigate = useNavigate();

@@ -3,9 +3,7 @@ import {Centered, Events, generate, useAppContext, useLayoutContext} from "@leig
 import {Alert, Button, Divider, List, Result} from "antd";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import KingdomIcon from "site/common/icon/KingdomIcon";
-import {quickCreateTemplateKingdom, quickCreateTemplateUser} from "site/root/action/action";
-import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import {quickCreateTemplateKingdom, quickCreateTemplateUser} from "../../action/action";
 
 const QuickActionButton = (props) => {
 	const {t} = useTranslation();

@@ -1,5 +1,5 @@
+import {LoaderIcon} from "@leight-core/leight";
 import {Result} from "antd";
-import LoaderIcon from "component/icon/LoaderIcon";
 import {useTranslation} from "react-i18next";
 
 const LoaderResult = () => {

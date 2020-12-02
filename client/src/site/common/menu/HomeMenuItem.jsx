@@ -1,5 +1,4 @@
-import {MenuItem} from "@leight-core/leight";
-import BackIcon from "component/icon/BackIcon";
+import {BackIcon, MenuItem} from "@leight-core/leight";
 
 const HomeMenuItem = ({id, ...props}) => {
 	return (

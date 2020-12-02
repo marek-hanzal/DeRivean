@@ -1,15 +1,10 @@
-import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
-import AttributeIcon from "component/icon/AttributeIcon";
-import BackIcon from "component/icon/BackIcon";
-import CreateIcon from "component/icon/CreateIcon";
-import DashboardIcon from "component/icon/DashboardIcon";
-import EditIcon from "component/icon/EditIcon";
-import ListIcon from "component/icon/ListIcon";
+import {BackIcon, BaseMenu, CreateIcon, DashboardIcon, EditIcon, link, ListIcon, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import HomeMenuItem from "site/common/menu/HomeMenuItem";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {KingdomMenuItem} from "site/root/module/kingdom/site/Menu";
-import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import AttributeIcon from "../../../../../component/icon/AttributeIcon";
+import HomeMenuItem from "../../../../common/menu/HomeMenuItem";
+import LogoutMenuItem from "../../../../common/menu/LogoutMenuItem";
+import {KingdomMenuItem} from "../../kingdom/site/Menu";
+import UserIcon from "../component/icon/UserIcon";
 
 const id = "root.user";
 

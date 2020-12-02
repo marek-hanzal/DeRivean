@@ -1,7 +1,7 @@
 import {SmileOutlined} from "@ant-design/icons";
 import {Card, Result} from "antd";
 import {useTranslation} from "react-i18next";
-import OverallStatistics from "site/root/component/OverallStatistics";
+import OverallStatistics from "../../component/OverallStatistics";
 
 const HomeDashboard = () => {
 	const {t} = useTranslation();

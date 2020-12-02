@@ -1,10 +1,7 @@
-import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
-import BackIcon from "component/icon/BackIcon";
-import DashboardIcon from "component/icon/DashboardIcon";
-import ListIcon from "component/icon/ListIcon";
+import {BackIcon, BaseMenu, DashboardIcon, link, ListIcon, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import BuildingIcon from "site/common/icon/BuildingIcon";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import BuildingIcon from "../../../../common/icon/BuildingIcon";
+import LogoutMenuItem from "../../../../common/menu/LogoutMenuItem";
 
 const id = "game.building";
 

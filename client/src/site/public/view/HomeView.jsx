@@ -1,12 +1,10 @@
 import {SmileOutlined} from "@ant-design/icons";
-import {link} from "@leight-core/leight";
+import {link, SignInIcon} from "@leight-core/leight";
 import {Button, Card, Image, Result, Typography} from "antd";
-import icon from "assets/icon-small.png";
-import SignInIcon from "component/icon/SignInIcon";
-import SignUpIcon from "component/icon/SignUpIcon";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import PublicView from "site/public/view/PublicView";
+import icon from "../../../assets/icon-small.png";
+import PublicView from "./PublicView";
 
 const HomeView = () => {
 	const {t} = useTranslation();

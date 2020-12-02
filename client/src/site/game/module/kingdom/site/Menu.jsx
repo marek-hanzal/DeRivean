@@ -1,14 +1,9 @@
-import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
-import BackIcon from "component/icon/BackIcon";
-import CreateIcon from "component/icon/CreateIcon";
-import DashboardIcon from "component/icon/DashboardIcon";
-import EditIcon from "component/icon/EditIcon";
-import ListIcon from "component/icon/ListIcon";
+import {BackIcon, BaseMenu, CreateIcon, DashboardIcon, EditIcon, link, ListIcon, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import KingdomIcon from "site/common/icon/KingdomIcon";
-import HomeMenuItem from "site/common/menu/HomeMenuItem";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {BuildingMenuItem} from "site/game/module/building/site/Menu";
+import KingdomIcon from "../../../../common/icon/KingdomIcon";
+import HomeMenuItem from "../../../../common/menu/HomeMenuItem";
+import LogoutMenuItem from "../../../../common/menu/LogoutMenuItem";
+import {BuildingMenuItem} from "../../building/site/Menu";
 
 const id = "game.kingdom";
 

@@ -3,7 +3,6 @@ import EditorContext from "component/form/EditorContext";
 import ModuleContext from "component/ModuleContext";
 import {useContext} from "react";
 import {useTranslation} from "react-i18next";
-import validationFor from "utils/form/validationFor";
 
 const LoginInput = () => {
 	const {t} = useTranslation();
@@ -11,7 +10,6 @@ const LoginInput = () => {
 	const editorContext = useContext(EditorContext);
 	return (
 		<Form.Item
-			{...validationFor("login", editorContext.errors, t)}
 			name={"login"}
 			rules={[
 				{

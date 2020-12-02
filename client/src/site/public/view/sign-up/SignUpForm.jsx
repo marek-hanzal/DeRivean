@@ -3,8 +3,7 @@ import {Form, Input} from "antd";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router";
-import {doUserRegister} from "site/public/action/action";
-import validationFor from "utils/form/validationFor";
+import {doUserRegister} from "../../action/action";
 
 const SignUpForm = () => {
 	const appContext = useAppContext();
@@ -38,7 +37,6 @@ const SignUpForm = () => {
 		>
 			<Form.Item
 				name="name"
-				{...validationFor("name", errors, t)}
 				rules={[
 					{
 						required: true,
@@ -49,7 +47,6 @@ const SignUpForm = () => {
 			/>
 			<Form.Item
 				name="login"
-				{...validationFor("login", errors, t)}
 				rules={[
 					{
 						required: true,
@@ -60,7 +57,6 @@ const SignUpForm = () => {
 			/>
 			<Form.Item
 				name="password"
-				{...validationFor("password", errors, t)}
 				rules={[
 					{
 						required: true,

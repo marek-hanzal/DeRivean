@@ -1,5 +1,4 @@
-import {MenuItem} from "@leight-core/leight";
-import SignOutIcon from "component/icon/SignOutIcon";
+import {MenuItem, SignOutIcon} from "@leight-core/leight";
 
 const LogoutMenuItem = ({id, ...props}) => {
 	return (

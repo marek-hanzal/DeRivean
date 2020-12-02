@@ -1,18 +1,15 @@
-import {generate, link} from "@leight-core/leight";
+import {EditIcon, generate, link, ModuleContext} from "@leight-core/leight";
 import {Avatar, Button, Divider, Layout, message, Space} from "antd";
-import icon from "assets/icon.png";
-import SearchInput from "component/form/SearchInput";
-import EditIcon from "component/icon/EditIcon";
-import ModuleContext from "component/ModuleContext";
 import copy from "copy-to-clipboard";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
-import BuildingIcon from "site/common/icon/BuildingIcon";
-import HeroIcon from "site/common/icon/HeroIcon";
-import KingdomIcon from "site/common/icon/KingdomIcon";
-import ModuleIcon from "site/common/icon/ModuleIcon";
-import {doSearch} from "site/root/action/action";
+import icon from "../../../assets/icon.png";
+import SearchInput from "../../../component/form/SearchInput";
+import BuildingIcon from "../../common/icon/BuildingIcon";
+import HeroIcon from "../../common/icon/HeroIcon";
+import KingdomIcon from "../../common/icon/KingdomIcon";
+import ModuleIcon from "../../common/icon/ModuleIcon";
 
 const UserToolbar = ({item}) => {
 	const {t} = useTranslation();

@@ -1,13 +1,7 @@
-import {BaseMenu, link, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
-import AttributeIcon from "component/icon/AttributeIcon";
-import BackIcon from "component/icon/BackIcon";
-import CreateIcon from "component/icon/CreateIcon";
-import DashboardIcon from "component/icon/DashboardIcon";
-import EditIcon from "component/icon/EditIcon";
-import GroupIcon from "component/icon/GroupIcon";
-import ListIcon from "component/icon/ListIcon";
+import {BackIcon, BaseMenu, CreateIcon, DashboardIcon, EditIcon, GroupIcon, link, ListIcon, match, MenuDivider, MenuGroup, MenuItem} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
+import AttributeIcon from "../../../../../component/icon/AttributeIcon";
+import LogoutMenuItem from "../../../../common/menu/LogoutMenuItem";
 
 const id = "root.attribute-type";
 

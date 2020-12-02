@@ -1,9 +1,9 @@
 import {QuestionCircleOutlined} from "@ant-design/icons";
-import BuildingIcon from "site/common/icon/BuildingIcon";
-import HeroIcon from "site/common/icon/HeroIcon";
-import KingdomIcon from "site/common/icon/KingdomIcon";
-import TranslationIcon from "site/root/module/translation/component/icon/TranslationIcon";
-import UserIcon from "site/root/module/user/component/icon/UserIcon";
+import TranslationIcon from "../../root/module/translation/component/icon/TranslationIcon";
+import UserIcon from "../../root/module/user/component/icon/UserIcon";
+import BuildingIcon from "./BuildingIcon";
+import HeroIcon from "./HeroIcon";
+import KingdomIcon from "./KingdomIcon";
 
 const icons = {
 	user: <UserIcon/>,

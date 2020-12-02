@@ -1,11 +1,10 @@
-import {BaseLayout, BaseMenu, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SignedInView, SignOutView} from "@leight-core/leight";
-import HomeIcon from "component/icon/HomeIcon";
+import {BaseLayout, BaseMenu, HomeIcon, link, match, MenuDivider, MenuItem, NotFoundView, route, SessionExpiredView, SignedInView, SignOutView} from "@leight-core/leight";
 import {Route, Routes} from "react-router-dom";
-import LogoutMenuItem from "site/common/menu/LogoutMenuItem";
-import {KingdomMenuItem} from "site/game/module/kingdom/site/Menu";
-import Footer from "site/game/site/Footer";
-import Header from "site/game/site/Header";
-import HomeView from "site/game/view/home/HomeView";
+import LogoutMenuItem from "../../common/menu/LogoutMenuItem";
+import {KingdomMenuItem} from "../module/kingdom/site/Menu";
+import HomeView from "../view/home/HomeView";
+import Footer from "./Footer";
+import Header from "./Header";
 
 route("game", "/", "/");
 route("game.sign-in", "sign-in/*", "/sign-in");
