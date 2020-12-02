@@ -5,7 +5,7 @@
 	"proxy": "http://localhost:8080",
 	"dependencies": {
 		"@ant-design/icons": "^4.3.0",
-		"@leight-core/leight": "^0.5.47",
+		"@leight-core/leight": "^0.5.48",
 		"@testing-library/jest-dom": "^5.11.6",
 		"@testing-library/react": "^11.2.2",
 		"@testing-library/user-event": "^12.3.0",
