@@ -1,7 +1,6 @@
-import {createFetchHook, Server, useAppContext} from "@leight-core/leight";
+import {Server, useAppContext} from "@leight-core/leight";
 import {useEffect} from "react";
 
-const useAttributeTypeFetch = createFetchHook("root.attribute-type.fetch");
 const useAttributeTypeByGroups = (groups, events) => {
 	const appContext = useAppContext();
 	useEffect(() => {
@@ -17,6 +16,5 @@ const useAttributeTypeByGroups = (groups, events) => {
 };
 
 export {
-	useAttributeTypeFetch,
 	useAttributeTypeByGroups,
 };

@@ -17,9 +17,9 @@ class RegisterEndpoint(container: IContainer) : AbstractActionEndpoint(container
 	private val registerMapper: RegisterMapper by container.lazy()
 
 	override fun install(routing: Routing) {
-		"/api/common/user/register".let { url ->
+		"/api/public/user/register".let { url ->
 			discovery {
-				this.name = "common.user.register"
+				this.name = "public.user.register"
 				this.link = url
 				this.description = "Register a new User"
 			}

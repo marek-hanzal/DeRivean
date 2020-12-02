@@ -17,7 +17,7 @@ route("public.sign-in", "sign-in/*", "/sign-in");
 route("public.sign-out", "sign-out/*", "/sign-out");
 route("public.session-expired", "session-expired/*", "/session-expired");
 
-export const CommonSite = () => {
+export const PublicSite = () => {
 	return (
 		<SiderLayout
 			header={<Header/>}
