@@ -1,5 +1,7 @@
 # DeRivean
 
+_Nobody knows it's a game!_
+
 ![Build](https://github.com/marek-hanzal/DeRivean/workflows/Build/badge.svg)
 
 Legacy of DeRivean as the game (server) engine.
